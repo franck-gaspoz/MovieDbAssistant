@@ -16,6 +16,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{06CBB0AA-04D4-479B-8D35-2A7A15EB7946}"
+	ProjectSection(SolutionItems) = preProject
+		tools\imdb-scrapper-1.0.0.exe = tools\imdb-scrapper-1.0.0.exe
+		tools\README.md = tools\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{1934541F-A000-4D43-8999-6875093978E8}"
+	ProjectSection(SolutionItems) = preProject
+		assets\multimedia.png = assets\multimedia.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

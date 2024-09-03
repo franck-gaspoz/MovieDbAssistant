@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-	<TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+	<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<UseWindowsForms>true</UseWindowsForms>
+	<ApplicationIcon>assets\multimedia.ico</ApplicationIcon>
+	<AssemblyName>IMDbAssistant</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,9 +21,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="assets\multimedia.ico">
+    <Content Include="assets\multimedia.ico" />
+    <EmbeddedResource Include="assets\multimedia.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

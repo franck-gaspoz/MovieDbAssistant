@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace IMDBAssistant.App.Services.Tray;
 
@@ -11,15 +13,18 @@ namespace IMDBAssistant.App.Services.Tray;
 public sealed class TrayMenuBuilder
 {
     public const string IconFile = "IconFile";
-
     public const string AppTitle = "App:Title";
-
     public const string Label_Exit = "Texts:Exit";
-
     public const string Path_Assets = "AssetsPath";
 
-    readonly IConfiguration _config;
+    const int MenuHeightAdd = -16;
+    const int ItemWidth = 200;
+    const int ItemHeight = 22;
+    const int ItemContainerHeight = 24;
+    const int MenuWidthAdd = 32;
 
+    readonly IConfiguration _config;
+    readonly IServiceProvider _servicesProvider;
     readonly string _iconPath = "";
     readonly string _appTitle = "";
 
@@ -35,15 +40,18 @@ public sealed class TrayMenuBuilder
 
     /// <summary>
     /// Gets the context menu strip.
-    /// </summary>"
+    /// </summary>
     public ContextMenuStrip ContextMenuStrip => _contextMenuStrip!;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayMenuBuilder"/> class.
     /// </summary>
     /// <param name="config">The config.</param>
-    public TrayMenuBuilder(IConfiguration config)
+    public TrayMenuBuilder(
+        IConfiguration config,
+        IServiceProvider servicesProvider)
     {
+        _servicesProvider = servicesProvider;
         _config = config;
         var iconFile = config[IconFile]!;
         _appTitle = config[AppTitle]!;
@@ -64,7 +72,7 @@ public sealed class TrayMenuBuilder
         {
             Icon = new Icon(_iconPath),
             Visible = true,
-            Text = _appTitle
+            Text = _appTitle,            
         };
 
         BuildContextMenu();
@@ -72,13 +80,12 @@ public sealed class TrayMenuBuilder
         return this;
     }
 
+    TrayMenuService _trayMenu =>
+        _servicesProvider.GetRequiredService<TrayMenuService>();
+
     void BuildContextMenu()
     {
         string t(string id) => _config[id]!;
-
-        const int itemWidth = 200;
-        const int itemHeight = 22;
-        const int itemContainerHeight = 24;
 
         _contextMenuStrip = new()
         {
@@ -86,8 +93,10 @@ public sealed class TrayMenuBuilder
             ForeColor = Color.White,
             DropShadowEnabled = true,
             ShowImageMargin = false,
+            ShowCheckMargin = false,
             AutoSize = false,
-            Width = itemWidth
+            Width = ItemWidth + MenuWidthAdd,
+            ShowItemToolTips = true, 
         };
         ContextMenuStrip.SuspendLayout();
 
@@ -97,12 +106,28 @@ public sealed class TrayMenuBuilder
 
             (new ToolStripLabel {
                 Text = t(AppTitle),
-                BackColor = Color.DodgerBlue,
-                ForeColor = Color.White,
-                Margin = new Padding(0,8,0,0)
+                BackColor = Color.Black,
+                ForeColor = Color.DodgerBlue,
+                Padding = new Padding(8),
+                Width = ItemWidth,
+                AutoSize=false,
             },null),
 
+            // separator
+
             (new ToolStripSeparator(),null),
+
+            // test ballon
+
+            (new ToolStripMenuItem {
+                Text = "balloon"
+            },
+            o => {
+                o.Click += new EventHandler((c,e) =>
+                {
+                    _trayMenu.ShowBalloonTip_Start();
+                });
+            }),
 
             // exit
 
@@ -112,22 +137,27 @@ public sealed class TrayMenuBuilder
             o => {
                 o.Click += new EventHandler((c,e) =>
                 {
+                    _trayMenu.ShowBalloonTip_End();
                     Environment.Exit(0);
                 });
             })
         };
 
-        ContextMenuStrip.Height = itemContainerHeight * items.Count;
+        ContextMenuStrip.Height = ItemContainerHeight * (items.Count) + MenuHeightAdd;
+        ContextMenuStrip.DropShadowEnabled = true;
+        ContextMenuStrip.RenderMode = ToolStripRenderMode.System;
 
-        static void addHighlightBehavior(ToolStripItem item)
+        static void AddHighlightBehavior(ToolStripItem item)
         {
             item.MouseEnter += new EventHandler((c, e) =>
             {
-                item.ForeColor = Color.DarkBlue;
+                item.ForeColor = Color.WhiteSmoke;
+                item.BackColor = Color.DarkBlue;
             });
             item.MouseLeave += new EventHandler((c, e) =>
             {
                 item.ForeColor = Color.WhiteSmoke;
+                item.BackColor = Color.Black;
             });
         }
 
@@ -135,11 +165,12 @@ public sealed class TrayMenuBuilder
         {
             var (item, init) = it;
 
-            if (item is not ToolStripLabel)
+            if (item is not ToolStripLabel
+            && item is not ToolStripSeparator)
             {
                 item.AutoSize = false;
-                item.Size = new Size(itemWidth, itemHeight);
-                addHighlightBehavior(item);
+                item.Size = new Size(ItemWidth + MenuWidthAdd, ItemHeight);
+                AddHighlightBehavior(item);
             }
             if (init != null) init!(item);
         });
