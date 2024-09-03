@@ -2,7 +2,7 @@
 
 ___
 
-Generates **Movie documents** (HTML,..) from [IMBD](http://www.imdb.com) scrapped datas using IMDBScrapper, and can run a scrawler over IMDB
+Generates **Movie documents** (HTML, movie database,...) from [IMBD](http://www.imdb.com) scrapped datas using IMDBScrapper, and can run a scrawler over IMDB
 
 based on the project `IMDBScrapper` on GitHub at: 
 
