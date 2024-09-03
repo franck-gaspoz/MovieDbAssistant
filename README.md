@@ -1,5 +1,6 @@
 # IMDBAssistant
-generates documents form (HTML,..) from IMBD scrapped datas using IMDBScrapper
+
+generates documents (HTML,..) from IMBD scrapped datas using IMDBScrapper
 
 ![.net](https://img.shields.io/static/v1?label=&message=.NET%207&color=307639&style=plastic&logo=.net) 
 ![csharp](https://img.shields.io/static/v1?label=&message=C%20&sharp;&color=cdf998&style=plastic&logo=csharp&logoColor=dodgerblue) 
