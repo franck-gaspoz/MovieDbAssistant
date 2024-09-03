@@ -3,9 +3,9 @@
 namespace IMDBAssistant.App.Services.Tray;
 
 /// <summary>
-/// The tray application.
+/// The settings.
 /// </summary>
-[Singleton]
-public sealed class TrayApplication : ApplicationContext
+[Singleton()]
+public sealed class Settings
 {
 }

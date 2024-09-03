@@ -15,9 +15,11 @@ public sealed class TrayMenuBuilder
     public const string IconFile = "IconFile";
     public const string AppTitle = "App:Title";
     public const string Label_Exit = "Texts:Exit";
+    public const string Label_BuildFile = "Texts:BuildFromFile";
+    public const string Label_BuildClipb = "Texts:BuildFromClipboard";
     public const string Path_Assets = "AssetsPath";
 
-    const int MenuHeightAdd = -16;
+    const int MenuHeightAdd = -36;
     const int ItemWidth = 200;
     const int ItemHeight = 22;
     const int ItemContainerHeight = 24;
@@ -25,6 +27,8 @@ public sealed class TrayMenuBuilder
 
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
+    readonly BuildService _buildService;
+
     readonly string _iconPath = "";
     readonly string _appTitle = "";
 
@@ -49,10 +53,13 @@ public sealed class TrayMenuBuilder
     /// <param name="config">The config.</param>
     public TrayMenuBuilder(
         IConfiguration config,
-        IServiceProvider servicesProvider)
+        IServiceProvider servicesProvider,
+        BuildService buildService)
     {
         _servicesProvider = servicesProvider;
         _config = config;
+        _buildService = buildService;
+
         var iconFile = config[IconFile]!;
         _appTitle = config[AppTitle]!;
 
@@ -113,34 +120,24 @@ public sealed class TrayMenuBuilder
                 AutoSize=false,
             },null),
 
-            // separator
+            (new ToolStripSeparator(),null),  // ------ 
 
-            (new ToolStripSeparator(),null),
+            // build from file
+            (new ToolStripMenuItem { Text = t(Label_BuildFile) },
+            o => { o.Click += new EventHandler((c,e) => {
+                _buildService.BuildFromFile();  }); }),
 
-            // test ballon
-
-            (new ToolStripMenuItem {
-                Text = "balloon"
-            },
-            o => {
-                o.Click += new EventHandler((c,e) =>
-                {
-                    _trayMenu.ShowBalloonTip_Start();
-                });
-            }),
+            // build from clipboard
+            (new ToolStripMenuItem { Text = t(Label_BuildClipb) },
+            o => { o.Click += new EventHandler((c,e) => {
+                 _buildService.BuildFromClipboard();  }); }),
 
             // exit
-
-            (new ToolStripMenuItem {
-                Text = t(Label_Exit)
-            },
-            o => {
-                o.Click += new EventHandler((c,e) =>
-                {
-                    _trayMenu.ShowBalloonTip_End();
-                    Environment.Exit(0);
-                });
-            })
+            (new ToolStripSeparator(),null), // ------ 
+            (new ToolStripMenuItem { Text = t(Label_Exit) },
+            o => { o.Click += new EventHandler((c,e) =>  {
+                _trayMenu.ShowBalloonTip_End();
+                Environment.Exit(0); }); })
         };
 
         ContextMenuStrip.Height = ItemContainerHeight * (items.Count) + MenuHeightAdd;

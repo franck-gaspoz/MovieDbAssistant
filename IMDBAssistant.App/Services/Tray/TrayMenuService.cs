@@ -8,7 +8,7 @@ namespace IMDBAssistant.App.Services.Tray;
 /// The tray menu service.
 /// </summary>
 [Singleton()]
-public class TrayMenuService
+public sealed class TrayMenuService
 {
     readonly NotifyIcon _notifyIcon;
     readonly IConfiguration _config;
