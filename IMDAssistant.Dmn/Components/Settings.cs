@@ -126,6 +126,10 @@ public sealed class Settings
     /// The prefix file disabled.
     /// </summary>
     public const string PrefixFileDisabled = "Build:PrefixFileDisabled";
+    /// <summary>
+    /// dot anim interval
+    /// </summary>
+    public const string DotAnimInterval = "Anims:Interval:Dot";
 
     readonly IConfiguration _config;
 

@@ -43,7 +43,13 @@ public sealed class ProcessInputFolder
     /// </summary>
     public void Run()
     {
-        _tray.ShowInfo(_config[ProcInpFold]!);
+        var info = _config[ProcInpFold]!;
+        _tray.ShowInfo(info);
+        var da = new DotAnim(info);
+        _tray.AnimInfo(tray => 
+            tray.UpdateInfo(da.Next()),
+            Convert.ToInt32(_config[DotAnimInterval]!));
+
         ProcessJsons();
         ProcessLists();
     }
