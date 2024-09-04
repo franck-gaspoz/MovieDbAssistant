@@ -8,8 +8,7 @@ Console.WriteLine("system tray");
 
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
-        services.
-            AutoRegister(typeof(Program))
+        services.AutoRegister(typeof(Program))
     )
     .Build();
 
