@@ -1,8 +1,10 @@
 ﻿using System.Reflection;
 
+using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+namespace IMDBAssistant.Lib.Components.DependencyInjection;
 
 /// <summary>
 /// The dependencies registerer.
@@ -17,7 +19,7 @@ public static class Dependencies
     public static IServiceCollection AutoRegister(
         this IServiceCollection services,
         Type fromType)
-        => services.AutoRegister( fromType.Assembly );
+        => services.AutoRegister(fromType.Assembly);
 
     /// <summary>
     /// auto register depedencies
@@ -28,15 +30,41 @@ public static class Dependencies
         this IServiceCollection services,
         Assembly fromAssembly)
     {
+#if DBG
+        Debug.WriteLine(fromAssembly.Location.ToString());
+#endif
+
         foreach (var typeInfo in fromAssembly.DefinedTypes)
         {
             var ca = typeInfo.GetCustomAttributes(true);
+#if DBG
+            var handled = false;
+#endif
             if (ca.OfType<SingletonAttribute>().Any())
+            {
                 services.AddSingleton(typeInfo.AsType());
+#if DBG
+                handled = true;
+#endif
+            }
             if (ca.OfType<TransientAttribute>().Any())
+            {
                 services.AddTransient(typeInfo.AsType());
+#if DBG
+                handled = true;
+#endif
+            }
             if (ca.OfType<ScopedAttribute>().Any())
+            {
                 services.AddScoped(typeInfo.AsType());
+#if DBG
+                handled = true;
+#endif
+            }
+#if DBG
+            if (handled)
+                Debug.WriteLine(typeInfo.AsType().FullName);
+#endif
         }
         return services;
     }

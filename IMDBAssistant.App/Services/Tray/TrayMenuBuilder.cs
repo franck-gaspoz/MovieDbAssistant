@@ -6,31 +6,17 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using static IMDBAssistant.Dmn.Components.Settings;
+
 namespace IMDBAssistant.App.Services.Tray;
 
 /// <summary>
 /// The tray menu.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class TrayMenuBuilder
 {
     #region consts
-
-    public const string IconFile = "IconFile";
-    public const string AppTitle = "App:Title";
-
-    public const string Label_Exit = "Texts:Exit";
-    public const string Label_OpenCmdLine = "Texts:OpenCmdLine";
-    public const string Label_OpenOutpFolder = "Texts:OpenOutpFolder";
-    public const string Label_OpenInpFolder = "Texts:OpenInpFolder";
-    public const string Label_Help = "Texts:Help";
-    public const string Label_Settings = "Texts:Settings";
-    public const string Label_BuildQueryFile = "Texts:BuildFromQueryFile";
-    public const string Label_BuildJsonFile = "Texts:BuildFromJsonFile";
-    public const string Label_BuildClipb = "Texts:BuildFromClipboard";
-    public const string Label_BuildFromInputFolder = "Texts:BuildFromInputFolder";
-
-    public const string Path_Assets = "AssetsPath";
 
     const int MenuHeightAdd = -3 * 26;
     const int ItemWidth = 200;
@@ -225,19 +211,19 @@ public sealed class TrayMenuBuilder
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(FolderExplorer.Path_Output);
+                _folderExplorer.Run(Path_Output);
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(ProcessInputFolder.Path_Input);
+                _folderExplorer.Run(Path_Input);
                  });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_Help) },
             o => { o.Click += new EventHandler((c,e) => {
-                _openUrl.Run(OpenUrl.Url_HelpGitHub);
+                _openUrl.Run(Url_HelpGitHub);
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_Settings) },

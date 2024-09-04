@@ -7,8 +7,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Components\Querier\" />
+    <Folder Include="Components\Scrapper\" />
+    <Folder Include="Models\IMDbScrap\Json\" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\IMDBAssistant.Lib\IMDBAssistant.Lib.csproj" />
 	</ItemGroup>
 
 </Project>

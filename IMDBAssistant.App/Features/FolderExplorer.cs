@@ -4,17 +4,16 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
 
+using static IMDBAssistant.Dmn.Components.Settings;
+
 namespace IMDBAssistant.App.Features;
 
 /// <summary>
 /// The open command line feature.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class FolderExplorer
 {
-    public const string FolderExplorer_CommandLine = "FolderExplorer:CommandLine";
-    public const string Path_Output = "Paths:Output";
-
     readonly IConfiguration _config;
 
     public FolderExplorer(IConfiguration configuration)
@@ -25,10 +24,10 @@ public sealed class FolderExplorer
     /// </summary>
     public void Run(string pathKey)
     {
-        var path = "\"" 
+        var path = "\""
             + Path.Combine(
                 Directory.GetCurrentDirectory(),
-                _config[pathKey]!) 
+                _config[pathKey]!)
             + "\"";
         var proc = new Process()
         {
@@ -42,7 +41,7 @@ public sealed class FolderExplorer
                 RedirectStandardInput = false,
                 CreateNoWindow = true,
             }
-        };        
+        };
         proc.Start();
     }
 }

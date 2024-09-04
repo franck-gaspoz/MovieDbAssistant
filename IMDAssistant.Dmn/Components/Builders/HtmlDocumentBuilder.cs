@@ -1,12 +1,12 @@
-﻿using IMDBAssistant.Lib.Components.Builder;
+﻿using IMDBAssistant.Dmn.Components.Builder;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
-namespace IMDBAssistant.Lib.Components.Builders;
+namespace IMDBAssistant.Dmn.Components.Builders;
 
 /// <summary>
 /// html document builder.
 /// </summary>
-[Scoped()]
+[Scoped]
 public sealed class HtmlDocumentBuilder : IDocumentBuilder
 {
 }

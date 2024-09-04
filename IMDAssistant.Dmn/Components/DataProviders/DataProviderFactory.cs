@@ -1,4 +1,4 @@
-﻿namespace IMDBAssistant.Lib.Components.DataProviders;
+﻿namespace IMDBAssistant.Dmn.Components.DataProviders;
 
 /// <summary>
 /// data provider factory.

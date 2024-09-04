@@ -1,14 +1,14 @@
-﻿using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
-using IMDBAssistant.Lib.Services;
+﻿using IMDBAssistant.Dmn.Services;
+using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IMDBAssistant.Lib.Components.Builders;
+namespace IMDBAssistant.Dmn.Components.Builders;
 
 /// <summary>
 /// document builder service factory.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class DocumentBuilderServiceFactory
 {
     readonly IServiceProvider _serviceProvider;

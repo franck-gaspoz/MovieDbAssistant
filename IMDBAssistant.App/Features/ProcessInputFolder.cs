@@ -4,20 +4,16 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using static IMDBAssistant.Dmn.Components.Settings;
+
 namespace IMDBAssistant.App.Features;
 
 /// <summary>
 /// process input folder.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class ProcessInputFolder
 {
-    public const string Path_Input = "Paths:Input";
-    public const string ProcInpFold = "Texts:ProcInpFold";
-    const string SearchPatternJson = "*.json";
-    const string SearchPatternTxt = "*.txt";
-    const char PrefixFileDisabled = '-';
-    
     readonly IConfiguration _config;
     readonly BuildService _buildService;
     readonly IServiceProvider _serviceProvider;
@@ -52,14 +48,14 @@ public sealed class ProcessInputFolder
         ProcessLists();
     }
 
-    private void ProcessLists()
+    void ProcessLists()
     {
         var lists = GetListsFiles();
         lists.ToList()
             .ForEach(file => _buildService.BuildFromQueryFile(file));
     }
 
-    private void ProcessJsons()
+    void ProcessJsons()
     {
         var jsons = GetJsonFiles();
         jsons.ToList()
@@ -67,13 +63,13 @@ public sealed class ProcessInputFolder
     }
 
     IEnumerable<string> GetListsFiles()
-        => EnabledFiles(Directory.GetFiles(InputPath, SearchPatternTxt));
+        => EnabledFiles(Directory.GetFiles(InputPath, _config[SearchPattern_Txt]!));
 
     IEnumerable<string> GetJsonFiles()
-        => EnabledFiles(Directory.GetFiles(InputPath, SearchPatternJson));
+        => EnabledFiles(Directory.GetFiles(InputPath, _config[SearchPattern_Json]!));
 
-    static bool FileIsDisabled(string x) => x.StartsWith(PrefixFileDisabled);
+    bool FileIsDisabled(string x) => x.StartsWith(_config[PrefixFileDisabled]!);
 
-    static IEnumerable<string> EnabledFiles(IEnumerable<string> files)
+    IEnumerable<string> EnabledFiles(IEnumerable<string> files)
         => files.Where(x => !FileIsDisabled(x));
 }

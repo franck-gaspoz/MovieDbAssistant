@@ -1,21 +1,19 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
-using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+using Microsoft.Extensions.Configuration;
+
+using static IMDBAssistant.Dmn.Components.Settings;
 
 namespace IMDBAssistant.App.Services.Tray;
 
 /// <summary>
 /// The tray menu service.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class TrayMenuService
 {
     readonly NotifyIcon _notifyIcon;
     readonly IConfiguration _config;
-
-    const string BalloonTip_Start = "BalloonTips:Start";
-    const string BalloonTip_End = "BalloonTips:End";
-    const string BalloonTip_Delay = "BalloonTips:Delay";
 
     public TrayMenuService(
         IConfiguration config,
@@ -32,7 +30,7 @@ public sealed class TrayMenuService
     /// Show balloon tip end.
     /// </summary>
     public void ShowBalloonTip_End()
-        => ShowBallonTip(BalloonTip_End,icon:ToolTipIcon.Warning);
+        => ShowBallonTip(BalloonTip_End, icon: ToolTipIcon.Warning);
 
     /// <summary>
     /// Show the info.
@@ -40,27 +38,21 @@ public sealed class TrayMenuService
     /// <param name="key">The key.</param>
     public void ShowInfo(string text)
         => ShowBallonTip(
-            text: text, 
+            text: text,
             icon: ToolTipIcon.Info);
 
     /// <summary>
     /// Update the info.
     /// </summary>
     /// <param name="key">The key.</param>
-    public void UpdateInfo(string key)
-    {
-        _notifyIcon.BalloonTipText = _config[key]!;
-    }
+    public void UpdateInfo(string key) => _notifyIcon.BalloonTipText = _config[key]!;
 
     void ShowBallonTip(
-        string? key= null,
+        string? key = null,
         string? text = null,
-        ToolTipIcon icon = ToolTipIcon.Info)
-    {
-        _notifyIcon.ShowBalloonTip(
+        ToolTipIcon icon = ToolTipIcon.Info) => _notifyIcon.ShowBalloonTip(
             Convert.ToInt32(_config[BalloonTip_Delay]),
-            _config[TrayMenuBuilder.AppTitle]!,
+            _config[AppTitle]!,
             text ?? _config[key!]!,
             icon);
-    }
 }

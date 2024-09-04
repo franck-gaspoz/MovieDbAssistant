@@ -4,17 +4,16 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
 
+using static IMDBAssistant.Dmn.Components.Settings;
+
 namespace IMDBAssistant.App.Features;
 
 /// <summary>
 /// The open command line feature.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class OpenCommandLine
 {
-    public const string Shell_CommandLine = "Shell:CommandLine";
-    public const string Shell_Args = "Shell:Args";
-
     readonly IConfiguration _config;
 
     public OpenCommandLine(IConfiguration configuration)
@@ -29,7 +28,7 @@ public sealed class OpenCommandLine
         {
             StartInfo = new ProcessStartInfo()
             {
-                FileName = _config[Shell_CommandLine],   
+                FileName = _config[Shell_CommandLine],
                 Arguments = _config[Shell_Args],
                 UseShellExecute = true,
                 RedirectStandardOutput = false,

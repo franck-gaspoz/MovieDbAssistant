@@ -53,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IMDAssistant.Dmn\IMDBAssistant.Dmn.csproj" />
     <ProjectReference Include="..\IMDBAssistant.Lib\IMDBAssistant.Lib.csproj" />
   </ItemGroup>
 

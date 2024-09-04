@@ -4,17 +4,16 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
 
+using static IMDBAssistant.Dmn.Components.Settings;
+
 namespace IMDBAssistant.App.Features;
 
 /// <summary>
 /// The open command line feature.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class OpenUrl
 {
-    public const string OpenBrowser_CommandLine = "OpenBrowser:CommandLine";
-    public const string Url_HelpGitHub = "Urls:HelpGitHub";
-
     readonly IConfiguration _config;
 
     public OpenUrl(IConfiguration configuration)
@@ -38,7 +37,7 @@ public sealed class OpenUrl
                 RedirectStandardInput = false,
                 CreateNoWindow = true,
             }
-        };        
+        };
         proc.Start();
     }
 }

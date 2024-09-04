@@ -1,28 +1,29 @@
-﻿using IMDBAssistant.Lib.Components.Builders;
+﻿using IMDBAssistant.Dmn.Components.Builders;
+using IMDBAssistant.Dmn.Components.DataProviders;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
+
+using static IMDBAssistant.Dmn.Components.Settings;
 
 namespace IMDBAssistant.App.Services.Tray;
 
 /// <summary>
 /// The build service.
 /// </summary>
-[Singleton()]
+[Singleton]
 public sealed class BuildService
 {
-    readonly Settings _settings;
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildService(
          IConfiguration config,
-         Settings settings,
          IServiceProvider serviceProvider,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_settings, _config, _serviceProvider, _documentBuilderServiceFactory)
-            = (settings, config, serviceProvider, documentBuilderServiceFactory);
+         => (_config, _serviceProvider, _documentBuilderServiceFactory)
+            = (config, serviceProvider, documentBuilderServiceFactory);
 
     /// <summary>
     /// Build from file.
@@ -35,9 +36,14 @@ public sealed class BuildService
     /// <summary>
     /// Build from json file.
     /// </summary>
-    public void BuildFromJsonFile(string file) 
+    public void BuildFromJsonFile(string file)
         => _documentBuilderServiceFactory.CreateDocumentBuilderService()
-            .Build(file, typeof(object), typeof(object));
+            .Build(
+                new DocumentBuilderContext(
+                    file,
+                    _config[Path_Output]!,
+                    typeof(JsonDataProvider),
+                    typeof(HtmlDocumentBuilder)));
 
     /// <summary>
     /// Build from clipboard.
