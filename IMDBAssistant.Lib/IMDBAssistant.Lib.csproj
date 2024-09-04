@@ -11,4 +11,10 @@
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Components\Builder\" />
+	  <Folder Include="Components\Scrapper\" />
+	  <Folder Include="Components\Querier\" />
+	</ItemGroup>
+
 </Project>

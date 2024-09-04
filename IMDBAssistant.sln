@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMDBAssistant.App", "IMDBAssistant.App\IMDBAssistant.App.csproj", "{604C65B0-52B7-4692-B791-884083EDEF31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDBAssistant.Lib", "IMDBAssistant.Lib\IMDBAssistant.Lib.csproj", "{1E6B8346-7BE6-4DBB-A448-032716ABE5D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IMDBAssistant.Lib", "IMDBAssistant.Lib\IMDBAssistant.Lib.csproj", "{1E6B8346-7BE6-4DBB-A448-032716ABE5D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{DFB96DF8-E3C7-4522-A952-27052DF06817}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{193454
 		assets\multimedia.png = assets\multimedia.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDBAssistant.Cli", "IMDBAssistant.Cli\IMDBAssistant.Cli.csproj", "{96316D32-1AA1-4144-BBAC-0FE69DC41FD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{1E6B8346-7BE6-4DBB-A448-032716ABE5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E6B8346-7BE6-4DBB-A448-032716ABE5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E6B8346-7BE6-4DBB-A448-032716ABE5D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96316D32-1AA1-4144-BBAC-0FE69DC41FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96316D32-1AA1-4144-BBAC-0FE69DC41FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96316D32-1AA1-4144-BBAC-0FE69DC41FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96316D32-1AA1-4144-BBAC-0FE69DC41FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
