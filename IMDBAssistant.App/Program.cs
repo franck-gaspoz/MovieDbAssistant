@@ -4,8 +4,6 @@ using Microsoft.Extensions.Hosting;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 using IMDBAssistant.App.Services.Tray;
 
-Console.WriteLine("system tray");
-
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
         services.AutoRegister(typeof(Program))
