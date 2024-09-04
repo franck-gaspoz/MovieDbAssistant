@@ -4,5 +4,6 @@ ___
 
 auto open any file named:
 
-- `*.json` : scrapper json output
-- `*-list.txt` : query text
+- `<name>.json` : scrapper json output
+
+- `<name>-list.txt` : query text
