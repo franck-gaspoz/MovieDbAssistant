@@ -34,6 +34,13 @@ public sealed class TrayMenuService
     public void ShowBalloonTip_End()
         => ShowBallonTip(BalloonTip_End);
 
+    /// <summary>
+    /// Show the info.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    public void ShowInfo(string key)
+        => ShowBallonTip(_config[key]!);
+
     void ShowBallonTip(string key)
     {
         _notifyIcon.ShowBalloonTip(

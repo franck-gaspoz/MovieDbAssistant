@@ -45,7 +45,8 @@ public sealed class TrayMenuBuilder
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
     readonly BuildService _buildService;
-    readonly OpenCommandLineFeature _openCommandLineFeature;
+    readonly OpenCommandLine _openCommandLineFeature;
+    readonly OpenUrl _openUrl;
     readonly FolderExplorer _folderExplorer;
 
     readonly string _iconPath = "";
@@ -76,9 +77,11 @@ public sealed class TrayMenuBuilder
         IConfiguration config,
         IServiceProvider servicesProvider,
         BuildService buildService,
-        OpenCommandLineFeature openCommandLineFeature,
-        FolderExplorer folderExplorer)
+        OpenCommandLine openCommandLineFeature,
+        FolderExplorer folderExplorer,
+        OpenUrl openUrl)
     {
+        _openUrl = openUrl;
         _openCommandLineFeature = openCommandLineFeature;
         _servicesProvider = servicesProvider;
         _config = config;
@@ -219,18 +222,19 @@ public sealed class TrayMenuBuilder
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(FolderExplorer.FolderExplorer_Path_Output);
+                _folderExplorer.Run(FolderExplorer.Path_Output);
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(FolderExplorer.FolderExplorer_Path_Input);
+                _folderExplorer.Run(ProcessInputFolder.Path_Input);
                  });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_Help) },
             o => { o.Click += new EventHandler((c,e) => {
+                _openUrl.Run(OpenUrl.Url_HelpGitHub);
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_Settings) },

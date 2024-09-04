@@ -10,14 +10,14 @@ namespace IMDBAssistant.App.Features;
 /// The open command line feature.
 /// </summary>
 [Singleton()]
-public sealed class OpenCommandLineFeature
+public sealed class OpenCommandLine
 {
     public const string Shell_CommandLine = "Shell:CommandLine";
     public const string Shell_Args = "Shell:Args";
 
     readonly IConfiguration _config;
 
-    public OpenCommandLineFeature(IConfiguration configuration)
+    public OpenCommandLine(IConfiguration configuration)
         => _config = configuration;
 
     /// <summary>

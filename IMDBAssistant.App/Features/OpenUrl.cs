@@ -10,14 +10,14 @@ namespace IMDBAssistant.App.Features;
 /// The open command line feature.
 /// </summary>
 [Singleton()]
-public sealed class FolderExplorer
+public sealed class OpenUrl
 {
-    public const string FolderExplorer_CommandLine = "FolderExplorer:CommandLine";
-    public const string Path_Output = "Paths:Output";
+    public const string OpenBrowser_CommandLine = "OpenBrowser:CommandLine";
+    public const string Url_HelpGitHub = "Urls:HelpGitHub";
 
     readonly IConfiguration _config;
 
-    public FolderExplorer(IConfiguration configuration)
+    public OpenUrl(IConfiguration configuration)
         => _config = configuration;
 
     /// <summary>
@@ -25,16 +25,12 @@ public sealed class FolderExplorer
     /// </summary>
     public void Run(string pathKey)
     {
-        var path = "\"" 
-            + Path.Combine(
-                Directory.GetCurrentDirectory(),
-                _config[pathKey]!) 
-            + "\"";
+        var path = "\"" + _config[pathKey]! + "\"";
         var proc = new Process()
         {
             StartInfo = new ProcessStartInfo()
             {
-                FileName = _config[FolderExplorer_CommandLine],
+                FileName = _config[OpenBrowser_CommandLine],
                 Arguments = path,
                 UseShellExecute = true,
                 RedirectStandardOutput = false,

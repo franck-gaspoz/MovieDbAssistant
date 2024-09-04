@@ -5,8 +5,9 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 using IMDBAssistant.App.Services.Tray;
 
 var host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
-        services.AutoRegister(typeof(Program))
+    .ConfigureServices(services => services
+    .AutoRegister(typeof(Program))
+    .AutoRegister(typeof(SingletonAttribute))
     )
     .Build();
 
