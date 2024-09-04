@@ -45,7 +45,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IMDBAssistant.Infra\IMDBAssistant.Lib.csproj" />
     <ProjectReference Include="..\IMDBAssistant.Lib\IMDBAssistant.Lib.csproj" />
   </ItemGroup>
 
