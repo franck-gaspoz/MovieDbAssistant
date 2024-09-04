@@ -14,15 +14,6 @@ var host = Host.CreateDefaultBuilder(args)
 
 Application.EnableVisualStyles();
 Application.SetCompatibleTextRenderingDefault(false);
-
-var ac = host.Services
-    .GetRequiredService<TrayMenuBuilder>()
-    .Build();
-
-host.Services
-    .GetRequiredService<TrayMenuService>()
-    .ShowBalloonTip_Start();
-
 Application.Run(
     host.Services
         .GetRequiredService<TrayApplication>());
