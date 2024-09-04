@@ -32,21 +32,35 @@ public sealed class TrayMenuService
     /// Show balloon tip end.
     /// </summary>
     public void ShowBalloonTip_End()
-        => ShowBallonTip(BalloonTip_End);
+        => ShowBallonTip(BalloonTip_End,icon:ToolTipIcon.Warning);
 
     /// <summary>
     /// Show the info.
     /// </summary>
     /// <param name="key">The key.</param>
-    public void ShowInfo(string key)
-        => ShowBallonTip(_config[key]!);
+    public void ShowInfo(string text)
+        => ShowBallonTip(
+            text: text, 
+            icon: ToolTipIcon.Info);
 
-    void ShowBallonTip(string key)
+    /// <summary>
+    /// Update the info.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    public void UpdateInfo(string key)
+    {
+        _notifyIcon.BalloonTipText = _config[key]!;
+    }
+
+    void ShowBallonTip(
+        string? key= null,
+        string? text = null,
+        ToolTipIcon icon = ToolTipIcon.Info)
     {
         _notifyIcon.ShowBalloonTip(
             Convert.ToInt32(_config[BalloonTip_Delay]),
             _config[TrayMenuBuilder.AppTitle]!,
-            _config[key]!,
-            ToolTipIcon.Info);
+            text ?? _config[key!]!,
+            icon);
     }
 }

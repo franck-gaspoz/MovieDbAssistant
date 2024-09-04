@@ -48,6 +48,7 @@ public sealed class TrayMenuBuilder
     readonly OpenCommandLine _openCommandLineFeature;
     readonly OpenUrl _openUrl;
     readonly FolderExplorer _folderExplorer;
+    readonly ProcessInputFolder _processInputFolder;
 
     readonly string _iconPath = "";
     readonly string _appTitle = "";
@@ -74,6 +75,7 @@ public sealed class TrayMenuBuilder
     /// </summary>
     /// <param name="config">The config.</param>
     public TrayMenuBuilder(
+        ProcessInputFolder processInputFolder,
         IConfiguration config,
         IServiceProvider servicesProvider,
         BuildService buildService,
@@ -81,6 +83,7 @@ public sealed class TrayMenuBuilder
         FolderExplorer folderExplorer,
         OpenUrl openUrl)
     {
+        _processInputFolder = processInputFolder;
         _openUrl = openUrl;
         _openCommandLineFeature = openCommandLineFeature;
         _servicesProvider = servicesProvider;
@@ -207,7 +210,7 @@ public sealed class TrayMenuBuilder
 
             (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                 _buildService.BuildFromInputFolder(); });}),
+                 _processInputFolder.Run(); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
             o => { o.Click += new EventHandler((c,e) => {

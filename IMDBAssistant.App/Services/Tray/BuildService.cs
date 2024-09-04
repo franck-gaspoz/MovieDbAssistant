@@ -1,4 +1,5 @@
-﻿using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+﻿using IMDBAssistant.App.Features;
+using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
 
@@ -31,14 +32,6 @@ public sealed class BuildService
     /// Build from json file.
     /// </summary>
     public void BuildFromJsonFile()
-    {
-
-    }
-
-    /// <summary>
-    /// Build from input folder.
-    /// </summary>
-    public void BuildFromInputFolder()
     {
 
     }
