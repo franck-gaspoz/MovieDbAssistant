@@ -55,19 +55,15 @@ public sealed class ProcessInputFolder
     private void ProcessLists()
     {
         var lists = GetListsFiles();
-        if (lists.Any())
-        {
-
-        }
+        lists.ToList()
+            .ForEach(file => _buildService.BuildFromQueryFile(file));
     }
 
     private void ProcessJsons()
     {
         var jsons = GetJsonFiles();
-        if (jsons.Any())
-        {
-
-        }
+        jsons.ToList()
+            .ForEach(file => _buildService.BuildFromJsonFile(file));
     }
 
     IEnumerable<string> GetListsFiles()

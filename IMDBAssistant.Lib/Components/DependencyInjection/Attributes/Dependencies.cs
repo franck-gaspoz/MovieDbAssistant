@@ -33,6 +33,10 @@ public static class Dependencies
             var ca = typeInfo.GetCustomAttributes(true);
             if (ca.OfType<SingletonAttribute>().Any())
                 services.AddSingleton(typeInfo.AsType());
+            if (ca.OfType<TransientAttribute>().Any())
+                services.AddTransient(typeInfo.AsType());
+            if (ca.OfType<ScopedAttribute>().Any())
+                services.AddScoped(typeInfo.AsType());
         }
         return services;
     }

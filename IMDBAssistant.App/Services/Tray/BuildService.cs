@@ -1,4 +1,4 @@
-﻿using IMDBAssistant.App.Features;
+﻿using IMDBAssistant.Lib.Components.Builders;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
@@ -13,17 +13,21 @@ public sealed class BuildService
 {
     readonly Settings _settings;
     readonly IConfiguration _config;
+    readonly IServiceProvider _serviceProvider;
+    readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildService(
          IConfiguration config,
-         Settings settings)
-         => ( _settings, _config) 
-            = (settings, config);
+         Settings settings,
+         IServiceProvider serviceProvider,
+         DocumentBuilderServiceFactory documentBuilderServiceFactory)
+         => (_settings, _config, _serviceProvider, _documentBuilderServiceFactory)
+            = (settings, config, serviceProvider, documentBuilderServiceFactory);
 
     /// <summary>
     /// Build from file.
     /// </summary>
-    public void BuildFromQueryFile()
+    public void BuildFromQueryFile(string file)
     {
 
     }
@@ -31,16 +35,15 @@ public sealed class BuildService
     /// <summary>
     /// Build from json file.
     /// </summary>
-    public void BuildFromJsonFile()
-    {
-
-    }
+    public void BuildFromJsonFile(string file) 
+        => _documentBuilderServiceFactory.CreateDocumentBuilderService()
+            .Build(file, typeof(object), typeof(object));
 
     /// <summary>
     /// Build from clipboard.
     /// </summary>
     public void BuildFromClipboard()
     {
-
+        var query = Clipboard.GetText();
     }
 }

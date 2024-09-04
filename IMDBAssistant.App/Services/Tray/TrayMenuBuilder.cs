@@ -202,11 +202,11 @@ public sealed class TrayMenuBuilder
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_BuildQueryFile) },
             o => { o.Click += new EventHandler((c,e) => {
-                _buildService.BuildFromQueryFile(); });}),
+                _buildService.BuildFromQueryFile(""); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildJsonFile) },
             o => { o.Click += new EventHandler((c,e) => {
-                _buildService.BuildFromJsonFile(); });}),
+                _buildService.BuildFromJsonFile(""); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
             o => { o.Click += new EventHandler((c,e) => {
