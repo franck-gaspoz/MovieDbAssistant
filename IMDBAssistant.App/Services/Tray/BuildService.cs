@@ -22,7 +22,23 @@ public sealed class BuildService
     /// <summary>
     /// Build from file.
     /// </summary>
-    public void BuildFromFile()
+    public void BuildFromQueryFile()
+    {
+
+    }
+
+    /// <summary>
+    /// Build from json file.
+    /// </summary>
+    public void BuildFromJsonFile()
+    {
+
+    }
+
+    /// <summary>
+    /// Build from input folder.
+    /// </summary>
+    public void BuildFromInputFolder()
     {
 
     }

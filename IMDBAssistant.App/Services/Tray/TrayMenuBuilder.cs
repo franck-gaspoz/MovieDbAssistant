@@ -1,10 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
 
-using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
 using IMDBAssistant.App.Features;
+using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IMDBAssistant.App.Services.Tray;
 
@@ -18,15 +18,21 @@ public sealed class TrayMenuBuilder
 
     public const string IconFile = "IconFile";
     public const string AppTitle = "App:Title";
+
     public const string Label_Exit = "Texts:Exit";
     public const string Label_OpenCmdLine = "Texts:OpenCmdLine";
+    public const string Label_OpenOutpFolder = "Texts:OpenOutpFolder";
+    public const string Label_OpenInpFolder = "Texts:OpenInpFolder";
     public const string Label_Help = "Texts:Help";
     public const string Label_Settings = "Texts:Settings";
-    public const string Label_BuildFile = "Texts:BuildFromFile";
+    public const string Label_BuildQueryFile = "Texts:BuildFromQueryFile";
+    public const string Label_BuildJsonFile = "Texts:BuildFromJsonFile";
     public const string Label_BuildClipb = "Texts:BuildFromClipboard";
+    public const string Label_BuildFromInputFolder = "Texts:BuildFromInputFolder";
+
     public const string Path_Assets = "AssetsPath";
 
-    const int MenuHeightAdd = -36;
+    const int MenuHeightAdd = -3 * 26;
     const int ItemWidth = 200;
     const int ItemHeight = 22;
     const int ItemContainerHeight = 24;
@@ -40,8 +46,7 @@ public sealed class TrayMenuBuilder
     readonly IServiceProvider _servicesProvider;
     readonly BuildService _buildService;
     readonly OpenCommandLineFeature _openCommandLineFeature;
-
-    readonly dynamic _dependencies;
+    readonly FolderExplorer _folderExplorer;
 
     readonly string _iconPath = "";
     readonly string _appTitle = "";
@@ -71,19 +76,14 @@ public sealed class TrayMenuBuilder
         IConfiguration config,
         IServiceProvider servicesProvider,
         BuildService buildService,
-        OpenCommandLineFeature openCommandLineFeature)
+        OpenCommandLineFeature openCommandLineFeature,
+        FolderExplorer folderExplorer)
     {
-        _dependencies = new
-        {
-            OpenCommandLineFeature = openCommandLineFeature,
-            ServicesProvider = servicesProvider,
-            BuildService = buildService,
-            Config = config,
-        };
         _openCommandLineFeature = openCommandLineFeature;
         _servicesProvider = servicesProvider;
         _config = config;
         _buildService = buildService;
+        _folderExplorer = folderExplorer;
 
         var iconFile = config[IconFile]!;
         _appTitle = config[AppTitle]!;
@@ -104,7 +104,7 @@ public sealed class TrayMenuBuilder
         {
             Icon = new Icon(_iconPath),
             Visible = true,
-            Text = _appTitle,            
+            Text = _appTitle,
         };
         BuildContextMenu();
         return this;
@@ -157,7 +157,7 @@ public sealed class TrayMenuBuilder
         };
         ContextMenuStrip.SuspendLayout();
 
-        ContextMenuStrip.Height = ItemContainerHeight * items.Count - items.Count * 6; // + MenuHeightAdd;
+        ContextMenuStrip.Height = ItemContainerHeight * items.Count + MenuHeightAdd;
         ContextMenuStrip.DropShadowEnabled = true;
         ContextMenuStrip.RenderMode = ToolStripRenderMode.System;
     }
@@ -178,12 +178,13 @@ public sealed class TrayMenuBuilder
 
     List<ItemDefinition> GetMainMenu()
     {
+        var version = Assembly.GetExecutingAssembly().GetName().Version!.ToString();
         var items = new List<ItemDefinition>()
         {
             // deco
 
             (new ToolStripLabel {
-                Text = T(AppTitle),
+                Text = T(AppTitle)+" "+version,
                 BackColor = Color.Black,
                 ForeColor = Color.DodgerBlue,
                 Padding = new Padding(8),
@@ -193,13 +194,38 @@ public sealed class TrayMenuBuilder
 
             // build from file, clipboard
             (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = T(Label_BuildFile) },
+            (new ToolStripMenuItem { Text = T(Label_BuildQueryFile) },
             o => { o.Click += new EventHandler((c,e) => {
-                _buildService.BuildFromFile(); });}),
+                _buildService.BuildFromQueryFile(); });}),
+
+            (new ToolStripMenuItem { Text = T(Label_BuildJsonFile) },
+            o => { o.Click += new EventHandler((c,e) => {
+                _buildService.BuildFromJsonFile(); });}),
+
+            (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
+            o => { o.Click += new EventHandler((c,e) => {
+                 _buildService.BuildFromInputFolder(); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
             o => { o.Click += new EventHandler((c,e) => {
                  _buildService.BuildFromClipboard(); });}),
+
+            // tools
+            (new ToolStripSeparator(),null),  // ------ 
+            (new ToolStripMenuItem { Text = T(Label_OpenCmdLine) },
+            o => { o.Click += new EventHandler((c,e) => {
+                _openCommandLineFeature.Run();
+                 });}),
+
+            (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
+            o => { o.Click += new EventHandler((c,e) => {
+                _folderExplorer.Run(FolderExplorer.FolderExplorer_Path_Output);
+                 });}),
+
+            (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
+            o => { o.Click += new EventHandler((c,e) => {
+                _folderExplorer.Run(FolderExplorer.FolderExplorer_Path_Input);
+                 });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 
@@ -209,13 +235,6 @@ public sealed class TrayMenuBuilder
 
             (new ToolStripMenuItem { Text = T(Label_Settings) },
             o => { o.Click += new EventHandler((c,e) => {
-                 });}),
-
-            // tools
-            (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = T(Label_OpenCmdLine) },
-            o => { o.Click += new EventHandler((c,e) => {
-                _openCommandLineFeature.Run();
                  });}),
 
             // exit

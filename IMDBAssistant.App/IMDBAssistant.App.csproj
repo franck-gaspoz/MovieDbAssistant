@@ -13,6 +13,17 @@
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="assets\multimedia.ico" />
+    <None Remove="input\README.md" />
+    <None Remove="output\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="input\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="output\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
