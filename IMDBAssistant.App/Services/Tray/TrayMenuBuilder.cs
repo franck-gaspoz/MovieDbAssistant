@@ -27,7 +27,6 @@ public sealed class TrayMenuBuilder
 
     readonly IConfiguration _config;
     readonly string _iconPath = "";
-    readonly string _appTitle = "";
     readonly TrayMenuItems _trayMenuItems;
 
     NotifyIcon? _notifyIcon { get; set; }
@@ -39,6 +38,12 @@ public sealed class TrayMenuBuilder
     /// </summary>
     /// <value>A <see cref="NotifyIcon"/></value>
     public NotifyIcon NotifyIcon => _notifyIcon!;
+
+    /// <summary>
+    /// Gets the tool tip.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public string Tooltip { get; private set; } = "";
 
     /// <summary>
     /// Gets the context menu strip.
@@ -60,7 +65,7 @@ public sealed class TrayMenuBuilder
         _config = config;
 
         var iconFile = config[IconFile]!;
-        _appTitle = config[AppTitle]!;
+        Tooltip = config[AppTitle]!;
 
         _iconPath = Path.GetFullPath(
             Path.Combine(
@@ -78,7 +83,7 @@ public sealed class TrayMenuBuilder
         {
             Icon = new Icon(_iconPath),
             Visible = true,
-            Text = _appTitle,
+            Text = Tooltip,
         };
         BuildContextMenu();
         return this;

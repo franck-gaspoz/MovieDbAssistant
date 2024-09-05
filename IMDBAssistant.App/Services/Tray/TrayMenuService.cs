@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 using IMDBAssistant.App.Components.Tray;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -16,31 +15,39 @@ namespace IMDBAssistant.App.Services.Tray;
 [Singleton]
 public sealed class TrayMenuService
 {
+    /// <summary>
+    /// Gets the notify icon.
+    /// </summary>
+    /// <value>A <see cref="NotifyIcon"/></value>
     public NotifyIcon NotifyIcon { get; private set; }
+
     public event EventHandler? BalloonTipClosed;
 
     readonly IConfiguration _config;
-    //readonly List<EventHandler> _onBalloonTipClosed = [];
     readonly TrayBackgroundWorker _trayBackgroundWorker;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TrayMenuService"/> class.
+    /// </summary>
+    /// <param name="config">The config.</param>
+    /// <param name="builder">The builder.</param>
     public TrayMenuService(
         IConfiguration config,
         TrayMenuBuilder builder)
     {
         (NotifyIcon, _config) = (builder.NotifyIcon, config);
-        _trayBackgroundWorker = new(_config,this);
+        _trayBackgroundWorker = new(_config, this);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
     }
 
     void NotifyIcon_BalloonTipClosed(
         object? sender,
-        EventArgs e) {
+        EventArgs e)
+    {
 #if TRACE
         Debug.WriteLine("balloon closed");
 #endif
-        //foreach (var handler in _onBalloonTipClosed)
-        //    handler?.Invoke(sender,e);
         BalloonTipClosed?.Invoke(sender, e);
     }
 

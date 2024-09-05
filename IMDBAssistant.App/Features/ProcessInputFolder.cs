@@ -22,6 +22,7 @@ public sealed class ProcessInputFolder
     readonly IServiceProvider _serviceProvider;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
+    TrayMenuBuilder _trayMenuBuilder => _serviceProvider.GetRequiredService<TrayMenuBuilder>();
 
     /// <summary>
     /// Gets the input path.
@@ -46,16 +47,19 @@ public sealed class ProcessInputFolder
     /// </summary>
     public void Run()
     {
-        var info = _config[ProcInpFold]!;
+        var info = _trayMenuBuilder.Tooltip[..^1] + ":\n"+ _config[ProcInpFold]!;
         _tray.ShowInfo(info);
         var da = new DotAnim(info);
         _tray.AnimInfo(
             tray => {
 #if TRACE
-                Debug.WriteLine(da.Next());
+                var msg = da.Next();
+                tray.NotifyIcon.Text = msg;
+                Debug.WriteLine(msg);
 #endif
             },
-            Convert.ToInt32(_config[DotAnimInterval]!));
+            Convert.ToInt32(_config[DotAnimInterval]!),
+            false);
 
         ProcessJsons();
         ProcessLists();

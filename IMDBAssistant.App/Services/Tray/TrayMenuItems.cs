@@ -48,6 +48,9 @@ public class TrayMenuItems
 
     string T(string id) => _config[id]!;
 
+    List<ItemDefinition>? _mainMenuItems;
+
+
     /// <summary>
     /// Get main menu items.
     /// </summary>
@@ -73,19 +76,23 @@ public class TrayMenuItems
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_BuildQueryFile) },
             o => { o.Click += new EventHandler((c,e) => {
-                _buildService.BuildFromQueryFile(""); });}),
+                RunBuildAction(
+                    () => _buildService.BuildFromQueryFile("")); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildJsonFile) },
             o => { o.Click += new EventHandler((c,e) => {
-                _buildService.BuildFromJsonFile(""); });}),
+                RunBuildAction(
+                    () => _buildService.BuildFromJsonFile("")); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                 _processInputFolder.Run(); });}),
+                 RunBuildAction(
+                    () => _processInputFolder.Run()); });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
             o => { o.Click += new EventHandler((c,e) => {
-                 _buildService.BuildFromClipboard(); });}),
+                 RunBuildAction(
+                    () => _buildService.BuildFromClipboard()); });}),
 
             // tools
             (new ToolStripSeparator(),null),  // ------ 
@@ -122,6 +129,27 @@ public class TrayMenuItems
                 _trayMenu.ShowBalloonTip_End();
                 Environment.Exit(0); });})
         };
-        return items;
+        return _mainMenuItems = items;
+    }
+
+    void RunBuildAction(Action act)
+    {
+        SetBuildItemsEnabled(false);
+        try
+        {
+            act();
+        }
+        finally {
+            SetBuildItemsEnabled(true);
+        }
+    }
+
+    void SetBuildItemsEnabled(bool isEnabled)
+    {
+        _mainMenuItems!.ForEach(x =>
+        {
+            if (x.Item.Text !=null && x.Item.Text.StartsWith("Build"))
+                x.Item.Enabled = isEnabled;
+        });
     }
 }
