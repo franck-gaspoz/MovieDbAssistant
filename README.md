@@ -2,7 +2,7 @@
 
 ___
 
-Generates **Movie documents** (HTML, movie database,...) using **Web Scrawlers**.
+Generates **Movie documents** (HTML, movie database,...) using **Web Crawlers**.
 <br>Can scrap data from:
 - [IMDb](http://www.imdb.com)
 
