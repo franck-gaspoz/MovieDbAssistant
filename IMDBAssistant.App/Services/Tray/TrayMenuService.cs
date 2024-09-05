@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 
+using IMDBAssistant.App.Components;
 using IMDBAssistant.App.Components.Tray;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
@@ -15,6 +16,8 @@ namespace IMDBAssistant.App.Services.Tray;
 [Singleton]
 public sealed class TrayMenuService
 {
+    readonly TrayMenuBuilder _trayMenuBuilder;
+
     /// <summary>
     /// Gets the notify icon.
     /// </summary>
@@ -25,6 +28,7 @@ public sealed class TrayMenuService
 
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
+    Action<TrayMenuService>? _onStopAnimInfo;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayMenuService"/> class.
@@ -36,6 +40,7 @@ public sealed class TrayMenuService
         TrayMenuBuilder builder)
     {
         (NotifyIcon, _config) = (builder.NotifyIcon, config);
+        _trayMenuBuilder = builder;
         _trayBackgroundWorker = new(_config, this);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
@@ -76,15 +81,50 @@ public sealed class TrayMenuService
     /// Anims the info.
     /// </summary>
     /// <param name="action">The action.</param>
+    /// <param name="onStop">on stop action</param>
     /// <param name="interval">The interval.</param>
     public void AnimInfo(
         Action<TrayMenuService> action,
         int interval,
+        Action<TrayMenuService>? onStop = null,
         bool stopOnBallonTipClosed = true)
-            => _trayBackgroundWorker.RunBackgroundWorker(
+    {
+        _onStopAnimInfo = onStop;        
+        _trayBackgroundWorker.RunBackgroundWorker(
                 action,
                 interval,
                 stopOnBallonTipClosed);
+    }
+
+    /// <summary>
+    /// Anim working info.
+    /// </summary>
+    /// <param name="info">The info.</param>
+    public void AnimWorkInfo(string info)
+    {
+        var da = new DotAnim(_trayMenuBuilder.Tooltip + ":\n" + info);
+        AnimInfo(
+            tray => {
+#if TRACE
+                var msg = da.Next();
+                tray.NotifyIcon.Text = msg;
+                Debug.WriteLine(msg);
+#endif
+            },
+            Convert.ToInt32(_config[DotAnimInterval]!),
+            tray => tray.NotifyIcon.Text = _trayMenuBuilder.Tooltip,
+            false);
+    }
+
+    /// <summary>
+    /// Stop anim info.
+    /// </summary>
+    public void StopAnimInfo()
+    {
+        _trayBackgroundWorker.StopAndDestroyBackgroundWorker();
+        _onStopAnimInfo?.Invoke(this);
+        _onStopAnimInfo = null;
+    }
 
     /// <summary>
     /// Ballon tip close background worker handler.

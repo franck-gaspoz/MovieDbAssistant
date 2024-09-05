@@ -47,22 +47,14 @@ public sealed class ProcessInputFolder
     /// </summary>
     public void Run()
     {
-        var info = _trayMenuBuilder.Tooltip[..^1] + ":\n"+ _config[ProcInpFold]!;
-        _tray.ShowInfo(info);
-        var da = new DotAnim(info);
-        _tray.AnimInfo(
-            tray => {
-#if TRACE
-                var msg = da.Next();
-                tray.NotifyIcon.Text = msg;
-                Debug.WriteLine(msg);
-#endif
-            },
-            Convert.ToInt32(_config[DotAnimInterval]!),
-            false);
+        _tray.AnimWorkInfo(_config[ProcInpFold]!);
 
         ProcessJsons();
         ProcessLists();
+
+        Thread.Sleep(5000);
+
+        _tray.StopAnimInfo();
     }
 
     void ProcessLists()
