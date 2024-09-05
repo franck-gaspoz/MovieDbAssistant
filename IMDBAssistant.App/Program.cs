@@ -6,18 +6,35 @@ using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-var host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services => services
-        .AutoRegister(typeof(SingletonAttribute))
-        .AutoRegister(typeof(Settings))
-        .AutoRegister(typeof(Program))
-    )
-    .Build();
+namespace IMDBAssistant;
 
-Application.EnableVisualStyles();
-Application.SetCompatibleTextRenderingDefault(false);
-Application.Run(
-    host.Services
-        .GetRequiredService<TrayApplication>());
+/// <summary>
+/// The program.
+/// </summary>
+public class Program
+{
+    /// <summary>
+    /// main
+    /// </summary>
+    /// <param name="args">The args.</param>
+    [STAThread]
+    public static void Main(string[] args)
+    {
+        var host = Host.CreateDefaultBuilder(args)
+        .ConfigureServices(services => services
+            .AutoRegister(typeof(SingletonAttribute))
+            .AutoRegister(typeof(Settings))
+            .AutoRegister(typeof(Program))
+        )
+        .Build();
 
-host.Run();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            Application.Run(
+                host.Services
+                    .GetRequiredService<TrayApplication>());
+
+        host.Run();
+    }
+}
