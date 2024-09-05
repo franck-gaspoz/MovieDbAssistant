@@ -24,8 +24,6 @@ Available on `Windows 10.0.22621.0` and more. This application runs as an tray i
 
 :arrow_right: run `MovieDbAssistant.exe`
 
-![tip start](./assets/tip-start.png)
-
 :arrow_right: select an action from the tray menu
 
 ## Any plateform command line
