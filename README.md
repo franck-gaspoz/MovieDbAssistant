@@ -18,7 +18,9 @@ use the project `MovieDbScrapper` on GitHub at:
 ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 ___
 
-## Windows system tray
+## Usage
+
+### Windows system tray
 
 Available on `Windows 10.0.22621.0` and more. This application runs as an tray icon.
 
@@ -26,11 +28,13 @@ Available on `Windows 10.0.22621.0` and more. This application runs as an tray i
 
 :arrow_right: select an action from the tray menu
 
-## Any plateform command line
+### Any plateform command line
 
 Available on Windows, Linux, OSX
 
 run `MovieDbAssistantCLI.exe` from a `shell`
+
+___
 
 ## Third parties
 
