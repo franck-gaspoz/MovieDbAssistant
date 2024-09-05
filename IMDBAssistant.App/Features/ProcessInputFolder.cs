@@ -1,4 +1,7 @@
-﻿using IMDBAssistant.App.Services.Tray;
+﻿using System.Diagnostics;
+
+using IMDBAssistant.App.Components;
+using IMDBAssistant.App.Services.Tray;
 using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Microsoft.Extensions.Configuration;
@@ -46,9 +49,13 @@ public sealed class ProcessInputFolder
         var info = _config[ProcInpFold]!;
         _tray.ShowInfo(info);
         var da = new DotAnim(info);
-        /*_tray.AnimInfo(tray => 
-            null,
-            Convert.ToInt32(_config[DotAnimInterval]!));*/
+        _tray.AnimInfo(
+            tray => {
+#if TRACE
+                Debug.WriteLine(da.Next());
+#endif
+            },
+            Convert.ToInt32(_config[DotAnimInterval]!));
 
         ProcessJsons();
         ProcessLists();

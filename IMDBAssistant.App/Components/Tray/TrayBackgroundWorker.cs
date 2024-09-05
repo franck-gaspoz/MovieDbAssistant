@@ -1,9 +1,12 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 
+using IMDBAssistant.App.Services.Tray;
+using IMDBAssistant.Lib.Components.DependencyInjection.Attributes;
+
 using Microsoft.Extensions.Configuration;
 
-namespace IMDBAssistant.App.Services.Tray;
+namespace IMDBAssistant.App.Components.Tray;
 
 /// <summary>
 /// The tray background worker.
