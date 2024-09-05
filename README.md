@@ -1,12 +1,13 @@
-# ![icon](./assets/multimedia-small.png) IMDb Assistant
+# ![icon](./assets/multimedia-small.png) Movie Db Assistant
 
 ___
 
-Generates **Movie documents** (HTML, movie database,...) from [IMDb](http://www.imdb.com) scrapped datas using IMDBScrapper, and can run a scrawler over IMDb
+Generates **Movie documents** (HTML, movie database,...) using **Web Scrawlers**.
+<br>Can scrap data from:
+- [IMDb](http://www.imdb.com)
 
-based on the project `IMDBScrapper` on GitHub at: 
-
-[/IMDBScraper/blob/master/README.md](https://github.com/franck-gaspoz/IMDBScraper/blob/master/README.md)
+use the project `MovieDbScrapper` on GitHub at: 
+[/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
 
 <br>
 
@@ -21,7 +22,7 @@ ___
 
 Available on `Windows 10.0.22621.0` and more. This application runs as an tray icon.
 
-:arrow_right: run `IMDbAssistant.exe`
+:arrow_right: run `MovieDbAssistant.exe`
 
 ![tip start](./assets/tip-start.png)
 
@@ -31,6 +32,8 @@ Available on `Windows 10.0.22621.0` and more. This application runs as an tray i
 
 Available on Windows, Linux, OSX
 
-run `IMDbAssistantCLI.exe` from a `shell`
+run `MovieDbAssistantCLI.exe` from a `shell`
 
+## Third parties
 
+<a href="https://www.flaticon.com/free-icons/movie-theater" title="movie theater icons">Movie theater icons created by Freepik - Flaticon</a>

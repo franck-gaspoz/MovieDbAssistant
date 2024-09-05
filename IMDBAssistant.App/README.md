@@ -1,6 +1,0 @@
-# IMDB Assistant
-
-___
-
-## Application
-
