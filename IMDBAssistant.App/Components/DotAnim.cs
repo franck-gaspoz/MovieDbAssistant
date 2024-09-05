@@ -1,4 +1,4 @@
-﻿namespace IMDBAssistant.App.Features;
+﻿namespace IMDBAssistant.App.Components;
 
 /// <summary>
 /// The dot anim.
@@ -8,7 +8,7 @@ public sealed class DotAnim
     const int MaxN = 3;
     const string SP = " ";
     private const char Dot = '.';
-    int _n = 1;    
+    int _n = 1;
     readonly string _text;
 
     /// <summary>

@@ -15,17 +15,20 @@ namespace IMDBAssistant.App.Services.Tray;
 [Singleton]
 public sealed class TrayMenuService
 {
-    public NotifyIcon NotifyIcon;
+    public NotifyIcon NotifyIcon { get; private set; }
+    public event EventHandler? BalloonTipClosed;
+
     readonly IConfiguration _config;
-    BackgroundWorker? _backgroundWorker;
-    readonly List<EventHandler> _onBalloonTipClosed = [];
-    static int _bwinstance = 0;
+    //readonly List<EventHandler> _onBalloonTipClosed = [];
+    readonly TrayBackgroundWorker _trayBackgroundWorker;
 
     public TrayMenuService(
         IConfiguration config,
-        TrayMenuBuilder builder)
+        TrayMenuBuilder builder,
+        TrayBackgroundWorker trayBackgroundWorker)
     {
         (NotifyIcon, _config) = (builder.NotifyIcon, config);
+        _trayBackgroundWorker = trayBackgroundWorker;
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
     }
@@ -34,8 +37,9 @@ public sealed class TrayMenuService
         object? sender,
         EventArgs e) {
         Debug.WriteLine("balloon closed");
-        foreach (var handler in _onBalloonTipClosed)
-            handler?.Invoke(sender,e);
+        //foreach (var handler in _onBalloonTipClosed)
+        //    handler?.Invoke(sender,e);
+        BalloonTipClosed?.Invoke(sender, e);
     }
 
     /// <summary>
@@ -67,66 +71,19 @@ public sealed class TrayMenuService
     public void AnimInfo(
         Action<TrayMenuService> action,
         int interval,
-        bool stopOnBallonTipClosed = true,
-        Action? onBalloonTipClosed = null)
-            => RunBackgroundWorker(
+        bool stopOnBallonTipClosed = true)
+            => _trayBackgroundWorker.RunBackgroundWorker(
                 action,
                 interval,
-                stopOnBallonTipClosed,
-                onBalloonTipClosed);
+                stopOnBallonTipClosed);
 
     /// <summary>
-    /// Update the info.
+    /// Ballon tip close background worker handler.
     /// </summary>
-    /// <param name="key">The key.</param>
-    public void UpdateInfo(string text) 
-        => NotifyIcon.BalloonTipText = text;
-
-    void BallonTipCloseBackgroundWorkerHandler(object? o, EventArgs e)
-    {
-        StopAndDestroyBackgroundWorker();
-    }
-
-    void RunBackgroundWorker(
-        Action<TrayMenuService> action,
-        int interval,
-        bool stopOnBallonTipClosed = true,
-        Action? onBalloonTipClosed = null)
-    {
-        if (_backgroundWorker != null && _backgroundWorker.IsBusy)
-            StopAndDestroyBackgroundWorker();
-
-        if (_backgroundWorker == null)
-            _backgroundWorker = new BackgroundWorker
-            { WorkerSupportsCancellation = true };
-
-        _onBalloonTipClosed.Remove(BallonTipCloseBackgroundWorkerHandler);
-        if (stopOnBallonTipClosed)
-            _onBalloonTipClosed.Add(BallonTipCloseBackgroundWorkerHandler);
-
-        _backgroundWorker.DoWork += (o,e) =>
-        {
-            bool end = false;
-            while (!end)
-            {
-                Debug.Write('.');
-                action?.Invoke(this);
-                end = e.Cancel;
-                if (!end)
-                    Thread.Sleep(interval);
-            }
-        };
-        if (!_backgroundWorker.IsBusy)
-            _backgroundWorker.RunWorkerAsync();
-    }
-
-    void StopAndDestroyBackgroundWorker()
-    {
-        if (_backgroundWorker is null) return;
-        _backgroundWorker.CancelAsync();
-        _backgroundWorker.Dispose();
-        _backgroundWorker = null;
-    }
+    /// <param name="o">sender.</param>
+    /// <param name="e">event args</param>
+    public void BallonTipCloseBackgroundWorkerHandler(object? o, EventArgs e)
+        => _trayBackgroundWorker.StopAndDestroyBackgroundWorker();
 
     /// <summary>
     /// Show balloon tip.

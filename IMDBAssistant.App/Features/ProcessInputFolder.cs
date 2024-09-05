@@ -46,9 +46,9 @@ public sealed class ProcessInputFolder
         var info = _config[ProcInpFold]!;
         _tray.ShowInfo(info);
         var da = new DotAnim(info);
-        _tray.AnimInfo(tray => 
-            tray.UpdateInfo(da.Next()),
-            Convert.ToInt32(_config[DotAnimInterval]!));
+        /*_tray.AnimInfo(tray => 
+            null,
+            Convert.ToInt32(_config[DotAnimInterval]!));*/
 
         ProcessJsons();
         ProcessLists();
