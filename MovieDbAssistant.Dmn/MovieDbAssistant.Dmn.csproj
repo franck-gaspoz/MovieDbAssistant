@@ -10,7 +10,7 @@
   <ItemGroup>
     <Folder Include="Components\Querier\" />
     <Folder Include="Components\Scrapper\" />
-    <Folder Include="Models\IMDbScrap\Json\" />
+    <Folder Include="Models\Scrap\Json\" />
   </ItemGroup>
 
 	<ItemGroup>

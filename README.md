@@ -1,4 +1,6 @@
-# ![icon](./assets/multimedia-small.png) Movie Db Assistant
+﻿# ![icon](./assets/multimedia-small.png) Movie Db Assistant
+
+🚧 under construction 🚧
 
 ___
 
@@ -6,8 +8,20 @@ Generates **Movie documents** (HTML, movie database,...) using **Web Crawlers**.
 <br>Can scrap data from:
 - [IMDb](http://www.imdb.com)
 
-use the project `MovieDbScrapper` on GitHub at: 
-[/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
+## dependencies
+
+- `MovieDbScrapper`:  [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
+- `MediatR`: [https://github.com/jbogard/MediatR](https://github.com/jbogard/MediatR)
+- `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+
+- **CLI**
+
+    - `CommandLine.NetCore`: [/CommandLine.NetCore/blob/main/README.md](https://github.com/franck-gaspoz/CommandLine.NetCore/blob/main/README.md)
+
+- **GUI**
+
+    - `PInvoke.User32`: [https://github.com/dotnet/pinvoke](https://github.com/dotnet/pinvoke)
+    - framework `net8.0-windows10.0.22621.0`
 
 <br>
 
@@ -20,7 +34,9 @@ ___
 
 ## Usage
 
-### Windows system tray
+___
+
+### ![icon](./assets/multimedia-small.png) Windows system tray
 
 Available on `Windows 10.0.22621.0` and more. This application runs as an tray icon.
 
@@ -28,7 +44,9 @@ Available on `Windows 10.0.22621.0` and more. This application runs as an tray i
 
 :arrow_right: select an action from the tray menu
 
-### Any plateform command line
+___
+
+### 🗔 Any plateform command line
 
 Available on Windows, Linux, OSX
 
