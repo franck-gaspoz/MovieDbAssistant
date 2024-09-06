@@ -16,7 +16,7 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// </summary>
 [Singleton]
 public class TrayMenuItems
-{    
+{
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
     readonly IMediator _mediator;

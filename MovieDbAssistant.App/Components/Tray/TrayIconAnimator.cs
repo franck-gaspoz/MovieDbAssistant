@@ -37,7 +37,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         Setup(
             _config,
             (o, e) => Next(),
-            Convert.ToInt32(_config[Anim_Interval_TrayIcon]!));
+            _config.GetInt(Anim_Interval_TrayIcon));
         base.Run();
         return this;
     }

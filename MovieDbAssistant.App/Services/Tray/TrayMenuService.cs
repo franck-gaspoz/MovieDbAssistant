@@ -6,8 +6,7 @@ using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using Windows.UI.Composition;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -54,7 +53,7 @@ sealed class TrayMenuService
         _trayBackgroundWorker = new(
             _config,
             this,
-            Convert.ToInt32(_config[Anim_Interval_Dot]!),
+            _config.GetInt(Anim_Interval_Dot),
             false);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
@@ -134,12 +133,13 @@ sealed class TrayMenuService
 #endif
                 tray.NotifyIcon.Text = msg;
             },
-            Convert.ToInt32(_config[Anim_Interval_Dot]!),
+            _config.GetInt(Anim_Interval_Dot),
             stopOnBallonTipClosed: false,
-            onStop: () => {
+            onStop: () =>
+            {
                 ta.Stop();
                 _trayMenuBuilder.SetIcon();
-                this.NotifyIcon.Text = _trayMenuBuilder.Tooltip;
+                NotifyIcon.Text = _trayMenuBuilder.Tooltip;
             });
     }
 
@@ -167,7 +167,7 @@ sealed class TrayMenuService
         string? key = null,
         string? text = null,
         ToolTipIcon icon = ToolTipIcon.Info) => NotifyIcon.ShowBalloonTip(
-            Convert.ToInt32(_config[BalloonTip_Delay]),
+            _config.GetInt(BalloonTip_Delay),
             _config[AppTitle]!,
             text ?? _config[key!]!,
             icon);

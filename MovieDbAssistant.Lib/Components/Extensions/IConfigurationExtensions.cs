@@ -19,6 +19,17 @@ public static class IConfigurationExtensions
         => config.GetSection(key)!.Get<bool>();
 
     /// <summary>
+    /// Get int
+    /// </summary>
+    /// <param name="config">The config.</param>
+    /// <param name="key">The key.</param>
+    /// <returns>A <see cref="int"/></returns>
+    public static int GetInt(
+        this IConfiguration config,
+        string key)
+        => config.GetSection(key)!.Get<int>();
+
+    /// <summary>
     /// Get the value of section as type T
     /// </summary>
     /// <typeparam name="T"/>

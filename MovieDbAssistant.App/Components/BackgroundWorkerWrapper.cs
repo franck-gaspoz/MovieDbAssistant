@@ -2,8 +2,6 @@
 
 using Microsoft.Extensions.Configuration;
 
-using MovieDbAssistant.App.Services.Tray;
-
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Components;

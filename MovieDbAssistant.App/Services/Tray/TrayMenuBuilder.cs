@@ -93,10 +93,7 @@ public sealed class TrayMenuBuilder
     /// <summary>
     /// Set the icon.
     /// </summary>
-    public void SetIcon()
-    {
-        _notifyIcon!.Icon = new Icon(_iconPath);
-    }
+    public void SetIcon() => _notifyIcon!.Icon = new Icon(_iconPath);
 
     /// <summary>
     /// builds the tray menu
@@ -115,7 +112,7 @@ public sealed class TrayMenuBuilder
 
     void BuildContextMenu()
     {
-        var items = _trayMenuItems.GetMainMenuItems(Version,ItemWidth);
+        var items = _trayMenuItems.GetMainMenuItems(Version, ItemWidth);
         BuildMainMenuContainer(items);
         SetupItems(items);
 

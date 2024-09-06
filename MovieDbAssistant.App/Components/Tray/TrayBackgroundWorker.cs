@@ -57,7 +57,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             interval ?? _interval,
             PreDoWork,
             onStop,
-            autoRepeat?? _autoRepeat
+            autoRepeat ?? _autoRepeat
             );
 
         base.Run();
