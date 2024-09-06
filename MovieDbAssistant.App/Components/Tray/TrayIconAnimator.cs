@@ -2,6 +2,7 @@
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -46,9 +47,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// </summary>
     public void Next()
     {
-        var t = _config.GetSection(Anim_WaitIcons)
-            .Get<string[]>()!;
-
+        var t = _config.GetArray(Anim_WaitIcons);
         var ico = new Icon(_settings.AssetPath(t[_n]!));
         _trayMenuService.NotifyIcon.Icon = ico;
         if (++_n > t.Length - 1) _n = 0;
