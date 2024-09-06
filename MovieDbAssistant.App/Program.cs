@@ -21,14 +21,13 @@ public class Program
     public static void Main(string[] args)
     {
         var host = Host.CreateDefaultBuilder(args)
-        .ConfigureServices(services => services
-            .AutoRegister(typeof(SingletonAttribute))
-            .AutoRegister(typeof(Settings))
-            .AutoRegister(typeof(Program))
-            .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(
-                typeof(Program).Assembly))
-        )
-        .Build();
+            .ConfigureServices(services => services
+                .AutoRegister(typeof(SingletonAttribute))
+                .AutoRegister(typeof(Settings))
+                .AutoRegister(typeof(Program))
+                .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(
+                    typeof(Program).Assembly)))
+            .Build();
 
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
