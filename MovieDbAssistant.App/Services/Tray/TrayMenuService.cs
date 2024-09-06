@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
+using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using Windows.UI.Composition;
@@ -32,6 +33,7 @@ sealed class TrayMenuService
     public event EventHandler? BalloonTipClosed;
 
     readonly TrayMenuBuilder _trayMenuBuilder;
+    readonly Settings _settings;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
 
@@ -44,9 +46,10 @@ sealed class TrayMenuService
     /// <param name="builder">The builder.</param>
     public TrayMenuService(
         IConfiguration config,
-        TrayMenuBuilder builder)
+        TrayMenuBuilder builder,
+        Settings settings)
     {
-        (NotifyIcon, _config) = (builder.NotifyIcon, config);
+        (NotifyIcon, _config, _settings) = (builder.NotifyIcon, config, settings);
         _trayMenuBuilder = builder;
         _trayBackgroundWorker = new(
             _config,
@@ -119,7 +122,8 @@ sealed class TrayMenuService
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
-        // ...
+        var ta = new TrayIconAnimator(_config, this, _settings)
+            .Run();
 
         AnimInfo(
             tray =>
@@ -132,7 +136,11 @@ sealed class TrayMenuService
             },
             Convert.ToInt32(_config[Anim_Interval_Dot]!),
             stopOnBallonTipClosed: false,
-            onStop: () => this.NotifyIcon.Text = _trayMenuBuilder.Tooltip);
+            onStop: () => {
+                ta.Stop();
+                _trayMenuBuilder.SetIcon();
+                this.NotifyIcon.Text = _trayMenuBuilder.Tooltip;
+            });
     }
 
     /// <summary>

@@ -57,8 +57,10 @@ public sealed class TrayMenuBuilder
     public ContextMenuStrip ContextMenuStrip => _contextMenuStrip!;
 
     readonly IConfiguration _config;
-    readonly string _iconPath = "";
+    string _iconPath = "";
     readonly TrayMenuItems _trayMenuItems;
+    readonly Settings _settings;
+
     NotifyIcon? _notifyIcon { get; set; }
     ContextMenuStrip? _contextMenuStrip { get; set; }
 
@@ -75,11 +77,25 @@ public sealed class TrayMenuBuilder
         )
     {
         _trayMenuItems = trayMenuItems;
+        _settings = settings;
         _config = config;
 
-        var iconFile = config[Icon_App]!;
-        Tooltip = config[AppTitle]!;
-        _iconPath = settings.AssetPath(iconFile);
+        SetupIcon();
+    }
+
+    void SetupIcon()
+    {
+        var iconFile = _config[Icon_App]!;
+        Tooltip = _config[AppTitle]!;
+        _iconPath = _settings.AssetPath(iconFile);
+    }
+
+    /// <summary>
+    /// Set the icon.
+    /// </summary>
+    public void SetIcon()
+    {
+        _notifyIcon!.Icon = new Icon(_iconPath);
     }
 
     /// <summary>

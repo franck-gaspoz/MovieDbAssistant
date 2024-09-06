@@ -6,8 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Services.Tray;
+using MovieDbAssistant.Dmn.Components;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 namespace MovieDbAssistant.App.Features;
 
@@ -19,6 +21,7 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
     readonly IConfiguration _config;
     readonly IMediator _mediator;
     readonly IServiceProvider _serviceProvider;
+    readonly Settings _settings;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
 
@@ -33,9 +36,11 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
     public ProcessInputFolder(
         IConfiguration config,
         IMediator mediator,
-        IServiceProvider serviceProvider)
+        IServiceProvider serviceProvider,
+        Settings settings)
     {
         _serviceProvider = serviceProvider;
+        _settings = settings;
         _mediator = mediator;
         _config = config;
         Handler = (_, _) => Run();
@@ -51,9 +56,12 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
         ProcessJsons();
         ProcessLists();
 
-        Thread.Sleep(5000);
+        Thread.Sleep(7000);
 
         _tray.StopAnimInfo();
+        _tray.ShowBalloonTip(InputFolderProcessed);
+        if (_config.GetBool(OpenOuputWindowOnBuild))
+            _mediator.Send(new ExploreFolderCommand(_settings.OutputPath));
     }
 
     void ProcessLists()

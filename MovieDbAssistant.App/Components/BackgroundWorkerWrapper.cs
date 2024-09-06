@@ -70,7 +70,7 @@ class BackgroundWorkerWrapper
     /// <summary>
     /// run a new background worker. stop and destroy any previous one
     /// </summary>
-    public virtual void Run()
+    public virtual BackgroundWorkerWrapper Run()
     {
         if (!SettedUp) throw new InvalidOperationException(
             _config![Error_BackgroundWorkerWrapper_Not_Initialized]);
@@ -90,7 +90,7 @@ class BackgroundWorkerWrapper
             while (!End)
             {
                 _action!(o, e);
-                End = e.Cancel | !_autoRepeat!.Value;
+                End |= e.Cancel | !_autoRepeat!.Value;
                 if (!End)
                     Thread.Sleep(_interval!.Value);
             }
@@ -99,5 +99,7 @@ class BackgroundWorkerWrapper
 
         if (!_backgroundWorker.IsBusy)
             _backgroundWorker.RunWorkerAsync();
+
+        return this;
     }
 }

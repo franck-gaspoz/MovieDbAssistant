@@ -40,7 +40,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         _autoRepeat = autoRepeat;
     }
 
-    public void Run(
+    public TrayBackgroundWorker Run(
         Action<TrayMenuService> action,
         int? interval = null,
         bool? stopOnBallonTipClosed = null,
@@ -61,6 +61,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             );
 
         base.Run();
+        return this;
     }
 
     void DoWorkAction(object? o, DoWorkEventArgs e)

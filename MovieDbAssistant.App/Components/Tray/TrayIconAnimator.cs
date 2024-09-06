@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
@@ -37,14 +31,14 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// <summary>
     /// run the animator
     /// </summary>
-    public override void Run()
+    public new TrayIconAnimator Run()
     {
         Setup(
             _config,
             (o, e) => Next(),
-            Convert.ToInt32(_config[Anim_Interval_TrayIcon]!),
-            onStop: () => Stop());
+            Convert.ToInt32(_config[Anim_Interval_TrayIcon]!));
         base.Run();
+        return this;
     }
 
     /// <summary>
@@ -52,9 +46,11 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// </summary>
     public void Next()
     {
-        var s = _config.GetSection(Anim_WaitIcons);
+        var t = _config.GetSection(Anim_WaitIcons)
+            .Get<string[]>()!;
 
-        //var ico = new Icon(_settings.AssetPath(t[_n]!));
-        //_trayMenuService.NotifyIcon.Icon = "";
+        var ico = new Icon(_settings.AssetPath(t[_n]!));
+        _trayMenuService.NotifyIcon.Icon = ico;
+        if (++_n > t.Length - 1) _n = 0;
     }
 }

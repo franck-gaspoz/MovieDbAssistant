@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.ComponentModel;
+
+using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
@@ -181,6 +183,16 @@ public sealed class Settings
     /// error background worker wrapper not initialized
     /// </summary>
     public const string Error_BackgroundWorkerWrapper_Not_Initialized = "Error:BackgroundWorkerWrapper_Not_Initialized";
+
+    /// <summary>
+    /// input folder processed
+    /// </summary>
+    public const string InputFolderProcessed = "Texts:InputFolderProcessed";
+
+    /// <summary>
+    /// auto open settings on build
+    /// </summary>
+    public const string OpenOuputWindowOnBuild = "Options:OpenOuputWindowOnBuild";
 
     #endregion
 
