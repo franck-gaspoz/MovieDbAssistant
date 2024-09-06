@@ -25,6 +25,8 @@ public class Program
             .AutoRegister(typeof(SingletonAttribute))
             .AutoRegister(typeof(Settings))
             .AutoRegister(typeof(Program))
+            .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(
+                typeof(Program).Assembly))
         )
         .Build();
 

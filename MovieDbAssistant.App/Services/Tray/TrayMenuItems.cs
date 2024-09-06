@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
 
+using MediatR;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.App.Services.Tray.Models;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -21,9 +24,9 @@ public class TrayMenuItems
     readonly BuildService _buildService;
     readonly OpenCommandLine _openCommandLineFeature;
     readonly OpenUrl _openUrl;
-    readonly FolderExplorer _folderExplorer;
     readonly ProcessInputFolder _processInputFolder;
     readonly IServiceProvider _servicesProvider;
+    readonly IMediator _mediator;
 
     TrayMenuService _trayMenu =>
         _servicesProvider.GetRequiredService<TrayMenuService>();
@@ -31,16 +34,16 @@ public class TrayMenuItems
     public TrayMenuItems(
         IConfiguration config,
         IServiceProvider servicesProvider,
+        IMediator mediator,
         ProcessInputFolder processInputFolder,
         BuildService buildService,
         OpenCommandLine openCommandLineFeature,
-        FolderExplorer folderExplorer,
         OpenUrl openUrl)
     {
+        _mediator = mediator;
         _config = config;
         _servicesProvider = servicesProvider;
         _buildService = buildService;
-        _folderExplorer = folderExplorer;
         _processInputFolder = processInputFolder;
         _openUrl = openUrl;
         _openCommandLineFeature = openCommandLineFeature;
@@ -103,13 +106,13 @@ public class TrayMenuItems
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(Path_Output);
-                 });}),
+                _mediator.Send(new ExploreFolderCommand(_config[Path_Output]!));
+            });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _folderExplorer.Run(Path_Input);
-                 });}),
+                _mediator.Send(new ExploreFolderCommand(_config[Path_Input]!));
+            });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 

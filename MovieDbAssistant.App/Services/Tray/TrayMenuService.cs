@@ -41,7 +41,7 @@ public sealed class TrayMenuService
     {
         (NotifyIcon, _config) = (builder.NotifyIcon, config);
         _trayMenuBuilder = builder;
-        _trayBackgroundWorker = new(_config, this);
+        _trayBackgroundWorker = new(this);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
     }

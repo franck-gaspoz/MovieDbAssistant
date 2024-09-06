@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics;
 
+using MediatR;
+
 using Microsoft.Extensions.Configuration;
 
+using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -12,7 +15,7 @@ namespace MovieDbAssistant.App.Features;
 /// The open command line feature.
 /// </summary>
 [Singleton]
-public sealed class FolderExplorer
+public sealed class FolderExplorer : IRequestHandler<ExploreFolderCommand>
 {
     readonly IConfiguration _config;
 
@@ -20,14 +23,29 @@ public sealed class FolderExplorer
         => _config = configuration;
 
     /// <summary>
+    /// handle command
+    /// </summary>
+    /// <param name="request">The request.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A <see cref="Task"/></returns>
+    public async Task Handle(
+        ExploreFolderCommand request, 
+        CancellationToken cancellationToken) 
+    {
+        _ = cancellationToken;
+        Run(request.Path);
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
     /// run the feature
     /// </summary>
-    public void Run(string pathKey)
+    void Run(string path)
     {
-        var path = "\""
+        path = "\""
             + Path.Combine(
                 Directory.GetCurrentDirectory(),
-                _config[pathKey]!)
+                path)
             + "\"";
         var proc = new Process()
         {

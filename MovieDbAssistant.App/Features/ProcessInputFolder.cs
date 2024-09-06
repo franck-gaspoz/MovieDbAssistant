@@ -19,7 +19,6 @@ public sealed class ProcessInputFolder
     readonly IServiceProvider _serviceProvider;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
-    TrayMenuBuilder _trayMenuBuilder => _serviceProvider.GetRequiredService<TrayMenuBuilder>();
 
     /// <summary>
     /// Gets the input path.

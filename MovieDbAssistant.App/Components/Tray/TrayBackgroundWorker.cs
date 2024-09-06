@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 
-using Microsoft.Extensions.Configuration;
-
 using MovieDbAssistant.App.Services.Tray;
 
 namespace MovieDbAssistant.App.Components.Tray;
@@ -12,22 +10,21 @@ namespace MovieDbAssistant.App.Components.Tray;
 /// </summary>
 public sealed class TrayBackgroundWorker
 {
-    readonly IConfiguration _config;
     readonly TrayMenuService _trayMenuService;
 
     BackgroundWorker? _backgroundWorker;
+#if TRACE
     static int _bwinstance = 0;
+#endif
     bool _end = false;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayBackgroundWorker"/> class.
     /// </summary>
-    /// <param name="config">The config.</param>
     /// <param name="trayMenuService">The tray menu service.</param>
     public TrayBackgroundWorker(
-        IConfiguration config,
         TrayMenuService trayMenuService)
-        => (_trayMenuService, _config) = (trayMenuService, config);
+        => _trayMenuService = trayMenuService;
 
     /// <summary>
     /// Run background worker.
@@ -58,16 +55,21 @@ public sealed class TrayBackgroundWorker
             _end = false;
             while (!_end)
             {
+#if TRACE
                 Debug.Write(_bwinstance.ToString() + '.');
+#endif
                 action?.Invoke(_trayMenuService);
                 _end = e.Cancel;
                 if (!_end)
                     Thread.Sleep(interval);
             }
         };
+
         if (!_backgroundWorker.IsBusy)
         {
+#if TRACE
             _bwinstance++;
+#endif
             _backgroundWorker.RunWorkerAsync();
         }
     }
