@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
+using MovieDbAssistant.Dmn.Components;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -19,15 +20,18 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
 {
     readonly IConfiguration _config;
     readonly TrayMenuService _trayMenuService;
+    readonly Settings _settings;
     int _n = 0;
 
     public TrayIconAnimator(
         IConfiguration config,
-        TrayMenuService trayMenuService
+        TrayMenuService trayMenuService,
+        Settings settings
         )
     {
         _config = config;
         _trayMenuService = trayMenuService;
+        _settings = settings;
     }
 
     /// <summary>
@@ -38,7 +42,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         Setup(
             _config,
             (o, e) => Next(),
-            Convert.ToInt32(_config[DotAnimInterval]!),
+            Convert.ToInt32(_config[Anim_Interval_TrayIcon]!),
             onStop: () => Stop());
         base.Run();
     }
@@ -48,6 +52,9 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// </summary>
     public void Next()
     {
+        var s = _config.GetSection(Anim_WaitIcons);
+
+        //var ico = new Icon(_settings.AssetPath(t[_n]!));
         //_trayMenuService.NotifyIcon.Icon = "";
     }
 }

@@ -160,7 +160,17 @@ public sealed class Settings
 	/// <summary>
     /// dot anim interval
     /// </summary>
-    public const string DotAnimInterval = "Anims:Interval:Dot";
+    public const string Anim_Interval_Dot = "Anims:Interval:Dot";
+
+    /// <summary>
+    /// icon tray anim interval
+    /// </summary>
+    public const string Anim_Interval_TrayIcon = "Anims:Interval:WaitTrayIcon";
+
+    /// <summary>
+    /// wait icons animation
+    /// </summary>
+    public const string Anim_WaitIcons = "Anims:WaitIcons";
 
     /// <summary>
     /// label prefix of a build command

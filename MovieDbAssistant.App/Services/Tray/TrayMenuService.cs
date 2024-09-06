@@ -51,7 +51,7 @@ sealed class TrayMenuService
         _trayBackgroundWorker = new(
             _config,
             this,
-            Convert.ToInt32(_config[DotAnimInterval]!),
+            Convert.ToInt32(_config[Anim_Interval_Dot]!),
             false);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
@@ -130,7 +130,7 @@ sealed class TrayMenuService
 #endif
                 tray.NotifyIcon.Text = msg;
             },
-            Convert.ToInt32(_config[DotAnimInterval]!),
+            Convert.ToInt32(_config[Anim_Interval_Dot]!),
             stopOnBallonTipClosed: false,
             onStop: () => this.NotifyIcon.Text = _trayMenuBuilder.Tooltip);
     }
