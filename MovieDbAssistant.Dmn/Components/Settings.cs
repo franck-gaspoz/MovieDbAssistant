@@ -167,6 +167,11 @@ public sealed class Settings
     /// </summary>
     public const string LabelPrefixBuildCommand = "Build";
 
+    /// <summary>
+    /// error background worker wrapper not initialized
+    /// </summary>
+    public const string Error_BackgroundWorkerWrapper_Not_Initialized = "Error:BackgroundWorkerWrapper_Not_Initialized";
+
     #endregion
 
     readonly IConfiguration _config;

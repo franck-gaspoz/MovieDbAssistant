@@ -1,5 +1,11 @@
 ﻿using System.ComponentModel;
 
+using Microsoft.Extensions.Configuration;
+
+using MovieDbAssistant.App.Services.Tray;
+
+using static MovieDbAssistant.Dmn.Components.Settings;
+
 namespace MovieDbAssistant.App.Components;
 
 /// <summary>
@@ -7,30 +13,48 @@ namespace MovieDbAssistant.App.Components;
 /// </summary>
 class BackgroundWorkerWrapper
 {
+    IConfiguration? _config;
     BackgroundWorker? _backgroundWorker;
-    readonly Action<object?, DoWorkEventArgs> _action;
-    readonly Action? _preDoWork;
-    readonly int _interval;
-    readonly bool _autoRepeat;
+    Action<object?, DoWorkEventArgs>? _action;
+    Action? _preDoWork;
+    int? _interval;
+    bool? _autoRepeat;
+    bool _settedUp = false;
+    Action? _onStop;
 
     public bool End { get; protected set; } = false;
 
-    public BackgroundWorkerWrapper(
+    /// <summary>
+    /// setup the background worker
+    /// <para>must be called prior to <code>Run()</code></para>
+    /// </summary>
+    /// <param name="config">configuration</param>
+    /// <param name="action">do work action</param>
+    /// <param name="interval">do work interval</param>
+    /// <param name="preDoWork">pre do work</param>
+    /// <param name="onStop">on stop</param>
+    /// <param name="autoRepeat">auto repeat</param>
+    public void Setup(
+        IConfiguration config,
         Action<object?, DoWorkEventArgs> action,
         int interval,
         Action? preDoWork = null,
+        Action? onStop = null,
         bool autoRepeat = true)
     {
+        _onStop = onStop;
+        _config = config;
         _action = action;
         _preDoWork = preDoWork;
         _interval = interval;
         _autoRepeat = autoRepeat;
+        _settedUp = true;
     }
 
     /// <summary>
     /// Stop and destroy background worker.
     /// </summary>
-    public void Stop()
+    public virtual void Stop()
     {
         End = true;
         if (_backgroundWorker is null) return;
@@ -42,8 +66,11 @@ class BackgroundWorkerWrapper
     /// <summary>
     /// run a new background worker. stop and destroy any previous one
     /// </summary>
-    public void Run()
+    public virtual void Run()
     {
+        if (!_settedUp) throw new InvalidOperationException(
+            _config![Error_BackgroundWorkerWrapper_Not_Initialized]);
+
         if (_backgroundWorker != null && _backgroundWorker.IsBusy)
             Stop();
 
@@ -58,11 +85,12 @@ class BackgroundWorkerWrapper
             End = false;
             while (!End)
             {
-                _action(o, e);
-                End = e.Cancel | !_autoRepeat;
+                _action!(o, e);
+                End = e.Cancel | !_autoRepeat!.Value;
                 if (!End)
-                    Thread.Sleep(_interval);
+                    Thread.Sleep(_interval!.Value);
             }
+            _onStop?.Invoke();
         };
 
         if (!_backgroundWorker.IsBusy)

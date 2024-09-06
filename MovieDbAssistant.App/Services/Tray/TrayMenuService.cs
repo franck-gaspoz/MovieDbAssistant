@@ -6,6 +6,8 @@ using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
+using Windows.UI.Composition;
+
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Services.Tray;
@@ -14,20 +16,26 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// The tray menu service.
 /// </summary>
 [Singleton]
-public sealed class TrayMenuService
+sealed class TrayMenuService
 {
+    #region attrs
+
     /// <summary>
     /// Gets the notify icon.
     /// </summary>
     /// <value>A <see cref="NotifyIcon"/></value>
     public NotifyIcon NotifyIcon { get; private set; }
 
+    /// <summary>
+    /// tooltip balloon closed event handler
+    /// </summary>
     public event EventHandler? BalloonTipClosed;
-    Action<TrayMenuService>? _onStopAnimInfo;
 
     readonly TrayMenuBuilder _trayMenuBuilder;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
+
+    #endregion
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayMenuService"/> class.
@@ -40,7 +48,11 @@ public sealed class TrayMenuService
     {
         (NotifyIcon, _config) = (builder.NotifyIcon, config);
         _trayMenuBuilder = builder;
-        _trayBackgroundWorker = new(this);
+        _trayBackgroundWorker = new(
+            _config,
+            this,
+            Convert.ToInt32(_config[DotAnimInterval]!),
+            false);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
     }
@@ -80,20 +92,23 @@ public sealed class TrayMenuService
     /// Anims the info.
     /// </summary>
     /// <param name="action">The action.</param>
-    /// <param name="onStop">on stop action</param>
     /// <param name="interval">The interval.</param>
+    /// <param name="stopOnBallonTipClosed">If true, stop on ballon tip closed.</param>
+    /// <param name="autoRepeat">If true, auto repeat.</param>
+    /// <param name="onStop">The on stop.</param>
     public void AnimInfo(
         Action<TrayMenuService> action,
-        int interval,
-        Action<TrayMenuService>? onStop = null,
-        bool stopOnBallonTipClosed = true)
-    {
-        _onStopAnimInfo = onStop;
-        _trayBackgroundWorker.RunBackgroundWorker(
+        int? interval = null,
+        bool? stopOnBallonTipClosed = null,
+        bool? autoRepeat = null,
+        Action? onStop = null
+        )
+        => _trayBackgroundWorker.Run(
                 action,
                 interval,
-                stopOnBallonTipClosed);
-    }
+                stopOnBallonTipClosed,
+                autoRepeat,
+                onStop);
 
     /// <summary>
     /// Anim working info.
@@ -105,26 +120,22 @@ public sealed class TrayMenuService
         AnimInfo(
             tray =>
             {
-#if TRACE
                 var msg = da.Next();
-                tray.NotifyIcon.Text = msg;
+#if TRACE
                 Debug.WriteLine(msg);
 #endif
+                tray.NotifyIcon.Text = msg;
             },
             Convert.ToInt32(_config[DotAnimInterval]!),
-            tray => tray.NotifyIcon.Text = _trayMenuBuilder.Tooltip,
-            false);
+            stopOnBallonTipClosed: false,
+            onStop: () => this.NotifyIcon.Text = _trayMenuBuilder.Tooltip);
     }
 
     /// <summary>
     /// Stop anim info.
     /// </summary>
     public void StopAnimInfo()
-    {
-        _trayBackgroundWorker.StopAndDestroyBackgroundWorker();
-        _onStopAnimInfo?.Invoke(this);
-        _onStopAnimInfo = null;
-    }
+        => _trayBackgroundWorker.Stop();
 
     /// <summary>
     /// Ballon tip close background worker handler.
@@ -132,13 +143,13 @@ public sealed class TrayMenuService
     /// <param name="o">sender.</param>
     /// <param name="e">event args</param>
     public void BallonTipCloseBackgroundWorkerHandler(object? o, EventArgs e)
-        => _trayBackgroundWorker.StopAndDestroyBackgroundWorker();
+        => _trayBackgroundWorker.Stop();
 
     /// <summary>
     /// Show balloon tip.
     /// </summary>
-    /// <param name="key">The key.</param>
-    /// <param name="text">The text.</param>
+    /// <param name="key">key. if kery not null, text is ignored</param>
+    /// <param name="text">text if key is null. is ignored if key is not null</param>
     /// <param name="icon">The icon.</param>
     public void ShowBalloonTip(
         string? key = null,
