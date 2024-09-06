@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.Configuration;
 
+using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -12,12 +14,14 @@ namespace MovieDbAssistant.App.Features;
 /// The open command line feature.
 /// </summary>
 [Singleton]
-public sealed class OpenCommandLine
+sealed class OpenCommandLine : CommandHandlerBase<OpenCommandLineCommand>
 {
     readonly IConfiguration _config;
 
     public OpenCommandLine(IConfiguration configuration)
-        => _config = configuration;
+        => (_config, Handler) =
+            (configuration,
+            (_,_) => Run());
 
     /// <summary>
     /// run the feature

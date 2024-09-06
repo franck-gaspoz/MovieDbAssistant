@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -15,27 +16,14 @@ namespace MovieDbAssistant.App.Features;
 /// The open command line feature.
 /// </summary>
 [Singleton]
-public sealed class FolderExplorer : IRequestHandler<ExploreFolderCommand>
+sealed class FolderExplorer : CommandHandlerBase<ExploreFolderCommand>
 {
     readonly IConfiguration _config;
 
     public FolderExplorer(IConfiguration configuration)
-        => _config = configuration;
-
-    /// <summary>
-    /// handle command
-    /// </summary>
-    /// <param name="request">The request.</param>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A <see cref="Task"/></returns>
-    public async Task Handle(
-        ExploreFolderCommand request, 
-        CancellationToken cancellationToken) 
-    {
-        _ = cancellationToken;
-        Run(request.Path);
-        await Task.CompletedTask;
-    }
+        => (_config, Handler) =
+            (configuration,
+            (com, _) => Run(com.Path));
 
     /// <summary>
     /// run the feature

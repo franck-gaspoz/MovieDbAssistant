@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Features;
 using MovieDbAssistant.App.Services.Tray.Models;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
@@ -22,9 +21,6 @@ public class TrayMenuItems
 {
     readonly IConfiguration _config;
     readonly BuildService _buildService;
-    readonly OpenCommandLine _openCommandLineFeature;
-    readonly OpenUrl _openUrl;
-    readonly ProcessInputFolder _processInputFolder;
     readonly IServiceProvider _servicesProvider;
     readonly IMediator _mediator;
 
@@ -35,18 +31,13 @@ public class TrayMenuItems
         IConfiguration config,
         IServiceProvider servicesProvider,
         IMediator mediator,
-        ProcessInputFolder processInputFolder,
-        BuildService buildService,
-        OpenCommandLine openCommandLineFeature,
-        OpenUrl openUrl)
+        BuildService buildService
+    )
     {
         _mediator = mediator;
         _config = config;
         _servicesProvider = servicesProvider;
         _buildService = buildService;
-        _processInputFolder = processInputFolder;
-        _openUrl = openUrl;
-        _openCommandLineFeature = openCommandLineFeature;
     }
 
     string T(string id) => _config[id]!;
@@ -90,7 +81,8 @@ public class TrayMenuItems
             (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
             o => { o.Click += new EventHandler((c,e) => {
                  RunBuildAction(
-                    () => _processInputFolder.Run()); });}),
+                    () => _mediator.Send(new ProcessInputFolderCommand()));
+            });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
             o => { o.Click += new EventHandler((c,e) => {
@@ -101,8 +93,8 @@ public class TrayMenuItems
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_OpenCmdLine) },
             o => { o.Click += new EventHandler((c,e) => {
-                _openCommandLineFeature.Run();
-                 });}),
+                _mediator.Send(new OpenCommandLineCommand());
+            });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
@@ -118,19 +110,21 @@ public class TrayMenuItems
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_Help) },
             o => { o.Click += new EventHandler((c,e) => {
-                _openUrl.Run(Url_HelpGitHub);
+                _mediator.Send(new OpenUrlCommand(_config[Url_HelpGitHub]!));
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_Settings) },
             o => { o.Click += new EventHandler((c,e) => {
-                 });}),
+                // TODO: implements
+            });}),
 
             // exit
             (new ToolStripSeparator(),null), // ------ 
             (new ToolStripMenuItem { Text = T(Label_Exit) },
             o => { o.Click += new EventHandler((c,e) =>  {
                 _trayMenu.ShowBalloonTip_End();
-                Environment.Exit(0); });})
+                _mediator.Send(new ExitCommand());
+            });})
         };
         return _mainMenuItems = items;
     }

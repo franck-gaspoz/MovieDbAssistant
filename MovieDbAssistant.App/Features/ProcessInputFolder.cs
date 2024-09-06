@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
@@ -12,7 +16,7 @@ namespace MovieDbAssistant.App.Features;
 /// process input folder.
 /// </summary>
 [Singleton]
-public sealed class ProcessInputFolder
+sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
 {
     readonly IConfiguration _config;
     readonly BuildService _buildService;
@@ -36,13 +40,14 @@ public sealed class ProcessInputFolder
         _serviceProvider = serviceProvider;
         _buildService = buildService;
         _config = config;
+        Handler = (_,_) => Run();
     }
 
     /// <summary>
     /// run the feature
     /// </summary>
-    public void Run()
-    {
+    void Run()
+    {        
         _tray.AnimWorkInfo(_config[ProcInpFold]!);
 
         ProcessJsons();
