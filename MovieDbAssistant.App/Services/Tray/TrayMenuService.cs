@@ -16,7 +16,6 @@ namespace MovieDbAssistant.App.Services.Tray;
 [Singleton]
 public sealed class TrayMenuService
 {
-
     /// <summary>
     /// Gets the notify icon.
     /// </summary>
