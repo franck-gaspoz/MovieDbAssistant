@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray.Models;
+using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -31,7 +32,7 @@ public sealed class TrayMenuBuilder
     /// Gets the version.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Version => string.Join(
+    public static string Version => string.Join(
         '.',
         Assembly.GetExecutingAssembly().GetName()
             .Version!
@@ -69,7 +70,8 @@ public sealed class TrayMenuBuilder
     /// <param name="config">The config.</param>
     public TrayMenuBuilder(
         IConfiguration config,
-        TrayMenuItems trayMenuItems
+        TrayMenuItems trayMenuItems,
+        Settings settings
         )
     {
         _trayMenuItems = trayMenuItems;
@@ -77,12 +79,7 @@ public sealed class TrayMenuBuilder
 
         var iconFile = config[Icon_App]!;
         Tooltip = config[AppTitle]!;
-
-        _iconPath = Path.GetFullPath(
-            Path.Combine(
-                Directory.GetCurrentDirectory(),
-                config[Path_Assets]!,
-                iconFile));
+        _iconPath = settings.AssetPath(iconFile);
     }
 
     /// <summary>

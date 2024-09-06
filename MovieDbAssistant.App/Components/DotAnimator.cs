@@ -3,7 +3,7 @@
 /// <summary>
 /// The dot anim.
 /// </summary>
-public sealed class DotAnim
+sealed class DotAnimator
 {
     const int MaxN = 3;
     const char SP = ' ';
@@ -13,10 +13,10 @@ public sealed class DotAnim
     readonly string _eol;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DotAnim"/> class.
+    /// Initializes a new instance of the <see cref="DotAnimator"/> class.
     /// </summary>
     /// <param name="text">The text.</param>
-    public DotAnim(string text, string eol = "⏳") =>
+    public DotAnimator(string text, string eol = "⏳") =>
         (_text, _eol) = (text, eol);
 
     /// <summary>

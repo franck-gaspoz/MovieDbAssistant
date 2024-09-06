@@ -197,6 +197,18 @@ public sealed class Settings
     /// <value>A <see cref="string"/></value>
     public string InputPath => NormalizePath(_config[Path_Input]!);
 
+    /// <summary>
+    /// full path of asset file from its name
+    /// </summary>
+    /// <param name="filename">asset filename</param>
+    /// <returns>asset full path</returns>
+    public string AssetPath(string filename) =>
+        Path.GetFullPath(
+            Path.Combine(
+                Directory.GetCurrentDirectory(),
+                _config[Path_Assets]!,
+                filename));
+
     static string NormalizePath(string path)
     {
         if (!Path.IsPathFullyQualified(path))

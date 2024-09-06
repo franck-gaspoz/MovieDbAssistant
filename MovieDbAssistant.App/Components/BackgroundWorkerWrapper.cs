@@ -13,13 +13,17 @@ namespace MovieDbAssistant.App.Components;
 /// </summary>
 class BackgroundWorkerWrapper
 {
+    /// <summary>
+    /// true if already setted up
+    /// </summary>
+    public bool SettedUp { get; protected set; } = false;
+
     IConfiguration? _config;
     BackgroundWorker? _backgroundWorker;
     Action<object?, DoWorkEventArgs>? _action;
     Action? _preDoWork;
     int? _interval;
     bool? _autoRepeat;
-    bool _settedUp = false;
     Action? _onStop;
 
     public bool End { get; protected set; } = false;
@@ -48,7 +52,7 @@ class BackgroundWorkerWrapper
         _preDoWork = preDoWork;
         _interval = interval;
         _autoRepeat = autoRepeat;
-        _settedUp = true;
+        SettedUp = true;
     }
 
     /// <summary>
@@ -68,7 +72,7 @@ class BackgroundWorkerWrapper
     /// </summary>
     public virtual void Run()
     {
-        if (!_settedUp) throw new InvalidOperationException(
+        if (!SettedUp) throw new InvalidOperationException(
             _config![Error_BackgroundWorkerWrapper_Not_Initialized]);
 
         if (_backgroundWorker != null && _backgroundWorker.IsBusy)

@@ -116,7 +116,11 @@ sealed class TrayMenuService
     /// <param name="info">The info.</param>
     public void AnimWorkInfo(string info)
     {
-        var da = new DotAnim(_trayMenuBuilder.Tooltip + ":\n" + info);
+        // balloon tip status text with anim
+        var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
+        // animated tray icon
+        // ...
+
         AnimInfo(
             tray =>
             {
