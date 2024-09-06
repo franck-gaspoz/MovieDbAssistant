@@ -10,143 +10,183 @@ namespace MovieDbAssistant.Dmn.Components;
 [Singleton]
 public sealed class Settings
 {
+    #region consts
+
     /// <summary>
     /// The path output.
     /// </summary>
     public const string Path_Output = "Paths:Output";
-    /// <summary>
+    
+	/// <summary>
     /// The path input.
     /// </summary>
     public const string Path_Input = "Paths:Input";
-
-    /// <summary>
+    
+	/// <summary>
     /// Label exit.
     /// </summary>
     public const string Label_Exit = "Texts:Exit";
-    /// <summary>
+    
+	/// <summary>
     /// Label open cmd line.
     /// </summary>
     public const string Label_OpenCmdLine = "Texts:OpenCmdLine";
-    /// <summary>
+    
+	/// <summary>
     /// Label open outp folder.
     /// </summary>
     public const string Label_OpenOutpFolder = "Texts:OpenOutpFolder";
-    /// <summary>
+    
+	/// <summary>
     /// Label open inp folder.
     /// </summary>
     public const string Label_OpenInpFolder = "Texts:OpenInpFolder";
-    /// <summary>
+    
+	/// <summary>
     /// Label help.
     /// </summary>
     public const string Label_Help = "Texts:Help";
-    /// <summary>
+    
+	/// <summary>
     /// Label settings.
     /// </summary>
     public const string Label_Settings = "Texts:Settings";
-    /// <summary>
+    
+	/// <summary>
     /// Label build query file.
     /// </summary>
     public const string Label_BuildQueryFile = "Texts:BuildFromQueryFile";
-    /// <summary>
+    
+	/// <summary>
     /// Label build json file.
     /// </summary>
     public const string Label_BuildJsonFile = "Texts:BuildFromJsonFile";
-    /// <summary>
+    
+	/// <summary>
     /// Label build clipb.
     /// </summary>
     public const string Label_BuildClipb = "Texts:BuildFromClipboard";
-    /// <summary>
+    
+	/// <summary>
     /// Label build from input folder.
     /// </summary>
     public const string Label_BuildFromInputFolder = "Texts:BuildFromInputFolder";
-    /// <summary>
+    
+	/// <summary>
     /// The proc inp fold.
     /// </summary>
     public const string ProcInpFold = "Texts:ProcInpFold";
-
-    /// <summary>
-    /// The icon file.
+    
+	/// <summary>
+    /// app icon file.
     /// </summary>
-    public const string IconFile = "IconFile";
-    /// <summary>
+    public const string Icon_App = "Assets:Icons:Tray";
+    
+	/// <summary>
+    /// buzy step 1 icon file
+    /// </summary>
+    public const string Icon_Buzy_1 = "Assets:Icons:Buzy1";
+    
+	/// <summary>
+    /// buzy step 2 icon file
+    /// </summary>
+    public const string Icon_Buzy_2 = "Assets:Icons:Buzy2";
+    
+	/// <summary>
     /// The app title.
     /// </summary>
     public const string AppTitle = "App:Title";
-
-    /// <summary>
+    
+	/// <summary>
     /// The path assets.
     /// </summary>
     public const string Path_Assets = "AssetsPath";
-
-    /// <summary>
+    
+	/// <summary>
     /// The balloon tip start.
     /// </summary>
     public const string BalloonTip_Start = "BalloonTips:Start";
-    /// <summary>
+    
+	/// <summary>
     /// The balloon tip end.
     /// </summary>
     public const string BalloonTip_End = "BalloonTips:End";
-    /// <summary>
+    
+	/// <summary>
     /// The balloon tip delay.
     /// </summary>
     public const string BalloonTip_Delay = "BalloonTips:Delay";
-
-    /// <summary>
+    
+	/// <summary>
     /// The folder explorer command line.
     /// </summary>
     public const string FolderExplorer_CommandLine = "FolderExplorer:CommandLine";
-
-    /// <summary>
+    
+	/// <summary>
     /// The shell command line.
     /// </summary>
     public const string Shell_CommandLine = "Shell:CommandLine";
-    /// <summary>
+    
+	/// <summary>
     /// The shell args.
     /// </summary>
     public const string Shell_Args = "Shell:Args";
-
-    /// <summary>
+    
+	/// <summary>
     /// Open browser command line.
     /// </summary>
     public const string OpenBrowser_CommandLine = "OpenBrowser:CommandLine";
-    /// <summary>
+    
+	/// <summary>
     /// The url help git hub.
     /// </summary>
     public const string Url_HelpGitHub = "Urls:HelpGitHub";
-
-    /// <summary>
+    
+	/// <summary>
     /// Search pattern json.
     /// </summary>
     public const string SearchPattern_Json = "Build:SearchPatternJson";
-    /// <summary>
+    
+	/// <summary>
     /// Search pattern txt.
     /// </summary>
     public const string SearchPattern_Txt = "Build:SearchPatternTxt";
-    /// <summary>
+    
+	/// <summary>
     /// The prefix file disabled.
     /// </summary>
     public const string PrefixFileDisabled = "Build:PrefixFileDisabled";
-    /// <summary>
+    
+	/// <summary>
     /// dot anim interval
     /// </summary>
     public const string DotAnimInterval = "Anims:Interval:Dot";
 
-    readonly IConfiguration _config;
-
     /// <summary>
+    /// label prefix of a build command
+    /// </summary>
+    public const string LabelPrefixBuildCommand = "Build";
+
+    #endregion
+
+    readonly IConfiguration _config;
+        
+	/// <summary>
     /// Initializes a new instance of the <see cref="Settings"/> class.
     /// </summary>
     /// <param name="config">The config.</param>
     public Settings(IConfiguration config)
         => _config = config;
 
-    /// <summary>
+    
+	/// <summary>
     /// Gets the output path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public string OutputPath => NormalizePath(_config[Path_Output]!);
 
-    /// <summary>
+    
+	/// <summary>
     /// Gets the input path.
     /// </summary>
     /// <value>A <see cref="string"/></value>

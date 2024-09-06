@@ -75,7 +75,7 @@ public sealed class TrayMenuBuilder
         _trayMenuItems = trayMenuItems;
         _config = config;
 
-        var iconFile = config[IconFile]!;
+        var iconFile = config[Icon_App]!;
         Tooltip = config[AppTitle]!;
 
         _iconPath = Path.GetFullPath(

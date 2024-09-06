@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-using MediatR;
+﻿using MediatR;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,9 +16,7 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// </summary>
 [Singleton]
 public class TrayMenuItems
-{
-    const string LabelPrefixBuildCommand = "Build";
-
+{    
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
     readonly IMediator _mediator;
@@ -52,7 +48,7 @@ public class TrayMenuItems
     public List<ItemDefinition> GetMainMenuItems(
         string version,
         int itemWidth)
-    {       
+    {
         var items = new List<ItemDefinition>()
         {
             // deco
