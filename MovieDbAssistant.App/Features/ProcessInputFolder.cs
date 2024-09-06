@@ -1,11 +1,8 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
-using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
