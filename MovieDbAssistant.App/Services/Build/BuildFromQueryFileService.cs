@@ -30,7 +30,7 @@ sealed class BuildFromQueryFileService : CommandHandlerBase<BuildFromQueryFileCo
     /// </summary>
     public void Run(string file)
     {
-
+        _ = file;
     }
 
     /// <summary>
