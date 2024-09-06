@@ -52,6 +52,9 @@ public sealed class TrayBackgroundWorker
 
         _backgroundWorker.DoWork += (o, e) =>
         {
+#if TRACE
+            _bwinstance++;
+#endif
             _end = false;
             while (!_end)
             {
@@ -67,9 +70,6 @@ public sealed class TrayBackgroundWorker
 
         if (!_backgroundWorker.IsBusy)
         {
-#if TRACE
-            _bwinstance++;
-#endif
             _backgroundWorker.RunWorkerAsync();
         }
     }
