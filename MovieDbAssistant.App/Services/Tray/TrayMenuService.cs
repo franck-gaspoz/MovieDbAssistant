@@ -16,7 +16,6 @@ namespace MovieDbAssistant.App.Services.Tray;
 [Singleton]
 public sealed class TrayMenuService
 {
-    readonly TrayMenuBuilder _trayMenuBuilder;
 
     /// <summary>
     /// Gets the notify icon.
@@ -25,10 +24,11 @@ public sealed class TrayMenuService
     public NotifyIcon NotifyIcon { get; private set; }
 
     public event EventHandler? BalloonTipClosed;
+    Action<TrayMenuService>? _onStopAnimInfo;
 
+    readonly TrayMenuBuilder _trayMenuBuilder;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
-    Action<TrayMenuService>? _onStopAnimInfo;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayMenuService"/> class.
