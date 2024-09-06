@@ -49,9 +49,10 @@ public class TrayMenuItems
     /// </summary>
     /// <param name="itemWidth">The item width.</param>
     /// <returns>A list of <see cref="ItemDefinition"></see></returns>
-    public List<ItemDefinition> GetMainMenuItems(int itemWidth)
-    {
-        var version = Assembly.GetExecutingAssembly().GetName().Version!.ToString();
+    public List<ItemDefinition> GetMainMenuItems(
+        string version,
+        int itemWidth)
+    {       
         var items = new List<ItemDefinition>()
         {
             // deco

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+
+using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray.Models;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -25,13 +27,16 @@ public sealed class TrayMenuBuilder
 
     #region attrs
 
-    readonly IConfiguration _config;
-    readonly string _iconPath = "";
-    readonly TrayMenuItems _trayMenuItems;
-
-    NotifyIcon? _notifyIcon { get; set; }
-
-    ContextMenuStrip? _contextMenuStrip { get; set; }
+    /// <summary>
+    /// Gets the version.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public string Version => string.Join(
+        '.',
+        Assembly.GetExecutingAssembly().GetName()
+            .Version!
+            .ToString()
+            .Split('.')[..^1]);
 
     /// <summary>
     /// Gets the notify icon.
@@ -49,6 +54,12 @@ public sealed class TrayMenuBuilder
     /// Gets the context menu strip.
     /// </summary>
     public ContextMenuStrip ContextMenuStrip => _contextMenuStrip!;
+
+    readonly IConfiguration _config;
+    readonly string _iconPath = "";
+    readonly TrayMenuItems _trayMenuItems;
+    NotifyIcon? _notifyIcon { get; set; }
+    ContextMenuStrip? _contextMenuStrip { get; set; }
 
     #endregion
 
@@ -91,7 +102,7 @@ public sealed class TrayMenuBuilder
 
     void BuildContextMenu()
     {
-        var items = _trayMenuItems.GetMainMenuItems(ItemWidth);
+        var items = _trayMenuItems.GetMainMenuItems(Version,ItemWidth);
         BuildMainMenuContainer(items);
         SetupItems(items);
 
