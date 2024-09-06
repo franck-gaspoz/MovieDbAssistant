@@ -4,7 +4,6 @@ using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -13,8 +12,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// The build service.
 /// </summary>
-[Singleton]
-sealed class BuildFromJsonFileService : CommandHandlerBase<BuildFromQueryFileCommand>
+sealed class BuildFromJsonFileService : CommandHandlerBase<BuildFromJsonFileCommand>
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;

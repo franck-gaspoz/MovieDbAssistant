@@ -3,15 +3,13 @@
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
-[Singleton]
-sealed class BuildFromClipboardService : CommandHandlerBase<BuildFromQueryFileCommand>
+sealed class BuildFromClipboardService : CommandHandlerBase<BuildFromClipboardCommand>
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;

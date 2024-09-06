@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Services.Tray;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -15,7 +14,6 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// process input folder.
 /// </summary>
-[Singleton]
 sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
 {
     readonly IConfiguration _config;

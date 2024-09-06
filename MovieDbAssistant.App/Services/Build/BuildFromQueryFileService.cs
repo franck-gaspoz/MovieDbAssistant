@@ -3,14 +3,12 @@
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
-[Singleton]
 sealed class BuildFromQueryFileService : CommandHandlerBase<BuildFromQueryFileCommand>
 {
     readonly IConfiguration _config;
@@ -28,10 +26,7 @@ sealed class BuildFromQueryFileService : CommandHandlerBase<BuildFromQueryFileCo
     /// <summary>
     /// Build from query file.
     /// </summary>
-    public void Run(string file)
-    {
-        _ = file;
-    }
+    public void Run(string file) => _ = file;
 
     /// <summary>
     /// Build from clipboard.
