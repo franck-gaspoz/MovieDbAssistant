@@ -19,7 +19,7 @@ namespace MovieDbAssistant.App.Features;
 sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
 {
     readonly IConfiguration _config;
-    readonly BuildService _buildService;
+    readonly IMediator _mediator;
     readonly IServiceProvider _serviceProvider;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
@@ -34,20 +34,20 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
 
     public ProcessInputFolder(
         IConfiguration config,
-        BuildService buildService,
+        IMediator mediator,
         IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        _buildService = buildService;
+        _mediator = mediator;
         _config = config;
-        Handler = (_,_) => Run();
+        Handler = (_, _) => Run();
     }
 
     /// <summary>
     /// run the feature
     /// </summary>
     void Run()
-    {        
+    {
         _tray.AnimWorkInfo(_config[ProcInpFold]!);
 
         ProcessJsons();
@@ -62,14 +62,16 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
     {
         var lists = GetListsFiles();
         lists.ToList()
-            .ForEach(file => _buildService.BuildFromQueryFile(file));
+            .ForEach(file => _mediator.Send(
+                new BuildFromQueryFileCommand(file)));
     }
 
     void ProcessJsons()
     {
         var jsons = GetJsonFiles();
         jsons.ToList()
-            .ForEach(file => _buildService.BuildFromJsonFile(file));
+            .ForEach(file => _mediator.Send(
+                new BuildFromJsonFileCommand(file)));
     }
 
     IEnumerable<string> GetListsFiles()

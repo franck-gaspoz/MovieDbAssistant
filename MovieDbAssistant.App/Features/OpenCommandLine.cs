@@ -21,7 +21,7 @@ sealed class OpenCommandLine : CommandHandlerBase<OpenCommandLineCommand>
     public OpenCommandLine(IConfiguration configuration)
         => (_config, Handler) =
             (configuration,
-            (_,_) => Run());
+            (_, _) => Run());
 
     /// <summary>
     /// run the feature

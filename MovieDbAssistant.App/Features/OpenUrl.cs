@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
 
-using MediatR;
-
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
@@ -21,8 +19,8 @@ sealed class OpenUrl : CommandHandlerBase<OpenUrlCommand>
     readonly IConfiguration _config;
 
     public OpenUrl(IConfiguration configuration)
-        => (_config,Handler) = 
-            (configuration, 
+        => (_config, Handler) =
+            (configuration,
             (com, _) => Run(com.Url));
 
     /// <summary>

@@ -19,8 +19,9 @@ namespace MovieDbAssistant.App.Services.Tray;
 [Singleton]
 public class TrayMenuItems
 {
+    const string LabelPrefixBuildCommand = "Build";
+
     readonly IConfiguration _config;
-    readonly BuildService _buildService;
     readonly IServiceProvider _servicesProvider;
     readonly IMediator _mediator;
 
@@ -30,14 +31,12 @@ public class TrayMenuItems
     public TrayMenuItems(
         IConfiguration config,
         IServiceProvider servicesProvider,
-        IMediator mediator,
-        BuildService buildService
+        IMediator mediator
     )
     {
         _mediator = mediator;
         _config = config;
         _servicesProvider = servicesProvider;
-        _buildService = buildService;
     }
 
     string T(string id) => _config[id]!;
@@ -71,12 +70,14 @@ public class TrayMenuItems
             (new ToolStripMenuItem { Text = T(Label_BuildQueryFile) },
             o => { o.Click += new EventHandler((c,e) => {
                 RunBuildAction(
-                    () => _buildService.BuildFromQueryFile("")); });}),
+                    () => _mediator.Send(new BuildFromQueryFileCommand("")));
+            });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildJsonFile) },
             o => { o.Click += new EventHandler((c,e) => {
                 RunBuildAction(
-                    () => _buildService.BuildFromJsonFile("")); });}),
+                    () => _mediator.Send(new BuildFromJsonFileCommand("")));
+            });}),
 
             (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
             o => { o.Click += new EventHandler((c,e) => {
@@ -87,7 +88,8 @@ public class TrayMenuItems
             (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
             o => { o.Click += new EventHandler((c,e) => {
                  RunBuildAction(
-                    () => _buildService.BuildFromClipboard()); });}),
+                    () => _mediator.Send(new BuildFromClipboardCommand()));
+            });}),
 
             // tools
             (new ToolStripSeparator(),null),  // ------ 
@@ -142,9 +144,10 @@ public class TrayMenuItems
         }
     }
 
-    void SetBuildItemsEnabled(bool isEnabled) => _mainMenuItems!.ForEach(x =>
-                                                      {
-                                                          if (x.Item.Text != null && x.Item.Text.StartsWith("Build"))
-                                                              x.Item.Enabled = isEnabled;
-                                                      });
+    void SetBuildItemsEnabled(bool isEnabled) =>
+        _mainMenuItems!.ForEach(x =>
+        {
+            if (x.Item.Text != null && x.Item.Text.StartsWith(LabelPrefixBuildCommand))
+                x.Item.Enabled = isEnabled;
+        });
 }

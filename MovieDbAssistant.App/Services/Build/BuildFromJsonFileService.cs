@@ -1,42 +1,37 @@
 ﻿using Microsoft.Extensions.Configuration;
 
+using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
-namespace MovieDbAssistant.App.Services.Tray;
+namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
 [Singleton]
-public sealed class BuildService
+sealed class BuildFromJsonFileService : CommandHandlerBase<BuildFromQueryFileCommand>
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
-    public BuildService(
+    public BuildFromJsonFileService(
          IConfiguration config,
          IServiceProvider serviceProvider,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _serviceProvider, _documentBuilderServiceFactory)
-            = (config, serviceProvider, documentBuilderServiceFactory);
-
-    /// <summary>
-    /// Build from file.
-    /// </summary>
-    public void BuildFromQueryFile(string file)
-    {
-
-    }
+         => (_config, _serviceProvider, _documentBuilderServiceFactory, Handler)
+            = (config, serviceProvider, documentBuilderServiceFactory,
+                (com, _) => Run(com.Path));
 
     /// <summary>
     /// Build from json file.
     /// </summary>
-    public void BuildFromJsonFile(string file)
+    public void Run(string file)
         => _documentBuilderServiceFactory.CreateDocumentBuilderService()
             .Build(
                 new DocumentBuilderContext(
@@ -44,12 +39,4 @@ public sealed class BuildService
                     _config[Path_Output]!,
                     typeof(JsonDataProvider),
                     typeof(HtmlDocumentBuilder)));
-
-    /// <summary>
-    /// Build from clipboard.
-    /// </summary>
-    public void BuildFromClipboard()
-    {
-        var query = Clipboard.GetText();
-    }
 }

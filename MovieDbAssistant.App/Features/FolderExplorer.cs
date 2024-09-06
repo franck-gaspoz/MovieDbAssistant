@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
 
-using MediatR;
-
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
