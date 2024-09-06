@@ -16,8 +16,8 @@ public sealed class DotAnim
     /// Initializes a new instance of the <see cref="DotAnim"/> class.
     /// </summary>
     /// <param name="text">The text.</param>
-    public DotAnim(string text,string eol = "⏳") => 
-        (_text,_eol) = (text,eol);
+    public DotAnim(string text, string eol = "⏳") =>
+        (_text, _eol) = (text, eol);
 
     /// <summary>
     /// provide next text having dots changed
@@ -25,7 +25,7 @@ public sealed class DotAnim
     /// <returns>A <see cref="string"/>string ending with animated dots</returns>
     public string Next()
     {
-        var dots = string.Empty.PadLeft(_n, Dot).PadRight(MaxN,SP);
+        var dots = string.Empty.PadLeft(_n, Dot).PadRight(MaxN, SP);
         _n++;
         if (_n > MaxN) _n = 1;
         return _text + SP + dots + _eol;

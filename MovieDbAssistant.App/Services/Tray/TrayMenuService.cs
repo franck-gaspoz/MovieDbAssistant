@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 
+using Microsoft.Extensions.Configuration;
+
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using Microsoft.Extensions.Configuration;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -89,7 +89,7 @@ public sealed class TrayMenuService
         Action<TrayMenuService>? onStop = null,
         bool stopOnBallonTipClosed = true)
     {
-        _onStopAnimInfo = onStop;        
+        _onStopAnimInfo = onStop;
         _trayBackgroundWorker.RunBackgroundWorker(
                 action,
                 interval,
@@ -104,7 +104,8 @@ public sealed class TrayMenuService
     {
         var da = new DotAnim(_trayMenuBuilder.Tooltip + ":\n" + info);
         AnimInfo(
-            tray => {
+            tray =>
+            {
 #if TRACE
                 var msg = da.Next();
                 tray.NotifyIcon.Text = msg;

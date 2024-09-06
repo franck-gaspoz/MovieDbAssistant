@@ -1,10 +1,10 @@
-﻿using MovieDbAssistant.App.Services.Tray;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace MovieDbAssistant;
 
@@ -28,12 +28,12 @@ public class Program
         )
         .Build();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(
-                host.Services
-                    .GetRequiredService<TrayApplication>());
+        Application.Run(
+            host.Services
+                .GetRequiredService<TrayApplication>());
 
         host.Run();
     }

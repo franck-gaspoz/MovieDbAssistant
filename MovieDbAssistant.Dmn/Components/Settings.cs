@@ -1,6 +1,6 @@
-﻿using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+﻿using Microsoft.Extensions.Configuration;
 
-using Microsoft.Extensions.Configuration;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 namespace MovieDbAssistant.Dmn.Components;
 

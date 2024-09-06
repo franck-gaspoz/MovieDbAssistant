@@ -1,8 +1,8 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders;
+﻿using Microsoft.Extensions.Configuration;
+
+using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using Microsoft.Extensions.Configuration;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 

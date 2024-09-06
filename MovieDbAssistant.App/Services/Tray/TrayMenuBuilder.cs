@@ -1,7 +1,7 @@
-﻿using MovieDbAssistant.App.Services.Tray.Models;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+﻿using Microsoft.Extensions.Configuration;
 
-using Microsoft.Extensions.Configuration;
+using MovieDbAssistant.App.Services.Tray.Models;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 

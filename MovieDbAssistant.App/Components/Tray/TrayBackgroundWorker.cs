@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
 
-using MovieDbAssistant.App.Services.Tray;
-using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
 using Microsoft.Extensions.Configuration;
+
+using MovieDbAssistant.App.Services.Tray;
 
 namespace MovieDbAssistant.App.Components.Tray;
 
@@ -14,8 +13,8 @@ namespace MovieDbAssistant.App.Components.Tray;
 public sealed class TrayBackgroundWorker
 {
     readonly IConfiguration _config;
-
     readonly TrayMenuService _trayMenuService;
+
     BackgroundWorker? _backgroundWorker;
     static int _bwinstance = 0;
     bool _end = false;
