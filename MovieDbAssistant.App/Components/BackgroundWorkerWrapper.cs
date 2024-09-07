@@ -36,7 +36,7 @@ class BackgroundWorkerWrapper
     /// <param name="preDoWork">pre do work</param>
     /// <param name="onStop">on stop</param>
     /// <param name="autoRepeat">auto repeat</param>
-    public void Setup(
+    public BackgroundWorkerWrapper Setup(
         IConfiguration config,
         Action<object?, DoWorkEventArgs> action,
         int interval,
@@ -51,6 +51,7 @@ class BackgroundWorkerWrapper
         _interval = interval;
         _autoRepeat = autoRepeat;
         SettedUp = true;
+        return this;
     }
 
     /// <summary>

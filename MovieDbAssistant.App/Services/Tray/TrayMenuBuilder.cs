@@ -14,7 +14,7 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// The tray menu.
 /// </summary>
 [Singleton]
-public sealed class TrayMenuBuilder
+sealed class TrayMenuBuilder
 {
     #region consts
 

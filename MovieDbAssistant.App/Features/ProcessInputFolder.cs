@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
+using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -22,6 +23,8 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
     readonly IMediator _mediator;
     readonly IServiceProvider _serviceProvider;
     readonly Settings _settings;
+    readonly Messages _messages;
+    bool _isBusy = false;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
 
@@ -37,10 +40,12 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
         IConfiguration config,
         IMediator mediator,
         IServiceProvider serviceProvider,
-        Settings settings)
+        Settings settings,
+        Messages messages)
     {
         _serviceProvider = serviceProvider;
         _settings = settings;
+        _messages = messages;
         _mediator = mediator;
         _config = config;
         Handler = (_, _) => Run();
@@ -51,17 +56,42 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
     /// </summary>
     void Run()
     {
-        _tray.AnimWorkInfo(_config[ProcInpFold]!);
+        void End(bool error = false)
+        {
+            _tray.StopAnimInfo();
+            if (!error && _config.GetBool(OpenOuputWindowOnBuild))
+            {
+                _tray.ShowBalloonTip(InputFolderProcessed);
+                _mediator.Send(new ExploreFolderCommand(_settings.OutputPath));
+            }
+            _isBusy = false;
+        }
 
-        ProcessJsons();
-        ProcessLists();
+        try
+        {
+            if (_isBusy)
+            {
+                _messages.Warn(Builder_Busy);
+                return;
+            }
+            _isBusy = true;
 
-        Thread.Sleep(7000);
+            _tray.AnimWorkInfo(_config[ProcInpFold]!);
 
-        _tray.StopAnimInfo();
-        _tray.ShowBalloonTip(InputFolderProcessed);
-        if (_config.GetBool(OpenOuputWindowOnBuild))
-            _mediator.Send(new ExploreFolderCommand(_settings.OutputPath));
+            ProcessJsons();
+            ProcessLists();
+
+            Thread.Sleep(7000);
+
+            throw new NotImplementedException();
+
+            End();
+        }
+        catch (Exception ex)
+        {
+            End(true);
+            _messages.Err(Message_Error_Unhandled, ex.Message);
+        }
     }
 
     void ProcessLists()

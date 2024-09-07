@@ -15,7 +15,7 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// The tray menu items.
 /// </summary>
 [Singleton]
-public class TrayMenuItems
+sealed class TrayMenuItems
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;

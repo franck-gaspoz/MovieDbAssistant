@@ -192,6 +192,21 @@ public sealed class Settings
     /// </summary>
     public const string OpenOuputWindowOnBuild = "Options:OpenOuputWindowOnBuild";
 
+    /// <summary>
+    /// error message
+    /// </summary>
+    public const string Message_Error = "Texts:Error";
+
+    /// <summary>
+    /// unhandled error message
+    /// </summary>
+    public const string Message_Error_Unhandled = "Texts:ErrorUnhandled";
+
+    /// <summary>
+    /// builder busy error
+    /// </summary>
+    public const string Builder_Busy = "Texts:BuilderBusy";
+
     #endregion
 
     readonly IConfiguration _config;
