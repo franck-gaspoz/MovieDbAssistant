@@ -18,19 +18,17 @@ namespace MovieDbAssistant.App.Services.Build;
 sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileCommand>
 {
     readonly IConfiguration _config;
-    readonly IServiceProvider _serviceProvider;
     readonly IMediator _mediator;
     readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildFromJsonFileService(
          IConfiguration config,
-         IServiceProvider serviceProvider,
          IMediator mediator,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _serviceProvider, _mediator, _messages, _documentBuilderServiceFactory, Handler)
-            = (config, serviceProvider, mediator, messages, documentBuilderServiceFactory,
+         => (_config, _mediator, _messages, _documentBuilderServiceFactory, Handler)
+            = (config, mediator, messages, documentBuilderServiceFactory,
                 (com, _) => Run(com.Path));
 
     /// <summary>
