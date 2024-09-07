@@ -83,8 +83,6 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
 
             Thread.Sleep(7000);
 
-            throw new NotImplementedException();
-
             End();
         }
         catch (Exception ex)
