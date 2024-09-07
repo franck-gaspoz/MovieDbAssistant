@@ -1,8 +1,12 @@
 ﻿using MediatR;
 
-namespace MovieDbAssistant.App.Components;
+namespace MovieDbAssistant.Lib.Components.Signal;
 
-class SignalHandlerBase<TCommand> : IRequestHandler<TCommand>
+/// <summary>
+/// a signal handler base.
+/// </summary>
+/// <typeparam name="TCommand"/>
+public class SignalHandlerBase<TCommand> : IRequestHandler<TCommand>
     where TCommand : IRequest
 {
     protected Action<TCommand, CancellationToken>? Handler { get; set; }

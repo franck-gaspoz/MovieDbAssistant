@@ -4,15 +4,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Components;
-using MovieDbAssistant.App.Events;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Features;
 
@@ -104,7 +105,7 @@ sealed class ProcessInputFolder : SignalHandlerBase<ProcessInputFolderCommand>
         }
         finally
         {
-            _mediator.Send(new BuildEndedEvent(Item_Id_Build_Input));
+            _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Input));
         }
     }
 

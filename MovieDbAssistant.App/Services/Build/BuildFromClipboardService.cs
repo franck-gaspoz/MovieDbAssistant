@@ -3,11 +3,12 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Components;
-using MovieDbAssistant.App.Events;
 using MovieDbAssistant.Dmn.Components.Builders;
+using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
 
@@ -47,7 +48,7 @@ sealed class BuildFromClipboardService : SignalHandlerBase<BuildFromClipboardCom
         }
         finally
         {
-            _mediator.Send(new BuildEndedEvent(Item_Id_Build_Clipboard));
+            _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Clipboard));
         }
     }
 }

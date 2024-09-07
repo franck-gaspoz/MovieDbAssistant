@@ -3,10 +3,9 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Components;
-using MovieDbAssistant.App.Events;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -50,9 +49,9 @@ sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileComma
         {
             _messages.Err(Message_Error_Unhandled, ex.Message);
         }
-        finally
+        /*finally
         {
             _mediator.Send(new BuildEndedEvent(Item_Id_Build_Json));
-        }
+        }*/
     }
 }

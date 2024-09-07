@@ -1,7 +1,7 @@
 ﻿using MediatR;
 
-using MovieDbAssistant.App.Events;
 using MovieDbAssistant.App.Features;
+using MovieDbAssistant.Dmn.Events;
 
 namespace MovieDbAssistant.App.Services.Tray;
 

@@ -76,5 +76,9 @@
     <ProjectReference Include="..\MovieDbAssistant.Lib\MovieDbAssistant.Lib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
+
 	
 </Project>

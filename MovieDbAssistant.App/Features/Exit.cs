@@ -1,5 +1,5 @@
 ﻿using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Components;
+using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.App.Features;
 

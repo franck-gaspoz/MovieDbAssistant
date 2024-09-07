@@ -3,7 +3,7 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
-using MovieDbAssistant.App.Components;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 

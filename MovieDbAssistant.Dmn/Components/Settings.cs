@@ -197,12 +197,6 @@ public sealed class Settings
     /// </summary>
     public const string Builder_Busy = "Texts:BuilderBusy";
 
-    public const string Item_Id_Build = "Tag_Item_Build";
-    public const string Item_Id_Build_Json = Item_Id_Build + "Item_Id_Build_Json";
-    public const string Item_Id_Build_Query = Item_Id_Build + "Item_Id_Build_Query";
-    public const string Item_Id_Build_Clipboard = Item_Id_Build + "Item_Id_Build_Clipboard";
-    public const string Item_Id_Build_Input = Item_Id_Build + "Tag_Item_Build_Input";
-
     #endregion
 
     readonly IConfiguration _config;
@@ -214,13 +208,11 @@ public sealed class Settings
     public Settings(IConfiguration config)
         => _config = config;
 
-
     /// <summary>
     /// Gets the output path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public string OutputPath => NormalizePath(_config[Path_Output]!);
-
 
     /// <summary>
     /// Gets the input path.

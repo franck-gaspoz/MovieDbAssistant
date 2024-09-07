@@ -44,7 +44,8 @@ public sealed class DocumentBuilderContext
     /// <value>A <see cref="string"/></value>
     public string InputFile { get; set; }
 
-    public DocumentBuilderContext(string inputFile,
+    public DocumentBuilderContext(
+        string inputFile,
         string outputPath,
         Type builderType,
         Type dataProviderType)
