@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
+using MovieDbAssistant.Lib.Components;
 
 namespace MovieDbAssistant.App.Components.Tray;
 

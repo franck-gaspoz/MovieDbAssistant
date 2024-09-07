@@ -2,14 +2,15 @@
 
 using Microsoft.Extensions.Configuration;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Lib.Globals;
 
-namespace MovieDbAssistant.App.Components;
+namespace MovieDbAssistant.Lib.Components;
 
 /// <summary>
-/// The background worker wrapper.
+/// a background worker wrapper.
+/// <para>can be inherited</para>
 /// </summary>
-class BackgroundWorkerWrapper
+public class BackgroundWorkerWrapper
 {
     /// <summary>
     /// true if already setted up
@@ -17,6 +18,7 @@ class BackgroundWorkerWrapper
     public bool SettedUp { get; protected set; } = false;
 
     IConfiguration? _config;
+    readonly string _errorBackgroundWorkerWrapperNotInitializedKey;
     BackgroundWorker? _backgroundWorker;
     Action<object?, DoWorkEventArgs>? _action;
     Action? _preDoWork;
@@ -24,12 +26,36 @@ class BackgroundWorkerWrapper
     bool? _autoRepeat;
     Action? _onStop;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the worker must ends if running, or if is ended
+    /// </summary>
+    /// <value>A <see cref="bool"/></value>
     public bool End { get; protected set; } = false;
 
-    public BackgroundWorkerWrapper() { }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
+    /// </summary>
+    /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
+    public BackgroundWorkerWrapper(
+        string errorBackgroundWorkerWrapperNotInitializedKey
+            = Error_BackgroundWorkerWrapper_Not_Initialized)
+                => _errorBackgroundWorkerWrapperNotInitializedKey
+                    = errorBackgroundWorkerWrapperNotInitializedKey;
 
-    public BackgroundWorkerWrapper(IConfiguration config)
-        => _config = config;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
+    /// </summary>
+    /// <param name="config">The config.</param>
+    /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
+    public BackgroundWorkerWrapper(
+        IConfiguration config,
+        string errorBackgroundWorkerWrapperNotInitializedKey
+            = Error_BackgroundWorkerWrapper_Not_Initialized)
+    {
+        _config = config;
+        _errorBackgroundWorkerWrapperNotInitializedKey
+            = errorBackgroundWorkerWrapperNotInitializedKey;
+    }
 
     /// <summary>
     /// setup the background worker
@@ -98,7 +124,7 @@ class BackgroundWorkerWrapper
     public virtual BackgroundWorkerWrapper Run()
     {
         if (!SettedUp) throw new InvalidOperationException(
-            _config![Error_BackgroundWorkerWrapper_Not_Initialized]);
+            _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
 
         if (_backgroundWorker != null && _backgroundWorker.IsBusy)
             Stop();

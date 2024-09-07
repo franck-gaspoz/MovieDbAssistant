@@ -2,6 +2,7 @@
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Extensions;
 
 using static MovieDbAssistant.Dmn.Components.Settings;

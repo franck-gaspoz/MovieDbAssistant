@@ -173,11 +173,6 @@ public sealed class Settings
     public const string Anim_WaitIcons = "Anims:WaitIcons";
 
     /// <summary>
-    /// error background worker wrapper not initialized
-    /// </summary>
-    public const string Error_BackgroundWorkerWrapper_Not_Initialized = "Error:BackgroundWorkerWrapper_Not_Initialized";
-
-    /// <summary>
     /// input folder processed
     /// </summary>
     public const string InputFolderProcessed = "Texts:InputFolderProcessed";
