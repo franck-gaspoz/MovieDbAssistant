@@ -73,7 +73,7 @@ sealed class ProcessInputFolder : SignalHandlerBase<ProcessInputFolderCommand>
     }
 
     void DoWork()
-    { 
+    {
         void End(bool error = false)
         {
             _tray.StopAnimInfo();

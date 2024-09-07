@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
 
@@ -18,9 +17,6 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
     readonly int _interval;
     bool _stopOnBallonTipClosed;
     readonly bool _autoRepeat;
-#if TRACE
-    static int _bwinstance = 0;
-#endif
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayBackgroundWorker"/> class.
@@ -65,12 +61,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
     }
 
     void DoWorkAction(object? o, DoWorkEventArgs e)
-    {
-#if TRACE
-        Debug.Write(_bwinstance.ToString() + '.');
-#endif
-        _action?.Invoke(_trayMenuService);
-    }
+        => _action?.Invoke(_trayMenuService);
 
     void PreDoWork()
     {
@@ -79,8 +70,5 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         if (_stopOnBallonTipClosed)
             _trayMenuService.BalloonTipClosed +=
                 _trayMenuService.BallonTipCloseBackgroundWorkerHandler;
-#if TRACE
-        _bwinstance++;
-#endif
     }
 }

@@ -30,7 +30,7 @@ sealed class Messages
     /// </summary>
     /// <param name="errorTypeKey">error type</param>
     /// <param name="errorMessage">error message</param>
-    public void Err(string errorTypeKey,string errorMessage)
+    public void Err(string errorTypeKey, string errorMessage)
         => MessageBox.Show(
             _config[errorTypeKey]! + errorMessage,
             Caption(Message_Error),

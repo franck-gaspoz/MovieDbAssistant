@@ -128,9 +128,6 @@ sealed class TrayMenuService
             tray =>
             {
                 var msg = da.Next();
-#if TRACE
-                Debug.WriteLine(msg);
-#endif
                 tray.NotifyIcon.Text = msg;
             },
             _config.GetInt(Anim_Interval_Dot),

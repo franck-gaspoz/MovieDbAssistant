@@ -62,7 +62,7 @@ sealed class TrayMenuItems
 
             // build from file, clipboard
             (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { 
+            (new ToolStripMenuItem {
                 Tag = Item_Id_Build_Query,
                 Text = T(Label_BuildQueryFile), },
                 o => { o.Click += new EventHandler((c,e) => {
@@ -147,9 +147,9 @@ sealed class TrayMenuItems
     public void SetBuildItemsEnabled(bool isEnabled) =>
         _mainMenuItems!.ForEach(x =>
         {
-            if (x.Item.Tag != null 
+            if (x.Item.Tag != null
                 && ((string)x.Item.Tag)
                     .StartsWith(Item_Id_Build))
-                        x.Item.Enabled = isEnabled;
+                x.Item.Enabled = isEnabled;
         });
 }
