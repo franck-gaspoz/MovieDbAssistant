@@ -1,26 +1,35 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+
+using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
+using MovieDbAssistant.App.Events;
 using MovieDbAssistant.Dmn.Components.Builders;
+
+using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
-sealed class BuildFromClipboardService : CommandHandlerBase<BuildFromClipboardCommand>
+sealed class BuildFromClipboardService : SignalHandlerBase<BuildFromClipboardCommand>
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
+    readonly IMediator _mediator;
+    readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildFromClipboardService(
          IConfiguration config,
          IServiceProvider serviceProvider,
+         IMediator mediator,
+         Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _serviceProvider, _documentBuilderServiceFactory, Handler)
-            = (config, serviceProvider, documentBuilderServiceFactory,
+         => (_config, _serviceProvider, _mediator, _messages, _documentBuilderServiceFactory, Handler)
+            = (config, serviceProvider, mediator, messages, documentBuilderServiceFactory,
                 (_, _) => Run());
 
     /// <summary>
@@ -28,6 +37,17 @@ sealed class BuildFromClipboardService : CommandHandlerBase<BuildFromClipboardCo
     /// </summary>
     public void Run()
     {
-        var query = Clipboard.GetText();
+        try
+        {
+            var query = Clipboard.GetText();
+        }
+        catch (Exception ex)
+        {
+            _messages.Err(Message_Error_Unhandled, ex.Message);
+        }
+        finally
+        {
+            _mediator.Send(new BuildEndedEvent(Item_Id_Build_Clipboard));
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// The open command line feature.
 /// </summary>
-sealed class FolderExplorer : CommandHandlerBase<ExploreFolderCommand>
+sealed class FolderExplorer : SignalHandlerBase<ExploreFolderCommand>
 {
     readonly IConfiguration _config;
 

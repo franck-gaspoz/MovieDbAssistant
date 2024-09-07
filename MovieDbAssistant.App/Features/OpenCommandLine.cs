@@ -12,7 +12,7 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// The open command line feature.
 /// </summary>
-sealed class OpenCommandLine : CommandHandlerBase<OpenCommandLineCommand>
+sealed class OpenCommandLine : SignalHandlerBase<OpenCommandLineCommand>
 {
     readonly IConfiguration _config;
 

@@ -22,7 +22,8 @@ sealed class Messages
         => MessageBox.Show(
             _config[key]!,
             Caption(Message_Error),
-            MessageBoxButtons.OK);
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Warning);
 
     /// <summary>
     /// error alert box

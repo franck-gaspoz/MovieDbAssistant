@@ -3,7 +3,7 @@ using MovieDbAssistant.App.Components;
 
 namespace MovieDbAssistant.App.Features;
 
-sealed class Exit : CommandHandlerBase<ExitCommand>
+sealed class Exit : SignalHandlerBase<ExitCommand>
 {
     public Exit() => Handler = (_, _) => Environment.Exit(0);
 }

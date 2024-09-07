@@ -26,6 +26,11 @@ class BackgroundWorkerWrapper
 
     public bool End { get; protected set; } = false;
 
+    public BackgroundWorkerWrapper() { }
+
+    public BackgroundWorkerWrapper(IConfiguration config)
+        => _config = config;
+
     /// <summary>
     /// setup the background worker
     /// <para>must be called prior to <code>Run()</code></para>
@@ -55,6 +60,26 @@ class BackgroundWorkerWrapper
     }
 
     /// <summary>
+    /// run an action in a background thread then terminates it
+    /// </summary>
+    /// <param name="action">action</param>
+    /// <param name="config">config. if null use _config</param>
+    /// <returns>this object</returns>
+    public BackgroundWorkerWrapper RunAction(
+        Action<object?, DoWorkEventArgs> action,
+        IConfiguration? config = null
+        )
+    {
+        Setup(
+            config ?? _config!,
+            action,
+            0,
+            autoRepeat: false,
+            onStop: () => Stop());
+        return Run();
+    }
+
+    /// <summary>
     /// Stop and destroy background worker.
     /// </summary>
     public virtual void Stop()
@@ -69,6 +94,7 @@ class BackgroundWorkerWrapper
     /// <summary>
     /// run a new background worker. stop and destroy any previous one
     /// </summary>
+    /// <returns>this object</returns>
     public virtual BackgroundWorkerWrapper Run()
     {
         if (!SettedUp) throw new InvalidOperationException(

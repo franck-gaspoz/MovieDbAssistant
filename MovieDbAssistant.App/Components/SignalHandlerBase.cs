@@ -2,7 +2,7 @@
 
 namespace MovieDbAssistant.App.Components;
 
-class CommandHandlerBase<TCommand> : IRequestHandler<TCommand>
+class SignalHandlerBase<TCommand> : IRequestHandler<TCommand>
     where TCommand : IRequest
 {
     protected Action<TCommand, CancellationToken>? Handler { get; set; }

@@ -27,8 +27,7 @@ sealed class TrayMenuItems
     public TrayMenuItems(
         IConfiguration config,
         IServiceProvider servicesProvider,
-        IMediator mediator
-    )
+        IMediator mediator)
     {
         _mediator = mediator;
         _config = config;
@@ -38,7 +37,6 @@ sealed class TrayMenuItems
     string T(string id) => _config[id]!;
 
     List<ItemDefinition>? _mainMenuItems;
-
 
     /// <summary>
     /// Get main menu items.
@@ -64,28 +62,36 @@ sealed class TrayMenuItems
 
             // build from file, clipboard
             (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = T(Label_BuildQueryFile) },
-            o => { o.Click += new EventHandler((c,e) => {
-                RunBuildAction(
-                    () => _mediator.Send(new BuildFromQueryFileCommand("")));
+            (new ToolStripMenuItem { 
+                Tag = Item_Id_Build_Query,
+                Text = T(Label_BuildQueryFile), },
+                o => { o.Click += new EventHandler((c,e) => {
+                    RunBuildAction(
+                        () => _mediator.Send(new BuildFromQueryFileCommand("")));
             });}),
 
-            (new ToolStripMenuItem { Text = T(Label_BuildJsonFile) },
-            o => { o.Click += new EventHandler((c,e) => {
-                RunBuildAction(
-                    () => _mediator.Send(new BuildFromJsonFileCommand("")));
+            (new ToolStripMenuItem {
+                Tag = Item_Id_Build_Json,
+                Text = T(Label_BuildJsonFile) },
+                o => { o.Click += new EventHandler((c,e) => {
+                    RunBuildAction(
+                        () => _mediator.Send(new BuildFromJsonFileCommand("")));
             });}),
 
-            (new ToolStripMenuItem { Text = T(Label_BuildFromInputFolder) },
-            o => { o.Click += new EventHandler((c,e) => {
-                 RunBuildAction(
-                    () => _mediator.Send(new ProcessInputFolderCommand()));
+            (new ToolStripMenuItem {
+                Tag = Item_Id_Build_Input,
+                Text = T(Label_BuildFromInputFolder) },
+                o => { o.Click += new EventHandler((c,e) => {
+                     RunBuildAction(
+                        () => _mediator.Send(new ProcessInputFolderCommand()));
             });}),
 
-            (new ToolStripMenuItem { Text = T(Label_BuildClipb) },
-            o => { o.Click += new EventHandler((c,e) => {
-                 RunBuildAction(
-                    () => _mediator.Send(new BuildFromClipboardCommand()));
+            (new ToolStripMenuItem {
+                Tag = Item_Id_Build_Clipboard,
+                Text = T(Label_BuildClipb) },
+                o => { o.Click += new EventHandler((c,e) => {
+                     RunBuildAction(
+                        () => _mediator.Send(new BuildFromClipboardCommand()));
             });}),
 
             // tools
@@ -131,20 +137,19 @@ sealed class TrayMenuItems
     void RunBuildAction(Action act)
     {
         SetBuildItemsEnabled(false);
-        try
-        {
-            act();
-        }
-        finally
-        {
-            SetBuildItemsEnabled(true);
-        }
+        act();
     }
 
-    void SetBuildItemsEnabled(bool isEnabled) =>
+    /// <summary>
+    /// set build items enabled states
+    /// </summary>
+    /// <param name="isEnabled">is enabled</param>
+    public void SetBuildItemsEnabled(bool isEnabled) =>
         _mainMenuItems!.ForEach(x =>
         {
-            if (x.Item.Text != null && x.Item.Text.StartsWith(LabelPrefixBuildCommand))
-                x.Item.Enabled = isEnabled;
+            if (x.Item.Tag != null 
+                && ((string)x.Item.Tag)
+                    .StartsWith(Item_Id_Build))
+                        x.Item.Enabled = isEnabled;
         });
 }

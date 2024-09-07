@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Components;
+using MovieDbAssistant.App.Events;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
@@ -17,14 +18,19 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// process input folder.
 /// </summary>
-sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
+sealed class ProcessInputFolder : SignalHandlerBase<ProcessInputFolderCommand>
 {
+    /// <summary>
+    /// true if buzy
+    /// </summary>
+    public static bool Buzy = false;
+
     readonly IConfiguration _config;
     readonly IMediator _mediator;
     readonly IServiceProvider _serviceProvider;
     readonly Settings _settings;
     readonly Messages _messages;
-    bool _isBusy = false;
+    readonly BackgroundWorkerWrapper? _backgroundWorker;
 
     TrayMenuService _tray => _serviceProvider.GetRequiredService<TrayMenuService>();
 
@@ -48,14 +54,26 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
         _messages = messages;
         _mediator = mediator;
         _config = config;
+        _backgroundWorker = new(config);
         Handler = (_, _) => Run();
     }
 
     /// <summary>
-    /// run the feature
+    /// run the feature in a background worker
     /// </summary>
     void Run()
     {
+        if (Buzy)
+        {
+            _messages.Warn(Builder_Busy);
+            return;
+        }
+        Buzy = true;
+        _backgroundWorker!.RunAction((o, e) => DoWork());
+    }
+
+    void DoWork()
+    { 
         void End(bool error = false)
         {
             _tray.StopAnimInfo();
@@ -64,18 +82,11 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
                 _tray.ShowBalloonTip(InputFolderProcessed);
                 _mediator.Send(new ExploreFolderCommand(_settings.OutputPath));
             }
-            _isBusy = false;
+            Buzy = false;
         }
 
         try
         {
-            if (_isBusy)
-            {
-                _messages.Warn(Builder_Busy);
-                return;
-            }
-            _isBusy = true;
-
             _tray.AnimWorkInfo(_config[ProcInpFold]!);
 
             ProcessJsons();
@@ -89,6 +100,10 @@ sealed class ProcessInputFolder : CommandHandlerBase<ProcessInputFolderCommand>
         {
             End(true);
             _messages.Err(Message_Error_Unhandled, ex.Message);
+        }
+        finally
+        {
+            _mediator.Send(new BuildEndedEvent(Item_Id_Build_Input));
         }
     }
 

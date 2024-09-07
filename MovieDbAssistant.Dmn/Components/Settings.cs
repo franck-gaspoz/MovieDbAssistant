@@ -173,11 +173,6 @@ public sealed class Settings
     public const string Anim_WaitIcons = "Anims:WaitIcons";
 
     /// <summary>
-    /// label prefix of a build command
-    /// </summary>
-    public const string LabelPrefixBuildCommand = "Build";
-
-    /// <summary>
     /// error background worker wrapper not initialized
     /// </summary>
     public const string Error_BackgroundWorkerWrapper_Not_Initialized = "Error:BackgroundWorkerWrapper_Not_Initialized";
@@ -206,6 +201,12 @@ public sealed class Settings
     /// builder busy error
     /// </summary>
     public const string Builder_Busy = "Texts:BuilderBusy";
+
+    public const string Item_Id_Build = "Tag_Item_Build";
+    public const string Item_Id_Build_Json = Item_Id_Build + "Item_Id_Build_Json";
+    public const string Item_Id_Build_Query = Item_Id_Build + "Item_Id_Build_Query";
+    public const string Item_Id_Build_Clipboard = Item_Id_Build + "Item_Id_Build_Clipboard";
+    public const string Item_Id_Build_Input = Item_Id_Build + "Tag_Item_Build_Input";
 
     #endregion
 
