@@ -39,7 +39,7 @@ ___
 
 ### ![icon](./assets/multimedia-small.png) Windows system tray
 
-Available on `Windows 10.0.22621.0` and more. This application runs as an tray icon.
+Available on `Windows 10.0.22621.0` and more. This application runs as a tray icon.
 
 :arrow_right: run `MovieDbAssistant.exe`
 
