@@ -1,6 +1,7 @@
 ﻿using MediatR;
 
 using MovieDbAssistant.Dmn.Components.Builders;
+using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -17,10 +18,16 @@ public sealed class DocumentBuilderService
 {
     readonly BackgroundWorkerWrapper _backgroundWorkerWrapper = new();
     readonly IMediator _mediator;
+    readonly DataProviderFactory _dataProviderFactory;
     DocumentBuilderContext? _context;
 
-    public DocumentBuilderService(IMediator mediator)
-        => _mediator = mediator;
+    public DocumentBuilderService(
+        IMediator mediator,
+        DataProviderFactory _dataProviderFactory)
+    {
+        _mediator = mediator;
+        this._dataProviderFactory = _dataProviderFactory;
+    }
 
     /// <summary>
     /// build a document
@@ -33,5 +40,9 @@ public sealed class DocumentBuilderService
             (o, e) => BuildInternal());
     }
 
-    void BuildInternal() => _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Json));
+    void BuildInternal()
+    {
+        
+        _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Json));
+    }
 }

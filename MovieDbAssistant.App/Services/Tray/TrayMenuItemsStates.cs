@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-using MovieDbAssistant.App.Features;
+using MovieDbAssistant.App.Services.Build;
 using MovieDbAssistant.Dmn.Events;
 
 namespace MovieDbAssistant.App.Services.Tray;
@@ -20,7 +20,7 @@ sealed class TrayMenuItemsStates :
         BuildEndedEvent request,
         CancellationToken _)
     {
-        _trayMenuItems.SetBuildItemsEnabled(true && !ProcessInputFolder.Buzy);
+        _trayMenuItems.SetBuildItemsEnabled(true && !BuiIdInputFolder.Buzy);
         await Task.CompletedTask;
     }
 }

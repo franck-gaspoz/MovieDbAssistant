@@ -42,8 +42,9 @@ sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileComma
                     new DocumentBuilderContext(
                         file,
                         _config[Path_Output]!,
-                        typeof(JsonDataProvider),
-                        typeof(HtmlDocumentBuilder)));
+                        typeof(HtmlDocumentBuilder),
+                        typeof(JsonDataProvider)
+                        ));
         }
         catch (Exception ex)
         {
