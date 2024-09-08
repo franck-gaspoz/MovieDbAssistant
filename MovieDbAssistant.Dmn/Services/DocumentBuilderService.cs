@@ -41,8 +41,7 @@ public sealed class DocumentBuilderService
     }
 
     void BuildInternal()
-    {
-        
+    {        
         _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Json));
     }
 }

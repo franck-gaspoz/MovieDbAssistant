@@ -49,7 +49,8 @@ abstract class BuildServiceBase<TRequest> :
                 serviceProvider,
                 settings,
                 messages,
-                actionOnGoingMessageKey)
+                actionOnGoingMessageKey,
+                true)
     {
         _actionDoneMessageKey = actionDoneMessageKey;
         InputPath = inputPath;

@@ -37,7 +37,7 @@ abstract class ActionFeatureBase
     protected readonly Messages Messages;
 
     readonly string _actionOnGoingMessageKey;
-
+    readonly bool _runInBackground;
     readonly BackgroundWorkerWrapper? _backgroundWorker;
 
     protected TrayMenuService Tray => ServiceProvider
@@ -49,12 +49,14 @@ abstract class ActionFeatureBase
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
-        string actionOnGoingMessageKey)
+        string actionOnGoingMessageKey,
+        bool runInBackground)
     {
         ServiceProvider = serviceProvider;
         Settings = settings;
         Messages = messages;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
+        _runInBackground = runInBackground;
         Mediator = mediator;
         Config = config;
         _backgroundWorker = new(config);
@@ -121,7 +123,8 @@ abstract class ActionFeatureBase
 
             Action();
 
-            End();
+            if (!_runInBackground)
+                End();
         }
         catch (Exception ex)
         {
@@ -132,7 +135,8 @@ abstract class ActionFeatureBase
         }
         finally
         {
-            OnFinally();
+            if (!_runInBackground)
+                OnFinally();
         }
     }
 }

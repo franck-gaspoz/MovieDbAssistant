@@ -5,9 +5,11 @@ using Microsoft.Extensions.Configuration;
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
+using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
 
@@ -28,19 +30,19 @@ sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileComma
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
          => (_config, _mediator, _messages, _documentBuilderServiceFactory, Handler)
             = (config, mediator, messages, documentBuilderServiceFactory,
-                (com, _) => Run(com.Path));
+                (com, _) => Run(com));
 
     /// <summary>
     /// Build from json file.
     /// </summary>
-    public void Run(string file)
+    public void Run(BuildFromJsonFileCommand com)
     {
         try
         {
             _documentBuilderServiceFactory.CreateDocumentBuilderService()
                 .Build(
                     new DocumentBuilderContext(
-                        file,
+                        com.Path,
                         _config[Path_Output]!,
                         typeof(HtmlDocumentBuilder),
                         typeof(JsonDataProvider)
@@ -48,7 +50,10 @@ sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileComma
         }
         catch (Exception ex)
         {
-            _messages.Err(Message_Error_Unhandled, ex.Message);
+            _mediator.Send(new BuildErroredEvent(
+                this,
+                Item_Id_Build_Json,
+                ex));
         }
         /*finally
         {
