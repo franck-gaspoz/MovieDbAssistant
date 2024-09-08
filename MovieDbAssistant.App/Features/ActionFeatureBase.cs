@@ -36,7 +36,6 @@ abstract class ActionFeatureBase
     protected readonly Settings Settings;
     protected readonly Messages Messages;
 
-    readonly string _actionDoneMessageKey;
     readonly string _actionOnGoingMessageKey;
 
     readonly BackgroundWorkerWrapper? _backgroundWorker;
@@ -50,13 +49,11 @@ abstract class ActionFeatureBase
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
-        string actionDoneMessageKey,
         string actionOnGoingMessageKey)
     {
         ServiceProvider = serviceProvider;
         Settings = settings;
         Messages = messages;
-        _actionDoneMessageKey = actionDoneMessageKey;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
         Mediator = mediator;
         Config = config;

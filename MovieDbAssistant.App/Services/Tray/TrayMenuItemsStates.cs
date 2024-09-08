@@ -20,7 +20,7 @@ sealed class TrayMenuItemsStates :
         BuildEndedEvent request,
         CancellationToken _)
     {
-        _trayMenuItems.SetBuildItemsEnabled(true && !BuiIdInputFolder.Buzy);
+        _trayMenuItems.SetBuildItemsEnabled(true && !BuiIdInputFolderService.Buzy);
         await Task.CompletedTask;
     }
 }
