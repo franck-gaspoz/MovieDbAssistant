@@ -13,6 +13,7 @@ using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Services.Build;
 
+// TODO: change to a BuildServiceBase
 /// <summary>
 /// The build service.
 /// </summary>
