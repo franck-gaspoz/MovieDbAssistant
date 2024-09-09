@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Services;
@@ -18,7 +20,10 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// action feature base
 /// </summary>
-abstract class ActionFeatureBase :
+#if DEBUG
+[DebuggerDisplay("{DbgId()}")]
+#endif
+abstract class ActionFeatureBase<TActionParam> :
     ISignalHandler<ActionEndedEvent>,
     ISignalHandler<ActionErroredEvent>,
     IIdentifiable
@@ -35,13 +40,7 @@ abstract class ActionFeatureBase :
     /// <summary>
     /// true if buzy
     /// </summary>
-    protected abstract bool IsBuzy();
-
-    /// <summary>
-    /// set the buzy state
-    /// </summary>
-    /// <param name="buzy">buzy</param>
-    protected abstract void SetBuzy(bool buzy);
+    public bool Buzy { get; protected set; } = false;
 
     protected readonly IConfiguration Config;
     protected readonly ISignalR Signal;
@@ -69,10 +68,10 @@ abstract class ActionFeatureBase :
         ServiceProvider = serviceProvider;
         Settings = settings;
         Messages = messages;
-        _actionOnGoingMessageKey = actionOnGoingMessageKey;
-        _runInBackground = runInBackground;
         Signal = signal;
         Config = config;
+        _actionOnGoingMessageKey = actionOnGoingMessageKey;
+        _runInBackground = runInBackground;
         _backgroundWorker = new(config);
     }
 
@@ -104,20 +103,20 @@ abstract class ActionFeatureBase :
     /// <summary>
     /// action
     /// </summary>
-    protected abstract void Action();
+    protected abstract void Action(TActionParam actionParam);
 
     /// <summary>
     /// run the feature in a background worker
     /// </summary>
-    protected void Run()
+    protected void Run(TActionParam actionParam)
     {
-        if (IsBuzy())
+        if (Buzy)
         {
             Messages.Warn(Builder_Busy);
             return;
         }
-        SetBuzy(true);
-        _backgroundWorker!.RunAction((o, e) => DoWork());
+        Buzy = true;
+        _backgroundWorker!.RunAction((o, e) => DoWork(actionParam));
     }
 
     void End(bool error = false)
@@ -126,10 +125,10 @@ abstract class ActionFeatureBase :
         OnEnd();
         if (!error)
             OnSucessEnd();
-        SetBuzy(false);
+        Buzy = false;
     }
 
-    void ErrorAsync(string error)
+    void Error(string error)
     {
         End(true);
         OnErrorBeforePrompt();
@@ -137,24 +136,26 @@ abstract class ActionFeatureBase :
         OnErrorAfterPrompt();
     }
 
-    void DoWork()
+    void DoWork(TActionParam actionParam)
     {
+        var error = false;
         try
         {
             Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
 
-            Action();
+            Action(actionParam);
 
             if (!_runInBackground)
                 End();
         }
         catch (Exception ex)
         {
-            ErrorAsync(ex.Message);
+            error = true;
+            Error(ex.Message);
         }
         finally
         {
-            if (!_runInBackground)
+            if (error || !_runInBackground)
                 OnFinally();
         }
     }
@@ -174,7 +175,7 @@ abstract class ActionFeatureBase :
         if (!_runInBackground) return;
         if (MatchAction(sender))
         { 
-            ErrorAsync(@event.Error);
+            Error(@event.Error);
             OnFinally();
         }
     }

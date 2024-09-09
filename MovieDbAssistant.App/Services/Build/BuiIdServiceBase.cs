@@ -15,7 +15,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// build service base
 /// </summary>
 abstract class BuildServiceBase<TSignal> :
-    ActionFeatureBase,
+    ActionFeatureBase<TSignal>,
     ISignalHandler<TSignal>
     where TSignal : ISignal
 {
@@ -56,7 +56,7 @@ abstract class BuildServiceBase<TSignal> :
         ItemIdBuild = itemIdBuild;
     }
 
-    public void Handle(object sender, TSignal signal) => Run();
+    public void Handle(object sender, TSignal signal) => Run(signal);
 
     /// <inheritdoc/>
     protected override void OnSucessEnd()

@@ -15,18 +15,10 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// process input folder.
 /// </summary>
-#if DEBUG
-[DebuggerDisplay("{DbgId()}")]
-#endif
 [Scoped]
 sealed class BuiIdInputFolderService :
     BuildServiceBase<ProcessInputFolderCommand>
 {
-    /// <summary>
-    /// true if buzy
-    /// </summary>
-    public static bool Buzy = false;
-
     /// <summary>
     /// Gets the input path.
     /// </summary>
@@ -53,13 +45,7 @@ sealed class BuiIdInputFolderService :
     { }
 
     /// <inheritdoc/>
-    protected override bool IsBuzy() => Buzy;
-
-    /// <inheritdoc/>
-    protected override void SetBuzy(bool buzy) => Buzy = buzy;
-
-    /// <inheritdoc/>
-    protected override void Action()
+    protected override void Action(ProcessInputFolderCommand _)
     {
         ProcessJsons();
         ProcessLists();

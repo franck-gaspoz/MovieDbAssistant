@@ -13,9 +13,17 @@ sealed class TrayMenuItemsStates :
     ISignalHandler<BuildEndedEvent>
 {
     readonly TrayMenuItems _trayMenuItems;
+    readonly BuiIdInputFolderService _buildInputFolderService;
 
-    public TrayMenuItemsStates(TrayMenuItems trayMenuItems)
-        => _trayMenuItems = trayMenuItems;
+    public TrayMenuItemsStates(
+        TrayMenuItems trayMenuItems,
+        BuiIdInputFolderService buildInputFolderService)
+    {
+        _trayMenuItems = trayMenuItems;
+        _buildInputFolderService = buildInputFolderService;
+    }
 
-    public void Handle(object sender, BuildEndedEvent @event) => _trayMenuItems.SetBuildItemsEnabled(true && !BuiIdInputFolderService.Buzy);
+    public void Handle(object sender, BuildEndedEvent @event) 
+        => _trayMenuItems.SetBuildItemsEnabled(
+            true && !_buildInputFolderService.Buzy);
 }
