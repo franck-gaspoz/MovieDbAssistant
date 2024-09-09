@@ -17,7 +17,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// </summary>
 [Scoped]
 sealed class BuiIdInputFolderService :
-    BuildServiceBase<ProcessInputFolderCommand>
+    BuildServiceBase<BuildFromInputFolderCommand>
 {
     /// <summary>
     /// Gets the input path.
@@ -45,7 +45,7 @@ sealed class BuiIdInputFolderService :
     { }
 
     /// <inheritdoc/>
-    protected override void Action(ProcessInputFolderCommand _)
+    protected override void Action(BuildFromInputFolderCommand _)
     {
         ProcessJsons();
         ProcessLists();

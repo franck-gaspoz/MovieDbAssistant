@@ -1,13 +1,14 @@
-﻿using MovieDbAssistant.Lib.Components.Actions.Commands;
+﻿using MovieDbAssistant.Lib.Components.Signal;
 
-namespace MovieDbAssistant.App.Commands;
+namespace MovieDbAssistant.Lib.Components.Actions.Commands;
 
 /// <summary>
-/// The build from clipboard command.
+/// action feature command base
 /// </summary>
 /// <param name="Origin">object at origin of the command if different from the command sender, else null</param>
 /// <param name="HandleUI">if true, the command handler must handle UI interactions</param>
-public sealed record BuildFromClipboardCommand(
+public record class ActionFeatureCommandBase(
     object? Origin = null,
     bool HandleUI = true
-) : ActionFeatureCommandBase(Origin, HandleUI);
+    ) : ISignal
+;

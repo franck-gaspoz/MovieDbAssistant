@@ -1,6 +1,6 @@
 ﻿using MovieDbAssistant.Lib.Components.Signal;
 
-namespace MovieDbAssistant.Dmn.Events;
+namespace MovieDbAssistant.Lib.Components.Actions.Events;
 
 /// <summary>
 /// action errored event

@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Components\Querier\" />
     <Folder Include="Components\Scrapper\" />
+    <Folder Include="Commands\" />
   </ItemGroup>
 
 	<ItemGroup>

@@ -83,7 +83,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildFromInputFolder) },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
-                        () => _signal.Send(this, new ProcessInputFolderCommand()));
+                        () => _signal.Send(this, new BuildFromInputFolderCommand()));
             });}),
 
             (new ToolStripMenuItem {

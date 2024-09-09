@@ -9,6 +9,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
