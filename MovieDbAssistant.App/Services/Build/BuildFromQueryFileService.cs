@@ -15,7 +15,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// The build service.
 /// </summary>
-[Transient]
+[Scoped]
 sealed class BuildFromQueryFileService : ISignalHandler<BuildFromQueryFileCommand>,
     IIdentifiable
 {

@@ -4,7 +4,7 @@ using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.App.Features;
 
-[Transient]
+[Scoped]
 sealed class Exit : ISignalHandler<ExitCommand>
 {
     public void Handle(object sender, ExitCommand com)

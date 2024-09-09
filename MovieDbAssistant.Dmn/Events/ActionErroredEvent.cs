@@ -16,5 +16,5 @@ public sealed record ActionErroredEvent(
     /// <para>returns empty string if no error defined</para>
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Error => Exception?.ToString() ?? Message ?? string.Empty;
+    public string Error => Exception?.Message ?? Message ?? string.Empty;
 }

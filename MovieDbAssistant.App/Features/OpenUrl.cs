@@ -13,7 +13,7 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// The open command line feature.
 /// </summary>
-[Transient]
+[Scoped]
 sealed class OpenUrl : ISignalHandler<OpenUrlCommand>
 {
     readonly IConfiguration _config;

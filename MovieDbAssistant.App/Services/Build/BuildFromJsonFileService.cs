@@ -16,7 +16,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// The build service.
 /// </summary>
-[Transient]
+[Scoped]
 sealed class BuildFromJsonFileService : ISignalHandler<BuildFromJsonFileCommand>,
     IIdentifiable
 {

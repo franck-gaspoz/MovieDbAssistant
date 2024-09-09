@@ -8,7 +8,7 @@ namespace MovieDbAssistant.Dmn.Components.Builders;
 /// <summary>
 /// document builder service factory.
 /// </summary>
-[Transient]
+[Scoped]
 public sealed class DocumentBuilderServiceFactory
 {
     readonly IServiceProvider _serviceProvider;
