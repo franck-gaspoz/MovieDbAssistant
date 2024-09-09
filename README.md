@@ -19,7 +19,6 @@ Generates **Movie documents** (HTML, movie database,...) using **Web Crawlers**.
 ## dependencies
 
 - `MovieDbScrapper`:  [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
-- `MediatR`: [https://github.com/jbogard/MediatR](https://github.com/jbogard/MediatR)
 - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
 - **CLI**

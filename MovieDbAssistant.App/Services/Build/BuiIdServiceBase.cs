@@ -1,12 +1,11 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -15,10 +14,10 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// build service base
 /// </summary>
-abstract class BuildServiceBase<TRequest> :
+abstract class BuildServiceBase<TSignal> :
     ActionFeatureBase,
-    IRequestHandler<TRequest>
-    where TRequest : IRequest
+    ISignalHandler<TSignal>
+    where TSignal : ISignal
 {
     /// <summary>
     /// Gets the input path.
@@ -35,7 +34,7 @@ abstract class BuildServiceBase<TRequest> :
 
     public BuildServiceBase(
         IConfiguration config,
-        IMediator mediator,
+        ISignalR signal,
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
@@ -45,7 +44,7 @@ abstract class BuildServiceBase<TRequest> :
         string? inputPath = null) :
             base(
                 config,
-                mediator,
+                signal,
                 serviceProvider,
                 settings,
                 messages,
@@ -57,14 +56,7 @@ abstract class BuildServiceBase<TRequest> :
         ItemIdBuild = itemIdBuild;
     }
 
-    public async Task Handle(
-        TRequest request,
-        CancellationToken cancellationToken)
-    {
-        CancellationToken = cancellationToken;
-        Run();
-        await Task.CompletedTask;
-    }
+    public void Handle(object sender, TSignal signal) => Run();
 
     /// <inheritdoc/>
     protected override void OnSucessEnd()
@@ -72,7 +64,7 @@ abstract class BuildServiceBase<TRequest> :
         if (Config.GetBool(OpenOuputWindowOnBuild))
         {
             Tray.ShowBalloonTip(_actionDoneMessageKey);
-            Mediator.Send(new ExploreFolderCommand(Settings.OutputPath));
+            Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
         }
     }
 
@@ -80,7 +72,8 @@ abstract class BuildServiceBase<TRequest> :
     protected override void OnEnd() { }
 
     /// <inheritdoc/>
-    protected override void OnFinally() => Mediator.Send(
+    protected override void OnFinally() => Signal.Send(
+        this,
         new BuildEndedEvent(this, ItemIdBuild));
 
     /// <summary>

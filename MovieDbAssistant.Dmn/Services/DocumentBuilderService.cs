@@ -1,10 +1,9 @@
-﻿using MediatR;
-
-using MovieDbAssistant.Dmn.Components.Builders;
+﻿using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -17,15 +16,15 @@ namespace MovieDbAssistant.Dmn.Services;
 public sealed class DocumentBuilderService
 {
     readonly BackgroundWorkerWrapper _backgroundWorkerWrapper = new();
-    readonly IMediator _mediator;
+    readonly ISignalR _signal;
     readonly DataProviderFactory _dataProviderFactory;
     DocumentBuilderContext? _context;
 
     public DocumentBuilderService(
-        IMediator mediator,
+        ISignalR signal,
         DataProviderFactory _dataProviderFactory)
     {
-        _mediator = mediator;
+        _signal = signal;
         this._dataProviderFactory = _dataProviderFactory;
     }
 
@@ -40,8 +39,6 @@ public sealed class DocumentBuilderService
             (o, e) => BuildInternal());
     }
 
-    void BuildInternal()
-    {        
-        _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Json));
-    }
+    void BuildInternal() => _signal.Send(
+        this, new BuildEndedEvent(this, Item_Id_Build_Json));
 }

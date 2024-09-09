@@ -1,9 +1,12 @@
 ﻿using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.App.Features;
 
-sealed class Exit : SignalHandlerBase<ExitCommand>
+[Transient]
+sealed class Exit : ISignalHandler<ExitCommand>
 {
-    public Exit() => Handler = (_, _) => Environment.Exit(0);
+    public void Handle(object sender, ExitCommand com)
+        => Environment.Exit(0);
 }

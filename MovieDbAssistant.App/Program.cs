@@ -5,6 +5,7 @@ using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant;
 
@@ -20,13 +21,15 @@ public class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        Type[] fromTypes =
+            [typeof(SingletonAttribute),
+            typeof(Settings),
+            typeof(Program)];
+
         var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices(services => services
-                .AutoRegister(typeof(SingletonAttribute))
-                .AutoRegister(typeof(Settings))
-                .AutoRegister(typeof(Program))
-                .AddMediatR(cfg => cfg.RegisterServicesFromAssembly(
-                    typeof(Program).Assembly)))
+                .AutoRegister(fromTypes)
+                .AddSignalR(fromTypes))
             .Build();
 
         Application.EnableVisualStyles();

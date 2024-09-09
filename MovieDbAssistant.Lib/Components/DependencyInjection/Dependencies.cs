@@ -15,11 +15,14 @@ public static class Dependencies
     /// auto register depedencies
     /// </summary>
     /// <param name="services">The services.</param>
-    /// <param name="fromType">The from type assembly.</param>
+    /// <param name="fromTypes">The from types assemblies</param>
     public static IServiceCollection AutoRegister(
         this IServiceCollection services,
-        Type fromType)
-        => services.AutoRegister(fromType.Assembly);
+        params Type[] fromTypes)
+    {
+        Array.ForEach(fromTypes, x => services.AutoRegister(x.Assembly));
+        return services;
+    }
 
     /// <summary>
     /// auto register depedencies

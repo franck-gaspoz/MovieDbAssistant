@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -12,20 +13,20 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// The open command line feature.
 /// </summary>
-sealed class OpenUrl : SignalHandlerBase<OpenUrlCommand>
+[Transient]
+sealed class OpenUrl : ISignalHandler<OpenUrlCommand>
 {
     readonly IConfiguration _config;
 
     public OpenUrl(IConfiguration configuration)
-        => (_config, Handler) =
-            (configuration,
-            (com, _) => Run(com.Url));
+         => _config = configuration;
 
     /// <summary>
     /// run the feature
     /// </summary>
-    void Run(string url)
+    public void Handle(object sender, OpenUrlCommand com)
     {
+        var url = com.Url;
         var path = "\"" + url + "\"";
         var proc = new Process()
         {

@@ -1,41 +1,47 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
-sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileCommand>
+[Transient]
+sealed class BuildFromJsonFileService : ISignalHandler<BuildFromJsonFileCommand>,
+    IIdentifiable
 {
+    /// <summary>
+    /// instance id
+    /// </summary>
+    public SharedCounter InstanceId { get; } = new();
+
     readonly IConfiguration _config;
-    readonly IMediator _mediator;
+    readonly ISignalR _signal;
     readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildFromJsonFileService(
          IConfiguration config,
-         IMediator mediator,
+         SignalR mediator,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _mediator, _messages, _documentBuilderServiceFactory, Handler)
-            = (config, mediator, messages, documentBuilderServiceFactory,
-                (com, _) => Run(com));
+         => (_config, _signal, _messages, _documentBuilderServiceFactory)
+            = (config, mediator, messages, documentBuilderServiceFactory);
 
     /// <summary>
     /// Build from json file.
     /// </summary>
-    public void Run(BuildFromJsonFileCommand com)
+    public void Handle(object sender, BuildFromJsonFileCommand com)
     {
         try
         {
@@ -50,14 +56,13 @@ sealed class BuildFromJsonFileService : SignalHandlerBase<BuildFromJsonFileComma
         }
         catch (Exception ex)
         {
-            _mediator.Send(new BuildErroredEvent(
-                this,
-                Item_Id_Build_Json,
-                ex));
+            _signal.Send(
+                com.Origin ?? this,
+                new ActionErroredEvent(ex));
         }
         /*finally
         {
-            _mediator.Send(new BuildEndedEvent(Item_Id_Build_Json));
+            _signal.Send(new BuildEndedEvent(Item_Id_Build_Json));
         }*/
     }
 }

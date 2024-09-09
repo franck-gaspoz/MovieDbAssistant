@@ -1,10 +1,11 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -15,28 +16,34 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// The build service.
 /// </summary>
-sealed class BuildFromClipboardService : SignalHandlerBase<BuildFromClipboardCommand>
+[Transient]
+sealed class BuildFromClipboardService : ISignalHandler<BuildFromClipboardCommand>,
+    IIdentifiable
 {
+    /// <summary>
+    /// instance id
+    /// </summary>
+    public SharedCounter InstanceId { get; } = new();
+
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
-    readonly IMediator _mediator;
+    readonly ISignalR _signal;
     readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildFromClipboardService(
          IConfiguration config,
          IServiceProvider serviceProvider,
-         IMediator mediator,
+         ISignalR signal,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _serviceProvider, _mediator, _messages, _documentBuilderServiceFactory, Handler)
-            = (config, serviceProvider, mediator, messages, documentBuilderServiceFactory,
-                (_, _) => Run());
+         => (_config, _serviceProvider, _signal, _messages, _documentBuilderServiceFactory)
+            = (config, serviceProvider, signal, messages, documentBuilderServiceFactory);
 
     /// <summary>
     /// Build from clipboard.
     /// </summary>
-    public void Run()
+    public void Handle(object sender, BuildFromClipboardCommand com)
     {
         try
         {
@@ -48,7 +55,7 @@ sealed class BuildFromClipboardService : SignalHandlerBase<BuildFromClipboardCom
         }
         finally
         {
-            _mediator.Send(new BuildEndedEvent(this, Item_Id_Build_Clipboard));
+            _signal.Send(this, new BuildEndedEvent(this, Item_Id_Build_Clipboard));
         }
     }
 }

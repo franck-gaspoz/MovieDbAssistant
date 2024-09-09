@@ -1,9 +1,11 @@
-﻿using MediatR;
+﻿using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
@@ -13,6 +15,10 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// process input folder.
 /// </summary>
+#if DEBUG
+[DebuggerDisplay("{DbgId()}")]
+#endif
+[Transient]
 sealed class BuiIdInputFolderService :
     BuildServiceBase<ProcessInputFolderCommand>
 {
@@ -31,13 +37,13 @@ sealed class BuiIdInputFolderService :
 
     public BuiIdInputFolderService(
         IConfiguration config,
-        IMediator mediator,
+        ISignalR signal,
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages) :
         base(
             config,
-            mediator,
+            signal,
             serviceProvider,
             settings,
             messages,
@@ -65,16 +71,18 @@ sealed class BuiIdInputFolderService :
     {
         var lists = GetListsFiles();
         lists.ToList()
-            .ForEach(file => Mediator.Send(
-                new BuildFromQueryFileCommand(file)));
+            .ForEach(file => Signal.Send(
+                this,
+                new BuildFromQueryFileCommand(file, this)));
     }
 
     void ProcessJsons()
     {
         var jsons = GetJsonFiles();
         jsons.ToList()
-            .ForEach(file => Mediator.Send(
-                new BuildFromJsonFileCommand(file)));
+            .ForEach(file => Signal.Send(
+                this,
+                new BuildFromJsonFileCommand(file, this)));
     }
 
     IEnumerable<string> GetListsFiles()

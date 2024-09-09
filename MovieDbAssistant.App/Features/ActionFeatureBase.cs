@@ -1,12 +1,15 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -15,8 +18,20 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// action feature base
 /// </summary>
-abstract class ActionFeatureBase
+abstract class ActionFeatureBase :
+    ISignalHandler<ActionEndedEvent>,
+    ISignalHandler<ActionErroredEvent>,
+    IIdentifiable
 {
+#if DEBUG
+    public string DbgId() => this.Id();
+#endif
+
+    /// <summary>
+    /// instance id
+    /// </summary>
+    public SharedCounter InstanceId { get; } = new();
+
     /// <summary>
     /// true if buzy
     /// </summary>
@@ -28,10 +43,8 @@ abstract class ActionFeatureBase
     /// <param name="buzy">buzy</param>
     protected abstract void SetBuzy(bool buzy);
 
-    protected CancellationToken? CancellationToken;
-
     protected readonly IConfiguration Config;
-    protected readonly IMediator Mediator;
+    protected readonly ISignalR Signal;
     protected readonly IServiceProvider ServiceProvider;
     protected readonly Settings Settings;
     protected readonly Messages Messages;
@@ -45,7 +58,7 @@ abstract class ActionFeatureBase
 
     public ActionFeatureBase(
         IConfiguration config,
-        IMediator mediator,
+        ISignalR signal,
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
@@ -57,7 +70,7 @@ abstract class ActionFeatureBase
         Messages = messages;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
         _runInBackground = runInBackground;
-        Mediator = mediator;
+        Signal = signal;
         Config = config;
         _backgroundWorker = new(config);
     }
@@ -106,17 +119,25 @@ abstract class ActionFeatureBase
         _backgroundWorker!.RunAction((o, e) => DoWork());
     }
 
+    void End(bool error = false)
+    {
+        Tray.StopAnimInfo();
+        OnEnd();
+        if (!error)
+            OnSucessEnd();
+        SetBuzy(false);
+    }
+
+    void ErrorAsync(string error)
+    {
+        End(true);
+        OnErrorBeforePrompt();
+        Messages.Err(Message_Error_Unhandled, error);
+        OnErrorAfterPrompt();
+    }
+
     void DoWork()
     {
-        void End(bool error = false)
-        {
-            Tray.StopAnimInfo();
-            OnEnd();
-            if (!error)
-                OnSucessEnd();
-            SetBuzy(false);
-        }
-
         try
         {
             Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
@@ -128,10 +149,7 @@ abstract class ActionFeatureBase
         }
         catch (Exception ex)
         {
-            End(true);
-            OnErrorBeforePrompt();
-            Messages.Err(Message_Error_Unhandled, ex.Message);
-            OnErrorAfterPrompt();
+            ErrorAsync(ex.Message);
         }
         finally
         {
@@ -139,4 +157,24 @@ abstract class ActionFeatureBase
                 OnFinally();
         }
     }
+
+    public void Handle(object sender, ActionEndedEvent @event)
+    {
+        if (!_runInBackground) return;
+        if (MatchAction(sender))
+        {
+            End();
+            OnFinally();
+        }
+    }
+
+    public void Handle(object sender, ActionErroredEvent @event)
+    {
+        if (!_runInBackground) return;
+        if (MatchAction(sender))
+            ErrorAsync(@event.Error);
+    }
+
+    bool MatchAction(object sender)
+        => sender == this;
 }

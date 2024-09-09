@@ -1,11 +1,10 @@
-﻿using MediatR;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Services.Tray.Models;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
@@ -20,7 +19,7 @@ sealed class TrayMenuItems
 {
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
-    readonly IMediator _mediator;
+    readonly ISignalR _signal;
 
     TrayMenuService _trayMenu =>
         _servicesProvider.GetRequiredService<TrayMenuService>();
@@ -28,9 +27,9 @@ sealed class TrayMenuItems
     public TrayMenuItems(
         IConfiguration config,
         IServiceProvider servicesProvider,
-        IMediator mediator)
+        ISignalR signal)
     {
-        _mediator = mediator;
+        _signal = signal;
         _config = config;
         _servicesProvider = servicesProvider;
     }
@@ -68,7 +67,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildQueryFile), },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
-                        () => _mediator.Send(new BuildFromQueryFileCommand("")));
+                        () => _signal.Send(this,new BuildFromQueryFileCommand("")));
             });}),
 
             (new ToolStripMenuItem {
@@ -76,7 +75,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildJsonFile) },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
-                        () => _mediator.Send(new BuildFromJsonFileCommand("")));
+                        () => _signal.Send(this, new BuildFromJsonFileCommand("")));
             });}),
 
             (new ToolStripMenuItem {
@@ -84,7 +83,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildFromInputFolder) },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
-                        () => _mediator.Send(new ProcessInputFolderCommand()));
+                        () => _signal.Send(this, new ProcessInputFolderCommand()));
             });}),
 
             (new ToolStripMenuItem {
@@ -92,31 +91,31 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildClipb) },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
-                        () => _mediator.Send(new BuildFromClipboardCommand()));
+                        () => _signal.Send(this, new BuildFromClipboardCommand()));
             });}),
 
             // tools
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_OpenCmdLine) },
             o => { o.Click += new EventHandler((c,e) => {
-                _mediator.Send(new OpenCommandLineCommand());
+                _signal.Send(this, new OpenCommandLineCommand());
             });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _mediator.Send(new ExploreFolderCommand(_config[Path_Output]!));
+                _signal.Send(this, new ExploreFolderCommand(_config[Path_Output]!));
             });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _mediator.Send(new ExploreFolderCommand(_config[Path_Input]!));
+                _signal.Send(this, new ExploreFolderCommand(_config[Path_Input]!));
             });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = T(Label_Help) },
             o => { o.Click += new EventHandler((c,e) => {
-                _mediator.Send(new OpenUrlCommand(_config[Url_HelpGitHub]!));
+                _signal.Send(this, new OpenUrlCommand(_config[Url_HelpGitHub]!));
                  });}),
 
             (new ToolStripMenuItem { Text = T(Label_Settings) },
@@ -129,7 +128,7 @@ sealed class TrayMenuItems
             (new ToolStripMenuItem { Text = T(Label_Exit) },
             o => { o.Click += new EventHandler((c,e) =>  {
                 _trayMenu.ShowBalloonTip_End();
-                _mediator.Send(new ExitCommand());
+                _signal.Send(this, new ExitCommand());
             });})
         };
         return _mainMenuItems = items;
