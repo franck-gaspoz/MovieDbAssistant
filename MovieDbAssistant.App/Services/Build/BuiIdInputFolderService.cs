@@ -18,7 +18,7 @@ namespace MovieDbAssistant.App.Services.Build;
 #if DEBUG
 [DebuggerDisplay("{DbgId()}")]
 #endif
-[Transient]
+[Scoped]
 sealed class BuiIdInputFolderService :
     BuildServiceBase<ProcessInputFolderCommand>
 {

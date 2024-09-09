@@ -23,7 +23,7 @@ sealed class BuildFromJsonFileService : ISignalHandler<BuildFromJsonFileCommand>
     /// <summary>
     /// instance id
     /// </summary>
-    public SharedCounter InstanceId { get; } = new();
+    public SharedCounter InstanceId { get; }
 
     readonly IConfiguration _config;
     readonly ISignalR _signal;
@@ -32,11 +32,14 @@ sealed class BuildFromJsonFileService : ISignalHandler<BuildFromJsonFileCommand>
 
     public BuildFromJsonFileService(
          IConfiguration config,
-         SignalR mediator,
+         ISignalR signal,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _signal, _messages, _documentBuilderServiceFactory)
-            = (config, mediator, messages, documentBuilderServiceFactory);
+    {
+        InstanceId = new(this);
+        (_config, _signal, _messages, _documentBuilderServiceFactory)
+            = (config, signal, messages, documentBuilderServiceFactory);
+    }
 
     /// <summary>
     /// Build from json file.

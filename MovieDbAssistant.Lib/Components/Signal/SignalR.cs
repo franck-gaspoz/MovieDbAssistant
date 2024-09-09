@@ -12,7 +12,7 @@ public sealed class SignalR : ISignalR
     /// <summary>
     /// instance id
     /// </summary>
-    public SharedCounter InstanceId { get; } = new();
+    public SharedCounter InstanceId { get; }
 
     readonly Dictionary<Type, List<Type>> _map = [];
     readonly IConfiguration _config;
@@ -22,6 +22,7 @@ public sealed class SignalR : ISignalR
         IConfiguration config,
         IServiceProvider serviceProvider)
     {
+        InstanceId = new(this);
         _config = config;
         _serviceProvider = serviceProvider;
     }

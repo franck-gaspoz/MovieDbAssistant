@@ -30,7 +30,7 @@ abstract class ActionFeatureBase :
     /// <summary>
     /// instance id
     /// </summary>
-    public SharedCounter InstanceId { get; } = new();
+    public SharedCounter InstanceId { get; }
 
     /// <summary>
     /// true if buzy
@@ -65,6 +65,7 @@ abstract class ActionFeatureBase :
         string actionOnGoingMessageKey,
         bool runInBackground)
     {
+        InstanceId = new(this);
         ServiceProvider = serviceProvider;
         Settings = settings;
         Messages = messages;
@@ -172,7 +173,10 @@ abstract class ActionFeatureBase :
     {
         if (!_runInBackground) return;
         if (MatchAction(sender))
+        { 
             ErrorAsync(@event.Error);
+            OnFinally();
+        }
     }
 
     bool MatchAction(object sender)

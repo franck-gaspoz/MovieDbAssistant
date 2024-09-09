@@ -22,7 +22,7 @@ sealed class BuildFromQueryFileService : ISignalHandler<BuildFromQueryFileComman
     /// <summary>
     /// instance id
     /// </summary>
-    public SharedCounter InstanceId { get; } = new();
+    public SharedCounter InstanceId { get; }
 
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
@@ -36,8 +36,11 @@ sealed class BuildFromQueryFileService : ISignalHandler<BuildFromQueryFileComman
          ISignalR signal,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory)
-         => (_config, _serviceProvider, _signal, _messages, _documentBuilderServiceFactory)
+    {
+        InstanceId = new(this);
+        (_config, _serviceProvider, _signal, _messages, _documentBuilderServiceFactory)
             = (config, serviceProvider, signal, messages, documentBuilderServiceFactory);
+    }
 
     /// <summary>
     /// Build from query file.
