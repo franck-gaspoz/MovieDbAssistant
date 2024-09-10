@@ -4,6 +4,7 @@ using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -17,7 +18,7 @@ namespace MovieDbAssistant.App.Services.Build;
 abstract class BuildServiceBase<TSignal> :
     ActionFeatureBase<TSignal>,
     ISignalHandler<TSignal>
-    where TSignal : ISignal
+    where TSignal : ActionFeatureCommandBase
 {
     /// <summary>
     /// Gets the input path.

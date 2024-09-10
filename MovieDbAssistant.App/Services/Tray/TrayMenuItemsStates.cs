@@ -13,11 +13,11 @@ sealed class TrayMenuItemsStates :
     ISignalHandler<BuildEndedEvent>
 {
     readonly TrayMenuItems _trayMenuItems;
-    readonly BuiIdInputFolderService _buildInputFolderService;
+    readonly BuiIdInputFolderUIService _buildInputFolderService;
 
     public TrayMenuItemsStates(
         TrayMenuItems trayMenuItems,
-        BuiIdInputFolderService buildInputFolderService)
+        BuiIdInputFolderUIService buildInputFolderService)
     {
         _trayMenuItems = trayMenuItems;
         _buildInputFolderService = buildInputFolderService;

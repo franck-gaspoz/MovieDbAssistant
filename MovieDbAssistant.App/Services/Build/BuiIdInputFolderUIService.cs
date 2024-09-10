@@ -16,7 +16,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// process input folder.
 /// </summary>
 [Scoped]
-sealed class BuiIdInputFolderService :
+sealed class BuiIdInputFolderUIService :
     BuildServiceBase<BuildFromInputFolderCommand>
 {
     /// <summary>
@@ -27,7 +27,7 @@ sealed class BuiIdInputFolderService :
         Directory.GetCurrentDirectory(),
         Config[Path_Input]!);
 
-    public BuiIdInputFolderService(
+    public BuiIdInputFolderUIService(
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
@@ -45,7 +45,7 @@ sealed class BuiIdInputFolderService :
     { }
 
     /// <inheritdoc/>
-    protected override void Action(BuildFromInputFolderCommand _)
+    protected override void Action()
     {
         ProcessJsons();
         ProcessLists();
@@ -59,7 +59,7 @@ sealed class BuiIdInputFolderService :
         lists.ToList()
             .ForEach(file => Signal.Send(
                 this,
-                new BuildFromQueryFileCommand(file, this)));
+                new BuildFromQueryFileCommand(file, this, false)));
     }
 
     void ProcessJsons()
@@ -68,7 +68,7 @@ sealed class BuiIdInputFolderService :
         jsons.ToList()
             .ForEach(file => Signal.Send(
                 this,
-                new BuildFromJsonFileCommand(file, this)));
+                new BuildFromJsonFileCommand(file, this, false)));
     }
 
     IEnumerable<string> GetListsFiles()

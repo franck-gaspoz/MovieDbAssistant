@@ -10,14 +10,13 @@ using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
-
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
 /// The build service.
 /// </summary>
 [Scoped]
-sealed class BuildFromClipboardService : ISignalHandler<BuildFromClipboardCommand>,
+sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>,
     IIdentifiable
 {
     /// <summary>
@@ -31,7 +30,7 @@ sealed class BuildFromClipboardService : ISignalHandler<BuildFromClipboardComman
     readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
-    public BuildFromClipboardService(
+    public BuildQueryFileUIService(
          IConfiguration config,
          IServiceProvider serviceProvider,
          ISignalR signal,
@@ -44,9 +43,14 @@ sealed class BuildFromClipboardService : ISignalHandler<BuildFromClipboardComman
     }
 
     /// <summary>
+    /// Build from query file.
+    /// </summary>
+    public void Handle(object sender, BuildFromQueryFileCommand com) => _ = com.Path;
+
+    /// <summary>
     /// Build from clipboard.
     /// </summary>
-    public void Handle(object sender, BuildFromClipboardCommand com)
+    public void BuildFromClipboard()
     {
         try
         {
@@ -58,7 +62,7 @@ sealed class BuildFromClipboardService : ISignalHandler<BuildFromClipboardComman
         }
         finally
         {
-            _signal.Send(this, new BuildEndedEvent(this, Item_Id_Build_Clipboard));
+            _signal.Send(this, new BuildEndedEvent(this, Item_Id_Build_Query));
         }
     }
 }

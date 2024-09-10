@@ -9,6 +9,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
@@ -24,10 +25,11 @@ namespace MovieDbAssistant.App.Features;
 #if DEBUG
 [DebuggerDisplay("{DbgId()}")]
 #endif
-abstract class ActionFeatureBase<TActionParam> :
+abstract class ActionFeatureBase<TCommand> :
     ISignalHandler<ActionEndedEvent>,
     ISignalHandler<ActionErroredEvent>,
     IIdentifiable
+    where TCommand : ActionFeatureCommandBase
 {
 #if DEBUG
     public string DbgId() => this.Id();
@@ -48,6 +50,7 @@ abstract class ActionFeatureBase<TActionParam> :
     protected readonly IServiceProvider ServiceProvider;
     protected readonly Settings Settings;
     protected readonly Messages Messages;
+    protected TCommand? Com;
 
     readonly string _actionOnGoingMessageKey;
     readonly bool _runInBackground;
@@ -104,25 +107,30 @@ abstract class ActionFeatureBase<TActionParam> :
     /// <summary>
     /// action
     /// </summary>
-    protected abstract void Action(TActionParam actionParam);
+    protected abstract void Action();
 
     /// <summary>
     /// run the feature in a background worker
     /// </summary>
-    protected void Run(TActionParam actionParam)
+    protected void Run(TCommand com)
     {
         if (Buzy)
         {
             Messages.Warn(Builder_Busy);
             return;
         }
+        Com = com;
         Buzy = true;
-        _backgroundWorker!.RunAction((o, e) => DoWork(actionParam));
+        _backgroundWorker!.RunAction((o, e) => DoWork());
     }
 
     void End(bool error = false)
     {
-        Tray.StopAnimInfo();
+#if TRACE
+        Debug.WriteLine(DbgId() + ": end");
+#endif
+        if (Com!.HandleUI)
+            Tray.StopAnimInfo();
         OnEnd();
         if (!error)
             OnSucessEnd();
@@ -131,39 +139,61 @@ abstract class ActionFeatureBase<TActionParam> :
 
     void Error(string error)
     {
+#if TRACE
+        Debug.WriteLine(DbgId() + ": error = " + error);
+#endif
         End(true);
-        OnErrorBeforePrompt();
-        Messages.Err(Message_Error_Unhandled, error);
+        OnErrorBeforePrompt();       
+        if (Com!.HandleUI)
+            Messages.Err(Message_Error_Unhandled, error);
         OnErrorAfterPrompt();
     }
 
-    void DoWork(TActionParam actionParam)
+    void DoWork()
     {
+#if TRACE
+        Debug.WriteLine(DbgId() + ": DoWork");
+#endif
         var error = false;
         try
         {
-            Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
+            if (Com!.HandleUI)
+                Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
 
-            Action(actionParam);
+            Action();
 
             if (!_runInBackground)
                 End();
         }
         catch (Exception ex)
         {
+#if TRACE
+            Debug.WriteLine(DbgId() + ": exception");
+#endif
             error = true;
             Error(ex.Message);
         }
         finally
         {
-            if (error || !_runInBackground)
+#if TRACE
+            Debug.WriteLine(DbgId() + ": finally?");
+#endif
+            if ((error || !_runInBackground) && Com!.HandleUI)
+            {
+#if TRACE
+                Debug.WriteLine(DbgId() + ": finally");
+#endif
                 OnFinally();
+            }
         }
     }
 
     public void Handle(object sender, ActionEndedEvent @event)
     {
         if (!_runInBackground) return;
+#if TRACE
+        Debug.WriteLine(DbgId() + ": action ended event");
+#endif
         if (MatchAction(sender))
         {
             End();
@@ -174,8 +204,11 @@ abstract class ActionFeatureBase<TActionParam> :
     public void Handle(object sender, ActionErroredEvent @event)
     {
         if (!_runInBackground) return;
+#if TRACE
+        Debug.WriteLine(DbgId() + ": error event");
+#endif        
         if (MatchAction(sender))
-        { 
+        {
             Error(@event.Error);
             OnFinally();
         }

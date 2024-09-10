@@ -16,12 +16,12 @@ namespace MovieDbAssistant.App.Services.Build;
 /// The build service.
 /// </summary>
 [Scoped]
-sealed class BuildFromJsonFileService :
+sealed class BuildJsonFileUIService :
     BuildServiceBase<BuildFromJsonFileCommand>
 {
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
-    public BuildFromJsonFileService(
+    public BuildJsonFileUIService(
          IConfiguration config,
          ISignalR signal,
          IServiceProvider serviceProvider,
@@ -43,13 +43,13 @@ sealed class BuildFromJsonFileService :
     /// Build from json file.
     /// </summary>
     /// <inheritdoc/>
-    protected override void Action(BuildFromJsonFileCommand com) =>
+    protected override void Action() =>
             //try
             //{
             _documentBuilderServiceFactory.CreateDocumentBuilderService()
                 .Build(
                     new DocumentBuilderContext(
-                        com.Path,
+                        Com!.Path,
                         Config[Path_Output]!,
                         typeof(HtmlDocumentBuilder),
                         typeof(JsonDataProvider)
