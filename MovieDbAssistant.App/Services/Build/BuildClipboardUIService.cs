@@ -58,7 +58,8 @@ sealed class BuildClipboardUIService : ISignalHandler<BuildFromClipboardCommand>
         }
         finally
         {
-            _signal.Send(this, new BuildEndedEvent(this, Item_Id_Build_Clipboard));
+            _signal.Send(this, 
+                new BuildCompletedEvent(Item_Id_Build_Clipboard,com));
         }
     }
 }

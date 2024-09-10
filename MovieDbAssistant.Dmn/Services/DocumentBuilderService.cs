@@ -39,6 +39,5 @@ public sealed class DocumentBuilderService
             (o, e) => BuildInternal());
     }
 
-    void BuildInternal() => _signal.Send(
-        this, new BuildEndedEvent(this, Item_Id_Build_Json));
+    void BuildInternal() { }
 }

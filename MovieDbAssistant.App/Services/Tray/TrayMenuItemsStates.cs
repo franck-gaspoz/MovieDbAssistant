@@ -10,7 +10,7 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// </summary>
 [Singleton]
 sealed class TrayMenuItemsStates :
-    ISignalHandler<BuildEndedEvent>
+    ISignalHandler<BuildCompletedEvent>
 {
     readonly TrayMenuItems _trayMenuItems;
     readonly BuiIdInputFolderUIService _buildInputFolderService;
@@ -23,7 +23,7 @@ sealed class TrayMenuItemsStates :
         _buildInputFolderService = buildInputFolderService;
     }
 
-    public void Handle(object sender, BuildEndedEvent @event) 
+    public void Handle(object sender, BuildCompletedEvent @event) 
         => _trayMenuItems.SetBuildItemsEnabled(
             true && !_buildInputFolderService.Buzy);
 }

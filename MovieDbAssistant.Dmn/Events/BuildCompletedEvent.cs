@@ -4,14 +4,11 @@ using MovieDbAssistant.Lib.Components.Signal;
 namespace MovieDbAssistant.Dmn.Events;
 
 /// <summary>
-/// build ended event
+/// build completed (no error) event
 /// </summary>
 /// <param name="ItemId">build item id</param>
 /// <param name="Com">command</param>
-/// <param name="Exception">exception (optional)</param>
-/// <param name="Message">message (optional)</param>
-public sealed record BuildErroredEvent(
+public sealed record BuildCompletedEvent(
     string ItemId,
-    ActionFeatureCommandBase Com,
-    Exception? Exception = null,
-    string? Message = null) : ISignal;
+    ActionFeatureCommandBase Com
+    ) : ISignal;

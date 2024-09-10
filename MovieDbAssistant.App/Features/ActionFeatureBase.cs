@@ -162,6 +162,9 @@ abstract class ActionFeatureBase<TCommand> :
 
             Action();
 
+            // TODO: handle all feature actions as if always in background
+            // action impl must handle errors and send completed / errored
+
             if (!_runInBackground)
                 End();
         }

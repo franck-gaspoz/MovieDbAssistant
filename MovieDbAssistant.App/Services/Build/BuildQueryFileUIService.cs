@@ -45,12 +45,7 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
     /// <summary>
     /// Build from query file.
     /// </summary>
-    public void Handle(object sender, BuildFromQueryFileCommand com) => _ = com.Path;
-
-    /// <summary>
-    /// Build from clipboard.
-    /// </summary>
-    public void BuildFromClipboard()
+    public void Handle(object sender, BuildFromQueryFileCommand com)
     {
         try
         {
@@ -62,7 +57,8 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
         }
         finally
         {
-            _signal.Send(this, new BuildEndedEvent(this, Item_Id_Build_Query));
+            _signal.Send(this, 
+                new BuildCompletedEvent(Item_Id_Build_Query,com));
         }
     }
 }

@@ -75,7 +75,7 @@ abstract class BuildServiceBase<TSignal> :
     /// <inheritdoc/>
     protected override void OnFinally() => Signal.Send(
         this,
-        new BuildEndedEvent(this, ItemIdBuild));
+        new BuildCompletedEvent(ItemIdBuild,Com!));
 
     /// <summary>
     /// <inheritdoc/>
@@ -85,7 +85,9 @@ abstract class BuildServiceBase<TSignal> :
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    protected override void OnErrorAfterPrompt() { }
+    protected override void OnErrorAfterPrompt() => Signal.Send(
+        this,
+        new BuildErroredEvent(ItemIdBuild,Com!));
 
     /// <summary>
     /// true if a file is disabled by convetion of its name
