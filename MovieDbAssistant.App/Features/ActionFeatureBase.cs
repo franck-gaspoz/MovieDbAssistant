@@ -170,6 +170,8 @@ abstract class ActionFeatureBase<TCommand> :
         }
         catch (Exception ex)
         {
+            // never here when action is threaded.
+            // called thread crashes: no exception here
 #if TRACE
             Debug.WriteLine(DbgId() + ": exception");
 #endif
