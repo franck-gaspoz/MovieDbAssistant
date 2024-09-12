@@ -180,6 +180,9 @@ abstract class ActionFeatureBase<TCommand> :
         }
         finally
         {
+            // when first thread goes out from here it doesn't know if subtask is still running
+            // thus the finally won't occurs (avoided by !_runInBackground)
+            // the role of the HandleUI is not certain here...
 #if TRACE
             Debug.WriteLine(DbgId() + ": finally?");
 #endif
