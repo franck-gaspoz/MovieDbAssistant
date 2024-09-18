@@ -6,11 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
-using MovieDbAssistant.Dmn.Events;
-using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
+using MovieDbAssistant.Lib.Components.Errors;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -22,18 +22,21 @@ namespace MovieDbAssistant.App.Features;
 /// <summary>
 /// action feature base
 /// </summary>
-#if DEBUG
+#if DEBUG || TRACE
 [DebuggerDisplay("{DbgId()}")]
 #endif
 abstract class ActionFeatureBase<TCommand> :
+    IActionFeature,
     ISignalHandler<ActionEndedEvent>,
-    ISignalHandler<ActionErroredEvent>,
-    IIdentifiable
+    ISignalHandler<ActionErroredEvent>
     where TCommand : ActionFeatureCommandBase
 {
-#if DEBUG
+#if DEBUG || TRACE
     public string DbgId() => this.Id();
 #endif
+
+    /// <inheritdoc/>
+    public string Id => this.Id();
 
     /// <summary>
     /// instance id
@@ -45,13 +48,16 @@ abstract class ActionFeatureBase<TCommand> :
     /// </summary>
     public bool Buzy { get; protected set; } = false;
 
+    /// <inheritdoc/>
+    public bool RunInBackground => _runInBackground;
+
     protected readonly IConfiguration Config;
     protected readonly ISignalR Signal;
     protected readonly IServiceProvider ServiceProvider;
     protected readonly Settings Settings;
     protected readonly Messages Messages;
     protected TCommand? Com;
-
+    readonly StackErrors _errors = new();
     readonly string _actionOnGoingMessageKey;
     readonly bool _runInBackground;
     readonly BackgroundWorkerWrapper? _backgroundWorker;
@@ -85,34 +91,36 @@ abstract class ActionFeatureBase<TCommand> :
     protected abstract void OnSucessEnd();
 
     /// <summary>
-    /// called on end
+    /// called on end, before onError's
     /// </summary>
     protected abstract void OnEnd();
 
     /// <summary>
-    /// called on error, before the prompt is displayed
+    /// called on error, before the prompt is displayed. triggered after 'end'
     /// </summary>
-    protected abstract void OnErrorBeforePrompt();
+    public abstract void OnErrorBeforePrompt();
 
     /// <summary>
-    /// called on error, after the prompt is displayed
+    /// called on error, after the prompt is displayed. triggered after 'end'
     /// </summary>
-    protected abstract void OnErrorAfterPrompt();
+    public abstract void OnErrorAfterPrompt();
 
     /// <summary>
-    /// called on finally
+    /// called on finally, after end , on errors's
     /// </summary>
-    protected abstract void OnFinally();
+    public abstract void OnFinally();
 
     /// <summary>
     /// action
     /// </summary>
-    protected abstract void Action();
+    protected abstract void Action(ActionContext context);
 
     /// <summary>
     /// run the feature in a background worker
     /// </summary>
-    protected void Run(TCommand com)
+    /// <param name="sender">sender</param>
+    /// <param name="com">command</param>
+    protected void Run(object sender, TCommand com)
     {
         if (Buzy)
         {
@@ -121,13 +129,19 @@ abstract class ActionFeatureBase<TCommand> :
         }
         Com = com;
         Buzy = true;
-        _backgroundWorker!.RunAction((o, e) => DoWork());
+
+        var context = ServiceProvider
+            .GetRequiredService<ActionContext>()
+            .Setup(this, [sender]);
+
+        // always a background action ?
+        _backgroundWorker!.RunAction((o, e) => DoWork(context));
     }
 
     void End(bool error = false)
     {
 #if TRACE
-        Debug.WriteLine(DbgId() + ": end");
+        Debug.WriteLine(this.IdWith("end"));
 #endif
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
@@ -137,22 +151,29 @@ abstract class ActionFeatureBase<TCommand> :
         Buzy = false;
     }
 
-    void Error(string error)
+    void LogError(ActionErroredEvent errorEvent)
+        => _errors.Push(new StackError(
+                errorEvent.Error, 
+                errorEvent.Trace));
+
+    void Error(ActionErroredEvent errorEvent)
     {
+        var message = errorEvent.ToString();
 #if TRACE
-        Debug.WriteLine(DbgId() + ": error = " + error);
+        Debug.WriteLine(this.IdWith("error = " + message));
 #endif
+        LogError(errorEvent);
         End(true);
-        OnErrorBeforePrompt();       
+        OnErrorBeforePrompt();
         if (Com!.HandleUI)
-            Messages.Err(Message_Error_Unhandled, error);
+            Messages.Err(Message_Error_Unhandled, message);
         OnErrorAfterPrompt();
     }
 
-    void DoWork()
+    void DoWork(ActionContext context)
     {
 #if TRACE
-        Debug.WriteLine(DbgId() + ": DoWork");
+        Debug.WriteLine(this.IdWith("DoWork"));
 #endif
         var error = false;
         try
@@ -160,10 +181,18 @@ abstract class ActionFeatureBase<TCommand> :
             if (Com!.HandleUI)
                 Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
 
-            Action();
+#if TRACE
+            Debug.WriteLine(this.IdWith($"action (handleUI={Com.HandleUI})"));
+#endif
 
+            Action(context);
+
+            // -----------------------------------------------------------
             // TODO: handle all feature actions as if always in background
-            // action impl must handle errors and send completed / errored
+            // action impl must handle errors and send completed / errored*
+            // NO: simply add event handlers coming from called action
+            // so improve Action() method signature
+            // -----------------------------------------------------------
 
             if (!_runInBackground)
                 End();
@@ -173,37 +202,38 @@ abstract class ActionFeatureBase<TCommand> :
             // never here when action is threaded.
             // called thread crashes: no exception here
 #if TRACE
-            Debug.WriteLine(DbgId() + ": exception");
+            System.Console.Error.WriteLine(this.IdWith("exception"));
 #endif
             error = true;
-            Error(ex.Message);
+            Error(new ActionErroredEvent(ex));
         }
         finally
         {
             // when first thread goes out from here it doesn't know if subtask is still running
             // thus the finally won't occurs (avoided by !_runInBackground)
-            // the role of the HandleUI is not certain here...
 #if TRACE
-            Debug.WriteLine(DbgId() + ": finally?");
+            Debug.WriteLine(this.IdWith("finally?"));
 #endif
-            if ((error || !_runInBackground) && Com!.HandleUI)
+            if ((error || !_runInBackground))
             {
 #if TRACE
-                Debug.WriteLine(DbgId() + ": finally");
+                Debug.WriteLine(this.IdWith("finally"));
 #endif
                 OnFinally();
             }
+            // else if !_runInBackground : event from action
         }
     }
 
     public void Handle(object sender, ActionEndedEvent @event)
     {
         if (!_runInBackground) return;
-#if TRACE
-        Debug.WriteLine(DbgId() + ": action ended event");
-#endif
-        if (MatchAction(sender))
+
+        if (MustHandle(sender))
         {
+#if TRACE
+            Debug.WriteLine(this.IdWith("action ended event"));
+#endif
             End();
             OnFinally();
         }
@@ -212,16 +242,17 @@ abstract class ActionFeatureBase<TCommand> :
     public void Handle(object sender, ActionErroredEvent @event)
     {
         if (!_runInBackground) return;
-#if TRACE
-        Debug.WriteLine(DbgId() + ": error event");
-#endif        
-        if (MatchAction(sender))
+
+        if (MustHandle(sender))
         {
-            Error(@event.Error);
+#if TRACE
+            Debug.WriteLine(this.IdWith("error event"));
+#endif  
+            Error(@event);
             OnFinally();
         }
     }
 
-    bool MatchAction(object sender)
+    bool MustHandle(object sender)
         => sender == this;
 }

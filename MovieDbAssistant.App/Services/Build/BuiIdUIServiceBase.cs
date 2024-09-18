@@ -57,7 +57,7 @@ abstract class BuildServiceBase<TSignal> :
         ItemIdBuild = itemIdBuild;
     }
 
-    public void Handle(object sender, TSignal signal) => Run(signal);
+    public void Handle(object sender, TSignal signal) => Run(sender,signal);
 
     /// <inheritdoc/>
     protected override void OnSucessEnd()
@@ -73,19 +73,19 @@ abstract class BuildServiceBase<TSignal> :
     protected override void OnEnd() { }
 
     /// <inheritdoc/>
-    protected override void OnFinally() => Signal.Send(
+    public override void OnFinally() => Signal.Send(
         this,
         new BuildCompletedEvent(ItemIdBuild,Com!));
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    protected override void OnErrorBeforePrompt() { }
+    public override void OnErrorBeforePrompt() { }
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    protected override void OnErrorAfterPrompt() => Signal.Send(
+    public override void OnErrorAfterPrompt() => Signal.Send(
         this,
         new BuildErroredEvent(ItemIdBuild,Com!));
 

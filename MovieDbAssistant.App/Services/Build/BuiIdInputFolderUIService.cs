@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -45,7 +46,7 @@ sealed class BuiIdInputFolderUIService :
     { }
 
     /// <inheritdoc/>
-    protected override void Action()
+    protected override void Action(ActionContext context)
     {
         ProcessJsons();
         ProcessLists();

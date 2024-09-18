@@ -7,18 +7,17 @@ public sealed class SharedCounter
 {
     static readonly Dictionary<Type, int> _next = [];
 
-    /// <summary>
-    /// Gets or sets the value.
-    /// </summary>
-    /// <value>An <see cref="int"/></value>
-    public int Value { get; private set; } = 0;
+    public int Value {  get; private set; }
 
     public SharedCounter(object owner)
     {
         var t = owner.GetType();
         if (!_next.TryGetValue(t, out var next))
-            _next.Add(t, 0);
-        Value = next++;
+        {
+            next = 1;
+            _next.Add(t, next);
+        }
+        Value = next-1;
         _next[t] = next;
     }
 }

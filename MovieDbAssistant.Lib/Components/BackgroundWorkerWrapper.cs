@@ -1,6 +1,11 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
+
+using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 
 using static MovieDbAssistant.Lib.Globals;
 
@@ -10,12 +15,27 @@ namespace MovieDbAssistant.Lib.Components;
 /// a background worker wrapper.
 /// <para>can be inherited</para>
 /// </summary>
-public class BackgroundWorkerWrapper
+#if DEBUG || TRACE
+[DebuggerDisplay("{DbgId()}")]
+#endif
+public class BackgroundWorkerWrapper :
+    IIdentifiable
 {
+#if DEBUG || TRACE
+    /// <summary>
+    /// Dbgs the id.
+    /// </summary>
+    /// <returns>A <see cref="string"/></returns>
+    public string DbgId() => this.Id();
+#endif
+
     /// <summary>
     /// true if already setted up
     /// </summary>
     public bool SettedUp { get; protected set; } = false;
+
+    /// <inheritdoc/>
+    public SharedCounter InstanceId { get; }
 
     IConfiguration? _config;
     readonly string _errorBackgroundWorkerWrapperNotInitializedKey;
@@ -39,8 +59,8 @@ public class BackgroundWorkerWrapper
     public BackgroundWorkerWrapper(
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
-                => _errorBackgroundWorkerWrapperNotInitializedKey
-                    = errorBackgroundWorkerWrapperNotInitializedKey;
+                => (_errorBackgroundWorkerWrapperNotInitializedKey,InstanceId)
+                    = (errorBackgroundWorkerWrapperNotInitializedKey,new(this));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
@@ -55,6 +75,7 @@ public class BackgroundWorkerWrapper
         _config = config;
         _errorBackgroundWorkerWrapperNotInitializedKey
             = errorBackgroundWorkerWrapperNotInitializedKey;
+        InstanceId = new(this);
     }
 
     /// <summary>
@@ -110,6 +131,9 @@ public class BackgroundWorkerWrapper
     /// </summary>
     public virtual void Stop()
     {
+#if DEBUG
+        Debug.WriteLine(this.IdWith("run"));
+#endif
         End = true;
         if (_backgroundWorker is null) return;
         _backgroundWorker.CancelAsync();
@@ -123,8 +147,11 @@ public class BackgroundWorkerWrapper
     /// <returns>this object</returns>
     public virtual BackgroundWorkerWrapper Run()
     {
+#if DEBUG
+        Debug.WriteLine(this.IdWith("exit"));
+#endif
         if (!SettedUp) throw new InvalidOperationException(
-            _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
+        _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
 
         if (_backgroundWorker != null && _backgroundWorker.IsBusy)
             Stop();
@@ -145,6 +172,9 @@ public class BackgroundWorkerWrapper
                 if (!End)
                     Thread.Sleep(_interval!.Value);
             }
+#if DEBUG
+            Debug.WriteLine(this.IdWith("end"));
+#endif
             _onStop?.Invoke();
         };
 

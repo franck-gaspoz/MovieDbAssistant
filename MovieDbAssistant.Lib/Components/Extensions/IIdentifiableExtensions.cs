@@ -1,5 +1,7 @@
 ﻿using MovieDbAssistant.Lib.ComponentModels;
 
+using static System.Net.Mime.MediaTypeNames;
+
 namespace MovieDbAssistant.Lib.Components.Extensions;
 
 /// <summary>
@@ -8,12 +10,22 @@ namespace MovieDbAssistant.Lib.Components.Extensions;
 public static class IIdentifiableExtensions
 {
     /// <summary>
-    /// gets an id string for the identifiable
+    /// gets an message identified by the textual object id
     /// </summary>
-    /// <typeparam name="T"/>
     /// <param name="obj">The obj.</param>
-    /// <param name="id">The id.</param>
+    /// <param name="text">The text.</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string IdWith(
+        this IIdentifiable obj,
+        string text)
+        => obj.Id() + ": " + text;
+
+    /// <summary>
+    /// gets the textual object id
+    /// </summary>
+    /// <param name="obj">The obj.</param>
     /// <returns>A <see cref="string"/></returns>
     public static string Id(this IIdentifiable obj)
         => obj.GetType().Name + " #" + obj.InstanceId.Value;
+            
 }
