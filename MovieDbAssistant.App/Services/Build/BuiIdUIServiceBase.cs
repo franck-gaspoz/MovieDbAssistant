@@ -4,6 +4,7 @@ using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -57,10 +58,15 @@ abstract class BuildServiceBase<TSignal> :
         ItemIdBuild = itemIdBuild;
     }
 
+    /// <summary>
+    /// handle the TSignal action feature command
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="signal">signal</param>
     public void Handle(object sender, TSignal signal) => Run(sender,signal);
 
     /// <inheritdoc/>
-    protected override void OnSucessEnd()
+    protected override void OnSucessEnd(ActionContext context)
     {
         if (Config.GetBool(OpenOuputWindowOnBuild))
         {
@@ -70,22 +76,14 @@ abstract class BuildServiceBase<TSignal> :
     }
 
     /// <inheritdoc/>
-    protected override void OnEnd() { }
-
-    /// <inheritdoc/>
-    public override void OnFinally() => Signal.Send(
+    public override void OnFinally(ActionContext context) => Signal.Send(
         this,
         new BuildCompletedEvent(ItemIdBuild,Com!));
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    public override void OnErrorBeforePrompt() { }
-
-    /// <summary>
-    /// <inheritdoc/>
-    /// </summary>
-    public override void OnErrorAfterPrompt() => Signal.Send(
+    protected override void OnErrorAfterPrompt(ActionContext context) => Signal.Send(
         this,
         new BuildErroredEvent(ItemIdBuild,Com!));
 

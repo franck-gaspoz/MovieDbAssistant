@@ -115,15 +115,15 @@ public sealed class ActionContext :
         HandleInternal(feature!, @event);
     }
 
-    void HandleInternal(IActionFeature feature, ActionEndedEvent signal)
+    void HandleInternal(IActionFeature feature, ActionEndedEvent @event)
     {
 #if TRACE
         Debug.WriteLine(feature.IdWith("action ended event"));
 #endif
         DispatchAction(feature =>
         {
-            //feature.End(false);
-            feature.OnFinally();
+            feature.End(@event.Context,false);
+            feature.OnFinally(@event.Context);
         });
     }
 
@@ -136,8 +136,8 @@ public sealed class ActionContext :
 #endif
         DispatchAction(feature =>
         {
-            //feature.Error(@event);
-            feature.OnFinally();
+            feature.Error(@event);
+            feature.OnFinally(@event.Context);
         });
     }
 
@@ -150,10 +150,10 @@ public sealed class ActionContext :
                 action(feature);
     }
 
-    void LogError(ActionErroredEvent errorEvent)
+    void LogError(ActionErroredEvent @event)
         => Errors.Push(new StackError(
-                errorEvent.Error,
-                errorEvent.Trace));
+            @event.GetError(),
+            @event.GetTrace()));
 
     bool MustHandle(object sender)
         => sender == Sender;

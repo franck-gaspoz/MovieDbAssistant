@@ -1,4 +1,5 @@
 ﻿using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 
 namespace MovieDbAssistant.Lib.Components.Actions;
 
@@ -20,15 +21,19 @@ public interface IActionFeature : IIdentifiable
     /// <summary>
     /// called on finally, after end , on errors's
     /// </summary>
-    public abstract void OnFinally();
+    /// <param name="context">action context</param>
+    public abstract void OnFinally(ActionContext context);
 
     /// <summary>
-    /// called on error, before the prompt is displayed. triggered after 'end'
+    /// setup feature state ended
     /// </summary>
-    public abstract void OnErrorBeforePrompt();
+    /// <param name="context">action context</param>
+    /// <param name="error">is end due to erreur (default false)</param>    
+    public abstract void End(ActionContext context,bool error = false);
 
     /// <summary>
-    /// called on error, after the prompt is displayed. triggered after 'end'
+    /// setup feature state error
     /// </summary>
-    public abstract void OnErrorAfterPrompt();
+    /// <param name="event">action errored event</param>
+    public void Error(ActionErroredEvent @event);
 }

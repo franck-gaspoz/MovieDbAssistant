@@ -15,6 +15,8 @@ using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
 
+using Windows.Devices.Display.Core;
+
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Features;
@@ -88,31 +90,37 @@ abstract class ActionFeatureBase<TCommand> :
     /// <summary>
     /// called on end if no error
     /// </summary>
-    protected abstract void OnSucessEnd();
+    /// <param name="context">action context</param>
+    protected virtual void OnSucessEnd(ActionContext context) { }
 
     /// <summary>
     /// called on end, before onError's
     /// </summary>
-    protected abstract void OnEnd();
+    /// <param name="context">action context</param>
+    protected virtual void OnEnd(ActionContext context) { }
 
     /// <summary>
     /// called on error, before the prompt is displayed. triggered after 'end'
     /// </summary>
-    public abstract void OnErrorBeforePrompt();
+    /// <param name="context">action context</param>
+    protected virtual void OnErrorBeforePrompt(ActionContext context) { }
 
     /// <summary>
     /// called on error, after the prompt is displayed. triggered after 'end'
     /// </summary>
-    public abstract void OnErrorAfterPrompt();
+    /// <param name="context">action context</param>
+    protected virtual void OnErrorAfterPrompt(ActionContext context) { }
 
     /// <summary>
     /// called on finally, after end , on errors's
     /// </summary>
-    public abstract void OnFinally();
+    /// <param name="context">action context</param>
+    public virtual void OnFinally(ActionContext context) { }
 
     /// <summary>
     /// action
     /// </summary>
+    /// <param name="context">action context</param>
     protected abstract void Action(ActionContext context);
 
     /// <summary>
@@ -130,44 +138,55 @@ abstract class ActionFeatureBase<TCommand> :
         Com = com;
         Buzy = true;
 
-        var context = ServiceProvider
+        var context = com.ActionContext ?? ServiceProvider
             .GetRequiredService<ActionContext>()
             .Setup(this, [sender]);
+
+        if (com.ActionContext != null)
+            context.Setup(
+                this, [context.Listeners, sender]
+                );
 
         // always a background action ?
         _backgroundWorker!.RunAction((o, e) => DoWork(context));
     }
 
-    void End(bool error = false)
+    /// <summary>
+    /// setup feature state ended
+    /// </summary>
+    /// <param name="context">action context</param>
+    /// <param name="error">is end due to error</param>
+    public virtual void End(
+        ActionContext context,
+        bool error = false)
     {
 #if TRACE
         Debug.WriteLine(this.IdWith("end"));
 #endif
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
-        OnEnd();
+        OnEnd(context);
         if (!error)
-            OnSucessEnd();
+            OnSucessEnd(context);
         Buzy = false;
     }
 
-    void LogError(ActionErroredEvent errorEvent)
-        => _errors.Push(new StackError(
-                errorEvent.Error, 
-                errorEvent.Trace));
-
-    void Error(ActionErroredEvent errorEvent)
+    /// <summary>
+    /// setup feature state error
+    /// </summary>
+    /// <param name="event">action errored event</param>
+    public virtual void Error(ActionErroredEvent @event)
     {
-        var message = errorEvent.ToString();
+        var message = @event.ToString();
 #if TRACE
         Debug.WriteLine(this.IdWith("error = " + message));
 #endif
-        LogError(errorEvent);
-        End(true);
-        OnErrorBeforePrompt();
+        LogError(@event);
+        End(@event.Context, true);
+        OnErrorBeforePrompt(@event.Context);
         if (Com!.HandleUI)
             Messages.Err(Message_Error_Unhandled, message);
-        OnErrorAfterPrompt();
+        OnErrorAfterPrompt(@event.Context);
     }
 
     void DoWork(ActionContext context)
@@ -195,7 +214,7 @@ abstract class ActionFeatureBase<TCommand> :
             // -----------------------------------------------------------
 
             if (!_runInBackground)
-                End();
+                End(context);
         }
         catch (Exception ex)
         {
@@ -205,7 +224,7 @@ abstract class ActionFeatureBase<TCommand> :
             System.Console.Error.WriteLine(this.IdWith("exception"));
 #endif
             error = true;
-            Error(new ActionErroredEvent(ex));
+            Error(new ActionErroredEvent(context,ex));
         }
         finally
         {
@@ -219,7 +238,7 @@ abstract class ActionFeatureBase<TCommand> :
 #if TRACE
                 Debug.WriteLine(this.IdWith("finally"));
 #endif
-                OnFinally();
+                OnFinally(context);
             }
             // else if !_runInBackground : event from action
         }
@@ -234,8 +253,8 @@ abstract class ActionFeatureBase<TCommand> :
 #if TRACE
             Debug.WriteLine(this.IdWith("action ended event"));
 #endif
-            End();
-            OnFinally();
+            End(@event.Context);
+            OnFinally(@event.Context);
         }
     }
 
@@ -249,10 +268,15 @@ abstract class ActionFeatureBase<TCommand> :
             Debug.WriteLine(this.IdWith("error event"));
 #endif  
             Error(@event);
-            OnFinally();
+            OnFinally(@event.Context);
         }
     }
 
     bool MustHandle(object sender)
         => sender == this;
+
+    void LogError(ActionErroredEvent errorEvent)
+        => _errors.Push(new StackError(
+                errorEvent.GetError(),
+                errorEvent.GetTrace()));
 }

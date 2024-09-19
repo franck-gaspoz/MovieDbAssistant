@@ -1,4 +1,5 @@
-﻿using MovieDbAssistant.Lib.Components.Actions.Commands;
+﻿using MovieDbAssistant.Lib.Components.Actions;
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 
 namespace MovieDbAssistant.App.Commands;
 
@@ -6,10 +7,10 @@ namespace MovieDbAssistant.App.Commands;
 /// The build from json file command.
 /// </summary>
 /// <param name="Path">path</param>
-/// <param name="Origin">object at origin of the command if different from the command sender, else null</param>
-/// <param name="HandleUI">if true, the command handler must handle UI interactions</param>
+/// <param name="ActionContext">action context</param>
+/// <param name="HandleUI">if true, the command handler should handle UI interactions</param>
 public sealed record BuildFromJsonFileCommand(
     string Path,
-    object? Origin = null,
+    ActionContext? ActionContext = null,
     bool HandleUI = true
-    ) : ActionFeatureCommandBase(Origin, HandleUI);
+    ) : ActionFeatureCommandBase(ActionContext, HandleUI);

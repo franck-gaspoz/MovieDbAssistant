@@ -60,7 +60,7 @@ sealed class BuiIdInputFolderUIService :
         lists.ToList()
             .ForEach(file => Signal.Send(
                 this,
-                new BuildFromQueryFileCommand(file, this, false)));
+                new BuildFromQueryFileCommand(file, null, false)));
     }
 
     void ProcessJsons()
@@ -69,7 +69,7 @@ sealed class BuiIdInputFolderUIService :
         jsons.ToList()
             .ForEach(file => Signal.Send(
                 this,
-                new BuildFromJsonFileCommand(file, this, false)));
+                new BuildFromJsonFileCommand(file, null, false)));
     }
 
     IEnumerable<string> GetListsFiles()
