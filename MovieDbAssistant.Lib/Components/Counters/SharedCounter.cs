@@ -7,7 +7,7 @@ public sealed class SharedCounter
 {
     static readonly Dictionary<Type, int> _next = [];
 
-    public int Value {  get; private set; }
+    public int Value { get; private set; }
 
     public SharedCounter(object owner)
     {
@@ -17,7 +17,7 @@ public sealed class SharedCounter
             next = 1;
             _next.Add(t, next);
         }
-        Value = next-1;
+        Value = next - 1;
         _next[t] = next;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace MovieDbAssistant.Lib.Components.Errors;
+﻿namespace MovieDbAssistant.Lib.Components.Errors;
 
 /// <summary>
 /// stackable error

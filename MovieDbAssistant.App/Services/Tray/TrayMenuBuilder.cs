@@ -18,7 +18,7 @@ sealed class TrayMenuBuilder
 {
     #region consts
 
-    const int MenuHeightAdd = -3 * 28  - 2;
+    const int MenuHeightAdd = -3 * 28 - 2;
     const int ItemWidth = 200;
     const int ItemHeight = 22;
     const int ItemContainerHeight = 24;

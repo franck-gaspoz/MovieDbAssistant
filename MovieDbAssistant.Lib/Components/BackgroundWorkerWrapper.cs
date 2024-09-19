@@ -59,8 +59,8 @@ public class BackgroundWorkerWrapper :
     public BackgroundWorkerWrapper(
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
-                => (_errorBackgroundWorkerWrapperNotInitializedKey,InstanceId)
-                    = (errorBackgroundWorkerWrapperNotInitializedKey,new(this));
+                => (_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
+                    = (errorBackgroundWorkerWrapperNotInitializedKey, new(this));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.

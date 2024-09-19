@@ -1,12 +1,9 @@
 ﻿using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
-using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Services;
 
@@ -33,19 +30,20 @@ public sealed class DocumentBuilderService
     /// build a document
     /// </summary>
     /// <param name="context">The context.</param>
-    public void Build(ActionContext actionContext,DocumentBuilderContext context)
+    public void Build(ActionContext actionContext, DocumentBuilderContext context)
     {
         _context = context;
         _backgroundWorkerWrapper.RunAction(
             (o, e) => BuildInternal(actionContext));
     }
 
-    void BuildInternal(ActionContext context) {
+    void BuildInternal(ActionContext context)
+    {
         try
         {
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
         }
         finally

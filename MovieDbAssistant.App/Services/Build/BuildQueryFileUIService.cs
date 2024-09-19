@@ -57,8 +57,8 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
         }
         finally
         {
-            _signal.Send(this, 
-                new BuildCompletedEvent(Item_Id_Build_Query,com));
+            _signal.Send(this,
+                new BuildCompletedEvent(Item_Id_Build_Query, com));
         }
     }
 }

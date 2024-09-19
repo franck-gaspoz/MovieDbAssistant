@@ -1,7 +1,4 @@
-﻿using System.Windows.Input;
-
-using MovieDbAssistant.Lib.Components.Actions.Commands;
-using MovieDbAssistant.Lib.Components.Signal;
+﻿using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Lib.Components.Actions.Events;
 
@@ -29,7 +26,7 @@ public sealed record ActionErroredEvent(
     ///  Gets the stack trace from the exception or the stored stack
     /// <para>returns empty string if no stack defined</para>
     /// </summary>
-    public string GetTrace() => Exception ?.StackTrace ?? StackTrace ?? string.Empty;
+    public string GetTrace() => Exception?.StackTrace ?? StackTrace ?? string.Empty;
 
     /// <inheritdoc/>
     public override string ToString() => GetError();

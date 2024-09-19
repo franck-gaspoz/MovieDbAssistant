@@ -63,7 +63,7 @@ abstract class BuildServiceBase<TSignal> :
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="signal">signal</param>
-    public void Handle(object sender, TSignal signal) => Run(sender,signal);
+    public void Handle(object sender, TSignal signal) => Run(sender, signal);
 
     /// <inheritdoc/>
     protected override void OnSucessEnd(ActionContext context)
@@ -78,14 +78,14 @@ abstract class BuildServiceBase<TSignal> :
     /// <inheritdoc/>
     public override void OnFinally(ActionContext context) => Signal.Send(
         this,
-        new BuildCompletedEvent(ItemIdBuild,Com!));
+        new BuildCompletedEvent(ItemIdBuild, Com!));
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
     protected override void OnErrorAfterPrompt(ActionContext context) => Signal.Send(
         this,
-        new BuildErroredEvent(ItemIdBuild,Com!));
+        new BuildErroredEvent(ItemIdBuild, Com!));
 
     /// <summary>
     /// true if a file is disabled by convetion of its name

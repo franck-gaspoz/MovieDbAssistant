@@ -15,8 +15,6 @@ using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
 
-using Windows.Devices.Display.Core;
-
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Features;
@@ -224,7 +222,7 @@ abstract class ActionFeatureBase<TCommand> :
             System.Console.Error.WriteLine(this.IdWith("exception"));
 #endif
             error = true;
-            Error(new ActionErroredEvent(context,ex));
+            Error(new ActionErroredEvent(context, ex));
         }
         finally
         {

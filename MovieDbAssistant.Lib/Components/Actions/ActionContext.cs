@@ -1,15 +1,10 @@
 ﻿using System.Diagnostics;
 
-using Microsoft.Extensions.Logging;
-
-using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Errors;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieDbAssistant.Lib.Components.Actions;
 
@@ -46,8 +41,8 @@ public sealed class ActionContext :
     /// <param name="signal">signaler</param>
     public ActionContext(
         ISignalR signal,
-        StackErrors stackErrors) 
-            => (Sender, _signal, Errors ) 
+        StackErrors stackErrors)
+            => (Sender, _signal, Errors)
                 = (this, signal, stackErrors);
 
     /// <summary>
@@ -89,7 +84,7 @@ public sealed class ActionContext :
         return true;
     }
 
-    bool HandleCheckMatch(object sender,out IActionFeature? feature)
+    bool HandleCheckMatch(object sender, out IActionFeature? feature)
     {
         feature = null;
         if (!CheckIsFeature(sender, out var _feature)) return false;
@@ -122,7 +117,7 @@ public sealed class ActionContext :
 #endif
         DispatchAction(feature =>
         {
-            feature.End(@event.Context,false);
+            feature.End(@event.Context, false);
             feature.OnFinally(@event.Context);
         });
     }
@@ -145,8 +140,8 @@ public sealed class ActionContext :
     {
         if (Sender is IActionFeature actionFeature)
             action(actionFeature);
-        foreach ( var listener in Listeners )
-            if ( listener is IActionFeature feature)
+        foreach (var listener in Listeners)
+            if (listener is IActionFeature feature)
                 action(feature);
     }
 

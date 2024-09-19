@@ -23,7 +23,7 @@ sealed class TrayMenuItemsStates :
         _buildInputFolderService = buildInputFolderService;
     }
 
-    public void Handle(object sender, BuildCompletedEvent @event) 
+    public void Handle(object sender, BuildCompletedEvent @event)
         => _trayMenuItems.SetBuildItemsEnabled(
             true && !_buildInputFolderService.Buzy);
 }
