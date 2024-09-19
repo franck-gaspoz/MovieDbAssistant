@@ -29,7 +29,7 @@ public interface IActionFeature : IIdentifiable
     /// </summary>
     /// <param name="context">action context</param>
     /// <param name="error">is end due to erreur (default false)</param>    
-    public abstract void End(ActionContext context, bool error = false);
+    public void End(ActionContext context, bool error = false);
 
     /// <summary>
     /// setup feature state error

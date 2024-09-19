@@ -7,8 +7,10 @@ namespace MovieDbAssistant.Lib.Components.Actions.Commands;
 /// </summary>
 /// <param name="ActionContext">action context</param>
 /// <param name="HandleUI">if true, the command handler must handle UI interactions</param>
+/// <param name="Key">a key than can be used to map the command, for example in a handler filter</param>
 public record class ActionFeatureCommandBase(
     ActionContext? ActionContext = null,
-    bool HandleUI = true
+    bool HandleUI = true,
+    string? Key = null
     ) : ISignal
 ;

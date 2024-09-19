@@ -10,7 +10,6 @@ using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
-using MovieDbAssistant.Lib.Components.Errors;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -26,11 +25,11 @@ namespace MovieDbAssistant.App.Features;
 [DebuggerDisplay("{DbgId()}")]
 #endif
 abstract class ActionFeatureBase<TCommand> :
-    IActionFeature,
-    ISignalHandler<ActionEndedEvent>,
-    ISignalHandler<ActionErroredEvent>
+    IActionFeature
     where TCommand : ActionFeatureCommandBase
 {
+    #region fields & properties
+
 #if DEBUG || TRACE
     public string DbgId() => this.Id();
 #endif
@@ -57,13 +56,13 @@ abstract class ActionFeatureBase<TCommand> :
     protected readonly Settings Settings;
     protected readonly Messages Messages;
     protected TCommand? Com;
-    readonly StackErrors _errors = new();
     readonly string _actionOnGoingMessageKey;
     readonly bool _runInBackground;
     readonly BackgroundWorkerWrapper? _backgroundWorker;
-
     protected TrayMenuService Tray => ServiceProvider
         .GetRequiredService<TrayMenuService>();
+
+    #endregion
 
     public ActionFeatureBase(
         IConfiguration config,
@@ -84,6 +83,8 @@ abstract class ActionFeatureBase<TCommand> :
         _runInBackground = runInBackground;
         _backgroundWorker = new(config);
     }
+
+    #region action feature prototype
 
     /// <summary>
     /// called on end if no error
@@ -110,44 +111,18 @@ abstract class ActionFeatureBase<TCommand> :
     protected virtual void OnErrorAfterPrompt(ActionContext context) { }
 
     /// <summary>
-    /// called on finally, after end , on errors's
-    /// </summary>
-    /// <param name="context">action context</param>
-    public virtual void OnFinally(ActionContext context) { }
-
-    /// <summary>
     /// action
     /// </summary>
     /// <param name="context">action context</param>
     protected abstract void Action(ActionContext context);
 
+    #region /**----- interface IActionFeature -----*/
+
     /// <summary>
-    /// run the feature in a background worker
+    /// called on finally, after end , on errors's
     /// </summary>
-    /// <param name="sender">sender</param>
-    /// <param name="com">command</param>
-    protected void Run(object sender, TCommand com)
-    {
-        if (Buzy)
-        {
-            Messages.Warn(Builder_Busy);
-            return;
-        }
-        Com = com;
-        Buzy = true;
-
-        var context = com.ActionContext ?? ServiceProvider
-            .GetRequiredService<ActionContext>()
-            .Setup(this, [sender]);
-
-        if (com.ActionContext != null)
-            context.Setup(
-                this, [context.Listeners, sender]
-                );
-
-        // always a background action ?
-        _backgroundWorker!.RunAction((o, e) => DoWork(context));
-    }
+    /// <param name="context">action context</param>
+    public virtual void OnFinally(ActionContext context) { }
 
     /// <summary>
     /// setup feature state ended
@@ -179,12 +154,43 @@ abstract class ActionFeatureBase<TCommand> :
 #if TRACE
         Debug.WriteLine(this.IdWith("error = " + message));
 #endif
-        LogError(@event);
+        @event.Context.LogError(@event);
         End(@event.Context, true);
         OnErrorBeforePrompt(@event.Context);
         if (Com!.HandleUI)
             Messages.Err(Message_Error_Unhandled, message);
         OnErrorAfterPrompt(@event.Context);
+    }
+
+    #endregion /**----  -----*/
+
+    #endregion
+
+    /// <summary>
+    /// run the feature in a background worker
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="com">command</param>
+    protected void Run(object sender, TCommand com)
+    {
+        if (Buzy)
+        {
+            Messages.Warn(Builder_Busy);
+            return;
+        }
+        Com = com;
+        Buzy = true;
+
+        var context = com.ActionContext ?? ServiceProvider
+            .GetRequiredService<ActionContext>()
+            .Setup(this, com, [sender]);
+
+        if (com.ActionContext != null)
+            context.Setup(
+                this, com, [context.Listeners, sender]);
+
+        // always a background action ?
+        _backgroundWorker!.RunAction((o, e) => DoWork(context));
     }
 
     void DoWork(ActionContext context)
@@ -241,40 +247,4 @@ abstract class ActionFeatureBase<TCommand> :
             // else if !_runInBackground : event from action
         }
     }
-
-    public void Handle(object sender, ActionEndedEvent @event)
-    {
-        if (!_runInBackground) return;
-
-        if (MustHandle(sender))
-        {
-#if TRACE
-            Debug.WriteLine(this.IdWith("action ended event"));
-#endif
-            End(@event.Context);
-            OnFinally(@event.Context);
-        }
-    }
-
-    public void Handle(object sender, ActionErroredEvent @event)
-    {
-        if (!_runInBackground) return;
-
-        if (MustHandle(sender))
-        {
-#if TRACE
-            Debug.WriteLine(this.IdWith("error event"));
-#endif  
-            Error(@event);
-            OnFinally(@event.Context);
-        }
-    }
-
-    bool MustHandle(object sender)
-        => sender == this;
-
-    void LogError(ActionErroredEvent errorEvent)
-        => _errors.Push(new StackError(
-                errorEvent.GetError(),
-                errorEvent.GetTrace()));
 }

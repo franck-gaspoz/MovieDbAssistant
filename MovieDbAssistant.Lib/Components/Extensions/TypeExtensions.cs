@@ -1,4 +1,8 @@
-﻿namespace MovieDbAssistant.Lib.Components.Extensions;
+﻿using System.Diagnostics.Metrics;
+
+using MovieDbAssistant.Lib.Components.Actions;
+
+namespace MovieDbAssistant.Lib.Components.Extensions;
 
 /// <summary>
 /// type extensions
@@ -38,4 +42,34 @@ public static class TypeExtensions
         }
         return list;
     }
+
+    /// <summary>
+    /// checks an object is a feature. if true, provides it in feature
+    /// </summary>
+    /// <param name="o">object to be checked</param>
+    /// <param name="feature">feature or null</param>
+    /// <param name="ignoreErrors">if true simply ignore errors, dot not trace them (default false)</param>
+    /// <returns>true if feature, false otherwise</returns>
+    public static bool CheckIsFeature(this object o, out IActionFeature? feature, bool ignoreErrors = true)
+    {
+        if (o is not IActionFeature _feature)
+        {
+            if (!ignoreErrors)
+                Console.Error.WriteLine($"error: sender type mismatch. expected {nameof(IActionFeature)} but got {o.GetType().Name} ");
+
+            feature = null;
+            return false;
+        }
+        feature = _feature;
+        return true;
+    }
+
+    /// <summary>
+    /// get a key for an object type and a counter
+    /// </summary>
+    /// <param name="o">object</param>
+    /// <param name="key">key value</param>
+    /// <returns>string key</returns>
+    public static string GetKey(this object o,ref int key)
+        => o.GetType().Name + "-" + key++ + "";
 }

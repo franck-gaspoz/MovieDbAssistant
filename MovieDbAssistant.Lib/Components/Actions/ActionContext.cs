@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Errors;
@@ -16,6 +17,8 @@ public sealed class ActionContext :
     ISignalHandler<ActionEndedEvent>,
     ISignalHandler<ActionErroredEvent>
 {
+    #region fields & properties
+
     readonly ISignalR _signal;
 
     /// <summary>
@@ -35,6 +38,17 @@ public sealed class ActionContext :
     /// </summary>
     public StackErrors Errors { get; init; }
 
+    ActionFeatureCommandBase? _command;
+
+    /// <summary>
+    /// handled command
+    /// </summary>
+    public ActionFeatureCommandBase Command => _command!;
+
+    #endregion
+
+    #region create & setup
+
     /// <summary>
     /// new action action action
     /// </summary>
@@ -49,13 +63,16 @@ public sealed class ActionContext :
     /// setup the action action
     /// </summary>
     /// <param name="sender">action sender</param>
+    /// <param name="command">command</param>
     /// <param name="listeners">action listeners</param>
     /// <returns></returns>
     public ActionContext Setup(
         object sender,
+        ActionFeatureCommandBase command,
         List<object> listeners
         )
     {
+        _command = command;
         Sender = sender;
         Listeners.AddRange(listeners);
         Listeners = Listeners.Distinct()
@@ -63,36 +80,9 @@ public sealed class ActionContext :
         return this;
     }
 
-    /// <summary>
-    /// checks an object is a feature. if true, provides it in feature
-    /// </summary>
-    /// <param name="o">object to be checked</param>
-    /// <param name="feature">feature or null</param>
-    /// <param name="ignoreErrors">if true simply ignore errors, dot not trace them (default false)</param>
-    /// <returns>true if feature, false otherwise</returns>
-    static bool CheckIsFeature(object o, out IActionFeature? feature, bool ignoreErrors = true)
-    {
-        if (o is not IActionFeature _feature)
-        {
-            if (!ignoreErrors)
-                Console.Error.WriteLine($"error: sender type mismatch. expected {nameof(IActionFeature)} but got {o.GetType().Name} ");
+    #endregion
 
-            feature = null;
-            return false;
-        }
-        feature = _feature;
-        return true;
-    }
-
-    bool HandleCheckMatch(object sender, out IActionFeature? feature)
-    {
-        feature = null;
-        if (!CheckIsFeature(sender, out var _feature)) return false;
-        feature = _feature;
-        if (!feature!.RunInBackground) return false;
-        if (!MustHandle(feature)) return false;
-        return true;
-    }
+    #region /**----- interface ISignalHandler -----*/
 
     /// <inheritdoc/>
     public void Handle(object sender, ActionEndedEvent signal)
@@ -109,6 +99,20 @@ public sealed class ActionContext :
             return;
         HandleInternal(feature!, @event);
     }
+
+    bool HandleCheckMatch(object sender, out IActionFeature? feature)
+    {
+        feature = null;
+        if (!sender.CheckIsFeature(out var _feature)) return false;
+        feature = _feature;
+        if (!feature!.RunInBackground) return false;
+        if (!MustHandle(feature)) return false;
+        return true;
+    }
+
+    #endregion /**----  -----*/
+
+    #region commands implementations
 
     void HandleInternal(IActionFeature feature, ActionEndedEvent @event)
     {
@@ -136,6 +140,13 @@ public sealed class ActionContext :
         });
     }
 
+    bool MustHandle(object sender)
+    => sender == Sender;
+
+    #endregion
+
+    #region operations
+
     void DispatchAction(Action<IActionFeature> action)
     {
         if (Sender is IActionFeature actionFeature)
@@ -145,11 +156,14 @@ public sealed class ActionContext :
                 action(feature);
     }
 
-    void LogError(ActionErroredEvent @event)
+    /// <summary>
+    /// logs an error in the action context
+    /// </summary>
+    /// <param name="event">error event</param>
+    public void LogError(ActionErroredEvent @event)
         => Errors.Push(new StackError(
             @event.GetError(),
             @event.GetTrace()));
 
-    bool MustHandle(object sender)
-        => sender == Sender;
+    #endregion
 }

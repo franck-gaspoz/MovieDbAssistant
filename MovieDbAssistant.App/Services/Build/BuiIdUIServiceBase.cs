@@ -16,7 +16,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// build service base
 /// </summary>
-abstract class BuildServiceBase<TSignal> :
+abstract class BuildUIServiceBase<TSignal> :
     ActionFeatureBase<TSignal>,
     ISignalHandler<TSignal>
     where TSignal : ActionFeatureCommandBase
@@ -34,7 +34,7 @@ abstract class BuildServiceBase<TSignal> :
     /// </summary>
     protected string ItemIdBuild;
 
-    public BuildServiceBase(
+    public BuildUIServiceBase(
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,

@@ -9,8 +9,10 @@ namespace MovieDbAssistant.App.Commands;
 /// <param name="Path">path</param>
 /// <param name="ActionContext">action context</param>
 /// <param name="HandleUI">if true, the command handler should handle UI interactions</param>
+/// <param name="Key">a key than can be used to map the command, for example in a handler filter</param>
 public sealed record BuildFromJsonFileCommand(
     string Path,
     ActionContext? ActionContext = null,
-    bool HandleUI = true
-    ) : ActionFeatureCommandBase(ActionContext, HandleUI);
+    bool HandleUI = true,
+    string? Key = null
+    ) : ActionFeatureCommandBase(ActionContext, HandleUI, Key);
