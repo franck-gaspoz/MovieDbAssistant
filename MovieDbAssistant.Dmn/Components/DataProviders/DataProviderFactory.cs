@@ -1,8 +1,11 @@
-﻿namespace MovieDbAssistant.Dmn.Components.DataProviders;
+﻿using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+
+namespace MovieDbAssistant.Dmn.Components.DataProviders;
 
 /// <summary>
 /// data provider factory.
 /// </summary>
+[Scoped]
 public sealed class DataProviderFactory
 {
     /// <summary>

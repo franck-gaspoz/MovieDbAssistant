@@ -2,6 +2,7 @@
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -34,17 +35,19 @@ public sealed class DocumentBuilderService
     {
         _context = context;
         _backgroundWorkerWrapper.RunAction(
-            (o, e) => BuildInternal(actionContext));
+            (o, e) => BuildInternal(actionContext, context));
     }
 
-    void BuildInternal(ActionContext context)
+    void BuildInternal(ActionContext actionContext, DocumentBuilderContext context)
     {
         try
         {
-
+            //TODO: fix sender should be caller of Build(..)
+            _signal.Send(actionContext.Sender,new ActionEndedEvent(actionContext));
         }
         catch (Exception)
         {
+            // send..
         }
         finally
         {

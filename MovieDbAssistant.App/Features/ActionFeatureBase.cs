@@ -158,7 +158,7 @@ abstract class ActionFeatureBase<TCommand> :
         End(@event.Context, true);       
         OnErrorBeforePrompt(@event.Context);
         if (Com!.HandleUI)
-            Messages.Err(Message_Error_Unhandled, message);
+            Messages.Err(Message_Error_Unhandled, '\n'+message);
         OnErrorAfterPrompt(@event.Context);
     }
 
