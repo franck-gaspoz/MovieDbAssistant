@@ -194,15 +194,17 @@ abstract class ActionFeatureBase<TCommand> :
         }
         else
             com.Setup(context);
-      
-        // always a background action ?
-        _backgroundWorker!.RunAction((o, e) => DoWork(context));
+
+        if (RunInBackground)
+            _backgroundWorker!.RunAction((o, e) => DoWork(context));
+        else
+            DoWork(context);
     }
 
     void DoWork(ActionContext context)
     {
 #if TRACE
-        Debug.WriteLine(this.IdWith("DoWork"));
+        Debug.WriteLine(this.IdWith($"DoWork: background={_runInBackground} handleUI={Com!.HandleUI}"));
 #endif
         try
         {
@@ -210,7 +212,7 @@ abstract class ActionFeatureBase<TCommand> :
                 Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
 
 #if TRACE
-            Debug.WriteLine(this.IdWith($"action (handleUI={Com.HandleUI})"));
+            Debug.WriteLine(this.IdWith($"action"));
 #endif
 
             Action(context);
