@@ -87,8 +87,9 @@ public sealed class SignalR : ISignalR
 #endif
         var sigType = signal.GetType();
         if (_instanceMap.TryGetValue(sigType, out var handlersInstances))
-        {
-            foreach (var handler in handlersInstances)
+        { 
+            var localHandlersInstances = new List<object>(handlersInstances);
+            foreach (var handler in localHandlersInstances)
             {
 #if TRACE
                 Debug.WriteLine("+-- catched by: "+handler.GetId());
@@ -99,7 +100,8 @@ public sealed class SignalR : ISignalR
 
         if (_typeMap.TryGetValue(sigType, out var handlersTypes))
         {
-            foreach (var handlerType in handlersTypes)
+            var localHandlerTypes = new List<Type>(handlersTypes);
+            foreach (var handlerType in localHandlerTypes)
             {
                 var methodInfo = handlerType.GetMethod(
                     MethodName_Handle,
