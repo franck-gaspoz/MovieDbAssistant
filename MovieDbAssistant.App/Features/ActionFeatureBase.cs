@@ -155,7 +155,7 @@ abstract class ActionFeatureBase<TCommand> :
         Debug.WriteLine(this.IdWith("error = " + message));
 #endif
         @event.Context.LogError(@event);
-        End(@event.Context, true);
+        End(@event.Context, true);       
         OnErrorBeforePrompt(@event.Context);
         if (Com!.HandleUI)
             Messages.Err(Message_Error_Unhandled, message);
@@ -181,14 +181,20 @@ abstract class ActionFeatureBase<TCommand> :
         Com = com;
         Buzy = true;
 
-        var context = com.ActionContext ?? ServiceProvider
+        var context = ServiceProvider
             .GetRequiredService<ActionContext>()
             .Setup(this, com, [sender]);
 
         if (com.ActionContext != null)
-            context.Setup(
-                this, com, [context.Listeners, sender]);
-
+        {
+            context.Merge(
+                this,
+                com.ActionContext);
+            com.ActionContext.Setup(context);
+        }
+        else
+            com.Setup(context);
+      
         // always a background action ?
         _backgroundWorker!.RunAction((o, e) => DoWork(context));
     }
@@ -198,7 +204,6 @@ abstract class ActionFeatureBase<TCommand> :
 #if TRACE
         Debug.WriteLine(this.IdWith("DoWork"));
 #endif
-        var error = false;
         try
         {
             if (Com!.HandleUI)
@@ -210,41 +215,15 @@ abstract class ActionFeatureBase<TCommand> :
 
             Action(context);
 
-            // -----------------------------------------------------------
-            // TODO: handle all feature actions as if always in background
-            // action impl must handle errors and send completed / errored*
-            // NO: simply add event handlers coming from called action
-            // so improve Action() method signature
-            // -----------------------------------------------------------
-
             if (!_runInBackground)
-                End(context);
+                Signal.Send(this,new ActionEndedEvent(context));
         }
         catch (Exception ex)
         {
-            // never here when action is threaded.
-            // called thread crashes: no exception here
 #if TRACE
             System.Console.Error.WriteLine(this.IdWith("exception"));
 #endif
-            error = true;
-            Error(new ActionErroredEvent(context, ex));
-        }
-        finally
-        {
-            // when first thread goes out from here it doesn't know if subtask is still running
-            // thus the finally won't occurs (avoided by !_runInBackground)
-#if TRACE
-            Debug.WriteLine(this.IdWith("finally?"));
-#endif
-            if ((error || !_runInBackground))
-            {
-#if TRACE
-                Debug.WriteLine(this.IdWith("finally"));
-#endif
-                OnFinally(context);
-            }
-            // else if !_runInBackground : event from action
+            Signal.Send(this,new ActionErroredEvent(context,ex));
         }
     }
 }

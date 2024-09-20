@@ -5,11 +5,13 @@ namespace MovieDbAssistant.Lib.Components.Actions.Events;
 /// <summary>
 /// action errored event
 /// </summary>
+/// <param name="feature">the feature</param>
 /// <param name="Context">action context</param>
 /// <param name="Exception">exception (optional)</param>
 /// <param name="Message">message (optional)</param>
 /// <param name="StackTrace">stack trace (optional)</param>
 public sealed record ActionErroredEvent(
+    //IActionFeature feature,
     ActionContext Context,
     Exception? Exception = null,
     string? Message = null,

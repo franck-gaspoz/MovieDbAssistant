@@ -13,4 +13,22 @@ public record class ActionFeatureCommandBase(
     bool HandleUI = true,
     string? Key = null
     ) : ISignal
-;
+{
+    /// <summary>
+    /// Gets the action context.
+    /// </summary>
+    /// <value>An <see cref="ActionContext? "/></value>
+    public ActionContext? ActionContext { get; private set; } = ActionContext;
+
+    /// <summary>
+    /// setup the context
+    /// </summary>
+    /// <param name="context">action context</param>
+    /// <returns>this object</returns>
+    public ActionFeatureCommandBase Setup(ActionContext context)
+    {
+        ActionContext = context;
+        return this;
+    }
+}
+

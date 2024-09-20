@@ -1,5 +1,8 @@
-﻿//#define DBG
+﻿#define DBG
 
+#if DBG
+using System.Diagnostics;
+#endif
 using System.Reflection;
 
 using Microsoft.Extensions.Configuration;
@@ -21,21 +24,21 @@ public static class IServiceCollectionExtensions
     /// <param name="fromTypes">from types assemblies</param>
     public static IServiceCollection AddSignalR(this IServiceCollection services, params Type[] fromTypes)
     {
-        Array.ForEach(fromTypes, x => services.AddSignalR(x.Assembly));
+        var mapActions = new List<Action<SignalR>>();
+        Array.ForEach(fromTypes, x => BuildMap(x.Assembly, mapActions));
+        Register(services, mapActions);
         return services;
     }
 
     /// <summary>
     /// add support for signal
     /// </summary>
-    /// <param name="services">services collection</param>
     /// <param name="fromType">from assembly</param>
-    public static IServiceCollection AddSignalR(
-        this IServiceCollection services,
-        Assembly fromAssembly)
+    /// <param name="fromAssembly">map actions</param>
+    static void BuildMap(
+        Assembly fromAssembly,
+        List<Action<SignalR>> mapActions)
     {
-        var mapActions = new List<Action<SignalR>>();
-
 #if DBG
         Debug.WriteLine(fromAssembly.Location.ToString());
 #endif
@@ -47,15 +50,20 @@ public static class IServiceCollectionExtensions
             foreach (var itf in itfs)
             {
                 mapActions.Add(s =>
-                    s.Map(itf.GetGenericArguments()[0], typeInfo.AsType()));
+                    s.MapType(itf.GetGenericArguments()[0], typeInfo.AsType()));
 #if DBG
                 Debug.WriteLine(itf.GetGenericArguments()[0].Name
                     + " => " + typeInfo.AsType().FullName);
 #endif
             }
         }
+    }
 
-        services.AddTransient<ISignalR>(serviceProvider =>
+    static IServiceCollection Register(
+        IServiceCollection services,
+        List<Action<SignalR>> mapActions)
+    {
+        services.AddScoped<ISignalR>(serviceProvider =>
         {
             var s = new SignalR(
                 serviceProvider.GetRequiredService<IConfiguration>(),

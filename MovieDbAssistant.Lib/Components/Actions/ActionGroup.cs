@@ -1,4 +1,5 @@
-﻿using MovieDbAssistant.Lib.Components.Actions.Commands;
+﻿using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -10,7 +11,7 @@ namespace MovieDbAssistant.Lib.Components.Actions;
 /// a group of actions
 /// </summary>
 [Transient]
-public sealed class ActionGroup : IActionFeature
+public sealed class ActionGroup : IIdentifiable
 {
     #region fields & properties
 
@@ -24,31 +25,41 @@ public sealed class ActionGroup : IActionFeature
 
     #endregion
 
-    #region /**----- interface IActionFeature -----*/
+    #region /**----- interface IIdentifiable -----*/
 
     /// <inheritdoc/>
     public string Id => this.Id();
 
     /// <inheritdoc/>
-    public bool RunInBackground => false;
-
-    /// <inheritdoc/>
     public SharedCounter InstanceId { get; }
 
-    /// <inheritdoc/>
-    public void End(ActionContext context, bool error = false)
-        => SetActionState(context, true);
+    #endregion /----- -----/
 
-    /// <inheritdoc/>
-    public void Error(ActionErroredEvent @event)
-        => SetActionState(@event.Context, true);
+    #region /----- dispatched signals handlers (ActionContext) ----*/
 
-    /// <inheritdoc/>
-    public void OnFinally(ActionContext context)
+    /// <summary>
+    /// handler an action errored event
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="event">event</param>
+    public void Handle(object sender, ActionErroredEvent @event)
     {
+        _ = sender;
+        SetActionState(@event.Context, true);
     }
 
-    #endregion /----- -----/
+    /// <summary>
+    /// handle an action ended event
+    /// </summary>
+    /// <param name="sender">sender</param>
+    /// <param name="event">event</param>
+    public void Handle(object sender, ActionEndedEvent @event)
+    {
+        _ = sender;
+        SetActionState(@event.Context, true);
+    }
+
+    #endregion
 
     #region operations
 
@@ -65,7 +76,7 @@ public sealed class ActionGroup : IActionFeature
     public void Clear() => _actionsStates.Clear();
 
     /// <summary>
-    /// add an action command instance for tracking later
+    /// add an action command instance for later tracking
     /// </summary>
     public void Add(string key, ActionFeatureCommandBase command)
         => _actionsStates.Add(
@@ -77,7 +88,7 @@ public sealed class ActionGroup : IActionFeature
     /// </summary>
     public void WaitAll()
     {
-        bool end = true;
+        bool end = false;
         while (!end)
         {
             end = true;

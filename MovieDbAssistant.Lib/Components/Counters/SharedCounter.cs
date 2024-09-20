@@ -14,10 +14,10 @@ public sealed class SharedCounter
         var t = owner.GetType();
         if (!_next.TryGetValue(t, out var next))
         {
-            next = 1;
+            next = 0;
             _next.Add(t, next);
         }
-        Value = next - 1;
-        _next[t] = next;
+        Value = next;
+        _next[t] = ++next;
     }
 }

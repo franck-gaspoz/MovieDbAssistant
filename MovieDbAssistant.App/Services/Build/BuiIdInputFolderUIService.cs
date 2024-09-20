@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -58,36 +60,61 @@ sealed class BuiIdInputFolderUIService :
     /// <inheritdoc/>
     protected override void Action(ActionContext context)
     {
-        _actionGroup.Clear();
+        try
+        {
+            _actionGroup.Clear();
 
-        ProcessJsons();
-        ProcessLists();
+            ProcessJsons(context);
+            ProcessLists(context);
 
-        _actionGroup.WaitAll();
+            _actionGroup.WaitAll();
 
-        Thread.Sleep(7000);
+            Signal.Send(this, new ActionEndedEvent(context));
+        }
+        catch (Exception ex)
+        {
+            Signal.Send(this, new ActionErroredEvent(context,ex));
+        }
     }
 
-    void ProcessLists()
+    void ProcessLists(ActionContext context)
     {
         var lists = GetListsFiles();
         lists.ToList()
             .ForEach(file => AddAction(
-                new BuildFromQueryFileCommand(file, null, false)));
+                context,
+                new BuildFromQueryFileCommand(
+                    file,
+                    NewActionContext(), 
+                    false)));
     }
 
-    void ProcessJsons()
+    void ProcessJsons(ActionContext context)
     {
         var jsons = GetJsonFiles();
         jsons.ToList()
             .ForEach(file => AddAction(
-                new BuildFromJsonFileCommand(file, null, false)));
+                context,
+                new BuildFromJsonFileCommand(
+                    file,
+                    NewActionContext(), 
+                    false)));
     }
 
-    void AddAction(ActionFeatureCommandBase command)
+    ActionContext NewActionContext()
+        => ServiceProvider
+            .GetRequiredService<ActionContext>()!;
+
+    void AddAction(
+        ActionContext context,
+        ActionFeatureCommandBase command)
     {
         var key = this.GetKey(ref _counter);
         _actionGroup.Add(key, command);
+        command.ActionContext!
+            .Setup(_actionGroup, command, [])
+            .Merge(this,context);
+        
         Signal.Send(_actionGroup, command);
     }
 

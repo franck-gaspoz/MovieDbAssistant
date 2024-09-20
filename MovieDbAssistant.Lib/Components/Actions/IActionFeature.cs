@@ -19,7 +19,7 @@ public interface IActionFeature : IIdentifiable
     public bool RunInBackground { get; }
 
     /// <summary>
-    /// called on finally, after end , on errors's
+    /// called on finally, after end with errors's or not
     /// </summary>
     /// <param name="context">action context</param>
     public abstract void OnFinally(ActionContext context);

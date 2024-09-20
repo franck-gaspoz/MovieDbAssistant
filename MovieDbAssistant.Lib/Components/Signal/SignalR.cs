@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+using System.Reflection;
 
+using Microsoft.Extensions.Configuration;
+
+using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 
 namespace MovieDbAssistant.Lib.Components.Signal;
@@ -14,7 +18,9 @@ public sealed class SignalR : ISignalR
     /// </summary>
     public SharedCounter InstanceId { get; }
 
-    readonly Dictionary<Type, List<Type>> _map = [];
+    const string MethodName_Handle = "Handle";
+    readonly Dictionary<Type, List<object>> _instanceMap = [];
+    readonly Dictionary<Type, List<Type>> _typeMap = [];
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
 
@@ -28,29 +34,93 @@ public sealed class SignalR : ISignalR
     }
 
     /// <inheritdoc/>
+    public SignalR Register<T>(object handler)
+    {
+        MapInstance(typeof(T), handler!);
+        return this;
+    }
+
+    /// <inheritdoc/>
+    public bool GetHandlerMethod(Type sigType,object handler,out MethodInfo? methodInfo)
+    {
+        methodInfo = handler.GetType()
+            .GetMethod(
+                MethodName_Handle,
+                [typeof(object), sigType]);
+
+        return methodInfo!=null;
+    }
+
+    /// <inheritdoc/>
+    public bool GetHandlerMethod<T>(object handler,out MethodInfo? methodInfo)
+        => GetHandlerMethod(typeof(T), handler, out methodInfo);
+
+    object? Invoke(Type sigType,object sender,object handler,ISignal signal)
+    {
+        GetHandlerMethod(sigType, handler, out var methodInfo);
+        return methodInfo!.Invoke(handler, [sender, signal]);
+    }
+
+    /// <inheritdoc/>
+    public object? TryInvoke(Type sigType, object sender, object handler, ISignal signal)
+    {
+        GetHandlerMethod(sigType, handler, out var methodInfo);
+        return methodInfo?.Invoke(handler, [sender, signal]);
+    }
+
+    /// <inheritdoc/>
     public void Send(object sender, ISignal signal)
     {
+#if TRACE
+        Debug.WriteLine(">> event: "
+            + sender.GetType().Name
+            + " --> "
+            + signal.GetType().Name);
+#endif
         var sigType = signal.GetType();
-        if (_map.TryGetValue(sigType, out var handlers))
+        if (_instanceMap.TryGetValue(sigType, out var handlersInstances))
         {
-            foreach (var handlerType in handlers)
+            foreach (var handler in handlersInstances)
+            {
+#if TRACE
+                Debug.WriteLine("+-- catched by: "+handler.GetType().Name);
+#endif
+                Invoke(sigType, sender, handler, signal);
+            }
+        }
+
+        if (_typeMap.TryGetValue(sigType, out var handlersTypes))
+        {
+            foreach (var handlerType in handlersTypes)
             {
                 var methodInfo = handlerType.GetMethod(
-                    "Handle",
+                    MethodName_Handle,
                     [typeof(object), sigType])!;
-
                 var target = _serviceProvider.GetService(handlerType);
                 if (target != null)
+                {
+#if TRACE
+                    Debug.WriteLine("+-- catched by: " + target.GetType().Name);
+#endif
                     methodInfo.Invoke(target, [sender, signal]);
+                }
             }
         }
     }
 
     /// <inheritdoc/>
-    public void Map(Type signal, Type handler)
+    public void MapType(Type signal, Type handler)
     {
-        if (!_map.TryGetValue(signal, out var list))
-            _map.Add(signal, list = []);
+        if (!_typeMap.TryGetValue(signal, out var list))
+            _typeMap.Add(signal, list = []);
+        if (!list.Contains(handler)) list.Add(handler);
+    }
+
+    /// <inheritdoc/>
+    public void MapInstance(Type signal, object handler)
+    {
+        if (!_instanceMap.TryGetValue(signal, out var list))
+            _instanceMap.Add(signal, list = []);
         if (!list.Contains(handler)) list.Add(handler);
     }
 }
