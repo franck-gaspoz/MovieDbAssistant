@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
+﻿using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions;
 
 namespace MovieDbAssistant.Lib.Components.Extensions;
@@ -44,6 +43,19 @@ public static class TypeExtensions
     }
 
     /// <summary>
+    /// get an id from an IIdentifiable or else the type name
+    /// </summary>
+    /// <param name="o">object</param>
+    /// <returns>text id</returns>
+    public static string GetId(this object o)
+    {
+        if (o is IIdentifiable identifiable)
+            return identifiable.Id();
+        else
+            return o.GetType().Name;
+    }
+
+    /// <summary>
     /// checks an object is a feature. if true, provides it in feature
     /// </summary>
     /// <param name="o">object to be checked</param>
@@ -70,6 +82,6 @@ public static class TypeExtensions
     /// <param name="o">object</param>
     /// <param name="key">key value</param>
     /// <returns>string key</returns>
-    public static string GetKey(this object o,ref int key)
+    public static string GetKey(this object o, ref int key)
         => o.GetType().Name + "-" + key++ + "";
 }

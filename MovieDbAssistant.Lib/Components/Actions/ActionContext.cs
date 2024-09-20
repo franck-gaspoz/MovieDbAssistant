@@ -179,6 +179,7 @@ public sealed class ActionContext :
             feature.OnFinally(@event.Context);
         });
         DispatchSignal(feature, @event);
+        Dispose();
     }
 
     void HandleInternal(IActionFeature feature, ActionErroredEvent @event)
@@ -192,6 +193,13 @@ public sealed class ActionContext :
             feature.OnFinally(@event.Context);
         });
         DispatchSignal(feature,@event);
+        Dispose();
+    }
+
+    void Dispose()
+    {
+        _signal.Unregister<ActionErroredEvent>(this);
+        _signal.Unregister<ActionEndedEvent>(this);
     }
 
     bool MustHandle(object sender, ActionContext context)

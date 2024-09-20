@@ -56,6 +56,14 @@ public interface ISignalR : IIdentifiable
     public SignalR Register<T>(object handler);
 
     /// <summary>
+    /// unregister an instance handler
+    /// </summary>
+    /// <typeparam name="T">type</typeparam>
+    /// <param name="handler">instance</param>
+    /// <returns>this object</returns>
+    public SignalR Unregister<T>(object handler);
+
+    /// <summary>
     /// send a signal to listeners
     /// </summary>
     /// <param name="sender">sender</param>

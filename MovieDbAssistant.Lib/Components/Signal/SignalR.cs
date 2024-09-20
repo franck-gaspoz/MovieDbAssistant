@@ -41,6 +41,14 @@ public sealed class SignalR : ISignalR
     }
 
     /// <inheritdoc/>
+    public SignalR Unregister<T>(object handler)
+    {
+        if (_instanceMap.TryGetValue(typeof(T), out var list))
+            list.Remove(handler);
+        return this;
+    }
+
+    /// <inheritdoc/>
     public bool GetHandlerMethod(Type sigType,object handler,out MethodInfo? methodInfo)
     {
         methodInfo = handler.GetType()
@@ -72,10 +80,10 @@ public sealed class SignalR : ISignalR
     public void Send(object sender, ISignal signal)
     {
 #if TRACE
-        Debug.WriteLine(">> event: "
-            + sender.GetType().Name
+        Debug.WriteLine(">> signal: "
+            + sender.GetId()
             + " --> "
-            + signal.GetType().Name);
+            + signal.GetId());
 #endif
         var sigType = signal.GetType();
         if (_instanceMap.TryGetValue(sigType, out var handlersInstances))
@@ -83,7 +91,7 @@ public sealed class SignalR : ISignalR
             foreach (var handler in handlersInstances)
             {
 #if TRACE
-                Debug.WriteLine("+-- catched by: "+handler.GetType().Name);
+                Debug.WriteLine("+-- catched by: "+handler.GetId());
 #endif
                 Invoke(sigType, sender, handler, signal);
             }
@@ -100,7 +108,7 @@ public sealed class SignalR : ISignalR
                 if (target != null)
                 {
 #if TRACE
-                    Debug.WriteLine("+-- catched by: " + target.GetType().Name);
+                    Debug.WriteLine("+-- catched by: " + target.GetId());
 #endif
                     methodInfo.Invoke(target, [sender, signal]);
                 }
