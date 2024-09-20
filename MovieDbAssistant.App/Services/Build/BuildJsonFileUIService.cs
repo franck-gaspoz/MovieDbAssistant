@@ -39,7 +39,18 @@ sealed class BuildJsonFileUIService :
             InputFolderProcessed,
             ProcInpFold,
             Item_Id_Build_Json)
-        => _documentBuilderServiceFactory = documentBuilderServiceFactory;
+    {
+        _documentBuilderServiceFactory = documentBuilderServiceFactory;
+        
+        OnSuccessMessageAction = context =>
+        {
+            Messages.Info(
+                Build_End_Json_Without_Errors,
+                '\n'
+                + ((BuildFromJsonFileCommand)context.Command).Path
+                );
+        };
+    }
 
     /// <summary>
     /// Build from json file.
@@ -47,6 +58,8 @@ sealed class BuildJsonFileUIService :
     /// <inheritdoc/>
     protected override void Action(ActionContext context)
     {
+        throw new InvalidOperationException("FAIL TEST");
+
         _documentBuilderServiceFactory.CreateDocumentBuilderService()
             .Build(
                 context,

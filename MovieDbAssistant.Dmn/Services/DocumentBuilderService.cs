@@ -43,7 +43,11 @@ public sealed class DocumentBuilderService
         try
         {
             //TODO: fix sender should be caller of Build(..)
-            _signal.Send(actionContext.Sender,new ActionEndedEvent(actionContext));
+            // this below to a lib part that doesn't listen to action events, but just produces them
+
+            //_signal.Send(actionContext.Sender,new ActionEndedEvent(actionContext));
+            if (actionContext.Sender is IActionFeature feature)
+                actionContext.For(feature, new ActionEndedEvent(actionContext));
         }
         catch (Exception)
         {

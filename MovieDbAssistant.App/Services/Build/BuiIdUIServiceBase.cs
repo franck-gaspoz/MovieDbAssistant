@@ -34,6 +34,9 @@ abstract class BuildUIServiceBase<TSignal> :
     /// </summary>
     protected string ItemIdBuild;
 
+    protected Action<ActionContext>? OnSuccessMessageAction;
+    protected Action<ActionContext>? OnErrorMessageAction;
+
     public BuildUIServiceBase(
         IConfiguration config,
         ISignalR signal,
@@ -43,7 +46,9 @@ abstract class BuildUIServiceBase<TSignal> :
         string actionDoneMessageKey,
         string actionOnGoingMessageKey,
         string itemIdBuild,
-        string? inputPath = null) :
+        string? inputPath = null,
+        Action<ActionContext>? onSuccessMessageAction = null,
+        Action<ActionContext>? onErrorMessageAction = null) :
             base(
                 config,
                 signal,
@@ -53,9 +58,11 @@ abstract class BuildUIServiceBase<TSignal> :
                 actionOnGoingMessageKey,
                 true)
     {
-        _actionDoneMessageKey = actionDoneMessageKey;
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
+        _actionDoneMessageKey = actionDoneMessageKey;
+        OnSuccessMessageAction = onSuccessMessageAction;
+        OnErrorMessageAction = onErrorMessageAction;
     }
 
     /// <summary>
@@ -68,24 +75,35 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <inheritdoc/>
     protected override void OnSucessEnd(ActionContext context)
     {
+        if (!context.Command.HandleUI) return;
+        
         if (Config.GetBool(OpenOuputWindowOnBuild))
         {
             Tray.ShowBalloonTip(_actionDoneMessageKey);
             Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
         }
+        OnSuccessMessageAction?.Invoke(context);        
     }
 
     /// <inheritdoc/>
-    public override void OnFinally(ActionContext context) => Signal.Send(
-        this,
-        new BuildCompletedEvent(ItemIdBuild, Com!));
+    public override void OnFinally(ActionContext context) 
+        => Signal.Send(
+            this,
+            new BuildCompletedEvent(ItemIdBuild, Com!));
 
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    protected override void OnErrorAfterPrompt(ActionContext context) => Signal.Send(
-        this,
-        new BuildErroredEvent(ItemIdBuild, Com!));
+    protected override void OnErrorAfterPrompt(ActionContext context)
+    {
+        // TODO: check if no double error if exception. maybe should concern the case end with errors (no exceptions)
+        if (context.Command.HandleUI)
+            OnErrorMessageAction?.Invoke(context);
+
+        Signal.Send(
+            this,
+            new BuildErroredEvent(ItemIdBuild, Com!));
+    }
 
     /// <summary>
     /// true if a file is disabled by convetion of its name

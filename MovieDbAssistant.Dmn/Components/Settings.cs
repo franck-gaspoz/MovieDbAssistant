@@ -217,6 +217,11 @@ public sealed class Settings
     /// </summary>
     public const string Build_End_Input_With_Errors = "Texts:BuildInputEndWithErrors";
 
+    /// <summary>
+    /// json build without errors
+    /// </summary>
+    public const string Build_End_Json_Without_Errors = "Texts:BuildJsonEndWithoutErrors";
+
     #endregion
 
     readonly IConfiguration _config;

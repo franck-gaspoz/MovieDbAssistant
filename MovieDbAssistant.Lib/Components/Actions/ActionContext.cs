@@ -143,7 +143,7 @@ public sealed class ActionContext :
     {
         if (!HandleCheckMatch(sender,signal.Context, out var feature))
             return;
-        HandleInternal( feature!, signal);
+        For( feature!, signal);
     }
 
     /// <inheritdoc/>
@@ -151,7 +151,7 @@ public sealed class ActionContext :
     {
         if (!HandleCheckMatch(sender, @event.Context, out var feature))
             return;
-        HandleInternal( feature!, @event);
+        For( feature!, @event);
     }
 
     bool HandleCheckMatch(object sender, ActionContext context, out IActionFeature? feature)
@@ -168,7 +168,12 @@ public sealed class ActionContext :
 
     #region commands implementations
 
-    void HandleInternal(IActionFeature feature, ActionEndedEvent @event)
+    /// <summary>
+    /// performs the event triggered actions for the feature
+    /// </summary>
+    /// <param name="feature">feature</param>
+    /// <param name="event">event</param>
+    public void For(IActionFeature feature, ActionEndedEvent @event)
     {
 #if TRACE
         Debug.WriteLine(feature.IdWith("action ended event"));
@@ -182,7 +187,12 @@ public sealed class ActionContext :
         Dispose();
     }
 
-    void HandleInternal(IActionFeature feature, ActionErroredEvent @event)
+    /// <summary>
+    /// performs the event triggered actions for the feature
+    /// </summary>
+    /// <param name="feature">feature</param>
+    /// <param name="event">event</param>
+    public void For(IActionFeature feature, ActionErroredEvent @event)
     {
 #if TRACE
         Debug.WriteLine(feature!.IdWith("action errored event: " + @event.ToString()));
