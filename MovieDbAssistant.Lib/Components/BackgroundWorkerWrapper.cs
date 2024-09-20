@@ -132,7 +132,7 @@ public class BackgroundWorkerWrapper :
     public virtual void Stop()
     {
 #if DEBUG
-        Debug.WriteLine(this.IdWith("run"));
+        Debug.WriteLine(this.IdWith("stop"));
 #endif
         End = true;
         if (_backgroundWorker is null) return;

@@ -136,7 +136,7 @@ public sealed class ActionContext :
 
     #endregion
 
-    #region /**----- interface ISignalHandler -----*/
+    #region /**----- signals dispatches handlers -----*/
 
     /// <inheritdoc/>
     public void Handle(object sender, ActionEndedEvent signal)

@@ -152,7 +152,7 @@ abstract class ActionFeatureBase<TCommand> :
     {
         var message = @event.ToString();
 #if TRACE
-        Debug.WriteLine(this.IdWith("error = " + message));
+        Console.Error.WriteLine(this.IdWith("error = " + message));
 #endif
         @event.Context.LogError(@event);
         End(@event.Context, true);       

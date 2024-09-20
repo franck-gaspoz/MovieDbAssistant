@@ -188,6 +188,16 @@ public sealed class Settings
     public const string Message_Error = "Texts:Error";
 
     /// <summary>
+    /// error message
+    /// </summary>
+    public const string Message_Info = "Texts:Info";
+
+    /// <summary>
+    /// error message
+    /// </summary>
+    public const string Message_Warning = "Texts:Warning";
+
+    /// <summary>
     /// unhandled error message
     /// </summary>
     public const string Message_Error_Unhandled = "Texts:ErrorUnhandled";
@@ -196,6 +206,16 @@ public sealed class Settings
     /// builder busy error
     /// </summary>
     public const string Builder_Busy = "Texts:BuilderBusy";
+
+    /// <summary>
+    /// input build ended without errors
+    /// </summary>
+    public const string Build_End_Input_Without_Errors = "Texts:BuildInputEndWithoutErrors";
+    
+    /// <summary>
+    /// input build ended with errors
+    /// </summary>
+    public const string Build_End_Input_With_Errors = "Texts:BuildInputEndWithErrors";
 
     #endregion
 

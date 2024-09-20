@@ -69,6 +69,22 @@ sealed class BuiIdInputFolderUIService :
 
             _actionGroup.WaitAll();
 
+            Tray.StopAnimInfo();
+
+            if (context.Errors.Any())
+            {
+                Messages.Warn(
+                    Build_End_Input_With_Errors,
+                    '\n' + string.Join('\n',
+                        context.Errors
+                            .ToList()
+                            .Select(x => x.Error)));
+            } 
+            else
+            {
+                Messages.Warn(Build_End_Input_With_Errors);
+            }
+
             Signal.Send(this, new ActionEndedEvent(context));
         }
         catch (Exception ex)
@@ -76,6 +92,8 @@ sealed class BuiIdInputFolderUIService :
             Signal.Send(this, new ActionErroredEvent(context,ex));
         }
     }
+
+    #region operations
 
     void ProcessLists(ActionContext context)
     {
@@ -117,6 +135,8 @@ sealed class BuiIdInputFolderUIService :
         
         Signal.Send(_actionGroup, command);
     }
+
+    #endregion
 
     IEnumerable<string> GetListsFiles()
         => EnabledFiles(Directory.GetFiles(InputPath, Config[SearchPattern_Txt]!));

@@ -18,12 +18,25 @@ sealed class Messages
     /// warning alert box
     /// </summary>
     /// <param name="key">message key</param>
-    public void Warn(string key)
+    /// <param name="text">additional text</param>
+    public void Warn(string key,string? text = null)
         => MessageBox.Show(
-            _config[key]!,
-            Caption(Message_Error),
+            _config[key]! + text ?? "",
+            Caption(Message_Warning),
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning);
+
+    /// <summary>
+    /// info alert box
+    /// </summary>
+    /// <param name="key">message key</param>
+    /// <param name="text">additional text</param>
+    public void Info(string key, string? text = null)
+        => MessageBox.Show(
+            _config[key]! + text ?? "",
+            Caption(Message_Info),
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information);
 
     /// <summary>
     /// error alert box
