@@ -58,8 +58,6 @@ sealed class BuildJsonFileUIService :
     /// <inheritdoc/>
     protected override void Action(ActionContext context)
     {
-        throw new InvalidOperationException("FAIL TEST");
-
         _documentBuilderServiceFactory.CreateDocumentBuilderService()
             .Build(
                 context,
