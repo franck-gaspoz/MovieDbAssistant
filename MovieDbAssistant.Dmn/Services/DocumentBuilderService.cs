@@ -43,13 +43,16 @@ public sealed class DocumentBuilderService
     {
         try
         {
+            throw new NotImplementedException();    //crash test
+
             // this below to a lib part that doesn't listen to action events, but just produces them
             if (actionContext.Sender is IActionFeature feature)
                 actionContext.For(feature, new ActionEndedEvent(actionContext));
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-            // send..
+            if (actionContext.Sender is IActionFeature feature)
+                actionContext.For(feature, new ActionErroredEvent(actionContext,ex));
         }
         finally
         {
