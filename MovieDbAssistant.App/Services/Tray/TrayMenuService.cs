@@ -93,12 +93,14 @@ sealed class TrayMenuService
     /// <summary>
     /// Anims the info.
     /// </summary>
+    /// <param name="caller">caller</param>
     /// <param name="action">The action.</param>
     /// <param name="interval">The interval.</param>
     /// <param name="stopOnBallonTipClosed">If true, stop on ballon tip closed.</param>
     /// <param name="autoRepeat">If true, auto repeat.</param>
     /// <param name="onStop">The on stop.</param>
     public void AnimInfo(
+        object caller,
         Action<TrayMenuService> action,
         int? interval = null,
         bool? stopOnBallonTipClosed = null,
@@ -106,6 +108,7 @@ sealed class TrayMenuService
         Action? onStop = null
         )
         => _trayBackgroundWorker.Run(
+                caller,
                 action,
                 interval,
                 stopOnBallonTipClosed,
@@ -115,16 +118,20 @@ sealed class TrayMenuService
     /// <summary>
     /// Anim working info.
     /// </summary>
+    /// <param name="caller">caller</param>
     /// <param name="info">The info.</param>
-    public void AnimWorkInfo(string info)
+    public void AnimWorkInfo(
+        object caller,
+        string info)
     {
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
         var ta = new TrayIconAnimator(_config, this, _settings)
-            .Run();
+            .Run(caller);
 
         AnimInfo(
+            caller,
             tray =>
             {
                 var msg = da.Next();

@@ -53,30 +53,59 @@ public class BackgroundWorkerWrapper :
     public bool End { get; protected set; } = false;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
+    /// name of the 
     /// </summary>
-    /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
-    public BackgroundWorkerWrapper(
-        string errorBackgroundWorkerWrapperNotInitializedKey
-            = Error_BackgroundWorkerWrapper_Not_Initialized)
-                => (_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
-                    = (errorBackgroundWorkerWrapperNotInitializedKey, new(this));
+    public string? Name { get; protected set; }
+
+    /// <summary>
+    /// owner
+    /// </summary>
+    object? _owner { get; set; } = null;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
     /// </summary>
+    /// <param name="owner">owner</param>
+    /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
+    public BackgroundWorkerWrapper(
+        object owner,
+        string errorBackgroundWorkerWrapperNotInitializedKey
+            = Error_BackgroundWorkerWrapper_Not_Initialized)
+                => (_owner,Name,_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
+                    = (owner,GetName(owner),errorBackgroundWorkerWrapperNotInitializedKey, new(this));
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
+    /// </summary>
+    /// <param name="owner">owner</param>
     /// <param name="config">The config.</param>
     /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
     public BackgroundWorkerWrapper(
+        object owner,
         IConfiguration config,
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
     {
+        Name = GetName(owner);
+        _owner = owner;
         _config = config;
         _errorBackgroundWorkerWrapperNotInitializedKey
             = errorBackgroundWorkerWrapperNotInitializedKey;
         InstanceId = new(this);
     }
+
+    static string GetName(object owner) => owner.GetType().Name;
+
+    /// <summary>
+    /// indicates for who the background worker belong
+    /// </summary>
+    /// <param name="owner">owner</param>
+    public void For(object owner)
+        => Name = GetName(owner);
+
+    /// <inheritdoc/>
+    public string GetNamePrefix()
+        => Name ?? "¤ ";
 
     /// <summary>
     /// setup the background worker
@@ -123,7 +152,7 @@ public class BackgroundWorkerWrapper :
             0,
             autoRepeat: false,
             onStop: () => Stop());
-        return Run();
+        return Run(_owner);
     }
 
     /// <summary>
@@ -145,13 +174,14 @@ public class BackgroundWorkerWrapper :
     /// run a new background worker. stop and destroy any previous one
     /// </summary>
     /// <returns>this object</returns>
-    public virtual BackgroundWorkerWrapper Run()
+    public virtual BackgroundWorkerWrapper Run(object caller)
     {
+        For(caller);
 #if DEBUG
         Debug.WriteLine(this.IdWith("exit"));
 #endif
         if (!SettedUp) throw new InvalidOperationException(
-        _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
+            _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
 
         if (_backgroundWorker != null && _backgroundWorker.IsBusy)
             Stop();

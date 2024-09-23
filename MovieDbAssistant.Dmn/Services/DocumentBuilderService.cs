@@ -14,7 +14,7 @@ namespace MovieDbAssistant.Dmn.Services;
 [Scoped]
 public sealed class DocumentBuilderService
 {
-    readonly BackgroundWorkerWrapper _backgroundWorkerWrapper = new();
+    readonly BackgroundWorkerWrapper _backgroundWorkerWrapper;
     readonly ISignalR _signal;
     readonly DataProviderFactory _dataProviderFactory;
     DocumentBuilderContext? _context;
@@ -25,6 +25,7 @@ public sealed class DocumentBuilderService
     {
         _signal = signal;
         this._dataProviderFactory = _dataProviderFactory;
+        _backgroundWorkerWrapper = new(this);
     }
 
     /// <summary>
@@ -38,14 +39,11 @@ public sealed class DocumentBuilderService
             (o, e) => BuildInternal(actionContext, context));
     }
 
-    void BuildInternal(ActionContext actionContext, DocumentBuilderContext context)
+    void BuildInternal(ActionContext actionContext, DocumentBuilderContext _)
     {
         try
         {
-            //TODO: fix sender should be caller of Build(..)
             // this below to a lib part that doesn't listen to action events, but just produces them
-
-            //_signal.Send(actionContext.Sender,new ActionEndedEvent(actionContext));
             if (actionContext.Sender is IActionFeature feature)
                 actionContext.For(feature, new ActionEndedEvent(actionContext));
         }

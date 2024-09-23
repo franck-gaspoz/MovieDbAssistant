@@ -48,7 +48,7 @@ abstract class ActionFeatureBase<TCommand> :
     public bool Buzy { get; protected set; } = false;
 
     /// <inheritdoc/>
-    public bool RunInBackground => _runInBackground;
+    public bool RunInBackground { get; protected set; } = true;
 
     protected readonly IConfiguration Config;
     protected readonly ISignalR Signal;
@@ -57,7 +57,6 @@ abstract class ActionFeatureBase<TCommand> :
     protected readonly Messages Messages;
     protected TCommand? Com;
     readonly string _actionOnGoingMessageKey;
-    readonly bool _runInBackground;
     readonly BackgroundWorkerWrapper? _backgroundWorker;
     protected TrayMenuService Tray => ServiceProvider
         .GetRequiredService<TrayMenuService>();
@@ -80,7 +79,7 @@ abstract class ActionFeatureBase<TCommand> :
         Signal = signal;
         Config = config;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
-        _runInBackground = runInBackground;
+        RunInBackground = runInBackground;
         _backgroundWorker = new(config);
     }
 
@@ -196,20 +195,22 @@ abstract class ActionFeatureBase<TCommand> :
             com.Setup(context);
 
         if (RunInBackground)
-            _backgroundWorker!.RunAction((o, e) => DoWork(context));
+            _backgroundWorker!.RunAction((o, e) => DoWork(sender,context));
         else
-            DoWork(context);
+            DoWork(sender,context);
     }
 
-    void DoWork(ActionContext context)
+    void DoWork(object sender,ActionContext context)
     {
 #if TRACE
-        Debug.WriteLine(this.IdWith($"DoWork: background={_runInBackground} handleUI={Com!.HandleUI}"));
+        Debug.WriteLine(this.IdWith($"DoWork: background={RunInBackground} handleUI={Com!.HandleUI}"));
 #endif
         try
         {
             if (Com!.HandleUI)
-                Tray.AnimWorkInfo(Config[_actionOnGoingMessageKey]!);
+                Tray.AnimWorkInfo(
+                    sender,
+                    Config[_actionOnGoingMessageKey]!);
 
 #if TRACE
             Debug.WriteLine(this.IdWith($"action"));
@@ -217,7 +218,7 @@ abstract class ActionFeatureBase<TCommand> :
 
             Action(context);
 
-            if (!_runInBackground)
+            if (!RunInBackground)
                 Signal.Send(this,new ActionEndedEvent(context));
         }
         catch (Exception ex)
@@ -228,4 +229,7 @@ abstract class ActionFeatureBase<TCommand> :
             Signal.Send(this,new ActionErroredEvent(context,ex));
         }
     }
+
+    /// <inheritdoc/>
+    public string GetNamePrefix() => string.Empty;
 }

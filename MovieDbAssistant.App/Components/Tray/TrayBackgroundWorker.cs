@@ -28,7 +28,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         TrayMenuService trayMenuService,
         int interval,
         bool stopOnBallonTipClosed = true,
-        bool autoRepeat = true)
+        bool autoRepeat = true) : base(string.Empty)
     {
         _config = config;
         _trayMenuService = trayMenuService;
@@ -38,12 +38,14 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
     }
 
     public TrayBackgroundWorker Run(
+        object caller,
         Action<TrayMenuService> action,
         int? interval = null,
         bool? stopOnBallonTipClosed = null,
         bool? autoRepeat = null,
         Action? onStop = null)
     {
+        For(caller);
         _action = action;
         if (stopOnBallonTipClosed != null)
             _stopOnBallonTipClosed = stopOnBallonTipClosed.Value;
@@ -57,7 +59,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             autoRepeat ?? _autoRepeat
             );
 
-        base.Run();
+        base.Run(caller);
         return this;
     }
 

@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -17,30 +19,30 @@ namespace MovieDbAssistant.App.Services.Build;
 /// The build service.
 /// </summary>
 [Scoped]
-sealed class BuildClipboardUIService : ISignalHandler<BuildFromClipboardCommand>,
-    IIdentifiable
+sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardCommand>
 {
-    /// <summary>
-    /// instance id
-    /// </summary>
-    public SharedCounter InstanceId { get; }
-
-    readonly IConfiguration _config;
-    readonly IServiceProvider _serviceProvider;
-    readonly ISignalR _signal;
-    readonly Messages _messages;
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildClipboardUIService(
          IConfiguration config,
-         IServiceProvider serviceProvider,
          ISignalR signal,
+         IServiceProvider serviceProvider,
+         Settings settings,
          Messages messages,
-         DocumentBuilderServiceFactory documentBuilderServiceFactory)
+         DocumentBuilderServiceFactory documentBuilderServiceFactory) :
+        base(
+            config,
+            signal,
+            serviceProvider,
+            settings,
+            messages,
+            ClipboardProcessed,
+            ProcClipboard,
+            Item_Id_Build_Clipboard,
+            runInBackground:false
+            )
     {
-        InstanceId = new(this);
-        (_config, _serviceProvider, _signal, _messages, _documentBuilderServiceFactory)
-            = (config, serviceProvider, signal, messages, documentBuilderServiceFactory);
+        _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
         /*OnSuccessMessageAction = context =>
         {
@@ -55,20 +57,8 @@ sealed class BuildClipboardUIService : ISignalHandler<BuildFromClipboardCommand>
     /// <summary>
     /// Build from clipboard.
     /// </summary>
-    public void Handle(object sender, BuildFromClipboardCommand com)
+    protected override void Action(ActionContext context)
     {
-        try
-        {
-            var query = Clipboard.GetText();
-        }
-        catch (Exception ex)
-        {
-            _messages.Err(Message_Error_Unhandled, ex.Message);
-        }
-        finally
-        {
-            _signal.Send(this,
-                new BuildCompletedEvent(Item_Id_Build_Clipboard, com));
-        }
+        var query = Clipboard.GetText();
     }
 }

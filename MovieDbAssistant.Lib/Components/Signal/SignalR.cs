@@ -73,6 +73,10 @@ public sealed class SignalR : ISignalR
     public object? TryInvoke(Type sigType, object sender, object handler, ISignal signal)
     {
         GetHandlerMethod(sigType, handler, out var methodInfo);
+#if DEBUG
+        if (methodInfo != null)
+            Debug.WriteLine(sender.GetId() + " --> internal signal: " + sigType.Name + " --> " + handler.GetId());
+#endif
         return methodInfo?.Invoke(handler, [sender, signal]);
     }
 
@@ -133,4 +137,7 @@ public sealed class SignalR : ISignalR
             _instanceMap.Add(signal, list = []);
         if (!list.Contains(handler)) list.Add(handler);
     }
+
+    /// <inheritdoc/>
+    public string GetNamePrefix() => string.Empty;
 }

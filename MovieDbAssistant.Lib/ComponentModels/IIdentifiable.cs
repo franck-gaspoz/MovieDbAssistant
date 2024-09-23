@@ -11,4 +11,9 @@ public interface IIdentifiable
     /// gets the id
     /// </summary>
     public SharedCounter InstanceId { get; }
+
+    /// <summary>
+    /// préfix
+    /// </summary>
+    public string GetNamePrefix();
 }

@@ -47,6 +47,7 @@ abstract class BuildUIServiceBase<TSignal> :
         string actionOnGoingMessageKey,
         string itemIdBuild,
         string? inputPath = null,
+        bool runInBackground = true,
         Action<ActionContext>? onSuccessMessageAction = null,
         Action<ActionContext>? onErrorMessageAction = null) :
             base(
@@ -56,7 +57,7 @@ abstract class BuildUIServiceBase<TSignal> :
                 settings,
                 messages,
                 actionOnGoingMessageKey,
-                true)
+                runInBackground)
     {
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
@@ -76,14 +77,17 @@ abstract class BuildUIServiceBase<TSignal> :
     protected override void OnSucessEnd(ActionContext context)
     {
         if (!context.Command.HandleUI) return;
-        
+
+        Tray.ShowBalloonTip(_actionDoneMessageKey);
+
         if (Config.GetBool(OpenOuputWindowOnBuild))
         {
-            Tray.ShowBalloonTip(_actionDoneMessageKey);
             Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
         }
         OnSuccessMessageAction?.Invoke(context);        
     }
+
+   // protected void 
 
     /// <inheritdoc/>
     public override void OnFinally(ActionContext context) 

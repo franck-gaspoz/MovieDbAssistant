@@ -78,6 +78,11 @@ public sealed class Settings
     public const string ProcInpFold = "Texts:ProcInpFold";
 
     /// <summary>
+    /// The proc clipbaord.
+    /// </summary>
+    public const string ProcClipboard = "Texts:ProcClipboard";
+
+    /// <summary>
     /// app icon file.
     /// </summary>
     public const string Icon_App = "Assets:Icons:Tray";
@@ -176,6 +181,11 @@ public sealed class Settings
     /// input folder processed
     /// </summary>
     public const string InputFolderProcessed = "Texts:InputFolderProcessed";
+
+    /// <summary>
+    /// clipboard processed
+    /// </summary>
+    public const string ClipboardProcessed = "Texts:ClipboardProcessed";
 
     /// <summary>
     /// auto open settings on build

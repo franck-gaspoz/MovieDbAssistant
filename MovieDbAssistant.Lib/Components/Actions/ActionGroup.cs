@@ -4,6 +4,7 @@ using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Lib.Components.Actions;
 
@@ -11,7 +12,9 @@ namespace MovieDbAssistant.Lib.Components.Actions;
 /// a group of actions
 /// </summary>
 [Transient]
-public sealed class ActionGroup : IIdentifiable
+public sealed class ActionGroup : IIdentifiable,
+    ISignalMethodHandler<ActionErroredEvent>,
+    ISignalMethodHandler<ActionEndedEvent>
 {
     #region fields & properties
 
@@ -100,6 +103,9 @@ public sealed class ActionGroup : IIdentifiable
             }
         }
     }
+
+    /// <inheritdoc/>
+    public string GetNamePrefix() => string.Empty;
 
     record class ActionItem
     {

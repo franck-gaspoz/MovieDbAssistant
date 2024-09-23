@@ -176,7 +176,8 @@ public sealed class ActionContext :
     public void For(IActionFeature feature, ActionEndedEvent @event)
     {
 #if TRACE
-        Debug.WriteLine(feature.IdWith("action ended event"));
+        Debug.WriteLine(feature.IdWith("action ended event -> "
+            + feature.Id()));
 #endif
         DispatchAction(feature =>
         {
@@ -247,6 +248,9 @@ public sealed class ActionContext :
         => Errors.Push(new StackError(
             @event.GetError(),
             @event.GetTrace()));
+
+    /// <inheritdoc/>
+    public string GetNamePrefix() => string.Empty;
 
     #endregion
 }

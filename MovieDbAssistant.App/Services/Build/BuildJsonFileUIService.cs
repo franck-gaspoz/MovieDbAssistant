@@ -36,20 +36,20 @@ sealed class BuildJsonFileUIService :
             serviceProvider,
             settings,
             messages,
-            InputFolderProcessed,
+            Build_End_Json_Without_Errors,
             ProcInpFold,
             Item_Id_Build_Json)
     {
         _documentBuilderServiceFactory = documentBuilderServiceFactory;
         
-        OnSuccessMessageAction = context =>
+        /*OnSuccessMessageAction = context =>
         {
             Messages.Info(
                 Build_End_Json_Without_Errors,
                 '\n'
                 + ((BuildFromJsonFileCommand)context.Command).Path
                 );
-        };
+        };*/
     }
 
     /// <summary>

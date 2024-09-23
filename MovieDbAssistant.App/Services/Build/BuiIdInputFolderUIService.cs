@@ -69,29 +69,36 @@ sealed class BuiIdInputFolderUIService :
 
             _actionGroup.WaitAll();
 
-            Tray.StopAnimInfo();
-
-            if (context.Errors.Any())
-            {
-                Messages.Warn(
-                    Build_End_Input_With_Errors,
-                    '\n' + string.Join('\n',
-                        context.Errors
-                            .ToList()
-                            .Select(x => x.Error)));
-            } 
-            else
-            {
-                Messages.Warn(Build_End_Input_With_Errors);
-            }
+            Tray.StopAnimInfo();            
 
             Signal.Send(this, new ActionEndedEvent(context));
         }
         catch (Exception ex)
         {
+            Tray.StopAnimInfo();
             Signal.Send(this, new ActionErroredEvent(context,ex));
         }
     }
+
+    /// <inheritdoc/>
+    protected override void OnEnd(ActionContext context) {
+        if (context.Errors.Any())
+        {
+            Messages.Warn(
+                Build_End_Input_With_Errors,
+                '\n' + string.Join('\n',
+                    context.Errors
+                        .ToList()
+                        .Select(x => x.Error)));
+        }
+    }
+
+    /// <inheritdoc/>
+    protected override void OnSucessEnd(ActionContext context) 
+    {
+        base.OnSucessEnd(context);
+        Messages.Info(Build_End_Input_Without_Errors);
+    }   
 
     #region operations
 
