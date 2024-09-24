@@ -87,8 +87,11 @@ public class BackgroundWorkerWrapper :
         object? owner = null,
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
-                => (_signal, Owner,_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
-                    = (signal, owner,errorBackgroundWorkerWrapperNotInitializedKey, new(this));
+    {
+        (_signal, Owner, _errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
+            = (signal, owner, errorBackgroundWorkerWrapperNotInitializedKey, new(this));
+        SetupDefaultErrorHandler();
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
@@ -98,11 +101,11 @@ public class BackgroundWorkerWrapper :
     /// <param name="owner">owner</param>
     /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
     public BackgroundWorkerWrapper(
-        ISignalR signal,
-        IConfiguration config,
-        object? owner = null,
-        string errorBackgroundWorkerWrapperNotInitializedKey
-            = Error_BackgroundWorkerWrapper_Not_Initialized)
+    ISignalR signal,
+    IConfiguration config,
+    object? owner = null,
+    string errorBackgroundWorkerWrapperNotInitializedKey
+        = Error_BackgroundWorkerWrapper_Not_Initialized)
     {
         Owner = owner;
         _signal = signal;
@@ -117,7 +120,7 @@ public class BackgroundWorkerWrapper :
     protected BackgroundWorkerWrapper SetupDefaultErrorHandler()
     {
         Setup(
-            onError: (o, e) =>
+            (o, e) =>
             {
                 OnError(e);
             });
