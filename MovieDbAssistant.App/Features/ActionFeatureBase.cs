@@ -80,7 +80,18 @@ abstract class ActionFeatureBase<TCommand> :
         Config = config;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
         RunInBackground = runInBackground;
-        _backgroundWorker = new(config);
+        
+        _backgroundWorker = new(
+            signal,
+            config,
+            this);
+
+        /*_backgroundWorker.Setup(
+            onError: (o, e) =>
+            {
+                Error(new ActionErroredEvent(
+                    _backgroundWorker.Context!, e));
+            });*/
     }
 
     #region action feature prototype
@@ -195,9 +206,16 @@ abstract class ActionFeatureBase<TCommand> :
             com.Setup(context);
 
         if (RunInBackground)
-            _backgroundWorker!.RunAction((o, e) => DoWork(sender,context));
+        {
+            _backgroundWorker!
+                .For(this)
+                .For(this as IActionFeature, context);
+
+            _backgroundWorker!.RunAction((o, e)
+                => DoWork(sender, context));
+        }
         else
-            DoWork(sender,context);
+            DoWork(sender, context);
     }
 
     void DoWork(object sender,ActionContext context)

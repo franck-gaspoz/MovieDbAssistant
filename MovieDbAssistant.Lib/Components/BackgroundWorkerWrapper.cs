@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.Actions;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Lib.Globals;
 
@@ -37,6 +39,7 @@ public class BackgroundWorkerWrapper :
     /// <inheritdoc/>
     public SharedCounter InstanceId { get; }
 
+    readonly ISignalR _signal;
     IConfiguration? _config;
     readonly string _errorBackgroundWorkerWrapperNotInitializedKey;
     BackgroundWorker? _backgroundWorker;
@@ -45,6 +48,7 @@ public class BackgroundWorkerWrapper :
     int? _interval;
     bool? _autoRepeat;
     Action? _onStop;
+    Action<BackgroundWorkerWrapper,Exception>? _onError;
 
     /// <summary>
     /// Gets or sets a value indicating whether the worker must ends if running, or if is ended
@@ -53,45 +57,71 @@ public class BackgroundWorkerWrapper :
     public bool End { get; protected set; } = false;
 
     /// <summary>
-    /// name of the 
+    /// name of the owner / background worker
     /// </summary>
-    public string? Name { get; protected set; }
+    public string? Name => Owner != null ? GetName(Owner) : string.Empty;
 
     /// <summary>
     /// owner
     /// </summary>
-    object? _owner { get; set; } = null;
+    public object? Owner { get; set; } = null;
+
+    /// <summary>
+    /// feature if action linked to any
+    /// </summary>
+    public IActionFeature? Feature { get; protected set; }
+
+    /// <summary>
+    /// context of current feature action
+    /// </summary>
+    public ActionContext? Context { get; protected set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
     /// </summary>
+    /// <param name="signal">signalR</param>
     /// <param name="owner">owner</param>
     /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
     public BackgroundWorkerWrapper(
-        object owner,
+        ISignalR signal,
+        object? owner = null,
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
-                => (_owner,Name,_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
-                    = (owner,GetName(owner),errorBackgroundWorkerWrapperNotInitializedKey, new(this));
+                => (_signal, Owner,_errorBackgroundWorkerWrapperNotInitializedKey, InstanceId)
+                    = (signal, owner,errorBackgroundWorkerWrapperNotInitializedKey, new(this));
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
     /// </summary>
-    /// <param name="owner">owner</param>
+    /// <param name="signal">signalR</param>
     /// <param name="config">The config.</param>
+    /// <param name="owner">owner</param>
     /// <param name="errorBackgroundWorkerWrapperNotInitializedKey">The error background worker wrapper not initialized key.</param>
     public BackgroundWorkerWrapper(
-        object owner,
+        ISignalR signal,
         IConfiguration config,
+        object? owner = null,
         string errorBackgroundWorkerWrapperNotInitializedKey
             = Error_BackgroundWorkerWrapper_Not_Initialized)
     {
-        Name = GetName(owner);
-        _owner = owner;
+        Owner = owner;
+        _signal = signal;
         _config = config;
         _errorBackgroundWorkerWrapperNotInitializedKey
             = errorBackgroundWorkerWrapperNotInitializedKey;
         InstanceId = new(this);
+
+        SetupDefaultErrorHandler();
+    }
+
+    protected BackgroundWorkerWrapper SetupDefaultErrorHandler()
+    {
+        Setup(
+            onError: (o, e) =>
+            {
+                OnError(e);
+            });
+        return this;
     }
 
     static string GetName(object owner) => owner.GetType().Name;
@@ -100,8 +130,36 @@ public class BackgroundWorkerWrapper :
     /// indicates for who the background worker belong
     /// </summary>
     /// <param name="owner">owner</param>
-    public void For(object owner)
-        => Name = GetName(owner);
+    /// <returns>this object</returns>
+    public BackgroundWorkerWrapper For(object owner)
+    {
+        Owner = owner;
+        return this;
+    }
+
+    /// <summary>
+    /// assign a feature to the background worker
+    /// </summary>
+    /// <param name="feature">feature</param>
+    /// <param name="context">context</param>
+    /// <returns>this object</returns>
+    public BackgroundWorkerWrapper For(IActionFeature? feature, ActionContext context)
+    {
+        (Feature, Context) = (feature, context);
+        return this;
+    }
+
+    /// <summary>
+    /// assign a feature to the background worker
+    /// </summary>
+    /// <param name="feature">feature</param>
+    /// <param name="context">context</param>
+    /// <returns>this object</returns>
+    public BackgroundWorkerWrapper For(object? feature,IActionFeature? actionFeature, ActionContext context)
+    {
+        (Owner,Feature, Context) = (feature,actionFeature, context);
+        return this;
+    }
 
     /// <inheritdoc/>
     public string GetNamePrefix()
@@ -123,7 +181,7 @@ public class BackgroundWorkerWrapper :
         int interval,
         Action? preDoWork = null,
         Action? onStop = null,
-        bool autoRepeat = true)
+        bool autoRepeat = false)
     {
         _onStop = onStop;
         _config = config;
@@ -132,6 +190,34 @@ public class BackgroundWorkerWrapper :
         _interval = interval;
         _autoRepeat = autoRepeat;
         SettedUp = true;
+        return this;
+    }
+
+    public BackgroundWorkerWrapper Setup(
+        Action<BackgroundWorkerWrapper, Exception>? onError = null)
+    {
+        _onError = onError;
+        return this;
+    }
+
+    /// <summary>
+    /// setup properties
+    /// </summary>
+    /// <param name="preDoWork">The pre does work.</param>
+    /// <param name="onStop">The on stop.</param>
+    /// <param name="onError">The on error.</param>
+    /// <param name="autoRepeat">If true, auto repeat.</param>
+    /// <returns>A <see cref="BackgroundWorker"/></returns>
+    public BackgroundWorkerWrapper Setup(
+        Action? preDoWork = null,
+        Action? onStop = null,
+        Action<BackgroundWorkerWrapper, Exception>? onError = null,
+        bool autoRepeat = true)
+    {
+        _preDoWork = preDoWork;
+        _onError = onError;
+        _onStop = onStop;
+        _autoRepeat = autoRepeat;
         return this;
     }
 
@@ -152,7 +238,7 @@ public class BackgroundWorkerWrapper :
             0,
             autoRepeat: false,
             onStop: () => Stop());
-        return Run(_owner);
+        return Run(Owner!);
     }
 
     /// <summary>
@@ -178,7 +264,7 @@ public class BackgroundWorkerWrapper :
     {
         For(caller);
 #if DEBUG
-        Debug.WriteLine(this.IdWith("exit"));
+        Debug.WriteLine(this.IdWith("run"));
 #endif
         if (!SettedUp) throw new InvalidOperationException(
             _config![_errorBackgroundWorkerWrapperNotInitializedKey]);
@@ -194,23 +280,37 @@ public class BackgroundWorkerWrapper :
 
         _backgroundWorker.DoWork += (o, e) =>
         {
-            End = false;
-            while (!End)
+            try
             {
-                _action!(o, e);
-                End |= e.Cancel | !_autoRepeat!.Value;
-                if (!End)
-                    Thread.Sleep(_interval!.Value);
-            }
+                End = false;
+                while (!End)
+                {
+                    _action!(o, e);
+                    End |= e.Cancel | !_autoRepeat!.Value;
+                    if (!End)
+                        Thread.Sleep(_interval!.Value);
+                }
 #if DEBUG
-            Debug.WriteLine(this.IdWith("end"));
+                Debug.WriteLine(this.IdWith("end"));
 #endif
-            _onStop?.Invoke();
+                _onStop?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                _onError?.Invoke(this,ex);
+                throw;
+            }
         };
 
         if (!_backgroundWorker.IsBusy)
             _backgroundWorker.RunWorkerAsync();
 
         return this;
+    }
+
+    protected virtual void OnError(Exception ex)
+    {
+        if (Owner != null && Context != null)
+            _signal.Send(Owner!, new ActionErroredEvent(Context!, ex));
     }
 }

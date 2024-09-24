@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
@@ -251,6 +252,16 @@ public sealed class ActionContext :
 
     /// <inheritdoc/>
     public string GetNamePrefix() => string.Empty;
+
+    /// <summary>
+    /// try catch the Sender to a feature otherwise returns a null
+    /// </summary>
+    /// <returns>feature or null</returns>
+    public bool TryGetFeature([NotNullWhen(true)]out IActionFeature? feature)
+    {
+        feature = Sender as IActionFeature;
+        return feature != null;
+    }
 
     #endregion
 }

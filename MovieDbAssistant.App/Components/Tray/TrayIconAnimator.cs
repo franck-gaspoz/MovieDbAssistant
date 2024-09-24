@@ -4,6 +4,7 @@ using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
@@ -20,11 +21,13 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     int _n = 0;
 
     public TrayIconAnimator(
+        ISignalR signal,
         IConfiguration config,
         TrayMenuService trayMenuService,
         Settings settings
-        ) : base(string.Empty)
+        ) : base(signal,string.Empty)
     {
+        For(this);
         _config = config;
         _trayMenuService = trayMenuService;
         _settings = settings;

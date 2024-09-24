@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.App.Components.Tray;
 
@@ -24,12 +25,14 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
     /// </summary>
     /// <param name="trayMenuService">The tray menu service.</param>
     public TrayBackgroundWorker(
+        ISignalR signal,
         IConfiguration config,
         TrayMenuService trayMenuService,
         int interval,
         bool stopOnBallonTipClosed = true,
-        bool autoRepeat = true) : base(string.Empty)
+        bool autoRepeat = true) : base(signal,string.Empty)
     {
+        For(this);
         _config = config;
         _trayMenuService = trayMenuService;
         _interval = interval;

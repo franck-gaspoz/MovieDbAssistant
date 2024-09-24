@@ -4,6 +4,7 @@ using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Dmn.Services;
@@ -25,7 +26,7 @@ public sealed class DocumentBuilderService
     {
         _signal = signal;
         this._dataProviderFactory = _dataProviderFactory;
-        _backgroundWorkerWrapper = new(this);
+        _backgroundWorkerWrapper = new(signal,this);
     }
 
     /// <summary>
@@ -35,24 +36,31 @@ public sealed class DocumentBuilderService
     public void Build(ActionContext actionContext, DocumentBuilderContext context)
     {
         _context = context;
-        _backgroundWorkerWrapper.RunAction(
-            (o, e) => BuildInternal(actionContext, context));
+        _backgroundWorkerWrapper
+            .For(this,null,actionContext)
+            .RunAction(
+                (o, e) => BuildInternal(actionContext, context));
     }
 
     void BuildInternal(ActionContext actionContext, DocumentBuilderContext _)
     {
+        throw new NotImplementedException();    //crash test
         try
         {
-            throw new NotImplementedException();    //crash test
-
             // this below to a lib part that doesn't listen to action events, but just produces them
-            if (actionContext.Sender is IActionFeature feature)
-                actionContext.For(feature, new ActionEndedEvent(actionContext));
+            actionContext
+                .TryGetFeature(out var feature)
+                .Then(() => actionContext.For(
+                    feature!, 
+                    new ActionEndedEvent(actionContext)));
         }
         catch (Exception ex)
         {
-            if (actionContext.Sender is IActionFeature feature)
-                actionContext.For(feature, new ActionErroredEvent(actionContext,ex));
+            actionContext
+                .TryGetFeature(out var feature)
+                .Then(() => actionContext.For(
+                    feature!, 
+                    new ActionErroredEvent(actionContext, ex)));
         }
         finally
         {
