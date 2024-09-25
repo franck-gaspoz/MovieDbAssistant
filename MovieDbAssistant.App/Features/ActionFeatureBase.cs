@@ -167,12 +167,6 @@ abstract class ActionFeatureBase<TCommand> :
         Signal.Send(this, new ActionFinalisedEvent(@event.Context));
     }
 
-    void Unsubscribe()
-    {
-        Signal.Unsubscribe(this, this, _backgroundWorker!);
-        Signal.Unsubscribe(this, this, this);
-    }
-
     #endregion /**----  -----*/
 
     #region operations
