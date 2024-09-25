@@ -57,12 +57,6 @@ public class BackgroundWorkerWrapper :
     public bool End { get; protected set; } = false;
 
     /// <summary>
-    /// name of the owner / background worker
-    /// </summary>
-    /*public string GetName() => !string.IsNullOrWhiteSpace(Owner?.ToString())
-        ? GetName(Owner) : GetType().Name;*/
-
-    /// <summary>
     /// owner
     /// </summary>
     public object? Owner { get; set; } = null;
@@ -133,33 +127,6 @@ public class BackgroundWorkerWrapper :
         Setup(o => OnStop(o));
         return this;
     }
-
-    //static string GetName(object owner) => owner.GetId();
-
-#if NO
-    /// <summary>
-    /// indicates the background worker owner
-    /// </summary>
-    /// <param name="owner">owner</param>
-    /// <returns>this object</returns>
-    public BackgroundWorkerWrapper AttachTo(object owner)
-    {
-        Owner = owner;
-        return this;
-    }
-
-    /// <summary>
-    /// assign the owner to the background worker
-    /// </summary>
-    /// <param name="owner">feature</param>
-    /// <param name="context">context</param>
-    /// <returns>this object</returns>
-    public BackgroundWorkerWrapper AttachTo(object? owner, ActionContext context)
-    {
-        (Owner, Context) = (owner, context);
-        return this;
-    }
-#endif
 
     /// <summary>
     /// setup the background worker
