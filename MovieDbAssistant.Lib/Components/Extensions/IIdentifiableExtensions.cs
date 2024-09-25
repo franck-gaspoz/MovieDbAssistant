@@ -22,12 +22,19 @@ public static class IIdentifiableExtensions
     /// gets the textual object id
     /// </summary>
     /// <param name="obj">The obj.</param>
+    /// <param name="getName">a get name func</param>
     /// <returns>A <see cref="string"/></returns>
-    public static string Id(this IIdentifiable obj)
-        => (!string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
+    public static string Id(
+        this IIdentifiable obj,
+        Func<string>? getName = null)
+    {
+        var res = (!string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
                     obj.GetNamePrefix() + ": "
-                    : "")
-            + obj.GetType().Name
-            + " #" + obj.InstanceId.Value;
-
+                    : "");
+        res +=
+            getName?.Invoke() ?? obj.GetName()
+            + " #"
+            + obj.InstanceId.Value;
+        return res;
+    }
 }

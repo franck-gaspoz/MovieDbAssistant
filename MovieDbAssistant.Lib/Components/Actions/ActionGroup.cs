@@ -110,9 +110,6 @@ public sealed class ActionGroup : IIdentifiable,
         }
     }
 
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
-
     record class ActionItem
     {
         /// <summary>

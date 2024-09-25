@@ -61,7 +61,4 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
                 new BuildCompletedEvent(Item_Id_Build_Query, com));
         }
     }
-
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
 }

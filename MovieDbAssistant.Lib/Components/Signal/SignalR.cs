@@ -194,7 +194,4 @@ public sealed class SignalR : ISignalR
             _subscribeMap.Add(publisher, list = []);
         if (!list.Contains(listener)) list.Add(listener);
     }
-
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
 }

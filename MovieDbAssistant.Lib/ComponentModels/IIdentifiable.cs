@@ -13,7 +13,13 @@ public interface IIdentifiable
     public SharedCounter InstanceId { get; }
 
     /// <summary>
-    /// préfix
+    /// name préfix (default: blank)
     /// </summary>
-    public string GetNamePrefix();
+    public virtual string GetNamePrefix() => string.Empty;
+
+    /// <summary>
+    /// name (default: type name)
+    /// </summary>
+    /// <returns>type name</returns>
+    public virtual string GetName() => GetType().Name;
 }

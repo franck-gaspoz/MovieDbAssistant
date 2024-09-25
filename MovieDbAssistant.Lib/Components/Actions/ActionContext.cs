@@ -152,8 +152,5 @@ public sealed class ActionContext :
             @event.GetError(),
             @event.GetTrace()));
 
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
-
     #endregion
 }

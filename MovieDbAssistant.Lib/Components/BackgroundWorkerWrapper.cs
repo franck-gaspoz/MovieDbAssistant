@@ -59,8 +59,8 @@ public class BackgroundWorkerWrapper :
     /// <summary>
     /// name of the owner / background worker
     /// </summary>
-    public string? Name => !string.IsNullOrWhiteSpace(Owner?.ToString())
-        ? GetName(Owner) : string.Empty;
+    /*public string GetName() => !string.IsNullOrWhiteSpace(Owner?.ToString())
+        ? GetName(Owner) : GetType().Name;*/
 
     /// <summary>
     /// owner
@@ -71,10 +71,6 @@ public class BackgroundWorkerWrapper :
     /// context of current feature action
     /// </summary>
     public ActionContext? Context { get; protected set; }
-
-    /// <inheritdoc/>
-    public string GetNamePrefix()
-        => Name ?? "¤ ";
 
     #endregion
 
@@ -138,7 +134,7 @@ public class BackgroundWorkerWrapper :
         return this;
     }
 
-    static string GetName(object owner) => owner.GetType().Name;
+    //static string GetName(object owner) => owner.GetId();
 
 #if NO
     /// <summary>
@@ -259,7 +255,7 @@ public class BackgroundWorkerWrapper :
     /// </summary>
     public virtual void Stop(object sender)
     {
-        _logger.LogDebug(this,TraceLevelPrefix + "stop");
+        _logger.LogDebug(Owner ?? this, LogPrefix() + "stop");
         lock (_backgroundWorkerLock)
         {
             End = true;
@@ -272,7 +268,7 @@ public class BackgroundWorkerWrapper :
     /// <param name="sender">The sender.</param>
     public virtual void OnStop(object sender)
     {
-        _logger.LogDebug(this,TraceLevelPrefix + "STOPPED");
+        _logger.LogDebug(Owner ?? this, LogPrefix() + "STOPPED");
         lock (_backgroundWorkerLock)
         {
             End = true;
@@ -295,7 +291,7 @@ public class BackgroundWorkerWrapper :
         )
     {
         Context = context;
-        _logger.LogDebug(this,TraceLevelPrefix + "run");
+        _logger.LogDebug(Owner ?? this, LogPrefix() + "run");
         lock (_backgroundWorkerLock)
         {
             if (_backgroundWorker != null && _backgroundWorker.IsBusy)
@@ -324,12 +320,12 @@ public class BackgroundWorkerWrapper :
                             if (!End)
                                 Thread.Sleep(_interval!.Value);
                         }
-                        _logger.LogDebug(this,TraceLevelPrefix + "end");
+                        _logger.LogDebug(Owner ?? this, LogPrefix() + "end");
                         _onStop?.Invoke(this);
                     }
                     catch (Exception ex)
                     {
-                        _logger.LogError(this,"error: " + ex.Message);
+                        _logger.LogError(Owner ?? this, "error: " + ex.Message);
                         _onError?.Invoke(this, ex);
                     }
                 };
@@ -348,10 +344,16 @@ public class BackgroundWorkerWrapper :
     /// <param name="ex">exception</param>
     public virtual void OnError(Exception ex)
     {
-        _logger.LogDebug(this,TraceLevelPrefix + "OnError");
+        _logger.LogDebug(Owner ?? this, LogPrefix() + "OnError");
         Stop(this);
         OnStop(this);
         if (Owner != null && Context != null)
             _signal.Send(Owner!, new ActionErroredEvent(Context!, ex));
     }
+
+    string LogPrefix()
+        => this.Id()
+            + " "
+            + TraceLevelPrefix
+            + ": ";
 }

@@ -48,9 +48,6 @@ abstract class ActionFeatureBase<TCommand> :
     /// </summary>
     public SharedCounter InstanceId { get; }
 
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
-
     /// <summary>
     /// true if buzy
     /// </summary>
