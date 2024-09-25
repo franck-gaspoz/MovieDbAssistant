@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
@@ -26,8 +27,10 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardComm
          IServiceProvider serviceProvider,
          Settings settings,
          Messages messages,
-         DocumentBuilderServiceFactory documentBuilderServiceFactory) :
+         DocumentBuilderServiceFactory documentBuilderServiceFactory,
+         ILogger<BuildClipboardUIService> logger) :
         base(
+            logger,
             config,
             signal,
             serviceProvider,
@@ -37,14 +40,7 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardComm
             ProcClipboard,
             Item_Id_Build_Clipboard,
             runInBackground: false
-            ) => _documentBuilderServiceFactory = documentBuilderServiceFactory;/*OnSuccessMessageAction = context =>
-        {
-            Messages.Info(
-                Build_End_Json_Without_Errors
-                + '\n'
-                + ((BuildFromJsonFileCommand)context.Command).Path
-                );
-        };*/
+            ) => _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
     /// <summary>
     /// Build from clipboard.

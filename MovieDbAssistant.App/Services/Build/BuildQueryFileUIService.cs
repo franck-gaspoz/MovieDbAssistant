@@ -40,15 +40,6 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
         InstanceId = new(this);
         (_config, _serviceProvider, _signal, _messages, _documentBuilderServiceFactory)
             = (config, serviceProvider, signal, messages, documentBuilderServiceFactory);
-
-        /*OnSuccessMessageAction = context =>
-        {
-            Messages.Info(
-                Build_End_Json_Without_Errors
-                + '\n'
-                + ((BuildFromJsonFileCommand)context.Command).Path
-                );
-        };*/
     }
 
     /// <summary>

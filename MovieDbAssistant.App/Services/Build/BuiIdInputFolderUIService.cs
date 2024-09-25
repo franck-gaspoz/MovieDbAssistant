@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
@@ -39,6 +40,7 @@ sealed class BuiIdInputFolderUIService :
     #endregion
 
     public BuiIdInputFolderUIService(
+        ILogger<BuiIdInputFolderUIService> logger,
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
@@ -46,6 +48,7 @@ sealed class BuiIdInputFolderUIService :
         Settings settings,
         Messages messages) :
         base(
+            logger,
             config,
             signal,
             serviceProvider,

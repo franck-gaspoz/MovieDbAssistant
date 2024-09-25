@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
@@ -23,6 +24,7 @@ sealed class BuildJsonFileUIService :
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
     public BuildJsonFileUIService(
+        ILogger<BuildJsonFileUIService> logger,
          IConfiguration config,
          ISignalR signal,
          IServiceProvider serviceProvider,
@@ -30,6 +32,7 @@ sealed class BuildJsonFileUIService :
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory) :
         base(
+            logger,
             config,
             signal,
             serviceProvider,

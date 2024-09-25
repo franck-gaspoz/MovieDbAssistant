@@ -56,6 +56,7 @@ abstract class ActionFeatureBase<TCommand> :
     /// <inheritdoc/>
     public bool RunInBackground { get; protected set; } = true;
 
+    readonly ILogger<ActionFeatureBase<TCommand>> _logger;
     protected readonly IConfiguration Config;
     protected readonly ISignalR Signal;
     protected readonly IServiceProvider ServiceProvider;
@@ -70,6 +71,7 @@ abstract class ActionFeatureBase<TCommand> :
     #endregion
 
     public ActionFeatureBase(
+        ILogger<ActionFeatureBase<TCommand>> logger,
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
@@ -83,6 +85,7 @@ abstract class ActionFeatureBase<TCommand> :
         Settings = settings;
         Messages = messages;
         Signal = signal;
+        _logger = logger;
         Config = config;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
         RunInBackground = runInBackground;

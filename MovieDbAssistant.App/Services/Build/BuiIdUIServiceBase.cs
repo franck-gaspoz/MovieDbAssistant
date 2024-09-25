@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
@@ -30,6 +31,7 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <value>A <see cref="string"/></value>
     public string? InputPath { get; protected set; }
 
+    readonly ILogger<BuildUIServiceBase<TSignal>> _logger;
     readonly string _actionDoneMessageKey;
 
     /// <summary>
@@ -41,6 +43,7 @@ abstract class BuildUIServiceBase<TSignal> :
     protected Action<ActionContext>? OnErrorMessageAction;
 
     public BuildUIServiceBase(
+        ILogger<BuildUIServiceBase<TSignal>> logger,
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
@@ -54,6 +57,7 @@ abstract class BuildUIServiceBase<TSignal> :
         Action<ActionContext>? onSuccessMessageAction = null,
         Action<ActionContext>? onErrorMessageAction = null) :
             base(
+                logger,
                 config,
                 signal,
                 serviceProvider,
@@ -64,6 +68,7 @@ abstract class BuildUIServiceBase<TSignal> :
     {
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
+        _logger = logger;
         _actionDoneMessageKey = actionDoneMessageKey;
         OnSuccessMessageAction = onSuccessMessageAction;
         OnErrorMessageAction = onErrorMessageAction;
