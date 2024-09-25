@@ -24,7 +24,8 @@ public interface ISignalR : IIdentifiable
     /// </summary>
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
-    void MapSubscriber(object listener, object publisher);
+    /// <param name="once">if true, map for the next handling only</param>
+    void MapSubscriber(object listener, object publisher,bool once);
 
     /// <summary>
     /// Get handler method.
@@ -76,8 +77,20 @@ public interface ISignalR : IIdentifiable
     /// <param name="caller">caller</param>
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
-    /// <returns></returns>
+    /// <returns>this object</returns>
     SignalR Subscribe(object caller, object listener, object publisher);
+
+    /// <summary>
+    /// subscribe to all signals of a publisher, unsubscribe after first handling
+    /// </summary>
+    /// <param name="caller">caller</param>
+    /// <param name="listener">listener</param>
+    /// <param name="publisher">publisher</param>
+    /// <returns>this object</returns>
+    SignalR SubscribeOnce(
+        object caller,
+        object listener,
+        object publisher);
 
     /// <summary>
     /// unsubscribe a listener of a publisher
@@ -85,8 +98,13 @@ public interface ISignalR : IIdentifiable
     /// <param name="caller">caller</param>
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
-    /// <returns></returns>
-    SignalR Unsubscribe(object caller, object listener, object publisher);
+    /// <param name="details">details (default "")</param>
+    /// <returns>this object</returns>
+    SignalR Unsubscribe(
+        object caller,
+        object listener,
+        object publisher,
+        string? details = "");
 
     /// <summary>
     /// unregister an instance handler

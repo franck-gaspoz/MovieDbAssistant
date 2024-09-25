@@ -47,9 +47,9 @@ public sealed class DocumentBuilderService
 
     void BuildInternal(ActionContext actionContext, DocumentBuilderContext _)
     {
-        //throw new NotImplementedException();    //crash test
         try
         {
+            throw new NotImplementedException();    //crash test
             _signal.Send(this, new ActionEndedEvent(actionContext));
         }
         catch (Exception ex)

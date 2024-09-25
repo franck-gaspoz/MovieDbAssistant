@@ -27,6 +27,7 @@ public sealed class SignalR : ISignalR
     readonly Dictionary<Type, List<object>> _instanceMap = [];
     readonly Dictionary<Type, List<Type>> _typeMap = [];
     readonly Dictionary<object, List<object>> _subscribeMap = [];
+    readonly Dictionary<object, List<object>> _subscribeOnce = [];
     readonly ILogger<SignalR> _logger;
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
@@ -57,17 +58,48 @@ public sealed class SignalR : ISignalR
     }
 
     /// <inheritdoc/>
-    public SignalR Subscribe(object caller, object listener, object publisher)
+    public SignalR Subscribe(
+        object caller,
+        object listener,
+        object publisher)
     {
-        _logger.LogTrace(this,TraceLogPrefix + caller.GetId() + " ### subscribe: " + listener.GetId() + " --> " + publisher.GetId());
+        _logger.LogTrace(caller,TraceLogPrefix + " subscribe: " + listener.GetId() + " --> " + publisher.GetId());
         MapSubscriber(listener, publisher);
         return this;
     }
 
-    /// <inheritdoc/>
-    public SignalR Unsubscribe(object caller, object listener, object publisher)
+    /// <summary>
+    /// subscribe to all signals of a publisher, unsubscribe after first handling
+    /// </summary>
+    /// <param name="caller">caller</param>
+    /// <param name="listener">listener</param>
+    /// <param name="publisher">publisher</param>
+    /// <returns>this object</returns>
+    public SignalR SubscribeOnce(
+        object caller,
+        object listener,
+        object publisher)
     {
-        _logger.LogTrace(this, TraceLogPrefix + caller.GetId() + " ### UNSUBSCRIBE: " + listener.GetId() + " --> " + publisher.GetId());
+        _logger.LogTrace(caller, TraceLogPrefix 
+            + $" subscribe ONCE : " 
+            + listener.GetId() 
+            + " --> " 
+            + publisher.GetId());
+        MapSubscriber(listener, publisher,true);
+        return this;
+    }
+
+    /// <inheritdoc/>
+    public SignalR Unsubscribe(
+        object caller,
+        object listener,
+        object publisher,
+        string? details = "")
+    {
+        _logger.LogTrace(caller, TraceLogPrefix 
+            + $" UNSUBSCRIBE{details}: " + listener.GetId() 
+            + " --> " 
+            + publisher.GetId());
         if (_subscribeMap.TryGetValue(publisher, out var list))
             list.Remove(listener);
         return this;
@@ -133,8 +165,16 @@ public sealed class SignalR : ISignalR
             foreach (var handler in localSubscribers)
             {
                 if (CanInvoke(sigType, handler))
-                    _logger.LogTrace(this, TraceLogPrefix2+$"({signal.GetId()}) catched by subscriber: " + handler.GetId());
-                Invoke(sigType, sender, handler, signal);
+                {
+                    _logger.LogTrace(this, TraceLogPrefix2 + $"({signal.GetId()}) catched by subscriber: " + handler.GetId());
+                    if (_subscribeOnce.TryGetValue(sender, out var once))
+                        Unsubscribe(
+                            this,
+                            handler,
+                            sender,
+                            $" (ONCE) ");
+                    Invoke(sigType, sender, handler, signal);
+                }
             }
         }
 
@@ -146,8 +186,10 @@ public sealed class SignalR : ISignalR
             foreach (var handler in localHandlersInstances)
             {
                 if (CanInvoke(sigType, handler))
+                {
                     _logger.LogTrace(this, TraceLogPrefix2 + $"({signal.GetId()}) catched by instance: " + handler.GetId());
-                Invoke(sigType, sender, handler, signal);
+                    Invoke(sigType, sender, handler, signal);
+                }
             }
         }
 
@@ -188,10 +230,13 @@ public sealed class SignalR : ISignalR
     }
 
     /// <inheritdoc/>
-    public void MapSubscriber(object listener, object publisher)
+    public void MapSubscriber(
+        object listener,
+        object publisher,
+        bool once = false)
     {
-        if (!_subscribeMap.TryGetValue(publisher, out var list))
-            _subscribeMap.Add(publisher, list = []);
-        if (!list.Contains(listener)) list.Add(listener);
+        if (once)
+            _subscribeOnce.TryAdd(publisher, listener);
+        _subscribeMap.TryAdd(publisher, listener);
     }
 }

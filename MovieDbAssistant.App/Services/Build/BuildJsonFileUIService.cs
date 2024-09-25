@@ -47,7 +47,7 @@ sealed class BuildJsonFileUIService :
     /// </summary>
     /// <inheritdoc/>
     protected override void Action(ActionContext context) => _documentBuilderServiceFactory.CreateDocumentBuilderService()
-            .AddListener(this, this, Signal)
+            .AddListenerOnce(this, this, Signal)
             .Build(
                 context,
                 new DocumentBuilderContext(
