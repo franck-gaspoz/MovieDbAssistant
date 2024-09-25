@@ -120,7 +120,7 @@ public sealed class SignalR : ISignalR
     {
         var sigType = signal.GetType();
 
-        _logger.LogTrace(this,">> signal: "
+        _logger.LogTrace(this, "⚡signal⚡: "
             + sender.GetId()
             + " --> "
             + signal.GetId());
@@ -146,7 +146,7 @@ public sealed class SignalR : ISignalR
             foreach (var handler in localHandlersInstances)
             {
                 if (CanInvoke(sigType, handler))
-                    _logger.LogTrace(TraceLogPrefix2 + $"({signal.GetId()}) catched by instance: " + handler.GetId());
+                    _logger.LogTrace(this, TraceLogPrefix2 + $"({signal.GetId()}) catched by instance: " + handler.GetId());
                 Invoke(sigType, sender, handler, signal);
             }
         }
@@ -164,7 +164,7 @@ public sealed class SignalR : ISignalR
                 var target = _serviceProvider.GetService(handlerType);
                 if (target != null)
                 {
-                    _logger.LogTrace(TraceLogPrefix2+$"({signal.GetId()}) catched by type: " + target.GetId());
+                    _logger.LogTrace(this,TraceLogPrefix2+$"({signal.GetId()}) catched by type: " + target.GetId());
                     methodInfo.Invoke(target, [sender, signal]);
                 }
             }

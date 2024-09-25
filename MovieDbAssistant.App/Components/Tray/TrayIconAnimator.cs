@@ -30,6 +30,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         Settings settings
         ) : base(logger, signal, string.Empty)
     {
+        Owner = this;
         _settings = settings;
         _trayMenuService = trayMenuService;
         _config = config;
@@ -60,4 +61,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         _trayMenuService.NotifyIcon.Icon = ico;
         if (++_n > t.Length - 1) _n = 0;
     }
+
+    protected override string LogPrefix()
+        => LogNativePrefix();
 }

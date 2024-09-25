@@ -37,7 +37,9 @@ public class BackgroundWorkerWrapper :
     /// <inheritdoc/>
     public SharedCounter InstanceId { get; }
 
-    const string TraceLevelPrefix = "----- ";
+    protected const string TraceLevelPrefix = "----- ";
+    const string Postfix_NativePrefix = "-- ";
+
     readonly ILogger _logger;
     readonly ISignalR _signal;
     IConfiguration? _config;
@@ -318,8 +320,16 @@ public class BackgroundWorkerWrapper :
             _signal.Send(Owner!, new ActionErroredEvent(Context!, ex));
     }
 
-    string LogPrefix()
+    protected virtual string LogPrefix()
         => this.Id()
+            + " "
+            + TraceLevelPrefix
+            + ": ";
+
+    protected string LogNativePrefix()
+        => Postfix_NativePrefix 
+            + nameof(BackgroundWorkerWrapper)
+            + this.InstanceIdPostfix()
             + " "
             + TraceLevelPrefix
             + ": ";

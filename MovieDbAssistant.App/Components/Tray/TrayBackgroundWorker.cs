@@ -35,6 +35,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         bool stopOnBallonTipClosed = true,
         bool autoRepeat = true) : base(logger,signal, string.Empty)
     {
+        Owner = this;
         _config = config;
         _trayMenuService = trayMenuService;
         _interval = interval;
@@ -79,4 +80,8 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             _trayMenuService.BalloonTipClosed +=
                 _trayMenuService.BallonTipCloseBackgroundWorkerHandler;
     }
+
+    protected override string LogPrefix()
+        => LogNativePrefix();
 }
+

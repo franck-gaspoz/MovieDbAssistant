@@ -31,9 +31,38 @@ public static class IIdentifiableExtensions
         var res = (!string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
                     obj.GetNamePrefix() + ": "
                     : "");
+        res += obj.ShortId(getName);
+        return res;
+    }
+
+    /// <summary>
+    /// gets the textual object short id (prefix less)
+    /// </summary>
+    /// <param name="obj">The obj.</param>
+    /// <param name="getName">a get name func</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string ShortId(
+        this IIdentifiable obj,
+        Func<string>? getName = null)
+    {
+        var res = "";
         res +=
             getName?.Invoke() ?? obj.GetName()
-            + " #"
+            + obj.InstanceIdPostfix();
+        return res;
+    }
+
+    /// <summary>
+    /// gets the textual object named instance id (prefix less)
+    /// </summary>
+    /// <param name="obj">The obj.</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string InstanceIdPostfix(
+        this IIdentifiable obj)
+    {
+        var res = "";
+        res +=
+            " #"
             + obj.InstanceId.Value;
         return res;
     }
