@@ -137,8 +137,6 @@ abstract class ActionFeatureBase<TCommand> :
             Buzy = false;
 
             Signal.Send(this, new ActionFinalisedEvent(@event.Context));
-
-            Unsubscribe();
         }
 
         Buzy = false;
