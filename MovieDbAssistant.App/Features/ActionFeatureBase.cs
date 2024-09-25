@@ -167,8 +167,6 @@ abstract class ActionFeatureBase<TCommand> :
         Signal.Send(this, new ActionAfterPromptEvent(@event.Context));
 
         Signal.Send(this, new ActionFinalisedEvent(@event.Context));
-
-        Unsubscribe();
     }
 
     void Unsubscribe()
