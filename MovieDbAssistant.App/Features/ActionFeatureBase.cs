@@ -137,6 +137,8 @@ abstract class ActionFeatureBase<TCommand> :
             Buzy = false;
 
             Signal.Send(this, new ActionFinalisedEvent(@event.Context));
+
+            Unsubscribe();
         }
 
         Buzy = false;
@@ -165,6 +167,14 @@ abstract class ActionFeatureBase<TCommand> :
         Signal.Send(this, new ActionAfterPromptEvent(@event.Context));
 
         Signal.Send(this, new ActionFinalisedEvent(@event.Context));
+
+        Unsubscribe();
+    }
+
+    void Unsubscribe()
+    {
+        Signal.Unsubscribe(this, this, _backgroundWorker!);
+        Signal.Unsubscribe(this, this, this);
     }
 
     #endregion /**----  -----*/
