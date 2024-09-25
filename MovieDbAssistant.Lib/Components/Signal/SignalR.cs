@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Logger;
 
 namespace MovieDbAssistant.Lib.Components.Signal;
 
@@ -21,6 +22,7 @@ public sealed class SignalR : ISignalR
 
     const string MethodName_Handle = "Handle";
     const string TraceLogPrefix = "''''' ";
+    const string TraceLogPrefix2 = "¤¤¤ ";
 
     readonly Dictionary<Type, List<object>> _instanceMap = [];
     readonly Dictionary<Type, List<Type>> _typeMap = [];
@@ -57,9 +59,7 @@ public sealed class SignalR : ISignalR
     /// <inheritdoc/>
     public SignalR Subscribe(object caller, object listener, object publisher)
     {
-#if DEBUG
-        Debug.WriteLine(TraceLogPrefix + caller.GetId() + " ### subscribe: " + listener.GetId() + " --> " + publisher.GetId());
-#endif
+        _logger.LogTrace(this,TraceLogPrefix + caller.GetId() + " ### subscribe: " + listener.GetId() + " --> " + publisher.GetId());
         MapSubscriber(listener, publisher);
         return this;
     }
@@ -67,9 +67,7 @@ public sealed class SignalR : ISignalR
     /// <inheritdoc/>
     public SignalR Unsubscribe(object caller, object listener, object publisher)
     {
-#if DEBUG
-        Debug.WriteLine(TraceLogPrefix + caller.GetId() + " ### UNSUBSCRIBE: " + listener.GetId() + " --> " + publisher.GetId());
-#endif
+        _logger.LogTrace(this, TraceLogPrefix + caller.GetId() + " ### UNSUBSCRIBE: " + listener.GetId() + " --> " + publisher.GetId());
         if (_subscribeMap.TryGetValue(publisher, out var list))
             list.Remove(listener);
         return this;
@@ -112,10 +110,8 @@ public sealed class SignalR : ISignalR
     public object? TryInvoke(Type sigType, object sender, object handler, ISignal signal)
     {
         GetHandlerMethod(sigType, handler, out var methodInfo);
-#if DEBUG
         if (methodInfo != null)
-            Debug.WriteLine(sender.GetId() + " --> internal signal: " + sigType.Name + " --> " + handler.GetId());
-#endif
+            _logger.LogDebug(this,sender.GetId() + " --> internal signal: " + sigType.Name + " --> " + handler.GetId());
         return methodInfo?.Invoke(handler, [sender, signal]);
     }
 
@@ -124,12 +120,11 @@ public sealed class SignalR : ISignalR
     {
         var sigType = signal.GetType();
 
-#if TRACE
-        Debug.WriteLine(">> signal: "
+        _logger.LogTrace(this,">> signal: "
             + sender.GetId()
             + " --> "
             + signal.GetId());
-#endif
+
         // subscribe map
 
         if (_subscribeMap.TryGetValue(sender, out var subscribers))
@@ -137,10 +132,8 @@ public sealed class SignalR : ISignalR
             var localSubscribers = new List<object>(subscribers);
             foreach (var handler in localSubscribers)
             {
-#if TRACE
                 if (CanInvoke(sigType, handler))
-                    Debug.WriteLine($"¤¤¤ ({signal.GetId()}) catched by subscriber: " + handler.GetId());
-#endif
+                    _logger.LogTrace(this, TraceLogPrefix2+$"({signal.GetId()}) catched by subscriber: " + handler.GetId());
                 Invoke(sigType, sender, handler, signal);
             }
         }
@@ -152,10 +145,8 @@ public sealed class SignalR : ISignalR
             var localHandlersInstances = new List<object>(handlersInstances);
             foreach (var handler in localHandlersInstances)
             {
-#if TRACE
                 if (CanInvoke(sigType, handler))
-                    Debug.WriteLine($"¤¤¤ ({signal.GetId()}) catched by instance: " + handler.GetId());
-#endif
+                    _logger.LogTrace(TraceLogPrefix2 + $"({signal.GetId()}) catched by instance: " + handler.GetId());
                 Invoke(sigType, sender, handler, signal);
             }
         }
@@ -173,9 +164,7 @@ public sealed class SignalR : ISignalR
                 var target = _serviceProvider.GetService(handlerType);
                 if (target != null)
                 {
-#if TRACE
-                    Debug.WriteLine($"¤¤¤ ({signal.GetId()}) catched by type: " + target.GetId());
-#endif
+                    _logger.LogTrace(TraceLogPrefix2+$"({signal.GetId()}) catched by type: " + target.GetId());
                     methodInfo.Invoke(target, [sender, signal]);
                 }
             }

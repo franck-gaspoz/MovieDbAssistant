@@ -1,4 +1,4 @@
-﻿#define DBG
+﻿//#define DBG
 
 #if DBG
 using System.Diagnostics;
@@ -67,11 +67,7 @@ public static class IServiceCollectionExtensions
         services.AddScoped<ISignalR>(serviceProvider =>
         {
             var s = new SignalR(
-                LoggerFactory.Create(conf =>
-                {
-                    conf.AddConsole();
-                    conf.AddDebug();
-                }).CreateLogger<SignalR>(),
+                serviceProvider.GetRequiredService<ILogger<SignalR>>(),
                 serviceProvider.GetRequiredService<IConfiguration>(),
                 serviceProvider);
             foreach (var m in mapActions)

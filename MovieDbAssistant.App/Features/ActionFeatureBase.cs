@@ -13,11 +13,14 @@ using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Features;
+
+#pragma warning disable CA2254 // Le modèle doit être une expression statique.
 
 /// <summary>
 /// action feature base
@@ -70,6 +73,8 @@ abstract class ActionFeatureBase<TCommand> :
 
     #endregion
 
+    #region build & init
+
     public ActionFeatureBase(
         ILogger<ActionFeatureBase<TCommand>> logger,
         IConfiguration config,
@@ -99,38 +104,17 @@ abstract class ActionFeatureBase<TCommand> :
         this.AddListener(this, this, signal);
     }
 
+    #endregion
+
     #region action feature prototype
 
-#if NO
-    /// <summary>
-    /// called on end if no error
-    /// </summary>
-    /// <param name="context">action context</param>
-    protected virtual void OnSucessEnd(ActionContext context) { }
-
-    /// <summary>
-    /// called on end, before onError's
-    /// </summary>
-    /// <param name="context">action context</param>
-    protected virtual void OnEnd(ActionContext context) { }
-
-    /// <summary>
-    /// called on error, before the prompt is displayed. triggered after 'end'
-    /// </summary>
-    /// <param name="context">action context</param>
-    protected virtual void OnErrorBeforePrompt(ActionContext context) { }
-
-    /// <summary>
-    /// called on error, after the prompt is displayed. triggered after 'end'
-    /// </summary>
-    /// <param name="context">action context</param>
-    protected virtual void OnErrorAfterPrompt(ActionContext context) { }
-#endif
     /// <summary>
     /// action
     /// </summary>
     /// <param name="context">action context</param>
     protected abstract void Action(ActionContext context);
+
+    #endregion
 
     #region /**----- signals handlers -----*/
 
@@ -143,9 +127,7 @@ abstract class ActionFeatureBase<TCommand> :
         object sender,
         ActionEndedEvent @event)
     {
-#if TRACE
-        Debug.WriteLine(this.IdWith("END"));
-#endif
+        _logger.LogTrace(this,"END");
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
 
@@ -171,9 +153,9 @@ abstract class ActionFeatureBase<TCommand> :
     public virtual void Handle(object sender, ActionErroredEvent @event)
     {
         var message = @event.ToString();
-#if TRACE
-        Debug.WriteLine(this.IdWith("ERROR: " + message));
-#endif
+
+        _logger.LogError(this,message);
+
         @event.Context.LogError(@event);
         @event.Context.IsErrored = true;
 
@@ -190,7 +172,7 @@ abstract class ActionFeatureBase<TCommand> :
 
     #endregion /**----  -----*/
 
-    #endregion
+    #region operations
 
     /// <summary>
     /// run the feature in or not in background worker
@@ -206,9 +188,7 @@ abstract class ActionFeatureBase<TCommand> :
             {
                 if (com.HandleUI)
                     Messages.Warn(Builder_Busy);
-                else
-                    Debug.WriteLine(
-                        this.IdWith("WARNING: feature not ready"));
+                _logger.LogWarning(this,"feature is not ready");
                 return;
             }
             Com = com;
@@ -245,21 +225,17 @@ abstract class ActionFeatureBase<TCommand> :
         }
         catch (Exception ex)
         {
-#if TRACE
-            System.Console.Error.WriteLine(this.IdWith("exception"));
-#endif
+            _logger.LogError(this,"exception: "+ex.Message);
             if (context != null)
                 Signal.Send(this, new ActionErroredEvent(context!, ex));
             else
-                Console.Error.WriteLine(this.IdWith("context is not defined"));
+                _logger.LogError(this,"context is not defined");
         }
     }
 
     void DoWork(ActionContext context, object sender)
     {
-#if TRACE
-        Debug.WriteLine(this.IdWith($"DoWork: background={RunInBackground} handleUI={Com!.HandleUI}"));
-#endif
+        _logger.LogTrace(this,$"DoWork: background={RunInBackground} handleUI={Com!.HandleUI}");
         try
         {
             if (Com!.HandleUI)
@@ -269,25 +245,19 @@ abstract class ActionFeatureBase<TCommand> :
                     sender,
                     Config[_actionOnGoingMessageKey]!);
 
-#if TRACE
-            Debug.WriteLine(this.IdWith($"action"));
-#endif
+            _logger.LogTrace(this,$"action");
 
             Action(context);
 
             if (!RunInBackground)
             {
-#if TRACE
-                Debug.WriteLine(this.IdWith($"action ended"));
-#endif
+                _logger.LogTrace(this,$"action ended");
                 Signal.Send(this, new ActionEndedEvent(context));
             }
         }
         catch (Exception ex)
         {
-#if TRACE
-            System.Console.Error.WriteLine(this.IdWith("exception"));
-#endif
+            _logger.LogError(this,"exception: "+ex.Message);
             Signal.Send(this, new ActionErroredEvent(context, ex));
         }
         finally
@@ -296,4 +266,5 @@ abstract class ActionFeatureBase<TCommand> :
         }
     }
 
+    #endregion
 }

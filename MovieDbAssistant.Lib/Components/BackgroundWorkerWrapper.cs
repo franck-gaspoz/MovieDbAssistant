@@ -9,6 +9,7 @@ using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Lib.Components;
@@ -258,9 +259,7 @@ public class BackgroundWorkerWrapper :
     /// </summary>
     public virtual void Stop(object sender)
     {
-#if DEBUG
-        Debug.WriteLine(TraceLevelPrefix + this.IdWith("stop"));
-#endif
+        _logger.LogDebug(this,TraceLevelPrefix + "stop");
         lock (_backgroundWorkerLock)
         {
             End = true;
@@ -273,9 +272,7 @@ public class BackgroundWorkerWrapper :
     /// <param name="sender">The sender.</param>
     public virtual void OnStop(object sender)
     {
-#if DEBUG
-        Debug.WriteLine(TraceLevelPrefix + this.IdWith("STOPPED"));
-#endif
+        _logger.LogDebug(this,TraceLevelPrefix + "STOPPED");
         lock (_backgroundWorkerLock)
         {
             End = true;
@@ -298,9 +295,7 @@ public class BackgroundWorkerWrapper :
         )
     {
         Context = context;
-#if DEBUG
-        Debug.WriteLine(TraceLevelPrefix + this.IdWith("run"));
-#endif
+        _logger.LogDebug(this,TraceLevelPrefix + "run");
         lock (_backgroundWorkerLock)
         {
             if (_backgroundWorker != null && _backgroundWorker.IsBusy)
@@ -329,16 +324,12 @@ public class BackgroundWorkerWrapper :
                             if (!End)
                                 Thread.Sleep(_interval!.Value);
                         }
-#if DEBUG
-                        Debug.WriteLine(TraceLevelPrefix + this.IdWith("end"));
-#endif
+                        _logger.LogDebug(this,TraceLevelPrefix + "end");
                         _onStop?.Invoke(this);
                     }
                     catch (Exception ex)
                     {
-#if DEBUG
-                        Debug.WriteLine(this.IdWith("error: " + ex.Message));
-#endif
+                        _logger.LogError(this,"error: " + ex.Message);
                         _onError?.Invoke(this, ex);
                     }
                 };
@@ -357,9 +348,7 @@ public class BackgroundWorkerWrapper :
     /// <param name="ex">exception</param>
     public virtual void OnError(Exception ex)
     {
-#if DEBUG
-        Debug.WriteLine(TraceLevelPrefix + this.IdWith("OnError"));
-#endif
+        _logger.LogDebug(this,TraceLevelPrefix + "OnError");
         Stop(this);
         OnStop(this);
         if (Owner != null && Context != null)

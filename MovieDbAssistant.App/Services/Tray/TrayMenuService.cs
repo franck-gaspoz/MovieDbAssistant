@@ -9,6 +9,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -74,9 +75,7 @@ sealed class TrayMenuService
         object? sender,
         EventArgs e)
     {
-#if TRACE
-        Debug.WriteLine("balloon closed");
-#endif
+        _logger.LogTrace(this,"balloon closed");
         BalloonTipClosed?.Invoke(sender, e);
     }
 
@@ -144,7 +143,7 @@ sealed class TrayMenuService
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
-        var ta = new TrayIconAnimator(_logger,_signal, _config, this, _settings);
+        var ta = new TrayIconAnimator(logger,_signal, _config, this, _settings);
         ta.Setup(() =>
         {
             ta.OnStop(this);
