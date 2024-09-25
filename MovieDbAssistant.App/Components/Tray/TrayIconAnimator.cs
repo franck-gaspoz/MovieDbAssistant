@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
@@ -24,11 +23,12 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     int _n = 0;
 
     public TrayIconAnimator(
+        ILogger logger,
         ISignalR signal,
         IConfiguration config,
         TrayMenuService trayMenuService,
         Settings settings
-        ) : base(signal, string.Empty)
+        ) : base(logger, signal, string.Empty)
     {
         _settings = settings;
         _trayMenuService = trayMenuService;
@@ -55,9 +55,6 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// </summary>
     public void Next()
     {
-#if DEBUG
-        Debug.Write("[-]");
-#endif
         var t = _config.GetArray(Anim_WaitIcons);
         var ico = new Icon(_settings.AssetPath(t[_n]!));
         _trayMenuService.NotifyIcon.Icon = ico;

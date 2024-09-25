@@ -91,6 +91,7 @@ abstract class ActionFeatureBase<TCommand> :
         RunInBackground = runInBackground;
 
         _backgroundWorker = new(
+            logger,
             signal,
             config,
             this);
@@ -263,6 +264,7 @@ abstract class ActionFeatureBase<TCommand> :
         {
             if (Com!.HandleUI)
                 Tray.AnimWorkInfo(
+                    _logger,
                     context,
                     sender,
                     Config[_actionOnGoingMessageKey]!);

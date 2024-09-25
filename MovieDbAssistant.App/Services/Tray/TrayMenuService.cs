@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
@@ -35,6 +36,7 @@ sealed class TrayMenuService
 
     readonly TrayMenuBuilder _trayMenuBuilder;
     readonly Settings _settings;
+    readonly ILogger<TrayMenuService> _logger;
     readonly ISignalR _signal;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
@@ -48,14 +50,17 @@ sealed class TrayMenuService
     /// <param name="config">The config.</param>
     /// <param name="builder">The builder.</param>
     public TrayMenuService(
+        ILogger<TrayMenuService> logger,
         ISignalR signal,
         IConfiguration config,
         TrayMenuBuilder builder,
         Settings settings)
     {
-        (NotifyIcon, _signal, _config, _settings) = (builder.NotifyIcon, signal, config, settings);
+        (NotifyIcon, _logger, _signal, _config, _settings) 
+            = (builder.NotifyIcon, logger, signal, config, settings);
         _trayMenuBuilder = builder;
         _trayBackgroundWorker = new(
+            logger,
             _signal,
             _config,
             this,
@@ -131,6 +136,7 @@ sealed class TrayMenuService
     /// <param name="caller">caller</param>
     /// <param name="info">The info.</param>
     public void AnimWorkInfo(
+        ILogger logger,
         ActionContext context,
         object caller,
         string info)
@@ -138,7 +144,7 @@ sealed class TrayMenuService
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
-        var ta = new TrayIconAnimator(_signal, _config, this, _settings);
+        var ta = new TrayIconAnimator(_logger,_signal, _config, this, _settings);
         ta.Setup(() =>
         {
             ta.OnStop(this);

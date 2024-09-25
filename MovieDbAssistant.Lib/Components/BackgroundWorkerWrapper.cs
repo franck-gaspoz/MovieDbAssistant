@@ -2,6 +2,7 @@
 using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions;
@@ -36,6 +37,7 @@ public class BackgroundWorkerWrapper :
     public SharedCounter InstanceId { get; }
 
     const string TraceLevelPrefix = "----- ";
+    readonly ILogger _logger;
     readonly ISignalR _signal;
     IConfiguration? _config;
     BackgroundWorker? _backgroundWorker;
@@ -80,12 +82,15 @@ public class BackgroundWorkerWrapper :
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
     /// </summary>
+    /// <param name="logger">logger</param>
     /// <param name="signal">signalR</param>
     /// <param name="owner">owner</param>
     public BackgroundWorkerWrapper(
+        ILogger logger,
         ISignalR signal,
         object? owner = null)
     {
+        _logger = logger;
         (_signal, Owner, InstanceId)
             = (signal, owner, new(this));
 
@@ -96,15 +101,18 @@ public class BackgroundWorkerWrapper :
     /// <summary>
     /// Initializes a new instance of the <see cref="BackgroundWorkerWrapper"/> class.
     /// </summary>
+    /// <param name="logger">logger</param>
     /// <param name="signal">signalR</param>
     /// <param name="config">The config.</param>
     /// <param name="owner">owner</param>
     public BackgroundWorkerWrapper(
-    ISignalR signal,
-    IConfiguration config,
-    object? owner = null)
+        ILogger logger,
+        ISignalR signal,
+        IConfiguration config,
+        object? owner = null)
     {
         Owner = owner;
+        _logger = logger;
         _signal = signal;
         _config = config;
         InstanceId = new(this);

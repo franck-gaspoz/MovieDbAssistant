@@ -7,6 +7,7 @@ using System.Reflection;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Lib.Components.Extensions;
 
@@ -66,6 +67,11 @@ public static class IServiceCollectionExtensions
         services.AddScoped<ISignalR>(serviceProvider =>
         {
             var s = new SignalR(
+                LoggerFactory.Create(conf =>
+                {
+                    conf.AddConsole();
+                    conf.AddDebug();
+                }).CreateLogger<SignalR>(),
                 serviceProvider.GetRequiredService<IConfiguration>(),
                 serviceProvider);
             foreach (var m in mapActions)

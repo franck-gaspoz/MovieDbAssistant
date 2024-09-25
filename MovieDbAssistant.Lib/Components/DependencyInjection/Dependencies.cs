@@ -33,41 +33,21 @@ public static class Dependencies
         this IServiceCollection services,
         Assembly fromAssembly)
     {
-#if DBG
-        Debug.WriteLine(fromAssembly.Location.ToString());
-#endif
-
         foreach (var typeInfo in fromAssembly.DefinedTypes)
         {
             var ca = typeInfo.GetCustomAttributes(true);
-#if DBG
-            var handled = false;
-#endif
             if (ca.OfType<SingletonAttribute>().Any())
             {
                 services.AddSingleton(typeInfo.AsType());
-#if DBG
-                handled = true;
-#endif
             }
             if (ca.OfType<TransientAttribute>().Any())
             {
                 services.AddTransient(typeInfo.AsType());
-#if DBG
-                handled = true;
-#endif
             }
             if (ca.OfType<ScopedAttribute>().Any())
             {
                 services.AddScoped(typeInfo.AsType());
-#if DBG
-                handled = true;
-#endif
             }
-#if DBG
-            if (handled)
-                Debug.WriteLine(typeInfo.AsType().FullName);
-#endif
         }
         return services;
     }

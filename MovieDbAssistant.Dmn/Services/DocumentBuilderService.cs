@@ -1,4 +1,6 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders;
+﻿using Microsoft.Extensions.Logging;
+
+using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
@@ -20,12 +22,13 @@ public sealed class DocumentBuilderService
     DocumentBuilderContext? _context;
 
     public DocumentBuilderService(
+        ILogger<DocumentBuilderService> logger,
         ISignalR signal,
         DataProviderFactory _dataProviderFactory)
     {
         _signal = signal;
         this._dataProviderFactory = _dataProviderFactory;
-        _backgroundWorkerWrapper = new(signal, this);
+        _backgroundWorkerWrapper = new(logger, signal, this);
     }
 
     /// <summary>
