@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Diagnostics;
+
+using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -27,22 +30,23 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         Settings settings
         ) : base(signal,string.Empty)
     {
-        For(this);
-        _config = config;
-        _trayMenuService = trayMenuService;
         _settings = settings;
+        _trayMenuService = trayMenuService;
+        _config = config;
     }
 
     /// <summary>
     /// run the animator
     /// </summary>
-    public new TrayIconAnimator Run(object caller)
+    public new TrayIconAnimator Run(
+        ActionContext context,
+        object caller)
     {
         Setup(
             _config,
-            (o, e) => Next(),
+            (ctx,o, e) => Next(),
             _config.GetInt(Anim_Interval_TrayIcon));
-        base.Run(caller);
+        base.Run(context, caller);
         return this;
     }
 
@@ -51,6 +55,9 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     /// </summary>
     public void Next()
     {
+#if DEBUG
+        Debug.Write("[-]");
+#endif
         var t = _config.GetArray(Anim_WaitIcons);
         var ico = new Icon(_settings.AssetPath(t[_n]!));
         _trayMenuService.NotifyIcon.Icon = ico;

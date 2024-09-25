@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -98,6 +99,7 @@ sealed class TrayMenuService
     /// <summary>
     /// Anims the info.
     /// </summary>
+    /// <param name="context">action context</param>
     /// <param name="caller">caller</param>
     /// <param name="action">The action.</param>
     /// <param name="interval">The interval.</param>
@@ -105,6 +107,7 @@ sealed class TrayMenuService
     /// <param name="autoRepeat">If true, auto repeat.</param>
     /// <param name="onStop">The on stop.</param>
     public void AnimInfo(
+        ActionContext context,
         object caller,
         Action<TrayMenuService> action,
         int? interval = null,
@@ -113,29 +116,39 @@ sealed class TrayMenuService
         Action? onStop = null
         )
         => _trayBackgroundWorker.Run(
-                caller,
-                action,
-                interval,
-                stopOnBallonTipClosed,
-                autoRepeat,
-                onStop);
+            context,
+            caller,
+            action,
+            interval,
+            stopOnBallonTipClosed,
+            autoRepeat,
+            onStop);
 
     /// <summary>
     /// Anim working info.
     /// </summary>
+    /// <param name="context">action contexxt</param>
     /// <param name="caller">caller</param>
     /// <param name="info">The info.</param>
     public void AnimWorkInfo(
+        ActionContext context,
         object caller,
         string info)
     {
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
-        var ta = new TrayIconAnimator(_signal, _config, this, _settings)
-            .Run(caller);
+        var ta = new TrayIconAnimator(_signal, _config, this, _settings);
+        ta.Setup(() =>
+        {
+            ta.OnStop(this);
+            _trayMenuBuilder.SetIcon();
+            NotifyIcon.Text = _trayMenuBuilder.Tooltip;
+        })
+        .Run(context,caller);
 
         AnimInfo(
+            context,
             caller,
             tray =>
             {
@@ -146,9 +159,7 @@ sealed class TrayMenuService
             stopOnBallonTipClosed: false,
             onStop: () =>
             {
-                ta.Stop();
-                _trayMenuBuilder.SetIcon();
-                NotifyIcon.Text = _trayMenuBuilder.Tooltip;
+                ta.Stop(this);               
             });
     }
 
@@ -156,7 +167,7 @@ sealed class TrayMenuService
     /// Stop anim info.
     /// </summary>
     public void StopAnimInfo()
-        => _trayBackgroundWorker.Stop();
+        => _trayBackgroundWorker.Stop(this);
 
     /// <summary>
     /// Ballon tip close background worker handler.
@@ -164,7 +175,7 @@ sealed class TrayMenuService
     /// <param name="o">sender.</param>
     /// <param name="e">event args</param>
     public void BallonTipCloseBackgroundWorkerHandler(object? o, EventArgs e)
-        => _trayBackgroundWorker.Stop();
+        => _trayBackgroundWorker.Stop(this);
 
     /// <summary>
     /// Show balloon tip.

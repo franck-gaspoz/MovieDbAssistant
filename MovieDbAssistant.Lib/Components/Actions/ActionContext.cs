@@ -65,6 +65,11 @@ public sealed class ActionContext :
     /// <inheritdoc/>
     public SharedCounter InstanceId { get; }
 
+    /// <summary>
+    /// indicates an error state if any
+    /// </summary>
+    public bool IsErrored { get; set; }
+
     #endregion
 
     #region create & setup
@@ -84,7 +89,7 @@ public sealed class ActionContext :
     }
 
     /// <summary>
-    /// setup the action action
+    /// setup the action
     /// </summary>
     /// <param name="sender">action sender</param>
     /// <param name="command">command</param>
@@ -137,6 +142,8 @@ public sealed class ActionContext :
 
     #endregion
 
+#if NO
+
     #region /**----- signals dispatches handlers -----*/
 
     /// <inheritdoc/>
@@ -167,14 +174,17 @@ public sealed class ActionContext :
 
     #endregion /**----  -----*/
 
-    #region commands implementations
+#endif
 
+#region commands implementations
+
+#if NO
     /// <summary>
     /// performs the event triggered actions for the feature
     /// </summary>
     /// <param name="feature">feature</param>
     /// <param name="event">event</param>
-    public void For(IActionFeature feature, ActionEndedEvent @event)
+    void For(IActionFeature feature, ActionEndedEvent @event)
     {
 #if TRACE
         Debug.WriteLine(feature.IdWith("action ended event -> "
@@ -194,7 +204,7 @@ public sealed class ActionContext :
     /// </summary>
     /// <param name="feature">feature</param>
     /// <param name="event">event</param>
-    public void For(IActionFeature feature, ActionErroredEvent @event)
+    void For(IActionFeature feature, ActionErroredEvent @event)
     {
 #if TRACE
         Debug.WriteLine(feature!.IdWith("action errored event: " + @event.ToString()));
@@ -218,9 +228,13 @@ public sealed class ActionContext :
         => sender == Sender
             && context == this;
 
-    #endregion
+#endif
 
-    #region operations
+#endregion
+
+#region operations
+
+#if NO
 
     void DispatchAction(Action<IActionFeature> action)
     {
@@ -241,6 +255,8 @@ public sealed class ActionContext :
         }
     }
 
+#endif
+
     /// <summary>
     /// logs an error in the action context
     /// </summary>
@@ -253,6 +269,7 @@ public sealed class ActionContext :
     /// <inheritdoc/>
     public string GetNamePrefix() => string.Empty;
 
+#if NO
     /// <summary>
     /// try catch the Sender to a feature otherwise returns a null
     /// </summary>
@@ -262,6 +279,7 @@ public sealed class ActionContext :
         feature = Sender as IActionFeature;
         return feature != null;
     }
+#endif
 
-    #endregion
+#endregion
 }

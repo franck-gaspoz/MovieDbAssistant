@@ -18,6 +18,7 @@ public interface IActionFeature : IIdentifiable
     /// </summary>
     public bool RunInBackground { get; }
 
+#if NO
     /// <summary>
     /// called on finally, after end with errors's or not
     /// </summary>
@@ -36,4 +37,5 @@ public interface IActionFeature : IIdentifiable
     /// </summary>
     /// <param name="event">action errored event</param>
     public void Error(ActionErroredEvent @event);
+#endif
 }

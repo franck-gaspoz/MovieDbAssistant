@@ -25,7 +25,9 @@ namespace MovieDbAssistant.App.Features;
 [DebuggerDisplay("{DbgId()}")]
 #endif
 abstract class ActionFeatureBase<TCommand> :
-    IActionFeature
+    IActionFeature,
+    ISignalMethodHandler<ActionEndedEvent>,
+    ISignalMethodHandler<ActionErroredEvent>
     where TCommand : ActionFeatureCommandBase
 {
     #region fields & properties
@@ -41,6 +43,9 @@ abstract class ActionFeatureBase<TCommand> :
     /// instance id
     /// </summary>
     public SharedCounter InstanceId { get; }
+
+    /// <inheritdoc/>
+    public string GetNamePrefix() => string.Empty;
 
     /// <summary>
     /// true if buzy
@@ -80,22 +85,18 @@ abstract class ActionFeatureBase<TCommand> :
         Config = config;
         _actionOnGoingMessageKey = actionOnGoingMessageKey;
         RunInBackground = runInBackground;
-        
+
         _backgroundWorker = new(
             signal,
             config,
             this);
-
-        /*_backgroundWorker.Setup(
-            onError: (o, e) =>
-            {
-                Error(new ActionErroredEvent(
-                    _backgroundWorker.Context!, e));
-            });*/
+        _backgroundWorker.AddListener(this, this, signal);
+        this.AddListener(this, this, signal);
     }
 
     #region action feature prototype
 
+#if NO
     /// <summary>
     /// called on end if no error
     /// </summary>
@@ -119,106 +120,136 @@ abstract class ActionFeatureBase<TCommand> :
     /// </summary>
     /// <param name="context">action context</param>
     protected virtual void OnErrorAfterPrompt(ActionContext context) { }
-
+#endif
     /// <summary>
     /// action
     /// </summary>
     /// <param name="context">action context</param>
     protected abstract void Action(ActionContext context);
 
-    #region /**----- interface IActionFeature -----*/
-
-    /// <summary>
-    /// called on finally, after end , on errors's
-    /// </summary>
-    /// <param name="context">action context</param>
-    public virtual void OnFinally(ActionContext context) { }
+    #region /**----- signals handlers -----*/
 
     /// <summary>
     /// setup feature state ended
     /// </summary>
     /// <param name="context">action context</param>
     /// <param name="error">is end due to error</param>
-    public virtual void End(
-        ActionContext context,
-        bool error = false)
+    public virtual void Handle(
+        object sender,
+        ActionEndedEvent @event)
     {
 #if TRACE
         Debug.WriteLine(this.IdWith("end"));
 #endif
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
-        OnEnd(context);
-        if (!error)
-            OnSucessEnd(context);
+        //OnEnd(context);
+        Signal.Send(this,new ActionEndingEvent(@event.Context));
+
+        if (!@event.Context.IsErrored)
+        {
+            //OnSucessEnd(context);
+            Signal.Send(this, new ActionSuccessfullyEnded(@event.Context));
+
+            Signal.Send(this, new ActionFinalisedEvent(@event.Context));
+        }
+
         Buzy = false;
     }
 
     /// <summary>
     /// setup feature state error
     /// </summary>
+    /// <param name="sender">sender</param>
     /// <param name="event">action errored event</param>
-    public virtual void Error(ActionErroredEvent @event)
+    public virtual void Handle(object sender,ActionErroredEvent @event)
     {
         var message = @event.ToString();
 #if TRACE
-        Console.Error.WriteLine(this.IdWith("error = " + message));
+        Debug.WriteLine(this.IdWith("ERROR: " + message));
 #endif
         @event.Context.LogError(@event);
-        End(@event.Context, true);       
-        OnErrorBeforePrompt(@event.Context);
+        @event.Context.IsErrored = true;
+
+        //End(@event.Context, true);
+        Signal.Send(this, new ActionEndedEvent(@event.Context));
+        //OnErrorBeforePrompt(@event.Context);
+        Signal.Send(this, new ActionBeforePromptEvent(@event.Context));
         if (Com!.HandleUI)
             Messages.Err(Message_Error_Unhandled, '\n'+message);
-        OnErrorAfterPrompt(@event.Context);
+        //OnErrorAfterPrompt(@event.Context);
+        Signal.Send(this, new ActionAfterPromptEvent(@event.Context));
+
+        Signal.Send(this, new ActionFinalisedEvent(@event.Context));
     }
 
-    #endregion /**----  -----*/
+#endregion /**----  -----*/
 
-    #endregion
+#endregion
 
     /// <summary>
-    /// run the feature in a background worker
+    /// run the feature in or not in background worker
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="com">command</param>
     protected void Run(object sender, TCommand com)
     {
-        if (Buzy)
+        ActionContext? context = null;
+        try
         {
-            Messages.Warn(Builder_Busy);
-            return;
-        }
-        Com = com;
-        Buzy = true;
+            if (Buzy)
+            {
+                if (com.HandleUI)
+                    Messages.Warn(Builder_Busy);
+                else
+                    Debug.WriteLine(
+                        this.IdWith("WARNING: feature not ready"));
+                return;
+            }
+            Com = com;
+            Buzy = true;
 
-        var context = ServiceProvider
-            .GetRequiredService<ActionContext>()
-            .Setup(this, com, [sender]);
+            context = ServiceProvider
+                .GetRequiredService<ActionContext>()
+                .Setup(this, com, [sender]);
 
-        if (com.ActionContext != null)
+            if (com.ActionContext != null)
+            {
+                context.Merge(
+                    this,
+                    com.ActionContext);
+                com.ActionContext.Setup(context);
+            }
+            else
+                com.Setup(context);
+
+            if (RunInBackground)
+            {
+                // run action in background thread
+                _backgroundWorker!.RunAction(
+                    this,
+                    context,
+                    (ctx,@from,@event)
+                        => DoWork(context, sender));
+            }
+            else
+            {
+                DoWork(context, sender);
+            }
+
+        } catch (Exception ex)
         {
-            context.Merge(
-                this,
-                com.ActionContext);
-            com.ActionContext.Setup(context);
+#if TRACE
+            System.Console.Error.WriteLine(this.IdWith("exception"));
+#endif
+            if (context != null)
+                Signal.Send(this, new ActionErroredEvent(context!, ex));
+            else
+                Console.Error.WriteLine(this.IdWith("context is not defined"));
         }
-        else
-            com.Setup(context);
-
-        if (RunInBackground)
-        {
-            _backgroundWorker!
-                .For(this)
-                .For(this as IActionFeature, context);
-
-            _backgroundWorker!.RunAction((o, e)
-                => DoWork(sender, context));
-        }
-        else
-            DoWork(sender, context);
     }
 
-    void DoWork(object sender,ActionContext context)
+    void DoWork(ActionContext context, object sender)
     {
 #if TRACE
         Debug.WriteLine(this.IdWith($"DoWork: background={RunInBackground} handleUI={Com!.HandleUI}"));
@@ -227,6 +258,7 @@ abstract class ActionFeatureBase<TCommand> :
         {
             if (Com!.HandleUI)
                 Tray.AnimWorkInfo(
+                    context,
                     sender,
                     Config[_actionOnGoingMessageKey]!);
 
@@ -237,7 +269,12 @@ abstract class ActionFeatureBase<TCommand> :
             Action(context);
 
             if (!RunInBackground)
-                Signal.Send(this,new ActionEndedEvent(context));
+            {
+#if TRACE
+                Debug.WriteLine(this.IdWith($"action ended"));
+#endif
+                Signal.Send(this, new ActionEndedEvent(context));
+            }
         }
         catch (Exception ex)
         {
@@ -246,8 +283,10 @@ abstract class ActionFeatureBase<TCommand> :
 #endif
             Signal.Send(this,new ActionErroredEvent(context,ex));
         }
+        finally
+        {
+            _backgroundWorker.RemoveListener(this, this, Signal);
+        }
     }
 
-    /// <inheritdoc/>
-    public string GetNamePrefix() => string.Empty;
 }

@@ -41,15 +41,6 @@ sealed class BuildJsonFileUIService :
             Item_Id_Build_Json)
     {
         _documentBuilderServiceFactory = documentBuilderServiceFactory;
-        
-        /*OnSuccessMessageAction = context =>
-        {
-            Messages.Info(
-                Build_End_Json_Without_Errors,
-                '\n'
-                + ((BuildFromJsonFileCommand)context.Command).Path
-                );
-        };*/
     }
 
     /// <summary>
@@ -59,6 +50,7 @@ sealed class BuildJsonFileUIService :
     protected override void Action(ActionContext context)
     {
         _documentBuilderServiceFactory.CreateDocumentBuilderService()
+            .AddListener(this,this,Signal)
             .Build(
                 context,
                 new DocumentBuilderContext(

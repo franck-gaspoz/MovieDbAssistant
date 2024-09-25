@@ -6,6 +6,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -18,7 +19,9 @@ namespace MovieDbAssistant.App.Services.Build;
 /// </summary>
 abstract class BuildUIServiceBase<TSignal> :
     ActionFeatureBase<TSignal>,
-    ISignalHandler<TSignal>
+    ISignalHandler<TSignal>,
+    ISignalMethodHandler<ActionFinalisedEvent>,
+    ISignalMethodHandler<ActionAfterPromptEvent>
     where TSignal : ActionFeatureCommandBase
 {
     /// <summary>
@@ -74,9 +77,10 @@ abstract class BuildUIServiceBase<TSignal> :
     public void Handle(object sender, TSignal signal) => Run(sender, signal);
 
     /// <inheritdoc/>
-    protected override void OnSucessEnd(ActionContext context)
+    //protected override void OnSucessEnd(ActionContext context)
+    public virtual void Handle(object sender,ActionSuccessfullyEnded @event)
     {
-        if (!context.Command.HandleUI) return;
+        if (!@event.Context.Command.HandleUI) return;
 
         Tray.ShowBalloonTip(_actionDoneMessageKey);
 
@@ -84,13 +88,12 @@ abstract class BuildUIServiceBase<TSignal> :
         {
             Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
         }
-        OnSuccessMessageAction?.Invoke(context);        
+        OnSuccessMessageAction?.Invoke(@event.Context);        
     }
 
-   // protected void 
-
     /// <inheritdoc/>
-    public override void OnFinally(ActionContext context) 
+    //public override void OnFinally(ActionContext context) 
+    public virtual void Handle(object sender,ActionFinalisedEvent @event)
         => Signal.Send(
             this,
             new BuildCompletedEvent(ItemIdBuild, Com!));
@@ -98,11 +101,11 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    protected override void OnErrorAfterPrompt(ActionContext context)
+    //protected override void OnErrorAfterPrompt(ActionContext context)
+    public virtual void Handle(object sender,ActionAfterPromptEvent @event)
     {
-        // TODO: check if no double error if exception. maybe should concern the case end with errors (no exceptions)
-        if (context.Command.HandleUI)
-            OnErrorMessageAction?.Invoke(context);
+        if (@event.Context.Command.HandleUI)
+            OnErrorMessageAction?.Invoke(@event.Context);
 
         Signal.Send(
             this,

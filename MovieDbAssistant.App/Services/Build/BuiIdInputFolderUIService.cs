@@ -81,22 +81,26 @@ sealed class BuiIdInputFolderUIService :
     }
 
     /// <inheritdoc/>
-    protected override void OnEnd(ActionContext context) {
-        if (context.Errors.Any())
+    //protected override void OnEnd(ActionContext context) {
+    public override void Handle(object sender,ActionEndedEvent @event) {
+        base.Handle(sender, @event);
+        if (@event.Context.Errors.Any())
         {
             Messages.Warn(
                 Build_End_Input_With_Errors,
                 '\n' + string.Join('\n',
-                    context.Errors
+                    @event.Context.Errors
                         .ToList()
                         .Select(x => x.Error)));
         }
     }
 
     /// <inheritdoc/>
-    protected override void OnSucessEnd(ActionContext context) 
+    //protected override void OnSucessEnd(ActionContext context) 
+    public override void Handle(object sender,ActionSuccessfullyEnded @event)
     {
-        base.OnSucessEnd(context);
+        base.Handle(sender,@event);
+        //base.OnSucessEnd(@event.Context);
         Messages.Info(Build_End_Input_Without_Errors);
     }   
 
@@ -136,6 +140,7 @@ sealed class BuiIdInputFolderUIService :
     {
         var key = this.GetKey(ref _counter);
         _actionGroup.Add(key, command);
+        // context growing
         command.ActionContext!
             .Setup(_actionGroup, command, [])
             .Merge(this,context);

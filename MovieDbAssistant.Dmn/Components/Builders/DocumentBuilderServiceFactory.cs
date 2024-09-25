@@ -25,8 +25,5 @@ public sealed class DocumentBuilderServiceFactory
     /// </summary>
     /// <returns>A <see cref="DocumentBuilderService"/></returns>
     public DocumentBuilderService CreateDocumentBuilderService()
-    {
-        var scope = _serviceProvider.CreateScope();
-        return scope.ServiceProvider.GetRequiredService<DocumentBuilderService>();
-    }
+        => _serviceProvider.GetRequiredService<DocumentBuilderService>();
 }

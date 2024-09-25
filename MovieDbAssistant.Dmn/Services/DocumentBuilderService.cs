@@ -37,9 +37,10 @@ public sealed class DocumentBuilderService
     {
         _context = context;
         _backgroundWorkerWrapper
-            .For(this,null,actionContext)
             .RunAction(
-                (o, e) => BuildInternal(actionContext, context));
+                this,
+                actionContext,
+                (ctx, o, e) => BuildInternal(actionContext, context));
     }
 
     void BuildInternal(ActionContext actionContext, DocumentBuilderContext _)
@@ -47,24 +48,11 @@ public sealed class DocumentBuilderService
         throw new NotImplementedException();    //crash test
         try
         {
-            // this below to a lib part that doesn't listen to action events, but just produces them
-            actionContext
-                .TryGetFeature(out var feature)
-                .Then(() => actionContext.For(
-                    feature!, 
-                    new ActionEndedEvent(actionContext)));
+            _signal.Send(this,new ActionEndedEvent(actionContext));
         }
         catch (Exception ex)
         {
-            actionContext
-                .TryGetFeature(out var feature)
-                .Then(() => actionContext.For(
-                    feature!, 
-                    new ActionErroredEvent(actionContext, ex)));
-        }
-        finally
-        {
-
+            _signal.Send(this, new ActionErroredEvent(actionContext, ex));
         }
     }
 }

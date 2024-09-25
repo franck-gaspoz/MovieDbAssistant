@@ -5,7 +5,7 @@
 /// </summary>
 /// <typeparam name="T">signal type</typeparam>
 public interface ISignalHandler<T> : 
-    ISignalMethodHandler<T>,
+    ISignalInternalMethodHandler<T>,
     ISignalHandlerBase
     where T : ISignal
 {

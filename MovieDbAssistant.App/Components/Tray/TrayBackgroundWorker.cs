@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Lib.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.App.Components.Tray;
@@ -32,7 +33,6 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         bool stopOnBallonTipClosed = true,
         bool autoRepeat = true) : base(signal,string.Empty)
     {
-        For(this);
         _config = config;
         _trayMenuService = trayMenuService;
         _interval = interval;
@@ -41,6 +41,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
     }
 
     public TrayBackgroundWorker Run(
+        ActionContext context,
         object caller,
         Action<TrayMenuService> action,
         int? interval = null,
@@ -48,7 +49,6 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         bool? autoRepeat = null,
         Action? onStop = null)
     {
-        For(caller);
         _action = action;
         if (stopOnBallonTipClosed != null)
             _stopOnBallonTipClosed = stopOnBallonTipClosed.Value;
@@ -58,15 +58,15 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             DoWorkAction,
             interval ?? _interval,
             PreDoWork,
-            onStop,
             autoRepeat ?? _autoRepeat
             );
+        Setup(() => { OnStop(this); onStop?.Invoke(); });
 
-        base.Run(caller);
+        base.Run(context,caller);
         return this;
     }
 
-    void DoWorkAction(object? o, DoWorkEventArgs e)
+    void DoWorkAction(ActionContext context,object? o, DoWorkEventArgs e)
         => _action?.Invoke(_trayMenuService);
 
     void PreDoWork()

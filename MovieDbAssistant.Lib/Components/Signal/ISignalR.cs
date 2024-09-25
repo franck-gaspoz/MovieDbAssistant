@@ -20,6 +20,13 @@ public interface ISignalR : IIdentifiable
     void MapInstance(Type signal, object handler);
 
     /// <summary>
+    /// add a mapping between a signal publisher and a signal listener
+    /// </summary>
+    /// <param name="listener">listener</param>
+    /// <param name="publisher">publisher</param>
+    void MapSubscriber(object listener, object publisher);
+
+    /// <summary>
     /// Get handler method.
     /// </summary>
     /// <param name="sigType">The sig type.</param>
@@ -54,6 +61,24 @@ public interface ISignalR : IIdentifiable
     /// <param name="handler">instance</param>
     /// <returns>this object</returns>
     public SignalR Register<T>(object handler);
+
+    /// <summary>
+    /// subscribe to all signals of a publisher
+    /// </summary>
+    /// <param name="caller">caller</param>
+    /// <param name="listener">listener</param>
+    /// <param name="publisher">publisher</param>
+    /// <returns></returns>
+    SignalR Subscribe(object caller,object listener, object publisher);
+
+    /// <summary>
+    /// unsubscribe a listener of a publisher
+    /// </summary>
+    /// <param name="caller">caller</param>
+    /// <param name="listener">listener</param>
+    /// <param name="publisher">publisher</param>
+    /// <returns></returns>
+    SignalR Unsubscribe(object caller,object listener, object publisher);
 
     /// <summary>
     /// unregister an instance handler
