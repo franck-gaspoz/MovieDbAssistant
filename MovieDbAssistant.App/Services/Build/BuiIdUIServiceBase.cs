@@ -77,7 +77,6 @@ abstract class BuildUIServiceBase<TSignal> :
     public void Handle(object sender, TSignal signal) => Run(sender, signal);
 
     /// <inheritdoc/>
-    //protected override void OnSucessEnd(ActionContext context)
     public virtual void Handle(object sender,ActionSuccessfullyEnded @event)
     {
         if (!@event.Context.Command.HandleUI) return;
@@ -92,7 +91,6 @@ abstract class BuildUIServiceBase<TSignal> :
     }
 
     /// <inheritdoc/>
-    //public override void OnFinally(ActionContext context) 
     public virtual void Handle(object sender,ActionFinalisedEvent @event)
         => Signal.Send(
             this,
@@ -101,7 +99,6 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    //protected override void OnErrorAfterPrompt(ActionContext context)
     public virtual void Handle(object sender,ActionAfterPromptEvent @event)
     {
         if (@event.Context.Command.HandleUI)

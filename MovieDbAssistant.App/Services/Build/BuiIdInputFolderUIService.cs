@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
@@ -81,7 +82,11 @@ sealed class BuiIdInputFolderUIService :
     }
 
     /// <inheritdoc/>
-    //protected override void OnEnd(ActionContext context) {
+    public override void Handle(object sender, ActionFinalisedEvent @event)
+    {
+    }
+
+    /// <inheritdoc/>
     public override void Handle(object sender,ActionEndedEvent @event) {
         base.Handle(sender, @event);
         if (@event.Context.Errors.Any())
@@ -93,15 +98,18 @@ sealed class BuiIdInputFolderUIService :
                         .ToList()
                         .Select(x => x.Error)));
         }
+        else
+            Messages.Info(Build_End_Input_Without_Errors);
+
+        Signal.Send(this, new BuildCompletedEvent(
+            Item_Id_Build_Input, 
+            @event.Context.Command));
     }
 
     /// <inheritdoc/>
-    //protected override void OnSucessEnd(ActionContext context) 
     public override void Handle(object sender,ActionSuccessfullyEnded @event)
     {
         base.Handle(sender,@event);
-        //base.OnSucessEnd(@event.Context);
-        Messages.Info(Build_End_Input_Without_Errors);
     }   
 
     #region operations

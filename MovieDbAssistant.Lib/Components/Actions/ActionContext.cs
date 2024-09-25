@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
@@ -136,126 +135,13 @@ public sealed class ActionContext :
     {
         Sender = context.Sender;
         Listeners = new(context.Listeners);
-        Errors.Setup(context.Errors); 
+        Errors.Setup(context.Errors);
         return this;
     }
 
     #endregion
 
-#if NO
-
-    #region /**----- signals dispatches handlers -----*/
-
-    /// <inheritdoc/>
-    public void Handle(object sender, ActionEndedEvent signal)
-    {
-        if (!HandleCheckMatch(sender,signal.Context, out var feature))
-            return;
-        For( feature!, signal);
-    }
-
-    /// <inheritdoc/>
-    public void Handle(object sender, ActionErroredEvent @event)
-    {
-        if (!HandleCheckMatch(sender, @event.Context, out var feature))
-            return;
-        For( feature!, @event);
-    }
-
-    bool HandleCheckMatch(object sender, ActionContext context, out IActionFeature? feature)
-    {
-        feature = null;
-        if (!sender.CheckIsFeature(out var _feature)) return false;
-        feature = _feature;
-        if (!feature!.RunInBackground) return false;
-        if (!MustHandle(feature, context)) return false;
-        return true;
-    }
-
-    #endregion /**----  -----*/
-
-#endif
-
-#region commands implementations
-
-#if NO
-    /// <summary>
-    /// performs the event triggered actions for the feature
-    /// </summary>
-    /// <param name="feature">feature</param>
-    /// <param name="event">event</param>
-    void For(IActionFeature feature, ActionEndedEvent @event)
-    {
-#if TRACE
-        Debug.WriteLine(feature.IdWith("action ended event -> "
-            + feature.Id()));
-#endif
-        DispatchAction(feature =>
-        {
-            feature.End(@event.Context,false);
-            feature.OnFinally(@event.Context);
-        });
-        DispatchSignal(feature, @event);
-        Dispose();
-    }
-
-    /// <summary>
-    /// performs the event triggered actions for the feature
-    /// </summary>
-    /// <param name="feature">feature</param>
-    /// <param name="event">event</param>
-    void For(IActionFeature feature, ActionErroredEvent @event)
-    {
-#if TRACE
-        Debug.WriteLine(feature!.IdWith("action errored event: " + @event.ToString()));
-#endif
-        DispatchAction(feature =>
-        {
-            feature.Error(@event);
-            feature.OnFinally(@event.Context);
-        });
-        DispatchSignal(feature,@event);
-        Dispose();
-    }
-
-    void Dispose()
-    {
-        _signal.Unregister<ActionErroredEvent>(this);
-        _signal.Unregister<ActionEndedEvent>(this);
-    }
-
-    bool MustHandle(object sender, ActionContext context)
-        => sender == Sender
-            && context == this;
-
-#endif
-
-#endregion
-
-#region operations
-
-#if NO
-
-    void DispatchAction(Action<IActionFeature> action)
-    {
-        if (Sender is IActionFeature actionFeature)
-            action(actionFeature);
-    }
-
-    void DispatchSignal<T>(object sender,T signal)
-        where T : ISignal
-    {
-        foreach (var listener in Listeners)
-        {
-            _signal.TryInvoke(
-                typeof(T),
-                sender,
-                listener,  
-                signal );
-        }
-    }
-
-#endif
+    #region operations
 
     /// <summary>
     /// logs an error in the action context
@@ -269,17 +155,5 @@ public sealed class ActionContext :
     /// <inheritdoc/>
     public string GetNamePrefix() => string.Empty;
 
-#if NO
-    /// <summary>
-    /// try catch the Sender to a feature otherwise returns a null
-    /// </summary>
-    /// <returns>feature or null</returns>
-    public bool TryGetFeature([NotNullWhen(true)]out IActionFeature? feature)
-    {
-        feature = Sender as IActionFeature;
-        return feature != null;
-    }
-#endif
-
-#endregion
+    #endregion
 }

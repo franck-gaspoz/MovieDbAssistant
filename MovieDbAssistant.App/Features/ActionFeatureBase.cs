@@ -150,6 +150,8 @@ abstract class ActionFeatureBase<TCommand> :
         {
             Signal.Send(this, new ActionSuccessfullyEnded(@event.Context));
 
+            Buzy = false;
+
             Signal.Send(this, new ActionFinalisedEvent(@event.Context));
         }
 
