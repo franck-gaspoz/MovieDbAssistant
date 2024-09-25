@@ -77,7 +77,7 @@ abstract class BuildUIServiceBase<TSignal> :
     public void Handle(object sender, TSignal signal) => Run(sender, signal);
 
     /// <inheritdoc/>
-    public virtual void Handle(object sender,ActionSuccessfullyEnded @event)
+    public virtual void Handle(object sender, ActionSuccessfullyEnded @event)
     {
         if (!@event.Context.Command.HandleUI) return;
 
@@ -87,11 +87,11 @@ abstract class BuildUIServiceBase<TSignal> :
         {
             Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
         }
-        OnSuccessMessageAction?.Invoke(@event.Context);        
+        OnSuccessMessageAction?.Invoke(@event.Context);
     }
 
     /// <inheritdoc/>
-    public virtual void Handle(object sender,ActionFinalisedEvent @event)
+    public virtual void Handle(object sender, ActionFinalisedEvent @event)
         => Signal.Send(
             this,
             new BuildCompletedEvent(ItemIdBuild, Com!));
@@ -99,7 +99,7 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <summary>
     /// <inheritdoc/>
     /// </summary>
-    public virtual void Handle(object sender,ActionAfterPromptEvent @event)
+    public virtual void Handle(object sender, ActionAfterPromptEvent @event)
     {
         if (@event.Context.Command.HandleUI)
             OnErrorMessageAction?.Invoke(@event.Context);

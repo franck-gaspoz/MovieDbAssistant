@@ -2,6 +2,7 @@
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
@@ -144,7 +145,7 @@ abstract class ActionFeatureBase<TCommand> :
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
 
-        Signal.Send(this,new ActionEndingEvent(@event.Context));
+        Signal.Send(this, new ActionEndingEvent(@event.Context));
 
         if (!@event.Context.IsErrored)
         {
@@ -163,7 +164,7 @@ abstract class ActionFeatureBase<TCommand> :
     /// </summary>
     /// <param name="sender">sender</param>
     /// <param name="event">action errored event</param>
-    public virtual void Handle(object sender,ActionErroredEvent @event)
+    public virtual void Handle(object sender, ActionErroredEvent @event)
     {
         var message = @event.ToString();
 #if TRACE
@@ -176,16 +177,16 @@ abstract class ActionFeatureBase<TCommand> :
 
         Signal.Send(this, new ActionBeforePromptEvent(@event.Context));
         if (Com!.HandleUI)
-            Messages.Err(Message_Error_Unhandled, '\n'+message);
+            Messages.Err(Message_Error_Unhandled, '\n' + message);
 
         Signal.Send(this, new ActionAfterPromptEvent(@event.Context));
 
         Signal.Send(this, new ActionFinalisedEvent(@event.Context));
     }
 
-#endregion /**----  -----*/
+    #endregion /**----  -----*/
 
-#endregion
+    #endregion
 
     /// <summary>
     /// run the feature in or not in background worker
@@ -229,7 +230,7 @@ abstract class ActionFeatureBase<TCommand> :
                 _backgroundWorker!.RunAction(
                     this,
                     context,
-                    (ctx,@from,@event)
+                    (ctx, @from, @event)
                         => DoWork(context, sender));
             }
             else
@@ -237,7 +238,8 @@ abstract class ActionFeatureBase<TCommand> :
                 DoWork(context, sender);
             }
 
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
 #if TRACE
             System.Console.Error.WriteLine(this.IdWith("exception"));
@@ -281,7 +283,7 @@ abstract class ActionFeatureBase<TCommand> :
 #if TRACE
             System.Console.Error.WriteLine(this.IdWith("exception"));
 #endif
-            Signal.Send(this,new ActionErroredEvent(context,ex));
+            Signal.Send(this, new ActionErroredEvent(context, ex));
         }
         finally
         {

@@ -5,7 +5,6 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Actions;
-using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -38,19 +37,14 @@ sealed class BuildJsonFileUIService :
             messages,
             Build_End_Json_Without_Errors,
             ProcInpFold,
-            Item_Id_Build_Json)
-    {
-        _documentBuilderServiceFactory = documentBuilderServiceFactory;
-    }
+            Item_Id_Build_Json) => _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
     /// <summary>
     /// Build from json file.
     /// </summary>
     /// <inheritdoc/>
-    protected override void Action(ActionContext context)
-    {
-        _documentBuilderServiceFactory.CreateDocumentBuilderService()
-            .AddListener(this,this,Signal)
+    protected override void Action(ActionContext context) => _documentBuilderServiceFactory.CreateDocumentBuilderService()
+            .AddListener(this, this, Signal)
             .Build(
                 context,
                 new DocumentBuilderContext(
@@ -59,5 +53,4 @@ sealed class BuildJsonFileUIService :
                     typeof(HtmlDocumentBuilder),
                     typeof(JsonDataProvider)
                     ));
-    }
 }

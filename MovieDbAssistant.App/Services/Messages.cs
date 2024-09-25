@@ -19,7 +19,7 @@ sealed class Messages
     /// </summary>
     /// <param name="key">message key</param>
     /// <param name="text">additional text</param>
-    public void Warn(string key,string? text = null)
+    public void Warn(string key, string? text = null)
         => MessageBox.Show(
             _config[key]! + text ?? "",
             Caption(Message_Warning),

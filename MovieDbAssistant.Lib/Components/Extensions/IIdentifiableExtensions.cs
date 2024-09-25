@@ -24,10 +24,10 @@ public static class IIdentifiableExtensions
     /// <param name="obj">The obj.</param>
     /// <returns>A <see cref="string"/></returns>
     public static string Id(this IIdentifiable obj)
-        => (!string.IsNullOrWhiteSpace(obj.GetNamePrefix())?
-                    obj.GetNamePrefix()+": "
+        => (!string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
+                    obj.GetNamePrefix() + ": "
                     : "")
-            + obj.GetType().Name 
+            + obj.GetType().Name
             + " #" + obj.InstanceId.Value;
 
 }

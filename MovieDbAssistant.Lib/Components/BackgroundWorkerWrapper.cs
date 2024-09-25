@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+
 using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.Lib.ComponentModels;
@@ -8,8 +9,6 @@ using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Lib.Globals;
 
 namespace MovieDbAssistant.Lib.Components;
 
@@ -36,7 +35,7 @@ public class BackgroundWorkerWrapper :
     /// <inheritdoc/>
     public SharedCounter InstanceId { get; }
 
-     const string TraceLevelPrefix = "----- ";
+    const string TraceLevelPrefix = "----- ";
     readonly ISignalR _signal;
     IConfiguration? _config;
     BackgroundWorker? _backgroundWorker;
@@ -46,7 +45,7 @@ public class BackgroundWorkerWrapper :
     int? _interval;
     bool? _autoRepeat;
     Action<BackgroundWorkerWrapper>? _onStop;
-    Action<BackgroundWorkerWrapper,Exception>? _onError;
+    Action<BackgroundWorkerWrapper, Exception>? _onError;
 
     /// <summary>
     /// Gets or sets a value indicating whether the worker must ends if running, or if is ended
@@ -57,7 +56,7 @@ public class BackgroundWorkerWrapper :
     /// <summary>
     /// name of the owner / background worker
     /// </summary>
-    public string? Name => !string.IsNullOrWhiteSpace(Owner?.ToString()) 
+    public string? Name => !string.IsNullOrWhiteSpace(Owner?.ToString())
         ? GetName(Owner) : string.Empty;
 
     /// <summary>
@@ -243,7 +242,7 @@ public class BackgroundWorkerWrapper :
             action,
             0,
             autoRepeat: false);
-        return Run(context,Owner);
+        return Run(context, Owner);
     }
 
     /// <summary>
@@ -290,7 +289,7 @@ public class BackgroundWorkerWrapper :
         object caller
         )
     {
-        Context = context;        
+        Context = context;
 #if DEBUG
         Debug.WriteLine(TraceLevelPrefix + this.IdWith("run"));
 #endif

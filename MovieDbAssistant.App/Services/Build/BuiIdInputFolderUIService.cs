@@ -53,10 +53,7 @@ sealed class BuiIdInputFolderUIService :
             messages,
             InputFolderProcessed,
             ProcInpFold,
-            Item_Id_Build_Input)
-    {
-        _actionGroup = actionGroup;
-    }
+            Item_Id_Build_Input) => _actionGroup = actionGroup;
 
     /// <inheritdoc/>
     protected override void Action(ActionContext context)
@@ -70,14 +67,14 @@ sealed class BuiIdInputFolderUIService :
 
             _actionGroup.WaitAll();
 
-            Tray.StopAnimInfo();            
+            Tray.StopAnimInfo();
 
             Signal.Send(this, new ActionEndedEvent(context));
         }
         catch (Exception ex)
         {
             Tray.StopAnimInfo();
-            Signal.Send(this, new ActionErroredEvent(context,ex));
+            Signal.Send(this, new ActionErroredEvent(context, ex));
         }
     }
 
@@ -87,7 +84,8 @@ sealed class BuiIdInputFolderUIService :
     }
 
     /// <inheritdoc/>
-    public override void Handle(object sender,ActionEndedEvent @event) {
+    public override void Handle(object sender, ActionEndedEvent @event)
+    {
         base.Handle(sender, @event);
         if (@event.Context.Errors.Any())
         {
@@ -102,15 +100,12 @@ sealed class BuiIdInputFolderUIService :
             Messages.Info(Build_End_Input_Without_Errors);
 
         Signal.Send(this, new BuildCompletedEvent(
-            Item_Id_Build_Input, 
+            Item_Id_Build_Input,
             @event.Context.Command));
     }
 
     /// <inheritdoc/>
-    public override void Handle(object sender,ActionSuccessfullyEnded @event)
-    {
-        base.Handle(sender,@event);
-    }   
+    public override void Handle(object sender, ActionSuccessfullyEnded @event) => base.Handle(sender, @event);
 
     #region operations
 
@@ -122,7 +117,7 @@ sealed class BuiIdInputFolderUIService :
                 context,
                 new BuildFromQueryFileCommand(
                     file,
-                    NewActionContext(), 
+                    NewActionContext(),
                     false)));
     }
 
@@ -134,7 +129,7 @@ sealed class BuiIdInputFolderUIService :
                 context,
                 new BuildFromJsonFileCommand(
                     file,
-                    NewActionContext(), 
+                    NewActionContext(),
                     false)));
     }
 
@@ -151,8 +146,8 @@ sealed class BuiIdInputFolderUIService :
         // context growing
         command.ActionContext!
             .Setup(_actionGroup, command, [])
-            .Merge(this,context);
-        
+            .Merge(this, context);
+
         Signal.Send(_actionGroup, command);
     }
 

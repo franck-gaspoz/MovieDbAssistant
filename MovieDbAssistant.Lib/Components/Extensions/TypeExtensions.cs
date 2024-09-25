@@ -118,7 +118,7 @@ public static class TypeExtensions
     public static bool IfNotNull<T>(this T? check, Action<T> onTrue)
         where T : class
     {
-        var t = check as T;
+        var t = check;
         var c = t != null;
         if (c)
             onTrue(t!);

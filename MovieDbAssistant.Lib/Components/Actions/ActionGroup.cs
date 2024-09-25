@@ -97,7 +97,7 @@ public sealed class ActionGroup : IIdentifiable,
     /// </summary>
     public void WaitAll()
     {
-        bool end = false;
+        var end = false;
         while (!end)
         {
             end = true && _actionsStates.Count > 0;
@@ -105,7 +105,7 @@ public sealed class ActionGroup : IIdentifiable,
                 end &= kvp.Value.IsEnded;
             if (!end)
             {
-                Thread.Yield();                
+                Thread.Yield();
             }
         }
     }

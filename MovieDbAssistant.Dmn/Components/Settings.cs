@@ -221,7 +221,7 @@ public sealed class Settings
     /// input build ended without errors
     /// </summary>
     public const string Build_End_Input_Without_Errors = "Texts:BuildInputEndWithoutErrors";
-    
+
     /// <summary>
     /// input build ended with errors
     /// </summary>

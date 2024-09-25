@@ -4,7 +4,6 @@ using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Dmn.Services;
@@ -26,7 +25,7 @@ public sealed class DocumentBuilderService
     {
         _signal = signal;
         this._dataProviderFactory = _dataProviderFactory;
-        _backgroundWorkerWrapper = new(signal,this);
+        _backgroundWorkerWrapper = new(signal, this);
     }
 
     /// <summary>
@@ -45,10 +44,10 @@ public sealed class DocumentBuilderService
 
     void BuildInternal(ActionContext actionContext, DocumentBuilderContext _)
     {
-        throw new NotImplementedException();    //crash test
+        //throw new NotImplementedException();    //crash test
         try
         {
-            _signal.Send(this,new ActionEndedEvent(actionContext));
+            _signal.Send(this, new ActionEndedEvent(actionContext));
         }
         catch (Exception ex)
         {

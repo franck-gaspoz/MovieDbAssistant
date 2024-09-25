@@ -29,9 +29,9 @@ public static class TypeExtensions
     /// <param name="caller">caller</param>
     /// <param name="signal">The signal.</param>
     /// <returns>A <typeparamref name="T"/></returns>
-    public static T RemoveListener<T>(this T publisher, object subscriber,object caller, ISignalR signal)
+    public static T RemoveListener<T>(this T publisher, object subscriber, object caller, ISignalR signal)
     {
-        signal.Unsubscribe(caller ,subscriber, publisher!);
+        signal.Unsubscribe(caller, subscriber, publisher!);
         return publisher;
     }
 }

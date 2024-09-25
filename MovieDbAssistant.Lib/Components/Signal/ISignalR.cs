@@ -77,7 +77,7 @@ public interface ISignalR : IIdentifiable
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
     /// <returns></returns>
-    SignalR Subscribe(object caller,object listener, object publisher);
+    SignalR Subscribe(object caller, object listener, object publisher);
 
     /// <summary>
     /// unsubscribe a listener of a publisher
@@ -86,7 +86,7 @@ public interface ISignalR : IIdentifiable
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
     /// <returns></returns>
-    SignalR Unsubscribe(object caller,object listener, object publisher);
+    SignalR Unsubscribe(object caller, object listener, object publisher);
 
     /// <summary>
     /// unregister an instance handler

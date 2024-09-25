@@ -46,22 +46,22 @@ public sealed class SignalR : ISignalR
     /// <inheritdoc/>
     public SignalR RegisterType<T>(Type handlerType)
     {
-        MapType(typeof(T),handlerType);
+        MapType(typeof(T), handlerType);
         return this;
     }
 
     /// <inheritdoc/>
-    public SignalR Subscribe(object caller,object listener, object publisher)
+    public SignalR Subscribe(object caller, object listener, object publisher)
     {
 #if DEBUG
-        Debug.WriteLine(TraceLogPrefix + caller.GetId() + " ### subscribe: "+listener.GetId()+" --> "+publisher.GetId());
+        Debug.WriteLine(TraceLogPrefix + caller.GetId() + " ### subscribe: " + listener.GetId() + " --> " + publisher.GetId());
 #endif
         MapSubscriber(listener, publisher);
         return this;
     }
 
     /// <inheritdoc/>
-    public SignalR Unsubscribe(object caller,object listener, object publisher)
+    public SignalR Unsubscribe(object caller, object listener, object publisher)
     {
 #if DEBUG
         Debug.WriteLine(TraceLogPrefix + caller.GetId() + " ### UNSUBSCRIBE: " + listener.GetId() + " --> " + publisher.GetId());
@@ -149,7 +149,7 @@ public sealed class SignalR : ISignalR
             foreach (var handler in localHandlersInstances)
             {
 #if TRACE
-                if (CanInvoke(sigType, handler)) 
+                if (CanInvoke(sigType, handler))
                     Debug.WriteLine($"¤¤¤ ({signal.GetId()}) catched by instance: " + handler.GetId());
 #endif
                 Invoke(sigType, sender, handler, signal);

@@ -145,7 +145,7 @@ sealed class TrayMenuService
             _trayMenuBuilder.SetIcon();
             NotifyIcon.Text = _trayMenuBuilder.Tooltip;
         })
-        .Run(context,caller);
+        .Run(context, caller);
 
         AnimInfo(
             context,
@@ -159,7 +159,7 @@ sealed class TrayMenuService
             stopOnBallonTipClosed: false,
             onStop: () =>
             {
-                ta.Stop(this);               
+                ta.Stop(this);
             });
     }
 

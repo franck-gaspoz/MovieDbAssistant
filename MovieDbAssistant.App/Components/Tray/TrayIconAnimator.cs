@@ -28,7 +28,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
         IConfiguration config,
         TrayMenuService trayMenuService,
         Settings settings
-        ) : base(signal,string.Empty)
+        ) : base(signal, string.Empty)
     {
         _settings = settings;
         _trayMenuService = trayMenuService;
@@ -44,7 +44,7 @@ sealed class TrayIconAnimator : BackgroundWorkerWrapper
     {
         Setup(
             _config,
-            (ctx,o, e) => Next(),
+            (ctx, o, e) => Next(),
             _config.GetInt(Anim_Interval_TrayIcon));
         base.Run(context, caller);
         return this;

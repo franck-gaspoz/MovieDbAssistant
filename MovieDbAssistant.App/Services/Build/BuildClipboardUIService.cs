@@ -3,11 +3,8 @@
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
-using MovieDbAssistant.Dmn.Events;
-using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -39,12 +36,8 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardComm
             ClipboardProcessed,
             ProcClipboard,
             Item_Id_Build_Clipboard,
-            runInBackground:false
-            )
-    {
-        _documentBuilderServiceFactory = documentBuilderServiceFactory;
-
-        /*OnSuccessMessageAction = context =>
+            runInBackground: false
+            ) => _documentBuilderServiceFactory = documentBuilderServiceFactory;/*OnSuccessMessageAction = context =>
         {
             Messages.Info(
                 Build_End_Json_Without_Errors
@@ -52,7 +45,6 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardComm
                 + ((BuildFromJsonFileCommand)context.Command).Path
                 );
         };*/
-    }
 
     /// <summary>
     /// Build from clipboard.
