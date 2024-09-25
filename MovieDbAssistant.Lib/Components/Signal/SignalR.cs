@@ -2,6 +2,7 @@
 using System.Reflection;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
@@ -24,14 +25,17 @@ public sealed class SignalR : ISignalR
     readonly Dictionary<Type, List<object>> _instanceMap = [];
     readonly Dictionary<Type, List<Type>> _typeMap = [];
     readonly Dictionary<object, List<object>> _subscribeMap = [];
+    readonly ILogger<SignalR> _logger;
     readonly IConfiguration _config;
     readonly IServiceProvider _serviceProvider;
 
     public SignalR(
+        ILogger<SignalR> logger,
         IConfiguration config,
         IServiceProvider serviceProvider)
     {
         InstanceId = new(this);
+        _logger = logger;
         _config = config;
         _serviceProvider = serviceProvider;
     }
