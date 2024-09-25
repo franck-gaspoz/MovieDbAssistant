@@ -44,6 +44,13 @@ public sealed class SignalR : ISignalR
     }
 
     /// <inheritdoc/>
+    public SignalR RegisterType<T>(Type handlerType)
+    {
+        MapType(typeof(T),handlerType);
+        return this;
+    }
+
+    /// <inheritdoc/>
     public SignalR Subscribe(object caller,object listener, object publisher)
     {
 #if DEBUG

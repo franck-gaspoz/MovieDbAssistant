@@ -63,6 +63,14 @@ public interface ISignalR : IIdentifiable
     public SignalR Register<T>(object handler);
 
     /// <summary>
+    /// register a type for a signal type. extends type map for this type
+    /// </summary>
+    /// <typeparam name="T">type</typeparam>
+    /// <param name="handler">instance</param>
+    /// <returns>this object</returns>
+    public SignalR RegisterType<T>(Type handler);
+
+    /// <summary>
     /// subscribe to all signals of a publisher
     /// </summary>
     /// <param name="caller">caller</param>

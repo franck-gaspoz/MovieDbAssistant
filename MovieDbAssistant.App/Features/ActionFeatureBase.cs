@@ -139,16 +139,15 @@ abstract class ActionFeatureBase<TCommand> :
         ActionEndedEvent @event)
     {
 #if TRACE
-        Debug.WriteLine(this.IdWith("end"));
+        Debug.WriteLine(this.IdWith("END"));
 #endif
         if (Com!.HandleUI)
             Tray.StopAnimInfo();
-        //OnEnd(context);
+
         Signal.Send(this,new ActionEndingEvent(@event.Context));
 
         if (!@event.Context.IsErrored)
         {
-            //OnSucessEnd(context);
             Signal.Send(this, new ActionSuccessfullyEnded(@event.Context));
 
             Signal.Send(this, new ActionFinalisedEvent(@event.Context));
@@ -171,13 +170,12 @@ abstract class ActionFeatureBase<TCommand> :
         @event.Context.LogError(@event);
         @event.Context.IsErrored = true;
 
-        //End(@event.Context, true);
         Signal.Send(this, new ActionEndedEvent(@event.Context));
-        //OnErrorBeforePrompt(@event.Context);
+
         Signal.Send(this, new ActionBeforePromptEvent(@event.Context));
         if (Com!.HandleUI)
             Messages.Err(Message_Error_Unhandled, '\n'+message);
-        //OnErrorAfterPrompt(@event.Context);
+
         Signal.Send(this, new ActionAfterPromptEvent(@event.Context));
 
         Signal.Send(this, new ActionFinalisedEvent(@event.Context));

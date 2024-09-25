@@ -24,7 +24,13 @@ public sealed class ActionGroup : IIdentifiable,
 
     #region create & setup
 
-    public ActionGroup() => InstanceId = new(this);
+    public ActionGroup(ISignalR signal)
+    {
+        var type = GetType();
+        signal.Register<ActionErroredEvent>(this);
+        signal.Register<ActionEndedEvent>(this);
+        InstanceId = new(this);
+    }
 
     #endregion
 
@@ -94,7 +100,7 @@ public sealed class ActionGroup : IIdentifiable,
         bool end = false;
         while (!end)
         {
-            end = true;
+            end = true && _actionsStates.Count > 0;
             foreach (var kvp in _actionsStates)
                 end &= kvp.Value.IsEnded;
             if (!end)
