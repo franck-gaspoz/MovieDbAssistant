@@ -1,4 +1,8 @@
-﻿using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+﻿using Microsoft.Extensions.Logging;
+
+using MovieDbAssistant.Lib.Components.Actions.Events;
+using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Lib.Components.Errors;
 

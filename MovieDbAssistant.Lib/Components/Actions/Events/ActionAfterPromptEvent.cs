@@ -6,4 +6,5 @@ namespace MovieDbAssistant.Lib.Components.Actions.Events;
 /// action successfully ended
 /// </summary>
 /// <param name="context">action context</param>
-public sealed record ActionAfterPromptEvent(ActionContext Context) : ISignal;
+public sealed record ActionAfterPromptEvent(ActionContext Context) 
+    : ActionEventBase(Context);
