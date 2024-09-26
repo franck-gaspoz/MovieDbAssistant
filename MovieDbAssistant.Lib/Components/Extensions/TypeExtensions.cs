@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Lib.Components.Extensions;
+﻿using System.Reflection;
+
+namespace MovieDbAssistant.Lib.Components.Extensions;
 
 /// <summary>
 /// type extensions
@@ -37,5 +39,40 @@ public static class TypeExtensions
             if (item.HasInterface(ofType)) list.Add(item);
         }
         return list;
+    }
+
+    /// <summary>
+    /// Programatically fire an event handler of an object
+    /// </summary>
+    /// <param name="target">target</param>
+    /// <param name="name">event name</param>
+    /// <param name="args">event args</param>
+    public static void FireEvent(
+        this object target, 
+        string name, 
+        EventArgs args)
+    {
+        /*
+         * By convention event handlers are internally called by a protected
+         * method called OnEventName
+         * e.g.
+         *     public event TextChanged
+         * is triggered by
+         *     protected void OnTextChanged
+         * 
+         * If the object didn't create an OnXxxx protected method,
+         * then you're screwed. But your alternative was over override
+         * the method and call it - so you'd be screwed the other way too.
+         */
+
+        //Event thrower method name //e.g. OnTextChanged
+        String methodName = "On" + name;
+
+        var mi = target.GetType().GetMethod(
+              methodName,
+              BindingFlags.Instance | BindingFlags.NonPublic)
+            ?? throw new ArgumentException("Cannot find event thrower named " + methodName);
+
+        mi.Invoke(target, [args]);
     }
 }

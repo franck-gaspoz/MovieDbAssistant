@@ -61,6 +61,7 @@ public abstract class ActionBase<TCommand> :
     protected string TextKeyFeatureIsBuzy { get; set; }
     readonly BackgroundWorkerWrapper? _backgroundWorker;
 
+    protected event EventHandler<ActionBaseEventContextArgs> StartRunningAction;
     protected event EventHandler<ActionBaseEventContextArgs> StoppingAnimInfo;
     protected event EventHandler<ActionBaseEventContextArgs> StartingAnimWorkInfo;
     protected event EventHandler<ActionBaseEventContextArgs> MessageWarningOpening_IsBuzy;
@@ -216,6 +217,8 @@ public abstract class ActionBase<TCommand> :
             }
             else
                 com.Setup(context);
+
+            StartRunningAction.Invoke(this,new(com,this,context));
 
             if (RunInBackground)
             {
