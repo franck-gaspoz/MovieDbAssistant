@@ -194,12 +194,10 @@ public abstract class ActionBase<TCommand> :
                         this,
                         new(com, sender, null));
 
-                AppLoggerExtensions.LogWarning(
-                    Logger,
+                Logger.LogWarning(
                     this,
                     Config[TextKeyFeatureIsBuzy] + "");
 
-                Logger.LogWarning(this, "feature is not ready");
                 return;
             }
             Com = com;
