@@ -23,7 +23,7 @@ abstract class BuildUIServiceBase<TSignal> :
     ISignalHandler<TSignal>,
     ISignalMethodHandler<ActionFinalisedEvent>,
     ISignalMethodHandler<ActionAfterPromptEvent>
-    where TSignal : ActionFeatureCommandBase
+    where TSignal : Lib.Components.Actions.Commands.ActionCommandBase
 {
     /// <summary>
     /// Gets the input path.

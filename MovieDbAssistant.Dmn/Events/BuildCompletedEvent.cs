@@ -10,5 +10,5 @@ namespace MovieDbAssistant.Dmn.Events;
 /// <param name="Com">command</param>
 public sealed record BuildCompletedEvent(
     string ItemId,
-    ActionFeatureCommandBase Com
-    ) : ISignal;
+    Lib.Components.Actions.Commands.ActionCommandBase Com
+    ) : Lib.Components.Signal.ISignal;

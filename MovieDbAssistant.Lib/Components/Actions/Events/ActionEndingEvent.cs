@@ -6,4 +6,5 @@ namespace MovieDbAssistant.Lib.Components.Actions.Events;
 /// action ending event
 /// </summary>
 /// <param name="context">action context</param>
-public sealed record ActionEndingEvent(ActionContext Context) : ISignal;
+public sealed record ActionEndingEvent(ActionContext Context) 
+    : ActionEventBase(Context);

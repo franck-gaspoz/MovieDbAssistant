@@ -12,6 +12,6 @@ namespace MovieDbAssistant.Dmn.Events;
 /// <param name="Message">message (optional)</param>
 public sealed record BuildErroredEvent(
     string ItemId,
-    ActionFeatureCommandBase Com,
+    Lib.Components.Actions.Commands.ActionCommandBase Com,
     Exception? Exception = null,
-    string? Message = null) : ISignal;
+    string? Message = null) : Lib.Components.Signal.ISignal;

@@ -49,12 +49,12 @@ public sealed class ActionContext :
     /// </summary>
     public StackErrors Errors { get; init; }
 
-    ActionFeatureCommandBase? _command;
+    Commands.ActionCommandBase? _command;
 
     /// <summary>
     /// handled command
     /// </summary>
-    public ActionFeatureCommandBase Command => _command!;
+    public Commands.ActionCommandBase Command => _command!;
 
     // interface IIdentifier
 
@@ -96,7 +96,7 @@ public sealed class ActionContext :
     /// <returns></returns>
     public ActionContext Setup(
         object sender,
-        ActionFeatureCommandBase command,
+        Commands.ActionCommandBase command,
         List<object> listeners
         )
     {

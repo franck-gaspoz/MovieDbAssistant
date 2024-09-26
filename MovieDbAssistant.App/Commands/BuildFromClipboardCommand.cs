@@ -11,4 +11,4 @@ namespace MovieDbAssistant.App.Commands;
 public sealed record BuildFromClipboardCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true
-) : ActionFeatureCommandBase(ActionContext, HandleUI);
+) : ActionCommandBase(ActionContext, HandleUI);

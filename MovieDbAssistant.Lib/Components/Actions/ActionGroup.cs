@@ -18,7 +18,7 @@ public sealed class ActionGroup : IIdentifiable,
 {
     #region fields & properties
 
-    readonly Dictionary<ActionFeatureCommandBase, ActionItem> _actionsStates = [];
+    readonly Dictionary<Commands.ActionCommandBase, ActionItem> _actionsStates = [];
 
     #endregion
 
@@ -87,7 +87,7 @@ public sealed class ActionGroup : IIdentifiable,
     /// <summary>
     /// add an action command instance for later tracking
     /// </summary>
-    public void Add(string key, ActionFeatureCommandBase command)
+    public void Add(string key, Commands.ActionCommandBase command)
         => _actionsStates.Add(
             command,
             new ActionItem(key, command, false));
@@ -121,8 +121,8 @@ public sealed class ActionGroup : IIdentifiable,
         /// <summary>
         /// Gets or sets the command.
         /// </summary>
-        /// <value>An <see cref="ActionFeatureCommandBase? "/></value>
-        public ActionFeatureCommandBase? Command { get; set; }
+        /// <value>An <see cref="Commands.ActionCommandBase? "/></value>
+        public Commands.ActionCommandBase? Command { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether ended.
@@ -130,7 +130,7 @@ public sealed class ActionGroup : IIdentifiable,
         /// <value>A <see cref="bool"/></value>
         public bool IsEnded { get; set; }
 
-        public ActionItem(string? key, ActionFeatureCommandBase? command, bool isEnded)
+        public ActionItem(string? key, Commands.ActionCommandBase? command, bool isEnded)
         {
             Key = key;
             Command = command;

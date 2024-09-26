@@ -15,4 +15,4 @@ public sealed record BuildFromJsonFileCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true,
     string? Key = null
-    ) : ActionFeatureCommandBase(ActionContext, HandleUI, Key);
+    ) : ActionCommandBase(ActionContext, HandleUI, Key);

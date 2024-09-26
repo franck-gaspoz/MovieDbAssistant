@@ -223,6 +223,11 @@ public sealed class Settings
     public const string Builder_Busy = "Texts:BuilderBusy";
 
     /// <summary>
+    /// feature busy error
+    /// </summary>
+    public const string Feature_Busy = "Texts:FeatureBusy";
+
+    /// <summary>
     /// input build ended without errors
     /// </summary>
     public const string Build_End_Input_Without_Errors = "Texts:BuildInputEndWithoutErrors";

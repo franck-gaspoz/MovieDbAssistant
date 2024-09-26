@@ -13,4 +13,4 @@ public sealed record BuildFromQueryFileCommand(
     string Path,
     ActionContext? ActionContext = null,
     bool HandleUI = true
-    ) : ActionFeatureCommandBase(ActionContext, HandleUI);
+    ) : ActionCommandBase(ActionContext, HandleUI);

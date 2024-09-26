@@ -157,7 +157,7 @@ sealed class BuiIdInputFolderUIService :
 
     void AddAction(
         ActionContext context,
-        ActionFeatureCommandBase command)
+        Lib.Components.Actions.Commands.ActionCommandBase command)
     {
         var key = this.GetKey(ref _counter);
         _actionGroup.Add(key, command);

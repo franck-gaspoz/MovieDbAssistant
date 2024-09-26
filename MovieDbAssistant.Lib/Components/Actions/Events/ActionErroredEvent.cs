@@ -13,7 +13,8 @@ public sealed record ActionErroredEvent(
     ActionContext Context,
     Exception? Exception = null,
     string? Message = null,
-    string? StackTrace = null) : ISignal
+    string? StackTrace = null) 
+    : ActionEventBase(Context)
 {
     /// <summary>
     /// Gets the error from the exception or the message
