@@ -183,6 +183,11 @@ public sealed class Settings
     public const string InputFolderProcessed = "Texts:InputFolderProcessed";
 
     /// <summary>
+    /// input folder processed with errors
+    /// </summary>
+    public const string InputFolderProcessedWithErrors = "Texts:InputFolderProcessedWithErrors";
+
+    /// <summary>
     /// clipboard processed
     /// </summary>
     public const string ClipboardProcessed = "Texts:ClipboardProcessed";

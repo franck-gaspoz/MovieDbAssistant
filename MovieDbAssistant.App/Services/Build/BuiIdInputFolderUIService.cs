@@ -92,6 +92,8 @@ sealed class BuiIdInputFolderUIService :
         base.Handle(sender, @event);
         if (@event.Context.Errors.Any())
         {
+            Tray.ShowBalloonTip(InputFolderProcessedWithErrors,icon:ToolTipIcon.Warning);
+
             Messages.Warn(
                 Build_End_Input_With_Errors,
                 '\n' + string.Join('\n',
@@ -100,7 +102,11 @@ sealed class BuiIdInputFolderUIService :
                         .Select(x => x.Error)));
         }
         else
+        {
+            Tray.ShowBalloonTip(InputFolderProcessed);
+
             Messages.Info(Build_End_Input_Without_Errors);
+        }
 
         Signal.Send(this, new BuildCompletedEvent(
             Item_Id_Build_Input,

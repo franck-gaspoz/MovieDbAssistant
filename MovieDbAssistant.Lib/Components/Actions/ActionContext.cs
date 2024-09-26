@@ -67,7 +67,7 @@ public sealed class ActionContext :
     /// <summary>
     /// indicates an error state if any
     /// </summary>
-    public bool IsErrored { get; set; }
+    public bool IsErrored => Errors.Any();
 
     #endregion
 

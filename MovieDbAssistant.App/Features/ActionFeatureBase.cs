@@ -154,7 +154,6 @@ abstract class ActionFeatureBase<TCommand> :
         _logger.LogError(this,message);
 
         @event.Context.LogError(@event);
-        @event.Context.IsErrored = true;
 
         Signal.Send(this, new ActionEndedEvent(@event.Context));
 
