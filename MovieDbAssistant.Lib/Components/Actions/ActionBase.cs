@@ -124,7 +124,7 @@ public abstract class ActionBase<TCommand> :
     {
         Logger.LogTrace(this, "END");
         if (Com!.HandleUI)
-            StoppingAnimInfo.Invoke(this,
+            StoppingAnimInfo?.Invoke(this,
                 new(@event, sender, @event.Context));
 
         Signal.Send(this, new ActionEndingEvent(@event.Context));
@@ -159,7 +159,7 @@ public abstract class ActionBase<TCommand> :
         Signal.Send(this, new ActionBeforePromptEvent(@event.Context));
 
         if (Com!.HandleUI)
-            MessagesErrorOpening_ErrorUnHandled.Invoke(this,
+            MessagesErrorOpening_ErrorUnHandled?.Invoke(this,
                 new(@event, this, @event.Context, message));
 
         AppLoggerExtensions.LogError(
@@ -191,7 +191,7 @@ public abstract class ActionBase<TCommand> :
             if (Buzy)
             {
                 if (com.HandleUI)
-                    MessageWarningOpening_IsBuzy.Invoke(
+                    MessageWarningOpening_IsBuzy?.Invoke(
                         this,
                         new(com, sender, null));
 
@@ -218,7 +218,7 @@ public abstract class ActionBase<TCommand> :
             else
                 com.Setup(context);
 
-            StartRunningAction.Invoke(this,new(com,this,context));
+            StartRunningAction?.Invoke(this,new(com,this,context));
 
             if (RunInBackground)
             {
