@@ -111,9 +111,7 @@ sealed class BuiIdInputFolderUIService :
                 '\n' + string.Join('\n', jsonBuildLogs));
         }
         else
-        {
-            Tray.ShowBalloonTip(InputFolderProcessed);
-
+        {            
             Messages.Info(Build_End_Input_Without_Errors);
         }
 
