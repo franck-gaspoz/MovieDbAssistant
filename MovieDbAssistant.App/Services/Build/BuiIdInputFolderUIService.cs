@@ -94,12 +94,21 @@ sealed class BuiIdInputFolderUIService :
         {
             Tray.ShowBalloonTip(InputFolderProcessedWithErrors,icon:ToolTipIcon.Warning);
 
+            var jsonBuildErrors = @event.Context.Errors
+                .Where(x => x.Event.Context.Command is BuildFromJsonFileCommand)
+                .Select(x => x.Event);
+
+            var jsonBuildLogs = jsonBuildErrors.Select(x =>
+                "• "
+                + (x.Context.Command is BuildFromJsonFileCommand com
+                    ? Path.GetFileName(com.Path)
+                    : string.Empty)
+                + ": "
+                + x.GetError());            
+
             Messages.Warn(
                 Build_End_Input_With_Errors,
-                '\n' + string.Join('\n',
-                    @event.Context.Errors
-                        .ToList()
-                        .Select(x => x.Error)));
+                '\n' + string.Join('\n', jsonBuildLogs));
         }
         else
         {

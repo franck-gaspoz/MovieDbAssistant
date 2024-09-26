@@ -150,7 +150,9 @@ public sealed class ActionContext :
     public void LogError(ActionErroredEvent @event)
         => Errors.Push(new StackError(
             @event.GetError(),
-            @event.GetTrace()));
+            @event.GetTrace(),
+            @event
+            ));
 
     #endregion
 }

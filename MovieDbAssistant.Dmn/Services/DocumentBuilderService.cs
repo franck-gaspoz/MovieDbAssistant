@@ -49,7 +49,6 @@ public sealed class DocumentBuilderService
     {
         try
         {
-            throw new NotImplementedException();    //crash test
             _signal.Send(this, new ActionEndedEvent(actionContext));
         }
         catch (Exception ex)
