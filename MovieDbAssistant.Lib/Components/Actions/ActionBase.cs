@@ -30,6 +30,10 @@ public abstract class ActionBase<TCommand> :
     #region fields & properties
 
 #if DEBUG || TRACE
+    /// <summary>
+    /// Dbgs the id.
+    /// </summary>
+    /// <returns>A <see cref="string"/></returns>
     public string DbgId() => this.Id();
 #endif
 
@@ -121,8 +125,8 @@ public abstract class ActionBase<TCommand> :
     {
         Logger.LogTrace(this, "END");
         if (Com!.HandleUI)
-            StoppingAnimInfo.Invoke(this, 
-                new(@event,sender,@event.Context));
+            StoppingAnimInfo.Invoke(this,
+                new(@event, sender, @event.Context));
 
         Signal.Send(this, new ActionEndingEvent(@event.Context));
 
@@ -156,8 +160,8 @@ public abstract class ActionBase<TCommand> :
         Signal.Send(this, new ActionBeforePromptEvent(@event.Context));
 
         if (Com!.HandleUI)
-            MessagesErrorOpening_ErrorUnHandled.Invoke(this, 
-                new(@event,this,@event.Context,message));
+            MessagesErrorOpening_ErrorUnHandled.Invoke(this,
+                new(@event, this, @event.Context, message));
 
         AppLoggerExtensions.LogError(
             Logger,
@@ -189,8 +193,8 @@ public abstract class ActionBase<TCommand> :
             {
                 if (com.HandleUI)
                     MessageWarningOpening_IsBuzy.Invoke(
-                        this, 
-                        new(com,sender,null));
+                        this,
+                        new(com, sender, null));
 
                 AppLoggerExtensions.LogWarning(
                     Logger,
@@ -248,8 +252,8 @@ public abstract class ActionBase<TCommand> :
         try
         {
             if (Com!.HandleUI)
-                StartingAnimWorkInfo?.Invoke(this, 
-                    new(context.Command,sender,context));
+                StartingAnimWorkInfo?.Invoke(this,
+                    new(context.Command, sender, context));
 
             Logger.LogTrace(this, "action");
 

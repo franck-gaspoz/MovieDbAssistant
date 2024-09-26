@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Windows.Forms;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,16 +58,16 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
         Settings = settings;
         Messages = messages;
 
-        StoppingAnimInfo += (o,e) => Tray.StopAnimInfo();
+        StoppingAnimInfo += (o, e) => Tray.StopAnimInfo();
 
-        StartingAnimWorkInfo += (o,e) => Tray
+        StartingAnimWorkInfo += (o, e) => Tray
             .AnimWorkInfo(
                 Logger,
                 e.Context!,
                 e.Sender,
                 Config[ActionOnGoingMessageKey]!);
 
-        MessagesErrorOpening_ErrorUnHandled += (o,e) =>
+        MessagesErrorOpening_ErrorUnHandled += (o, e) =>
             Messages.Err(Message_Error_Unhandled, '\n' + e.Text);
 
         MessageWarningOpening_IsBuzy += (o, e) =>
