@@ -23,7 +23,7 @@ abstract class BuildUIServiceBase<TSignal> :
     ISignalHandler<TSignal>,
     ISignalMethodHandler<ActionFinalisedEvent>,
     ISignalMethodHandler<ActionAfterPromptEvent>
-    where TSignal : Lib.Components.Actions.Commands.ActionCommandBase
+    where TSignal : ActionCommandBase
 {
     /// <summary>
     /// Gets the input path.
@@ -31,8 +31,7 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <value>A <see cref="string"/></value>
     public string? InputPath { get; protected set; }
 
-    readonly ILogger<BuildUIServiceBase<TSignal>> _logger;
-    readonly string _actionDoneMessageKey;
+    protected string ActionDoneMessageKey { get; set; }
 
     /// <summary>
     /// item id build
@@ -68,8 +67,7 @@ abstract class BuildUIServiceBase<TSignal> :
     {
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
-        _logger = logger;
-        _actionDoneMessageKey = actionDoneMessageKey;
+        ActionDoneMessageKey = actionDoneMessageKey;
         OnSuccessMessageAction = onSuccessMessageAction;
         OnErrorMessageAction = onErrorMessageAction;
     }
@@ -86,11 +84,19 @@ abstract class BuildUIServiceBase<TSignal> :
     {
         if (!@event.Context.Command.HandleUI) return;
 
-        Tray.ShowBalloonTip(_actionDoneMessageKey);
+        Tray.ShowBalloonTip(ActionDoneMessageKey);
+
+        PostHandle(@event);
+    }
+
+    protected virtual void PostHandle(ActionSuccessfullyEnded @event)
+    {
+        if (!@event.Context.Command.HandleUI) return;
 
         if (Config.GetBool(OpenOuputWindowOnBuild))
         {
-            Signal.Send(this, new ExploreFolderCommand(Settings.OutputPath));
+            Signal.Send(this, 
+                new ExploreFolderCommand(Settings.OutputPath));
         }
         OnSuccessMessageAction?.Invoke(@event.Context);
     }

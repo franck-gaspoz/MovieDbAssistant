@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Signal;
 

@@ -6,6 +6,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Actions;
+using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -56,4 +57,19 @@ sealed class BuildJsonFileUIService :
                     typeof(HtmlDocumentBuilder),
                     typeof(JsonDataProvider)
                     ));
+
+    /// <inheritdoc/>
+    public override void Handle(object sender, ActionSuccessfullyEnded @event)
+    {
+        if (!@event.Context.Command.HandleUI) return;
+
+        Tray.ShowBalloonTip(
+            null,
+            Config[ActionDoneMessageKey]
+            +Path.GetFileName(
+                (@event.Context.Command as BuildFromJsonFileCommand)
+                    ?.Path));
+
+        PostHandle(@event);
+    }
 }

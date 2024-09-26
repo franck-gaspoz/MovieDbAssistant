@@ -4,15 +4,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-using MovieDbAssistant.Lib.Components;
-using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 
-namespace MovieDbAssistant.App.Features;
+namespace MovieDbAssistant.Lib.Components.Actions;
 
 ///
 /// <summary>
