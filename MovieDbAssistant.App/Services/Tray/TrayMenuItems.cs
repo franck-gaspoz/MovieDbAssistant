@@ -67,7 +67,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildQueryFile), },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
-                        () => _signal.Send(this,new BuildFromQueryFileCommand("")));
+                        () => _signal.Send(this,new BuildQueryFileCommand("")));
             });}),
 
             (new ToolStripMenuItem {
@@ -75,7 +75,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildJsonFile) },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
-                        () => _signal.Send(this, new BuildFromJsonFileCommand("")));
+                        () => _signal.Send(this, new BuildJsonFileCommand("")));
             });}),
 
             (new ToolStripMenuItem {
@@ -83,7 +83,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildFromInputFolder) },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
-                        () => _signal.Send(this, new BuildFromInputFolderCommand()));
+                        () => _signal.Send(this, new BuildInputFolderCommand()));
             });}),
 
             (new ToolStripMenuItem {
@@ -91,7 +91,7 @@ sealed class TrayMenuItems
                 Text = T(Label_BuildClipb) },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
-                        () => _signal.Send(this, new BuildFromClipboardCommand()));
+                        () => _signal.Send(this, new BuildClipboardCommand()));
             });}),
 
             // tools

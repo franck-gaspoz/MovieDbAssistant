@@ -4,13 +4,11 @@ using MovieDbAssistant.Lib.Components.Actions.Commands;
 namespace MovieDbAssistant.App.Commands;
 
 /// <summary>
-/// The build from query file command.
+/// The build input folder command.
 /// </summary>
-/// <param name="Path">path</param>
 /// <param name="ActionContext">action context</param>
 /// <param name="HandleUI">if true, the command handler must handle UI interactions</param>
-public sealed record BuildFromQueryFileCommand(
-    string Path,
+public sealed record BuildInputFolderCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true
     ) : ActionCommandBase(ActionContext, HandleUI);

@@ -8,7 +8,7 @@ namespace MovieDbAssistant.App.Commands;
 /// </summary>
 /// <param name="ActionContext">action context</param>
 /// <param name="HandleUI">if true, the command handler must handle UI interactions</param>
-public sealed record BuildFromClipboardCommand(
+public sealed record BuildClipboardCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true
 ) : ActionCommandBase(ActionContext, HandleUI);

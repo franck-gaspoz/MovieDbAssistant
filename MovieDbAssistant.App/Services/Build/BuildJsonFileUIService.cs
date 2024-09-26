@@ -20,7 +20,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// </summary>
 [Scoped]
 sealed class BuildJsonFileUIService :
-    BuildUIServiceBase<BuildFromJsonFileCommand>
+    BuildUIServiceBase<BuildJsonFileCommand>
 {
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
@@ -67,7 +67,7 @@ sealed class BuildJsonFileUIService :
             null,
             Config[ActionDoneMessageKey]
             +Path.GetFileName(
-                (@event.Context.Command as BuildFromJsonFileCommand)
+                (@event.Context.Command as BuildJsonFileCommand)
                     ?.Path));
 
         PostHandle(@event);

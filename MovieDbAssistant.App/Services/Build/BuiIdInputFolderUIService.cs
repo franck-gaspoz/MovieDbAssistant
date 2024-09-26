@@ -22,7 +22,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// </summary>
 [Scoped]
 sealed class BuiIdInputFolderUIService :
-    BuildUIServiceBase<BuildFromInputFolderCommand>
+    BuildUIServiceBase<BuildInputFolderCommand>
 {
     #region fields & properties
 
@@ -95,12 +95,12 @@ sealed class BuiIdInputFolderUIService :
             Tray.ShowBalloonTip(InputFolderProcessedWithErrors,icon:ToolTipIcon.Warning);
 
             var jsonBuildErrors = @event.Context.Errors
-                .Where(x => x.Event.Context.Command is BuildFromJsonFileCommand)
+                .Where(x => x.Event.Context.Command is BuildJsonFileCommand)
                 .Select(x => x.Event);
 
             var jsonBuildLogs = jsonBuildErrors.Select(x =>
                 "• "
-                + (x.Context.Command is BuildFromJsonFileCommand com
+                + (x.Context.Command is BuildJsonFileCommand com
                     ? Path.GetFileName(com.Path)
                     : string.Empty)
                 + ": "
@@ -133,7 +133,7 @@ sealed class BuiIdInputFolderUIService :
         lists.ToList()
             .ForEach(file => AddAction(
                 context,
-                new BuildFromQueryFileCommand(
+                new BuildQueryFileCommand(
                     file,
                     NewActionContext(),
                     false)));
@@ -145,7 +145,7 @@ sealed class BuiIdInputFolderUIService :
         jsons.ToList()
             .ForEach(file => AddAction(
                 context,
-                new BuildFromJsonFileCommand(
+                new BuildJsonFileCommand(
                     file,
                     NewActionContext(),
                     false)));

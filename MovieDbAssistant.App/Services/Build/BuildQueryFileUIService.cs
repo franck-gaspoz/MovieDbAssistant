@@ -16,7 +16,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// The build service.
 /// </summary>
 [Scoped]
-sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>,
+sealed class BuildQueryFileUIService : ISignalHandler<BuildQueryFileCommand>,
     IIdentifiable
 {
     /// <summary>
@@ -45,7 +45,7 @@ sealed class BuildQueryFileUIService : ISignalHandler<BuildFromQueryFileCommand>
     /// <summary>
     /// Build from query file.
     /// </summary>
-    public void Handle(object sender, BuildFromQueryFileCommand com)
+    public void Handle(object sender, BuildQueryFileCommand com)
     {
         try
         {

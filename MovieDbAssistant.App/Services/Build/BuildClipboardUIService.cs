@@ -17,7 +17,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// The build service.
 /// </summary>
 [Scoped]
-sealed class BuildClipboardUIService : BuildUIServiceBase<BuildFromClipboardCommand>
+sealed class BuildClipboardUIService : BuildUIServiceBase<BuildClipboardCommand>
 {
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
 
