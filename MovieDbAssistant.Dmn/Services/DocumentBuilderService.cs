@@ -73,6 +73,8 @@ public sealed class DocumentBuilderService
 
             var movies = dataProvider.Get(context.Source);
 
+            builder.Build(context, movies);
+
             _signal.Send(this, new ActionEndedEvent(actionContext));
         }
         catch (Exception ex)
