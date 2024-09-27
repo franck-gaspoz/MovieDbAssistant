@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
+using static MovieDbAssistant.Dmn.Globals;
+
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
 /// <summary>
@@ -13,13 +15,6 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 [Scoped]
 public class JsonDataProvider : IDataProvider
 {
-    static readonly Lazy<JsonSerializerOptions> _jsonSerializerOptions
-        = new(() =>
-            new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-            });
-
     protected ILogger<JsonDataProvider> Logger { get; set; }
 
     public JsonDataProvider(ILogger<JsonDataProvider> logger)
@@ -34,7 +29,7 @@ public class JsonDataProvider : IDataProvider
     {
         var r = JsonSerializer.Deserialize<MoviesModel>(
             source,
-            _jsonSerializerOptions.Value);
+            JsonSerializerProperties.Value);
 
         return r!;
     }

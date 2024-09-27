@@ -1,11 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Text.Json;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Dmn.Models.Build;
+using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
-
+using static MovieDbAssistant.Dmn.Globals;
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 /// <summary>
@@ -17,7 +21,6 @@ public sealed class TemplateBuilder
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilder> _logger;
     string? _templateId;
-    public const string ExtHtml = ".html";
 
     public TemplateBuilder(
         IConfiguration configuration,
@@ -38,8 +41,18 @@ public sealed class TemplateBuilder
     {
         _templateId = templateId;
 
-        var path = RscPath(context);
-        //var data = 
+        var path = Path.Combine(
+            RscPath(context),
+            templateId);
+
+        var tplFile = Path.Combine(
+            path,
+            _config[Build_Html_Template_Filename]!);
+        var tpl = File.ReadAllText(tplFile);
+
+        var data = JsonSerializer.Deserialize<TemplateModel>(
+            tpl,
+            JsonSerializerProperties.Value);
     }
 
     string RscPath(DocumentBuilderContext context) =>
