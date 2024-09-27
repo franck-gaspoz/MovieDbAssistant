@@ -42,15 +42,15 @@ public sealed class DocumentBuilderContext
     /// Gets or sets the input file.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string InputFile { get; set; }
+    public string Source { get; set; }
 
     public DocumentBuilderContext(
-        string inputFile,
+        string source,
         string outputPath,
         Type builderType,
         Type dataProviderType)
     {
-        InputFile = inputFile;
+        Source = source;
         OutputPath = outputPath;
         BuilderType = builderType;
         DataProviderType = dataProviderType;

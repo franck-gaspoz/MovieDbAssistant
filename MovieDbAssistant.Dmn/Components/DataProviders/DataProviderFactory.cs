@@ -2,6 +2,8 @@
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders;
 
+#pragma warning disable CA1822 // Marquer les membres comme étant static
+
 /// <summary>
 /// data provider factory.
 /// </summary>
@@ -11,8 +13,8 @@ public sealed class DataProviderFactory
     /// <summary>
     /// Creates data provider.
     /// </summary>
-    /// <param name="dataProvider">The data provider.</param>
+    /// <param name="dataProviderType">The data provider type</param>
     /// <returns>An <see cref="IDataProvider"/></returns>
-    public static IDataProvider CreateDataProvider(Type dataProvider)
-        => (IDataProvider)Activator.CreateInstance(dataProvider)!;
+    public IDataProvider CreateDataProvider(Type dataProviderType)
+        => (IDataProvider)Activator.CreateInstance(dataProviderType)!;
 }

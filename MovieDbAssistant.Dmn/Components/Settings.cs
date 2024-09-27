@@ -78,6 +78,11 @@ public sealed class Settings
     public const string ProcInpFold = "Texts:ProcInpFold";
 
     /// <summary>
+    /// processing file
+    /// </summary>
+    public const string ProcFile = "Texts:ProcFile";
+
+    /// <summary>
     /// The proc clipbaord.
     /// </summary>
     public const string ProcClipboard = "Texts:ProcClipboard";

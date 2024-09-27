@@ -55,7 +55,7 @@ sealed class BuildJsonFileUIService :
                     Com!.Path,
                     Config[Path_Output]!,
                     typeof(HtmlDocumentBuilder),
-                    typeof(JsonDataProvider)
+                    typeof(JsonFileDataProvider)
                     ));
 
     /// <inheritdoc/>
