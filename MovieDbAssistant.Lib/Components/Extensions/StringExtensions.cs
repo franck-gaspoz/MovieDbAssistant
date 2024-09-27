@@ -12,6 +12,8 @@ public static class StringExtensions
     /// <returns>A <see cref="string"/></returns>
     public static string ToHexString(this string value)
     {
-        return "";
+        var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+        var base64String = Convert.ToBase64String(bytes);
+        return base64String;
     }
 }

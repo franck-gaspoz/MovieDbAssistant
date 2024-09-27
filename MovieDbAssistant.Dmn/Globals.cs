@@ -11,4 +11,8 @@ public sealed class Globals
     public const string Item_Id_Build_Clipboard = Item_Id_Build + "Item_Id_Build_Clipboard";
     public const string Item_Id_Build_Input = Item_Id_Build + "Tag_Item_Build_Input";
 
+    /// <summary>
+    /// processing movie
+    /// </summary>
+    public const string ProcMovie = "Texts:ProcMovie";
 }

@@ -20,6 +20,11 @@ public sealed class MovieModel
     /// </summary>
     public string? Id { get; set; }
 
+    /// <summary>
+    /// key (base64)
+    /// </summary>
+    public string? Key { get; set; }
+
     public string? Title { get; set; }
 
     public string? Summary { get; set; }
