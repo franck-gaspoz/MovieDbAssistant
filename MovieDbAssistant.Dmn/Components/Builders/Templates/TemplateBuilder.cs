@@ -38,7 +38,8 @@ public sealed class TemplateBuilder
     {
         _templateId = templateId;
 
-        var path = RscPath(context);        
+        var path = RscPath(context);
+        //var data = 
     }
 
     string RscPath(DocumentBuilderContext context) =>
