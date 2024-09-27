@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
-namespace MovieDbAssistant.Dmn.Components.DataProviders;
+namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
 /// <summary>
 /// json data provider == MovieDbScraper output

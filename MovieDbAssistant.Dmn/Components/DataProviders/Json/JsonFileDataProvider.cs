@@ -4,7 +4,7 @@ using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
 
-namespace MovieDbAssistant.Dmn.Components.DataProviders;
+namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
 /// <summary>
 /// json from file data provider == MovieDbScraper output

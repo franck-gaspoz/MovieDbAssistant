@@ -4,12 +4,14 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
-using MovieDbAssistant.Dmn.Components.DataProviders;
+using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Components.DataProviders.Json;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
+using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -54,9 +56,12 @@ sealed class BuildJsonFileUIService :
                 new DocumentBuilderContext(
                     Com!.Path,
                     Config[Path_Output]!,
+                    typeof(JsonFileDataProvider),
                     typeof(HtmlDocumentBuilder),
-                    typeof(JsonFileDataProvider)
-                    ));
+                    new Dictionary<string, object>
+                    {
+                        { Template_Id , "dark" }
+                    }));
 
     /// <inheritdoc/>
     public override void Handle(object sender, ActionSuccessfullyEnded @event)
@@ -66,7 +71,7 @@ sealed class BuildJsonFileUIService :
         Tray.ShowBalloonTip(
             null,
             Config[ActionDoneMessageKey]
-            +Path.GetFileName(
+            + Path.GetFileName(
                 (@event.Context.Command as BuildJsonFileCommand)
                     ?.Path));
 

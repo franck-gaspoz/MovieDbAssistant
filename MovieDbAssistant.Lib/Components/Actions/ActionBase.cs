@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Lib.Components.Actions.Events;
+using MovieDbAssistant.Lib.Components.Actions.EventsArgs;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -218,7 +219,7 @@ public abstract class ActionBase<TCommand> :
             else
                 com.Setup(context);
 
-            StartRunningAction?.Invoke(this,new(com,this,context));
+            StartRunningAction?.Invoke(this, new(com, this, context));
 
             if (RunInBackground)
             {

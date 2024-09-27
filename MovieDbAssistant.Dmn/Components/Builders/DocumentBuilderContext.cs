@@ -15,6 +15,11 @@ public sealed class DocumentBuilderContext
     public IDocumentBuilder? Builder { get; set; }
 
     /// <summary>
+    /// key / values builder options
+    /// </summary>
+    public Dictionary<string, object> BuilderOptions { get; set; } = [];
+
+    /// <summary>
     /// Gets or sets the data provider.
     /// </summary>
     /// <value>An <see cref="IDataProvider"/></value>
@@ -44,15 +49,26 @@ public sealed class DocumentBuilderContext
     /// <value>A <see cref="string"/></value>
     public string Source { get; set; }
 
+    /// <summary>
+    /// result target (folder,string,..)
+    /// </summary>
+    public string? Target { get; set; }
+
     public DocumentBuilderContext(
         string source,
         string outputPath,
+        Type dataProviderType,
         Type builderType,
-        Type dataProviderType)
+        Dictionary<string,object>? builderOptions = null)
     {
         Source = source;
         OutputPath = outputPath;
         BuilderType = builderType;
         DataProviderType = dataProviderType;
+        if (builderOptions != null)
+        {
+            foreach (var kvp in builderOptions)
+                builderOptions.TryAdd(kvp.Key, kvp.Value);
+        }
     }
 }
