@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Concurrent;
+using System.Text.Json;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Components.Logger;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
@@ -19,7 +21,9 @@ public sealed class TemplateBuilder
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilder> _logger;
-    string? _templateId;
+    TemplateModel? _tpl;
+
+    static readonly ConcurrentDictionary<string, TemplateModel> _templates = [];
 
     public TemplateBuilder(
         IConfiguration configuration,
@@ -30,28 +34,41 @@ public sealed class TemplateBuilder
     }
 
     /// <summary>
-    /// Load the template.
+    /// Load the template or get from cache if already loaded
     /// </summary>
     /// <param name="context">biulder context</param>
     /// <param name="templateId">The template id.</param>
-    public void LoadTemplate(
+    public TemplateBuilder LoadTemplate(
         DocumentBuilderContext context,
         string templateId)
     {
-        _templateId = templateId;
+        if (_templates.TryGetValue(templateId, out var tpl))
+        {
+            _tpl = tpl;
+            return this;
+        }
 
-        var path = Path.Combine(
+        var tplPath = Path.Combine(
             RscPath(context),
             templateId);
 
         var tplFile = Path.Combine(
-            path,
+            tplPath,
             _config[Build_Html_Template_Filename]!);
-        var tpl = File.ReadAllText(tplFile);
+        var tplSpec = File.ReadAllText(tplFile);
 
-        var data = JsonSerializer.Deserialize<TemplateModel>(
-            tpl,
-            JsonSerializerProperties.Value);
+        tpl = _tpl = JsonSerializer.Deserialize<TemplateModel>(
+            tplSpec,
+            JsonSerializerProperties.Value)
+                ?? throw new InvalidOperationException("template spec not found: " + tplFile);
+        
+        tpl.LoadContent(tplPath);
+        _templates.TryAdd(tpl.Name, tpl);
+
+        _logger.LogInformation(this, $"template '{tpl.Name}' loaded");
+        
+        return this;
+
     }
 
     string RscPath(DocumentBuilderContext context) =>
