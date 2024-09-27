@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Actions.EventsArgs;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -24,7 +25,7 @@ public abstract class ActionBase<TCommand> :
     IActionFeature,
     ISignalMethodHandler<ActionEndedEvent>,
     ISignalMethodHandler<ActionErroredEvent>
-    where TCommand : Lib.Components.Actions.Commands.ActionCommandBase
+    where TCommand : ActionCommandBase
 {
     #region fields & properties
 

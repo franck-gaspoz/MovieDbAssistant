@@ -5,8 +5,10 @@ using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 using static MovieDbAssistant.Dmn.Globals;
+using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
@@ -18,13 +20,16 @@ public sealed class HtmlMovieDocumentBuilder
 {
     readonly IConfiguration _config;
     readonly ILogger<HtmlDocumentBuilder> _logger;
+    readonly TemplateBuilder _templateBuilder;
 
     public HtmlMovieDocumentBuilder(
         IConfiguration configuration,
-        ILogger<HtmlDocumentBuilder> logger)
+        ILogger<HtmlDocumentBuilder> logger,
+        TemplateBuilder templateBuilder)
     {
         _config = configuration;
         _logger = logger;
+        _templateBuilder = templateBuilder;
     }
 
     /// <summary>
@@ -47,6 +52,11 @@ public sealed class HtmlMovieDocumentBuilder
         _logger.LogInformation(this,
             _config[ProcMovie]
             + data.Title);
+
+        _templateBuilder.LoadTemplate(
+            context,
+            context.BuilderOptions[Template_Id]
+                .ToString()!);
     }
 
     void IgnoreDocument(MovieModel data)

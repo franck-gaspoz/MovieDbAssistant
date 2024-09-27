@@ -16,4 +16,18 @@ public static class StringExtensions
         var base64String = Convert.ToBase64String(bytes);
         return base64String;
     }
+
+    /// <summary>
+    /// normalize a path -&gt; set to absolute
+    /// </summary>
+    /// <param name="path">path</param>
+    /// <returns>path</returns>
+    public static string NormalizePath(this string path)
+    {
+        if (!Path.IsPathFullyQualified(path))
+            path = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                path);
+        return path;
+    }
 }

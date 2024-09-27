@@ -56,6 +56,7 @@ sealed class BuildJsonFileUIService :
                 new DocumentBuilderContext(
                     Com!.Path,
                     Config[Path_Output]!,
+                    Config[Path_Rsc]!,
                     typeof(JsonFileDataProvider),
                     typeof(HtmlDocumentBuilder),
                     new Dictionary<string, object>

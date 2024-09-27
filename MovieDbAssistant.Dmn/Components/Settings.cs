@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components;
 
@@ -16,6 +17,16 @@ public sealed class Settings
     /// The path output.
     /// </summary>
     public const string Path_Output = "Paths:Output";
+
+    /// <summary>
+    /// The path resources.
+    /// </summary>
+    public const string Path_Rsc = "Paths:Resources";
+
+    /// <summary>
+    /// The path resources html
+    /// </summary>
+    public const string Path_RscHtml = "Paths:RscHtml";
 
     /// <summary>
     /// The path input.
@@ -262,13 +273,13 @@ public sealed class Settings
     /// Gets the output path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string OutputPath => NormalizePath(_config[Path_Output]!);
+    public string OutputPath => _config[Path_Output]!.NormalizePath();
 
     /// <summary>
     /// Gets the input path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string InputPath => NormalizePath(_config[Path_Input]!);
+    public string InputPath => _config[Path_Input]!.NormalizePath();
 
     /// <summary>
     /// full path of asset file from its name
@@ -281,13 +292,4 @@ public sealed class Settings
                 Directory.GetCurrentDirectory(),
                 _config[Path_Assets]!,
                 filename));
-
-    static string NormalizePath(string path)
-    {
-        if (!Path.IsPathFullyQualified(path))
-            path = Path.Combine(
-                Directory.GetCurrentDirectory(),
-                path);
-        return path;
-    }
 }

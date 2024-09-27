@@ -44,6 +44,11 @@ public sealed class DocumentBuilderContext
     public string OutputPath { get; set; }
 
     /// <summary>
+    /// resources path
+    /// </summary>
+    public string RscPath { get; set; }
+
+    /// <summary>
     /// Gets or sets the input file.
     /// </summary>
     /// <value>A <see cref="string"/></value>
@@ -57,10 +62,12 @@ public sealed class DocumentBuilderContext
     public DocumentBuilderContext(
         string source,
         string outputPath,
+        string rscPath,
         Type dataProviderType,
         Type builderType,
         Dictionary<string,object>? builderOptions = null)
     {
+        RscPath = rscPath;
         Source = source;
         OutputPath = outputPath;
         BuilderType = builderType;
@@ -68,7 +75,7 @@ public sealed class DocumentBuilderContext
         if (builderOptions != null)
         {
             foreach (var kvp in builderOptions)
-                builderOptions.TryAdd(kvp.Key, kvp.Value);
+                BuilderOptions.TryAdd(kvp.Key, kvp.Value);
         }
     }
 }
