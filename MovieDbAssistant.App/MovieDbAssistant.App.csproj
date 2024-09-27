@@ -29,6 +29,9 @@
     <None Remove="input\movie.json" />
     <None Remove="input\README.md" />
     <None Remove="output\README.md" />
+    <None Remove="rsc\html\dark\assets\README.md" />
+    <None Remove="rsc\html\dark\page-details.html" />
+    <None Remove="rsc\html\dark\page-list.html" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
   </ItemGroup>
@@ -61,6 +64,15 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\dark\assets\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\dark\page-list.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\dark\page-details.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -85,7 +97,6 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="rsc\html\dark\" />
   </ItemGroup>
 
 	
