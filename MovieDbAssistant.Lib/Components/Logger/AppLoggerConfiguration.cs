@@ -20,11 +20,11 @@ public sealed class AppLoggerConfiguration
     static readonly Dictionary<LogLevel, string> _logLevelsTexts =
         new()
         {
-            { LogLevel.Debug , "" },
-            { LogLevel.Warning , "" },
-            { LogLevel.Error , "" },
-            { LogLevel.Trace , "" },
-            { LogLevel.Information , "" }
+            { LogLevel.Debug , "Debug" },
+            { LogLevel.Warning , "Warn" },
+            { LogLevel.Error , "Error" },
+            { LogLevel.Trace , "Trace" },
+            { LogLevel.Information , "Info" }
         };
 
     /// <summary>
@@ -32,7 +32,7 @@ public sealed class AppLoggerConfiguration
     /// </summary>
     /// <param name="level">The level.</param>
     /// <returns>A <see cref="string"/></returns>
-    public static string GetMessageLevelPreambleText(LogLevel level)
+    public static string GetLogLevel(LogLevel level)
     {
         if (_logLevelsTexts.TryGetValue(level, out var text))
             return text;

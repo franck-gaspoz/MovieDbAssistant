@@ -47,7 +47,7 @@ public class AppLogger(
 
         void Dbg(string caller,string? msg)
         { 
-            Debug.WriteLine($"{_itemCount++,6} | {logLevel,5} | {caller,30} | {AppLoggerConfiguration.GetMessageLevelPreambleText(logLevel)}{msg}");
+            Debug.WriteLine($"{_itemCount++,6} | {AppLoggerConfiguration.GetLogLevel(logLevel),5} | {caller,30} | {msg}");
         }
 
         var msg = state?.ToString() ?? string.Empty;
