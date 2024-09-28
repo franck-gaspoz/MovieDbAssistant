@@ -58,7 +58,15 @@ td {
     font-family: 'quesha';
     font-size: 28px;
     font-weight: bold;
-    color: #F0F0FF;
+    color: #E0E0F0;
+}
+
+.text {
+    color: #cdcded;
+}
+
+.ratingCount,.year {
+    color: white;
 }
 
 .year {
