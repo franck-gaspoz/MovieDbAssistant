@@ -258,6 +258,11 @@ public sealed class Settings
     /// </summary>
     public const string Build_End_Json_Without_Errors = "Texts:BuildJsonEndWithoutErrors";
 
+    /// <summary>
+    /// build html template id
+    /// </summary>
+    public const string Build_Html_Template_Id = "Build:Html:TemplateId";
+
     #endregion
 
     readonly IConfiguration _config;
