@@ -10,6 +10,8 @@ public sealed class TemplateModel
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
+    public string Id { get; set; } = string.Empty;
+
     /// <summary>
     /// template contents
     /// </summary>

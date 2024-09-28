@@ -1,7 +1,0 @@
-{
-  "Name": "Dark",
-  "Templates": {
-    "List": "page-list.html",
-    "Details": "page-details.html"
-  }
-}

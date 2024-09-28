@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Movies</title>
+
+    <link rel="icon" type="image/ico" href="./img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+
+    <!-- min dependencies -->
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <!--  -->
+    <style>
+        body {
+            background-image: url('./img/cinema-wallpaper-16.jpg');
+        }
+    </style>
+    <!-- ----- -->
+</head>
+
+<body>
+
+    <div class="movie-page-list-title">My Movies</div>
+
+    <div class="movie-list">
+
+        <div class="movie-list-item-container">
+
+            <div class="movie-list-item" data-attr-key="{{key}}">
+
+                <table width="100%">
+                    <tr>
+                        <td width="100%">
+                            <span class="title">{{title}}</span>
+                        </td>
+                        <td>
+                            <div class="rating-container">
+                                <span class="rating">{{rating}}</span> / <span class="ratingCount">{{ratingCount}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="year">{{year}}</span>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <span class="label label-director">director: </span>
+                            <span class="director">{{director}}</span>
+                            <span class="label label-actors">actors: </span>
+                            <span class="actors">{{actors}}</span>
+                            <div class="vsep"></div>
+                            <span class="label label-duration">duration: </span>
+                            <span class="duration">{{duration}}</span>
+                            <span class="label label-releaseDate">release date: </span>
+                            <span class="releaseDate">{{releaseDate}}</span>
+                            <span class="label label-source">page: </span>
+                            <a class="url" href="{{url}}">{{url}}</a>
+                        </td>
+                    </tr>
+                </table>
+
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="label label-summary">summary: </span>
+                            </div>
+                            <span class="summary">{{summary}}</span>
+                        </td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td>
+                            <div>
+                                <span class="label label-anecdotes">anecdotes: </span>
+                            </div>
+                            <span class="anecdotes">{{anecdotes}}</span>
+                        </td>
+                    </tr>
+                    -->
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

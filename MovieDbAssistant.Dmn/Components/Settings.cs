@@ -29,6 +29,16 @@ public sealed class Settings
     public const string Path_RscHtml = "Paths:RscHtml";
 
     /// <summary>
+    /// The path resources html / assets
+    /// </summary>
+    public const string Path_RscHtmlAssets = "Paths:RscHtmlAssets";
+
+    /// <summary>
+    /// The path resources html / assets
+    /// </summary>
+    public const string Path_AssetsListWallpaper = "Build:Html:Assets:ListWallpaper";
+
+    /// <summary>
     /// The path input.
     /// </summary>
     public const string Path_Input = "Paths:Input";

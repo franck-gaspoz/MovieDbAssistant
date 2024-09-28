@@ -4,5 +4,11 @@ ___
 
 :arrow_right: html builders resources
 
-- `/dark/dark-movie-detail.html` : `/<templateId>/<templateFile>`
+:point_right: there is a folder per **theme**
+
+## `/dark`
+- `template.json` : specification
+- `/img` : images
+- `/css` : css
+- `/js` : javascript
 

@@ -1,0 +1,20 @@
+{
+  "Id": "dark",
+  "Name": "Dark",
+  "Templates": {
+    "List": "page-list.html",
+    "Details": "page-details.html",
+    "item": "list-item.html"
+  },
+  "Options": {
+    "PageList": {
+      "Background": "cinema-wallpaper-16.jpg",
+      "Title": "My Movies"
+    }
+  },
+  "Files": [
+    "/img",
+    "/css",
+    "/fonts"
+  ]
+}

@@ -63,7 +63,7 @@ public sealed class TemplateBuilder
                 ?? throw new InvalidOperationException("template spec not found: " + tplFile);
         
         tpl.LoadContent(tplPath);
-        _templates.TryAdd(tpl.Name, tpl);
+        _templates.TryAdd(tpl.Id, tpl);
 
         _logger.LogInformation(this, $"template '{tpl.Name}' loaded");
         
@@ -75,5 +75,12 @@ public sealed class TemplateBuilder
         Path.Combine(
             context.RscPath,
             _config[Path_RscHtml]!)
+                .NormalizePath();
+
+    string AssetsPath(DocumentBuilderContext context) =>
+        Path.Combine(
+            context.RscPath,
+            _config[Path_RscHtml]!,
+            _config[Path_RscHtmlAssets]!)
                 .NormalizePath();
 }

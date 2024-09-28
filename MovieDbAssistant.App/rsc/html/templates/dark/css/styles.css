@@ -1,0 +1,91 @@
+﻿body, html {    
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-family: 'playChickens';
+    overflow: hidden;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background: black;    
+}
+
+a {
+    color: cornflowerblue;
+}
+
+td {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 1em;
+}
+
+.movie-list {
+    overflow-y: auto;
+    max-height: Calc(100% - 5.5em);
+}
+
+.movie-page-list-title {
+    font-size: 48px;
+    text-align: center;
+    margin-top: 0.75em;
+}
+
+.movie-list-item-container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 2em;
+    padding-top: 1em;
+}
+
+.movie-list-item {
+    margin: 2em;
+    background-color: #00000055;
+    border-radius: 1em;
+    border: black solid 1px;
+}
+
+.title {
+    font-size: 48px;
+    font-family: 'quesha';
+}
+
+.label {
+    font-family: 'quesha';
+    font-size: 28px;
+    font-weight: bold;
+    color: #F0F0FF;
+}
+
+.year {
+    font-weight: bold;
+}
+
+.rating-container {
+    text-wrap: nowrap;
+}
+
+.rating {
+    color: bisque;
+}
+
+.ratingCount {    
+}
+
+.vsep {
+    height: 0.75em;
+}
+
+@font-face {
+    font-family: playChickens;
+    src: url('../fonts/Play Chickens.ttf');
+}
+
+@font-face {
+    font-family: quesha;
+    src: url('../fonts/Quesha.ttf');
+}
