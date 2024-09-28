@@ -9,10 +9,10 @@
 }
 
 body {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background: black;    
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background: black;
 }
 
 a {
