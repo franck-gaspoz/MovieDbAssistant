@@ -51,15 +51,15 @@ public sealed class TemplateBuilder
         DocumentBuilderContext docContext,
         string templateId)
     {
+        Context.For(
+            docContext,
+            templateId);
+
         if (_templates.TryGetValue(templateId, out var tpl))
         {
             _tpl = tpl;
             return this;
         }
-
-        Context.For(
-            docContext,
-            templateId);
 
         tpl = _tpl = Context.TemplateModel();
 
