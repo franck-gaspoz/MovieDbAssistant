@@ -42,6 +42,8 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         context.MakeOutputDir();
 
+        // build list from this point
+
         foreach (var movie in movies)
             _htmlMovieDocumentBuilder.BuildMovie(context, movie);
     }
