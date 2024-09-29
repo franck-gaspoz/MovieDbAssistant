@@ -5,8 +5,25 @@
 /// </summary>
 public sealed class TemplateModelOptions
 {
+    /// <summary>
+    /// Gets or sets the page list.
+    /// </summary>
+    /// <value>A <see cref="TemplateModelPageOption"/></value>
     public TemplateModelPageOption PageList { get; set; }
 
-    public TemplateModelOptions(TemplateModelPageOption pageList) 
-        => PageList = pageList;
+    /// <summary>
+    /// Gets or sets the page detail.
+    /// </summary>
+    /// <value>A <see cref="TemplateModelPageOption"/></value>
+    public TemplateModelPageOption PageDetail { get; set; }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.
+    /// </summary>
+    /// <param name="pageList">page list</param>
+    /// <param name="pageDetail">The page detail.</param>
+    public TemplateModelOptions(
+        TemplateModelPageOption pageList,
+        TemplateModelPageOption pageDetail) 
+        => (PageDetail,PageList) = (pageDetail, pageList);
 }

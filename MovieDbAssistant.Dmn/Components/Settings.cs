@@ -27,7 +27,12 @@ public sealed class Settings
     /// The path resources html
     /// </summary>
     public const string Path_RscHtml = "Paths:RscHtml";
-    
+
+    /// <summary>
+    /// output path for pages
+    /// </summary>
+    public const string Path_OutputPages = "Paths:OutputPages";
+
     /// <summary>
     /// The path resources html templates
     /// </summary>
@@ -282,16 +287,6 @@ public sealed class Settings
     /// json build without errors
     /// </summary>
     public const string Build_End_Json_Without_Errors = "Texts:BuildJsonEndWithoutErrors";
-
-    /// <summary>
-    /// build html template id
-    /// </summary>
-    public const string Build_Html_Template_Id = "Build:Html:TemplateId";
-    
-    /// <summary>
-    /// build html file extension
-    /// </summary>
-    public const string Build_HtmlFileExt = "Build:Html:Extension";
 
     #endregion
 

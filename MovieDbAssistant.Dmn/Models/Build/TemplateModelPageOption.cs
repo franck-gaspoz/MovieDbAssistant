@@ -15,15 +15,15 @@ public sealed class TemplateModelPageOption
     /// Gets or sets the title.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Title { get; set; }
+    public string? Title { get; set; }
 
     /// <summary>
     /// Gets or sets the filename.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Filename { get; set; }
+    public string? Filename { get; set; }
 
-    public TemplateModelPageOption(string background, string title, string filename)
+    public TemplateModelPageOption(string background, string? title, string? filename)
     {
         Background = background;
         Title = title;

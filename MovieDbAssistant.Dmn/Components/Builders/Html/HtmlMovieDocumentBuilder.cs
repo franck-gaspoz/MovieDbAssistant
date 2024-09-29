@@ -9,6 +9,7 @@ using MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 using static MovieDbAssistant.Dmn.Globals;
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
+using MovieDbAssistant.Dmn.Models.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
@@ -48,6 +49,7 @@ public sealed class HtmlMovieDocumentBuilder
         }
         var key = data.Title!.ToHexString();
         data.Key = key;
+        data.UpdateFilename(_config);
 
         _logger.LogInformation(this,
             _config[ProcMovie]
@@ -58,7 +60,7 @@ public sealed class HtmlMovieDocumentBuilder
             context
                 .BuilderOptions[Template_Id]
                 .ToString()!)
-            .Build(data);
+            .BuildPageDetail(data);
     }
 
     void IgnoreDocument(MovieModel data)

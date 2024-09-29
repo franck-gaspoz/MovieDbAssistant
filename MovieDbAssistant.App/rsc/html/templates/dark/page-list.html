@@ -12,11 +12,11 @@
     <!-- init -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/template.js"></script>
+    <script src="./js/data.js"></script>
     <script type="text/javascript">
-        const data = {{data}};
         $(document).ready(() => {
             var o = new Template();
-            o.build(data);
+            o.buildItems(data);
         });
     </script>
     <!--  -->

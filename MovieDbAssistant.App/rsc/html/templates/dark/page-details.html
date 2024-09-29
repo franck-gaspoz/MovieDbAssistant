@@ -1,21 +1,118 @@
 ﻿<!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Virtual assistant</title>
+    <title>My Movies</title>
 
     <link rel="icon" type="image/ico" href="./img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 
-    <!-- min dependencies -->
+    <!-- init -->
     <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/template.js"></script>
+    <script type="text/javascript">
+        const data = {{data}};
+        $(document).ready(() => {
+            var o = new Template();
+            o.buildItems(data);
+        });
+    </script>
     <!--  -->
-    
+    <style>
+        body {
+            background-image: url('./img/cinema-wallpaper-16.jpg');
+        }
+    </style>
     <!-- ----- -->
 </head>
 
 <body>
+
+    <div class="movie-page-list-title">{{title}}</div>
+
+    <div class="movie-list">
+
+        <div class="movie-list-item-container" id="ItemModel">
+
+            <div class="movie-list-item"
+                 data-attr-key="{{key}}"
+                 data-attr-id="{{id}}">
+
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <table width="100%">
+                                <tr>
+                                    <td width="100%" class="cell-title">
+                                        <span class="title">{{title}}</span>
+                                        <br />
+                                        <span class="interests text">{{interests}}</span>
+                                    </td>
+                                    <td>
+                                        <div class="rating-container">
+                                            <span class="rating text">{{rating}}</span> / <span class="ratingCount text">{{ratingCount}}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="year text">{{year}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <span class="label label-director">director: </span>
+                                        <span class="director text">{{director}}</span>
+                                        <span class="label label-actors">actors: </span>
+                                        <span class="actors text">{{actors}}</span>
+                                        <div class="vsep"></div>
+                                        <span class="label label-duration">duration: </span>
+                                        <span class="duration text">{{duration}}</span>
+                                        <span class="label label-releaseDate">release date: </span>
+                                        <span class="releaseDate text">{{releaseDate}}</span>
+                                        <span class="label label-source">page: </span>
+                                        <a class="url" href="{{url}}">{{url}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table width="100%">
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <span class="label label-summary">summary: </span>
+                                        </div>
+                                        <span class="summary text">{{summary}}</span>
+                                    </td>
+                                </tr>
+                                <!--
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span class="label label-anecdotes">anecdotes: </span>
+                                            </div>
+                                            <span class="anecdotes">{{anecdotes}}</span>
+                                        </td>
+                                    </tr>
+                                -->
+                            </table>
+                        </td>
+
+                        <td class="movie-pic-container">
+                            <img src="https://m.media-amazon.com/images/M/MV5BZWQ3NjAyZWUtMzMxMS00MzE1LTlkNDMtZGNjNGY2MzBkNjQ3XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UY281_CR1,0,190,281_.jpg" />
+                            <!-- {{minPicUrl}} -->
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
 
 </html>

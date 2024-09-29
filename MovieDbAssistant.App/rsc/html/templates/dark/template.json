@@ -10,6 +10,9 @@
       "Background": "cinema-wallpaper-16.jpg",
       "Title": "My Movies",
       "Filename": "index"
+    },
+    "PageDetail": {
+      "Background": "cinema-wallpaper-16.jpg"
     }
   },
   "Files": [

@@ -54,6 +54,7 @@ sealed class BuildJsonFileUIService :
             .Build(
                 context,
                 new DocumentBuilderContext(
+                    Config,
                     Logger,
                     Com!.Path,
                     Config[Path_Output]!,

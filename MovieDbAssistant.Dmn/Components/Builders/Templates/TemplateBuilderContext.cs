@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
-using MovieDbAssistant.Lib.Components.Logger;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
@@ -95,7 +94,7 @@ public sealed class TemplateBuilderContext
     }
 
     /// <summary>
-    /// TODO: Add Summary.
+    /// attach the context to the document builder context and set the template id
     /// </summary>
     /// <param name="context">The context.</param>
     /// <param name="templateId">The template id.</param>

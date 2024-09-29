@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Components.Builder;
-using MovieDbAssistant.Dmn.Components.Builders.Templates;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Logger;
+
+using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.Dmn.Components.Builders;
 
@@ -52,12 +54,25 @@ public sealed class DocumentBuilderContext
     /// </summary>
     public string RscPath { get; set; }
 
+    /// <summary>
+    /// output path for pages
+    /// </summary>
+    public string PagesPath => Path.Combine(
+        OutputFolder!, 
+        _config[Path_OutputPages]!);
+
+    /// <summary>
+    /// output path foler name for pages
+    /// </summary>
+    public string PagesFolderName => _config[Path_OutputPages]!;
+
     string? _source;
     /// <summary>
     /// Gets or sets the input file.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Source { 
+    public string Source
+    {
         get => _source!;
         set
         {
@@ -68,23 +83,25 @@ public sealed class DocumentBuilderContext
     }
 
     string? _name;
+    readonly IConfiguration _config;
     readonly ILogger _logger;
 
     /// <summary>
     /// Gets or sets the name.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Name { 
+    public string Name
+    {
         get => _name!;
         set
         {
-            OutputFolder = Path.Combine(OutputPath,value);
+            OutputFolder = Path.Combine(OutputPath, value);
             _name = value;
         }
     }
 
     /// <summary>
-    /// Gets or sets the output folder.
+    /// Gets or sets the output folder (full path)
     /// </summary>
     /// <value>A <see cref="string? "/></value>
     public string? OutputFolder { get; set; }
@@ -97,6 +114,7 @@ public sealed class DocumentBuilderContext
     /// <summary>
     /// Initializes a new instance of the <see cref="DocumentBuilderContext"/> class.
     /// </summary>
+    /// <param name="config">config</param>
     /// <param name="logger">The logger.</param>
     /// <param name="source">The source.</param>
     /// <param name="outputPath">The output path.</param>
@@ -105,15 +123,17 @@ public sealed class DocumentBuilderContext
     /// <param name="builderType">The builder type.</param>
     /// <param name="builderOptions">The builder options.</param>
     public DocumentBuilderContext(
+        IConfiguration config,
         ILogger logger,
         string source,
         string outputPath,
         string rscPath,
         Type dataProviderType,
         Type builderType,
-        Dictionary<string,object>? builderOptions = null)
+        Dictionary<string, object>? builderOptions = null)
     {
         RscPath = rscPath;
+        _config = config;
         _logger = logger;
         OutputPath = outputPath;
         Source = source;
@@ -130,12 +150,17 @@ public sealed class DocumentBuilderContext
     /// Make output dir.
     /// </summary>
     /// <returns>A <see cref="DocumentBuilderContext"/></returns>
-    public DocumentBuilderContext MakeOutputDir()
+    public DocumentBuilderContext MakeOutputDirs()
     {
         if (!Directory.Exists(OutputFolder))
         {
             Directory.CreateDirectory(OutputFolder!);
             _logger.LogDebug(this, "output folder created: " + OutputFolder);
+        }
+        if (!Path.Exists(PagesPath!))
+        {
+            Directory.CreateDirectory(PagesPath);
+            _logger.LogDebug(this, "output pages folder created: " + PagesPath);
         }
         return this;
     }
@@ -148,7 +173,7 @@ public sealed class DocumentBuilderContext
     /// <param name="extension">The extension.</param>
     /// <param name="content">The content.</param>
     public void AddOutputFile(string key, string postFix, string extension, string content)
-        => AddOutputFile(key+"-"+postFix,extension, content);
+        => AddOutputFile(key + "-" + postFix, extension, content);
 
     /// <summary>
     /// Add output file.
@@ -156,11 +181,26 @@ public sealed class DocumentBuilderContext
     /// <param name="name">The name.</param>
     /// <param name="extension">The extension.</param>
     /// <param name="content">The content.</param>
-    public void AddOutputFile(string name, string extension,string content)
+    public void AddOutputFile(string name, string extension, string content)
     {
         var path = Path.Combine(
             OutputFolder!,
-            name + "." + extension);
+            name + extension);
+        _logger.LogInformation(this, "add output file: " + path);
+        File.WriteAllText(path, content);        
+    }
+
+    /// <summary>
+    /// Add output file.
+    /// </summary>
+    /// <param name="name">The name (full with extension)</param>
+    /// <param name="content">The content.</param>
+    public void AddOutputFile(string name, string content)
+    {
+        var path = Path.Combine(
+            OutputFolder!,
+            name);
+        _logger.LogInformation(this, "add output file: " + path);
         File.WriteAllText(path, content);
     }
 }

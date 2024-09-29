@@ -76,22 +76,49 @@ public sealed class TemplateBuilder
     }
 
     /// <summary>
-    /// build the template file(s)
+    /// build a page list
     /// </summary>
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
-    public TemplateBuilder Build(MovieModel data)
+    public TemplateBuilder BuildPageList(MoviesModel data)
     {
         var docContext = Context.DocContext;
 
-        var listContent = ProcessTemplate(
-            _tpl!.Templates.TplList!,
-            data);
+        ExportData(data);
+        var page = _tpl!.Templates.TplList!;
+        SetVars(page, data.GetProperties());
 
         Context.DocContext!.AddOutputFile(
-            _tpl.Options.PageList.Filename,
+            _tpl.Options.PageList.Filename!,
             _config[Build_HtmlFileExt]!,
-            listContent);
+            page);
+
+        CopyRsc();
+
+        return this;
+    }
+
+    /// <summary>
+    /// build a page details
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <returns>A <see cref="TemplateBuilder"/></returns>
+    public TemplateBuilder BuildPageDetail(MovieModel data)
+    {
+        var docContext = Context.DocContext!;
+
+        var page = IntegratesData(
+            _tpl!.Templates.TplDetails!,
+            data);
+        SetVars(page, data.GetProperties());
+
+        Context.DocContext!.AddOutputFile(
+            Path
+                .Combine(
+                    docContext.PagesFolderName,
+                    data.Filename!),
+            "",
+            page);
 
         CopyRsc();
 
@@ -129,7 +156,20 @@ public sealed class TemplateBuilder
         }
     }
 
-    string ProcessTemplate(
+    void ExportData(MoviesModel data)
+    {
+        var src = JsonSerializer.Serialize(
+            data,
+            JsonSerializerProperties.Value)!;
+
+        src = $"const data = {src};";
+
+        Context.DocContext!.AddOutputFile(
+            _config[Build_Html_Filename_Data]!,
+            src);
+    }
+
+    string IntegratesData(
         string tpl,
         MovieModel data)
     {
@@ -139,6 +179,23 @@ public sealed class TemplateBuilder
 
         tpl = SetVar(tpl, Var_Data, src);
         return tpl;
+    }
+
+    string SetVars(string tpl,Dictionary<string,object?> vars)
+    {
+        foreach ( var kvp in vars )
+            tpl = SetVar(
+                tpl,
+                KeyToVar(kvp.Key),
+                VarToString(kvp.Value));
+        return tpl;
+    }
+
+    static string KeyToVar(string key) => key.ToLower();
+
+    static string VarToString(object? value)
+    {
+        return value?.ToString() ?? string.Empty;
     }
 
     string SetVar(string text, string name, string value)

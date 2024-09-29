@@ -64,4 +64,6 @@ public sealed class MovieModel
     public string? PicsFullUrls { get; set; }
 
     public List<string> PicsSizes { get; set; } = [];
+
+    public string? Filename { get; set; }
 }

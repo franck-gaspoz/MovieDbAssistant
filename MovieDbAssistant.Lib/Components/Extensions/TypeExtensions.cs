@@ -42,6 +42,19 @@ public static class TypeExtensions
     }
 
     /// <summary>
+    /// get public properties of object
+    /// </summary>
+    /// <param name="data">data</param>
+    /// <returns>dictionary of names -&gt; value</returns>
+    public static Dictionary<string, object?> GetProperties(this object data)
+    {
+        var r = new Dictionary<string, object?>();
+        foreach (var p in data.GetType().GetProperties())
+            r.Add(p.Name, p.GetValue(data));
+        return r;
+    }
+
+    /// <summary>
     /// Programatically fire an event handler of an object
     /// </summary>
     /// <param name="target">target</param>

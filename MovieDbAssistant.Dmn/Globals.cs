@@ -26,6 +26,29 @@ public sealed class Globals
     /// </summary>
     public const string ProcMovie = "Texts:ProcMovie";
 
+    /// <summary>
+    /// processing movie lidt
+    /// </summary>
+    public const string ProcMovieList = "Texts:ProcMovieList";
+
+    /// <summary>
+    /// build html input template filename
+    /// </summary>
     public const string Build_Html_Template_Filename = "Build:Html:TemplateFilename";
+
+    /// <summary>
+    /// build html template id
+    /// </summary>
+    public const string Build_Html_Template_Id = "Build:Html:TemplateId";
+
+    /// <summary>
+    /// build html file extension
+    /// </summary>
+    public const string Build_HtmlFileExt = "Build:Html:Extension";
+
+    /// <summary>
+    /// build html output data filename
+    /// </summary>
+    public const string Build_Html_Filename_Data = "Build:Html:DataFilename";
 }
 
