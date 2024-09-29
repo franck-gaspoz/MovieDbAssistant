@@ -114,6 +114,11 @@ td {
     height: 0.75em;
 }
 
+.hsep {
+    display: inline-block;
+    width:1em; 
+}
+
 @font-face {
     font-family: playChickens;
     src: url('../fonts/Play Chickens.ttf');

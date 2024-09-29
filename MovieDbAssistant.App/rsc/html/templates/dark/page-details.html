@@ -6,29 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My Movies</title>
 
-    <link rel="icon" type="image/ico" href="./img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <link rel="icon" type="image/ico" href="../img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
 
     <!-- init -->
-    <script src="./js/jquery-3.7.1.min.js"></script>
-    <script src="./js/template.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/template.js"></script>
     <script type="text/javascript">
         const data = {{data}};
         $(document).ready(() => {
             var o = new Template();
-            o.buildItems(data);
+            o.buildDetails(data);
         });
     </script>
     <!--  -->
     <style>
         body {
-            background-image: url('./img/cinema-wallpaper-16.jpg');
+            background-image: url('../img/cinema-wallpaper-16.jpg');
         }
     </style>
     <!-- ----- -->
 </head>
 
-<body>
+<body class="movie-page-detail">
 
     <div class="movie-page-list-title">{{title}}</div>
 
@@ -66,8 +66,8 @@
                                     <td>
                                         <span class="label label-director">director: </span>
                                         <span class="director text">{{director}}</span>
-                                        <span class="label label-actors">actors: </span>
-                                        <span class="actors text">{{actors}}</span>
+                                        <span class="label label-stars">stars: </span>
+                                        <span class="stars text">{{stars}}</span>
                                         <div class="vsep"></div>
                                         <span class="label label-duration">duration: </span>
                                         <span class="duration text">{{duration}}</span>
