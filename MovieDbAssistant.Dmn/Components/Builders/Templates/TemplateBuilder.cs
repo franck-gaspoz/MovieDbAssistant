@@ -82,7 +82,6 @@ public sealed class TemplateBuilder
 
         var listContent = ProcessTemplateList(
             _tpl!.Templates.TplList!,
-            _tpl.Templates.TplItem!,
             data);
 
         Context.DocContext!.AddOutputFile(
@@ -128,7 +127,6 @@ public sealed class TemplateBuilder
 
     string ProcessTemplateList(
         string pageListTemplate,
-        string itemTemplate,
         MovieModel data)
     {
         return pageListTemplate;

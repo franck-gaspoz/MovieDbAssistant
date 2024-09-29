@@ -11,11 +11,6 @@ public sealed class TemplatesModel
     public string List { get; set; } = string.Empty;
 
     /// <summary>
-    /// tpl list item filename
-    /// </summary>
-    public string Item { get; set; } = string.Empty;
-
-    /// <summary>
     /// tpl details file name
     /// </summary>
     public string Details { get; set; } = string.Empty;
@@ -26,19 +21,13 @@ public sealed class TemplatesModel
     public string? TplList { get; set; }
 
     /// <summary>
-    /// template list item
-    /// </summary>
-    public string? TplItem { get; set; }
-
-    /// <summary>
     /// template details
     /// </summary>
     public string? TplDetails { get; set; }
 
-    public TemplatesModel(string list, string item, string details)
+    public TemplatesModel(string list, string details)
     {
         List = list;
-        Item = item;
         Details = details;
     }
 
@@ -49,9 +38,6 @@ public sealed class TemplatesModel
     {
         TplList = File.ReadAllText(
             Path.Combine(templatePath,List));
-
-        TplItem = File.ReadAllText(
-            Path.Combine(templatePath, Item));
 
         TplDetails = File.ReadAllText(
             Path.Combine(templatePath, Details));

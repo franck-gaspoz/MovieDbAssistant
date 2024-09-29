@@ -3,8 +3,7 @@
   "Name": "Dark",
   "Templates": {
     "List": "page-list.html",
-    "Details": "page-details.html",
-    "Item": "list-item.html"
+    "Details": "page-details.html"
   },
   "Options": {
     "PageList": {
