@@ -35,6 +35,7 @@
     <None Remove="rsc\html\templates\dark\img\cinema-wallpaper-16.jpg" />
     <None Remove="rsc\html\templates\dark\img\favicon.ico" />
     <None Remove="rsc\html\templates\dark\js\jquery-3.7.1.min.js" />
+    <None Remove="rsc\html\templates\dark\js\template.js" />
     <None Remove="rsc\html\templates\dark\page-details.html" />
     <None Remove="rsc\html\templates\dark\page-list.html" />
     <None Remove="rsc\html\templates\dark\template.json" />
@@ -86,6 +87,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\js\jquery-3.7.1.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\js\template.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\page-list.html">
