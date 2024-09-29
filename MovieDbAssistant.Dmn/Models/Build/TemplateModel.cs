@@ -5,6 +5,13 @@
 /// </summary>
 public sealed class TemplateModel
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TemplateModel"/> class.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <param name="id">The id.</param>
+    /// <param name="templates">The templates.</param>
+    /// <param name="options">The options.</param>
     public TemplateModel(
         string name,
         string id,
@@ -22,6 +29,10 @@ public sealed class TemplateModel
     /// </summary>
     public string Name { get; set; }
 
+    /// <summary>
+    /// Gets or sets the id.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
     public string Id { get; set; }
 
     /// <summary>
@@ -29,7 +40,17 @@ public sealed class TemplateModel
     /// </summary>
     public TemplatesModel Templates { get; set; }
 
+    /// <summary>
+    /// Gets or sets the options.
+    /// </summary>
+    /// <value>A <see cref="TemplateModelOptions"/></value>
     public TemplateModelOptions Options { get; set; }
+
+    /// <summary>
+    /// Gets or sets the files.
+    /// </summary>
+    /// <value>A list of strings.</value>
+    public List<string> Files { get; set; } = [];
 
     #region working properties
 

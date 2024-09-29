@@ -112,5 +112,11 @@
     <Folder Include="rsc\html\templates\dark\fonts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="rsc\html\templates\dark\css\styles.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 	
 </Project>

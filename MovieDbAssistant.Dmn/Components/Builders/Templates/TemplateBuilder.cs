@@ -90,9 +90,40 @@ public sealed class TemplateBuilder
             _config[Build_HtmlFileExt]!,
             listContent);
 
-
+        CopyRsc();
 
         return this;
+    }
+
+    public TemplateBuilder CopyRsc()
+    {
+        foreach (var item in _tpl!.Files)
+            CopyRsc(item);
+        return this;
+    }
+
+    void CopyRsc(string item)
+    {
+        var src = Path.Combine(Context.TplPath, item[1..]);
+        var target = Context.DocContext!.OutputFolder!;
+
+        if (!item.StartsWith('/'))
+        {
+            if (File.Exists(src))
+                File.Copy(
+                    src,
+                    Path.Combine(target, item[1..]));
+        }
+        else
+        {
+            if (Directory.Exists(src))
+            {
+                src.CopyDirectory(
+                    Path.Combine(
+                        target,
+                        Path.GetFileName(src)));
+            }
+        }
     }
 
     string ProcessTemplateList(
