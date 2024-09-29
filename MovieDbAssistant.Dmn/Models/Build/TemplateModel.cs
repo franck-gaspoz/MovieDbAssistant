@@ -5,17 +5,31 @@
 /// </summary>
 public sealed class TemplateModel
 {
+    public TemplateModel(
+        string name,
+        string id,
+        TemplatesModel templates,
+        TemplateModelOptions options)
+    {
+        Name = name;
+        Id = id;
+        Templates = templates;
+        Options = options;
+    }
+
     /// <summary>
     /// name
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; }
 
-    public string Id { get; set; } = string.Empty;
+    public string Id { get; set; }
 
     /// <summary>
     /// template contents
     /// </summary>
-    public TemplatesModel Templates { get; set; } = new("","");
+    public TemplatesModel Templates { get; set; }
+
+    public TemplateModelOptions Options { get; set; }
 
     #region working properties
 

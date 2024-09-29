@@ -55,8 +55,10 @@ public sealed class HtmlMovieDocumentBuilder
 
         _templateBuilder.LoadTemplate(
             context,
-            context.BuilderOptions[Template_Id]
-                .ToString()!);
+            context
+                .BuilderOptions[Template_Id]
+                .ToString()!)
+            .Build(data);
     }
 
     void IgnoreDocument(MovieModel data)

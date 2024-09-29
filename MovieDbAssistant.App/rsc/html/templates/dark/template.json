@@ -4,12 +4,13 @@
   "Templates": {
     "List": "page-list.html",
     "Details": "page-details.html",
-    "item": "list-item.html"
+    "Item": "list-item.html"
   },
   "Options": {
     "PageList": {
       "Background": "cinema-wallpaper-16.jpg",
-      "Title": "My Movies"
+      "Title": "My Movies",
+      "Filename": "index"
     }
   },
   "Files": [

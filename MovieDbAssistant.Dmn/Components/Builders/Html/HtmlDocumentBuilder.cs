@@ -33,11 +33,16 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     {
         _logger.LogInformation(this, $"process json: {data.Movies.Count} movies");
 
+        var ids = data.Movies.Select(x => x.Id).Distinct();
+        var movies = data.Movies.Where(x => ids.Contains(x.Id));
+
         var folderName = Path.GetFileNameWithoutExtension(context.Source);
         var folder = Path.Combine(context.OutputPath, folderName);
         context.Target = folder;
 
-        foreach (var movie in data.Movies)
+        context.MakeOutputDir();
+
+        foreach (var movie in movies)
             _htmlMovieDocumentBuilder.BuildMovie(context, movie);
-    }    
+    }
 }

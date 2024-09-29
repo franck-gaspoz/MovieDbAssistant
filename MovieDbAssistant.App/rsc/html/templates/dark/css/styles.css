@@ -49,9 +49,31 @@ td {
     border: black solid 1px;
 }
 
+.movie-pic-container {
+    /* minPicUrl */
+    width: 190px;
+    padding-right:0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.movie-pic-container img {
+    border-radius: 1em;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.movie-pic {
+
+}
+
 .title {
     font-size: 48px;
     font-family: 'quesha';
+}
+
+.cell-title {
+    padding-bottom: 0em;
 }
 
 .label {
@@ -65,7 +87,11 @@ td {
     color: #cdcded;
 }
 
-.ratingCount,.year {
+.interests {
+    font-family: 'vonique';
+}
+
+.ratingCount, .year {
     color: white;
 }
 
@@ -96,4 +122,9 @@ td {
 @font-face {
     font-family: quesha;
     src: url('../fonts/Quesha.ttf');
+}
+
+@font-face {
+    font-family: vonique;
+    src: url('../fonts/Vonique 92_D.otf');
 }

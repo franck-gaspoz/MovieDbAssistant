@@ -27,11 +27,26 @@ public sealed class Settings
     /// The path resources html
     /// </summary>
     public const string Path_RscHtml = "Paths:RscHtml";
+    
+    /// <summary>
+    /// The path resources html templates
+    /// </summary>
+    public const string Path_RscHtmlTemplates = "Paths:RscHtmlTemplates";
 
     /// <summary>
     /// The path resources html / assets
     /// </summary>
     public const string Path_RscHtmlAssets = "Paths:RscHtmlAssets";
+
+    /// <summary>
+    /// The path resources html / assets / movie-page-list-wallpapers
+    /// </summary>
+    public const string Path_RscHtmlAssetsMoviePageListWallpapers = "Paths:RscHtmlAssetsMoviePageListWallpapers";
+
+    /// <summary>
+    /// The path resources html / assets / fonts
+    /// </summary>
+    public const string Path_RscHtmlAssetsFonts = "Paths:RscHtmlAssetsFonts";
 
     /// <summary>
     /// The path resources html / assets
@@ -272,6 +287,11 @@ public sealed class Settings
     /// build html template id
     /// </summary>
     public const string Build_Html_Template_Id = "Build:Html:TemplateId";
+    
+    /// <summary>
+    /// build html file extension
+    /// </summary>
+    public const string Build_HtmlFileExt = "Build:Html:Extension";
 
     #endregion
 
