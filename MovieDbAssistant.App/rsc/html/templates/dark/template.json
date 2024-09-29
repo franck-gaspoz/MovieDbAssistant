@@ -15,6 +15,7 @@
   "Files": [
     "/img",
     "/css",
-    "/fonts"
+    "/fonts",
+    "/js"
   ]
 }

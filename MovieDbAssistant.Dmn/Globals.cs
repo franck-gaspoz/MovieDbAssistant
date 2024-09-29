@@ -12,6 +12,7 @@ public sealed class Globals
             new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
+                WriteIndented = true
             });
 
     public const string Item_Id_Build = "Tag_Item_Build";

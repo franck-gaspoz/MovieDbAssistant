@@ -9,8 +9,11 @@
     <link rel="icon" type="image/ico" href="./img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 
-    <!-- min dependencies -->
+    <!-- init -->
     <script src="./js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        const data = {{data}};
+    </script>
     <!--  -->
     <style>
         body {
@@ -26,7 +29,7 @@
 
     <div class="movie-list">
 
-        <div class="movie-list-item-container">
+        <div class="movie-list-item-container" id="ItemModel">
 
             <div class="movie-list-item" 
                  data-attr-key="{{key}}"

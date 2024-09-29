@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Text.Json;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -21,6 +23,8 @@ public sealed class TemplateBuilder
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilder> _logger;
+
+    const string Var_Data = "data";
 
     /// <summary>
     /// Gets or sets the context.
@@ -80,7 +84,7 @@ public sealed class TemplateBuilder
     {
         var docContext = Context.DocContext;
 
-        var listContent = ProcessTemplateList(
+        var listContent = ProcessTemplate(
             _tpl!.Templates.TplList!,
             data);
 
@@ -125,17 +129,23 @@ public sealed class TemplateBuilder
         }
     }
 
-    string ProcessTemplateList(
-        string pageListTemplate,
+    string ProcessTemplate(
+        string tpl,
         MovieModel data)
     {
-        return pageListTemplate;
+        var src = JsonSerializer.Serialize(
+            data,
+            JsonSerializerProperties.Value)!;
+
+        tpl = SetVar(tpl, Var_Data, src);
+        return tpl;
     }
 
-    string ProcessTemplate(
-        string template,
-        MovieModel data)
+    string SetVar(string text, string name, string value)
     {
-        return template;
+        text = text.Replace(Var(name), value);
+        return text;
     }
+
+    string Var(string name) => "{{"+name+"}}";
 }
