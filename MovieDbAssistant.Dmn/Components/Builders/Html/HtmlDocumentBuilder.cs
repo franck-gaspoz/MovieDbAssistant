@@ -44,7 +44,9 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     {
         _logger.LogInformation(this, $"process json: {data.Movies.Count} movies");
 
-        data.Distinct();
+        data
+            .Distinct()
+            .Sort();
 
         var folderName = Path.GetFileNameWithoutExtension(context.Source);
         var folder = Path.Combine(context.OutputPath, folderName);
