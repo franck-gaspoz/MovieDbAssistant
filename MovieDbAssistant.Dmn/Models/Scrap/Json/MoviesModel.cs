@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
+﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 #pragma warning disable CD1606 // The property must have a documentation header.
 
@@ -27,18 +25,16 @@ public sealed class MoviesModel
     /// <summary>
     /// sort by title
     /// </summary>
-    public void Sort()
-    {
-        Movies.Sort(new Comparison<MovieModel>((x, y) =>
-            x.Title == null ? -1 : x.Title.CompareTo(y.Title)
+    public void Sort() => Movies.Sort(new Comparison<MovieModel>(
+        (x, y) => x.Title == null ? 
+            -1 : x.Title.CompareTo(y.Title)
         ));
-    }
 
     /// <summary>
     /// remove unacceptable models
     /// </summary>
     public MoviesModel Filter()
-    {        
+    {
         var movies = Movies
             .Where(x => !string.IsNullOrWhiteSpace(x.Title))
             .ToList();
