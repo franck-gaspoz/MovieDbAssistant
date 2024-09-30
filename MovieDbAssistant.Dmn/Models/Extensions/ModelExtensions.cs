@@ -19,7 +19,7 @@ public static class ModelExtensions
     /// <returns>A <see cref="string"/></returns>
     public static string UpdateFilename(this MovieModel data, IConfiguration config)
     {
-        var f = (data.Filename ?? data.Key) + config[Build_HtmlFileExt];
+        var f = data.Filename ?? data.Key + config[Build_HtmlFileExt];
         data.Filename = f;
         return f;
     }
