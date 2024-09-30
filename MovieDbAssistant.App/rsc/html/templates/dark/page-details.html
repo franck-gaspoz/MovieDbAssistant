@@ -46,7 +46,8 @@
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
-    <div id="Image_BackgroundIdle" class="movie-page-detail-background-idle-container image-background-idle">
+    <div id="Image_BackgroundIdle" 
+         class="movie-page-detail-background-idle-container image-background-idle">
     </div>
 
     <div class="movie-page-detail-content-container">
@@ -55,10 +56,10 @@
             <a href="{{movies.home}}">
                 <img src="../img/house.png" alt="icon home" class="nav-icon margin-right-double" />
             </a>
-            <a href="{{movies.previous}}" class="if-previousLink">
+            <a href="{{movies.previous}}" class="if-movies-previous">
                 <img src="../img/left-arrow.png" alt="previous movie" class="nav-icon if-previousLink" />
             </a>
-            <a href="{{movies.next}}" class="if-nextLink">
+            <a href="{{movies.next}}" class="if-movies-next">
                 <img src="../img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-nextLink" />
             </a>
             <span class="nav-counters">{{movies.index}} / {{movies.total}}</span>

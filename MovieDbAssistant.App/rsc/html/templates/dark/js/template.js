@@ -145,6 +145,7 @@ class Template {
 
     getVarname(name) {
         return this.firstLower(name)
+            .replaceAll('.', '-')
     }
 }
 
@@ -200,7 +201,7 @@ function handleBackImgLoaded(img) {
         $i.css('height', h + 'px')
     }
 
-    $('#Image_BackgroundIdle').fadeOut(1000);
+    //$('#Image_BackgroundIdle').fadeOut(1000);
 
     $i[0].src = img.src
     $i.fadeIn(1000)
