@@ -34,6 +34,17 @@ public sealed class HtmlMovieDocumentBuilder
     }
 
     /// <summary>
+    /// Setups the model.
+    /// </summary>
+    /// <param name="data">The data.</param>
+    public void SetupModel(MovieModel data)
+    {
+        var key = data.Title!.ToHexString();
+        data.Key = key;
+        data.UpdateFilename(_config);
+    }
+
+    /// <summary>
     /// Build the movie.
     /// </summary>
     /// <param name="context">The context.</param>
@@ -47,9 +58,7 @@ public sealed class HtmlMovieDocumentBuilder
             IgnoreDocument(data);
             return;
         }
-        var key = data.Title!.ToHexString();
-        data.Key = key;
-        data.UpdateFilename(_config);
+        SetupModel(data);
 
         _logger.LogInformation(this,
             _config[ProcMovie]

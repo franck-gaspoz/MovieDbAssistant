@@ -45,6 +45,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         _logger.LogInformation(this, $"process json: {data.Movies.Count} movies");
 
         data
+            .Filter()
             .Distinct()
             .Sort();
 

@@ -25,12 +25,25 @@ public sealed class MoviesModel
     }
 
     /// <summary>
-    /// TODO: Add Summary.
+    /// sort by title
     /// </summary>
     public void Sort()
     {
         Movies.Sort(new Comparison<MovieModel>((x, y) =>
             x.Title == null ? -1 : x.Title.CompareTo(y.Title)
         ));
+    }
+    a
+    /// <summary>
+    /// remove unacceptable models
+    /// </summary>
+    public MoviesModel Filter()
+    {        
+        var movies = Movies
+            .Where(x => !string.IsNullOrWhiteSpace(x.Title))
+            .ToList();
+        Movies.Clear();
+        Movies.AddRange(movies);
+        return this;
     }
 }
