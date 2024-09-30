@@ -59,4 +59,12 @@ public static class StringExtensions
             CopyDirectory(directory, destDir, dir);
         }
     }
+
+    /// <summary>
+    /// first letter in lower case
+    /// </summary>
+    /// <param name="s">string</param>
+    /// <returns>first letter in lower case</returns>
+    public static string ToFirstLower(this string s)
+        => s[0].ToString().ToLower() + s[1..];
 }

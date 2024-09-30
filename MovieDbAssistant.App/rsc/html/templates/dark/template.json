@@ -12,7 +12,8 @@
       "Filename": "index"
     },
     "PageDetail": {
-      "FallbackBackground": "../img/cinema-wallpaper-16.jpg"
+      "Background": "../img/cinema-wallpaper-16.jpg",
+      "BackgroundIdle": "../img/cinema-wallpaper-35.jpg"
     }
   },
   "Files": [

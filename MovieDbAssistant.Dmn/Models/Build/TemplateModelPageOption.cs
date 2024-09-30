@@ -1,6 +1,4 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template model page option.
@@ -8,10 +6,16 @@ namespace MovieDbAssistant.Dmn.Models.Build;
 public sealed class TemplateModelPageOption
 {
     /// <summary>
-    /// Gets or sets the fallback background.
+    /// Gets or sets the background (template overrided)
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string FallbackBackground { get; set; }
+    public string? Background { get; set; }
+
+    /// <summary>
+    /// Gets or sets the background for idle phase
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public string? BackgroundIdle { get; set; }
 
     /// <summary>
     /// Gets or sets the title.
@@ -25,9 +29,14 @@ public sealed class TemplateModelPageOption
     /// <value>A <see cref="string"/></value>
     public string? Filename { get; set; }
 
-    public TemplateModelPageOption(string fallbackBackground, string? title, string? filename)
+    public TemplateModelPageOption(
+        string background,
+        string? backgroundIdle,
+        string? title,
+        string? filename)
     {
-        FallbackBackground = fallbackBackground;
+        Background = background;
+        BackgroundIdle = backgroundIdle;
         Title = title;
         Filename = filename;
     }

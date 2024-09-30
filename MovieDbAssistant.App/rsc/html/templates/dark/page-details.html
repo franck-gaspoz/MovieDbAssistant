@@ -27,6 +27,13 @@
             o.buildDetails(data);
         });
     </script>
+    <style>
+        .image-background-idle {
+            background-image: url('{{backgroundIdle}}');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
     <!-- ----- -->
 </head>
 
@@ -37,6 +44,9 @@
     </div>
 
     <div class="movie-page-detail-background-container vignette vignette2">
+    </div>
+
+    <div id="Image_BackgroundIdle" class="movie-page-detail-background-idle-container image-background-idle">
     </div>
 
     <div class="movie-page-detail-content-container">

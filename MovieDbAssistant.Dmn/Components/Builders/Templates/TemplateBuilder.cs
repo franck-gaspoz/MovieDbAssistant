@@ -27,6 +27,7 @@ public sealed class TemplateBuilder
     const string Var_Data = "data";
     const string Var_Props = "props";
     const string Template_Var_Background = "background";
+    const string Template_Var_BackgroundIdle = "backgroundIdle";
     const string Template_Var_Prefix_Item = "movies.";
     const string Template_Var_Index = Template_Var_Prefix_Item + "index";
     const string Template_Var_Total = Template_Var_Prefix_Item + "total";
@@ -130,6 +131,8 @@ public sealed class TemplateBuilder
         (page,_) = SetVars(page, htmlContext, data);
 
         page = IntegratesProps(page, htmlContext, data);
+        page = SetVars(page,
+            GetTemplateProps(true, data, htmlContext));
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -222,10 +225,14 @@ public sealed class TemplateBuilder
             {
                 Template_Var_Background ,
                 !pageDetails?
-                    _tpl!.Options.PageList.FallbackBackground
-                : (data==null || data.PicFullUrl == null)?
-                    _tpl!.Options.PageDetail.FallbackBackground
-                    : data.PicFullUrl
+                    _tpl!.Options.PageList.Background
+                    : (data==null || data.PicFullUrl == null)?
+                        _tpl!.Options.PageList.Background
+                        : data.PicFullUrl
+            },
+            {
+                Template_Var_BackgroundIdle,
+                _tpl!.Options.PageDetail.BackgroundIdle
             },
             {
                 Template_Var_Index,
@@ -282,7 +289,7 @@ public sealed class TemplateBuilder
         return tpl;
     }
 
-    static string KeyToVar(string key) => key.ToLower();
+    static string KeyToVar(string key) => key.ToFirstLower();
 
     static string VarToString(object? value) => value?.ToString() ?? string.Empty;
 

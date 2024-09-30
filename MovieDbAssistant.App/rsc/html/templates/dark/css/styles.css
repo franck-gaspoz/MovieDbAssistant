@@ -28,7 +28,9 @@ td {
 
 .movie-page-detail-background-container,
 .movie-page-detail-background-drop-container,
-.movie-page-detail-content-container {
+.movie-page-detail-content-container,
+.movie-page-detail-background-idle-container
+{
     display: block;
     width: 100%;
     height: 100%;
@@ -81,6 +83,10 @@ td {
 
 .movie-page-detail-background-drop-container {
     z-index: 5;
+}
+
+.movie-page-detail-background-idle-container {
+    z-index:7;
 }
 
 .movie-page-detail-content-container {

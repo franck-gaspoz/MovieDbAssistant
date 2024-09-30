@@ -199,8 +199,11 @@ function handleBackImgLoaded(img) {
         $i.css('width', w + 'px')
         $i.css('height', h + 'px')
     }
+
+    $('#Image_BackgroundIdle').fadeOut(1000);
+
     $i[0].src = img.src
-    $i.fadeIn(500)
+    $i.fadeIn(1000)
 }
 
 function addBackImgLoadedHandler(src) {
