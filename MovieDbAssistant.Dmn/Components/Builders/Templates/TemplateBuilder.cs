@@ -129,7 +129,7 @@ public sealed class TemplateBuilder
             data);
         (page,_) = SetVars(page, htmlContext, data);
 
-        page = IntegratesProps(page, htmlContext);
+        page = IntegratesProps(page, htmlContext, data);
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -202,10 +202,12 @@ public sealed class TemplateBuilder
 
     string IntegratesProps(
         string tpl,
-        HtmlDocumentBuilderContext htmlContext)
+        HtmlDocumentBuilderContext htmlContext,
+        MovieModel? data = null)
     {
         var src = JsonSerializer.Serialize(
-            htmlContext,
+            //htmlContext,
+            GetTemplateProps(true, data, htmlContext),
             JsonSerializerProperties.Value)!;
 
         tpl = SetVar(tpl, Var_Props, src);
@@ -227,7 +229,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Index,
-                htmlContext?.Index
+                htmlContext?.Index+1
             },
             {
                 Template_Var_Total,

@@ -42,15 +42,16 @@
     <div class="movie-page-detail-content-container">
 
         <div class="movie-page-nav-container">
-            <a href="{{homeLink}}">
+            <a href="{{movies.home}}">
                 <img src="../img/house.png" alt="icon home" class="nav-icon margin-right-double" />
             </a>
-            <a href="{{previousLink}}" class="if-previousLink">
+            <a href="{{movies.previous}}" class="if-previousLink">
                 <img src="../img/left-arrow.png" alt="previous movie" class="nav-icon if-previousLink" />
             </a>
-            <a href="{{nextLink}}" class="if-nextLink">
+            <a href="{{movies.next}}" class="if-nextLink">
                 <img src="../img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-nextLink" />
             </a>
+            <span class="nav-counters">{{movies.index}} / {{movies.total}}</span>
         </div>
 
         <div class="movie-list">

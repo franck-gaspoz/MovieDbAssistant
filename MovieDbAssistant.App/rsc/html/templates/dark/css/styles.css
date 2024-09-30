@@ -72,6 +72,13 @@ td {
     opacity: 90%;
 }
 
+.nav-counters {
+    opacity: 50%;
+    font-family: 'quesha';
+    font-size: 2em;
+    vertical-align: bottom;
+}
+
 .movie-page-detail-background-drop-container {
     z-index: 5;
 }
