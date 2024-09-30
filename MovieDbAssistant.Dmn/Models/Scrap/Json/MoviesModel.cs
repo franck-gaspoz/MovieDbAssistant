@@ -33,7 +33,7 @@ public sealed class MoviesModel
             x.Title == null ? -1 : x.Title.CompareTo(y.Title)
         ));
     }
-    a
+
     /// <summary>
     /// remove unacceptable models
     /// </summary>
