@@ -118,6 +118,10 @@ body.movie-page-detail .movie-pic-container img {
     border-radius: 0em;
 }
 
+body.movie-page-detail .movie-page-detail-content-container {
+    align-content: center
+}
+
 .cell-title {
     padding-bottom: 0em;
 }
