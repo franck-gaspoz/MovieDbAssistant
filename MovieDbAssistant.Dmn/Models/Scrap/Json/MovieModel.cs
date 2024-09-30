@@ -61,7 +61,10 @@ public sealed class MovieModel
 
     public List<string> PicsUrls { get; set; } = [];
 
-    public string? PicsFullUrls { get; set; }
+    public string? MedPicUrl => PicsUrls.Count > 2
+        ? PicsUrls[2] : MinPicUrl;
+
+    public string? PicFullUrl { get; set; }
 
     public List<string> PicsSizes { get; set; } = [];
 

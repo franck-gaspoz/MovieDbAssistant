@@ -6,10 +6,10 @@
 public sealed class TemplateModelPageOption
 {
     /// <summary>
-    /// Gets or sets the background.
+    /// Gets or sets the fallback background.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string Background { get; set; }
+    public string FallbackBackground { get; set; }
 
     /// <summary>
     /// Gets or sets the title.
@@ -23,9 +23,9 @@ public sealed class TemplateModelPageOption
     /// <value>A <see cref="string"/></value>
     public string? Filename { get; set; }
 
-    public TemplateModelPageOption(string background, string? title, string? filename)
+    public TemplateModelPageOption(string fallbackBackground, string? title, string? filename)
     {
-        Background = background;
+        FallbackBackground = fallbackBackground;
         Title = title;
         Filename = filename;
     }

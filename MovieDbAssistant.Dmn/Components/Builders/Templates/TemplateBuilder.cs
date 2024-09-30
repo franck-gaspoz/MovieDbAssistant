@@ -10,7 +10,6 @@ using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
@@ -25,6 +24,7 @@ public sealed class TemplateBuilder
     readonly ILogger<TemplateBuilder> _logger;
 
     const string Var_Data = "data";
+    const string Template_Var_Background = "background";
 
     /// <summary>
     /// Gets or sets the context.
@@ -86,7 +86,8 @@ public sealed class TemplateBuilder
 
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
-        SetVars(page, data.GetProperties());
+        //SetVars(page, data.GetProperties());
+        page = SetVars(page);
 
         Context.DocContext!.AddOutputFile(
             _tpl.Options.PageList.Filename!,
@@ -110,7 +111,8 @@ public sealed class TemplateBuilder
         var page = IntegratesData(
             _tpl!.Templates.TplDetails!,
             data);
-        SetVars(page, data.GetProperties());
+        //page = SetVars(page, data.GetProperties());
+        page = SetVars(page, data);
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -181,9 +183,35 @@ public sealed class TemplateBuilder
         return tpl;
     }
 
-    string SetVars(string tpl,Dictionary<string,object?> vars)
+    Dictionary<string, object?> GetTemplateProps(
+        bool pageDetails,
+        MovieModel? data = null) => new()
+        {
+            {
+                Template_Var_Background ,
+                !pageDetails?
+                    _tpl!.Options.PageList.FallbackBackground
+                : (data==null || data.PicFullUrl == null)?
+                    _tpl!.Options.PageDetail.FallbackBackground
+                    : data.PicFullUrl
+            }
+        };
+
+    string SetVars(string tpl)
     {
-        foreach ( var kvp in vars )
+        tpl = SetVars(tpl, GetTemplateProps(false, null));
+        return tpl;
+    }
+
+    string SetVars(string tpl, MovieModel data)
+    {
+        tpl = SetVars(tpl, GetTemplateProps(true, data));
+        return tpl;
+    }
+
+    string SetVars(string tpl, Dictionary<string, object?> vars)
+    {
+        foreach (var kvp in vars)
             tpl = SetVar(
                 tpl,
                 KeyToVar(kvp.Key),
@@ -193,10 +221,7 @@ public sealed class TemplateBuilder
 
     static string KeyToVar(string key) => key.ToLower();
 
-    static string VarToString(object? value)
-    {
-        return value?.ToString() ?? string.Empty;
-    }
+    static string VarToString(object? value) => value?.ToString() ?? string.Empty;
 
     string SetVar(string text, string name, string value)
     {
@@ -204,5 +229,5 @@ public sealed class TemplateBuilder
         return text;
     }
 
-    string Var(string name) => "{{"+name+"}}";
+    string Var(string name) => "{{" + name + "}}";
 }

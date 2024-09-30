@@ -14,103 +14,120 @@
     <script src="../js/template.js"></script>
     <script type="text/javascript">
         const data = {{data}};
+
+        addBackImgLoadedHandler('{{background}}');
+        
         $(document).ready(() => {
             var o = new Template();
             o.buildDetails(data);
         });
     </script>
-    <!--  -->
-    <style>
-        body {
-            background-image: url('../img/cinema-wallpaper-16.jpg');
-        }
-    </style>
     <!-- ----- -->
 </head>
 
 <body class="movie-page-detail">
 
-    <div class="movie-page-list-title">{{title}}</div>
+    <div class="movie-page-detail-background-container">
+        <img id="Image_Background" class="hidden" src="" alt="background pic" />
+    </div>
 
-    <div class="movie-list">
+    <div class="movie-page-detail-background-container vignette vignette2">
+    </div>
 
-        <div class="movie-list-item-container" id="ItemModel">
+    <div class="movie-page-detail-content-container">
 
-            <div class="movie-list-item"
-                 data-attr-key="{{key}}"
-                 data-attr-id="{{id}}">
+        <!--
+        <div class="movie-page-list-title">{{title}}</div>
+        -->
 
-                <table width="100%">
-                    <tr>
-                        <td>
-                            <table width="100%">
-                                <tr>
-                                    <td width="100%" class="cell-title">
-                                        <span class="title">{{title}}</span>
-                                        <br />
-                                        <span class="interests text">{{interests}}</span>
-                                    </td>
-                                    <td>
-                                        <div class="rating-container">
-                                            <span class="rating text">{{rating}}</span> / <span class="ratingCount text">{{ratingCount}}</span>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span class="year text">{{year}}</span>
-                                    </td>
-                                </tr>
-                            </table>
+        <div class="movie-list">
 
-                            <table width="100%">
-                                <tr>
-                                    <td>
-                                        <span class="label label-director">director: </span>
-                                        <span class="director text">{{director}}</span>
-                                        <span class="label label-stars">stars: </span>
-                                        <span class="stars text">{{stars}}</span>
-                                        <div class="vsep"></div>
-                                        <span class="label label-duration">duration: </span>
-                                        <span class="duration text">{{duration}}</span>
-                                        <span class="label label-releaseDate">release date: </span>
-                                        <span class="releaseDate text">{{releaseDate}}</span>
-                                        <span class="label label-source">page: </span>
-                                        <a class="url" href="{{url}}">{{url}}</a>
-                                    </td>
-                                </tr>
-                            </table>
+            <div class="movie-list-item-container" id="ItemModel">
 
-                            <table width="100%">
-                                <tr>
-                                    <td>
-                                        <div>
-                                            <span class="label label-summary">summary: </span>
-                                        </div>
-                                        <span class="summary text">{{summary}}</span>
-                                    </td>
-                                </tr>
-                                <!--
+                <div class="movie-list-item"
+                     data-attr-key="{{key}}"
+                     data-attr-id="{{id}}">
+
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <table width="100%">
+                                    <tr>
+                                        <td width="100%" class="cell-title">
+                                            <span class="title if-title">{{title}}</span>
+                                            <br />
+                                            <span class="interests text if-interests">{{interests}}</span>
+                                        </td>
+                                        <td>
+                                            <div class="rating-container if-rating if-ratingCount">
+                                                <span class="rating text if-rating">{{rating}}</span> / <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="year text if-year">{{year}}</span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <span class="label label-director if-director">director: </span>
+                                            <span class="director text if-director">{{director}}</span>
+                                            <span class="cell-int label label-stars if-stars">stars: </span>
+                                            <span class="stars text if-stars">{{stars}}</span>
+                                            <div class="vsep"></div>
+                                            <span class="label label-duration if-duration">duration: </span>
+                                            <span class="duration text if-duration">{{duration}}</span>
+                                            <span class="cell-int label label-releaseDate if-releaseDate">release date: </span>
+                                            <span class="releaseDate text if-releaseDate">{{releaseDate}}</span>
+                                            <br>
+                                            <span class="label label-source if-url">page: </span>
+                                            <a class="url if-url" href="{{url}}">{{url}}</a>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table width="100%">
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span class="label label-actors">actors: </span>
+                                            </div>
+                                            <span class="actors text">{{actors}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span class="label label-summary">summary: </span>
+                                            </div>
+                                            <span class="summary text">{{summary}}</span>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>
                                             <div>
                                                 <span class="label label-anecdotes">anecdotes: </span>
                                             </div>
-                                            <span class="anecdotes">{{anecdotes}}</span>
+                                            <span class="anecdotes text">{{anecdotes}}</span>
                                         </td>
                                     </tr>
-                                -->
-                            </table>
-                        </td>
+                                </table>
+                            </td>
 
-                        <td class="movie-pic-container">
-                            <img src="https://m.media-amazon.com/images/M/MV5BZWQ3NjAyZWUtMzMxMS00MzE1LTlkNDMtZGNjNGY2MzBkNjQ3XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UY281_CR1,0,190,281_.jpg" />
-                            <!-- {{minPicUrl}} -->
-                        </td>
-                    </tr>
-                </table>
+                            <td class="movie-pic-container" valign="top">
+                                <img src="{{medPicUrl}}" />
+                            </td>
+                        </tr>
+                        </
+                    </table>
+
+                </div>
 
             </div>
-
         </div>
+
     </div>
 
 </body>

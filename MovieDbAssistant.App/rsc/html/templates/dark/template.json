@@ -12,7 +12,7 @@
       "Filename": "index"
     },
     "PageDetail": {
-      "Background": "cinema-wallpaper-16.jpg"
+      "FallbackBackground": "../img/cinema-wallpaper-16.jpg"
     }
   },
   "Files": [

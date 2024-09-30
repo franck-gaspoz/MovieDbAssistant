@@ -13,6 +13,7 @@ body {
     background-size: cover !important;
     background-attachment: fixed !important;
     background: black;
+    scrollbar-color: #88A8CC55 transparent;
 }
 
 a {
@@ -23,6 +24,36 @@ td {
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 1em;
+}
+
+.movie-page-detail-background-container,
+.movie-page-detail-background-drop-container,
+.movie-page-detail-content-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+.movie-page-detail-background-drop-container {
+    z-index: 5;
+}
+
+.movie-page-detail-content-container {
+    z-index: 10;
+}
+
+.movie-page-detail-background-container img {
+    position: relative;
+}
+    
+.width100p {
+    width: 100%;
+}
+
+.height100P {
+    height: 100%;
 }
 
 .movie-list {
@@ -44,13 +75,12 @@ td {
 
 .movie-list-item {
     margin: 2em;
-    background-color: #00000055;
+    background-color: #000000A0;
     border-radius: 1em;
     border: black solid 1px;
 }
 
 .movie-pic-container {
-    /* minPicUrl */
     width: 190px;
     padding-right:0px;
     padding-top: 0px;
@@ -72,13 +102,33 @@ td {
     font-family: 'quesha';
 }
 
+body.movie-page-detail {
+    font-size: 1.5em;
+}
+
+body.movie-page-detail .title {
+    font-size: 96px;
+}
+
+body.movie-page-detail .movie-list {
+    max-height: Calc(100% + 2em);
+}
+
+body.movie-page-detail .movie-pic-container img {
+    border-radius: 0em;
+}
+
 .cell-title {
     padding-bottom: 0em;
 }
 
+.cell-int {
+    margin-left: 1em;
+}
+
 .label {
     font-family: 'quesha';
-    font-size: 28px;
+    font-size: 1.9em;
     font-weight: bold;
     color: #E0E0F0;
 }
@@ -97,10 +147,14 @@ td {
 
 .year {
     font-weight: bold;
+    font-size: 2.5em;
+    font-family: 'quesha';
 }
 
 .rating-container {
     text-wrap: nowrap;
+    font-size: 2em;
+    font-family: 'quesha';
 }
 
 .rating {
@@ -110,6 +164,14 @@ td {
 .ratingCount {    
 }
 
+.anecdotes {
+    max-height: 7em;
+    display: inline-block;
+    overflow-y: auto;
+    scrollbar-color: #DDEEFF77 transparent;
+    scrollbar-width: inherit;
+}
+
 .vsep {
     height: 0.75em;
 }
@@ -117,6 +179,23 @@ td {
 .hsep {
     display: inline-block;
     width:1em; 
+}
+
+.vignette {
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.5), transparent 50%), radial-gradient(circle at top right, rgba(0, 0, 0, 0.5), transparent 50%), radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.5), transparent 50%), radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.5), transparent 50%), linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 50%), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 50%);
+}
+
+.vignette2 {
+    backdrop-filter: blur(10px);
+    mask-image: radial-gradient(circle, transparent, black);
+}
+
+.transparent {
+    opacity: 0;
+}
+
+.hidden {
+    display: none;
 }
 
 @font-face {

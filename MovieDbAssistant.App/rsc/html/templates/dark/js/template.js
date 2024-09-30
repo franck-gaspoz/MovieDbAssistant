@@ -1,11 +1,17 @@
 ﻿const ID_Model_Item = 'ItemModel';
 const ID_Model_Class_Movie_List = 'movie-list';
+const Tag_Body = 'body';
+const Class_Prefx_If = 'if-'
 
 /**
  * front sode template engine
  * @class
 */
 class Template {
+
+    constructor() {
+        window.tpl = this
+    }
 
     /**
      * @typedef MoviesModel movies model
@@ -37,7 +43,7 @@ class Template {
      * @property {string} MinPicAlt min pic alt
      * @property {string} MinPicWidth min pic width
      * @property {string[]} PicsUrls pics urls
-     * @property {string} PicFullUrls pic full size url
+     * @property {string} PicFullUrl pic full size url
      * @property {string[]} PicsSizes pics sizes 
      */
 
@@ -85,16 +91,30 @@ class Template {
 
     /** @param {MovieModel} data movie */
     buildDetails(data) {
-        var $src = $('.' + ID_Model_Class_Movie_List)
+        var $src = $(Tag_Body)
         var html = $src[0].outerHTML
         html = this.parseVars(html, data)
         $src.html(html)
-        console.debug(html)
+        this.setStates(data)
+        //console.debug(html)
     }
 
     /**@param {MovieModel} data movie */
     addItem(data) {
 
+    }
+
+    setStates(data) {
+        for (var p in data) {
+            var val = data[p]
+            if (!val || val == '') {
+                var cl = x => '.' + x
+                $(cl(Class_Prefx_If) + this.getVarname(p))
+                    .each((i, e) => {
+                        $(e).addClass('hidden')
+                    });
+            }
+        }
     }
 
     /**
@@ -119,6 +139,71 @@ class Template {
     }
 
     getVar(name) {
-        return '{{' + this.firstLower(name) + '}}';
+        return '{{' + this.getVarname(name) + '}}';
     }
+
+    getVarname(name) {
+        return this.firstLower(name)
+    }
+}
+
+function handleBackImgLoaded(img) {
+    var $i = $('#Image_Background')
+    var w = img.naturalWidth
+    var h = img.naturalHeight
+    var $c = $('.movie-page-detail-background-container')
+    var wc = $c.width()
+    var hc = $c.height()
+    var maxw = w >= h
+    var aw = w, ah = h
+
+    var w0 = w
+    var h0 = h
+    while (w > wc && h > hc) {
+        aw = w
+        ah = h
+        w /= 1.2
+        h /= 1.2
+    }
+    w = aw
+    h = ah
+    var zoom = w / w0;
+
+    var setwh = false
+    if (w < wc) {
+        var z = wc / w
+        w *= z
+        h *= z
+        setwh = true
+    }
+
+    if (h < hc) {
+        var z = hc / h
+        w *= z
+        h *= z
+        setwh = true
+    }
+
+    var cl = maxw ?
+        'width100p' : 'height100p'
+    var left = w >= wc ?
+        -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
+    var top = h >= hc ?
+        -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
+    $i.addClass(cl)
+    $i.css('left', left + 'px')
+    $i.css('top', top + 'px')
+    $i.css('zoom', zoom)
+    if (setwh) {
+        $i.css('width', w + 'px')
+        $i.css('height', h + 'px')
+    }
+    $i[0].src = img.src
+    $i.fadeIn(500)
+}
+
+function addBackImgLoadedHandler(src) {
+    var img = new Image();
+    img.addEventListener('load', () => handleBackImgLoaded(img), false);
+    img.src = src;
 }
