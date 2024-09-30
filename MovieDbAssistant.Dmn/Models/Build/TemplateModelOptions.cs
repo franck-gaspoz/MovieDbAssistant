@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Build;
+﻿using MovieDbAssistant.Dmn.Components.Builders;
+
+namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template model options.
@@ -26,4 +28,15 @@ public sealed class TemplateModelOptions
         TemplateModelPageOption pageList,
         TemplateModelPageOption pageDetail) 
         => (PageDetail,PageList) = (pageDetail, pageList);
+
+
+    /// <summary>
+    /// Pages index path.
+    /// </summary>
+    /// <param name="docBuilderContext">doc builder context</param>
+    /// <param name="extension">extension</param>
+    /// <returns>A <see cref="string"/></returns>
+    public string PageIndexPath(DocumentBuilderContext docBuilderContext,
+        string extension)
+        => docBuilderContext.PageFilePath(PageList.Filename!,extension);
 }

@@ -48,9 +48,11 @@ public sealed class HtmlMovieDocumentBuilder
     /// Build the movie.
     /// </summary>
     /// <param name="context">The context.</param>
+    /// <param name="htmlContext">html document builder context</param>
     /// <param name="data">The data.</param>
     public void BuildMovie(
         DocumentBuilderContext context,
+        HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {
         if (string.IsNullOrWhiteSpace(data.Title))
@@ -69,7 +71,7 @@ public sealed class HtmlMovieDocumentBuilder
             context
                 .BuilderOptions[Template_Id]
                 .ToString()!)
-            .BuildPageDetail(data);
+            .BuildPageDetail(htmlContext,data);
     }
 
     void IgnoreDocument(MovieModel data)

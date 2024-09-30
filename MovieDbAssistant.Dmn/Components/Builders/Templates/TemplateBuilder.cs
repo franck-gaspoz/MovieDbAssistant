@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -25,6 +26,12 @@ public sealed class TemplateBuilder
 
     const string Var_Data = "data";
     const string Template_Var_Background = "background";
+    const string Template_Var_Prefix_Item = "movies.";
+    const string Template_Var_Index = Template_Var_Prefix_Item + "index";
+    const string Template_Var_Total = Template_Var_Prefix_Item + "total";
+    const string Template_Var_Link_Home = Template_Var_Prefix_Item + "home";
+    const string Template_Var_Link_Previous = Template_Var_Prefix_Item + "previous";
+    const string Template_Var_Link_Next = Template_Var_Prefix_Item + "next";
 
     /// <summary>
     /// Gets or sets the context.
@@ -33,6 +40,12 @@ public sealed class TemplateBuilder
     public TemplateBuilderContext Context { get; set; }
 
     TemplateModel? _tpl;
+
+    /// <summary>
+    /// Gets the template model.
+    /// </summary>
+    /// <value>A <see cref="TemplateModel"/></value>
+    public TemplateModel TemplateModel => _tpl!;
 
     static readonly ConcurrentDictionary<string, TemplateModel> _templates = [];
 
@@ -86,7 +99,6 @@ public sealed class TemplateBuilder
 
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
-        //SetVars(page, data.GetProperties());
         page = SetVars(page);
 
         Context.DocContext!.AddOutputFile(
@@ -102,17 +114,19 @@ public sealed class TemplateBuilder
     /// <summary>
     /// build a page details
     /// </summary>
+    /// <param name="htmlContext">html document builder context</param>
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
-    public TemplateBuilder BuildPageDetail(MovieModel data)
+    public TemplateBuilder BuildPageDetail(
+        HtmlDocumentBuilderContext htmlContext,
+        MovieModel data)
     {
         var docContext = Context.DocContext!;
 
         var page = IntegratesData(
             _tpl!.Templates.TplDetails!,
             data);
-        //page = SetVars(page, data.GetProperties());
-        page = SetVars(page, data);
+        page = SetVars(page, htmlContext, data);
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -185,7 +199,8 @@ public sealed class TemplateBuilder
 
     Dictionary<string, object?> GetTemplateProps(
         bool pageDetails,
-        MovieModel? data = null) => new()
+        MovieModel? data = null,
+        HtmlDocumentBuilderContext? htmlContext = null) => new()
         {
             {
                 Template_Var_Background ,
@@ -194,18 +209,47 @@ public sealed class TemplateBuilder
                 : (data==null || data.PicFullUrl == null)?
                     _tpl!.Options.PageDetail.FallbackBackground
                     : data.PicFullUrl
+            },
+            {
+                Template_Var_Index,
+                htmlContext?.Index
+            },
+            {
+                Template_Var_Total,
+                htmlContext?.Total
+            },
+            {
+                Template_Var_Link_Home,
+                htmlContext?.HomeLink
+            },
+            {
+                Template_Var_Link_Previous,
+                htmlContext?.PreviousLink
+            },
+            {
+                Template_Var_Link_Next,
+                htmlContext?.NextLink
             }
         };
 
     string SetVars(string tpl)
     {
-        tpl = SetVars(tpl, GetTemplateProps(false, null));
+        tpl = SetVars(tpl, GetTemplateProps(false, null, null));
         return tpl;
     }
 
-    string SetVars(string tpl, MovieModel data)
+    string SetVars(string tpl, HtmlDocumentBuilderContext htmlContext)
     {
-        tpl = SetVars(tpl, GetTemplateProps(true, data));
+        tpl = SetVars(tpl, GetTemplateProps(false, null, htmlContext));
+        return tpl;
+    }
+
+    string SetVars(
+        string tpl,         
+        HtmlDocumentBuilderContext htmlContext,
+        MovieModel data)
+    {
+        tpl = SetVars(tpl, GetTemplateProps(true, data, htmlContext));
         return tpl;
     }
 

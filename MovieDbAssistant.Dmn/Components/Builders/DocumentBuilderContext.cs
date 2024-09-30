@@ -5,6 +5,7 @@ using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Logger;
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.Dmn.Components.Builders;
@@ -203,4 +204,16 @@ public sealed class DocumentBuilderContext
         _logger.LogInformation(this, "add output file: " + path);
         File.WriteAllText(path, content);
     }
+
+    /// <summary>
+    /// Page file path.
+    /// </summary>
+    /// <param name="filename">The filename.</param>
+    /// <param name="extension">extension</param>
+    /// <returns>A <see cref="string"/></returns>
+    public string PageFilePath(string filename,string extension)
+        => Path.Combine(
+            PagesFolderName,
+            filename
+            )+extension;
 }
