@@ -5,10 +5,11 @@ using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Logger;
 
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.Dmn.Components.Builders;
+
+#pragma warning disable CA1822 // Marquer les membres comme étant static
 
 /// <summary>
 /// document builder context.
@@ -59,7 +60,7 @@ public sealed class DocumentBuilderContext
     /// output path for pages
     /// </summary>
     public string PagesPath => Path.Combine(
-        OutputFolder!, 
+        OutputFolder!,
         _config[Path_OutputPages]!);
 
     /// <summary>
@@ -188,7 +189,7 @@ public sealed class DocumentBuilderContext
             OutputFolder!,
             name + extension);
         _logger.LogInformation(this, "add output file: " + path);
-        File.WriteAllText(path, content);        
+        File.WriteAllText(path, content);
     }
 
     /// <summary>
@@ -211,9 +212,21 @@ public sealed class DocumentBuilderContext
     /// <param name="filename">The filename.</param>
     /// <param name="extension">extension</param>
     /// <returns>A <see cref="string"/></returns>
-    public string PageFilePath(string filename,string extension)
+    public string PageFilePath(string filename, string extension)
         => Path.Combine(
             PagesFolderName,
             filename
-            )+extension;
+            ) + extension;
+
+    /// <summary>
+    /// file path at root of template folder
+    /// </summary>
+    /// <param name="filename">The filename.</param>
+    /// <param name="extension">extension</param>
+    /// <returns>A <see cref="string"/></returns>
+    public string TplFilePath(string filename, string extension)
+        => Path.Combine(
+            string.Empty,
+            filename
+            ) + extension;
 }

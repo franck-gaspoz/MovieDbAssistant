@@ -25,6 +25,7 @@ public sealed class TemplateBuilder
     readonly ILogger<TemplateBuilder> _logger;
 
     const string Var_Data = "data";
+    const string Var_Props = "props";
     const string Template_Var_Background = "background";
     const string Template_Var_Prefix_Item = "movies.";
     const string Template_Var_Index = Template_Var_Prefix_Item + "index";
@@ -126,7 +127,9 @@ public sealed class TemplateBuilder
         var page = IntegratesData(
             _tpl!.Templates.TplDetails!,
             data);
-        page = SetVars(page, htmlContext, data);
+        (page,_) = SetVars(page, htmlContext, data);
+
+        page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -197,6 +200,18 @@ public sealed class TemplateBuilder
         return tpl;
     }
 
+    string IntegratesProps(
+        string tpl,
+        HtmlDocumentBuilderContext htmlContext)
+    {
+        var src = JsonSerializer.Serialize(
+            htmlContext,
+            JsonSerializerProperties.Value)!;
+
+        tpl = SetVar(tpl, Var_Props, src);
+        return tpl;
+    }
+
     Dictionary<string, object?> GetTemplateProps(
         bool pageDetails,
         MovieModel? data = null,
@@ -238,19 +253,21 @@ public sealed class TemplateBuilder
         return tpl;
     }
 
-    string SetVars(string tpl, HtmlDocumentBuilderContext htmlContext)
+    (string, Dictionary<string, object?>) SetVars(string tpl, HtmlDocumentBuilderContext htmlContext)
     {
-        tpl = SetVars(tpl, GetTemplateProps(false, null, htmlContext));
-        return tpl;
+        var props = GetTemplateProps(false, null, htmlContext);
+        tpl = SetVars(tpl, props);
+        return (tpl,props);
     }
 
-    string SetVars(
+    (string, Dictionary<string, object?>) SetVars(
         string tpl,         
         HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {
-        tpl = SetVars(tpl, GetTemplateProps(true, data, htmlContext));
-        return tpl;
+        var props = GetTemplateProps(true, data, htmlContext);
+        tpl = SetVars(tpl, props);
+        return (tpl,props);
     }
 
     string SetVars(string tpl, Dictionary<string, object?> vars)

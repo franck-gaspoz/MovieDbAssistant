@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Components.Builder;

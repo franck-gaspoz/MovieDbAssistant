@@ -56,7 +56,8 @@ class Template {
     };
 
     hseps(t, tr) {
-        if (!tr) tr = x => x;
+        if (!t) return null
+        if (!tr) tr = x => x
         return t.map(x => tr(x))
             .join(this.hsep())
     }

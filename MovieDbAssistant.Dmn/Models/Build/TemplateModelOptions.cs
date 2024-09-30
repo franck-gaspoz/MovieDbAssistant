@@ -38,5 +38,5 @@ public sealed class TemplateModelOptions
     /// <returns>A <see cref="string"/></returns>
     public string PageIndexPath(DocumentBuilderContext docBuilderContext,
         string extension)
-        => docBuilderContext.PageFilePath(PageList.Filename!,extension);
+        => docBuilderContext.TplFilePath(PageList.Filename!,extension);
 }
