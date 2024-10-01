@@ -119,16 +119,26 @@ td {
     max-height: Calc(100% - 5.5em);
 }
 
+body.movie-page-list .movie-page-list-title {
+    max-height: 100%;
+}
+
 .movie-page-list-title {
     font-size: 48px;
     text-align: center;
     margin-top: 0.75em;
+    font-family: momtypew;
+    position: absolute;
+    z-index: 1;
+    width: 400px;
+    Left: Calc(50% - 200px);
 }
 
 .movie-list-item-container {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 2em;
-    padding-top: 1em;
+    padding-top: 0em;
+    padding-bottom: 0.25em;
 }
 
 .movie-list-item {
@@ -273,4 +283,9 @@ body.movie-page-detail .movie-page-detail-content-container {
 @font-face {
     font-family: vonique;
     src: url('../fonts/Vonique 92_D.otf');
+}
+
+@font-face {
+    font-family: momtypew;
+    src: url('../fonts/MomTypewritter.ttf');
 }

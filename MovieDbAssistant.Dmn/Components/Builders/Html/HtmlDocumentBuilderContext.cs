@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Components.Builders.Html;
+﻿using MovieDbAssistant.Dmn.Models.Scrap.Json;
+
+namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
 /// <summary>
 /// The html document builder context.
@@ -14,31 +16,34 @@ public sealed class HtmlDocumentBuilderContext
     /// Gets the index.
     /// </summary>
     /// <value>An <see cref="int"/></value>
-    public int Index { get; }
+    public int Index { get; set; }
 
     /// <summary>
     /// Gets the total.
     /// </summary>
     /// <value>An <see cref="int"/></value>
-    public int Total { get; }
+    public int Total { get; set; }
 
     /// <summary>
     /// Gets the home link.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string HomeLink { get; }
+    public string HomeLink { get; set; }
 
     /// <summary>
     /// Gets the previous link.
     /// </summary>
     /// <value>A <see cref="string? "/></value>
-    public string? PreviousLink { get; }
+    public string? PreviousLink { get; set; }
 
     /// <summary>
     /// Gets the next link.
     /// </summary>
     /// <value>A <see cref="string? "/></value>
-    public string? NextLink { get; }
+    public string? NextLink { get; set; }
+
+    public HtmlDocumentBuilderContext(MoviesModel data)
+        : this(0, data.Movies.Count, string.Empty, null, null) { }
 
     public HtmlDocumentBuilderContext(
         int index,

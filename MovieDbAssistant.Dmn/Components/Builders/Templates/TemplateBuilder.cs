@@ -93,15 +93,19 @@ public sealed class TemplateBuilder
     /// <summary>
     /// build a page list
     /// </summary>
+    /// <param name="htmlContext">html document builder context</param>
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
-    public TemplateBuilder BuildPageList(MoviesModel data)
+    public TemplateBuilder BuildPageList(
+        HtmlDocumentBuilderContext htmlContext, 
+        MoviesModel data)
     {
         var docContext = Context.DocContext;
 
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
         page = SetVars(page);
+        page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
             _tpl.Options.PageList.Filename!,

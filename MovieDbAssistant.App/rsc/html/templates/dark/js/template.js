@@ -85,9 +85,25 @@ class Template {
     /** @param {MoviesModel} data movies set */
     buildItems(data) {
 
-        for (var e in data) {
-            //console.debug(e);
-        }
+        data.Movies.forEach((e, i) => {
+            this.addItem(e)
+        })
+    }
+
+    /**@param {MovieModel} data movie */
+    addItem(data) {
+        const $it = $('#ItemModel').clone()
+        var p = {}
+        Object.assign(p, data)
+        Object.assign(p, props)
+        var src = $it[0].outerHTML
+        src = this.parseVars(src, p)
+        this.setStates(data)
+
+        var $container = $('.movie-list')
+        var $e = $(src)
+        $container.append($e)
+        $e.show()
     }
 
     /** @param {MovieModel} data movie */
@@ -98,11 +114,6 @@ class Template {
         $src.html(html)
         this.setStates(data)
         //console.debug(html)
-    }
-
-    /**@param {MovieModel} data movie */
-    addItem(data) {
-
     }
 
     setStates(data) {
@@ -119,9 +130,9 @@ class Template {
     }
 
     /**
-     * 
+     * parse and set vars
      * @param {string} tpl html source
-     * @param {MovieModel} data 
+     * @param {object} data 
      */
     parseVars(tpl, data) {
         for (var p in data) {

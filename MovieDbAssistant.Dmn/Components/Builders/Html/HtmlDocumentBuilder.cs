@@ -41,7 +41,9 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     /// </summary>
     /// <param name="context">The context.</param>
     /// <param name="data">The data.</param>
-    public void Build(DocumentBuilderContext context, MoviesModel data)
+    public void Build(
+        DocumentBuilderContext context, 
+        MoviesModel data)
     {
         _logger.LogInformation(this, $"process json: {data.Movies.Count} movies");
 
@@ -62,6 +64,9 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         context.MakeOutputDirs();
 
+        var htmlContext = new HtmlDocumentBuilderContext(
+            0, data.Movies.Count, string.Empty, null, null);
+
         _templateBuilder.LoadTemplate(
             context,
             context
@@ -71,7 +76,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         // build list pages
 
-            .BuildPageList(data);
+            .BuildPageList(htmlContext,data);
 
         // build detail pages
 
