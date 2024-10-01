@@ -127,6 +127,19 @@ body.movie-page-list .movie-list-item-container:first-child {
     margin-top: 6em;
 }
 
+body.movie-page-list .movie-list-item {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(42deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7161239495798319) 100%);
+    border: none;
+}
+
+body.movie-page-list .movie-list-item:hover {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(42deg, rgba(0, 0, 0, 0.3) 0%, rgba(128, 128, 128, 0.5) 100%);
+    border: none;
+    cursor: pointer;
+}
+
 .movie-page-list-title {
     font-size: 48px;
     text-align: center;
@@ -134,8 +147,11 @@ body.movie-page-list .movie-list-item-container:first-child {
     font-family: momtypew;
     position: absolute;
     z-index: 1;
-    width: 400px;
-    Left: Calc(50% - 200px);
+    color: #22655c;
+    text-align: center;
+    left: 0px;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px hsl(170, 100%, 79%), 0 0 30px hsl(170, 100%, 79%), 0 0 40px hsl(170, 100%, 79%), 0 0 55px hsl(170, 100%, 79%), 0 0 75px hsl(170, 100%, 79%);
+    width: 100%;
 }
 
 .movie-list-item-container {
