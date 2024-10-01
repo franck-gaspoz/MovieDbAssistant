@@ -252,7 +252,7 @@ body.movie-page-detail .movie-page-detail-content-container {
     font-family: 'quesha';
 }
 
-.rating {
+.rating,.ratingCount,.rating-sep {
     color: bisque;
 }
 
