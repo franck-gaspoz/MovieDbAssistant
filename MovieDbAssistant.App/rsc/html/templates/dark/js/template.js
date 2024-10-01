@@ -88,6 +88,7 @@ class Template {
         data.Movies.forEach((e, i) => {
             this.addItem(e)
         })
+        this.removeItemModel()
     }
 
     /**@param {MovieModel} data movie */
@@ -104,6 +105,11 @@ class Template {
         var $e = $(src)
         $container.append($e)
         $e.show()
+    }
+
+    removeItemModel() {
+        const $it = $('#ItemModel')
+        $it.remove()
     }
 
     /** @param {MovieModel} data movie */

@@ -119,8 +119,12 @@ td {
     max-height: Calc(100% - 5.5em);
 }
 
-body.movie-page-list .movie-page-list-title {
+body.movie-page-list .movie-list {
     max-height: 100%;
+}
+
+body.movie-page-list .movie-list-item-container:first-child {
+    margin-top: 6em;
 }
 
 .movie-page-list-title {
