@@ -181,8 +181,11 @@ body.movie-page-list .movie-list-item:hover {
     border-bottom-left-radius: 0px;
 }
 
-.movie-pic {
-
+body.movie-page-list .summary {
+    font-family: comicn;
+    font-size: 1.5em;
+    padding-top: 0.5em;
+    display: inline-block;
 }
 
 .title {
@@ -306,6 +309,6 @@ body.movie-page-detail .movie-page-detail-content-container {
 }
 
 @font-face {
-    font-family: momtypew;
-    src: url('../fonts/MomTypewritter.ttf');
+    font-family: comicn;
+    src: url('../fonts/ComicNeue-Light.ttf');
 }

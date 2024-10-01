@@ -99,11 +99,13 @@ class Template {
         Object.assign(p, props)
         var src = $it[0].outerHTML
         src = this.parseVars(src, p)
-        this.setStates(data)
 
         var $container = $('.movie-list')
         var $e = $(src)
         $container.append($e)
+
+        this.setStates($e, p)
+
         $e.show()
     }
 
@@ -118,16 +120,15 @@ class Template {
         var html = $src[0].outerHTML
         html = this.parseVars(html, data)
         $src.html(html)
-        this.setStates(data)
-        //console.debug(html)
+        this.setStates(null, data)
     }
 
-    setStates(data) {
+    setStates($from, data) {
         for (var p in data) {
             var val = data[p]
             if (!val || val == '') {
                 var cl = x => '.' + x
-                $(cl(Class_Prefx_If) + this.getVarname(p))
+                $(cl(Class_Prefx_If) + this.getVarname(p), $from)
                     .each((i, e) => {
                         $(e).addClass('hidden')
                     });
