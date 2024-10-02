@@ -4,7 +4,6 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 /// <summary>
 /// The movie model
-/// <para>output properties</para>
 /// </summary>
 [DebuggerDisplay("{Title} | {MinPicAlt}")]
 public sealed partial class MovieModel

@@ -6,7 +6,6 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 /// <summary>
 /// The movie model
-/// <para>scrap properties</para>
 /// </summary>
 [DebuggerDisplay("{Title} | {MinPicAlt}")]
 public sealed partial class MovieModel
@@ -15,6 +14,21 @@ public sealed partial class MovieModel
     /// url of scraped page: details
     /// </summary>
     public string Url { get; set; } = string.Empty;
+
+    /// <summary>
+    /// infos about the scraper
+    /// </summary>
+    public string Scraper { get; set; } = string.Empty;
+
+    /// <summary>
+    /// movie sources
+    /// </summary>
+    public MovieSources Sources { get; set; } = new();
+
+    /// <summary>
+    /// download link
+    /// </summary>
+    public string? Download { get; set; } = string.Empty;
 
     /// <summary>
     /// provider movie id
