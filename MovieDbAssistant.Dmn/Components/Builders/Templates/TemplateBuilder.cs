@@ -207,6 +207,11 @@ public sealed class TemplateBuilder
         string tpl,
         MovieModel data)
     {
+#if true || TEST_SOURCE
+        data.Sources.Download = "http://www.asite.com/myvideo/"+data.Key+".mp4";
+        data.Sources.Play = "http://www.asite.com/myvideo/"+data.Key+".html";
+#endif
+
         var src = JsonSerializer.Serialize(
             data,
             JsonSerializerProperties.Value)!;

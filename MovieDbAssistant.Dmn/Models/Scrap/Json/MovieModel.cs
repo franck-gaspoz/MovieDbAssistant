@@ -26,11 +26,6 @@ public sealed partial class MovieModel
     public MovieSources Sources { get; set; } = new();
 
     /// <summary>
-    /// download link
-    /// </summary>
-    public string? Download { get; set; } = string.Empty;
-
-    /// <summary>
     /// provider movie id
     /// </summary>
     public string? Id { get; set; }
