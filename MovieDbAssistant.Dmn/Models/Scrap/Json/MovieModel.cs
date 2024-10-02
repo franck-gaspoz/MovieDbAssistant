@@ -21,7 +21,8 @@ public sealed class MovieModel
     public string? Id { get; set; }
 
     /// <summary>
-    /// key (base64)
+    /// key (base64) from setup
+    /// <para>initialized by <code>SetupModel</code></para>
     /// </summary>
     public string? Key { get; set; }
 
@@ -53,7 +54,7 @@ public sealed class MovieModel
 
     public string? Anecdotes { get; set; }
 
-    public string? MinPicUrl {  get; set; }
+    public string? MinPicUrl { get; set; }
 
     public string? MinPicWidth { get; set; }
 
@@ -68,5 +69,9 @@ public sealed class MovieModel
 
     public List<string> PicsSizes { get; set; } = [];
 
+    /// <summary>
+    /// template output filename
+    /// <para>initialized by <code>SetupModel</code>and others</para>
+    /// </summary>
     public string? Filename { get; set; }
 }

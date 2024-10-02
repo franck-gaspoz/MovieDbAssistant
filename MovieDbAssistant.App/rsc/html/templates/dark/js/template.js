@@ -103,6 +103,15 @@ class Template {
         var $container = $('.movie-list')
         var $e = $(src)
         $container.append($e)
+        $e.find('.movie-list-item')
+            .on('click', () => {
+                var $t = $(this)
+                window.location =
+                    './'
+                    + props['output.pages'/*Template_Var_OutputPages*/]
+                    + '/'
+                    + data.Filename
+            })
 
         this.setStates($e, p)
 

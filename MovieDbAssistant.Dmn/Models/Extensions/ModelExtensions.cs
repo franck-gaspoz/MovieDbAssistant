@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -22,5 +23,32 @@ public static class ModelExtensions
         var f = data.Filename ?? data.Key + config[Build_HtmlFileExt];
         data.Filename = f;
         return f;
+    }
+
+    /// <summary>
+    /// Setups the model (setup extra properties)
+    /// </summary>
+    /// <param name="data">movie model.</param>
+    /// <param name="config">The config.</param>
+    public static void SetupModel(
+        this MovieModel data,
+        IConfiguration config)
+    {
+        var key = data.Title!.ToHexString();
+        data.Key = key;
+        data.UpdateFilename(config);
+    }
+
+    /// <summary>
+    /// setup the movie models (setup extra properties)
+    /// </summary>
+    /// <param name="data">movies model</param>
+    /// <param name="config">configuration</param>
+    public static void SetupModel(
+        this MoviesModel data,
+        IConfiguration config)
+    {
+        foreach (var movieModel in data.Movies)
+            movieModel.SetupModel(config);
     }
 }

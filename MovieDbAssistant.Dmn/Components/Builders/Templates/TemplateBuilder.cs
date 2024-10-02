@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Build;
+using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -26,14 +27,20 @@ public sealed class TemplateBuilder
 
     const string Var_Data = "data";
     const string Var_Props = "props";
+
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
-    const string Template_Var_Prefix_Item = "movies.";
-    const string Template_Var_Index = Template_Var_Prefix_Item + "index";
-    const string Template_Var_Total = Template_Var_Prefix_Item + "total";
-    const string Template_Var_Link_Home = Template_Var_Prefix_Item + "home";
-    const string Template_Var_Link_Previous = Template_Var_Prefix_Item + "previous";
-    const string Template_Var_Link_Next = Template_Var_Prefix_Item + "next";
+
+    const string Template_Var_Prefix_Output = "output.";
+    const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
+    const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
+
+    const string Template_Var_Prefix_Movies = "movies.";
+    const string Template_Var_Index = Template_Var_Prefix_Movies + "index";
+    const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
+    const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
+    const string Template_Var_Link_Previous = Template_Var_Prefix_Movies + "previous";
+    const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";    
 
     /// <summary>
     /// Gets or sets the context.
@@ -102,6 +109,7 @@ public sealed class TemplateBuilder
     {
         var docContext = Context.DocContext;
 
+        data.SetupModel(_config);
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
         page = SetVars(page);
@@ -226,6 +234,14 @@ public sealed class TemplateBuilder
         MovieModel? data = null,
         HtmlDocumentBuilderContext? htmlContext = null) => new()
         {
+            {
+                Template_Var_OutputPages,
+                _config[Path_OutputPages]
+            },
+            {
+                Template_Var_Build_Ext_Html,
+                _config[Build_HtmlFileExt]
+            },
             {
                 Template_Var_Background ,
                 !pageDetails?

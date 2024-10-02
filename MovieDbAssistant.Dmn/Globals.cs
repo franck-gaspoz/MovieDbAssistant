@@ -50,5 +50,10 @@ public sealed class Globals
     /// build html output data filename
     /// </summary>
     public const string Build_Html_Filename_Data = "Build:Html:DataFilename";
+
+    /// <summary>
+    /// output path for pages
+    /// </summary>
+    public const string Path_OutputPages = "Paths:OutputPages";
 }
 

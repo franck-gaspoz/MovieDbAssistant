@@ -5,7 +5,7 @@ using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.Logger;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.Builders;
 

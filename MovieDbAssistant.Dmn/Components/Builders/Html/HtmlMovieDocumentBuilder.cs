@@ -38,11 +38,7 @@ public sealed class HtmlMovieDocumentBuilder
     /// </summary>
     /// <param name="data">The data.</param>
     public void SetupModel(MovieModel data)
-    {
-        var key = data.Title!.ToHexString();
-        data.Key = key;
-        data.UpdateFilename(_config);
-    }
+        => data.SetupModel(_config);
 
     /// <summary>
     /// Build the movie.

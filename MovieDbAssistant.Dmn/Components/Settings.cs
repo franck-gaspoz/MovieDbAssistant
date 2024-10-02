@@ -29,11 +29,6 @@ public sealed class Settings
     public const string Path_RscHtml = "Paths:RscHtml";
 
     /// <summary>
-    /// output path for pages
-    /// </summary>
-    public const string Path_OutputPages = "Paths:OutputPages";
-
-    /// <summary>
     /// The path resources html templates
     /// </summary>
     public const string Path_RscHtmlTemplates = "Paths:RscHtmlTemplates";
