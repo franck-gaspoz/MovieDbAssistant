@@ -5,10 +5,11 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 #pragma warning disable CD1606 // The property must have a documentation header.
 
 /// <summary>
-/// The movie model.
+/// The movie model
+/// <para>scrap properties</para>
 /// </summary>
 [DebuggerDisplay("{Title} | {MinPicAlt}")]
-public sealed class MovieModel
+public sealed partial class MovieModel
 {
     /// <summary>
     /// url of scraped page: details
@@ -19,12 +20,6 @@ public sealed class MovieModel
     /// provider movie id
     /// </summary>
     public string? Id { get; set; }
-
-    /// <summary>
-    /// key (base64) from setup
-    /// <para>initialized by <code>SetupModel</code></para>
-    /// </summary>
-    public string? Key { get; set; }
 
     public string? Title { get; set; }
 
@@ -68,10 +63,4 @@ public sealed class MovieModel
     public string? PicFullUrl { get; set; }
 
     public List<string> PicsSizes { get; set; } = [];
-
-    /// <summary>
-    /// template output filename
-    /// <para>initialized by <code>SetupModel</code>and others</para>
-    /// </summary>
-    public string? Filename { get; set; }
 }
