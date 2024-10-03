@@ -89,7 +89,6 @@ class Template {
 
     /** @param {MoviesModel} data movies set */
     buildItems(data) {
-
         data.Movies.forEach((e, i) => {
             this.addItem(e)
         })
@@ -137,73 +136,92 @@ class Template {
         this.setStates(null, data)
     }
 
-    setStates($from, data) {
+    setStates($from, data, prefix) {
 
         var cl = x => '.' + x
 
         for (var p in data) {
+
             var val = data[p]
-            if (!val || val == '') {
+            var varnp = this.getVarname(p)
 
-                // if- : show if not null and no empty
-                var cn = cl(Class_Prefx_If) + this.getVarname(p)
-                $(cn, $from)
-                    .each((i, e) => {
-                        $(e).addClass('hidden')
-                    });
-
-                // if_no- : show if null or emptpy
-                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
-                $(cn, $from)
-                    .each((i, e) => {
-                        var $e = $(e)
-                        var classList = $e.attr("class");
-                        var classArr = classList.split(/\s+/);
-                        $.each(classArr, (i, v) => {
-                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
-                                if (v.startsWith(cn)) {
-                                    $(e).removeClass('hidden')
-                                }
-                            }
-                        });
-                    });
-
-                // if_no-prop--cn : enable class cn if null or empty
-                cn = Class_Prefx_If_No + this.getVarname(p)
-                    + Separator_ClassCondition_ClassResult
-                var cns = "[class*='" + cn + "']";
-                $(cns, $from)
-                    .each((i, e) => {
-                        var $e = $(e)
-                        var classList = $e.attr("class");
-                        var classArr = classList.split(/\s+/);
-                        $.each(classArr, (i, v) => {
-                            if (v.includes(cn)) {
-                                var cn2 = v.split(Separator_ClassCondition_ClassResult)[1]
-                                $e.removeClass(v)
-                                $e.addClass(cn2)
-                            }
-                        });
-                    });
+            if (typeof val == 'object'
+                && val && val.constructor.name != 'Array'
+            ) {
+                this.setStates(
+                    $from,
+                    val,
+                    prefix ?
+                        prefix + '.' + varnp
+                        : varnp)
             }
+            else {
 
-            if (val && val != '') {
+                if (prefix)
+                    p = prefix + '.' + varnp
 
-                // if_no- : hide coz if null or emptpy
-                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
-                $(cn, $from)
-                    .each((i, e) => {
-                        var $e = $(e)
-                        var classList = $e.attr("class");
-                        var classArr = classList.split(/\s+/);
-                        $.each(classArr, (i, v) => {
-                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
-                                if (v.startsWith(cn)) {
-                                    $(e).addClass('hidden')
-                                }
-                            }
+                if (!val || val == '') {
+
+                    // if- : show if not null and no empty
+                    var cn = cl(Class_Prefx_If) + this.getVarnameForClass(p)
+                    $(cn, $from)
+                        .each((i, e) => {
+                            $(e).addClass('hidden')
                         });
-                    });
+
+                    // if_no- : show if null or emptpy
+                    cn = cl(Class_Prefx_If_No) + this.getVarnameForClass(p)
+                    $(cn, $from)
+                        .each((i, e) => {
+                            var $e = $(e)
+                            var classList = $e.attr("class");
+                            var classArr = classList.split(/\s+/);
+                            $.each(classArr, (i, v) => {
+                                if (!v.includes(Separator_ClassCondition_ClassResult)) {
+                                    if (v.startsWith(cn)) {
+                                        $(e).removeClass('hidden')
+                                    }
+                                }
+                            });
+                        });
+
+                    // if_no-prop--cn : enable class cn if null or empty
+                    cn = Class_Prefx_If_No + this.getVarnameForClass(p)
+                        + Separator_ClassCondition_ClassResult
+                    var cns = "[class*='" + cn + "']";
+                    $(cns, $from)
+                        .each((i, e) => {
+                            var $e = $(e)
+                            var classList = $e.attr("class");
+                            var classArr = classList.split(/\s+/);
+                            $.each(classArr, (i, v) => {
+                                if (v.includes(cn)) {
+                                    var cn2 = v.split(Separator_ClassCondition_ClassResult)[1]
+                                    $e.removeClass(v)
+                                    $e.addClass(cn2)
+                                }
+                            });
+                        });
+                }
+
+                if (val && val != '') {
+
+                    // if_no- : hide coz if null or emptpy
+                    cn = cl(Class_Prefx_If_No) + this.getVarnameForClass(p)
+                    $(cn, $from)
+                        .each((i, e) => {
+                            var $e = $(e)
+                            var classList = $e.attr("class");
+                            var classArr = classList.split(/\s+/);
+                            $.each(classArr, (i, v) => {
+                                if (!v.includes(Separator_ClassCondition_ClassResult)) {
+                                    if (v.startsWith(cn)) {
+                                        $(e).addClass('hidden')
+                                    }
+                                }
+                            });
+                        });
+                }
             }
         }
     }
@@ -235,10 +253,10 @@ class Template {
             }
             else {
                 if (prefix)
-                    p = prefix + '.' + varnp
+                    varnp = prefix + '.' + varnp
 
                 tpl = tpl.replaceAll(
-                    this.getVar(p),
+                    this.getVar(varnp),
                     this.props[p] ?
                         this.props[p](this, val)
                         : data[p]
@@ -257,6 +275,11 @@ class Template {
     }
 
     getVarname(name) {
+        return this.firstLower(name);
+        //.replaceAll('.', '-')
+    }
+
+    getVarnameForClass(name) {
         return this.firstLower(name)
             .replaceAll('.', '-')
     }

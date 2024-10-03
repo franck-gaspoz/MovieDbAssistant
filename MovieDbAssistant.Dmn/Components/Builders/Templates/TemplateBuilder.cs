@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿#define TEST_SOURCE
+
+using System.Collections;
+
 using System.Collections.Concurrent;
 using System.Reflection;
 using System.Text.Json;
-using System.Linq;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -59,7 +61,7 @@ public sealed class TemplateBuilder
     const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
     const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
     const string Template_Var_Link_Previous = Template_Var_Prefix_Movies + "previous";
-    const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";    
+    const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";
 
     /// <summary>
     /// Gets or sets the context.
@@ -123,12 +125,19 @@ public sealed class TemplateBuilder
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
     public TemplateBuilder BuildPageList(
-        HtmlDocumentBuilderContext htmlContext, 
+        HtmlDocumentBuilderContext htmlContext,
         MoviesModel data)
     {
         var docContext = Context.DocContext;
 
         data.SetupModel(_config);
+#if true || TEST_SOURCE
+        foreach (var movie in data.Movies)
+        {
+            movie.Sources.Download = "http://www.asite.com/myvideo/" + movie.Key + ".mp4";
+            movie.Sources.Play = "http://www.asite.com/myvideo/" + movie.Key + ".html";
+        }
+#endif
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
         page = SetVars(page);
@@ -159,7 +168,7 @@ public sealed class TemplateBuilder
         var page = IntegratesData(
             _tpl!.Templates.TplDetails!,
             data);
-        (page,_) = SetVars(page, htmlContext, data);
+        (page, _) = SetVars(page, htmlContext, data);
 
         page = IntegratesProps(page, htmlContext, data);
         page = SetVars(page,
@@ -228,9 +237,9 @@ public sealed class TemplateBuilder
         string tpl,
         MovieModel data)
     {
-#if true || TEST_SOURCE
-        data.Sources.Download = "http://www.asite.com/myvideo/"+data.Key+".mp4";
-        data.Sources.Play = "http://www.asite.com/myvideo/"+data.Key+".html";
+#if TEST_SOURCE
+        data.Sources.Download = "http://www.asite.com/myvideo/" + data.Key + ".mp4";
+        data.Sources.Play = "http://www.asite.com/myvideo/" + data.Key + ".html";
 #endif
 
         var src = JsonSerializer.Serialize(
@@ -378,21 +387,21 @@ public sealed class TemplateBuilder
     {
         var props = GetTemplateProps(false, null, htmlContext);
         tpl = SetVars(tpl, props);
-        return (tpl,props);
+        return (tpl, props);
     }
 
     (string, Dictionary<string, object?>) SetVars(
-        string tpl,         
+        string tpl,
         HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {
         var props = GetTemplateProps(true, data, htmlContext);
         tpl = SetVars(tpl, props);
-        return (tpl,props);
+        return (tpl, props);
     }
 
     string SetVars(
-        string tpl, 
+        string tpl,
         Dictionary<string, object?> vars,
         string? prefix = null)
     {
@@ -401,9 +410,9 @@ public sealed class TemplateBuilder
             var val = kvp.Value;
             var varnp = KeyToVar(kvp.Key);
 
-            if (val != null 
+            if (val != null
                 && val!.GetType().Namespace!
-                    .StartsWith( GetType()
+                    .StartsWith(GetType()
                         .Namespace!
                         .Split('.')[0]))
             {
@@ -426,7 +435,7 @@ public sealed class TemplateBuilder
                 tpl = SetVar(
                     tpl,
                     KeyToVar(k),
-                    VarToString(TransformValue(k,val)));
+                    VarToString(TransformValue(k, val)));
             }
         }
         return tpl;
@@ -434,9 +443,9 @@ public sealed class TemplateBuilder
 
     static string KeyToVar(string key) =>
         key.ToFirstLower();
-            //.Replace('.', '-');
+    //.Replace('.', '-');
 
-    object? TransformValue(string? key,object? value)
+    object? TransformValue(string? key, object? value)
     {
         if (key == null) return null;
         if (value == null) return null;
@@ -449,8 +458,8 @@ public sealed class TemplateBuilder
         var tm = GetType()
             .GetMethod(transform.Operation);
         if (tm == null)
-            throw new InvalidOperationException("value transformer method not found: "+transform.Operation);
-        value = tm!.Invoke(this,[value]);
+            throw new InvalidOperationException("value transformer method not found: " + transform.Operation);
+        value = tm!.Invoke(this, [value]);
         return value;
     }
 

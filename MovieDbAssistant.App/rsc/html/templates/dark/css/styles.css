@@ -61,6 +61,10 @@ td {
     margin-right: 1em;
 }
 
+.nav-link {
+    text-decoration:none;
+}
+
 .margin-right-double {
     margin-right:2em;
 }
