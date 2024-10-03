@@ -34,7 +34,11 @@
             o.buildItems(data);
             var t = window.location.href.split('#')
             if (t.length == 2) {
-                $('.movie-list').scrollTop($("[id='" + t[1] + "']").offset().top)
+                var $it = $("[id='" + t[1] + "']")
+                $('.movie-list').scrollTop(
+                    $it.offset().top
+                    - $it.height()
+                )
             }
         });
 
