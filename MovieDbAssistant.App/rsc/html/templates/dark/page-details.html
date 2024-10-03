@@ -96,15 +96,28 @@
                                             <br />
                                             <span class="interests text if-interests">{{interests}}</span>
                                         </td>
-                                        <td>
-                                            <div class="rating-container if-rating if-ratingCount">
-                                                <span class="rating text if-rating">{{rating}}</span>
-                                                <span class="rating-sep if-rating if-ratingCount">/</span>
-                                                <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+
+                                        <td valign="top" class="grid no-padding-right min-width-8em">
+
+                                            <div class="cell1_1 nowrap text-align-right">
+                                                <div class="rating-container if-rating if-ratingCount">
+                                                    <span class="rating text if-rating">{{rating}}</span>
+                                                    <span class="rating-sep if-rating if-ratingCount">/</span>
+                                                    <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+                                                </div>
+
+                                                <span class="year text if-year padding-left text-align-right">{{year}}</span>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <span class="year text if-year">{{year}}</span>
+
+                                            <div class="cell1_1 sources">
+                                                <a href="{{sources.play}}" target="movie_download" class="if-sources-play nav-link">
+                                                    <img src="../img/play.png" class="nav-icon play-icon" />
+                                                </a>
+                                                <a href="{{sources.download}}" class="nav-link if-sources-download">
+                                                    <img src="../img/download.png" class="nav-icon download-icon no-margin-right" />
+                                                </a>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 </table>
@@ -116,7 +129,15 @@
                                             <span class="director text if-director">{{director}}</span>
                                             <span class="cell-int label label-stars if-stars">stars: </span>
                                             <span class="stars text if-stars">{{stars}}</span>
-                                            <div class="vsep"></div>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td>
+                                            <span class="summary text if-summary">{{summary}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <span class="label label-duration if-duration">duration: </span>
                                             <span class="duration text if-duration">{{duration}}</span>
                                             <span class="cell-int label label-releaseDate if-releaseDate">release date: </span>
@@ -130,37 +151,31 @@
 
                                 <table width="100%">
                                     <tr>
-                                        <td>
+                                        <td class="no-padding-bottom">
                                             <div>
-                                                <span class="label label-actors">actors: </span>
+                                                <span class="label label-actors if-actors">actors: </span>
                                             </div>
-                                            <span class="actors text">{{actors}}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <span class="label label-summary">summary: </span>
-                                            </div>
-                                            <span class="summary text">{{summary}}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <span class="label label-anecdotes">anecdotes: </span>
-                                            </div>
-                                            <span class="anecdotes text">{{anecdotes}}</span>
+                                            <span class="actors text if-actors">{{actors}}</span>
                                         </td>
                                     </tr>
                                 </table>
+
                             </td>
 
                             <td class="movie-pic-container" valign="top">
                                 <img src="{{medPicUrl}}" />
                             </td>
                         </tr>
-                        </
+                        
+                        <tr>
+                            <td colspan="2" class="cell-external">
+                                <div>
+                                    <span class="label label-anecdotes if-anecdotes">anecdotes: </span>
+                                </div>
+                                <span class="anecdotes text if-anecdotes">{{anecdotes}}</span>
+                            </td>
+                        </tr>
+
                     </table>
 
                 </div>

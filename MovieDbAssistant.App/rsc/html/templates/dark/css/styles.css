@@ -208,7 +208,7 @@ body.movie-page-list .summary {
 
 body.movie-page-detail .summary {
     font-family: comicn;
-    font-size: 1.3em;
+    font-size: 1.4em;
 }
 
 .title {
@@ -288,11 +288,13 @@ body.movie-page-detail .movie-page-detail-content-container {
 }
 
 .anecdotes {
-    max-height: 7em;
+    max-height: 4.6em;
     display: inline-block;
     overflow-y: auto;
     scrollbar-color: #DDEEFF77 transparent;
     scrollbar-width: inherit;
+    font-family: comicn;
+    font-size: 1.2em;
 }
 
 .play-icon,.download-icon {
@@ -326,6 +328,10 @@ body.movie-page-detail .movie-page-detail-content-container {
     overflow: visible;
 }
 
+body.movie-page-detail .sources {
+    top: 4em;
+}
+
 .transparent {
     opacity: 0;
 }
@@ -343,6 +349,11 @@ body.movie-page-detail .movie-page-detail-content-container {
     grid-column:1;
 }
 
+.cell-external {
+    padding-left:2em;
+    padding-right:2em;
+}
+
 .nowrap {
     display: inline-block;
     text-wrap: nowrap;
@@ -350,6 +361,10 @@ body.movie-page-detail .movie-page-detail-content-container {
 
 .no-padding-right {
     padding-right: 0em;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0em;
 }
 
 .no-margin-right {
