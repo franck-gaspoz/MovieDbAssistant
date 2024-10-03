@@ -1,26 +1,25 @@
 ﻿<!DOCTYPE html>
-<html lang="en"
-      data-attr-template-id="{{templateId}}"
-      data-attr-template-version="{{templateVersion}}"
-      data-attr-template-version-date="{{templateVersionDate}}"
-      data-attr-software="{{software}}"
-      data-attr-software-id="{{softwareId}}"
-      data-attr-software-version="{{softwareVersion}}"
-      data-attr-software-version-date="{{softwareVersionDate}}"
-      data-attr-builtAt="{{builtAt}}"
+<html lang="{{lang}}"
+      data-template-id="{{templateId}}"
+      data-template-version="{{templateVersion}}"
+      data-template-version-date="{{templateVersionDate}}"
+      data-software="{{software}}"
+      data-software-id="{{softwareId}}"
+      data-software-version="{{softwareVersion}}"
+      data-software-version-date="{{softwareVersionDate}}"
+      data-built-at="{{builtAt}}"
       >
 <head>
     <title>{{pageTitleDetails}} : {{title}}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
     <link rel="icon" type="image/ico" href="../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
 
-    <link rel="author" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
-    <link rel="help" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
-    <meta name="description" content="{{title}} | Movie details | Movie Db Assistant (MovieDbAssistant)" />
+    <link rel="help" href="{{linkHelp}}" />
+    <link rel="author" href="{{linkAuthor}}" />
+    <meta name="description" content="{{title}} | Movie details | {{software}} ({{softwareId}}) github {{linkRepo}}" />
 
     <!-- init -->
     <script src="../js/jquery-3.7.1.min.js"></script>

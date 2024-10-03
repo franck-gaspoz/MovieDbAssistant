@@ -20,6 +20,21 @@ public sealed class TemplateModelOptions
     public TemplateModelPageOption PageDetail { get; set; }
 
     /// <summary>
+    /// repo link
+    /// </summary>
+    public string? RepoLink { get; set; }
+
+    /// <summary>
+    /// help link
+    /// </summary>
+    public string? HelpLink { get; set; }
+
+    /// <summary>
+    /// author link
+    /// </summary>
+    public string? AuthorLink { get; set; }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.
     /// </summary>
     /// <param name="pageList">page list</param>

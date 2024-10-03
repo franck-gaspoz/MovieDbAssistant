@@ -18,7 +18,10 @@
       "Background": "../img/cinema-wallpaper-16.jpg",
       "BackgroundIdle": "../img/cinema-wallpaper-35.jpg",
       "PageTitle": "My Movies"
-    }
+    },
+    "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
   },
   "HSep": "<span class=\"hsep\"></span>",
   "Transforms": [

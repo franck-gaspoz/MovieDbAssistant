@@ -37,6 +37,9 @@ public sealed class TemplateBuilder
     const string Template_Var_Software_Version_Date = "softwareVersionDate";
     const string Template_Var_BuiltAt = "builtAt";
     const string Template_Var_Lang = "lang";
+    const string Template_Var_Link_Repo = "linkRepo";
+    const string Template_Var_Link_Help = "linkHelp";
+    const string Template_Var_Link_Author = "linkAuthor";
 
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
@@ -350,7 +353,19 @@ public sealed class TemplateBuilder
             {
                 Template_Var_Lang,
                 _config[App_Lang]
-            }
+            },
+            {
+                Template_Var_Link_Repo,
+                _tpl!.Options.RepoLink
+            },
+            {
+                Template_Var_Link_Help,
+                _tpl!.Options.HelpLink
+            },
+            {
+                Template_Var_Link_Author,
+                _tpl!.Options.AuthorLink
+            },
         };
 
     string SetVars(string tpl)
