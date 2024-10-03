@@ -269,11 +269,24 @@ body.movie-page-detail .movie-page-detail-content-container {
     font-family: 'quesha';
 }
 
+body.movie-page-detail .year {
+    position: relative;
+    top: 2px;
+}
+
+body.movie-page-detail .cell-rating-year {
+    min-width: 0em !important;
+}
+
 .rating-container {
     text-wrap: nowrap;
     font-size: 2em;
     font-family: 'quesha';
     display: inline-block;
+}
+
+body.movie-page-detail .rating-container {
+    margin-top: 0.2em;
 }
 
 .min-width-8em {
