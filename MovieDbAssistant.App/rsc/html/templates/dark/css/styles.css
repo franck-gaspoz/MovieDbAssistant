@@ -272,8 +272,8 @@ body.movie-page-detail .movie-page-detail-content-container {
     display: inline-block;
 }
 
-.rating-container-small {
-    min-width: 4em;
+.min-width-8em {
+    min-width: 8em;
 }
 
 .rating, .ratingCount, .rating-sep {
@@ -317,7 +317,7 @@ body.movie-page-detail .movie-page-detail-content-container {
 .sources {
     position: relative;
     top: 5.5em;
-    text-align: left;
+    text-align: center;
     text-wrap: nowrap;
     overflow: visible;
 }
@@ -348,8 +348,16 @@ body.movie-page-detail .movie-page-detail-content-container {
     padding-right: 0em;
 }
 
+.no-margin-right {
+    margin-right: 0em;
+}
+
 .padding-left {
     padding-left: 1em;
+}
+
+.text-align-right {
+    text-align:right;
 }
 
 @font-face {

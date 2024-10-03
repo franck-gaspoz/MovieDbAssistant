@@ -111,7 +111,6 @@ class Template {
         $container.append($e)
         $e.find('.movie-list-item')
             .on('click', () => {
-                var $t = $(this)
                 window.location =
                     './'
                     + props['output.pages'/*Template_Var_OutputPages*/]
@@ -153,41 +152,7 @@ class Template {
                         $(e).addClass('hidden')
                     });
 
-                // if_no : hide coz if null or emptpy
-                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
-                $(cn, $from)
-                    .each((i, e) => {
-                        var $e = $(e)
-                        var classList = $e.attr("class");
-                        var classArr = classList.split(/\s+/);
-                        $.each(classArr, (i, v) => {
-                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
-                                if (v.startsWith(cn)) {
-                                    $(e).addClass('hidden')
-                                }
-                            }
-                        });
-                    });
-            }
-
-            if (val && val != '') {
-                // if_no-prop--cn : enable class cn if null or empty
-                cn = cl(Class_Prefx_If_No) + this.getVarname(p) + Separator_ClassCondition_ClassResult
-                $(cn, $from)
-                    .each((i, e) => {
-                        var $e = $(e)
-                        var classList = $e.attr("class");
-                        var classArr = classList.split(/\s+/);
-                        $.each(classArr, (i, v) => {
-                            if (v == cn) {
-                                var cn2 = cn.split(Separator_ClassCondition_ClassResult)[1]
-                                $e.removeClass(cn)
-                                $e.addClass(cn2)
-                            }
-                        });
-                    });
-
-                // if_no : show if null or emptpy
+                // if_no- : show if null or emptpy
                 cn = cl(Class_Prefx_If_No) + this.getVarname(p)
                 $(cn, $from)
                     .each((i, e) => {
@@ -198,6 +163,43 @@ class Template {
                             if (!v.includes(Separator_ClassCondition_ClassResult)) {
                                 if (v.startsWith(cn)) {
                                     $(e).removeClass('hidden')
+                                }
+                            }
+                        });
+                    });
+
+                // if_no-prop--cn : enable class cn if null or empty
+                cn = Class_Prefx_If_No + this.getVarname(p)
+                    + Separator_ClassCondition_ClassResult
+                var cns = "[class*='" + cn + "']";
+                $(cns, $from)
+                    .each((i, e) => {
+                        var $e = $(e)
+                        var classList = $e.attr("class");
+                        var classArr = classList.split(/\s+/);
+                        $.each(classArr, (i, v) => {
+                            if (v.includes(cn)) {
+                                var cn2 = v.split(Separator_ClassCondition_ClassResult)[1]
+                                $e.removeClass(v)
+                                $e.addClass(cn2)
+                            }
+                        });
+                    });
+            }
+
+            if (val && val != '') {
+
+                // if_no- : hide coz if null or emptpy
+                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
+                $(cn, $from)
+                    .each((i, e) => {
+                        var $e = $(e)
+                        var classList = $e.attr("class");
+                        var classArr = classList.split(/\s+/);
+                        $.each(classArr, (i, v) => {
+                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
+                                if (v.startsWith(cn)) {
+                                    $(e).addClass('hidden')
                                 }
                             }
                         });
