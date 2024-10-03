@@ -99,6 +99,7 @@ class Template {
     /**@param {MovieModel} data movie */
     addItem(data) {
         const $it = $('#ItemModel').clone()
+        $it.removeAttr('id')
         var p = {}
         Object.assign(p, data)
         Object.assign(p, props)
