@@ -32,6 +32,10 @@
         $(document).ready(() => {
             var o = new Template();
             o.buildItems(data);
+            var t = window.location.href.split('#')
+            if (t.length == 2) {
+                $('.movie-list').scrollTop($("[id='" + t[1] + "']").offset().top)
+            }
         });
 
     </script>

@@ -78,6 +78,12 @@ td {
     opacity: 90%;
 }
 
+.icon-back {
+    transform: scaleY(-1);
+    position: relative;
+    top: 0.28em;
+}
+
 .nav-counters {
     opacity: 50%;
     font-family: 'quesha';

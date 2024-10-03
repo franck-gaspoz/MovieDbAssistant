@@ -100,6 +100,7 @@ class Template {
         const $it = $('#ItemModel').clone()
         $it.removeAttr('id')
         $it.removeClass('hidden')
+        $it.attr('id', data.Key);
 
         var p = {}
         Object.assign(p, data)
