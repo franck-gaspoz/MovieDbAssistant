@@ -34,11 +34,10 @@
         Object.assign(data, props);
         window.vda = { data, props };
 
-        addBackImgLoadedHandler('{{background}}');
-
         $(document).ready(() => {
             var o = new Template();
             o.buildDetails(data);
+            addBackImgLoadedHandler('{{background}}');
         });
 
     </script>
