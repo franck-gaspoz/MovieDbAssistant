@@ -7,6 +7,7 @@ using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -86,7 +87,7 @@ sealed class TrayMenuBuilder
     void SetupIcon()
     {
         var iconFile = _config[Icon_App]!;
-        Tooltip = _config[AppTitle]!;
+        Tooltip = _config[App_Title]!;
         _iconPath = _settings.AssetPath(iconFile);
     }
 

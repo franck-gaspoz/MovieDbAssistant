@@ -1,6 +1,8 @@
 {
   "Id": "dark",
   "Name": "Dark",
+  "Version": "1.0",
+  "VersionDate": "2024/10/03",
   "Templates": {
     "List": "page-list.html",
     "Details": "page-details.html"
@@ -9,13 +11,34 @@
     "PageList": {
       "Background": "cinema-wallpaper-16.jpg",
       "Title": "My Movies",
+      "PageTitle": "My Movies",
       "Filename": "index"
     },
     "PageDetail": {
       "Background": "../img/cinema-wallpaper-16.jpg",
-      "BackgroundIdle": "../img/cinema-wallpaper-35.jpg"
+      "BackgroundIdle": "../img/cinema-wallpaper-35.jpg",
+      "PageTitle": "My Movies"
     }
   },
+  "HSep": "<span class=\"hsep\"></span>",
+  "Transforms": [
+    {
+      "Target": "Interests",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "Stars",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "Actors",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "ActorModel",
+      "Operation": "Transform_ActorSimple"
+    }
+  ],
   "Files": [
     "/img",
     "/css",

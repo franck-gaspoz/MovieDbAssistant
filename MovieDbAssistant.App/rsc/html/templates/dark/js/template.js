@@ -2,6 +2,7 @@
 const ID_Model_Class_Movie_List = 'movie-list';
 
 const Tag_Body = 'body';
+const Tag_Html = 'html';
 
 const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
@@ -137,12 +138,14 @@ class Template {
     }
 
     setStates($from, data) {
+
+        var cl = x => '.' + x
+
         for (var p in data) {
             var val = data[p]
             if (!val || val == '') {
 
                 // if- : show if not null and no empty
-                var cl = x => '.' + x
                 var cn = cl(Class_Prefx_If) + this.getVarname(p)
                 $(cn, $from)
                     .each((i, e) => {

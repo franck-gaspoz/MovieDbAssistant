@@ -1,18 +1,32 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"
+      data-attr-template-id="{{templateId}}"
+      data-attr-template-version="{{templateVersion}}"
+      data-attr-template-version-date="{{templateVersionDate}}"
+      data-attr-software="{{software}}"
+      data-attr-software-id="{{softwareId}}"
+      data-attr-software-version="{{softwareVersion}}"
+      data-attr-software-version-date="{{softwareVersionDate}}"
+      data-attr-builtAt="{{builtAt}}"
+      >
 <head>
+    <title>{{pageTitleDetails}} : {{title}}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Movies</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
     <link rel="icon" type="image/ico" href="../img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+
+    <link rel="author" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
+    <link rel="help" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
+    <meta name="description" content="{{title}} | Movie details | Movie Db Assistant (MovieDbAssistant)" />
 
     <!-- init -->
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/template.js"></script>
     <script type="text/javascript">
+
         const data = {{data}};
 
         const props = {{props}};
@@ -21,11 +35,12 @@
         window.vda = { data, props };
 
         addBackImgLoadedHandler('{{background}}');
-        
+
         $(document).ready(() => {
             var o = new Template();
             o.buildDetails(data);
         });
+
     </script>
     <style>
         .image-background-idle {
@@ -34,7 +49,7 @@
             background-size: cover;
         }
     </style>
-    <!-- ----- -->
+    <!-- -->
 </head>
 
 <body class="movie-page-detail">
@@ -46,7 +61,7 @@
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
-    <div id="Image_BackgroundIdle" 
+    <div id="Image_BackgroundIdle"
          class="movie-page-detail-background-idle-container image-background-idle">
     </div>
 

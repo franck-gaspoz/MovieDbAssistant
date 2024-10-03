@@ -5,29 +5,40 @@
 /// </summary>
 public sealed class TemplateModel
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TemplateModel"/> class.
-    /// </summary>
-    /// <param name="name">The name.</param>
-    /// <param name="id">The id.</param>
-    /// <param name="templates">The templates.</param>
-    /// <param name="options">The options.</param>
     public TemplateModel(
         string name,
+        string version,
+        string versionDate,
         string id,
         TemplatesModel templates,
-        TemplateModelOptions options)
+        TemplateModelOptions options,
+        List<string> files,
+        string? path)
     {
         Name = name;
+        Version = version;
+        VersionDate = versionDate;
         Id = id;
         Templates = templates;
         Options = options;
+        Files = files;
+        Path = path;
     }
 
     /// <summary>
     /// name
     /// </summary>
     public string Name { get; set; }
+
+    /// <summary>
+    /// version number
+    /// </summary>
+    public string Version { get; set; }
+
+    /// <summary>
+    /// version date
+    /// </summary>
+    public string VersionDate { get; set; }
 
     /// <summary>
     /// Gets or sets the id.
@@ -58,6 +69,16 @@ public sealed class TemplateModel
     /// path on disk of the template folder
     /// </summary>
     public string? Path { get; set; }
+
+    /// <summary>
+    /// transforms
+    /// </summary>
+    public List<TransformModel> Transforms { get; set; } = new();
+
+    /// <summary>
+    /// horzontal separator html
+    /// </summary>
+    public string HSep { get; set; } = string.Empty;
 
     #endregion
 

@@ -55,5 +55,20 @@ public sealed class Globals
     /// output path for pages
     /// </summary>
     public const string Path_OutputPages = "Paths:OutputPages";
+
+    /// <summary>
+    /// app title
+    /// </summary>
+    public const string App_Title = "App:Title";
+
+    /// <summary>
+    /// app lang
+    /// </summary>
+    public const string App_Lang = "App:Lang";
+
+    /// <summary>
+    /// app version date
+    /// </summary>
+    public const string App_VersionDate = "App:VersionDate";
 }
 

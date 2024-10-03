@@ -1,16 +1,26 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"
+      data-attr-template-id="{{templateId}}"
+      data-attr-template-version="{{templateVersion}}"
+      data-attr-template-version-date="{{templateVersionDate}}"
+      data-attr-software="{{software}}"
+      data-attr-software-id="{{softwareId}}"
+      data-attr-software-version="{{softwareVersion}}"
+      data-attr-software-version-date="{{softwareVersionDate}}"
+      data-attr-builtAt="{{builtAt}}"
+      >
 <head>
+    <title>{{pageTitleList}}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Movies</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
 
     <link rel="icon" type="image/ico" href="./img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 
-    <link rel="author" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"/>
-    <meta name="x-ua-compatible" content="IE=edge"/>
+    <link rel="help" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
+    <link rel="author" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md" />
+    <meta name="description" content="Movies List | Movie Db Assistant (MovieDbAssistant)" />
 
     <!-- init -->
     <script src="./js/jquery-3.7.1.min.js"></script>
@@ -24,6 +34,7 @@
             var o = new Template();
             o.buildItems(data);
         });
+
     </script>
     <!--  -->
     <style>
@@ -31,7 +42,7 @@
             background-image: url('./img/{{background}}');
         }
     </style>
-    <!-- ----- -->
+    <!-- -->
 </head>
 
 <body class="movie-page-list">
@@ -39,7 +50,7 @@
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
-    <div class="movie-page-list-title">My Movies</div>
+    <div class="movie-page-list-title">{{titleList}}</div>
 
     <div class="movie-list">
 

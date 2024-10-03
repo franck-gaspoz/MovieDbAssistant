@@ -52,7 +52,7 @@ sealed class TrayMenuItems
             // deco
 
             (new ToolStripLabel {
-                Text = T(AppTitle)+" "+version,
+                Text = T(App_Title)+" "+version,
                 BackColor = Color.Black,
                 ForeColor = Color.DodgerBlue,
                 Padding = new Padding(8),

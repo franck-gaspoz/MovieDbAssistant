@@ -24,6 +24,12 @@ public sealed class TemplateModelPageOption
     public string? Title { get; set; }
 
     /// <summary>
+    /// Gets or sets the title.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public string? PageTitle { get; set; }
+
+    /// <summary>
     /// Gets or sets the filename.
     /// </summary>
     /// <value>A <see cref="string"/></value>

@@ -139,11 +139,6 @@ public sealed class Settings
     public const string Icon_Buzy_2 = "Assets:Icons:Buzy2";
 
     /// <summary>
-    /// The app title.
-    /// </summary>
-    public const string AppTitle = "App:Title";
-
-    /// <summary>
     /// The path assets.
     /// </summary>
     public const string Path_Assets = "AssetsPath";

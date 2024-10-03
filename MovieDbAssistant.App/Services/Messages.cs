@@ -3,6 +3,7 @@
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services;
 
@@ -51,5 +52,5 @@ sealed class Messages
             MessageBoxIcon.Error);
 
     string Caption(string postFixKey)
-        => _config[AppTitle]! + ": " + _config[postFixKey]!;
+        => _config[App_Title]! + ": " + _config[postFixKey]!;
 }

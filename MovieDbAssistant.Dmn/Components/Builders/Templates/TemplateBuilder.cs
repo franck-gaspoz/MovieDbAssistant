@@ -1,5 +1,8 @@
-﻿using System.Collections.Concurrent;
+﻿using System.Collections;
+using System.Collections.Concurrent;
+using System.Reflection;
 using System.Text.Json;
+using System.Linq;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -28,8 +31,21 @@ public sealed class TemplateBuilder
     const string Var_Data = "data";
     const string Var_Props = "props";
 
+    const string Template_Var_Software = "software";
+    const string Template_Var_Software_Id = "softwareId";
+    const string Template_Var_Software_Version = "softwareVersion";
+    const string Template_Var_Software_Version_Date = "softwareVersionDate";
+    const string Template_Var_BuiltAt = "builtAt";
+    const string Template_Var_Lang = "lang";
+
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
+    const string Template_Var_Page_Title_Details = "pageTitleDetails";
+    const string Template_Var_Title_List = "titleList";
+    const string Template_Var_Page_Title_List = "pageTitleList";
+    const string Template_Var_Template_Id = "templateId";
+    const string Template_Var_Template_Version = "templateVersion";
+    const string Template_Var_Template_VersionDate = "templateVersionDate";
 
     const string Template_Var_Prefix_Output = "output.";
     const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
@@ -145,6 +161,8 @@ public sealed class TemplateBuilder
         page = IntegratesProps(page, htmlContext, data);
         page = SetVars(page,
             GetTemplateProps(true, data, htmlContext));
+
+        page = SetVars(page, data.GetProperties());
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -278,6 +296,60 @@ public sealed class TemplateBuilder
             {
                 Template_Var_Link_Next,
                 htmlContext?.NextLink
+            },
+            {
+                Template_Var_Title_List,
+                _tpl.Options.PageList.Title
+            },
+            {
+                Template_Var_Page_Title_List,
+                _tpl.Options.PageList.PageTitle
+            },
+            {
+                Template_Var_Page_Title_Details,
+                _tpl.Options.PageDetail.PageTitle
+            },
+            {
+                Template_Var_Template_Id,
+                _tpl.Id
+            },
+            {
+                Template_Var_Template_Version,
+                _tpl.Version
+            },
+            {
+                Template_Var_Template_VersionDate,
+                _tpl.VersionDate
+            },
+            {
+                Template_Var_Software_Id,
+                Assembly.GetExecutingAssembly()
+                    .GetName()
+                    .Name!
+                    .Split('.')[0]
+            },
+            {
+                Template_Var_Software,
+                _config[App_Title]
+            },
+            {
+                Template_Var_Software_Version,
+                Assembly.GetExecutingAssembly()
+                    .GetName()
+                    .Version!
+                    .ToString()
+            },
+            {
+                Template_Var_Software_Version_Date,
+                _config[App_VersionDate]
+            },
+            {
+                Template_Var_BuiltAt,
+                DateTime.Now.ToString()
+            },
+            {
+                Template_Var_Lang,
+                _config[App_Lang]
             }
         };
 
@@ -304,17 +376,104 @@ public sealed class TemplateBuilder
         return (tpl,props);
     }
 
-    string SetVars(string tpl, Dictionary<string, object?> vars)
+    string SetVars(
+        string tpl, 
+        Dictionary<string, object?> vars,
+        string? prefix = null)
     {
         foreach (var kvp in vars)
-            tpl = SetVar(
-                tpl,
-                KeyToVar(kvp.Key),
-                VarToString(kvp.Value));
+        {
+            var val = kvp.Value;
+            var varnp = KeyToVar(kvp.Key);
+
+            if (val != null 
+                && val!.GetType().Namespace!
+                    .StartsWith( GetType()
+                        .Namespace!
+                        .Split('.')[0]))
+            {
+                // model not null
+                SetVars(
+                    tpl,
+                    val.GetProperties(),
+                    prefix != null ?
+                        prefix + '.' + varnp
+                        : varnp
+                        );
+            }
+            else
+            {
+                var k = kvp.Key;
+                if (prefix != null)
+                    k = prefix + '.' + k;
+
+                // not a model or null model
+                tpl = SetVar(
+                    tpl,
+                    KeyToVar(k),
+                    VarToString(TransformValue(k,val)));
+            }
+        }
         return tpl;
     }
 
-    static string KeyToVar(string key) => key.ToFirstLower();
+    static string KeyToVar(string key) =>
+        key.ToFirstLower();
+            //.Replace('.', '-');
+
+    object? TransformValue(string? key,object? value)
+    {
+        if (key == null) return null;
+        if (value == null) return null;
+        var transforms = _tpl!.Transforms;
+        var transform = transforms
+            .FirstOrDefault(x => x.Target == key)
+            ?? transforms
+                .FirstOrDefault(x => x.GetType().Name == key);
+        if (transform == null) return value;
+        var tm = GetType()
+            .GetMethod(transform.Operation);
+        if (tm == null)
+            throw new InvalidOperationException("value transformer method not found: "+transform.Operation);
+        value = tm!.Invoke(this,[value]);
+        return value;
+    }
+
+    /// <summary>
+    /// Transform actor simple.
+    /// </summary>
+    /// <param name="o">The object</param>
+    /// <returns>An <see cref="object? "/></returns>
+    public object? Transform_ActorSimple(object? o)
+    {
+        if (o == null) return null;
+        if (o is ActorModel actor)
+        {
+            o = actor.Actor;
+        }
+        return o;
+    }
+
+    /// <summary>
+    /// Transform the array.
+    /// </summary>
+    /// <param name="o">The object</param>
+    /// <returns>An <see cref="object? "/></returns>
+    public object? Transform_Array(object? o)
+    {
+        if (o == null) return null;
+        if (o is IEnumerable list)
+        {
+            var t = list.Cast<object?>()
+                .Select(x => TransformValue(
+                    o?.GetType()?.GetGenericArguments()[0]?.Name,
+                    x));
+            o = string.Join(
+                _tpl!.HSep,
+                t);
+        }
+        return o;
+    }
 
     static string VarToString(object? value) => value?.ToString() ?? string.Empty;
 
