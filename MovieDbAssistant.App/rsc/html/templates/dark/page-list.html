@@ -9,6 +9,9 @@
     <link rel="icon" type="image/ico" href="./img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 
+    <link rel="author" href="https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"/>
+    <meta name="x-ua-compatible" content="IE=edge"/>
+
     <!-- init -->
     <script src="./js/jquery-3.7.1.min.js"></script>
     <script src="./js/template.js"></script>
@@ -50,32 +53,42 @@
 
                     <table width="100%">
                         <tr>
-                            <td>
+                            <td class="no-padding-right">
                                 <table width="100%">
                                     <tr>
-                                        <td width="100%" class="cell-title">
+                                        <td width="100%" class="cell-title" valign="top">
                                             <span class="title if-title">{{title}}</span>
                                             <br />
                                             <span class="interests text if-interests">{{interests}}</span>
                                             <br />
                                             <span class="summary text if-summary">{{summary}}</span>
-                                        </td>
-                                        <td valign="top">
-                                            <div class="rating-container if-rating if-ratingCount">
-                                                <span class="rating text if-rating">{{rating}}</span>
-                                                <span class="rating-sep if-rating if-ratingCount">/</span>
-                                                <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+                                        </td>                                        
+
+                                        <td valign="top" class="grid no-padding-right">
+
+                                            <div class="cell1_1 nowrap">
+                                                <div class="rating-container if-rating if-ratingCount if_no-year--rating-container-small">
+                                                    <span class="rating text if-rating">{{rating}}</span>
+                                                    <span class="rating-sep if-rating if-ratingCount">/</span>
+                                                    <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+                                                </div>
+
+                                                <span class="year text if-year padding-left">{{year}}</span>
                                             </div>
-                                        </td>
-                                        <td valign="top" class="if-year">
-                                            <span class="year text if-year">{{year}}</span>
+
+                                            <div class="cell1_1 sources">
+                                                <img src="./img/play.png" class="nav-icon play-icon" />
+                                                <span class="hsep" />
+                                                <img src="./img/download.png" class="nav-icon download-icon" />
+                                            </div>
+
                                         </td>
                                     </tr>
                                 </table>
 
                                 <table width="100%">
                                     <tr>
-                                        <td>
+                                        <td valign="top">
                                             <div class="vsep"></div>
                                             <span class="label label-stars if-stars">stars: </span>
                                             <span class="stars text if-stars">{{stars}}</span>

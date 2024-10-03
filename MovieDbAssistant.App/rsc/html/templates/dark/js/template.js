@@ -1,7 +1,11 @@
 ﻿const ID_Model_Item = 'ItemModel';
 const ID_Model_Class_Movie_List = 'movie-list';
+
 const Tag_Body = 'body';
+
 const Class_Prefx_If = 'if-'
+const Class_Prefx_If_No = 'if_no-'
+const Separator_ClassCondition_ClassResult = '--'
 
 /**
  * front sode template engine
@@ -136,10 +140,63 @@ class Template {
         for (var p in data) {
             var val = data[p]
             if (!val || val == '') {
+
+                // if- : show if not null and no empty
                 var cl = x => '.' + x
-                $(cl(Class_Prefx_If) + this.getVarname(p), $from)
+                var cn = cl(Class_Prefx_If) + this.getVarname(p)
+                $(cn, $from)
                     .each((i, e) => {
                         $(e).addClass('hidden')
+                    });
+
+                // if_no : hide coz if null or emptpy
+                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
+                $(cn, $from)
+                    .each((i, e) => {
+                        var $e = $(e)
+                        var classList = $e.attr("class");
+                        var classArr = classList.split(/\s+/);
+                        $.each(classArr, (i, v) => {
+                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
+                                if (v.startsWith(cn)) {
+                                    $(e).addClass('hidden')
+                                }
+                            }
+                        });
+                    });
+            }
+
+            if (val && val != '') {
+                // if_no-prop--cn : enable class cn if null or empty
+                cn = cl(Class_Prefx_If_No) + this.getVarname(p) + Separator_ClassCondition_ClassResult
+                $(cn, $from)
+                    .each((i, e) => {
+                        var $e = $(e)
+                        var classList = $e.attr("class");
+                        var classArr = classList.split(/\s+/);
+                        $.each(classArr, (i, v) => {
+                            if (v == cn) {
+                                var cn2 = cn.split(Separator_ClassCondition_ClassResult)[1]
+                                $e.removeClass(cn)
+                                $e.addClass(cn2)
+                            }
+                        });
+                    });
+
+                // if_no : show if null or emptpy
+                cn = cl(Class_Prefx_If_No) + this.getVarname(p)
+                $(cn, $from)
+                    .each((i, e) => {
+                        var $e = $(e)
+                        var classList = $e.attr("class");
+                        var classArr = classList.split(/\s+/);
+                        $.each(classArr, (i, v) => {
+                            if (!v.includes(Separator_ClassCondition_ClassResult)) {
+                                if (v.startsWith(cn)) {
+                                    $(e).removeClass('hidden')
+                                }
+                            }
+                        });
                     });
             }
         }
@@ -149,15 +206,38 @@ class Template {
      * parse and set vars
      * @param {string} tpl html source
      * @param {object} data 
+     * @param {?string} prefix var prefix (default null)
      */
-    parseVars(tpl, data) {
+    parseVars(tpl, data, prefix) {
+
         for (var p in data) {
-            tpl = tpl.replaceAll(
-                this.getVar(p),
-                this.props[p] ?
-                    this.props[p](this, data[p])
-                    : data[p]
-            )
+
+            var val = data[p]
+            var varnp = this.getVarname(p)
+
+            if (typeof val == 'object'
+                && val && val.constructor.name != 'Array'
+            ) {
+                // sub object is ignored if null
+
+                tpl = this.parseVars(
+                    tpl,
+                    val,
+                    prefix ?
+                        prefix + '.' + varnp
+                        : varnp)
+            }
+            else {
+                if (prefix)
+                    p = prefix + '.' + varnp
+
+                tpl = tpl.replaceAll(
+                    this.getVar(p),
+                    this.props[p] ?
+                        this.props[p](this, val)
+                        : data[p]
+                )
+            }
         }
         return tpl
     }
@@ -227,8 +307,6 @@ function handleBackImgLoaded(img) {
         $i.css('width', w + 'px')
         $i.css('height', h + 'px')
     }
-
-    //$('#Image_BackgroundIdle').fadeOut(1000);
 
     $i[0].src = img.src
     $i.fadeIn(1000)

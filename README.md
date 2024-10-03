@@ -4,8 +4,9 @@
 
 ___
 
-Generates **Movie documents** (HTML, movie database,...) using **Web Crawlers**.
-<br>Can scrap data from:
+Generates **Movie documents** (HTML, stand alone ZIP,...) using **Web Crawlers** and a **templating system**.
+
+Can scrap data from:
 - [IMDb](http://www.imdb.com)
 
 <br>
@@ -18,7 +19,7 @@ Generates **Movie documents** (HTML, movie database,...) using **Web Crawlers**.
 
 ## dependencies
 
-- `MovieDbScrapper`:  [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
+- `MovieDbScrapper`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
 - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
 - **CLI**
@@ -54,9 +55,27 @@ run `MovieDbAssistantCLI.exe` from a `shell`
 
 ___
 
-## Third parties
+## Credits
 
-- <a href="https://www.flaticon.com/free-icons/movie-theater" title="movie theater icons">Movie theater icons created by Freepik - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/backward" title="backward icons">Backward icons created by Md Tanvirul Haque - Flaticon</a>
-- <a href="https://www.flaticon.com/free-icons/house-agent" title="house-agent icons">House-agent icons created by Ihdizein - Flaticon</a>
+- <a target="_blank" href="https://www.flaticon.com/free-icons/movie-theater" title="movie theater icons">Movie theater icons created by Freepik - Flaticon</a>
+- <a target="_blank" href="https://www.flaticon.com/free-icons/backward" title="backward icons">Backward icons created by Md Tanvirul Haque - Flaticon</a>
+- <a target="_blank" href="https://www.flaticon.com/free-icons/house-agent" title="house-agent icons">House-agent icons created by Ihdizein - Flaticon</a>
+- <a target="_blank" href="https://icons8.com/icon/11511/reply-arrow">Back</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+- <a target="_blank" href="https://icons8.com/icon/60449/play-button-circled">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+- <a target="_blank" href="https://icons8.com/icon/23353/downloading-updates">Download</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+___
+
+## Releases History
+
+/10/2024 - 1.0
+initial version
+
+functionalities:
+
+- build html movie documents from:
+    - scrapper [MovieDbScraper](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md) `json` output
+    - direct scrap from queries given in files (several formats are supported)
+    - direct scrap from a query given in last text clipboard entry
+
 

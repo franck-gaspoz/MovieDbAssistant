@@ -269,9 +269,14 @@ body.movie-page-detail .movie-page-detail-content-container {
     text-wrap: nowrap;
     font-size: 2em;
     font-family: 'quesha';
+    display: inline-block;
 }
 
-.rating,.ratingCount,.rating-sep {
+.rating-container-small {
+    min-width: 4em;
+}
+
+.rating, .ratingCount, .rating-sep {
     color: bisque;
 }
 
@@ -284,6 +289,11 @@ body.movie-page-detail .movie-page-detail-content-container {
     overflow-y: auto;
     scrollbar-color: #DDEEFF77 transparent;
     scrollbar-width: inherit;
+}
+
+.play-icon,.download-icon {
+    width:48px;
+    height: 48px;
 }
 
 .vsep {
@@ -304,12 +314,42 @@ body.movie-page-detail .movie-page-detail-content-container {
     mask-image: radial-gradient(circle, transparent, black);
 }
 
+.sources {
+    position: relative;
+    top: 5.5em;
+    text-align: left;
+    text-wrap: nowrap;
+    overflow: visible;
+}
+
 .transparent {
     opacity: 0;
 }
 
 .hidden {
     display: none;
+}
+
+.grid {
+    display:grid;
+}
+
+.cell1_1 {
+    grid-row:1;
+    grid-column:1;
+}
+
+.nowrap {
+    display: inline-block;
+    text-wrap: nowrap;
+}
+
+.no-padding-right {
+    padding-right: 0em;
+}
+
+.padding-left {
+    padding-left: 1em;
 }
 
 @font-face {
