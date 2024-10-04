@@ -10,7 +10,7 @@ public interface IQueryListFormatParser
     /// <summary>
     /// Parse and return a list of querymodels.
     /// </summary>
-    /// <param name="content">The content.</param>
+    /// <param name="lines">The content.</param>
     /// <returns>A list of querymodels.</returns>
-    public List<QueryModel> Parse(string content);
+    public List<QueryModelSearchByTitle> Parse(string[] lines);
 }

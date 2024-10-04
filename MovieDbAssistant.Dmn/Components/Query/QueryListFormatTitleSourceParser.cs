@@ -9,7 +9,7 @@ namespace MovieDbAssistant.Dmn.Components.Query;
 /// The query list format title parser.
 /// </summary>
 [Singleton]
-public sealed class QueryListFormatTitleParser : 
+public sealed class QueryListFormatTitleSourceParser : 
     IIdentifiable,
     IQueryListFormatParser
 {
@@ -17,27 +17,43 @@ public sealed class QueryListFormatTitleParser :
     /// Gets the instance id.
     /// </summary>
     /// <value>A <see cref="SharedCounter"/></value>
-    public SharedCounter InstanceId {get;}
+    public SharedCounter InstanceId { get; }
 
-    public QueryListFormatTitleParser() 
+    public QueryListFormatTitleSourceParser() 
         => InstanceId = new(this);
 
     /// <inheritdoc/>
     public List<QueryModelSearchByTitle> Parse(string[] lines)
     {
         var queries = new List<QueryModelSearchByTitle>();
-        
-        void AddQueryModel(string title)
+
+        void AddQueryModel(
+            string title,
+            string? source,
+            string? download)
         {
-            queries.Add(new QueryModelSearchByTitle(title));
+            queries.Add(new QueryModelSearchByTitle(title)
+            {
+                Metadata = new(source, download)
+            });
         }
 
-        for (var i = 0; i < lines.Length; i++)
+        var i = 0;
+        while (i < lines.Length)
         {
             var s = lines[i];
             if (!s.IsCommentLine() && !s.IsEmptyLine())
-                AddQueryModel(s.Trim());
+            {
+                var title = lines[i];
+                var source = i<lines.Length-1 ? lines[i+1] : null;
+                var t = source?.Split(',');
+                var play = t?[0];
+                var download = t!=null? ( t.Length > 1 ? t[1] : null) : null;
+                AddQueryModel(title,source,download);
+                i+=3;
+            }
         }
+
         return queries;
     }
 }

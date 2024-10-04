@@ -38,7 +38,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 
         var file = File.ReadAllText(src);
 
-        _queryBuilder.Build(file);
+        var queries = _queryBuilder.Build(file);
 
         //return _queryDataProvider.Get()
         return null;

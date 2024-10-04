@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Lib.ComponentModels;
@@ -14,15 +15,17 @@ namespace MovieDbAssistant.Dmn.Components.Query;
 [Transient]
 public sealed class QueryBuilder : IIdentifiable
 {
-    public QueryBuilder(ILogger<QueryBuilder> _logger) {
+    public QueryBuilder(
+        ILogger<QueryBuilder> _logger,
+        IServiceProvider _serviceProvider) {
         InstanceId = new(this);
         this._logger = _logger;
+        this._serviceProvider = _serviceProvider;
     }
 
-    const string Prefix_Comment = "//";
-
-    readonly List<QueryModel> _queries = [];
+    readonly List<QueryModelSearchByTitle> _queries = [];
     readonly ILogger<QueryBuilder> _logger;
+    readonly IServiceProvider _serviceProvider;
     string[]? _lines;
 
     /// <summary>
@@ -36,26 +39,28 @@ public sealed class QueryBuilder : IIdentifiable
     /// </summary>
     /// <param name="content">query source file content</param>
     /// <returns>this object</returns>
-    public List<QueryModel> Build(string content)
+    public List<QueryModelSearchByTitle> Build(string content)
     {
         _queries.Clear();
         _lines = content
             .Split('\n');
         Trim();
         IQueryListFormatParser formatParser =
-            IsFormatTitleList() ? new QueryListFormatTitleParser()
-            : IsFormatTitleSourceList() ? new QueryListFormatTitleSourceParser()
-                : new QueryListFormatTitleParser();
+            IsFormatTitleList() ? _serviceProvider
+                .GetRequiredService<QueryListFormatTitleParser>()
+            : IsFormatTitleSourceList() ? _serviceProvider
+                .GetRequiredService<QueryListFormatTitleSourceParser>()
+                    : _serviceProvider.GetRequiredService<QueryListFormatTitleParser>();
 
         _logger.LogInformation(this, "query parser: "+formatParser.GetType().Name);
 
-        var res = formatParser.Parse(content);
+        var res = formatParser.Parse(_lines);
 
         return res;
     }
 
     bool IsFormatTitleList()
-        => !_lines!.Any(x => IsEmptyLine(x));
+        => !_lines!.Any(x => x.IsEmptyLine());
 
     bool IsFormatTitleSourceList()
     {
@@ -66,11 +71,11 @@ public sealed class QueryBuilder : IIdentifiable
         while (i < _lines!.Length)
         {
             var s = _lines[i];
-            if (!IsCommentLine(s))
+            if (!s.IsCommentLine())
             {
-                res &= !IsEmptyLine(s)
-                    && Exists(i + 1) && !IsEmptyLine(_lines[i + 1])
-                    && (!Exists(i + 2) || IsEmptyLine(_lines[i + 2]));
+                res &= !s.IsEmptyLine()
+                    && Exists(i + 1) && !_lines[i + 1].IsEmptyLine()
+                    && (!Exists(i + 2) || _lines[i + 2].IsEmptyLine());
                 i += 3;
             }
             else
@@ -84,21 +89,17 @@ public sealed class QueryBuilder : IIdentifiable
         var i = 0;
         var remove = new List<int>();
 
-        while (IsEmptyLine(_lines![i]))
+        while (_lines![i].IsEmptyLine())
         {
             remove.Add(i);
             i++;
         }
         var j = _lines.Length - 1;
-        while (IsEmptyLine(_lines[j]))
+        while (_lines[j].IsEmptyLine())
         {
             remove.Add(j);
             j--;
         }
         _lines = _lines[i .. (j + 1)];
     }
-
-    static bool IsEmptyLine(string s) => string.IsNullOrWhiteSpace(s);
-
-    static bool IsCommentLine(string s) => s.StartsWith(Prefix_Comment);
 }

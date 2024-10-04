@@ -23,7 +23,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
     public override MoviesModel? Get(object? source)
     {
         if (source == null) return null;
-        if (source is not QueryModel query) return null;  
+        if (source is not QueryModelSearchByTitle query) return null;  
 
         Logger.LogInformation(
             this,
