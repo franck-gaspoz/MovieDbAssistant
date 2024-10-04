@@ -14,7 +14,7 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// <summary>
 /// json data provider == MovieDbScraper output
 /// </summary>
-[Scoped]
+[Transient]
 public class JsonDataProvider : IDataProvider, IIdentifiable
 {
     protected ILogger<JsonDataProvider> Logger { get; set; }

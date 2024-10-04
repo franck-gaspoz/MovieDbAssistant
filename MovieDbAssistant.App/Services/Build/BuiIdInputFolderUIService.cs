@@ -94,7 +94,7 @@ sealed class BuiIdInputFolderUIService :
             Tray.ShowBalloonTip(InputFolderProcessedWithErrors, icon: ToolTipIcon.Warning);
 
             var jsonBuildErrors = @event.Context.Errors
-                .Where(x => x.Event.Context.Command is ICommandWithPath)
+                .Where(x => x!=null && x.Event.Context.Command is ICommandWithPath)
                 .Select(x => x.Event);
 
             var jsonBuildLogs = jsonBuildErrors.Select(x =>

@@ -20,7 +20,7 @@ namespace MovieDbAssistant.Dmn.Services;
 /// <summary>
 /// The document builder service.
 /// </summary>
-[Scoped]
+[Transient]
 public sealed class DocumentBuilderService : IIdentifiable
 {
     readonly BackgroundWorkerWrapper _backgroundWorkerWrapper;

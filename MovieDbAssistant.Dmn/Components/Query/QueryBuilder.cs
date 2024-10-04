@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Queries;
+using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Logger;
 
 namespace MovieDbAssistant.Dmn.Components.Query;
@@ -9,15 +11,25 @@ namespace MovieDbAssistant.Dmn.Components.Query;
 /// <summary>
 /// The query builder.
 /// </summary>
-[Scoped]
-public sealed class QueryBuilder(
-    ILogger<QueryBuilder> _logger)
+[Transient]
+public sealed class QueryBuilder : IIdentifiable
 {
+    public QueryBuilder(ILogger<QueryBuilder> _logger) {
+        InstanceId = new(this);
+        this._logger = _logger;
+    }
+
     const string Prefix_Comment = "//";
 
     readonly List<QueryModel> _queries = [];
-
+    readonly ILogger<QueryBuilder> _logger;
     string[]? _lines;
+
+    /// <summary>
+    /// Gets the instance id.
+    /// </summary>
+    /// <value>A <see cref="SharedCounter"/></value>
+    public SharedCounter InstanceId { get; }
 
     /// <summary>
     /// build from a query source file content

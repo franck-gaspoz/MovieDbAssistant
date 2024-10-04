@@ -190,30 +190,6 @@ public abstract class ActionBase<TCommand> :
         ActionContext? context = null;
         try
         {
-            if (Buzy)
-            {
-                if (com.HandleUI)
-                    MessageWarningOpening_IsBuzy?.Invoke(
-                        this,
-                        new(com, sender, null));
-
-                var msg = Config[TextKeyFeatureIsBuzy]!;
-                Logger.LogError(
-                    this,
-                    msg);
-
-                context = ServiceProvider
-                    .GetRequiredService<ActionContext>()
-                    .Setup(this, com, [sender]);
-
-                Signal.Send(this, new ActionErroredEvent(context!, 
-                    new InvalidOperationException(msg + ": "+GetType().Name)));
-
-                return;
-            }
-            Com = com;
-            Buzy = true;
-
             context = ServiceProvider
                 .GetRequiredService<ActionContext>()
                 .Setup(this, com, [sender]);
@@ -227,6 +203,25 @@ public abstract class ActionBase<TCommand> :
             }
             else
                 com.Setup(context);
+
+            // -- single thread barrier
+            if (Buzy)
+            {
+                if (com.HandleUI)
+                    MessageWarningOpening_IsBuzy?.Invoke(
+                        this,
+                        new(com, sender, null));
+
+                var msg = Config[TextKeyFeatureIsBuzy]!;
+
+                Signal.Send(this, new ActionErroredEvent(context!,
+                    new InvalidOperationException(msg + ": " + GetType().Name)));
+
+                return;
+            }
+
+            Com = com;
+            Buzy = true;
 
             StartRunningAction?.Invoke(this, new(com, this, context));
 

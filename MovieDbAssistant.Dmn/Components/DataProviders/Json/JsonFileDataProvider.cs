@@ -10,7 +10,7 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// json from file data provider
 /// <para>handle MovieDbScraper output</para>
 /// </summary>
-[Scoped]
+[Transient]
 public class JsonFileDataProvider : JsonDataProvider
 {
     public JsonFileDataProvider(ILogger<JsonDataProvider> logger)

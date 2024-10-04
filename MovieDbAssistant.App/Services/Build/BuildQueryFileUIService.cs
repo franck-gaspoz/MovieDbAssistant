@@ -18,9 +18,9 @@ using static MovieDbAssistant.Dmn.Globals;
 namespace MovieDbAssistant.App.Services.Build;
 
 /// <summary>
-/// The build service.
+/// The build query file service.
 /// </summary>
-[Scoped]
+[Transient]
 sealed class BuildQueryFileUIService : 
     BuildUIServiceBase<BuildQueryFileCommand>
 {
