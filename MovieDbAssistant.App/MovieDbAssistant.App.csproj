@@ -29,20 +29,59 @@
     <None Remove="input\movie.json" />
     <None Remove="input\README.md" />
     <None Remove="output\README.md" />
-    <None Remove="rsc\html\templates\dark\fonts\ComicNeue-Light.ttf" />
-    <None Remove="rsc\html\templates\dark\fonts\MomTypewritter.ttf" />
-    <None Remove="rsc\html\templates\dark\fonts\Play Chickens.ttf" />
-    <None Remove="rsc\html\templates\dark\fonts\Quesha.ttf" />
-    <None Remove="rsc\html\templates\dark\fonts\Vonique 92_D.otf" />
-    <None Remove="rsc\html\templates\dark\img\back.png" />
-    <None Remove="rsc\html\templates\dark\img\cinema-wallpaper-16.jpg" />
-    <None Remove="rsc\html\templates\dark\img\download.png" />
-    <None Remove="rsc\html\templates\dark\img\favicon.ico" />
-    <None Remove="rsc\html\templates\dark\img\house.png" />
-    <None Remove="rsc\html\templates\dark\img\left-arrow.png" />
-    <None Remove="rsc\html\templates\dark\img\play.png" />
-    <None Remove="rsc\html\templates\dark\js\jquery-3.7.1.min.js" />
-    <None Remove="rsc\html\templates\dark\js\template.js" />
+    <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
+    <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
+    <None Remove="rsc\html\assets\fonts\Play Chickens.ttf" />
+    <None Remove="rsc\html\assets\fonts\Quesha.ttf" />
+    <None Remove="rsc\html\assets\fonts\Vonique 92_D.otf" />
+    <None Remove="rsc\html\assets\icons\back.png" />
+    <None Remove="rsc\html\assets\icons\download.png" />
+    <None Remove="rsc\html\assets\icons\favicon.ico" />
+    <None Remove="rsc\html\assets\icons\house.png" />
+    <None Remove="rsc\html\assets\icons\left-arrow.png" />
+    <None Remove="rsc\html\assets\icons\play.png" />
+    <None Remove="rsc\html\assets\js\jquery-3.7.1.min.js" />
+    <None Remove="rsc\html\assets\js\template.js" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-10.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-11.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-12.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-13.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-14.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-15.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-16.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-17.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-18.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-19.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-2.png" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-20.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-21.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-22.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-23.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-24.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-25.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-26.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-27.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-28.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-29.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-3.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-30.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-31.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-32.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-33.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-34.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-35.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-36.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-37.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-38.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-39.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-4..jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-40.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-5.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-6.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
+    <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
     <None Remove="rsc\html\templates\dark\page-details.html" />
     <None Remove="rsc\html\templates\dark\page-list.html" />
     <None Remove="rsc\html\templates\dark\template.json" />
@@ -78,46 +117,163 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
-    <Content Include="rsc\html\templates\dark\fonts\ComicNeue-Light.ttf">
+    <Content Include="rsc\html\assets\fonts\ComicNeue-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\fonts\MomTypewritter.ttf">
+    <Content Include="rsc\html\assets\fonts\MomTypewritter.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\fonts\Play Chickens.ttf">
+    <Content Include="rsc\html\assets\fonts\Play Chickens.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\fonts\Quesha.ttf">
+    <Content Include="rsc\html\assets\fonts\Quesha.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\fonts\Vonique 92_D.otf">
+    <Content Include="rsc\html\assets\fonts\Vonique 92_D.otf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\back.png">
+    <Content Include="rsc\html\assets\icons\back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\cinema-wallpaper-16.jpg">
+    <Content Include="rsc\html\assets\icons\download.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\download.png">
+    <Content Include="rsc\html\assets\icons\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\favicon.ico">
+    <Content Include="rsc\html\assets\icons\house.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\house.png">
+    <Content Include="rsc\html\assets\icons\left-arrow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\left-arrow.png">
+    <Content Include="rsc\html\assets\icons\play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\img\play.png">
+    <Content Include="rsc\html\assets\js\jquery-3.7.1.min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\js\jquery-3.7.1.min.js">
+    <Content Include="rsc\html\assets\js\template.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\js\template.js">
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-11.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-12.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-13.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-14.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-15.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-16.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-17.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-18.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-19.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-20.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-21.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-23.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-24.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-26.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-27.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-28.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-29.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-30.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-31.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-32.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-33.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-34.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-35.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-36.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-37.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-38.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-39.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-4..jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-40.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\page-list.html">

@@ -63,6 +63,11 @@ public sealed class TemplateModel
     /// <value>A list of strings.</value>
     public List<string> Files { get; set; } = [];
 
+    /// <summary>
+    /// gets or sets the resources
+    /// </summary>
+    public List<string> Resources {  get; set; } = [];
+
     #region working properties
 
     /// <summary>

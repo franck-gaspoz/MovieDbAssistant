@@ -202,6 +202,10 @@ public sealed class DocumentBuilderContext
         var path = Path.Combine(
             OutputFolder!,
             name);
+        var folder = Path.GetDirectoryName(path)!;
+        if (!Directory.Exists(folder))
+            Directory.CreateDirectory(folder);
+            
         _logger.LogInformation(this, "add output file: " + path);
         File.WriteAllText(path, content);
     }

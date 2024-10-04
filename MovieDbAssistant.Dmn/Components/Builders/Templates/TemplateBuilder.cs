@@ -148,6 +148,7 @@ public sealed class TemplateBuilder
             _config[Build_HtmlFileExt]!,
             page);
 
+        CopyTplRsc();
         CopyRsc();
 
         return this;
@@ -184,38 +185,91 @@ public sealed class TemplateBuilder
             "",
             page);
 
+        CopyTplRsc();
         CopyRsc();
 
         return this;
     }
 
-    public TemplateBuilder CopyRsc()
+    /// <summary>
+    /// Copy tpl rsc.
+    /// </summary>
+    /// <returns>A <see cref="TemplateBuilder"/></returns>
+    public TemplateBuilder CopyTplRsc()
     {
         foreach (var item in _tpl!.Files)
+            CopyTemplateRsc(item);
+        return this;
+    }
+
+    /// <summary>
+    /// Copy the rsc.
+    /// </summary>
+    /// <returns>A <see cref="TemplateBuilder"/></returns>
+    public TemplateBuilder CopyRsc()
+    {
+        foreach (var item in _tpl!.Resources)
             CopyRsc(item);
         return this;
     }
 
     void CopyRsc(string item)
     {
+        var target = Context.DocContext!.OutputFolder!;
+        var t = item.Split(':');
+
+        var src = Context.AssetsPath(Context.DocContext!);
+        src = Path.Combine(src, t[0][1..]);
+        target = Path.Combine(
+            target, 
+            t[1][1..]);       
+
+        if (!Directory.Exists(target))
+            Directory.CreateDirectory(target);
+
+        target = Path.Combine(target,
+            Path.GetFileName(src));
+
+        if (File.Exists(src))
+        {
+            File.Copy(
+                src,
+                target,
+                true);
+
+            _logger.LogInformation(this,"file copied: " + src + " to " + target);
+        }
+    }
+
+    void CopyTemplateRsc(string item)
+    {
         var src = Path.Combine(Context.TplPath, item[1..]);
         var target = Context.DocContext!.OutputFolder!;
 
         if (!item.StartsWith('/'))
         {
+            target = Path.Combine(target, item[1..]);
+            var tgtFolder = Path.GetDirectoryName(target)!;
+            if (!Directory.Exists(tgtFolder))
+                Directory.CreateDirectory(tgtFolder);
+
             if (File.Exists(src))
                 File.Copy(
                     src,
-                    Path.Combine(target, item[1..]));
+                    target);
+
+            _logger.LogInformation(this, "file copied: " + src + " to " + target);
         }
         else
         {
             if (Directory.Exists(src))
             {
-                src.CopyDirectory(
-                    Path.Combine(
+                target = Path.Combine(
                         target,
-                        Path.GetFileName(src)));
+                        Path.GetFileName(src));
+                src.CopyDirectory( target);
+
+                _logger.LogInformation(this, "folder copied: " + src + " to " + target);
             }
         }
     }

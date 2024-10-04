@@ -16,7 +16,7 @@
     },
     "PageDetail": {
       "Background": "../img/cinema-wallpaper-16.jpg",
-      "BackgroundIdle": "../img/cinema-wallpaper-35.jpg",
+      "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
       "PageTitle": "My Movies"
     },
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
@@ -41,6 +41,23 @@
       "Target": "ActorModel",
       "Operation": "Transform_ActorSimple"
     }
+  ],
+  "Resources": [
+    "/fonts/ComicNeue-Light.ttf:/fonts",
+    "/fonts/MomTypewritter.ttf:/fonts",
+    "/fonts/Play Chickens.ttf:/fonts",
+    "/fonts/Quesha.ttf:/fonts",
+    "/fonts/Vonique 92_D.otf:/fonts",
+    "/icons/back.png:/img",
+    "/icons/download.png:/img",
+    "/icons/favicon.ico:/img",
+    "/icons/house.png:/img",
+    "/icons/left-arrow.png:/img",
+    "/icons/play.png:/img",
+    "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
+    "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
+    "/js/jquery-3.7.1.min.js:/js",
+    "/js/template.js:/js"
   ],
   "Files": [
     "/img",
