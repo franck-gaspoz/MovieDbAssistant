@@ -14,16 +14,9 @@ const Separator_ClassCondition_ClassResult = '--'
 */
 class Template {
 
-    constructor(enableAvoidNextItemClick) {
+    constructor() {
         window.tpl = this
-        this.enableAvoidNextItemClick = enableAvoidNextItemClick
     }
-
-    /** @type {boolean} avoid next item click in case overlapped click */
-    avoidNextItemClick = false
-
-    /** @type {boolean} enabed/disable feature 'avoid next item click' to prevent possible overlapped clicks */
-    enableAvoidNextItemClick = false
 
     /**
      * @typedef MoviesModel movies model
@@ -60,11 +53,11 @@ class Template {
      */
 
     props = {
-        /*"Interests": (o, value) => o.hseps(value),
+        "Interests": (o, value) => o.hseps(value),
         "Stars": (o, value) => o.hseps(value),
         "Actors": (o, value) => o.hseps(value, x => o.actorSimple(x)),
         "PicsUrls": null,
-        "PicsSizes": null*/
+        "PicsSizes": null
     };
 
     hseps(t, tr) {
@@ -120,10 +113,6 @@ class Template {
         $container.append($e)
         $e.find('.movie-list-item')
             .on('click', () => {
-                if (this.avoidNextItemClick) {
-                    this.avoidNextItemClick = false
-                    return
-                }
                 window.location =
                     './'
                     + props['output.pages'/*Template_Var_OutputPages*/]
@@ -152,15 +141,12 @@ class Template {
     }
 
     setLinks($from) {
-        var $t = $("[data-href]", $from)
+        var $t = $("[attr*='data-href'", $from)
         $t.each((i, e) => {
             var $e = $(e)
             var href = $e.attr('data-href')
             var target = $e.attr('data-target')
             $e.on('click', e => {
-                if (this.enableAvoidNextItemClick) {
-                    this.avoidNextItemClick = true;
-                }
                 if (!target)
                     window.location = href;
                 else {

@@ -34,7 +34,7 @@
         window.vda = { data, props };
 
         $(document).ready(() => {
-            var o = new Template();
+            var o = new Template(false);
             o.buildDetails(data);
             addBackImgLoadedHandler('{{background}}');
         });
@@ -66,21 +66,13 @@
     <div class="movie-page-detail-content-container">
 
         <div class="movie-page-nav-container">
-            <a href="{{movies.home}}">
-                <img src="../img/house.png" alt="icon home" class="nav-icon margin-right-double" />
-            </a>
-            <a href="{{movies.previous}}" class="if-movies-previous">
-                <img src="../img/left-arrow.png" alt="previous movie" class="nav-icon if-previousLink" />
-            </a>
-            <a href="{{movies.next}}" class="if-movies-next">
-                <img src="../img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-nextLink" />
-            </a>
+            <img data-href="{{movies.home}}" src="../img/house.png" alt="icon home" class="nav-icon margin-right-double" />
+            <img data-href="{{movies.previous}}" src="../img/left-arrow.png" alt="previous movie" class="nav-icon if-movies-previous" />
+            <img data-href="{{movies.next}}" src="../img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-movies-next" />
             <span class="nav-counters">{{movies.index}} / {{movies.total}}</span>
             <span class="hsep"></span>
             <span class="hsep"></span>
-            <a href="{{movies.home}}#{{key}}">
-                <img src="../img/back.png" alt="back to list" class="nav-icon icon-back" />
-            </a>
+            <img data-href="{{movies.home}}#{{key}}" src="../img/back.png" alt="back to list" class="nav-icon icon-back" />
         </div>
 
         <div class="movie-list">
@@ -115,12 +107,8 @@
                                             </div>
 
                                             <div class="cell1_1 sources">
-                                                <a href="{{sources.play}}" target="movie_download" class="if-sources-play nav-link">
-                                                    <img src="../img/play.png" class="nav-icon play-icon" />
-                                                </a>
-                                                <a href="{{sources.download}}" class="nav-link if-sources-download">
-                                                    <img src="../img/download.png" class="nav-icon download-icon no-margin-right" />
-                                                </a>
+                                                <img data-href="{{sources.play}}" data-target="movie_download" src="../img/play.png" class="nav-icon play-icon if-sources-play" />
+                                                <img data-href="{{sources.download}}" src="../img/download.png" class="nav-icon download-icon no-margin-right if-sources-download" />
                                             </div>
 
                                         </td>

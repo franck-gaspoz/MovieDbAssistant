@@ -120,5 +120,10 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                 movie);
             index++;
         }
+
+        // copy resources
+
+        _templateBuilder.CopyRsc();
+        _templateBuilder.CopyTplRsc();
     }
 }

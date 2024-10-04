@@ -134,8 +134,8 @@ public sealed class TemplateBuilder
 #if true || TEST_SOURCE
         foreach (var movie in data.Movies)
         {
-            movie.Sources.Download = "http://www.asite.com/myvideo/" + movie.Key + ".mp4";
-            movie.Sources.Play = "http://www.asite.com/myvideo/" + movie.Key + ".html";
+            movie.Sources.Download = _tpl!.Options.HelpLink+"#"+movie.Key;
+            movie.Sources.Play = _tpl!.Options.HelpLink + "#" + movie.Key;
         }
 #endif
         ExportData(data);
@@ -147,9 +147,6 @@ public sealed class TemplateBuilder
             _tpl.Options.PageList.Filename!,
             _config[Build_HtmlFileExt]!,
             page);
-
-        CopyTplRsc();
-        CopyRsc();
 
         return this;
     }
@@ -184,9 +181,6 @@ public sealed class TemplateBuilder
                     data.Filename!),
             "",
             page);
-
-        CopyTplRsc();
-        CopyRsc();
 
         return this;
     }
@@ -292,8 +286,8 @@ public sealed class TemplateBuilder
         MovieModel data)
     {
 #if TEST_SOURCE
-        data.Sources.Download = "http://www.asite.com/myvideo/" + data.Key + ".mp4";
-        data.Sources.Play = "http://www.asite.com/myvideo/" + data.Key + ".html";
+        data.Sources.Download = _tpl!.Options.HelpLink+"#"+data.Key;
+        data.Sources.Play = _tpl!.Options.HelpLink + "#" + data.Key;
 #endif
 
         var src = JsonSerializer.Serialize(
