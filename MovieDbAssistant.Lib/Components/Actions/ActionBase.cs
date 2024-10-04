@@ -197,9 +197,17 @@ public abstract class ActionBase<TCommand> :
                         this,
                         new(com, sender, null));
 
-                Logger.LogWarning(
+                var msg = Config[TextKeyFeatureIsBuzy]!;
+                Logger.LogError(
                     this,
-                    Config[TextKeyFeatureIsBuzy] + "");
+                    msg);
+
+                context = ServiceProvider
+                    .GetRequiredService<ActionContext>()
+                    .Setup(this, com, [sender]);
+
+                Signal.Send(this, new ActionErroredEvent(context!, 
+                    new InvalidOperationException(msg + ": "+GetType().Name)));
 
                 return;
             }

@@ -9,7 +9,11 @@ using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 using MovieDbAssistant.Lib.Components.Logger;
 using Microsoft.Extensions.Configuration;
+
 using static MovieDbAssistant.Dmn.Components.Settings;
+using static MovieDbAssistant.Dmn.Globals;
+using MovieDbAssistant.Lib.ComponentModels;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 
 namespace MovieDbAssistant.Dmn.Services;
 
@@ -17,7 +21,7 @@ namespace MovieDbAssistant.Dmn.Services;
 /// The document builder service.
 /// </summary>
 [Scoped]
-public sealed class DocumentBuilderService
+public sealed class DocumentBuilderService : IIdentifiable
 {
     readonly BackgroundWorkerWrapper _backgroundWorkerWrapper;
     readonly ISignalR _signal;
@@ -27,6 +31,12 @@ public sealed class DocumentBuilderService
     readonly ILogger<DocumentBuilderService> _logger;
     DocumentBuilderContext? _context;
 
+    /// <summary>
+    /// Gets the instance id.
+    /// </summary>
+    /// <value>A <see cref="SharedCounter"/></value>
+    public SharedCounter InstanceId { get; }
+
     public DocumentBuilderService(
         IConfiguration configuration,
         ILogger<DocumentBuilderService> logger,
@@ -34,6 +44,7 @@ public sealed class DocumentBuilderService
         DataProviderFactory dataProviderFactory,
         DocumentBuilderFactory documentBuilderFactory)
     {
+        InstanceId = new(this);
         _config = configuration;
         _logger = logger;
         _signal = signal;
@@ -71,7 +82,10 @@ public sealed class DocumentBuilderService
             _logger.LogInformation(this, _config[ProcFile]! 
                 + Path.GetFileName(context.Source) );
 
-            var movies = dataProvider.Get(context.Source);
+            var movies = dataProvider.Get(context.Source)
+                ?? throw new InvalidOperationException(
+                    _config[DataProvider_Failed]!
+                    +context.Source?.ToString());
 
             builder.Build(context, movies);
 

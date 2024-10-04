@@ -3,7 +3,9 @@
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
+using MovieDbAssistant.Lib.Components.InstanceCounter;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -13,22 +15,29 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// json data provider == MovieDbScraper output
 /// </summary>
 [Scoped]
-public class JsonDataProvider : IDataProvider
+public class JsonDataProvider : IDataProvider, IIdentifiable
 {
     protected ILogger<JsonDataProvider> Logger { get; set; }
 
+    /// <summary>
+    /// Gets the instance id.
+    /// </summary>
+    /// <value>A <see cref="SharedCounter"/></value>
+    public SharedCounter InstanceId { get; }
+
     public JsonDataProvider(ILogger<JsonDataProvider> logger)
-        => Logger = logger;
+        => (InstanceId,Logger) = (new(this),logger);
 
     /// <summary>
     /// get from text
     /// </summary>
     /// <param name="text">The text.</param>
     /// <returns>A <see cref="MoviesModel"/></returns>
-    public virtual MoviesModel Get(string source)
+    public virtual MoviesModel? Get(object? source)
     {
+        if (source == null) return null;
         var r = JsonSerializer.Deserialize<MoviesModel>(
-            source,
+            (string)source,
             JsonSerializerProperties.Value);
 
         return r!;

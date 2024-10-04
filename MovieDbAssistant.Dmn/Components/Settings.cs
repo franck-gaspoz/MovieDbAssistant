@@ -277,6 +277,11 @@ public sealed class Settings
     /// json build without errors
     /// </summary>
     public const string Build_End_Json_Without_Errors = "Texts:BuildJsonEndWithoutErrors";
+    
+    /// <summary>
+    /// query built without errors
+    /// </summary>
+    public const string Build_End_Query_Without_Errors = "Texts:BuildQueryEndWithoutErrors";
 
     #endregion
 

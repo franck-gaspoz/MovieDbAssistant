@@ -46,8 +46,9 @@ public class AppLogger(
         if (!config.IsEnabled) return;
 
         void Dbg(string caller,string? msg)
-        { 
-            Debug.WriteLine($"{_itemCount++,6} | {AppLoggerConfiguration.GetLogLevel(logLevel),5} | {caller,30} | {msg}");
+        {
+            msg = msg?.Replace('\n', ' ');
+            Debug.WriteLine($"{_itemCount++,6} | {AppLoggerConfiguration.GetLogLevel(logLevel),5} | {Environment.CurrentManagedThreadId,5} | {caller,30} | {msg}");
         }
 
         var msg = state?.ToString() ?? string.Empty;

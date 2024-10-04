@@ -4,5 +4,10 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders;
 
 public interface IDataProvider
 {
-    MoviesModel Get(string source);
+    /// <summary>
+    /// return a model from source properties
+    /// </summary>
+    /// <param name="source">source properties</param>
+    /// <returns>movies model or null</returns>
+    MoviesModel? Get(object? source);
 }

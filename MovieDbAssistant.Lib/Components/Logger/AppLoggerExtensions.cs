@@ -14,7 +14,7 @@ namespace MovieDbAssistant.Lib.Components.Logger;
 /// </summary>
 public static class AppLoggerExtensions
 {
-    const string Sep_CallerMessage = "\n";
+    const string Sep_CallerMessage = "@@";
 
     /// <summary>
     /// Add app logger.

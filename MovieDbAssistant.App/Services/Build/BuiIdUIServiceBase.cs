@@ -125,7 +125,9 @@ abstract class BuildUIServiceBase<TSignal> :
     /// </summary>
     /// <param name="x">file name</param>
     /// <returns>true if disabled, false otherwise</returns>
-    protected bool FileIsDisabled(string x) => x.StartsWith(Config[PrefixFileDisabled]!);
+    protected bool FileIsDisabled(string x) =>
+        Path.GetFileName(x)
+            .StartsWith(Config[PrefixFileDisabled]!);
 
     /// <summary>
     /// filter a filename list to keep only enabled ones

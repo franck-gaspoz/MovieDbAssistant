@@ -6,7 +6,6 @@ using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
-using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -66,7 +65,7 @@ sealed class BuiIdInputFolderUIService :
             _actionGroup.Clear();
 
             ProcessJsons(context);
-            ProcessLists(context);
+            ProcessQueries(context);
 
             _actionGroup.WaitAll();
 
@@ -92,26 +91,26 @@ sealed class BuiIdInputFolderUIService :
         base.Handle(sender, @event);
         if (@event.Context.Errors.Any())
         {
-            Tray.ShowBalloonTip(InputFolderProcessedWithErrors,icon:ToolTipIcon.Warning);
+            Tray.ShowBalloonTip(InputFolderProcessedWithErrors, icon: ToolTipIcon.Warning);
 
             var jsonBuildErrors = @event.Context.Errors
-                .Where(x => x.Event.Context.Command is BuildJsonFileCommand)
+                .Where(x => x.Event.Context.Command is ICommandWithPath)
                 .Select(x => x.Event);
 
             var jsonBuildLogs = jsonBuildErrors.Select(x =>
                 "• "
-                + (x.Context.Command is BuildJsonFileCommand com
+                + (x.Context.Command is ICommandWithPath com
                     ? Path.GetFileName(com.Path)
                     : string.Empty)
                 + ": "
-                + x.GetError());            
+                + x.GetError());
 
             Messages.Warn(
                 Build_End_Input_With_Errors,
                 '\n' + string.Join('\n', jsonBuildLogs));
         }
         else
-        {            
+        {
             Messages.Info(Build_End_Input_Without_Errors);
         }
 
@@ -125,9 +124,9 @@ sealed class BuiIdInputFolderUIService :
 
     #region operations
 
-    void ProcessLists(ActionContext context)
+    void ProcessQueries(ActionContext context)
     {
-        var lists = GetListsFiles();
+        var lists = GetQueriesFiles();
         lists.ToList()
             .ForEach(file => AddAction(
                 context,
@@ -169,7 +168,7 @@ sealed class BuiIdInputFolderUIService :
 
     #endregion
 
-    IEnumerable<string> GetListsFiles()
+    IEnumerable<string> GetQueriesFiles()
         => EnabledFiles(Directory.GetFiles(InputPath, Config[SearchPattern_Txt]!));
 
     IEnumerable<string> GetJsonFiles()

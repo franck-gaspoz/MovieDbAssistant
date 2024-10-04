@@ -15,4 +15,5 @@ public sealed record BuildJsonFileCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true,
     string? Key = null
-    ) : ActionCommandBase(ActionContext, HandleUI, Key);
+    ) : ActionCommandBase(ActionContext, HandleUI, Key), 
+        ICommandWithPath;

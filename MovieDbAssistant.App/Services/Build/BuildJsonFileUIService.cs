@@ -28,12 +28,12 @@ sealed class BuildJsonFileUIService :
 
     public BuildJsonFileUIService(
         ILogger<BuildJsonFileUIService> logger,
-         IConfiguration config,
-         ISignalR signal,
-         IServiceProvider serviceProvider,
-         Settings settings,
-         Messages messages,
-         DocumentBuilderServiceFactory documentBuilderServiceFactory) :
+        IConfiguration config,
+        ISignalR signal,
+        IServiceProvider serviceProvider,
+        Settings settings,
+        Messages messages,
+        DocumentBuilderServiceFactory documentBuilderServiceFactory) :
         base(
             logger,
             config,
@@ -42,14 +42,15 @@ sealed class BuildJsonFileUIService :
             settings,
             messages,
             Build_End_Json_Without_Errors,
-            ProcInpFold,
+            ProcFile,
             Item_Id_Build_Json) => _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
     /// <summary>
     /// Build from json file.
     /// </summary>
     /// <inheritdoc/>
-    protected override void Action(ActionContext context) => _documentBuilderServiceFactory.CreateDocumentBuilderService()
+    protected override void Action(ActionContext context) 
+        => _documentBuilderServiceFactory.CreateDocumentBuilderService()
             .AddListenerOnce(this, this, Signal)
             .Build(
                 context,

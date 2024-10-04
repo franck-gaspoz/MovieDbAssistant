@@ -13,4 +13,5 @@ public sealed record BuildQueryFileCommand(
     string Path,
     ActionContext? ActionContext = null,
     bool HandleUI = true
-    ) : ActionCommandBase(ActionContext, HandleUI);
+    ) : ActionCommandBase(ActionContext, HandleUI),
+        ICommandWithPath;

@@ -70,5 +70,10 @@ public sealed class Globals
     /// app version date
     /// </summary>
     public const string App_VersionDate = "App:VersionDate";
+
+    /// <summary>
+    /// text data provider failed
+    /// </summary>
+    public const string DataProvider_Failed = "Texts:DataProviderFailed";
 }
 
