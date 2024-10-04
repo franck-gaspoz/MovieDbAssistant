@@ -45,13 +45,14 @@ public sealed class QueryListFormatTitleSourceParser :
             if (!s.IsCommentLine() && !s.IsEmptyLine())
             {
                 var title = lines[i];
-                var source = i<lines.Length-1 ? lines[i+1] : null;
+                var source = i < lines.Length - 1 ? lines[i + 1] : null;
                 var t = source?.Split(',');
                 var play = t?[0];
-                var download = t!=null? ( t.Length > 1 ? t[1] : null) : null;
-                AddQueryModel(title,source,download);
-                i+=3;
+                var download = t != null ? (t.Length > 1 ? t[1] : null) : null;
+                AddQueryModel(title, source, download);
+                i += 3;
             }
+            else i++;
         }
 
         return queries;

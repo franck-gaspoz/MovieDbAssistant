@@ -32,7 +32,12 @@ public record class QueryModelSearchByTitle
             _title = value;
             string pattern = @"\b\d{4}\b";
             var matches = Regex.Matches(value, pattern);
-            
+            if (matches.Any())
+            {
+                Year = matches[0].Value;
+                if (_title.EndsWith(Year))
+                    _title =_title[..^Year.Length];
+            }
         }
     }
 
