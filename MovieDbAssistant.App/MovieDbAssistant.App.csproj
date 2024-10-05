@@ -26,8 +26,10 @@
     <None Remove="assets\led-red.ico" />
     <None Remove="assets\multimedia.ico" />
     <None Remove="db\README.md" />
+    <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-movie.json" />
-    <None Remove="input\output.json" />
+    <None Remove="input\-output.json" />
+    <None Remove="input\gardiens.json" />
     <None Remove="input\query1.txt" />
     <None Remove="input\query2.txt" />
     <None Remove="input\README.md" />
@@ -90,6 +92,7 @@
     <None Remove="rsc\html\templates\dark\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
+    <None Remove="tools\movie-db-scrapper-1.0.0.exe" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,7 +108,13 @@
     <Content Include="input\-movie.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\output.json">
+    <Content Include="input\-output.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-gardiensgxie.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\gardiens.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\query2.txt">
@@ -303,6 +312,9 @@
     <Content Include="rsc\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="tools\movie-db-scrapper-1.0.0.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="assets\multimedia.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -321,13 +333,6 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="tools\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="..\tools\imdb-scrapper-1.0.0.exe" Link="tools\imdb-scrapper-1.0.0.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

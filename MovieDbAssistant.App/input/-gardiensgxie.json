@@ -1,0 +1,119 @@
+{
+  "movies": [
+    {
+      "url": "https://www.imdb.com/title/tt6791350/",
+      "id": "tt6791350",
+      "title": "Les Gardiens de la Galaxie Vol. 3",
+      "summary": "Encore sous le choc de la perte de Gamora, Peter Quill rallie son \u00e9quipe se lancent dans une mission pour d\u00e9fendre l'univers et prot\u00e9ger Rocket.",
+      "interests": [ "Space Sci-Fi", "Superhero", "Action", "Adventure", "Comedy", "Sci-Fi" ],
+      "rating": "7,9",
+      "ratingCount": "10",
+      "duration": "2h 30min",
+      "releaseDate": "2 mai 2023",
+      "year": "2023",
+      "vote": "401\u00a0k",
+      "director": "James Gunn",
+      "writers": [ "James Gunn", "Jim Starlin", "Stan Lee" ],
+      "stars": [ "Chris Pratt", "Chukwudi Iwuji", "Bradley Cooper" ],
+      "actors": [
+        {
+          "actor": "Chris Pratt",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BY2I4MGI5ZmItZWNlNy00ZTZkLWJhMTgtMDhmYTRmNzUwNTI3XkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Peter Quill", "\u2026" ]
+        },
+        {
+          "actor": "Chukwudi Iwuji",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYWY3NDQxNmEtMzYwNS00YTg3LWI5YjQtMDhmNmJhMjdmMTkzXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "The High Evolutionary" ]
+        },
+        {
+          "actor": "Bradley Cooper",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjM0OTIyMzY1M15BMl5BanBnXkFtZTgwMTg0OTE0NzE@._V1_QL75_UX140_CR0,15,140,140_.jpg" ],
+          "characters": [ "Rocket", "(voix)" ]
+        },
+        {
+          "actor": "Pom Klementieff",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAyNDc3NTUwMF5BMl5BanBnXkFtZTgwNzg1NjczNTM@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Mantis" ]
+        },
+        {
+          "actor": "Dave Bautista",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjYyZTc3MzEtZTk0OC00NWNlLWJmOTMtYjFmOGY1YjZlNjI5XkEyXkFqcGc@._V1_QL75_UY140_CR55,0,140,140_.jpg" ],
+          "characters": [ "Drax" ]
+        },
+        {
+          "actor": "Karen Gillan",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQwMDQ0NDk1OV5BMl5BanBnXkFtZTcwNDcxOTExNg@@._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Nebula" ]
+        },
+        {
+          "actor": "Vin Diesel",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjExNzA4MDYxN15BMl5BanBnXkFtZTcwOTI1MDAxOQ@@._V1_QL75_UX140_CR0,4,140,140_.jpg" ],
+          "characters": [ "Groot", "(voix)" ]
+        },
+        {
+          "actor": "Austin Freeman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BN2JiZmY2NWYtZDM0Ni00NDAwLTk5ZDktMWU2MDA3NGMzZGM0XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "On-Set Groot", "\u2026" ]
+        },
+        {
+          "actor": "Stephen Blackehart",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZWUwNjE1ZDUtYjAwOS00ZTJkLWJhNjItMmE3ZjBmYzJiYTUwXkEyXkFqcGc@._V1_QL75_UY140_CR30,0,140,140_.jpg" ],
+          "characters": [ "Steemie Blueliver" ]
+        },
+        {
+          "actor": "Terence Rosemore",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZWQ4MTJiMzEtODEwZS00MDc2LWFhNTMtNmY1MzgxOWU5OTRkXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Xlomo Smeth" ]
+        },
+        {
+          "actor": "Maria Bakalova",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BY2I0YmU1ZTctYWUxYy00MGM3LWE0NGMtNjdmNzJhNDljYmY2XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Cosmo", "(voix)" ]
+        },
+        {
+          "actor": "Sean Gunn",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDIyNjEwOGEtMzJkZS00M2FmLWEwNzYtYTVhYTY2MzkzZDhlXkEyXkFqcGc@._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Kraglin", "\u2026" ]
+        },
+        {
+          "actor": "Sarah Alami",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BN2JiZDY0OGEtZDk3NC00ODVhLTkwMDgtZmE1YmQwZmUyZGQzXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Ssssaralami" ]
+        },
+        {
+          "actor": "Jasmine Munoz",
+          "picUrl": null,
+          "characters": [ "Hoobtoe" ]
+        },
+        {
+          "actor": "Giovannie Cruz",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BN2M5ZTg1N2YtOWNmYi00MDUxLWE0Y2EtNWI5OTUwNzIxNjM4XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Orloni Peddler" ]
+        },
+        {
+          "actor": "Will Poulter",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzIwYWY0MzgtNGMxYS00NWFjLTkwZmEtYmJhMWViNWFmZjQwXkEyXkFqcGc@._V1_QL75_UY140_CR16,0,140,140_.jpg" ],
+          "characters": [ "Adam Warlock" ]
+        },
+        {
+          "actor": "Nico Santos",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZWVjN2ZlYTAtM2Q1Ny00YTI0LWJjY2EtYjE0Y2UwYzkyM2YwXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Recorder Theel" ]
+        },
+        {
+          "actor": "Miriam Shor",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTg2NDI0Nzc5M15BMl5BanBnXkFtZTYwMTgxNzM1._V1_QL75_UX140_CR0,5,140,140_.jpg" ],
+          "characters": [ "Recorder Vim" ]
+        }
+      ],
+      "anecdotes": "This film sets the record for the most makeup appliances used in a single film. The numbers are staggering, totaling 22,541 prosthetics, 500 wigs, and 117 pairs of contacts by the end, used across more than 1,000 actors.In the closing credits for Special Thanks, Bobcat Goldthwait's last name is misspelled as \"Goldthwaite.\"Rocket: Someday I'm gonna make great machines that fly. And me and my friends are gonna go flying together, into the forever and beautiful sky.SPOILER: There is a scene in the closing credits: a new roster of the Guardians of the Galaxy goes to work.Featured in AniMat's Crazy Cartoon Cast: One Giant Iago Ahead (2019)Creep (Acoustic Version)Written by Jonny Greenwood (as Jonathan Greenwood), Ed O'Brien (as Edward John O'Brien), Colin Greenwood (as Colin Charles Greenwood), Thom Yorke (as Thomas Edward Yorke), Phil Selway (as Philip James Selway), Albert Hammond, and Mike HazlewoodPerformed by RadioheadCourtesy of XL Recordings",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Vin Diesel, Bradley Cooper, Sean Gunn, Chris Pratt, Zoe Saldana, Dave Bautista, Karen Gillan, Pom Klementieff, and Maria Bakalova in Les Gardiens de la Galaxie Vol. 3 (2023)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX285_CR0,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "movies": [
+    {
+      "url": "https://www.imdb.com/title/tt15044796/",
+      "id": "tt15044796",
+      "title": "Les Cowboys Fringants en concert avec l'Orchestre symphonique de Montr\u00e9al",
+      "summary": null,
+      "interests": [ "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "1h 21min",
+      "releaseDate": null,
+      "year": null,
+      "vote": null,
+      "director": "Louis-Philippe Eno",
+      "writers": [ "J\u00e9r\u00f4me Dupras", "Marie-Annick L\u00e9pine", "Jean-Fran\u00e7ois Pauz\u00e9" ],
+      "stars": [ "Louis-Philippe Eno" ],
+      "actors": [
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Chef d'orchestre", "\u2026" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "Baryton" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "Soprano" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": null
+        },
+        {
+          "actor": "Simon Leclerc",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODk3ZDU5MTUtMWU1OC00ZTM0LWFjMzYtNDJhZDYzZjdiNGJmXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": null
+        },
+        {
+          "actor": "Dominique C\u00f4t\u00e9",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYzhiNmNjMTQtZWU2My00NzM3LTlkNGYtZTVkYzA0YzlkY2QyXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": null
+        },
+        {
+          "actor": "Karina Gauvin",
+          "picUrl": null,
+          "characters": null
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMzBmYTI5YTMtNGI0Yi00MTI3LWIyNDUtNjU4OThkMjZhYzM0XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les Cowboys Fringants en concert avec l'Orchestre symphonique de Montr\u00e9al (2021)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMzBmYTI5YTMtNGI0Yi00MTI3LWIyNDUtNjU4OThkMjZhYzM0XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMzBmYTI5YTMtNGI0Yi00MTI3LWIyNDUtNjU4OThkMjZhYzM0XkEyXkFqcGc@._V1_QL75_UX285_CR0,3,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMzBmYTI5YTMtNGI0Yi00MTI3LWIyNDUtNjU4OThkMjZhYzM0XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMzBmYTI5YTMtNGI0Yi00MTI3LWIyNDUtNjU4OThkMjZhYzM0XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt21277612/",
+      "id": "tt21277612",
+      "title": "Les Cowboys Fringants: Mon chum r\u00e9mi",
+      "summary": null,
+      "interests": [ "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": null,
+      "director": "Les Cowboys Fringants",
+      "writers": [ "Les Cowboys Fringants", "J\u00e9r\u00f4me Dupras", "Dominique Lebeau" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        },
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "J\u00e9r\u00f4me Dupras" ]
+        },
+        {
+          "actor": "Dominique Lebeau",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzdkM2FhZjEtYTA1Yy00M2FiLThhZmEtY2YyNDQ5MDc2ZWNiXkEyXkFqcGc@._V1_QL75_UY140_CR24,0,140,140_.jpg" ],
+          "characters": [ "Dominique Lebeau" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "Marie-Annick L\u00e9pine" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "Jean-Fran\u00e7ois Pauz\u00e9" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "Karl Tremblay" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": null,
+      "minPicWidth": null,
+      "minPicAlt": null,
+      "picsUrls": null,
+      "picFullUrl": null,
+      "picsSizes": null
+    },
+    {
+      "url": "https://www.imdb.com/title/tt21277566/",
+      "id": "tt21277566",
+      "title": "Les Cowboys Fringants: En Berne",
+      "summary": null,
+      "interests": [ "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": null,
+      "director": "Les Cowboys Fringants",
+      "writers": [ "Les Cowboys Fringants", "J\u00e9r\u00f4me Dupras", "Dominique Lebeau" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        },
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "J\u00e9r\u00f4me Dupras" ]
+        },
+        {
+          "actor": "Dominique Lebeau",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzdkM2FhZjEtYTA1Yy00M2FiLThhZmEtY2YyNDQ5MDc2ZWNiXkEyXkFqcGc@._V1_QL75_UY140_CR24,0,140,140_.jpg" ],
+          "characters": [ "Dominique Lebeau" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "Marie-Annick L\u00e9pine" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "Jean-Fran\u00e7ois Pauz\u00e9" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "Karl Tremblay" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": null,
+      "minPicWidth": null,
+      "minPicAlt": null,
+      "picsUrls": null,
+      "picFullUrl": null,
+      "picsSizes": null
+    },
+    {
+      "url": "https://www.imdb.com/title/tt8209706/",
+      "id": "tt8209706",
+      "title": "Les Cowboys sont de retour",
+      "summary": null,
+      "interests": [ "Documentary", "Short" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Vid\u00e9o",
+      "releaseDate": "26min",
+      "year": null,
+      "vote": null,
+      "director": "J\u00e9r\u00e9mie Imbert",
+      "writers": [ "J\u00e9r\u00e9mie Imbert" ],
+      "stars": [ "Fran\u00e7ois Lartigue", "Marco Pico", "Pierre Richard" ],
+      "actors": [
+        {
+          "actor": "Fran\u00e7ois Lartigue",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Marco Pico",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Pierre Richard",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI0MTEyMjU2NF5BMl5BanBnXkFtZTYwNjYzMzU0._V1_QL75_UX140_CR0,23,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOWQ0OGU5ZmYtYzFmOC00MDU4LTgwMDctMzk5NDgxYjkyZDRkXkEyXkFqcGc@._V1_QL75_UX190_CR0,7,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les Cowboys sont de retour (2017)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOWQ0OGU5ZmYtYzFmOC00MDU4LTgwMDctMzk5NDgxYjkyZDRkXkEyXkFqcGc@._V1_QL75_UX190_CR0,7,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOWQ0OGU5ZmYtYzFmOC00MDU4LTgwMDctMzk5NDgxYjkyZDRkXkEyXkFqcGc@._V1_QL75_UX285_CR0,11,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOWQ0OGU5ZmYtYzFmOC00MDU4LTgwMDctMzk5NDgxYjkyZDRkXkEyXkFqcGc@._V1_QL75_UX380_CR0,15,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOWQ0OGU5ZmYtYzFmOC00MDU4LTgwMDctMzk5NDgxYjkyZDRkXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt14728478/",
+      "id": "tt14728478",
+      "title": "Les Cowboys Fringants: Sur mon \u00e9paule",
+      "summary": "-Music video of the group 'Les Cowboys Fringants'",
+      "interests": [ "Animation", "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": null,
+      "director": "Gabriel Poirier-Galarneau",
+      "writers": [ "Les Cowboys Fringants", "J\u00e9r\u00f4me Dupras", "Marie-Annick L\u00e9pine" ],
+      "stars": [ "Gabriel Poirier-Galarneau" ],
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        },
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "J\u00e9r\u00f4me Dupras" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "Marie-Annick L\u00e9pine" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "Jean-Fran\u00e7ois Pauz\u00e9" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "Karl Tremblay" ]
+        }
+      ],
+      "anecdotes": "-Les Cowboys Fringants called on their fans to color the music video of their song 'Sur mon \u00e9paule'.\nMore than 325 people were there and colored one or more drawings from images previously shot by the members of the group. In all, Les Cowboys Fringants collected 2000 colored images. Using a rotoscoping process, a cinematographic technique used for animated films, the 2000 or so colorings were then animated to the rhythm of the song.",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOWQ1NThjZTctNjY1NC00YWQ0LTkzODYtNjBlNmQyYjlhZWI1XkEyXkFqcGc@._V1_QL75_UY190_CR73,0,190,190_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les Cowboys Fringants: Sur mon \u00e9paule (2020)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOWQ1NThjZTctNjY1NC00YWQ0LTkzODYtNjBlNmQyYjlhZWI1XkEyXkFqcGc@._V1_QL75_UY190_CR73,0,190,190_.jpg", "https://m.media-amazon.com/images/M/MV5BOWQ1NThjZTctNjY1NC00YWQ0LTkzODYtNjBlNmQyYjlhZWI1XkEyXkFqcGc@._V1_QL75_UY285_CR110,0,285,285_.jpg", "https://m.media-amazon.com/images/M/MV5BOWQ1NThjZTctNjY1NC00YWQ0LTkzODYtNjBlNmQyYjlhZWI1XkEyXkFqcGc@._V1_QL75_UY380_CR147,0,380,380_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOWQ1NThjZTctNjY1NC00YWQ0LTkzODYtNjBlNmQyYjlhZWI1XkEyXkFqcGc@._V1_QL75_UY190_CR73",
+      "picsSizes": [ "25vw", " (min-width: 480px) 17vw", " (min-width: 600px) 13vw", " (min-width: 1024px) 8vw", " (min-width: 1280px) 8vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt21277938/",
+      "id": "tt21277938",
+      "title": "Les Cowboys Fringants: Entre deux taxis",
+      "summary": null,
+      "interests": [ "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": null,
+      "director": "Les Cowboys Fringants",
+      "writers": [ "Les Cowboys Fringants" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": null,
+      "minPicWidth": null,
+      "minPicAlt": null,
+      "picsUrls": null,
+      "picFullUrl": null,
+      "picsSizes": null
+    },
+    {
+      "url": "https://www.imdb.com/title/tt11121984/",
+      "id": "tt11121984",
+      "title": "Les Cowboys Fringants: Plus rien",
+      "summary": "-Music video: Les Cowboys Fringants - \"Plus rien\"",
+      "interests": [ "Animation", "Music" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": null,
+      "director": "Benoit Chagnon",
+      "writers": [ "Les Cowboys Fringants", "Karl Tremblay" ],
+      "stars": [ "Benoit Chagnon", "Val\u00e9rie Dupras" ],
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "Karl Tremblay", "(voix)" ]
+        }
+      ],
+      "anecdotes": "-Award: Videoclip of the year - (ADISQ 2006).",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZmQzNDY1NzYtNjc5Mi00MDgxLTk3MDQtODA3NGRjOTc5NDNiXkEyXkFqcGc@._V1_QL75_UY190_CR70,0,190,190_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les Cowboys Fringants: Plus rien (2005)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZmQzNDY1NzYtNjc5Mi00MDgxLTk3MDQtODA3NGRjOTc5NDNiXkEyXkFqcGc@._V1_QL75_UY190_CR70,0,190,190_.jpg", "https://m.media-amazon.com/images/M/MV5BZmQzNDY1NzYtNjc5Mi00MDgxLTk3MDQtODA3NGRjOTc5NDNiXkEyXkFqcGc@._V1_QL75_UY285_CR105,0,285,285_.jpg", "https://m.media-amazon.com/images/M/MV5BZmQzNDY1NzYtNjc5Mi00MDgxLTk3MDQtODA3NGRjOTc5NDNiXkEyXkFqcGc@._V1_QL75_UY380_CR140,0,380,380_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZmQzNDY1NzYtNjc5Mi00MDgxLTk3MDQtODA3NGRjOTc5NDNiXkEyXkFqcGc@._V1_QL75_UY190_CR70",
+      "picsSizes": [ "25vw", " (min-width: 480px) 17vw", " (min-width: 600px) 13vw", " (min-width: 1024px) 8vw", " (min-width: 1280px) 8vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt4228294/",
+      "id": "tt4228294",
+      "title": "Les cowboys",
+      "summary": "When his daughter goes missing from their prairie town east of France, Alain and his young son, Kid, head out to find her. The journey takes the men to some far-off and unsettling places in ...",
+      "interests": [ "Road Trip", "Drama", "Thriller", "Western" ],
+      "rating": "6,7",
+      "ratingCount": "10",
+      "duration": "1h 44min",
+      "releaseDate": "10 avr. 2021",
+      "year": "2021",
+      "vote": "2,3\u00a0k",
+      "director": "Thomas Bidegain",
+      "writers": [ "No\u00e9 Debr\u00e9", "Thomas Bidegain", "Laurent Abitbol" ],
+      "stars": [ "Fran\u00e7ois Damiens", "Finnegan Oldfield", "Agathe Dronne" ],
+      "actors": [
+        {
+          "actor": "Fran\u00e7ois Damiens",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA4MDk4MTA4M15BMl5BanBnXkFtZTcwNzk1MjM1OQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Alain Balland" ]
+        },
+        {
+          "actor": "Finnegan Oldfield",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI5MTM4MjkyNV5BMl5BanBnXkFtZTgwMDI2MTA2NTE@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Georges Balland, dit Kid" ]
+        },
+        {
+          "actor": "Agathe Dronne",
+          "picUrl": null,
+          "characters": [ "Nicole Balland" ]
+        },
+        {
+          "actor": "Ellora Torchia",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZmMwOWMyYTAtZWRiNS00YzhhLTkzNDItMTE2ZDg1ZjM3ZjBlXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Shazhana" ]
+        },
+        {
+          "actor": "Antoine Chappey",
+          "picUrl": null,
+          "characters": [ "Charles" ]
+        },
+        {
+          "actor": "Maxim Driesen",
+          "picUrl": null,
+          "characters": [ "Kid (13 ans)" ]
+        },
+        {
+          "actor": "Jean-Louis Coulloc'h",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzU1OTg5MTc5Ml5BMl5BanBnXkFtZTYwNzEwNDc3._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "L'Indien" ]
+        },
+        {
+          "actor": "Gilles Treton",
+          "picUrl": null,
+          "characters": [ "Sheriff" ]
+        },
+        {
+          "actor": "Francis Leplay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc4ODUzMzE0OV5BMl5BanBnXkFtZTgwNjg3Mjc1MjE@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "L'homme du train" ]
+        },
+        {
+          "actor": "Djemel Barek",
+          "picUrl": null,
+          "characters": [ "Le p\u00e8re d'Ahmed" ]
+        },
+        {
+          "actor": "Mounir Margoum",
+          "picUrl": null,
+          "characters": [ "Ahmed" ]
+        },
+        {
+          "actor": "Le\u00efla Saadali",
+          "picUrl": null,
+          "characters": [ "La m\u00e8re d'Ahmed" ]
+        },
+        {
+          "actor": "Laure Calamy",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZTRjNTY3YTktZjY0Yy00NWY2LThjMmQtNjIzYjkxYTZmNWU2XkEyXkFqcGc@._V1_QL75_UY140_CR97,0,140,140_.jpg" ],
+          "characters": [ "Isabelle" ]
+        },
+        {
+          "actor": "Antoine R\u00e9gent",
+          "picUrl": null,
+          "characters": [ "Marc" ]
+        },
+        {
+          "actor": "Iliana Zabeth",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTMxMzM2NTkwNV5BMl5BanBnXkFtZTcwNTczMjEyNQ@@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Kelly Balland" ]
+        },
+        {
+          "actor": "Antonia Campbell-Hughes",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDQyY2M5OWItMjY3Mi00MmY5LWE5NTQtZDBiMWM2Njc3YTM2XkEyXkFqcGc@._V1_QL75_UY140_CR1,0,140,140_.jpg" ],
+          "characters": [ "Emma", "(as Antonia Campbell Hughes)" ]
+        },
+        {
+          "actor": "John C. Reilly",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc4MDEzMDkzOF5BMl5BanBnXkFtZTYwNzQzNzcy._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "L'Am\u00e9ricain" ]
+        },
+        {
+          "actor": "Sam Louwyck",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjM2MTVhNDktOTM4Ny00YmUzLWFhYTItOWVjODNiMzdjZWIxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Le faussaire" ]
+        }
+      ],
+      "anecdotes": "Ellora Torchia's debut.Kid watches a news report of the 9/11 attacks on the World Trade Center. The reporter says that the Department of Homeland Security is in a panic because of the attack. The Department of Homeland Security did not exist on 9/11. It's creation did not take place until November 25, 2002, a little more than a year after the attacks.Remake of La prisonni\u00e8re du d\u00e9sert (1956)Tennessee WaltzLyrics by Redd StewartMusic by Pee Wee KingPerformed by Fran\u00e7ois Damiens & Caroline Attal(p) 2014 Les Productions du Tresor\u00a9 1946 Acuff Rose Music Inc, administre par Chester Music Ltdpour les territoires du British Commonwealth, de l'Europe continentale, Irlande et Afrique du Sud / Sony ATV Acuff Rose Music Inc.Avec l'autorisation d'Universal Music Vision, de Campbel Connelly France et de Sony ATV Music Publishing France. Tous droits reserves.",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZjliOTcwMjEtODZhMC00YTBlLWI2NWYtNDVkNTYwNjUyNjY0XkEyXkFqcGc@._V1_QL75_UY281_CR13,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Agathe Dronne, Fran\u00e7ois Damiens, and Finnegan Oldfield in Les cowboys (2015)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZjliOTcwMjEtODZhMC00YTBlLWI2NWYtNDVkNTYwNjUyNjY0XkEyXkFqcGc@._V1_QL75_UY281_CR13,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZjliOTcwMjEtODZhMC00YTBlLWI2NWYtNDVkNTYwNjUyNjY0XkEyXkFqcGc@._V1_QL75_UY422_CR19,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZjliOTcwMjEtODZhMC00YTBlLWI2NWYtNDVkNTYwNjUyNjY0XkEyXkFqcGc@._V1_QL75_UY562_CR26,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZjliOTcwMjEtODZhMC00YTBlLWI2NWYtNDVkNTYwNjUyNjY0XkEyXkFqcGc@._V1_QL75_UY281_CR13",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt14441570/",
+      "id": "tt14441570",
+      "title": "Les Cowboys Fringants: L'Am\u00e9rique pleure - le film",
+      "summary": "En for\u00eat, en plein champ, sur un pont couvert ou dans un caf\u00e9, les Cowboys Fringants interpr\u00e8tent une s\u00e9lection de leurs chansons folkloriques. Chaque composition est entrecoup\u00e9e d'images du...",
+      "interests": [ "Music" ],
+      "rating": "8,6",
+      "ratingCount": "10",
+      "duration": "1h 21min",
+      "releaseDate": null,
+      "year": null,
+      "vote": "17",
+      "director": "Louis-Philippe Eno",
+      "writers": [ "J\u00e9r\u00f4me Dupras", "Les Cowboys Fringants", "Marie-Annick L\u00e9pine" ],
+      "stars": [ "Louis-Philippe Eno" ],
+      "actors": [
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOTllMWQ3MzQtYzRjNi00MjM1LWJhMjEtNzQ1OWJiMWFiNjBjXkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les Cowboys Fringants: L'Am\u00e9rique pleure - le film (2021)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOTllMWQ3MzQtYzRjNi00MjM1LWJhMjEtNzQ1OWJiMWFiNjBjXkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOTllMWQ3MzQtYzRjNi00MjM1LWJhMjEtNzQ1OWJiMWFiNjBjXkEyXkFqcGc@._V1_QL75_UX285_CR0,3,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOTllMWQ3MzQtYzRjNi00MjM1LWJhMjEtNzQ1OWJiMWFiNjBjXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOTllMWQ3MzQtYzRjNi00MjM1LWJhMjEtNzQ1OWJiMWFiNjBjXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt11111940/",
+      "id": "tt11111940",
+      "title": "Les Cowboys Fringants: L'Am\u00e9rique pleure",
+      "summary": "-Music video: Les Cowboys Fringants - \"L'Am\u00e9rique pleure\"",
+      "interests": [ "Music" ],
+      "rating": "8,1",
+      "ratingCount": "10",
+      "duration": "Clip musical",
+      "releaseDate": "4min",
+      "year": null,
+      "vote": "8",
+      "director": "Louis-Philippe Eno",
+      "writers": [ "Les Cowboys Fringants", "Karl Tremblay", "J\u00e9r\u00f4me Dupras" ],
+      "stars": [ "Louis-Philippe Eno" ],
+      "actors": [
+        {
+          "actor": "Les Cowboys Fringants",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTNmOGU4MmUtZTNlMS00NDQ5LWJhNDEtYzkzZDAxOWM3NjQ0XkEyXkFqcGc@._V1_QL75_UY140_CR25,0,140,140_.jpg" ],
+          "characters": [ "Les Cowboys Fringants" ]
+        },
+        {
+          "actor": "Karl Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODljNzdlMWEtMzM2My00ODcyLWE3MjItMWYwOGFhYzQwYjk0XkEyXkFqcGc@._V1_QL75_UY140_CR7,0,140,140_.jpg" ],
+          "characters": [ "chanteur principal du groupe musical 'Les Cowboys Fringants'" ]
+        },
+        {
+          "actor": "J\u00e9r\u00f4me Dupras",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk4ZTFjMjEtYjkyZC00OWVhLWI0ZTktM2ZlNGQ0OGU1YzAxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "membre du groupe musical 'Les Cowboys Fringants'" ]
+        },
+        {
+          "actor": "Marie-Annick L\u00e9pine",
+          "picUrl": null,
+          "characters": [ "membre du groupe musical 'Les Cowboys Fringants'" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Pauz\u00e9",
+          "picUrl": null,
+          "characters": [ "membre du groupe musical 'Les Cowboys Fringants'" ]
+        },
+        {
+          "actor": "Mathieu Casavant",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjk2NWQ4YmItNWIyZi00ZjkwLTkyNDItYzJkMDI1NWJjNGNiXkEyXkFqcGc@._V1_QL75_UX140_CR0,8,140,140_.jpg" ],
+          "characters": [ "Lead dancer" ]
+        }
+      ],
+      "anecdotes": "-The music video was shot at Taverne Rancho, located at 8477 Notre-Dame Street East, in Montreal (Canada), and the filming took place less than a week before this video was published on YouTube.",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMWRhODQxMDgtNjllYy00MDM2LWFiMGUtZTc5YjdjM2YwNTU1XkEyXkFqcGc@._V1_QL75_UY190_CR74,0,190,190_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Mathieu Casavant in Les Cowboys Fringants: L'Am\u00e9rique pleure (2019)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMWRhODQxMDgtNjllYy00MDM2LWFiMGUtZTc5YjdjM2YwNTU1XkEyXkFqcGc@._V1_QL75_UY190_CR74,0,190,190_.jpg", "https://m.media-amazon.com/images/M/MV5BMWRhODQxMDgtNjllYy00MDM2LWFiMGUtZTc5YjdjM2YwNTU1XkEyXkFqcGc@._V1_QL75_UY285_CR111,0,285,285_.jpg", "https://m.media-amazon.com/images/M/MV5BMWRhODQxMDgtNjllYy00MDM2LWFiMGUtZTc5YjdjM2YwNTU1XkEyXkFqcGc@._V1_QL75_UY380_CR148,0,380,380_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMWRhODQxMDgtNjllYy00MDM2LWFiMGUtZTc5YjdjM2YwNTU1XkEyXkFqcGc@._V1_QL75_UY190_CR74",
+      "picsSizes": [ "25vw", " (min-width: 480px) 17vw", " (min-width: 600px) 13vw", " (min-width: 1024px) 8vw", " (min-width: 1280px) 8vw" ]
+    }
+  ]
+}
