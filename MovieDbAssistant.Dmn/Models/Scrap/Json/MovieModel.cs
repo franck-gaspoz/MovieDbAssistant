@@ -64,10 +64,11 @@ public sealed partial class MovieModel
 
     public string? MinPicAlt { get; set; }
 
-    public List<string> PicsUrls { get; set; } = [];
+    public List<string>? PicsUrls { get; set; } = [];
 
-    public string? MedPicUrl => PicsUrls.Count > 2
-        ? PicsUrls[2] : MinPicUrl;
+    public string? MedPicUrl => PicsUrls != null ? PicsUrls.Count > 2
+        ? PicsUrls[2] : MinPicUrl
+        : null;
 
     public string? PicFullUrl { get; set; }
 
