@@ -50,7 +50,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 
         if (queries==null) return null;
 
-        var res = new List<MovieModel>();
+        var movies = new List<MovieModel>();
         queries.ForEach(query =>
         {
             var provider = _serviceProvider
@@ -60,11 +60,16 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             {
                 var t = _moviesModelMergeBuilder.Collapse(moviesModel);
                 if (t!=null)
-                    res.Add(t);
+                    movies.Add(t);
             }
         });
 
-        //return _queryDataProvider.Get()
-        return null;
+        // enapsulate type and add meta data (query,..)
+        var data = new MoviesModel()
+        {
+            Movies = movies
+        };
+
+        return data;
     }
 }

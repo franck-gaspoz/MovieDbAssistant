@@ -1,8 +1,12 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Components.Sys;
+
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
@@ -12,8 +16,18 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// </summary>
 public sealed class JsonQueryDataProvider : JsonDataProvider
 {
-    public JsonQueryDataProvider(ILogger<JsonQueryDataProvider> logger)
-        : base(logger) { }
+    readonly IConfiguration _config;
+    readonly ProcessWrapper _processWrapper;
+
+    public JsonQueryDataProvider(
+        ILogger<JsonQueryDataProvider> logger,
+        IConfiguration config,
+        ProcessWrapper processWrapper)
+        : base(logger)
+    {
+        _config = config;
+        _processWrapper = processWrapper;
+    }
 
     /// <summary>
     /// get from query model
@@ -23,14 +37,16 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
     public override MoviesModel? Get(object? source)
     {
         if (source == null) return null;
-        if (source is not QueryModelSearchByTitle query) return null;  
+        if (source is not QueryModelSearchByTitle query) return null;
 
         Logger.LogInformation(
             this,
             "handle search query: "
             + query);
 
-        
+        var toolPath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            _config[Scrap_Tool_Path]!);
 
         return null;
     }

@@ -37,6 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{F03B6F94-AF1
 		doc\notes.txt = doc\notes.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{4915AC4D-8E76-4957-9B89-7D1406E0FAB6}"
+	ProjectSection(SolutionItems) = preProject
+		tools\imdb-scrapper-1.0.0.exe = tools\imdb-scrapper-1.0.0.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

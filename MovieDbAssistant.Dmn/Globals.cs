@@ -75,5 +75,10 @@ public sealed class Globals
     /// text data provider failed
     /// </summary>
     public const string DataProvider_Failed = "Texts:DataProviderFailed";
+
+    /// <summary>
+    /// scrap tool path
+    /// </summary>
+    public const string Scrap_Tool_Path = "Scrap:ToolPath";
 }
 

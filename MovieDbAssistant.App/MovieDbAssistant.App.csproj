@@ -317,6 +317,13 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="tools\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\tools\imdb-scrapper-1.0.0.exe" Link="tools\imdb-scrapper-1.0.0.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
