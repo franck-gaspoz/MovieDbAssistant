@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Dmn.Components.Builders.Models;
 using MovieDbAssistant.Dmn.Components.Query;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -14,15 +16,21 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 {
     readonly JsonQueryDataProvider _queryDataProvider;
     readonly QueryBuilder _queryBuilder;
+    readonly MoviesModelMergeBuilder _moviesModelMergeBuilder;
+    readonly IServiceProvider _serviceProvider;
 
     public JsonQueryFileDataProvider(
         ILogger<JsonQueryFileDataProvider> logger,
         JsonQueryDataProvider queryDataProvider,
-        QueryBuilder queryBuilder)
+        QueryBuilder queryBuilder,
+        MoviesModelMergeBuilder moviesModelMergeBuilder,
+        IServiceProvider serviceProvider)
         : base(logger)
     {
         _queryDataProvider = queryDataProvider;
         _queryBuilder = queryBuilder;
+        _moviesModelMergeBuilder = moviesModelMergeBuilder;
+        _serviceProvider = serviceProvider;
     }
 
     /// <inheritdoc/>
@@ -38,7 +46,23 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 
         var file = File.ReadAllText(src);
 
-        var queries = _queryBuilder.Build(file);
+        var queries = _queryBuilder.Build(src,file);
+
+        if (queries==null) return null;
+
+        var res = new List<MovieModel>();
+        queries.ForEach(query =>
+        {
+            var provider = _serviceProvider
+                .GetRequiredService<JsonQueryDataProvider>();
+            var moviesModel = provider.Get(query);
+            if (moviesModel != null)
+            {
+                var t = _moviesModelMergeBuilder.Collapse(moviesModel);
+                if (t!=null)
+                    res.Add(t);
+            }
+        });
 
         //return _queryDataProvider.Get()
         return null;

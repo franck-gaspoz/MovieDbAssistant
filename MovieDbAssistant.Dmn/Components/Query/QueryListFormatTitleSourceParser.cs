@@ -30,12 +30,16 @@ public sealed class QueryListFormatTitleSourceParser :
         void AddQueryModel(
             string title,
             string? source,
-            string? download)
+            string? download,
+            int i)
         {
-            queries.Add(new QueryModelSearchByTitle(title)
-            {
-                Metadata = new(source, download)
-            });
+            var model = new QueryModelSearchByTitle(title);
+            model.Metadata ??= new();
+            model.Metadata.QueryFileLine = i;
+            model.Metadata.Source = source;
+            model.Metadata.Download= download;
+
+            queries.Add(model);
         }
 
         var i = 0;
@@ -49,7 +53,7 @@ public sealed class QueryListFormatTitleSourceParser :
                 var t = source?.Split(',');
                 var play = t?[0];
                 var download = t != null ? (t.Length > 1 ? t[1] : null) : null;
-                AddQueryModel(title, source, download);
+                AddQueryModel(title, source, download, i);
                 i += 3;
             }
             else i++;

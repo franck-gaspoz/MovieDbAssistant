@@ -27,16 +27,19 @@ public sealed class QueryListFormatTitleParser :
     {
         var queries = new List<QueryModelSearchByTitle>();
         
-        void AddQueryModel(string title)
+        void AddQueryModel(string title,int i)
         {
-            queries.Add(new QueryModelSearchByTitle(title));
+            var model = new QueryModelSearchByTitle(title);
+            model.Metadata ??= new();
+            model.Metadata.QueryFileLine = i;
+            queries.Add(model);
         }
 
         for (var i = 0; i < lines.Length; i++)
         {
             var s = lines[i];
             if (!s.IsCommentLine() && !s.IsEmptyLine())
-                AddQueryModel(s.Trim());
+                AddQueryModel(s.Trim(),i);
         }
         return queries;
     }

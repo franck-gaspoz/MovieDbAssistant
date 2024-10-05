@@ -37,9 +37,10 @@ public sealed class QueryBuilder : IIdentifiable
     /// <summary>
     /// build from a query source file content
     /// </summary>
+    /// <param name="queryFile">query file name</param>
     /// <param name="content">query source file content</param>
     /// <returns>this object</returns>
-    public List<QueryModelSearchByTitle> Build(string content)
+    public List<QueryModelSearchByTitle> Build(string queryFile,string content)
     {
         _queries.Clear();
         _lines = content
@@ -55,8 +56,20 @@ public sealed class QueryBuilder : IIdentifiable
         _logger.LogInformation(this, "query parser: "+formatParser.GetType().Name);
 
         var res = formatParser.Parse(_lines);
+        AddMetadata(queryFile,res);
 
         return res;
+    }
+
+    static void AddMetadata(string queryFile,List<QueryModelSearchByTitle>? queries)
+    {
+        if (queries == null) return;
+        foreach (var query in queries)
+        {
+            query.Metadata ??= new QueryMetadata();
+            var m = query.Metadata;
+            m.QueryFile = queryFile;
+        }
     }
 
     bool IsFormatTitleList()
@@ -100,6 +113,9 @@ public sealed class QueryBuilder : IIdentifiable
             remove.Add(j);
             j--;
         }
+
         _lines = _lines[i .. (j + 1)];
+        for (i=0;i<_lines.Length;i++)
+            _lines[i]=_lines[i].Trim();
     }
 }
