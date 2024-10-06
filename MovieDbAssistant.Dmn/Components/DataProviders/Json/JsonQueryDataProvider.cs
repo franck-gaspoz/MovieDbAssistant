@@ -42,7 +42,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         if (source == null) return null;
         if (source is not QueryModelSearchByTitle query) return null;
 
-        var qid = query.Metadata!.InstanceId + "";
+        var qid = query.Metadata!.InstanceId.Value + "";
         var outputFile = qid + ".json";
         var output = Path.Combine(
             Directory.GetCurrentDirectory(),
