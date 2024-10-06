@@ -3,10 +3,10 @@ using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
-using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
+using MovieDbAssistant.Lib.Components.Sys;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
 

@@ -5,6 +5,8 @@
 /// </summary>
 public sealed class SharedCounter
 {
+    readonly object _lock = new object();
+
     static readonly Dictionary<Type, int> _next = [];
 
     public int Value { get; private set; }
@@ -12,12 +14,15 @@ public sealed class SharedCounter
     public SharedCounter(object owner)
     {
         var t = owner.GetType();
-        if (!_next.TryGetValue(t, out var next))
+        lock (_lock)
         {
-            next = 0;
-            _next.Add(t, next);
+            if (!_next.TryGetValue(t, out var next))
+            {
+                next = 0;
+                _next.Add(t, next);
+            }
+            Value = next;
+            _next[t] = ++next;
         }
-        Value = next;
-        _next[t] = ++next;
     }
 }

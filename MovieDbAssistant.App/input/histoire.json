@@ -1,0 +1,1154 @@
+{
+  "movies": [
+    {
+      "url": "https://www.imdb.com/title/tt11564570/",
+      "id": "tt11564570",
+      "title": "Glass Onion : Une histoire \u00e0 couteaux tir\u00e9s",
+      "summary": "Benoit Blanc, c\u00e9l\u00e8bre d\u00e9tective du sud, se rend en Gr\u00e8ce pour sa derni\u00e8re affaire.",
+      "interests": [ "Cozy Mystery", "Satire", "Whodunnit", "Comedy", "Crime", "Drama", "Mystery", "Thriller" ],
+      "rating": "7,1",
+      "ratingCount": "10",
+      "duration": "2h 19min",
+      "releaseDate": "1 janv. 2023",
+      "year": "2023",
+      "vote": "457\u00a0k",
+      "director": "Rian Johnson",
+      "writers": [ "Rian Johnson" ],
+      "stars": [ "Daniel Craig", "Edward Norton", "Kate Hudson" ],
+      "actors": [
+        {
+          "actor": "Daniel Craig",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEzMjk4NDU4MF5BMl5BanBnXkFtZTcwMDMyNjQzMg@@._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Benoit Blanc" ]
+        },
+        {
+          "actor": "Edward Norton",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTYwNjQ5MTI1NF5BMl5BanBnXkFtZTcwMzU5MTI2Mw@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Miles Bron" ]
+        },
+        {
+          "actor": "Kate Hudson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTA1NTk0MjMyOTFeQTJeQWpwZ15BbWU3MDA4NzEzMTM@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Birdie Jay" ]
+        },
+        {
+          "actor": "Dave Bautista",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjYyZTc3MzEtZTk0OC00NWNlLWJmOTMtYjFmOGY1YjZlNjI5XkEyXkFqcGc@._V1_QL75_UY140_CR55,0,140,140_.jpg" ],
+          "characters": [ "Duke Cody" ]
+        },
+        {
+          "actor": "Janelle Mon\u00e1e",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTEyMDA1MzE0NjdeQTJeQWpwZ15BbWU3MDM0NzA4MDQ@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Andi Brand" ]
+        },
+        {
+          "actor": "Kathryn Hahn",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjE1OTcxNDczMl5BMl5BanBnXkFtZTcwMDA1NDcyMQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Claire Debella" ]
+        },
+        {
+          "actor": "Leslie Odom Jr.",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjRlMGE1NmEtZjliZi00OWNkLWFlYWUtZDZhN2Y1MDMzNzMzXkEyXkFqcGc@._V1_QL75_UX140_CR0,32,140,140_.jpg" ],
+          "characters": [ "Lionel Toussaint" ]
+        },
+        {
+          "actor": "Jessica Henwick",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjE3MzU5NDc0Nl5BMl5BanBnXkFtZTgwNDMzNjE1NzE@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Peg" ]
+        },
+        {
+          "actor": "Madelyn Cline",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODc1MTkzM2MtNzMzZS00YTM5LWE5Y2EtZGQ0ZjBlYWQ5YTJhXkEyXkFqcGc@._V1_QL75_UY140_CR24,0,140,140_.jpg" ],
+          "characters": [ "Whiskey" ]
+        },
+        {
+          "actor": "Noah Segan",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQ5NTE2ODI1OV5BMl5BanBnXkFtZTcwNjYzOTk0Ng@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Derol" ]
+        },
+        {
+          "actor": "Jackie Hoffman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAwODA0OTkwMl5BMl5BanBnXkFtZTcwMjU5MDExOA@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Ma" ]
+        },
+        {
+          "actor": "Dallas Roberts",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjg0MmQ4NjQtNmZlYS00MWUxLTk2YTktMzFjODAxNzc0ZGNhXkEyXkFqcGc@._V1_CR245,1,1184,1776_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Devon Debella" ]
+        },
+        {
+          "actor": "Ethan Hawke",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTk4NDMxMTI0MF5BMl5BanBnXkFtZTYwMjE3ODE0._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Efficient Man" ]
+        },
+        {
+          "actor": "Hugh Grant",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc4MTgxOTk2Ml5BMl5BanBnXkFtZTcwNzMwMjYwMw@@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Phillip" ]
+        },
+        {
+          "actor": "Stephen Sondheim",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEyOTcyNjE3M15BMl5BanBnXkFtZTYwOTM3NTc4._V1_QL75_UX140_CR0,7,140,140_.jpg" ],
+          "characters": [ "Stephen Sondheim" ]
+        },
+        {
+          "actor": "Natasha Lyonne",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTEyMzc2MTE2MzheQTJeQWpwZ15BbWU4MDUwNTY0ODYx._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Natasha Lyonne" ]
+        },
+        {
+          "actor": "Kareem Abdul-Jabbar",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDZlZjE5NjEtN2U4OC00YTAxLTkxZmYtM2FjMzFlNGRmYmFiXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Kareem Abdul-Jabbar" ]
+        },
+        {
+          "actor": "Serena Williams",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc0NzY4Mzg1Ml5BMl5BanBnXkFtZTcwMzU5NzY4Mw@@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Serena Williams" ]
+        }
+      ],
+      "anecdotes": "Joseph Gordon-Levitt: As the voice of Miles' clock, the \"Hourly Dong.\" He has had a role in all of Rian Johnson's films.Benoit Blanc requests that, after Duke's death, Miles call his boat and asks them to come immediately. Shortly after, Lionel comes back to tell Blanc that the boat can't come until after 6am as the Banksy dock was set to low-tide height. There is no significant tide in the Greek Mediterranean that would result in this type of problem.Birdie Jay: Like Miles said, I'm a truth teller. Some people can't handle it.Benoit Blanc: It's a dangerous thing to mistake speaking without thought for speaking the truth. Don't you think?Birdie Jay: Are you calling me dangerous?Benoit Blanc: We'll see.SPOILER: When the end credits roll showing the actors' names with their painted visages, Janelle Monae is the only actor with two visages.Featured in Amanda the Jedi Show: This Movie was Shockingly Terrible - Best and Worst of TIFF 2022 (2022)Fugue in G Minor, BWV 578 'Little'Written by Johann Sebastian Bach (as J.S. Bach)Performed by Tatiana NikolaevaCourtesy of Mezdunarodnaya Kniga-Musica",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BYmE2MmJmNmUtM2ZhOS00YzhjLTliMWEtN2ZlMjE1MzZjY2UyXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Daniel Craig in Glass Onion : Une histoire \u00e0 couteaux tir\u00e9s (2022)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BYmE2MmJmNmUtM2ZhOS00YzhjLTliMWEtN2ZlMjE1MzZjY2UyXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BYmE2MmJmNmUtM2ZhOS00YzhjLTliMWEtN2ZlMjE1MzZjY2UyXkEyXkFqcGc@._V1_QL75_UX285_CR0,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BYmE2MmJmNmUtM2ZhOS00YzhjLTliMWEtN2ZlMjE1MzZjY2UyXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BYmE2MmJmNmUtM2ZhOS00YzhjLTliMWEtN2ZlMjE1MzZjY2UyXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt3838728/",
+      "id": "tt3838728",
+      "title": "Bang Gang",
+      "summary": "Dans les faubourgs ais\u00e9s d'une petite ville, un groupe d'adolescents ordinaires et \u00e9quilibr\u00e9s choisissent une trajectoire atypique.",
+      "interests": [ "Drama", "Romance" ],
+      "rating": "5,5",
+      "ratingCount": "10",
+      "duration": "1h 38min",
+      "releaseDate": "17 avr. 2020",
+      "year": "2020",
+      "vote": "3,5\u00a0k",
+      "director": "Eva Husson",
+      "writers": [ "Eva Husson" ],
+      "stars": [ "Finnegan Oldfield", "Marilyn Lima", "Lorenzo Lef\u00e8bvre" ],
+      "actors": [
+        {
+          "actor": "Finnegan Oldfield",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI5MTM4MjkyNV5BMl5BanBnXkFtZTgwMDI2MTA2NTE@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Alex" ]
+        },
+        {
+          "actor": "Marilyn Lima",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc0NjEzMjg2OF5BMl5BanBnXkFtZTgwOTA5NzYwOTE@._V1_QL75_UY140_CR88,0,140,140_.jpg" ],
+          "characters": [ "George" ]
+        },
+        {
+          "actor": "Lorenzo Lef\u00e8bvre",
+          "picUrl": null,
+          "characters": [ "Gabriel" ]
+        },
+        {
+          "actor": "Daisy Broom",
+          "picUrl": null,
+          "characters": [ "Laetitia" ]
+        },
+        {
+          "actor": "Fred Hotier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTA1NTg0NTY4ODFeQTJeQWpwZ15BbWU4MDU0MTIzNTkx._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Nikita" ]
+        },
+        {
+          "actor": "Manuel Husson",
+          "picUrl": null,
+          "characters": [ "Le p\u00e8re de Gabriel" ]
+        },
+        {
+          "actor": "Olivia Lancelot",
+          "picUrl": null,
+          "characters": [ "La m\u00e8re de Gabriel" ]
+        },
+        {
+          "actor": "Rapha\u00ebl Porcheron",
+          "picUrl": null,
+          "characters": [ "Le p\u00e8re de Laetitia" ]
+        },
+        {
+          "actor": "Tatiana Werner",
+          "picUrl": null,
+          "characters": [ "La m\u00e8re de George" ]
+        },
+        {
+          "actor": "Olivier Lefebvre",
+          "picUrl": null,
+          "characters": [ "Le p\u00e8re de George" ]
+        },
+        {
+          "actor": "Yolande Carsin",
+          "picUrl": null,
+          "characters": [ "La prof d'espagnol" ]
+        },
+        {
+          "actor": "Eva Husson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTg5NDc5ODExNF5BMl5BanBnXkFtZTgwNjM3OTc3NjE@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "La prof de maths" ]
+        },
+        {
+          "actor": "Alexandre Perrier",
+          "picUrl": null,
+          "characters": [ "Le prof de chimie" ]
+        },
+        {
+          "actor": "Gaspard-Andr\u00e9as Perrier",
+          "picUrl": null,
+          "characters": [ "Le b\u00e9b\u00e9" ]
+        },
+        {
+          "actor": "Patricia Husson",
+          "picUrl": null,
+          "characters": [ "La m\u00e8re d'Alex" ]
+        },
+        {
+          "actor": "Jules Cabat",
+          "picUrl": null,
+          "characters": [ "Jules" ]
+        },
+        {
+          "actor": "Julien Gomez",
+          "picUrl": null,
+          "characters": [ "I\u00f1aki" ]
+        },
+        {
+          "actor": "Julien Granel",
+          "picUrl": null,
+          "characters": [ "Xabi" ]
+        }
+      ],
+      "anecdotes": "Inspired by true events.When Alex photographs Laetia flipping him off in front of the mirror, she's doing so with her left hand. Later in the movie, when George sees the photo published on a social media site, the photo shows her flipping off with her right hand instead.Gabriel: [First lines] It was the year the whole world remembers. The year of the endless winter and the subsequent heat wave. The year in which a train derailed. The year of Bang Gang. That week, finally the sun came out and for us it all began.The end credits are accompanied by video of the main characters running, nude, on a country road at night, lit by a red light.OljatoPerformed by White SeaWritten by Morgan Kibby, Jonathan Leahy and Raymond Suen",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BODJhNDQyN2QtM2JiMi00YzNmLWJiZDktYjExMWEyMjFlOWUyXkEyXkFqcGc@._V1_QL75_UY281_CR11,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Bang Gang (2015)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BODJhNDQyN2QtM2JiMi00YzNmLWJiZDktYjExMWEyMjFlOWUyXkEyXkFqcGc@._V1_QL75_UY281_CR11,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BODJhNDQyN2QtM2JiMi00YzNmLWJiZDktYjExMWEyMjFlOWUyXkEyXkFqcGc@._V1_QL75_UY422_CR16,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BODJhNDQyN2QtM2JiMi00YzNmLWJiZDktYjExMWEyMjFlOWUyXkEyXkFqcGc@._V1_QL75_UY562_CR21,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BODJhNDQyN2QtM2JiMi00YzNmLWJiZDktYjExMWEyMjFlOWUyXkEyXkFqcGc@._V1_QL75_UY281_CR11",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt5893264/",
+      "id": "tt5893264",
+      "title": "D'apr\u00e8s une histoire vraie",
+      "summary": "Une \u00e9crivaine traverse une p\u00e9riode difficile apr\u00e8s la publication de son dernier livre et d\u00e9cide de s'impliquer avec un de ses admirateurs obsessif.",
+      "interests": [ "Drama", "Mystery", "Thriller" ],
+      "rating": "5,7",
+      "ratingCount": "10",
+      "duration": "1h 40min",
+      "releaseDate": "9 sept. 2023",
+      "year": "2023",
+      "vote": "7,5\u00a0k",
+      "director": "Roman Polanski",
+      "writers": [ "Olivier Assayas", "Roman Polanski", "Delphine de Vigan" ],
+      "stars": [ "Emmanuelle Seigner", "Eva Green", "Vincent Perez" ],
+      "actors": [
+        {
+          "actor": "Emmanuelle Seigner",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTk5MjU5MDQ4OV5BMl5BanBnXkFtZTcwODQ3MzA2MQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Delphine Dayrieux" ]
+        },
+        {
+          "actor": "Eva Green",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQ0MDA2ODE2Ml5BMl5BanBnXkFtZTcwMjI0Nzc3Nw@@._V1_QL75_UX140_CR0,17,140,140_.jpg" ],
+          "characters": [ "Elle" ]
+        },
+        {
+          "actor": "Vincent Perez",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BN2U3ZmFkMTktMzViNy00ZmMwLWJmZTUtOTk2MDc0ZDRkZDlhXkEyXkFqcGc@._V1_QL75_UX140_CR0,32,140,140_.jpg" ],
+          "characters": [ "Fran\u00e7ois" ]
+        },
+        {
+          "actor": "Dominique Pinon",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI2Njg1MDQ2MF5BMl5BanBnXkFtZTcwODQ3Mjk1OA@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Raymond" ]
+        },
+        {
+          "actor": "Brigitte Ro\u00fcan",
+          "picUrl": null,
+          "characters": [ "La documentaliste du lyc\u00e9e" ]
+        },
+        {
+          "actor": "Camille Chamoux",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjdlNDRkYTYtMTg3ZC00MWM1LTlkMDctMTEyYWU5ZThjODRiXkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Oriane, l'attach\u00e9e de presse" ]
+        },
+        {
+          "actor": "Jos\u00e9e Dayan",
+          "picUrl": null,
+          "characters": [ "Karina" ]
+        },
+        {
+          "actor": "No\u00e9mie Lvovsky",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI0MzE2MzIwOV5BMl5BanBnXkFtZTYwMjc5NDQ0._V1_QL75_UX140_CR0,14,140,140_.jpg" ],
+          "characters": [ "La commissaire d'exposition" ]
+        },
+        {
+          "actor": "Leonello Brandolini",
+          "picUrl": null,
+          "characters": [ "L'\u00e9diteur italien" ]
+        },
+        {
+          "actor": "\u00c9dith Le Merdy",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzZhOTMzNmYtMzlhYS00YWVjLWE3ZDAtMDRlMGZjMDkyZWM1XkEyXkFqcGc@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "La voisine" ]
+        },
+        {
+          "actor": "Saadia Benta\u00efeb",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU0NDEyMzYwMV5BMl5BanBnXkFtZTgwMTU0Mjg5MzI@._V1_QL75_UY140_CR39,0,140,140_.jpg" ],
+          "characters": [ "Jeanne" ]
+        },
+        {
+          "actor": "Elisabeth Quin",
+          "picUrl": null,
+          "characters": [ "La journaliste" ]
+        },
+        {
+          "actor": "Damien Bonnard",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzViY2Q5ZDYtNDMwMC00NzI1LWI4ZWYtZDZkZjA2M2I5NzM0XkEyXkFqcGc@._V1_QL75_UY140_CR33,0,140,140_.jpg" ],
+          "characters": [ "Le preneur de son" ]
+        },
+        {
+          "actor": "V\u00e9ronique Vasseur",
+          "picUrl": null,
+          "characters": [ "La m\u00e8re de Delphine" ]
+        },
+        {
+          "actor": "Stanislas Moreau",
+          "picUrl": null,
+          "characters": [ "Le barman" ]
+        },
+        {
+          "actor": "Val\u00e9rie de Monza",
+          "picUrl": null,
+          "characters": [ "Femme Salon du livre", "(as Val\u00e9rie Schiatti de Monza)" ]
+        },
+        {
+          "actor": "Anouchka Csernakova",
+          "picUrl": null,
+          "characters": [ "Femme Salon du livre" ]
+        },
+        {
+          "actor": "Paul Garcia",
+          "picUrl": null,
+          "characters": [ "Homme Salon du livre" ]
+        }
+      ],
+      "anecdotes": "This film marks Eva Green's return to French cinema after exclusively doing English-language films and television for the last 13 years.When Delphine uses her phone to record notes the time displayed on the lock-screen is 16:41, in the next shot of the phone the time is 10:11.Elle: People are tired of surprises and twist endings.Hit and Run - Original MixWritten and performed by St\u00e9phane Deschezeaux",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZTMyZjhjOWItZTkzMy00Y2FlLWFhNjAtMTViYmU2M2I5YTMwXkEyXkFqcGc@._V1_QL75_UY281_CR9,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "D'apr\u00e8s une histoire vraie (2017)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZTMyZjhjOWItZTkzMy00Y2FlLWFhNjAtMTViYmU2M2I5YTMwXkEyXkFqcGc@._V1_QL75_UY281_CR9,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZTMyZjhjOWItZTkzMy00Y2FlLWFhNjAtMTViYmU2M2I5YTMwXkEyXkFqcGc@._V1_QL75_UY422_CR13,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZTMyZjhjOWItZTkzMy00Y2FlLWFhNjAtMTViYmU2M2I5YTMwXkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZTMyZjhjOWItZTkzMy00Y2FlLWFhNjAtMTViYmU2M2I5YTMwXkEyXkFqcGc@._V1_QL75_UY281_CR9",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0063715/",
+      "id": "tt0063715",
+      "title": "Histoires extraordinaires",
+      "summary": "Film d'anthologie de trois r\u00e9alisateurs europ\u00e9ens bas\u00e9 sur des histoires d'Edgar Allan Poe: une princesse cruelle hant\u00e9e par un cheval fantomatique, un jeune homme sadique hant\u00e9 par son doub...",
+      "interests": [ "Drama", "Horror", "Mystery" ],
+      "rating": "6,4",
+      "ratingCount": "10",
+      "duration": "2h 1min",
+      "releaseDate": "2 janv. 2012",
+      "year": "2012",
+      "vote": "7,1\u00a0k",
+      "director": "Federico Fellini",
+      "writers": [ "Edgar Allan Poe", "Roger Vadim", "Pascal Cousin" ],
+      "stars": [ "Jane Fonda", "Brigitte Bardot", "Alain Delon" ],
+      "actors": [
+        {
+          "actor": "Jane Fonda",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzQ5NTE2MDAzOV5BMl5BanBnXkFtZTgwOTQ3MTQ3MjE@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Contessa Frederique de Metzengerstein (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Brigitte Bardot",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzUwNGNhYTQtZjgwZS00ZDUxLWIyMTItODA0ZDIxOWRkZmNhXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Giuseppina Ditterheim (segment \"William Wilson\")" ]
+        },
+        {
+          "actor": "Alain Delon",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI0MDI2MDY3OV5BMl5BanBnXkFtZTYwNDg5ODM0._V1_QL75_UX140_CR0,15,140,140_.jpg" ],
+          "characters": [ "William Wilson (segment \"William Wilson\")" ]
+        },
+        {
+          "actor": "Terence Stamp",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc0ODc3ODQ4OF5BMl5BanBnXkFtZTcwNzIxNzAyMg@@._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Toby Dammit (segment \"Toby Dammit\")" ]
+        },
+        {
+          "actor": "James Robertson Justice",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEwMzk2ODM1NF5BMl5BanBnXkFtZTcwNTczNzQwOA@@._V1_QL75_UX140_CR0,3,140,140_.jpg" ],
+          "characters": [ "Countess' Advisor (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Salvo Randone",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYmZlMzUyMzUtYmY4Ny00NmE1LThmYWUtMWMzNThiOGU0MWU2XkEyXkFqcGc@._V1_QL75_UY140_CR59,0,140,140_.jpg" ],
+          "characters": [ "Priest (segment \"Toby Dammit\")" ]
+        },
+        {
+          "actor": "Fran\u00e7oise Pr\u00e9vost",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYzdjMGE5NzMtN2FmMy00MmQyLTk0MDgtNjE4NTQ4MDZkYmU2XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Friend of Countess (segment \"Metzengerstein\")", "(as Francoise Prevost)" ]
+        },
+        {
+          "actor": "Peter Fonda",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzczNzY1NjQtZTQ0Ny00OGIwLWFkM2QtM2VhYTUzN2U2ZDMxXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Baron Wilhelm Berlifitzing (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Marl\u00e8ne Alexandre",
+          "picUrl": null,
+          "characters": [ "(segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Marie-Ange Ani\u00e8s",
+          "picUrl": null,
+          "characters": [ "A courtesan (segment \"Metzengerstein\")", "(as Marie-Ange Anies)" ]
+        },
+        {
+          "actor": "David Bresson",
+          "picUrl": null,
+          "characters": [ "Young girl on the dissection table (segment \"William Wilson\")", "(as Katia Christina)" ]
+        },
+        {
+          "actor": "Katia Christine",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDFiM2NmMjctOTM0NS00MTlkLTgxZjUtNDJjOGEzZmU2YWZhXkEyXkFqcGc@._V1_QL75_UY140_CR84,0,140,140_.jpg" ],
+          "characters": [ "Le licier (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Peter Dane",
+          "picUrl": null,
+          "characters": [ "Philippe (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Georges Douking",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYWFmNDUxODEtZDlkYi00Yjc4LTg4YjAtMjZhMTc3ZmRiODJlXkEyXkFqcGc@._V1_QL75_UY140_CR47,0,140,140_.jpg" ],
+          "characters": [ "Claude (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Philippe Lemaire",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYmY1YWU0MzUtN2JiYi00MWQ1LThmODktY2NlZGVhYTczMGQ5XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Hugues (segment \"Metzengerstein\")" ]
+        },
+        {
+          "actor": "Carla Marlier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNWU1ODZmYTctY2FkMC00NWIyLTkwZjYtYTQ5YjE3NTcyYTAyXkEyXkFqcGc@._V1_QL75_UY140_CR23,0,140,140_.jpg" ],
+          "characters": [ "Hans (segment \"William Wilson\")" ]
+        },
+        {
+          "actor": "Serge Marquand",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Umberto D'Orsi",
+          "picUrl": null,
+          "characters": null
+        }
+      ],
+      "anecdotes": "The film was originally to have been directed by Orson Welles, Luis Bu\u00f1uel and Federico Fellini.Toby is offered a magazine pictorial in which he is to portray \"the young Greek god Mars\" (as translated in captions). Mars was the Roman god of war. The Greek god of war was Ares.Giuseppina (segment \"William Wilson\"): The card-player resembles the lover. He gets tired. No staying power, my dear.After the opening title credits, the following handwritten text (from Edgar Allan Poe's first published story, \"Metzengerstein\" - which is also adapted as the first story of this film) is displayed: \"'Horror and fatality have been stalking abroad in all ages. Why then give a date to the story I have to tell?' Edgar Allan Poe.\"The whipping of Giuseppina was cut in the original 1973 UK cinema release (titled \"Tales of Mystery\"), and subsequent releases were also edited. The 15-rated 1984 video (as \"Powers of Evil\") completely missed the entire \"William Wilson\" story, and the 18-rated 1990 French Collection VHS (titled \"Histoires Extraordinaires: Tales of Mystery and Imagination\") received over a minute of cuts to the whipping scene and shots of Wilson caressing a girl with a scalpel. The Arrow Blu-ray release (titled \"Spirits of the Dead\") is the full uncut version.Edited into Toby Dammit (1968)RubySung by Ray CharlesLyrics by Mitchell ParishMusic by Heinz RoemheldPublished by Miller Music Corporation, represented by Curci",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BYTA2MmQyNTQtNmZjZC00ZWYxLThkZTUtYzAwNzE3ZGNkZDFjXkEyXkFqcGc@._V1_QL75_UY281_CR7,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Brigitte Bardot, Jane Fonda, Terence Stamp, and Alain Delon in Histoires extraordinaires (1968)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BYTA2MmQyNTQtNmZjZC00ZWYxLThkZTUtYzAwNzE3ZGNkZDFjXkEyXkFqcGc@._V1_QL75_UY281_CR7,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BYTA2MmQyNTQtNmZjZC00ZWYxLThkZTUtYzAwNzE3ZGNkZDFjXkEyXkFqcGc@._V1_QL75_UY422_CR10,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BYTA2MmQyNTQtNmZjZC00ZWYxLThkZTUtYzAwNzE3ZGNkZDFjXkEyXkFqcGc@._V1_QL75_UY562_CR14,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BYTA2MmQyNTQtNmZjZC00ZWYxLThkZTUtYzAwNzE3ZGNkZDFjXkEyXkFqcGc@._V1_QL75_UY281_CR7",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt10287954/",
+      "id": "tt10287954",
+      "title": "L'incroyable histoire de l'\u00cele de la Rose",
+      "summary": "Giorgio, ing\u00e9nieur dou\u00e9 mais incompris, a touch\u00e9 le fond : licenci\u00e9 de son poste, ses parents ne lui parlent plus, et l'amour de sa vie l'a quitt\u00e9. Fatigu\u00e9 des r\u00e8gles, Giorgio \u00e9labore un pla...",
+      "interests": [ "Adventure", "Biography", "Comedy", "Drama" ],
+      "rating": "7,0",
+      "ratingCount": "10",
+      "duration": "1h 57min",
+      "releaseDate": "13 d\u00e9c. 2020",
+      "year": "2020",
+      "vote": "25\u00a0k",
+      "director": "Sydney Sibilia",
+      "writers": [ "Francesca Manieri", "Sydney Sibilia" ],
+      "stars": [ "Elio Germano", "Leonardo Lidi", "Matilda De Angelis" ],
+      "actors": [
+        {
+          "actor": "Elio Germano",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTYxMjY2NDk4NV5BMl5BanBnXkFtZTcwMjI4NDE0NA@@._V1_QL75_UY140_CR36,0,140,140_.jpg" ],
+          "characters": [ "Giorgio Rosa" ]
+        },
+        {
+          "actor": "Leonardo Lidi",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjFmMzNmNTYtMTEzNC00OWE5LTg4OWQtOWM1OWQ1MDlkNTM4XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Maurizio Orlandini" ]
+        },
+        {
+          "actor": "Matilda De Angelis",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYzdkZjY5MWUtMmNiYS00NDE5LWFmMDktM2Q5MGUxZjJlNGZjXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Gabriella" ]
+        },
+        {
+          "actor": "Tom Wlaschiha",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQ5MjlmYzctNWM2YS00OTkzLWE4OGItMjUxMTZmMzhjNzU0XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "W.R. Neumann" ]
+        },
+        {
+          "actor": "Luca Zingaretti",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTdhNTljMmYtY2I0OS00ZDMwLThhNmEtMjcxNjU3ODQ1YTMyXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Giovanni Leone" ]
+        },
+        {
+          "actor": "Fabrizio Bentivoglio",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU4NDg3ODc2Ml5BMl5BanBnXkFtZTcwMTgwNTIzOA@@._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Franco Restivo" ]
+        },
+        {
+          "actor": "Fran\u00e7ois Cluzet",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTkyNjcyNjE0Nl5BMl5BanBnXkFtZTcwMTY5NTc1NA@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Jean Baptiste Toma'" ]
+        },
+        {
+          "actor": "Ascanio Balbo",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNGU1ZWU5NTAtM2IxMi00MjEwLTgxN2EtNjE1OTBmN2NmMzkzXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Carlo" ]
+        },
+        {
+          "actor": "Violetta Zironi",
+          "picUrl": null,
+          "characters": [ "Franca" ]
+        },
+        {
+          "actor": "Alberto Astorri",
+          "picUrl": null,
+          "characters": [ "Pietro Bernardini" ]
+        },
+        {
+          "actor": "Fabrizio Rongione",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNDM0MTkzODQxNV5BMl5BanBnXkFtZTYwMzkyODEz._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Monsieur Carlozzi" ]
+        },
+        {
+          "actor": "Marco Pancrazi",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOTQwOWNkNTMtODRlNC00NjNiLWI5MGMtMzBkYTAzMjE3NmRiXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Bruno Spaggiari" ]
+        },
+        {
+          "actor": "Andrea Pennacchi",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMGIyYjcwYmEtZDM3OC00YmRhLTkyMDMtY2FmZTRhN2U5ZjlhXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Ulisse Rosa" ]
+        },
+        {
+          "actor": "Federico Pacifici",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOGE0ZmM1YWUtMGI0ZS00ZjU3LWE1OTgtMWUzZTcxYzE3M2FmXkEyXkFqcGc@._V1_QL75_UX140_CR0,16,140,140_.jpg" ],
+          "characters": [ "Admiral" ]
+        },
+        {
+          "actor": "Gennaro Iaccarino",
+          "picUrl": null,
+          "characters": [ "Lieutenant Duilio Carrisi" ]
+        },
+        {
+          "actor": "Luigi Moretti",
+          "picUrl": null,
+          "characters": [ "Commission President" ]
+        },
+        {
+          "actor": "Teco Celio",
+          "picUrl": null,
+          "characters": [ "Custode Gary" ]
+        },
+        {
+          "actor": "Eliana Bosi",
+          "picUrl": null,
+          "characters": [ "Giorgio's Mother" ]
+        }
+      ],
+      "anecdotes": "The film is based on the true story of engineer Giorgio Rosa and the Republic of Rose Island.Toutes les informations contiennent des spoilersReferenced in Flix Forum: Rose Island (L'incredibile storia dell'lsola delle Rose) (2024)Legata a un granello di sabbiaWritten by Gianni Marchetti and Nico FidencoPerformed by Nico Fidenco",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNmU0YjY4YzctZTM3Yi00Zjg0LWFhZWYtNjU1ZmZkZWU4NGVkXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "L'incroyable histoire de l'\u00cele de la Rose (2020)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNmU0YjY4YzctZTM3Yi00Zjg0LWFhZWYtNjU1ZmZkZWU4NGVkXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNmU0YjY4YzctZTM3Yi00Zjg0LWFhZWYtNjU1ZmZkZWU4NGVkXkEyXkFqcGc@._V1_QL75_UY422_CR8,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNmU0YjY4YzctZTM3Yi00Zjg0LWFhZWYtNjU1ZmZkZWU4NGVkXkEyXkFqcGc@._V1_QL75_UY562_CR10,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNmU0YjY4YzctZTM3Yi00Zjg0LWFhZWYtNjU1ZmZkZWU4NGVkXkEyXkFqcGc@._V1_QL75_UY281_CR5",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0082517/",
+      "id": "tt0082517",
+      "title": "La Folle Histoire du monde",
+      "summary": "Mel Brooks apporte sa touche comique unique \u00e0 l'histoire de l'humanit\u00e9, en couvrant des \u00e9v\u00e9nements allant de l'Ancien Testament \u00e0 la R\u00e9volution fran\u00e7aise dans une s\u00e9rie d'\u00e9pisodes comiques.",
+      "interests": [ "Dark Comedy", "Parody", "Sketch Comedy", "Slapstick", "Comedy", "History", "Musical" ],
+      "rating": "6,8",
+      "ratingCount": "10",
+      "duration": "1h 32min",
+      "releaseDate": "5 oct. 2004",
+      "year": "2004",
+      "vote": "56\u00a0k",
+      "director": "Mel Brooks",
+      "writers": [ "Mel Brooks" ],
+      "stars": [ "Mel Brooks", "Gregory Hines", "Dom DeLuise" ],
+      "actors": [
+        {
+          "actor": "Mel Brooks",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU2MzI5NjA1NV5BMl5BanBnXkFtZTgwMjEyNjQ0MTI@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Moses", "\u2026" ]
+        },
+        {
+          "actor": "Gregory Hines",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI2NjU4NTYzM15BMl5BanBnXkFtZTYwODkwMjY2._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Josephus" ]
+        },
+        {
+          "actor": "Dom DeLuise",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTY4MTQwMzI5M15BMl5BanBnXkFtZTcwODYyMDU4Mg@@._V1_QL75_UX140_CR0,14,140,140_.jpg" ],
+          "characters": [ "Emperor Nero" ]
+        },
+        {
+          "actor": "Madeline Kahn",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTkzMDkzMTI0OF5BMl5BanBnXkFtZTcwNTUzOTAxNQ@@._V1_QL75_UX140_CR0,3,140,140_.jpg" ],
+          "characters": [ "Empress Nympho" ]
+        },
+        {
+          "actor": "Harvey Korman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA1NDMzMzc5NV5BMl5BanBnXkFtZTcwMzA2NjM3MQ@@._V1_QL75_UX140_CR0,2,140,140_.jpg" ],
+          "characters": [ "Count de Monet" ]
+        },
+        {
+          "actor": "Cloris Leachman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTEwNTM4NjI4NzleQTJeQWpwZ15BbWU2MDkxMTg0NQ@@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Madame Defarge" ]
+        },
+        {
+          "actor": "Ron Carey",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjQ4NzgyNTM0M15BMl5BanBnXkFtZTcwNzkxMTIyOA@@._V1_QL75_UX140_CR0,10,140,140_.jpg" ],
+          "characters": [ "Swiftus" ]
+        },
+        {
+          "actor": "Pamela Stephenson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTM3Njc4NDA5Nl5BMl5BanBnXkFtZTcwMjQwNzcxOA@@._V1_QL75_UX140_CR0,15,140,140_.jpg" ],
+          "characters": [ "Mademoiselle Rimbaud" ]
+        },
+        {
+          "actor": "Shecky Greene",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTUwNDEzOTQ4N15BMl5BanBnXkFtZTgwNDg2MDcyMTE@._V1_QL75_UY140_CR32,0,140,140_.jpg" ],
+          "characters": [ "Marcus Vindictus" ]
+        },
+        {
+          "actor": "Sid Caesar",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI2MzI2MTM5NF5BMl5BanBnXkFtZTcwNTgyMDQyMg@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Chief Caveman" ]
+        },
+        {
+          "actor": "Mary-Margaret Humes",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzQ3MjQ5NTM0M15BMl5BanBnXkFtZTgwMzkxODA3ODE@._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Miriam" ]
+        },
+        {
+          "actor": "Orson Welles",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTZmNzM4YTItMzMzMC00NjgwLTkyYTgtNTNiOTFiNWEyMzIyXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Narrator", "(voix)" ]
+        },
+        {
+          "actor": "Rudy De Luca",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTFiMGE1NDYtN2EwYi00OWUxLTkxZDEtYmNmZWIxNDM5YTBiXkEyXkFqcGc@._V1_QL75_UY140_CR59,0,140,140_.jpg" ],
+          "characters": [ "Prehistoric Man", "(as Rudy DeLuca)", "\u2026" ]
+        },
+        {
+          "actor": "Leigh French",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDM1ZGJlYjAtZmZjOS00MWM2LTg4OWUtN2FkM2IwYjEyNDdiXkEyXkFqcGc@._V1_QL75_UY140_CR55,0,140,140_.jpg" ],
+          "characters": [ "Prehistoric Woman" ]
+        },
+        {
+          "actor": "Richard Karron",
+          "picUrl": null,
+          "characters": [ "Prehistoric Man" ]
+        },
+        {
+          "actor": "Susette Carroll",
+          "picUrl": null,
+          "characters": [ "Prehistoric Man" ]
+        },
+        {
+          "actor": "Sammy Shore",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODRhNDljYzUtY2E4Yi00NDEwLThjNTMtNzlkNTEyM2NmNzA0XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Prehistoric Man" ]
+        },
+        {
+          "actor": "J.J. Barry",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODAyNGVhOTMtYzcxMy00ZDkzLWIzYjctNzZmMDY0YTYxZDZjXkEyXkFqcGc@._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Prehistoric Man" ]
+        }
+      ],
+      "anecdotes": "Beforehand, it was agreed that Orson Welles would receive $5,000 per day in exchange for his services. Figuring that he'd have to spend five eight-hour days recording and re-recording these lines with Welles, Mel Brooks paid him $25,000 up front. But by noon on the first day, Welles had recorded his lines to perfection. \"Oh, my god, I could've paid you $5,000\", Brooks lamented. After kicking himself for a few minutes, the funnyman asked Welles how he planned to spend the bounty. \"Cuban cigars and Sevruga caviar\", Welles replied.In the beginning of the Roman Empire Segment, one of the running jokes was the use of a V in place of a U. It seems that great care was taken to do this on every sign. Except the Annual Orgy sign which has two Us on it that were not changed to Vs. U's are also visible on the \"Equal Opportunity Employer\" sign at the Unemployment Office.Moses: The Lord, the Lord Jehovah has given unto you these fifteen...[drops one of the tablets] Moses: Oy! Ten! Ten commandments for all to obey!VESTAL VIRGINS\nPortrayed by Playboy\nPlaymates and ModelsThe German TV version is missing the \"Hitler on Ice\" segment during the finale. Also, there is a small bit missing in the stone age segment, showing the invention of art (wall painting), and the first critic taking a leak on the masterpiece.Edited from Les Vikings (1958)The InquisitionMusic and Lyrics by Mel Brooks and Ronny GrahamPerformed by Mel Brooks, Jackie Mason, and Ronny GrahamOriginal Music and Lyrics \u00a9 1981 Brooksfilms Music Limited",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMDk3Zjc4MWYtNjVjYS00NTBjLTg4NmUtNzA4ODRjYzEyMDgzXkEyXkFqcGc@._V1_QL75_UX190_CR0,7,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "La Folle Histoire du monde (1981)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMDk3Zjc4MWYtNjVjYS00NTBjLTg4NmUtNzA4ODRjYzEyMDgzXkEyXkFqcGc@._V1_QL75_UX190_CR0,7,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMDk3Zjc4MWYtNjVjYS00NTBjLTg4NmUtNzA4ODRjYzEyMDgzXkEyXkFqcGc@._V1_QL75_UX285_CR0,11,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMDk3Zjc4MWYtNjVjYS00NTBjLTg4NmUtNzA4ODRjYzEyMDgzXkEyXkFqcGc@._V1_QL75_UX380_CR0,15,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMDk3Zjc4MWYtNjVjYS00NTBjLTg4NmUtNzA4ODRjYzEyMDgzXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0073115/",
+      "id": "tt0073115",
+      "title": "Histoire d'O",
+      "summary": "\"A Roissy, quelqu'un dit \u00e0 'O' : \"\"Vous \u00eates ici pour servir vos Ma\u00eetres. Vos mains ne sont pas \u00e0 vous, ni vos seins, ni particuli\u00e8rement aucun des orifices de votre corps, que nous pouvons ...",
+      "interests": [ "Drama" ],
+      "rating": "5,3",
+      "ratingCount": "10",
+      "duration": "1h 45min",
+      "releaseDate": "31 janv. 2004",
+      "year": "2004",
+      "vote": "7\u00a0k",
+      "director": "Just Jaeckin",
+      "writers": [ "S\u00e9bastien Japrisot", "Dominique Aury" ],
+      "stars": [ "Corinne Cl\u00e9ry", "Udo Kier", "Anthony Steel" ],
+      "actors": [
+        {
+          "actor": "Corinne Cl\u00e9ry",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjExMjgwMjQ1NF5BMl5BanBnXkFtZTcwODMyMzY0NA@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "O" ]
+        },
+        {
+          "actor": "Udo Kier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjRhOGJhMWYtOGY0Ny00YzQ5LWIxYmUtYjJkYjQ0ZmQwZDkyXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Rene" ]
+        },
+        {
+          "actor": "Anthony Steel",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZWZhNmRkNGUtZGMwMi00MjUyLTgzODQtYmI3MzAwYmU4NWNkXkEyXkFqcGc@._V1_QL75_UX140_CR0,21,140,140_.jpg" ],
+          "characters": [ "Sir Stephen" ]
+        },
+        {
+          "actor": "Jean Gaven",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAwMzk3MTYzN15BMl5BanBnXkFtZTcwOTI0NTEwOQ@@._V1_QL75_UY140_CR32,0,140,140_.jpg" ],
+          "characters": [ "Pierre" ]
+        },
+        {
+          "actor": "Christiane Minazzoli",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjM1YjViMTgtOWM0YS00NjI5LWEzZmEtMWM3NGQ2NDk3NjIxXkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Anne-Marie" ]
+        },
+        {
+          "actor": "Martine Kelly",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BY2JhOTUwZDctZDhhOS00MTEyLTk5ZGYtY2EwNDMzMTM5NzNhXkEyXkFqcGc@._V1_QL75_UY140_CR95,0,140,140_.jpg" ],
+          "characters": [ "Therese" ]
+        },
+        {
+          "actor": "Jean-Pierre Andr\u00e9ani",
+          "picUrl": null,
+          "characters": [ "Eric, master II" ]
+        },
+        {
+          "actor": "Gabriel Cattand",
+          "picUrl": null,
+          "characters": [ "The commander" ]
+        },
+        {
+          "actor": "Li Sellgren",
+          "picUrl": null,
+          "characters": [ "Jacqueline (a model)" ]
+        },
+        {
+          "actor": "Albane Navizet",
+          "picUrl": null,
+          "characters": [ "Andree" ]
+        },
+        {
+          "actor": "Nadine Perles",
+          "picUrl": null,
+          "characters": [ "Jeanne" ]
+        },
+        {
+          "actor": "Laure Moutoussamy",
+          "picUrl": null,
+          "characters": [ "Norah, the maid" ]
+        },
+        {
+          "actor": "Henri Pi\u00e9gay",
+          "picUrl": null,
+          "characters": [ "Master I" ]
+        },
+        {
+          "actor": "Alain Noury",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNGIzOWNkMTItYjNkNi00YTQzLThlYzQtMjI1YTkzZDc1MzdiXkEyXkFqcGc@._V1_QL75_UY140_CR24,0,140,140_.jpg" ],
+          "characters": [ "Ivan" ]
+        },
+        {
+          "actor": "Florence Cayrol",
+          "picUrl": null,
+          "characters": [ "Yvonne", "(as Jehanne Blaise)" ]
+        },
+        {
+          "actor": "Eva Carson",
+          "picUrl": null,
+          "characters": [ "Monique" ]
+        },
+        {
+          "actor": "Sylvie Olivier",
+          "picUrl": null,
+          "characters": [ "Claire" ]
+        },
+        {
+          "actor": "Bernard Jeantet",
+          "picUrl": null,
+          "characters": [ "Florent" ]
+        }
+      ],
+      "anecdotes": "Christopher Lee turned down the role of Sir Stephen.Most of the times that O is being whipped, there is no sound of the whip hitting her body.Narrator: O felt soiled and guilty of the illicit pleasure she'd had in a stranger's arms. But her lover explained that the more he gave her, the more he wanted her. Offering her to another man was proof that he owned her.Rene: One can only give that which one owns.The Story of O was initially banned in the UK in 1975, but cinema and video/DVD releases were passed by the British Board of Film Classification in 2000. The censors themselves did not make any cuts to this dubbed version, but around 8 minutes of non-sexual narrative scenes were removed by the director for pacing reasons. The fully uncut, subtitled version has played in the UK on the subscription channel FilmFour.Featured in Tod eines Weltstars (1992)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZmExYTcxNWMtNDEwNy00Y2I3LWJhYzUtNGU3ZjExOWQyN2I0XkEyXkFqcGc@._V1_QL75_UY281_CR10,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Udo Kier and Corinne Cl\u00e9ry in Histoire d'O (1975)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZmExYTcxNWMtNDEwNy00Y2I3LWJhYzUtNGU3ZjExOWQyN2I0XkEyXkFqcGc@._V1_QL75_UY281_CR10,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZmExYTcxNWMtNDEwNy00Y2I3LWJhYzUtNGU3ZjExOWQyN2I0XkEyXkFqcGc@._V1_QL75_UY422_CR14,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZmExYTcxNWMtNDEwNy00Y2I3LWJhYzUtNGU3ZjExOWQyN2I0XkEyXkFqcGc@._V1_QL75_UY562_CR19,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZmExYTcxNWMtNDEwNy00Y2I3LWJhYzUtNGU3ZjExOWQyN2I0XkEyXkFqcGc@._V1_QL75_UY281_CR10",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt2980516/",
+      "id": "tt2980516",
+      "title": "Une merveilleuse histoire du temps",
+      "summary": "Regard sur la relation entre le c\u00e9l\u00e8bre physicien Stephen Hawking et sa femme.",
+      "interests": [ "Medical Drama", "Biography", "Drama", "Romance" ],
+      "rating": "7,7",
+      "ratingCount": "10",
+      "duration": "2h 3min",
+      "releaseDate": "7 sept. 2014",
+      "year": "2014",
+      "vote": "487\u00a0k",
+      "director": "James Marsh",
+      "writers": [ "Anthony McCarten", "Jane Hawking" ],
+      "stars": [ "Eddie Redmayne", "Felicity Jones", "Tom Prior" ],
+      "actors": [
+        {
+          "actor": "Eddie Redmayne",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU0MjEyNzQyM15BMl5BanBnXkFtZTcwMTc4ODUxOQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Stephen Hawking" ]
+        },
+        {
+          "actor": "Felicity Jones",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA0MTIwMzIyN15BMl5BanBnXkFtZTgwNDEyMzg1NDE@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Jane Hawking" ]
+        },
+        {
+          "actor": "Tom Prior",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjcxYWJlNmQtNWYzNy00NTdjLThhNjctYTA3MDdkM2ZmMzIyXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Robert Hawking - Age 17" ]
+        },
+        {
+          "actor": "Sophie Perry",
+          "picUrl": null,
+          "characters": [ "Lucy Hawking - Age 14" ]
+        },
+        {
+          "actor": "Finlay Wright-Stephens",
+          "picUrl": null,
+          "characters": [ "Timothy Hawking - Age 8" ]
+        },
+        {
+          "actor": "Harry Lloyd",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjE2OTkyOTkzMl5BMl5BanBnXkFtZTcwODYxMTUwOA@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Brian" ]
+        },
+        {
+          "actor": "Alice Orr-Ewing",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQ1Nzk2NjQxMV5BMl5BanBnXkFtZTcwNTgyMDIyOQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Diana King" ]
+        },
+        {
+          "actor": "David Thewlis",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTA3MjM4NTE0NV5BMl5BanBnXkFtZTcwOTU1OTY4NQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Dennis Sciama" ]
+        },
+        {
+          "actor": "Thomas Morrison",
+          "picUrl": null,
+          "characters": [ "Carter" ]
+        },
+        {
+          "actor": "Michael Marcus",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODk1ZTUzZTktODk5My00MmE0LWJjOTktNTQwM2JkYjZkNzMyXkEyXkFqcGc@._V1_QL75_UX140_CR0,3,140,140_.jpg" ],
+          "characters": [ "Ellis" ]
+        },
+        {
+          "actor": "Gruffudd Glyn",
+          "picUrl": null,
+          "characters": [ "Rees" ]
+        },
+        {
+          "actor": "Paul Longley",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOGY0MWYyMmUtYjlkNy00MWUwLTgxODEtMGMwNmI1M2FlM2FiXkEyXkFqcGc@._V1_QL75_UY140_CR53,0,140,140_.jpg" ],
+          "characters": [ "Barman - Rowing Club" ]
+        },
+        {
+          "actor": "Emily Watson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAwNzc5MjE0N15BMl5BanBnXkFtZTcwMzUyNTMzNw@@._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Beryl Wilde" ]
+        },
+        {
+          "actor": "Guy Oliver-Watts",
+          "picUrl": null,
+          "characters": [ "George Wilde" ]
+        },
+        {
+          "actor": "Simon McBurney",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAyOTEzOTg2M15BMl5BanBnXkFtZTYwNTU3MTQ1._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Frank Hawking" ]
+        },
+        {
+          "actor": "Lucy Chappell",
+          "picUrl": null,
+          "characters": [ "Mary Hawking" ]
+        },
+        {
+          "actor": "Charlotte Hope",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjc1ZDc2NzctYjQ3ZS00Njg4LTg2YTUtZWI5NTdhZTYxYzdmXkEyXkFqcGc@._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Philippa Hawking" ]
+        },
+        {
+          "actor": "Abigail Cruttenden",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYThmYWQ3YTgtYjYyYy00ZjAyLTlmOGItZTJjNzgwN2VhNmQ5XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Isobel Hawking" ]
+        }
+      ],
+      "anecdotes": "In an e-mail to director James Marsh about the portrayal by Eddie Redmayne, Stephen Hawking said there were certain points when he thought he was watching himself.The handwriting on the napkin that Jane gives to Stephen with her phone number is not the same every time we see him looking at it.Stephen Hawking: There should be no boundaries to human endeavor. We are all different. However bad life may seem, there is always something you can do, and succeed at. While there's life, there is hope.Featured in The Tonight Show Starring Jimmy Fallon: Savannah Guthrie and Matt Lauer/Felicity Jones/FKA Twigs (2014)(Love Is Like a) Heat WaveWritten by Lamont Dozier (as Dozier), Brian Holland (as Holland), and Eddie Holland (as Holland Jr.)Performed by Martha & The Vandellas (as Martha Reeves & The Vandellas)Courtesy of The Motown Record Company LPUnder licence from Universal Music Operations Ltd",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNTg1NDUwZTAtMWMyZS00NGFmLWFjZjQtMmFhN2MwOTU4NDc5XkEyXkFqcGc@._V1_QL75_UY281_CR9,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Felicity Jones and Eddie Redmayne in Une merveilleuse histoire du temps (2014)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNTg1NDUwZTAtMWMyZS00NGFmLWFjZjQtMmFhN2MwOTU4NDc5XkEyXkFqcGc@._V1_QL75_UY281_CR9,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNTg1NDUwZTAtMWMyZS00NGFmLWFjZjQtMmFhN2MwOTU4NDc5XkEyXkFqcGc@._V1_QL75_UY422_CR13,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNTg1NDUwZTAtMWMyZS00NGFmLWFjZjQtMmFhN2MwOTU4NDc5XkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNTg1NDUwZTAtMWMyZS00NGFmLWFjZjQtMmFhN2MwOTU4NDc5XkEyXkFqcGc@._V1_QL75_UY281_CR9",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0421715/",
+      "id": "tt0421715",
+      "title": "L'\u00c9trange Histoire de Benjamin Button",
+      "summary": "L'histoire de Benjamin Button, un homme qui se met \u00e0 vieillir \u00e0 l'envers avec des cons\u00e9quences surprenantes.",
+      "interests": [ "Epic", "Period Drama", "Romantic Epic", "Drama", "Fantasy", "Romance" ],
+      "rating": "7,8",
+      "ratingCount": "10",
+      "duration": "2h 46min",
+      "releaseDate": "14 avr. 2012",
+      "year": "2012",
+      "vote": "706\u00a0k",
+      "director": "David Fincher",
+      "writers": [ "Eric Roth", "Robin Swicord", "F. Scott Fitzgerald" ],
+      "stars": [ "Brad Pitt", "Cate Blanchett", "Tilda Swinton" ],
+      "actors": [
+        {
+          "actor": "Brad Pitt",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Benjamin Button" ]
+        },
+        {
+          "actor": "Cate Blanchett",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc1MDI0MDg1NV5BMl5BanBnXkFtZTgwMDM3OTAzMTE@._V1_QL75_UX140_CR0,8,140,140_.jpg" ],
+          "characters": [ "Daisy" ]
+        },
+        {
+          "actor": "Tilda Swinton",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTM4NzMzMTkwNV5BMl5BanBnXkFtZTcwMzU4MDg1Mw@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Elizabeth Abbott" ]
+        },
+        {
+          "actor": "Julia Ormond",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEzNTQyODk5Ml5BMl5BanBnXkFtZTcwOTEwOTk0OA@@._V1_QL75_UX140_CR0,22,140,140_.jpg" ],
+          "characters": [ "Caroline" ]
+        },
+        {
+          "actor": "Faune Chambers Watkins",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc3MDk0ODQyNF5BMl5BanBnXkFtZTcwNDM1MDg2Mg@@._V1_QL75_UX140_CR0,4,140,140_.jpg" ],
+          "characters": [ "Dorothy Baker", "(as Faune Chambers)" ]
+        },
+        {
+          "actor": "Elias Koteas",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTEwMTEzODkzNF5BMl5BanBnXkFtZTcwMjI1NDAyMw@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Monsieur Gateau" ]
+        },
+        {
+          "actor": "Donna Duplantier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZGY1MzA5MDAtNWVjOC00OWIyLWE2MTItZWI4MTIyOGVjNGJjXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Blanche Devereux" ]
+        },
+        {
+          "actor": "Jacob Tolano",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzEwMjhiYTYtZGJhZi00ZGM0LWEwNmItYzAyMjRlOTAyZTNlXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Martin Gateau", "(as Jacob Wood)" ]
+        },
+        {
+          "actor": "Earl Maddox",
+          "picUrl": null,
+          "characters": [ "Man at Train Station" ]
+        },
+        {
+          "actor": "Ed Metzger",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI3NzkwNDY2N15BMl5BanBnXkFtZTgwODY4MzA3MjE@._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Teddy Roosevelt" ]
+        },
+        {
+          "actor": "Jason Flemyng",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA0MjUxNTk5MV5BMl5BanBnXkFtZTcwOTE0OTEyOA@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Thomas Button" ]
+        },
+        {
+          "actor": "Danny Vinson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTYxNTA3MDk3NF5BMl5BanBnXkFtZTcwMDY1MzQ1MQ@@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Priest Giving Last Rites" ]
+        },
+        {
+          "actor": "David Jensen",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI3OTkzMzQ5MV5BMl5BanBnXkFtZTgwNTEwOTMxMTE@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Doctor at Benjamin's Birth" ]
+        },
+        {
+          "actor": "Joeanna Sayler",
+          "picUrl": null,
+          "characters": [ "Caroline Button" ]
+        },
+        {
+          "actor": "Taraji P. Henson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTc4NDQ2MTUwMl5BMl5BanBnXkFtZTcwODA2NDY3NQ@@._V1_QL75_UX140_CR0,14,140,140_.jpg" ],
+          "characters": [ "Queenie" ]
+        },
+        {
+          "actor": "Mahershala Ali",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzBhZTM4ZTMtYzYwMi00ZGQwLTljNDEtZTVlNjYwYTZiODEzXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Tizzy", "(as Mahershalalhashbaz Ali)" ]
+        },
+        {
+          "actor": "Fiona Hale",
+          "picUrl": null,
+          "characters": [ "Mrs. Hollister" ]
+        },
+        {
+          "actor": "Patrick Thomas O'Brien",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNmY5NWZkOWYtOThkMi00MTI3LTgzM2UtNDA4N2FhYmI4MmZiXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Dr. Rose" ]
+        }
+      ],
+      "anecdotes": "The hummingbird is the only bird in the world that can fly backwards. Hurricanes spin counter-clockwise in the Northern Hemisphere and clockwise in the Southern Hemisphere. These, among other \"backward\" motifs involving clocks and so on, tie in with the major thematic elements related to Benjamin Button living life in reverse.Benjamin spends a few idyllic weeks in Murmansk in December 1941 (there he hears the news about Pearl Harbor). But in June 1941 Russia was invaded by Germany. As one of the main bases of the Soviet navy, Murmansk was constantly under ferocious attacks, up until October 1944. So in no way could it be as peaceful and quiet there as we see in the movie.Benjamin Button: You can be as mad as a mad dog at the way things went. You could swear, curse the fates, but when it comes to the end, you have to let go.The Paramount and Warner Bros. logos are in the form of mosaics constructed from several buttons.Featured in Siskel & Ebert & the Movies: How To Lose Friends & Alienate People/Flash of Genius/Beverly Hills Chihuahua/Nick & Norah's Infinite Playlist/Rachel Getting Married (2008)When the Saints Go Marching InTraditionalPerformed by Doc Paulin's Marching BandCourtesy of Smithsonian Folkways Records",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMzE2ODdlZWUtNGQ5My00YmVkLWI3MWQtMjQyMzc5NzViNjA1XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Brad Pitt and Cate Blanchett in L'\u00c9trange Histoire de Benjamin Button (2008)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMzE2ODdlZWUtNGQ5My00YmVkLWI3MWQtMjQyMzc5NzViNjA1XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMzE2ODdlZWUtNGQ5My00YmVkLWI3MWQtMjQyMzc5NzViNjA1XkEyXkFqcGc@._V1_QL75_UX285_CR0,3,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMzE2ODdlZWUtNGQ5My00YmVkLWI3MWQtMjQyMzc5NzViNjA1XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMzE2ODdlZWUtNGQ5My00YmVkLWI3MWQtMjQyMzc5NzViNjA1XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt11068094/",
+      "id": "tt11068094",
+      "title": "White Bird: Une histoire merveilleuse",
+      "summary": "Inspir\u00e9 du livre de l'auteur \u00e0 succ\u00e8s de Wonder, ce film \u00e9difiant montre comment un acte de gentillesse peut durer \u00e9ternellement.",
+      "interests": [ "Adventure", "Biography", "Drama", "Family", "War" ],
+      "rating": "7,2",
+      "ratingCount": "10",
+      "duration": "2h",
+      "releaseDate": "15 mai 2024",
+      "year": "2024",
+      "vote": "2\u00a0k",
+      "director": "Marc Forster",
+      "writers": [ "Mark Bomback", "R.J. Palacio" ],
+      "stars": [ "Ariella Glaser", "Orlando Schwerdt", "Gillian Anderson" ],
+      "actors": [
+        {
+          "actor": "Ariella Glaser",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNmZmNThmYWItOWZmOC00MDY3LThlYWMtOTg1NzFkMmJlZDliXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Sara Blum" ]
+        },
+        {
+          "actor": "Orlando Schwerdt",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNWU5ZGI3YTAtMDE0Zi00MGNiLThhODQtYWU1YjU5OWY4MjVjXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Julien Beaumier" ]
+        },
+        {
+          "actor": "Gillian Anderson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjE1NTVlZTUtNTE3Yi00ZTMzLWFkYjYtYjk1OGFiOWZlOWI3XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Vivienne Beaumier" ]
+        },
+        {
+          "actor": "Helen Mirren",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjA4MzY2ODU2MV5BMl5BanBnXkFtZTcwOTQ3ODY4OQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Grand-m\u00e8re" ]
+        },
+        {
+          "actor": "Bryce Gheisar",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMmZjYTVlNjctMGNjMC00ZmU3LWE1MjMtOTkxMjI5ZWMxMDViXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Julian Albans" ]
+        },
+        {
+          "actor": "Priya Ghotane",
+          "picUrl": null,
+          "characters": [ "Rahmiya" ]
+        },
+        {
+          "actor": "Teagan Booth",
+          "picUrl": null,
+          "characters": [ "Dillon" ]
+        },
+        {
+          "actor": "Kevan Van Thompson",
+          "picUrl": null,
+          "characters": [ "Doorman", "(as Randy Duke)" ]
+        },
+        {
+          "actor": "Laura Hudeckova",
+          "picUrl": null,
+          "characters": [ "Sara (age 5 and 8)" ]
+        },
+        {
+          "actor": "Ishai Golan",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYmI0Y2JhMjAtODQ1Yi00MjU3LTkyZGUtNGZkZjBkNGI0NmY3XkEyXkFqcGc@._V1_QL75_UY140_CR55,0,140,140_.jpg" ],
+          "characters": [ "Max Blum" ]
+        },
+        {
+          "actor": "Olivia Ross",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjM3ZTRkNGQtNWNiMi00YzAyLWE4ODQtMTYxZDdiYjI3NzMzXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Rose Blum" ]
+        },
+        {
+          "actor": "Mia Kadlecova",
+          "picUrl": null,
+          "characters": [ "Sophie" ]
+        },
+        {
+          "actor": "Selma Kaymakci",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzMyMTMyNmItMDRkYS00YzFhLWE1ZmEtNDBiMzIzODk0NzcxXkEyXkFqcGc@._V1_QL75_UY140_CR10,0,140,140_.jpg" ],
+          "characters": [ "Mariann" ]
+        },
+        {
+          "actor": "Jem Matthews",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzliNWUxYzAtNjkwYS00MTllLWIyMDUtMzc1OTZiMjVkYmRlXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Vincent" ]
+        },
+        {
+          "actor": "Jordan Cramond",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOTI5NTAxNTktZDY0YS00ZjYwLThjMzktZTAyYTEwODUzN2FjXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Jerome" ]
+        },
+        {
+          "actor": "Yelisey Kazakevich",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYmI4ZjA1OTUtNDRjYi00NzkzLWE0NWItODlmNTBjZGUxNGQxXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Henri" ]
+        },
+        {
+          "actor": "Vladim\u00edr Javorsk\u00fd",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjJlODhkZmUtNzExYy00NWEzLTk2ZDQtYzFhNmI0Yzg5MzhmXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Georges", "(as Vladimir Javorsky)", "\u2026" ]
+        },
+        {
+          "actor": "Cyril Dobr\u00fd",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjIxMTgxMDMtM2NhMS00YmE5LWJjYjItNjUyMDk4MmM3Y2YzXkEyXkFqcGc@._V1_QL75_UY140_CR99,0,140,140_.jpg" ],
+          "characters": [ "French Resistance #1", "(as Cyril Dobry)" ]
+        }
+      ],
+      "anecdotes": "Originally set for a release on September 16, 2022, it was pushed to October 14, 2022. Later that month, the film was quietly removed from the schedule and pushed to August 25, 2023, due to underperforming at the Fall (2021 box office and pushed again to an unspecified date due to the SAG-AFTRA strike.Grandm\u00e8re mentions that Julian was expelled from Beecher Prep as a consequence of his bullying Auggie in Wonder (2017). However, in that film, Julian was never expelled from Beecher Prep for bullying Auggie. He received a one-week suspension and upon hearing this, his parents decided to pull him out of the school at the conclusion of that school year.Julian Albans: Right now, I'm just trying to fit in. It's kind of been my motto ever since I left my old school.Grand-m\u00e8re: What? Julian, you did not leave your old school. You were expelled for being cruel to another boy.Julian Albans: Whatever. You know what I mean. If I learned anything from back then, it's to just mind my own business. Don't be mean, don't be nice. Just be normal.Grand-m\u00e8re: And this is what you've learned? To be normal?Julian Albans: What's wrong with normal?Grand-m\u00e8re: Nothing. And everything.Follows Wonder (2017)It Can't Be Wrongwritten by Kim Gannon, Max SteinerPerformed by Vera Lynn",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMWJlNzBjNDctMzkxYi00NjRlLWE4MTUtYjU4NDc3OWY4ZjI2XkEyXkFqcGc@._V1_QL75_UX190_CR0,28,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Helen Mirren, Ariella Glaser, and Orlando Schwerdt in White Bird: Une histoire merveilleuse (2023)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMWJlNzBjNDctMzkxYi00NjRlLWE4MTUtYjU4NDc3OWY4ZjI2XkEyXkFqcGc@._V1_QL75_UX190_CR0,28,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMWJlNzBjNDctMzkxYi00NjRlLWE4MTUtYjU4NDc3OWY4ZjI2XkEyXkFqcGc@._V1_QL75_UX285_CR0,43,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMWJlNzBjNDctMzkxYi00NjRlLWE4MTUtYjU4NDc3OWY4ZjI2XkEyXkFqcGc@._V1_QL75_UX380_CR0,57,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMWJlNzBjNDctMzkxYi00NjRlLWE4MTUtYjU4NDc3OWY4ZjI2XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    }
+  ]
+}

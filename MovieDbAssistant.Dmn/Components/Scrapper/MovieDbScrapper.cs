@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.ComponentModels;
-using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Errors;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Signal;
+using MovieDbAssistant.Lib.Components.Sys;
 
 namespace MovieDbAssistant.Dmn.Components.Scrapper;
 

@@ -4,9 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services.Tray;
-using MovieDbAssistant.Lib.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Signal;
+using MovieDbAssistant.Lib.Components.Sys;
 
 namespace MovieDbAssistant.App.Components.Tray;
 

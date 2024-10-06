@@ -64,7 +64,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             }
         });
 
-        // enapsulate type and add meta data (query,..)
+        // encapsulate type and add meta data (query,..)
         var data = new MoviesModel()
         {
             Movies = movies
