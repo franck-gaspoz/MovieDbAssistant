@@ -14,20 +14,17 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// </summary>
 public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 {
-    readonly JsonQueryDataProvider _queryDataProvider;
     readonly QueryBuilder _queryBuilder;
     readonly MoviesModelMergeBuilder _moviesModelMergeBuilder;
     readonly IServiceProvider _serviceProvider;
 
     public JsonQueryFileDataProvider(
         ILogger<JsonQueryFileDataProvider> logger,
-        JsonQueryDataProvider queryDataProvider,
         QueryBuilder queryBuilder,
         MoviesModelMergeBuilder moviesModelMergeBuilder,
         IServiceProvider serviceProvider)
         : base(logger)
     {
-        _queryDataProvider = queryDataProvider;
         _queryBuilder = queryBuilder;
         _moviesModelMergeBuilder = moviesModelMergeBuilder;
         _serviceProvider = serviceProvider;
