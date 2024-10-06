@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Extensions;
 
@@ -16,11 +18,13 @@ public static class ModelExtensions
     /// update the filename in the model with the concrete one during template build
     /// </summary>
     /// <param name="data">The data.</param>
-    /// <param name="config">The config.</param>
+    /// <param name="dmnSettings">The config.</param>
     /// <returns>A <see cref="string"/></returns>
-    public static string UpdateFilename(this MovieModel data, IConfiguration config)
+    public static string UpdateFilename(
+        this MovieModel data,
+        DmnSettings dmnSettings)
     {
-        var f = data.Filename ?? data.Key + config[Build_HtmlFileExt];
+        var f = data.Filename ?? data.Key + dmnSettings.Build.Html.Extension;
         data.Filename = f;
         return f;
     }
@@ -29,26 +33,26 @@ public static class ModelExtensions
     /// Setups the model (setup extra properties)
     /// </summary>
     /// <param name="data">movie model.</param>
-    /// <param name="config">The config.</param>
+    /// <param name="dmnSettings">The config.</param>
     public static void SetupModel(
         this MovieModel data,
-        IConfiguration config)
+        DmnSettings dmnSettings)
     {
         var key = data.Title!.ToHexString();
         data.Key = key;
-        data.UpdateFilename(config);
+        data.UpdateFilename(dmnSettings);
     }
 
     /// <summary>
     /// setup the movie models (setup extra properties)
     /// </summary>
     /// <param name="data">movies model</param>
-    /// <param name="config">configuration</param>
+    /// <param name="dmnSettings">configuration</param>
     public static void SetupModel(
         this MoviesModel data,
-        IConfiguration config)
+        DmnSettings dmnSettings)
     {
         foreach (var movieModel in data.Movies)
-            movieModel.SetupModel(config);
+            movieModel.SetupModel(dmnSettings);
     }
 }

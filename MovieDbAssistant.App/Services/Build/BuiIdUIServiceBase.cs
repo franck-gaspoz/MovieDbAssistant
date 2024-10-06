@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
@@ -40,6 +42,7 @@ abstract class BuildUIServiceBase<TSignal> :
 
     protected Action<ActionContext>? OnSuccessMessageAction;
     protected Action<ActionContext>? OnErrorMessageAction;
+    protected DmnSettings DmnSettings;
 
     public BuildUIServiceBase(
         ILogger<BuildUIServiceBase<TSignal>> logger,
@@ -51,6 +54,7 @@ abstract class BuildUIServiceBase<TSignal> :
         string actionDoneMessageKey,
         string actionOnGoingMessageKey,
         string itemIdBuild,
+        IOptions<DmnSettings> dmnSettings,
         string? inputPath = null,
         bool runInBackground = true,
         Action<ActionContext>? onSuccessMessageAction = null,
@@ -65,6 +69,7 @@ abstract class BuildUIServiceBase<TSignal> :
                 actionOnGoingMessageKey,
                 runInBackground)
     {
+        DmnSettings = dmnSettings.Value;
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
         ActionDoneMessageKey = actionDoneMessageKey;

@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services;
 
@@ -12,8 +13,11 @@ sealed class Messages
 {
     readonly IConfiguration _config;
 
-    public Messages(IConfiguration config)
-        => _config = config;
+    readonly DmnSettings _dmnSettings;
+
+    public Messages(IConfiguration config,
+        IOptions<DmnSettings> dmnSettings)
+        => (_config, _dmnSettings) = (config, dmnSettings.Value);
 
     /// <summary>
     /// warning alert box
@@ -52,5 +56,5 @@ sealed class Messages
             MessageBoxIcon.Error);
 
     string Caption(string postFixKey)
-        => _config[App_Title]! + ": " + _config[postFixKey]!;
+        => _dmnSettings.App.Title! + ": " + _config[postFixKey]!;
 }

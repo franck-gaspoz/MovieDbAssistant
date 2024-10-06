@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -19,14 +21,17 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     readonly IConfiguration _config;
     readonly ProcessWrapper _processWrapper;
+    readonly DmnSettings _settings;
 
     public JsonQueryDataProvider(
         ILogger<JsonQueryDataProvider> logger,
         IConfiguration config,
+        IOptions<DmnSettings> settings,
         ProcessWrapper processWrapper)
         : base(logger)
     {
         _config = config;
+        _settings = settings.Value;       
         _processWrapper = processWrapper;
     }
 
@@ -44,10 +49,10 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         var outputFile = qid + ".json";
         var output = Path.Combine(
             Directory.GetCurrentDirectory(),
-            _config[Path_Temp]!
+            _settings.Paths.Temp
             );
 
-        if ( _config.GetBool(Scrap_Skip_If_Temp_Output_FileAlready_Exists)
+        if ( _settings.Scrap.SkipIfTempOutputFileAlreadyExists
             && File.Exists(output))
         {
             Logger.LogWarning(
@@ -62,7 +67,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 
         var toolPath = Path.Combine(
             Directory.GetCurrentDirectory(),
-            _config[Scrap_Tool_Path]!);
+            _settings.Scrap.ToolPath);
 
         const string Q = "\"";
 

@@ -10,6 +10,9 @@ using MovieDbAssistant.Dmn.Components.Builders.Templates;
 using static MovieDbAssistant.Dmn.Globals;
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
 using MovieDbAssistant.Dmn.Models.Extensions;
+using System.Runtime;
+using Microsoft.Extensions.Options;
+using MovieDbAssistant.Dmn.Configuration;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
@@ -22,15 +25,18 @@ public sealed class HtmlMovieDocumentBuilder
     readonly IConfiguration _config;
     readonly ILogger<HtmlDocumentBuilder> _logger;
     readonly TemplateBuilder _templateBuilder;
+    readonly DmnSettings _dmnSettings;
 
     public HtmlMovieDocumentBuilder(
         IConfiguration configuration,
         ILogger<HtmlDocumentBuilder> logger,
-        TemplateBuilder templateBuilder)
+        TemplateBuilder templateBuilder,
+        IOptions<DmnSettings> dmnSettings)
     {
         _config = configuration;
         _logger = logger;
         _templateBuilder = templateBuilder;
+        _dmnSettings = dmnSettings.Value;
     }
 
     /// <summary>
@@ -38,7 +44,7 @@ public sealed class HtmlMovieDocumentBuilder
     /// </summary>
     /// <param name="data">The data.</param>
     public void SetupModel(MovieModel data)
-        => data.SetupModel(_config);
+        => data.SetupModel(_dmnSettings);
 
     /// <summary>
     /// Build the movie.
@@ -59,7 +65,7 @@ public sealed class HtmlMovieDocumentBuilder
         SetupModel(data);
 
         _logger.LogInformation(this,
-            _config[ProcMovie]
+            _config[_dmnSettings.Texts.ProcMovie]
             + data.Title);
 
         _templateBuilder.LoadTemplate(

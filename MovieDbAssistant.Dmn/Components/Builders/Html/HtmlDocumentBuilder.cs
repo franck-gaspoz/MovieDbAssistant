@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.Builders.Templates;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -23,17 +25,20 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     readonly ILogger<HtmlDocumentBuilder> _logger;
     readonly HtmlMovieDocumentBuilder _htmlMovieDocumentBuilder;
     readonly TemplateBuilder _templateBuilder;
+    readonly DmnSettings _dmnSettings;
 
     public HtmlDocumentBuilder(
         IConfiguration config,
         ILogger<HtmlDocumentBuilder> logger,
         HtmlMovieDocumentBuilder htmlMovieDocumentBuilder,
-        TemplateBuilder templateBuilder)
+        TemplateBuilder templateBuilder,
+        IOptions<DmnSettings> dmnSettings)
     {
         _config = config;
         _logger = logger;
         _htmlMovieDocumentBuilder = htmlMovieDocumentBuilder;
         _templateBuilder = templateBuilder;
+        _dmnSettings = dmnSettings.Value;
     }
 
     /// <summary>
@@ -57,7 +62,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         context.Target = folder;
 
         _logger.LogInformation(this,
-            _config[ProcMovieList]
+            _config[_dmnSettings.Texts.ProcMovieList]
             + Path.GetFileName(context.Source));
 
         // get template & prepare output
@@ -94,17 +99,16 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                     .Options
                     .PageIndexPath(
                         context,
-                        _config[Build_HtmlFileExt]!),
+                        _dmnSettings.Build.Html.Extension),
                 index > 0 ?
                     Folder_Back + context.PageFilePath(
                         data.Movies[index - 1].Key!,
-                        _config[Build_HtmlFileExt]!
-                        )
+                        _dmnSettings.Build.Html.Extension)
                     : null,
                 index < data.Movies.Count - 1 ?
                     Folder_Back + context.PageFilePath(
                         data.Movies[index + 1].Key!,
-                        _config[Build_HtmlFileExt]!)
+                        _dmnSettings.Build.Html.Extension)
                     : null
                 );
             builders.Add(builder);

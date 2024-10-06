@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Services.Tray.Models;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -20,6 +22,7 @@ sealed class TrayMenuItems
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
     readonly ISignalR _signal;
+    readonly DmnSettings _dmnSettings;
 
     TrayMenuService _trayMenu =>
         _servicesProvider.GetRequiredService<TrayMenuService>();
@@ -27,8 +30,10 @@ sealed class TrayMenuItems
     public TrayMenuItems(
         IConfiguration config,
         IServiceProvider servicesProvider,
-        ISignalR signal)
+        ISignalR signal,
+        IOptions<DmnSettings> dmnSettings)
     {
+        _dmnSettings = dmnSettings.Value;
         _signal = signal;
         _config = config;
         _servicesProvider = servicesProvider;
@@ -52,7 +57,7 @@ sealed class TrayMenuItems
             // deco
 
             (new ToolStripLabel {
-                Text = T(App_Title)+" "+version,
+                Text = _dmnSettings.App.Title+" "+version,
                 BackColor = Color.Black,
                 ForeColor = Color.DodgerBlue,
                 Padding = new Padding(8),

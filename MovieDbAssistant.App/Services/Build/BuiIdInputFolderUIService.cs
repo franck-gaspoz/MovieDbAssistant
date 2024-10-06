@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
@@ -45,7 +47,8 @@ sealed class BuiIdInputFolderUIService :
         IServiceProvider serviceProvider,
         ActionGroup actionGroup,
         Settings settings,
-        Messages messages) :
+        Messages messages,
+        IOptions<DmnSettings> dmnSettings) :
         base(
             logger,
             config,
@@ -55,7 +58,8 @@ sealed class BuiIdInputFolderUIService :
             messages,
             InputFolderProcessed,
             ProcInpFold,
-            Item_Id_Build_Input) => _actionGroup = actionGroup;
+            Item_Id_Build_Input,
+            dmnSettings) => _actionGroup = actionGroup;
 
     /// <inheritdoc/>
     protected override void Action(ActionContext context)

@@ -1,11 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -33,7 +35,8 @@ sealed class BuildQueryFileUIService :
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
-        DocumentBuilderServiceFactory documentBuilderServiceFactory) :        
+        DocumentBuilderServiceFactory documentBuilderServiceFactory,
+        IOptions<DmnSettings> dmnSettings) :        
         base(
             logger,
             config,
@@ -43,7 +46,9 @@ sealed class BuildQueryFileUIService :
             messages,
             Build_End_Query_Without_Errors,
             ProcFile,
-            Item_Id_Build_Query) => _documentBuilderServiceFactory = documentBuilderServiceFactory;
+            Item_Id_Build_Query,
+            dmnSettings) => 
+                _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
     /// <summary>
     /// Build from query file.
@@ -59,11 +64,12 @@ sealed class BuildQueryFileUIService :
                 Com!.Path,
                 Config[Path_Output]!,
                 Config[Path_Rsc]!,
+                DmnSettings,
                 typeof(JsonQueryFileDataProvider),
                 typeof(HtmlDocumentBuilder),
                 new Dictionary<string, object>
                 {
-                    { Template_Id , Config[Build_Html_Template_Id]! }
+                    { Template_Id , DmnSettings.Build.Html.TemplateId }
                 }));
 
     /// <inheritdoc/>

@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -40,22 +42,28 @@ sealed class TrayMenuService
     readonly ISignalR _signal;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
+    readonly DmnSettings _dmnSettings;
 
     #endregion
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TrayMenuService"/> class.
     /// </summary>
+    /// <param name="logger">logger</param>
     /// <param name="signal">signal</param>
     /// <param name="config">The config.</param>
     /// <param name="builder">The builder.</param>
+    /// <param name="settings">settings</param>
+    /// <param name="dmnSettings">settings</param>
     public TrayMenuService(
         ILogger<TrayMenuService> logger,
         ISignalR signal,
         IConfiguration config,
         TrayMenuBuilder builder,
-        Settings settings)
+        Settings settings,
+        IOptions<DmnSettings> dmnSettings)
     {
+        _dmnSettings = dmnSettings.Value;
         (NotifyIcon, _logger, _signal, _config, _settings)
             = (builder.NotifyIcon, logger, signal, config, settings);
         _trayMenuBuilder = builder;
@@ -192,7 +200,7 @@ sealed class TrayMenuService
         string? text = null,
         ToolTipIcon icon = ToolTipIcon.Info) => NotifyIcon.ShowBalloonTip(
             _config.GetInt(BalloonTip_Delay),
-            _config[App_Title]!,
+            _dmnSettings.App.Title,
             text ?? _config[key!]!,
             icon);
 }

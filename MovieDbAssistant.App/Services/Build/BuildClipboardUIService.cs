@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -28,7 +30,8 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildClipboardCommand>
          Settings settings,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory,
-         ILogger<BuildClipboardUIService> logger) :
+         ILogger<BuildClipboardUIService> logger,
+         IOptions<DmnSettings> dmnSettings) :
         base(
             logger,
             config,
@@ -39,6 +42,7 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildClipboardCommand>
             ClipboardProcessed,
             ProcClipboard,
             Item_Id_Build_Clipboard,
+            dmnSettings,
             runInBackground: false
             ) => _documentBuilderServiceFactory = documentBuilderServiceFactory;
 

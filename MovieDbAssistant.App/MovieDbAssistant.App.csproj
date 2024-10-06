@@ -93,7 +93,6 @@
     <None Remove="rsc\html\templates\dark\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
-    <None Remove="tools\movie-db-scrapper-windows-64bit-intel-1.1.0.exe" />
   </ItemGroup>
 
   <ItemGroup>
@@ -316,9 +315,6 @@
     <Content Include="rsc\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tools\movie-db-scrapper-windows-64bit-intel-1.1.0.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EmbeddedResource Include="assets\multimedia.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -337,6 +333,13 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="tools\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\tools\movie-db-scrapper-windows-64bit-intel-1.1.0.exe" Link="tools\movie-db-scrapper-windows-64bit-intel-1.1.0.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

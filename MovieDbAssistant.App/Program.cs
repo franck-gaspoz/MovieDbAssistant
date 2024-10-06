@@ -4,10 +4,13 @@ using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
+
+using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant;
 
@@ -29,15 +32,18 @@ public class Program
             typeof(Program)];
 
         var host = Host.CreateDefaultBuilder(args)
-            .ConfigureServices(services => services
+            .ConfigureServices((context,services) => services
+                //.AddOptions()                
                 .AutoRegister(fromTypes)
-                .AddSignalR(fromTypes))            
+                .AddSignalR(fromTypes)
+                .Configure<DmnSettings>(context.Configuration)
+                )
             .ConfigureLogging(logging =>
             {
                 logging.ClearProviders();
                 logging.AddAppLogger();
             })            
-            .Build();        
+            .Build();          
 
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);

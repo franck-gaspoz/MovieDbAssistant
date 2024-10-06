@@ -14,6 +14,8 @@ using static MovieDbAssistant.Dmn.Globals;
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Sys;
+using Microsoft.Extensions.Options;
+using MovieDbAssistant.Dmn.Configuration;
 
 namespace MovieDbAssistant.Dmn.Services;
 
@@ -27,8 +29,10 @@ public sealed class DocumentBuilderService : IIdentifiable
     readonly ISignalR _signal;
     readonly DataProviderFactory _dataProviderFactory;
     readonly DocumentBuilderFactory _documentBuilderFactory;
+    readonly DmnSettings _settings;
     readonly IConfiguration _config;
     readonly ILogger<DocumentBuilderService> _logger;
+
     DocumentBuilderContext? _context;
 
     /// <summary>
@@ -42,7 +46,8 @@ public sealed class DocumentBuilderService : IIdentifiable
         ILogger<DocumentBuilderService> logger,
         ISignalR signal,
         DataProviderFactory dataProviderFactory,
-        DocumentBuilderFactory documentBuilderFactory)
+        DocumentBuilderFactory documentBuilderFactory,
+        IOptions<DmnSettings> settings)
     {
         InstanceId = new(this);
         _config = configuration;
@@ -50,6 +55,7 @@ public sealed class DocumentBuilderService : IIdentifiable
         _signal = signal;
         _dataProviderFactory = dataProviderFactory;
         _documentBuilderFactory = documentBuilderFactory;
+        _settings = settings.Value;
         _backgroundWorkerWrapper = new(logger, signal, this);
     }
 
@@ -84,7 +90,7 @@ public sealed class DocumentBuilderService : IIdentifiable
 
             var movies = dataProvider.Get(context.Source)
                 ?? throw new InvalidOperationException(
-                    _config[DataProvider_Failed]!
+                    _settings.Texts.DataProviderFailed
                     +context.Source?.ToString());
 
             builder.Build(context, movies);

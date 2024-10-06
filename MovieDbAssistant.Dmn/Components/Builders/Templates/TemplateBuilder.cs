@@ -8,8 +8,10 @@ using System.Text.Json;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
@@ -29,6 +31,7 @@ public sealed class TemplateBuilder
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilder> _logger;
+    readonly DmnSettings _dmnSettings;
 
     const string Var_Data = "data";
     const string Var_Props = "props";
@@ -82,11 +85,13 @@ public sealed class TemplateBuilder
     public TemplateBuilder(
         IConfiguration configuration,
         ILogger<TemplateBuilder> logger,
-        TemplateBuilderContext context)
+        TemplateBuilderContext context,
+        IOptions<DmnSettings> dmnSettings)
     {
         _config = configuration;
         _logger = logger;
         Context = context;
+        _dmnSettings = dmnSettings.Value;
     }
 
     /// <summary>
@@ -130,7 +135,7 @@ public sealed class TemplateBuilder
     {
         var docContext = Context.DocContext;
 
-        data.SetupModel(_config);
+        data.SetupModel(_dmnSettings);
 #if true || TEST_SOURCE
         foreach (var movie in data.Movies)
         {
@@ -145,7 +150,7 @@ public sealed class TemplateBuilder
 
         Context.DocContext!.AddOutputFile(
             _tpl.Options.PageList.Filename!,
-            _config[Build_HtmlFileExt]!,
+            _dmnSettings.Build.Html.Extension,
             page);
 
         return this;
@@ -277,7 +282,7 @@ public sealed class TemplateBuilder
         src = $"const data = {src};";
 
         Context.DocContext!.AddOutputFile(
-            _config[Build_Html_Filename_Data]!,
+            _dmnSettings.Build.Html.DataFilename,
             src);
     }
 
@@ -319,11 +324,11 @@ public sealed class TemplateBuilder
         {
             {
                 Template_Var_OutputPages,
-                _config[Path_OutputPages]
+                _dmnSettings.Paths.OutputPages
             },
             {
                 Template_Var_Build_Ext_Html,
-                _config[Build_HtmlFileExt]
+                _dmnSettings.Build.Html.Extension
             },
             {
                 Template_Var_Background ,
@@ -390,7 +395,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Software,
-                _config[App_Title]
+                _dmnSettings.App.Title
             },
             {
                 Template_Var_Software_Version,
@@ -401,7 +406,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Software_Version_Date,
-                _config[App_VersionDate]
+                _dmnSettings.App.VersionDate
             },
             {
                 Template_Var_BuiltAt,
@@ -409,7 +414,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Lang,
-                _config[App_Lang]
+                _dmnSettings.App.Lang
             },
             {
                 Template_Var_Link_Repo,

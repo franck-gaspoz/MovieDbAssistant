@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.DataProviders;
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Logger;
 
 using static MovieDbAssistant.Dmn.Globals;
@@ -61,12 +63,12 @@ public sealed class DocumentBuilderContext
     /// </summary>
     public string PagesPath => Path.Combine(
         OutputFolder!,
-        _config[Path_OutputPages]!);
+        _dmnSettings.Paths.OutputPages);
 
     /// <summary>
     /// output path foler name for pages
     /// </summary>
-    public string PagesFolderName => _config[Path_OutputPages]!;
+    public string PagesFolderName => _dmnSettings.Paths.OutputPages;
 
     string? _source;
     /// <summary>
@@ -87,6 +89,7 @@ public sealed class DocumentBuilderContext
     string? _name;
     readonly IConfiguration _config;
     readonly ILogger _logger;
+    readonly DmnSettings _dmnSettings;
 
     /// <summary>
     /// Gets or sets the name.
@@ -121,6 +124,7 @@ public sealed class DocumentBuilderContext
     /// <param name="source">The source.</param>
     /// <param name="outputPath">The output path.</param>
     /// <param name="rscPath">The rsc path.</param>
+    /// <param name="dmnSettings">settings</param>
     /// <param name="dataProviderType">The data provider type.</param>
     /// <param name="builderType">The builder type.</param>
     /// <param name="builderOptions">The builder options.</param>
@@ -130,11 +134,13 @@ public sealed class DocumentBuilderContext
         string source,
         string outputPath,
         string rscPath,
+        DmnSettings dmnSettings,
         Type dataProviderType,
         Type builderType,
         Dictionary<string, object>? builderOptions = null)
     {
         RscPath = rscPath;
+        _dmnSettings = dmnSettings;
         _config = config;
         _logger = logger;
         OutputPath = outputPath;

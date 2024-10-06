@@ -2,7 +2,9 @@
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -20,6 +22,7 @@ public sealed class TemplateBuilderContext
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateModel> _logger;
+    readonly DmnSettings _dmnSettings;
 
     /// <summary>
     /// template path
@@ -47,7 +50,7 @@ public sealed class TemplateBuilderContext
     public string TplFile =>
         Path.Combine(
             TplPath,
-            _config[Build_Html_Template_Filename]!);
+            _dmnSettings.Build.Html.TemplateFilename);
 
     string? _tplContent;
     /// <summary>
@@ -87,10 +90,12 @@ public sealed class TemplateBuilderContext
     /// <param name="logger">The logger.</param>
     public TemplateBuilderContext(
         IConfiguration config,
-        ILogger<TemplateModel> logger)
+        ILogger<TemplateModel> logger,
+        IOptions<DmnSettings> dmnSettings)
     {
         _config = config;
         _logger = logger;
+        _dmnSettings = dmnSettings.Value;
     }
 
     /// <summary>
