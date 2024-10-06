@@ -108,6 +108,8 @@ public sealed class MovieDbScrapper : IIdentifiable
                 _logger.LogInformation(this,
                     $"scrap: spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");
 
+                _processWrapper.Start(toolPath,args);
+
                 _completed = true;
             }
             , _config

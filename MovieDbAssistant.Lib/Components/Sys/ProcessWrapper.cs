@@ -45,9 +45,11 @@ public sealed class ProcessWrapper : IIdentifiable
     /// </summary>
     /// <param name="filename">The filename.</param>
     /// <param name="args">The args.</param>
+    /// <param name="waitForExit">wait for exit (default true)</param>
     public void Start(
         string filename,
-        IEnumerable<string> args)
+        IEnumerable<string> args,
+        bool waitForExit = true)
     {
         Psi = new ProcessStartInfo(
             filename,
@@ -58,7 +60,7 @@ public sealed class ProcessWrapper : IIdentifiable
             RedirectStandardError = true,
             RedirectStandardInput = false,
             CreateNoWindow = false,
-            WindowStyle = ProcessWindowStyle.Normal
+            WindowStyle = ProcessWindowStyle.Normal,            
         };
 
         using var process = Process.Start(Psi!);
@@ -67,8 +69,15 @@ public sealed class ProcessWrapper : IIdentifiable
         {
             process.OutputDataReceived += Process_OutputDataReceived;
             process.ErrorDataReceived += Process_ErrorDataReceived;
-            process.WaitForExit();
-            _logger.LogInformation(this, _remain);
+            if (waitForExit)
+                process.WaitForExit();
+
+            var tx = process.StandardOutput.ReadToEnd();
+            var terr = process.StandardError.ReadToEnd();
+            if (!string.IsNullOrWhiteSpace(tx))
+                AppendLog(tx, false);
+            if (!string.IsNullOrWhiteSpace(terr))
+                AppendLog(terr, true);
         }
     }
 
@@ -78,7 +87,7 @@ public sealed class ProcessWrapper : IIdentifiable
     {
         var s = e.Data;
         if (s == null) return;
-        AppendLog(s, ref _remain_error);
+        AppendLogDelta(s, ref _remain_error);
     }
 
     void Process_OutputDataReceived(
@@ -87,13 +96,29 @@ public sealed class ProcessWrapper : IIdentifiable
     {
         var s = e.Data;
         if (s == null) return;
-        AppendLog(s, ref _remain);
+        AppendLogDelta(s, ref _remain);
     }
 
     string _remain = "";
     string _remain_error = "";
 
-    void AppendLog(string s, ref string remain)
+    void AppendLog(string txt,bool isError)
+    {
+        var t = txt.Split('\n');
+        foreach (var s in t)
+        {
+            var ts = s.TrimEnd();
+            if (!string.IsNullOrWhiteSpace(ts))
+            {
+                if (!isError)
+                    _logger.LogInformation(this, ts);
+                else
+                    _logger.LogError(this, ts);
+            }
+        }
+    }
+
+    void AppendLogDelta(string s, ref string remain)
     {
         var t = s.Split('\n');
         remain += t[0];
