@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
+using MovieDbAssistant.Dmn.Components.Scrapper;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
@@ -68,30 +69,21 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
             this,
             $"handle search query #{qid}: {query}");
 
-        var toolPath = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            _settings.Value.Scrap.ToolPath);
-
-        const string Q = "\"";
-
         query.Spiders
             .ToList()
-            .ForEach(x =>
+            .ForEach(spiderId =>
             {
-                /// outputFile title [filters]=
-                var args = new List<string>
-                {
-                    Q + output + Q,
-                    Q + query.Title + Q,
-                    _sourceModelAdapterFactory
-                        .Create(SpidersIds.imdb)
-                        .CreateFilter(query)
-                };
+                var filters = _sourceModelAdapterFactory
+                    .Create(spiderId)
+                    .CreateFilter(query);
 
-                Logger.LogInformation(this, "query url: "+args.Last());
-
-                var processWrapper = _serviceProvider.GetRequiredService<ProcessWrapper>();
-                
+                var scraper = _serviceProvider
+                    .GetRequiredService<MovieDbScrapper>();
+                scraper.Scrap(
+                    spiderId,
+                    output,
+                    filters,
+                    query);
             });
 
         return null;

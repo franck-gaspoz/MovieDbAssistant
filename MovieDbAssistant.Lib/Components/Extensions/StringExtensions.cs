@@ -81,6 +81,6 @@ public static class StringExtensions
     /// </summary>
     /// <param name="s">string</param>
     /// <returns>double quoted string</returns>
-    public static string DblQuote(string s)
+    public static string DblQuote(this string s)
         => '"' + s + '"';
 }
