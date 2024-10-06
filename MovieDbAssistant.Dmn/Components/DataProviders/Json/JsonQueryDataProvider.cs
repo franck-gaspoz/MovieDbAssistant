@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
@@ -18,18 +19,21 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     readonly IConfiguration _config;
     readonly ProcessWrapper _processWrapper;
+    readonly SourceModelAdapterFactory _sourceModelAdapterFactory;
     readonly IOptions<DmnSettings> _settings;
 
     public JsonQueryDataProvider(
         ILogger<JsonQueryDataProvider> logger,
         IConfiguration config,
         IOptions<DmnSettings> settings,
-        ProcessWrapper processWrapper)
+        ProcessWrapper processWrapper,
+        SourceModelAdapterFactory sourceModelAdapterFactory)
         : base(logger)
     {
         _config = config;
         _settings = settings;
         _processWrapper = processWrapper;
+        _sourceModelAdapterFactory = sourceModelAdapterFactory;
     }
 
     /// <summary>
@@ -40,7 +44,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
     public override MoviesModel? Get(object? source)
     {
         if (source == null) return null;
-        if (source is not QueryModelSearchByTitle query) return null;
+        if (source is not QueryModel query) return null;
 
         var qid = query.Metadata!.InstanceId.Value + "";
         var outputFile = qid + ".json";
@@ -68,14 +72,20 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 
         const string Q = "\"";
 
-        /// outputFile title [filters]=
-        var args = new List<string>
-        {
-            Q + output + Q,
-            Q + query.Title + Q,
-            ""
-        };
-        //if (query.)
+        query.Spiders
+            .ToList()
+            .ForEach(x =>
+            {
+                /// outputFile title [filters]=
+                var args = new List<string>
+                {
+                    Q + output + Q,
+                    Q + query.Title + Q,
+                    _sourceModelAdapterFactory
+                        .Create(SpidersIds.imdb)
+                        .CreateFilter(query)
+                };
+            });
 
         return null;
     }

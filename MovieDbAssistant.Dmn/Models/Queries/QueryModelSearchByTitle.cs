@@ -14,10 +14,10 @@ public record class QueryModelSearchByTitle
     public string? Year { get;set; }
 
     /// <summary>
-    /// Gets or sets the lang.
+    /// Gets or sets the languages
     /// </summary>
     /// <value>A <see cref="string? "/></value>
-    public string? Lang { get;set; }
+    public string[]? Languages { get;set; }
 
     string? _title;
     /// <summary>
@@ -49,10 +49,10 @@ public record class QueryModelSearchByTitle
 
     public QueryModelSearchByTitle(
         string title,
-        string? lang = null,
+        string[]? languages = null,
         string? year = null)
     {
-        Lang = lang;
+        Languages = languages;
         Year = year;
         Title = title;
         Metadata = new();

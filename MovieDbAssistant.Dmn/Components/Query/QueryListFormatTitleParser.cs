@@ -23,13 +23,13 @@ public sealed class QueryListFormatTitleParser :
         => InstanceId = new(this);
 
     /// <inheritdoc/>
-    public List<QueryModelSearchByTitle> Parse(string[] lines)
+    public List<QueryModel> Parse(string[] lines)
     {
-        var queries = new List<QueryModelSearchByTitle>();
+        var queries = new List<QueryModel>();
         
         void AddQueryModel(string title,int i)
         {
-            var model = new QueryModelSearchByTitle(title);
+            var model = new QueryModel(title);
             model.Metadata ??= new();
             model.Metadata.QueryFileLine = i;
             queries.Add(model);

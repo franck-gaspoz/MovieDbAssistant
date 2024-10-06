@@ -12,5 +12,5 @@ public interface IQueryListFormatParser
     /// </summary>
     /// <param name="lines">The content.</param>
     /// <returns>A list of querymodels.</returns>
-    public List<QueryModelSearchByTitle> Parse(string[] lines);
+    public List<QueryModel> Parse(string[] lines);
 }

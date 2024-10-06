@@ -39,8 +39,8 @@ public sealed class QueryBuilder : IIdentifiable
     /// </summary>
     /// <param name="queryFile">query file name</param>
     /// <param name="content">query source file content</param>
-    /// <returns>this object</returns>
-    public List<QueryModelSearchByTitle> Build(string queryFile,string content)
+    /// <returns>queries models</returns>
+    public List<QueryModel> Build(string queryFile,string content)
     {
         _queries.Clear();
         _lines = content
@@ -61,7 +61,7 @@ public sealed class QueryBuilder : IIdentifiable
         return res;
     }
 
-    static void AddMetadata(string queryFile,List<QueryModelSearchByTitle>? queries)
+    static void AddMetadata(string queryFile,List<QueryModel>? queries)
     {
         if (queries == null) return;
         foreach (var query in queries)

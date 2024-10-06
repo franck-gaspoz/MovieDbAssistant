@@ -67,4 +67,12 @@ public static class StringExtensions
     /// <returns>first letter in lower case</returns>
     public static string ToFirstLower(this string s)
         => s[0].ToString().ToLower() + s[1..];
+
+    /// <summary>
+    /// first letter in upper case
+    /// </summary>
+    /// <param name="s">string</param>
+    /// <returns>first letter in upper case</returns>
+    public static string ToFirstUpper(this string s)
+        => s[0].ToString().ToUpper() + s[1..];
 }
