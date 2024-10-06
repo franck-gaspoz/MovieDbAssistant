@@ -126,7 +126,8 @@ sealed class TrayMenuItems
                 _signal.Send(this, new OpenUrlCommand(_appSettings.Value.Urls.HelpGitHub));
                  });}),
 
-            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Settings },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Settings,
+                Enabled = false},
             o => { o.Click += new EventHandler((c,e) => {
                 // TODO: implements
             });}),
