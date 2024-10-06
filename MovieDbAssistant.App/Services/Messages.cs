@@ -5,8 +5,6 @@ using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
-
 namespace MovieDbAssistant.App.Services;
 
 [Singleton]

@@ -5,15 +5,13 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Features;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Configuration.Extensions;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Services.Build;
 
@@ -50,7 +48,6 @@ abstract class BuildUIServiceBase<TSignal> :
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
-        Settings settings,
         Messages messages,
         string actionDoneMessage,
         string actionOnGoingMessage,
@@ -66,7 +63,6 @@ abstract class BuildUIServiceBase<TSignal> :
                 config,
                 signal,
                 serviceProvider,
-                settings,
                 messages,
                 appSettings,
                 actionOnGoingMessage,
@@ -105,7 +101,7 @@ abstract class BuildUIServiceBase<TSignal> :
         if (AppSettings.Value.Options.OpenOuputWindowOnBuild)
         {
             Signal.Send(this,
-                new ExploreFolderCommand(Settings.OutputPath));
+                new ExploreFolderCommand(DmnSettings.Value.OutputPath()));
         }
         OnSuccessMessageAction?.Invoke(@event.Context);
     }
@@ -136,7 +132,7 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <returns>true if disabled, false otherwise</returns>
     protected bool FileIsDisabled(string x) =>
         Path.GetFileName(x)
-            .StartsWith(Config[PrefixFileDisabled]!);
+            .StartsWith(DmnSettings.Value.Build.PrefixFileDisabled);
 
     /// <summary>
     /// filter a filename list to keep only enabled ones

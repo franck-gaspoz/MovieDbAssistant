@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json;
@@ -12,11 +11,9 @@ using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
@@ -25,7 +22,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// The build query file service.
 /// </summary>
 [Transient]
-sealed class BuildQueryFileUIService : 
+sealed class BuildQueryFileUIService :
     BuildUIServiceBase<BuildQueryFileCommand>
 {
     readonly DocumentBuilderServiceFactory _documentBuilderServiceFactory;
@@ -35,31 +32,29 @@ sealed class BuildQueryFileUIService :
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
-        Settings settings,
         Messages messages,
         DocumentBuilderServiceFactory documentBuilderServiceFactory,
         IOptions<DmnSettings> dmnSettings,
-        IOptions<AppSettings> appSettings) :        
+        IOptions<AppSettings> appSettings) :
         base(
             logger,
             config,
             signal,
             serviceProvider,
-            settings,
             messages,
             appSettings.Value.Texts.BuildQueryEndWithoutErrors,
             dmnSettings.Value.Texts.ProcFile,
             Item_Id_Build_Query,
             dmnSettings,
-            appSettings) => 
+            appSettings) =>
                 _documentBuilderServiceFactory = documentBuilderServiceFactory;
 
     /// <summary>
     /// Build from query file.
     /// </summary>
-    protected override void Action(ActionContext context) 
+    protected override void Action(ActionContext context)
         => _documentBuilderServiceFactory.CreateDocumentBuilderService()
-        .AddListenerOnce(this,this,Signal)
+        .AddListenerOnce(this, this, Signal)
         .Build(
             context,
             new DocumentBuilderContext(

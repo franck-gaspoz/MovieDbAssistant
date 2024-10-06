@@ -1,21 +1,18 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.DataProviders;
+using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Signal;
-using MovieDbAssistant.Lib.Components.Logger;
-using Microsoft.Extensions.Configuration;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
-using static MovieDbAssistant.Dmn.Globals;
-using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
+using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Components.Signal;
 using MovieDbAssistant.Lib.Components.Sys;
-using Microsoft.Extensions.Options;
-using MovieDbAssistant.Dmn.Configuration;
 
 namespace MovieDbAssistant.Dmn.Services;
 
@@ -77,21 +74,21 @@ public sealed class DocumentBuilderService : IIdentifiable
     {
         try
         {
-            var dataProvider = context.DataProvider = 
+            var dataProvider = context.DataProvider =
                 _dataProviderFactory.CreateDataProvider(
-                    context.DataProviderType );
+                    context.DataProviderType);
 
-            var builder = context.Builder = 
+            var builder = context.Builder =
                 _documentBuilderFactory.CreateDocumentBuilder(
-                    context.BuilderType );
+                    context.BuilderType);
 
-            _logger.LogInformation(this, _dmnSettings.Value.Texts.ProcFile 
-                + Path.GetFileName(context.Source) );
+            _logger.LogInformation(this, _dmnSettings.Value.Texts.ProcFile
+                + Path.GetFileName(context.Source));
 
             var movies = dataProvider.Get(context.Source)
                 ?? throw new InvalidOperationException(
                     _dmnSettings.Value.Texts.DataProviderFailed
-                    +context.Source?.ToString());
+                    + context.Source?.ToString());
 
             builder.Build(context, movies);
 

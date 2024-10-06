@@ -28,9 +28,9 @@ public class Program
     public static void Main(string[] args)
     {
         Type[] fromTypes =
-            [typeof(SingletonAttribute),
-            typeof(Settings),
-            typeof(Program)];
+            [typeof(AppLogger),
+            typeof(DmnSettings),
+            typeof(AppSettings)];
 
         var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices((context,services) => services            

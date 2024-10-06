@@ -34,4 +34,9 @@ public sealed class AppSettings
     /// options
     /// </summary>
     public required OptionsSettings Options { get; set; }
+
+    /// <summary>
+    /// urls
+    /// </summary>
+    public required UrlsSettings Urls { get; set; }
 }

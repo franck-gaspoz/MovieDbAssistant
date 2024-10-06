@@ -8,7 +8,6 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Signal;
@@ -26,7 +25,6 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
 {
     #region fields & properties
 
-    protected readonly Settings Settings;
     protected readonly Messages Messages;
     readonly IOptions<AppSettings> _appSettings;
 
@@ -42,7 +40,6 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
-        Settings settings,
         Messages messages,
         IOptions<AppSettings> appSettings,
         string actionOnGoingMessage,
@@ -58,7 +55,6 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
             messageErrorUnhandled ?? appSettings.Value.Texts.ErrorUnhandled,
             messageFeatureIsBuzy ?? appSettings.Value.Texts.FeatureBusy)
     {
-        Settings = settings;
         Messages = messages;
         _appSettings = appSettings;
         StoppingAnimInfo += (o, e) => Tray.StopAnimInfo();

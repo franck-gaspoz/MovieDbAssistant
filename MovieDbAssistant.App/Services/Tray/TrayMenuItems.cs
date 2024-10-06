@@ -9,7 +9,6 @@ using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Tray;
@@ -124,7 +123,7 @@ sealed class TrayMenuItems
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Help },
             o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new OpenUrlCommand(_config[Url_HelpGitHub]!));
+                _signal.Send(this, new OpenUrlCommand(_appSettings.Value.Urls.HelpGitHub));
                  });}),
 
             (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Settings },

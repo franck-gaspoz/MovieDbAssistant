@@ -9,7 +9,6 @@ using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;

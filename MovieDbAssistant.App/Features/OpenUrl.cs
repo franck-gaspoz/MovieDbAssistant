@@ -8,8 +8,6 @@ using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
-
 namespace MovieDbAssistant.App.Features;
 
 /// <summary>

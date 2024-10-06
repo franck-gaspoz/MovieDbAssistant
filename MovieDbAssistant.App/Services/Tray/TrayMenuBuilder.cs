@@ -5,12 +5,9 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Services.Tray.Models;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Configuration.Extensions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -63,7 +60,6 @@ sealed class TrayMenuBuilder
     readonly IConfiguration _config;
     string _iconPath = "";
     readonly TrayMenuItems _trayMenuItems;
-    readonly Settings _settings;
     readonly IOptions<AppSettings> _appSettings;
 
     NotifyIcon? _notifyIcon { get; set; }
@@ -80,14 +76,12 @@ sealed class TrayMenuBuilder
     public TrayMenuBuilder(
         IConfiguration config,
         TrayMenuItems trayMenuItems,
-        Settings settings,
         IOptions<DmnSettings> dmnSettings,
         IOptions<AppSettings> appSettings
         )
     {
         _dmnSettings = dmnSettings;
         _trayMenuItems = trayMenuItems;
-        _settings = settings;
         _appSettings = appSettings;
         _config = config;
 
@@ -98,7 +92,7 @@ sealed class TrayMenuBuilder
     {
         var iconFile = _appSettings.Value.Assets.Icons.Tray;
         Tooltip = _dmnSettings.Value.App.Title;
-        _iconPath = _settings.AssetPath(iconFile);
+        _iconPath = _dmnSettings.Value.AssetPath(iconFile);
     }
 
     /// <summary>

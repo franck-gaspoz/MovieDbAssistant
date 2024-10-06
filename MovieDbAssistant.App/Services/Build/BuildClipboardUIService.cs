@@ -4,14 +4,12 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
@@ -28,7 +26,6 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildClipboardCommand>
          IConfiguration config,
          ISignalR signal,
          IServiceProvider serviceProvider,
-         Settings settings,
          Messages messages,
          DocumentBuilderServiceFactory documentBuilderServiceFactory,
          ILogger<BuildClipboardUIService> logger,
@@ -39,7 +36,6 @@ sealed class BuildClipboardUIService : BuildUIServiceBase<BuildClipboardCommand>
             config,
             signal,
             serviceProvider,
-            settings,
             messages,
             appSettings.Value.Texts.ClipboardProcessed,
             appSettings.Value.Texts.ProcClipboard,

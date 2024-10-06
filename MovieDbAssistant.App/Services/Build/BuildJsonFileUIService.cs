@@ -4,7 +4,6 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Components.Builders;
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json;
@@ -12,11 +11,9 @@ using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
@@ -35,7 +32,6 @@ sealed class BuildJsonFileUIService :
         IConfiguration config,
         ISignalR signal,
         IServiceProvider serviceProvider,
-        Settings settings,
         Messages messages,
         DocumentBuilderServiceFactory documentBuilderServiceFactory,
         IOptions<DmnSettings> dmnSettings,
@@ -45,7 +41,6 @@ sealed class BuildJsonFileUIService :
             config,
             signal,
             serviceProvider,
-            settings,
             messages,
             appSettings.Value.Texts.BuildQueryEndWithoutErrors,
             dmnSettings.Value.Texts.ProcFile,
@@ -57,7 +52,7 @@ sealed class BuildJsonFileUIService :
     /// Build from json file.
     /// </summary>
     /// <inheritdoc/>
-    protected override void Action(ActionContext context) 
+    protected override void Action(ActionContext context)
         => _documentBuilderServiceFactory.CreateDocumentBuilderService()
             .AddListenerOnce(this, this, Signal)
             .Build(

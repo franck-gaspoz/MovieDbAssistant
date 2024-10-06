@@ -34,7 +34,6 @@ sealed class TrayMenuService
     public event EventHandler? BalloonTipClosed;
 
     readonly TrayMenuBuilder _trayMenuBuilder;
-    readonly Settings _settings;
     readonly IOptions<AppSettings> _appSettings;
     readonly ILogger<TrayMenuService> _logger;
     readonly ISignalR _signal;
@@ -58,13 +57,12 @@ sealed class TrayMenuService
         ISignalR signal,
         IConfiguration config,
         TrayMenuBuilder builder,
-        Settings settings,
         IOptions<DmnSettings> dmnSettings,
         IOptions<AppSettings> appSettings)
     {
         _dmnSettings = dmnSettings;
-        (NotifyIcon, _logger, _signal, _config, _settings, _appSettings)
-            = (builder.NotifyIcon, logger, signal, config, settings, appSettings);
+        (NotifyIcon, _logger, _signal, _config, _appSettings)
+            = (builder.NotifyIcon, logger, signal, config, appSettings);
         _trayMenuBuilder = builder;
         _trayBackgroundWorker = new(
             logger,
@@ -156,8 +154,8 @@ sealed class TrayMenuService
             _signal,
             _config,
             this,
-            _settings,
-            _appSettings);
+            _appSettings,
+            _dmnSettings);
 
         ta.Setup(() =>
         {

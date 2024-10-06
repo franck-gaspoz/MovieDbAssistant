@@ -5,7 +5,6 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
@@ -14,7 +13,6 @@ using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
-using static MovieDbAssistant.Dmn.Components.Settings;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Build;
@@ -47,7 +45,6 @@ sealed class BuiIdInputFolderUIService :
         ISignalR signal,
         IServiceProvider serviceProvider,
         ActionGroup actionGroup,
-        Settings settings,
         Messages messages,
         IOptions<DmnSettings> dmnSettings,
         IOptions<AppSettings> appSettings) :
@@ -56,7 +53,6 @@ sealed class BuiIdInputFolderUIService :
             config,
             signal,
             serviceProvider,
-            settings,
             messages,
             appSettings.Value.Texts.InputFolderProcessed,
             appSettings.Value.Texts.ProcInpFold,
@@ -99,11 +95,11 @@ sealed class BuiIdInputFolderUIService :
         if (@event.Context.Errors.Any())
         {
             Tray.ShowBalloonTip(
-                AppSettings.Value.Texts.InputFolderProcessedWithErrors, 
+                AppSettings.Value.Texts.InputFolderProcessedWithErrors,
                 icon: ToolTipIcon.Warning);
 
             var jsonBuildErrors = @event.Context.Errors
-                .Where(x => x!=null && x.Event.Context.Command is ICommandWithPath)
+                .Where(x => x != null && x.Event.Context.Command is ICommandWithPath)
                 .Select(x => x.Event);
 
             var jsonBuildLogs = jsonBuildErrors.Select(x =>
@@ -178,8 +174,10 @@ sealed class BuiIdInputFolderUIService :
     #endregion
 
     IEnumerable<string> GetQueriesFiles()
-        => EnabledFiles(Directory.GetFiles(InputPath, Config[SearchPattern_Txt]!));
+        => EnabledFiles(Directory.GetFiles(InputPath,
+            DmnSettings.Value.Build.SearchPatternTxt));
 
     IEnumerable<string> GetJsonFiles()
-        => EnabledFiles(Directory.GetFiles(InputPath, Config[SearchPattern_Json]!));
+        => EnabledFiles(Directory.GetFiles(InputPath,
+            DmnSettings.Value.Build.SearchPatternJson));
 }
