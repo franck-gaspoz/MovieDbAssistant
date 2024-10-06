@@ -93,6 +93,28 @@ public static class AppLoggerExtensions
         => logger.LogError(message.CollapseCallerMessage(caller));
 
     /// <summary>
+    /// Log the error.
+    /// </summary>
+    /// <param name="logger">The logger.</param>
+    /// <param name="caller">The caller.</param>
+    /// <param name="exception">exception</param>
+    /// <param name="message">The message.</param>
+    public static void LogError(
+        this ILogger logger,
+        object caller,
+        string message,
+        Exception exception)
+    {
+        //logger.LogError(message.CollapseCallerMessage(caller));
+        logger.Log(
+            LogLevel.Error,
+            exception,
+            message.CollapseCallerMessage(caller),
+            []
+           );
+    }
+
+    /// <summary>
     /// Log the info.
     /// </summary>
     /// <param name="logger">The logger.</param>

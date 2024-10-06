@@ -153,7 +153,10 @@ public abstract class ActionBase<TCommand> :
     {
         var message = @event.ToString();
 
-        Logger.LogError(this, message);
+        if (@event.Exception != null)
+            Logger.LogError(this, message, @event.Exception);
+        else
+            Logger.LogError(this, message);
 
         @event.Context.LogError(@event);
 

@@ -57,7 +57,7 @@ public class AppLogger(
 
         if (exception != null)
         {
-            Dbg(caller,exception.Message);
+            //Dbg(caller,exception.Message);
             if (config.DumpStackTraces)
                 Debug.WriteLine(exception.StackTrace);
         }

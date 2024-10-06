@@ -30,7 +30,7 @@ public sealed class TemplateBuilderContext
     public string TplPath =>
         Path.Combine(
             RscPath,
-            _config[Path_RscHtmlTemplates]!,
+            _dmnSettings.Paths.RscHtmlTemplates,
             TemplateId!);
 
     /// <summary>
@@ -40,7 +40,7 @@ public sealed class TemplateBuilderContext
     public string RscPath =>
         Path.Combine(
             DocContext!.RscPath,
-            _config[Path_RscHtml]!)
+            _dmnSettings.Paths.RscHtml)
                 .NormalizePath();
 
     /// <summary>
@@ -68,8 +68,8 @@ public sealed class TemplateBuilderContext
     public string AssetsPath(DocumentBuilderContext context) =>
         Path.Combine(
             context.RscPath,
-            _config[Path_RscHtml]!,
-            _config[Path_RscHtmlAssets]!)
+            _dmnSettings.Paths.RscHtml,
+            _dmnSettings.Paths.RscHtmlAssets)
                 .NormalizePath();
 
     /// <summary>

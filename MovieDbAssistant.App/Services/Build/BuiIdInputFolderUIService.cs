@@ -36,7 +36,7 @@ sealed class BuiIdInputFolderUIService :
     /// <value>A <see cref="string"/></value>
     public new string InputPath => Path.Combine(
         Directory.GetCurrentDirectory(),
-        Config[Path_Input]!);
+        DmnSettings.Paths.Input);
 
     #endregion
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
 
@@ -12,51 +14,6 @@ namespace MovieDbAssistant.Dmn.Components;
 public sealed class Settings
 {
     #region consts
-
-    /// <summary>
-    /// The path output.
-    /// </summary>
-    public const string Path_Output = "Paths:Output";
-
-    /// <summary>
-    /// The path resources.
-    /// </summary>
-    public const string Path_Rsc = "Paths:Resources";
-
-    /// <summary>
-    /// The path resources html
-    /// </summary>
-    public const string Path_RscHtml = "Paths:RscHtml";
-
-    /// <summary>
-    /// The path resources html templates
-    /// </summary>
-    public const string Path_RscHtmlTemplates = "Paths:RscHtmlTemplates";
-
-    /// <summary>
-    /// The path resources html / assets
-    /// </summary>
-    public const string Path_RscHtmlAssets = "Paths:RscHtmlAssets";
-
-    /// <summary>
-    /// The path resources html / assets / movie-page-list-wallpapers
-    /// </summary>
-    public const string Path_RscHtmlAssetsMoviePageListWallpapers = "Paths:RscHtmlAssetsMoviePageListWallpapers";
-
-    /// <summary>
-    /// The path resources html / assets / fonts
-    /// </summary>
-    public const string Path_RscHtmlAssetsFonts = "Paths:RscHtmlAssetsFonts";
-
-    /// <summary>
-    /// The path resources html / assets
-    /// </summary>
-    public const string Path_AssetsListWallpaper = "Build:Html:Assets:ListWallpaper";
-
-    /// <summary>
-    /// The path input.
-    /// </summary>
-    public const string Path_Input = "Paths:Input";
 
     /// <summary>
     /// Label exit.
@@ -286,25 +243,29 @@ public sealed class Settings
     #endregion
 
     readonly IConfiguration _config;
+    readonly DmnSettings _dmnSettings;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Settings"/> class.
     /// </summary>
     /// <param name="config">The config.</param>
-    public Settings(IConfiguration config)
-        => _config = config;
+    public Settings(IConfiguration config,IOptions<DmnSettings> dmnSettings)
+    {
+        _config = config;
+        _dmnSettings = dmnSettings.Value;
+    }
 
     /// <summary>
     /// Gets the output path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string OutputPath => _config[Path_Output]!.NormalizePath();
+    public string OutputPath => _dmnSettings.Paths.Output.NormalizePath();
 
     /// <summary>
     /// Gets the input path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public string InputPath => _config[Path_Input]!.NormalizePath();
+    public string InputPath => _dmnSettings.Paths.Input.NormalizePath();
 
     /// <summary>
     /// full path of asset file from its name

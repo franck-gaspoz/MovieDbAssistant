@@ -108,12 +108,12 @@ sealed class TrayMenuItems
 
             (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new ExploreFolderCommand(_config[Path_Output]!));
+                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Paths.Output));
             });}),
 
             (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
             o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new ExploreFolderCommand(_config[Path_Input]!));
+                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Paths.Input));
             });}),
 
             // settings, help
