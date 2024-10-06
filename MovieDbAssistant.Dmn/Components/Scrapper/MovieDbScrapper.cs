@@ -58,7 +58,7 @@ public sealed class MovieDbScrapper : IIdentifiable
     /// </summary>
     /// <param name="queryModel">The query model.</param>
     /// <returns>A <see cref="MoviesModel"/></returns>
-    public MoviesModel? Scrap(QueryModelSearchByTitle queryModel)
+    public MoviesModel? Scrap(QueryModel queryModel)
     {
         _completed = false;
         _worker.RunAction(

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Queries\QueryModelSearchByTitle.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Commands\" />
   </ItemGroup>
 

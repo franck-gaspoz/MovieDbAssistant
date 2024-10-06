@@ -23,7 +23,7 @@ public sealed class QueryBuilder : IIdentifiable
         this._serviceProvider = _serviceProvider;
     }
 
-    readonly List<QueryModelSearchByTitle> _queries = [];
+    readonly List<QueryModel> _queries = [];
     readonly ILogger<QueryBuilder> _logger;
     readonly IServiceProvider _serviceProvider;
     string[]? _lines;
