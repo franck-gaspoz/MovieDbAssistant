@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -18,24 +19,24 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     readonly IConfiguration _config;
-    readonly ProcessWrapper _processWrapper;
     readonly SourceModelAdapterFactory _sourceModelAdapterFactory;
+    readonly IServiceProvider _serviceProvider;
     readonly IOptions<DmnSettings> _settings;
 
     public JsonQueryDataProvider(
         ILogger<JsonQueryDataProvider> logger,
         IConfiguration config,
-        IOptions<DmnSettings> settings,
-        ProcessWrapper processWrapper,
-        SourceModelAdapterFactory sourceModelAdapterFactory)
+        IOptions<DmnSettings> settings,        
+        SourceModelAdapterFactory sourceModelAdapterFactory,
+        IServiceProvider serviceProvider)
         : base(logger)
     {
         _config = config;
         _settings = settings;
-        _processWrapper = processWrapper;
         _sourceModelAdapterFactory = sourceModelAdapterFactory;
+        _serviceProvider = serviceProvider;
     }
-
+    
     /// <summary>
     /// get from query model
     /// </summary>
@@ -50,7 +51,8 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         var outputFile = qid + ".json";
         var output = Path.Combine(
             Directory.GetCurrentDirectory(),
-            _settings.Value.Paths.Temp
+            _settings.Value.Paths.Temp,
+            outputFile
             );
 
         if (_settings.Value.Scrap.SkipIfTempOutputFileAlreadyExists
@@ -85,6 +87,11 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         .Create(SpidersIds.imdb)
                         .CreateFilter(query)
                 };
+
+                Logger.LogInformation(this, "query url: "+args.Last());
+
+                var processWrapper = _serviceProvider.GetRequiredService<ProcessWrapper>();
+                
             });
 
         return null;

@@ -42,6 +42,11 @@ public record class QueryModelSearchByTitle
     }
 
     /// <summary>
+    /// count
+    /// </summary>
+    public int? Count { get; set; }
+
+    /// <summary>
     /// Gets or sets the metadata.
     /// </summary>
     /// <value>A <see cref="QueryMetadata? "/></value>

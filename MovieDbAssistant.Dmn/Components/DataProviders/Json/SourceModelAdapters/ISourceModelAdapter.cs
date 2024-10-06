@@ -18,5 +18,5 @@ public interface ISourceModelAdapter
     /// </summary>
     /// <param name="model">query model</param>
     /// <returns>filter string</returns>
-    string CreateFilter(QueryModelSearchByTitle model);
+    string CreateFilter(QueryModel model);
 }

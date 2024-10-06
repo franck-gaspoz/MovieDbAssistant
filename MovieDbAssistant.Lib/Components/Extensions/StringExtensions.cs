@@ -75,4 +75,12 @@ public static class StringExtensions
     /// <returns>first letter in upper case</returns>
     public static string ToFirstUpper(this string s)
         => s[0].ToString().ToUpper() + s[1..];
+
+    /// <summary>
+    /// double quote a string
+    /// </summary>
+    /// <param name="s">string</param>
+    /// <returns>double quoted string</returns>
+    public static string DblQuote(string s)
+        => '"' + s + '"';
 }

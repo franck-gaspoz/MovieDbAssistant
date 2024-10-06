@@ -22,4 +22,6 @@ public sealed class ScrapSettings
     /// </summary>
     /// <value>A <see cref="FiltersSettings"/></value>
     public required FiltersSettings DefaultFilters { get; set; }
+
+
 }

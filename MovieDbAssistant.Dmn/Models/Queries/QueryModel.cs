@@ -20,6 +20,16 @@ public sealed record class QueryModel : QueryModelSearchByTitle
     /// </summary>
     public string? UserRating { get; set; }
 
+    /// <summary>
+    /// titles types
+    /// </summary>
+    public TitleTypes[]? TitleTypes { get; set; }
+
+    /// <summary>
+    /// genres
+    /// </summary>
+    public Genres[]? Genres { get; set; }
+
     public QueryModel(
         string title,
         string[]? languages = null,
