@@ -5,9 +5,6 @@
 // - 1 title per line 
 //	followed by
 // - [play url][,download url]
-// - extract and remove any yeay at end of title for query
+// - extract and remove any year at end of title for query
 creed iii
 https://ok.ru/video/8219604814513
-
-dune 2024 - part II
-https://ok.ru/video/8218294880945

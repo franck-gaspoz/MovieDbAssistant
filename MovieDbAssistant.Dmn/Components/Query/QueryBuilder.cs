@@ -47,10 +47,10 @@ public sealed class QueryBuilder : IIdentifiable
             .Split('\n');
         Trim();
         IQueryListFormatParser formatParser =
-            IsFormatTitleList() ? _serviceProvider
-                .GetRequiredService<QueryListFormatTitleParser>()
-            : IsFormatTitleSourceList() ? _serviceProvider
+            IsFormatTitleSourceList() ? _serviceProvider
                 .GetRequiredService<QueryListFormatTitleSourceParser>()
+            : IsFormatTitleList() ? _serviceProvider
+                .GetRequiredService<QueryListFormatTitleParser>()
                     : _serviceProvider.GetRequiredService<QueryListFormatTitleParser>();
 
         _logger.LogInformation(this, "query parser: "+formatParser.GetType().Name);

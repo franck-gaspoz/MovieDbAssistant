@@ -1,0 +1,13 @@
+﻿// query 2: format 'title source'
+// ------------------------------
+// - empty lines are bloc separators (are ignored at end of file)
+// - commented lines allowed between the 2 lines of specification
+// - 1 title per line 
+//	followed by
+// - [play url][,download url]
+// - extract and remove any year at end of title for query
+creed iii
+https://ok.ru/video/8219604814513
+
+dune 2024 - part II
+https://ok.ru/video/8218294880945
