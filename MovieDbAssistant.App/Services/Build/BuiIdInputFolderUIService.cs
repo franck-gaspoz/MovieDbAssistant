@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Events;
@@ -36,7 +37,7 @@ sealed class BuiIdInputFolderUIService :
     /// <value>A <see cref="string"/></value>
     public new string InputPath => Path.Combine(
         Directory.GetCurrentDirectory(),
-        DmnSettings.Paths.Input);
+        DmnSettings.Value.Paths.Input);
 
     #endregion
 
@@ -48,7 +49,8 @@ sealed class BuiIdInputFolderUIService :
         ActionGroup actionGroup,
         Settings settings,
         Messages messages,
-        IOptions<DmnSettings> dmnSettings) :
+        IOptions<DmnSettings> dmnSettings,
+        IOptions<AppSettings> appSettings) :
         base(
             logger,
             config,
@@ -56,10 +58,11 @@ sealed class BuiIdInputFolderUIService :
             serviceProvider,
             settings,
             messages,
-            InputFolderProcessed,
-            ProcInpFold,
+            appSettings.Value.Texts.InputFolderProcessed,
+            appSettings.Value.Texts.ProcInpFold,
             Item_Id_Build_Input,
-            dmnSettings) => _actionGroup = actionGroup;
+            dmnSettings,
+            appSettings) => _actionGroup = actionGroup;
 
     /// <inheritdoc/>
     protected override void Action(ActionContext context)
@@ -95,7 +98,9 @@ sealed class BuiIdInputFolderUIService :
         base.Handle(sender, @event);
         if (@event.Context.Errors.Any())
         {
-            Tray.ShowBalloonTip(InputFolderProcessedWithErrors, icon: ToolTipIcon.Warning);
+            Tray.ShowBalloonTip(
+                AppSettings.Value.Texts.InputFolderProcessedWithErrors, 
+                icon: ToolTipIcon.Warning);
 
             var jsonBuildErrors = @event.Context.Errors
                 .Where(x => x!=null && x.Event.Context.Command is ICommandWithPath)
@@ -110,12 +115,12 @@ sealed class BuiIdInputFolderUIService :
                 + x.GetError());
 
             Messages.Warn(
-                Build_End_Input_With_Errors,
-                '\n' + string.Join('\n', jsonBuildLogs));
+                AppSettings.Value.Texts.BuildInputEndWithErrors
+                + '\n' + string.Join('\n', jsonBuildLogs));
         }
         else
         {
-            Messages.Info(Build_End_Input_Without_Errors);
+            Messages.Info(AppSettings.Value.Texts.BuildInputEndWithoutErrors);
         }
 
         Signal.Send(this, new BuildCompletedEvent(

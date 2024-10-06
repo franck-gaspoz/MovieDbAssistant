@@ -28,5 +28,5 @@ public sealed class DmnSettings
     /// <summary>
     /// app settings
     /// </summary>
-    public required AppSettings App { get; set; }
+    public required AppMetadataSettings App { get; set; }
 }

@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Features;
 
@@ -17,9 +17,15 @@ namespace MovieDbAssistant.App.Features;
 sealed class FolderExplorer : ISignalHandler<ExploreFolderCommand>
 {
     readonly IConfiguration _config;
+    readonly IOptions<AppSettings> _appSettings;
 
-    public FolderExplorer(IConfiguration configuration)
-        => _config = configuration;
+    public FolderExplorer(
+        IConfiguration configuration,
+        IOptions<AppSettings> appSettings)
+    {
+        _config = configuration;
+        _appSettings = appSettings;
+    }
 
     /// <summary>
     /// run the feature
@@ -36,7 +42,7 @@ sealed class FolderExplorer : ISignalHandler<ExploreFolderCommand>
         {
             StartInfo = new ProcessStartInfo()
             {
-                FileName = _config[FolderExplorer_CommandLine],
+                FileName = _appSettings.Value.Tools.FolderExplorer.CommandLine,
                 Arguments = path,
                 UseShellExecute = true,
                 RedirectStandardOutput = false,

@@ -22,9 +22,9 @@ public static class ModelExtensions
     /// <returns>A <see cref="string"/></returns>
     public static string UpdateFilename(
         this MovieModel data,
-        DmnSettings dmnSettings)
+        IOptions<DmnSettings> dmnSettings)
     {
-        var f = data.Filename ?? data.Key + dmnSettings.Build.Html.Extension;
+        var f = data.Filename ?? data.Key + dmnSettings.Value.Build.Html.Extension;
         data.Filename = f;
         return f;
     }
@@ -36,7 +36,7 @@ public static class ModelExtensions
     /// <param name="dmnSettings">The config.</param>
     public static void SetupModel(
         this MovieModel data,
-        DmnSettings dmnSettings)
+        IOptions<DmnSettings> dmnSettings)
     {
         var key = data.Title!.ToHexString();
         data.Key = key;
@@ -50,7 +50,7 @@ public static class ModelExtensions
     /// <param name="dmnSettings">configuration</param>
     public static void SetupModel(
         this MoviesModel data,
-        DmnSettings dmnSettings)
+        IOptions<DmnSettings> dmnSettings)
     {
         foreach (var movieModel in data.Movies)
             movieModel.SetupModel(dmnSettings);

@@ -25,7 +25,7 @@ public sealed class HtmlMovieDocumentBuilder
     readonly IConfiguration _config;
     readonly ILogger<HtmlDocumentBuilder> _logger;
     readonly TemplateBuilder _templateBuilder;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     public HtmlMovieDocumentBuilder(
         IConfiguration configuration,
@@ -36,7 +36,7 @@ public sealed class HtmlMovieDocumentBuilder
         _config = configuration;
         _logger = logger;
         _templateBuilder = templateBuilder;
-        _dmnSettings = dmnSettings.Value;
+        _dmnSettings = dmnSettings;
     }
 
     /// <summary>
@@ -65,7 +65,7 @@ public sealed class HtmlMovieDocumentBuilder
         SetupModel(data);
 
         _logger.LogInformation(this,
-            _config[_dmnSettings.Texts.ProcMovie]
+            _dmnSettings.Value.Texts.ProcMovie
             + data.Title);
 
         _templateBuilder.LoadTemplate(

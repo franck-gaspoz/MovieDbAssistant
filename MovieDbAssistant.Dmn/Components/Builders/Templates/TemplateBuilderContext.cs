@@ -22,7 +22,7 @@ public sealed class TemplateBuilderContext
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateModel> _logger;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     /// <summary>
     /// template path
@@ -30,7 +30,7 @@ public sealed class TemplateBuilderContext
     public string TplPath =>
         Path.Combine(
             RscPath,
-            _dmnSettings.Paths.RscHtmlTemplates,
+            _dmnSettings.Value.Paths.RscHtmlTemplates,
             TemplateId!);
 
     /// <summary>
@@ -40,7 +40,7 @@ public sealed class TemplateBuilderContext
     public string RscPath =>
         Path.Combine(
             DocContext!.RscPath,
-            _dmnSettings.Paths.RscHtml)
+            _dmnSettings.Value.Paths.RscHtml)
                 .NormalizePath();
 
     /// <summary>
@@ -50,7 +50,7 @@ public sealed class TemplateBuilderContext
     public string TplFile =>
         Path.Combine(
             TplPath,
-            _dmnSettings.Build.Html.TemplateFilename);
+            _dmnSettings.Value.Build.Html.TemplateFilename);
 
     string? _tplContent;
     /// <summary>
@@ -68,8 +68,8 @@ public sealed class TemplateBuilderContext
     public string AssetsPath(DocumentBuilderContext context) =>
         Path.Combine(
             context.RscPath,
-            _dmnSettings.Paths.RscHtml,
-            _dmnSettings.Paths.RscHtmlAssets)
+            _dmnSettings.Value.Paths.RscHtml,
+            _dmnSettings.Value.Paths.RscHtmlAssets)
                 .NormalizePath();
 
     /// <summary>
@@ -95,7 +95,7 @@ public sealed class TemplateBuilderContext
     {
         _config = config;
         _logger = logger;
-        _dmnSettings = dmnSettings.Value;
+        _dmnSettings = dmnSettings;
     }
 
     /// <summary>

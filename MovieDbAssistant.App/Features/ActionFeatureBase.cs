@@ -3,15 +3,15 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Services;
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
 
 namespace MovieDbAssistant.App.Features;
 
@@ -28,6 +28,7 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
 
     protected readonly Settings Settings;
     protected readonly Messages Messages;
+    readonly IOptions<AppSettings> _appSettings;
 
     protected TrayMenuService Tray => ServiceProvider
         .GetRequiredService<TrayMenuService>();
@@ -43,22 +44,23 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
-        string actionOnGoingMessageKey,
+        IOptions<AppSettings> appSettings,
+        string actionOnGoingMessage,
         bool runInBackground,
-        string textKeyMessageErrorUnhandled = Message_Error_Unhandled,
-        string textKeyFeatureIsBuzy = Feature_Busy) : base(
+        string? messageErrorUnhandled = null,
+        string? messageFeatureIsBuzy = null) : base(
             logger,
             config,
             signal,
             serviceProvider,
-            actionOnGoingMessageKey,
+            actionOnGoingMessage,
             runInBackground,
-            textKeyMessageErrorUnhandled,
-            textKeyFeatureIsBuzy)
+            messageErrorUnhandled ?? appSettings.Value.Texts.ErrorUnhandled,
+            messageFeatureIsBuzy ?? appSettings.Value.Texts.FeatureBusy)
     {
         Settings = settings;
         Messages = messages;
-
+        _appSettings = appSettings;
         StoppingAnimInfo += (o, e) => Tray.StopAnimInfo();
 
         StartingAnimWorkInfo += (o, e) => Tray
@@ -69,10 +71,10 @@ abstract class ActionFeatureBase<TCommand> : ActionBase<TCommand>
                 Config[ActionOnGoingMessageKey]!);
 
         MessagesErrorOpening_ErrorUnHandled += (o, e) =>
-            Messages.Err(Message_Error_Unhandled, '\n' + e.Text);
+            Messages.Err(MessageErrorUnhandled, '\n' + e.Text);
 
         MessageWarningOpening_IsBuzy += (o, e) =>
-            Messages.Warn(TextKeyFeatureIsBuzy);
+            Messages.Warn(MessageFeatureIsBuzy);
     }
 
     #endregion

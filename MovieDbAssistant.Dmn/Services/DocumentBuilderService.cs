@@ -29,7 +29,7 @@ public sealed class DocumentBuilderService : IIdentifiable
     readonly ISignalR _signal;
     readonly DataProviderFactory _dataProviderFactory;
     readonly DocumentBuilderFactory _documentBuilderFactory;
-    readonly DmnSettings _settings;
+    readonly IOptions<DmnSettings> _dmnSettings;
     readonly IConfiguration _config;
     readonly ILogger<DocumentBuilderService> _logger;
 
@@ -47,7 +47,7 @@ public sealed class DocumentBuilderService : IIdentifiable
         ISignalR signal,
         DataProviderFactory dataProviderFactory,
         DocumentBuilderFactory documentBuilderFactory,
-        IOptions<DmnSettings> settings)
+        IOptions<DmnSettings> dmnSettings)
     {
         InstanceId = new(this);
         _config = configuration;
@@ -55,7 +55,7 @@ public sealed class DocumentBuilderService : IIdentifiable
         _signal = signal;
         _dataProviderFactory = dataProviderFactory;
         _documentBuilderFactory = documentBuilderFactory;
-        _settings = settings.Value;
+        _dmnSettings = dmnSettings;
         _backgroundWorkerWrapper = new(logger, signal, this);
     }
 
@@ -85,12 +85,12 @@ public sealed class DocumentBuilderService : IIdentifiable
                 _documentBuilderFactory.CreateDocumentBuilder(
                     context.BuilderType );
 
-            _logger.LogInformation(this, _config[ProcFile]! 
+            _logger.LogInformation(this, _dmnSettings.Value.Texts.ProcFile 
                 + Path.GetFileName(context.Source) );
 
             var movies = dataProvider.Get(context.Source)
                 ?? throw new InvalidOperationException(
-                    _settings.Texts.DataProviderFailed
+                    _dmnSettings.Value.Texts.DataProviderFailed
                     +context.Source?.ToString());
 
             builder.Build(context, movies);

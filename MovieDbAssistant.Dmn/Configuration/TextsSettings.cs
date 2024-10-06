@@ -22,4 +22,9 @@ public sealed class TextsSettings
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public required string ProcMovieList { get; set; }
+
+    /// <summary>
+    /// processing file
+    /// </summary>
+    public required string ProcFile { get; set; }
 }

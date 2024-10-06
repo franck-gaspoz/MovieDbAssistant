@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Features;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
@@ -10,7 +11,6 @@ using MovieDbAssistant.Dmn.Events;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Commands;
 using MovieDbAssistant.Lib.Components.Actions.Events;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Signal;
 
 using static MovieDbAssistant.Dmn.Components.Settings;
@@ -33,7 +33,7 @@ abstract class BuildUIServiceBase<TSignal> :
     /// <value>A <see cref="string"/></value>
     public string? InputPath { get; protected set; }
 
-    protected string ActionDoneMessageKey { get; set; }
+    protected string ActionDoneMessage { get; set; }
 
     /// <summary>
     /// item id build
@@ -42,7 +42,8 @@ abstract class BuildUIServiceBase<TSignal> :
 
     protected Action<ActionContext>? OnSuccessMessageAction;
     protected Action<ActionContext>? OnErrorMessageAction;
-    protected DmnSettings DmnSettings;
+    protected IOptions<DmnSettings> DmnSettings;
+    protected IOptions<AppSettings> AppSettings;
 
     public BuildUIServiceBase(
         ILogger<BuildUIServiceBase<TSignal>> logger,
@@ -51,10 +52,11 @@ abstract class BuildUIServiceBase<TSignal> :
         IServiceProvider serviceProvider,
         Settings settings,
         Messages messages,
-        string actionDoneMessageKey,
-        string actionOnGoingMessageKey,
+        string actionDoneMessage,
+        string actionOnGoingMessage,
         string itemIdBuild,
         IOptions<DmnSettings> dmnSettings,
+        IOptions<AppSettings> appSettings,
         string? inputPath = null,
         bool runInBackground = true,
         Action<ActionContext>? onSuccessMessageAction = null,
@@ -66,13 +68,15 @@ abstract class BuildUIServiceBase<TSignal> :
                 serviceProvider,
                 settings,
                 messages,
-                actionOnGoingMessageKey,
+                appSettings,
+                actionOnGoingMessage,
                 runInBackground)
     {
-        DmnSettings = dmnSettings.Value;
+        DmnSettings = dmnSettings;
         InputPath = inputPath;
         ItemIdBuild = itemIdBuild;
-        ActionDoneMessageKey = actionDoneMessageKey;
+        AppSettings = appSettings;
+        ActionDoneMessage = actionDoneMessage;
         OnSuccessMessageAction = onSuccessMessageAction;
         OnErrorMessageAction = onErrorMessageAction;
     }
@@ -89,7 +93,7 @@ abstract class BuildUIServiceBase<TSignal> :
     {
         if (!@event.Context.Command.HandleUI) return;
 
-        Tray.ShowBalloonTip(ActionDoneMessageKey);
+        Tray.ShowBalloonTip(ActionDoneMessage);
 
         PostHandle(@event);
     }
@@ -98,9 +102,9 @@ abstract class BuildUIServiceBase<TSignal> :
     {
         if (!@event.Context.Command.HandleUI) return;
 
-        if (Config.GetBool(OpenOuputWindowOnBuild))
+        if (AppSettings.Value.Options.OpenOuputWindowOnBuild)
         {
-            Signal.Send(this, 
+            Signal.Send(this,
                 new ExploreFolderCommand(Settings.OutputPath));
         }
         OnSuccessMessageAction?.Invoke(@event.Context);

@@ -63,12 +63,12 @@ public sealed class DocumentBuilderContext
     /// </summary>
     public string PagesPath => Path.Combine(
         OutputFolder!,
-        _dmnSettings.Paths.OutputPages);
+        _dmnSettings.Value.Paths.OutputPages);
 
     /// <summary>
     /// output path foler name for pages
     /// </summary>
-    public string PagesFolderName => _dmnSettings.Paths.OutputPages;
+    public string PagesFolderName => _dmnSettings.Value.Paths.OutputPages;
 
     string? _source;
     /// <summary>
@@ -89,7 +89,7 @@ public sealed class DocumentBuilderContext
     string? _name;
     readonly IConfiguration _config;
     readonly ILogger _logger;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     /// <summary>
     /// Gets or sets the name.
@@ -134,7 +134,7 @@ public sealed class DocumentBuilderContext
         string source,
         string outputPath,
         string rscPath,
-        DmnSettings dmnSettings,
+        IOptions<DmnSettings> dmnSettings,
         Type dataProviderType,
         Type builderType,
         Dictionary<string, object>? builderOptions = null)

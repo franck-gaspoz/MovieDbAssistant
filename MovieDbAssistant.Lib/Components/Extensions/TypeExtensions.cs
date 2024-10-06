@@ -55,6 +55,19 @@ public static class TypeExtensions
     }
 
     /// <summary>
+    /// gets a property value
+    /// </summary>
+    /// <param name="o">object</param>
+    /// <param name="name">property name</param>
+    /// <returns>property value</returns>
+    public static object? GetPropertyValue(this object? o,string name)
+    {
+        if (o == null) return null;
+        var p = o.GetType().GetProperty(name);
+        return p?.GetValue(o);
+    }
+
+    /// <summary>
     /// Programatically fire an event handler of an object
     /// </summary>
     /// <param name="target">target</param>

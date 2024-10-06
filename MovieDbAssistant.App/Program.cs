@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.App.Services.Tray;
 using MovieDbAssistant.Dmn.Components;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -32,11 +33,11 @@ public class Program
             typeof(Program)];
 
         var host = Host.CreateDefaultBuilder(args)
-            .ConfigureServices((context,services) => services
-                //.AddOptions()                
+            .ConfigureServices((context,services) => services            
                 .AutoRegister(fromTypes)
                 .AddSignalR(fromTypes)
                 .Configure<DmnSettings>(context.Configuration)
+                .Configure<AppSettings>(context.Configuration)
                 )
             .ConfigureLogging(logging =>
             {

@@ -31,7 +31,7 @@ public sealed class TemplateBuilder
 {
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilder> _logger;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     const string Var_Data = "data";
     const string Var_Props = "props";
@@ -91,7 +91,7 @@ public sealed class TemplateBuilder
         _config = configuration;
         _logger = logger;
         Context = context;
-        _dmnSettings = dmnSettings.Value;
+        _dmnSettings = dmnSettings;
     }
 
     /// <summary>
@@ -150,7 +150,7 @@ public sealed class TemplateBuilder
 
         Context.DocContext!.AddOutputFile(
             _tpl.Options.PageList.Filename!,
-            _dmnSettings.Build.Html.Extension,
+            _dmnSettings.Value.Build.Html.Extension,
             page);
 
         return this;
@@ -282,7 +282,7 @@ public sealed class TemplateBuilder
         src = $"const data = {src};";
 
         Context.DocContext!.AddOutputFile(
-            _dmnSettings.Build.Html.DataFilename,
+            _dmnSettings.Value.Build.Html.DataFilename,
             src);
     }
 
@@ -324,11 +324,11 @@ public sealed class TemplateBuilder
         {
             {
                 Template_Var_OutputPages,
-                _dmnSettings.Paths.OutputPages
+                _dmnSettings.Value.Paths.OutputPages
             },
             {
                 Template_Var_Build_Ext_Html,
-                _dmnSettings.Build.Html.Extension
+                _dmnSettings.Value.Build.Html.Extension
             },
             {
                 Template_Var_Background ,
@@ -395,7 +395,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Software,
-                _dmnSettings.App.Title
+                _dmnSettings.Value.App.Title
             },
             {
                 Template_Var_Software_Version,
@@ -406,7 +406,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Software_Version_Date,
-                _dmnSettings.App.VersionDate
+                _dmnSettings.Value.App.VersionDate
             },
             {
                 Template_Var_BuiltAt,
@@ -414,7 +414,7 @@ public sealed class TemplateBuilder
             },
             {
                 Template_Var_Lang,
-                _dmnSettings.App.Lang
+                _dmnSettings.Value.App.Lang
             },
             {
                 Template_Var_Link_Repo,

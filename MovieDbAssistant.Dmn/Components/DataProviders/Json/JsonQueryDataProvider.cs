@@ -5,11 +5,8 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Sys;
-
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
@@ -21,7 +18,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     readonly IConfiguration _config;
     readonly ProcessWrapper _processWrapper;
-    readonly DmnSettings _settings;
+    readonly IOptions<DmnSettings> _settings;
 
     public JsonQueryDataProvider(
         ILogger<JsonQueryDataProvider> logger,
@@ -31,7 +28,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         : base(logger)
     {
         _config = config;
-        _settings = settings.Value;       
+        _settings = settings;
         _processWrapper = processWrapper;
     }
 
@@ -49,25 +46,25 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         var outputFile = qid + ".json";
         var output = Path.Combine(
             Directory.GetCurrentDirectory(),
-            _settings.Paths.Temp
+            _settings.Value.Paths.Temp
             );
 
-        if ( _settings.Scrap.SkipIfTempOutputFileAlreadyExists
+        if (_settings.Value.Scrap.SkipIfTempOutputFileAlreadyExists
             && File.Exists(output))
         {
             Logger.LogWarning(
                 this,
                 $"skip search query (file '{output}' already exists): #{qid}: {query}");
             return null;
-        }    
-        
+        }
+
         Logger.LogInformation(
             this,
             $"handle search query #{qid}: {query}");
 
         var toolPath = Path.Combine(
             Directory.GetCurrentDirectory(),
-            _settings.Scrap.ToolPath);
+            _settings.Value.Scrap.ToolPath);
 
         const string Q = "\"";
 

@@ -60,15 +60,16 @@ public abstract class ActionBase<TCommand> :
     protected readonly IServiceProvider ServiceProvider;
     protected TCommand? Com;
     protected string ActionOnGoingMessageKey { get; set; }
-    protected string TextKeyMessageErrorUnhandled { get; set; }
-    protected string TextKeyFeatureIsBuzy { get; set; }
+    protected string MessageErrorUnhandled { get; set; }
+    protected string MessageFeatureIsBuzy { get; set; }
+
     readonly BackgroundWorkerWrapper? _backgroundWorker;
 
-    protected event EventHandler<ActionBaseEventContextArgs> StartRunningAction;
-    protected event EventHandler<ActionBaseEventContextArgs> StoppingAnimInfo;
-    protected event EventHandler<ActionBaseEventContextArgs> StartingAnimWorkInfo;
-    protected event EventHandler<ActionBaseEventContextArgs> MessageWarningOpening_IsBuzy;
-    protected event EventHandler<ActionBaseEventTextArgs> MessagesErrorOpening_ErrorUnHandled;
+    protected event EventHandler<ActionBaseEventContextArgs>? StartRunningAction;
+    protected event EventHandler<ActionBaseEventContextArgs>? StoppingAnimInfo;
+    protected event EventHandler<ActionBaseEventContextArgs>? StartingAnimWorkInfo;
+    protected event EventHandler<ActionBaseEventContextArgs>? MessageWarningOpening_IsBuzy;
+    protected event EventHandler<ActionBaseEventTextArgs>? MessagesErrorOpening_ErrorUnHandled;
 
     #endregion
 
@@ -81,8 +82,8 @@ public abstract class ActionBase<TCommand> :
         IServiceProvider serviceProvider,
         string actionOnGoingMessageKey,
         bool runInBackground,
-        string textKeyMessageErrorUnhandled,
-        string textKeyFeatureIsBuzy)
+        string messageErrorUnhandled,
+        string featureIsBuzy)
     {
         InstanceId = new(this);
         ServiceProvider = serviceProvider;
@@ -91,8 +92,8 @@ public abstract class ActionBase<TCommand> :
         Config = config;
         ActionOnGoingMessageKey = actionOnGoingMessageKey;
         RunInBackground = runInBackground;
-        TextKeyMessageErrorUnhandled = textKeyMessageErrorUnhandled;
-        TextKeyFeatureIsBuzy = textKeyFeatureIsBuzy;
+        MessageErrorUnhandled = messageErrorUnhandled;
+        MessageFeatureIsBuzy = featureIsBuzy;
         _backgroundWorker = new(
             logger,
             signal,
@@ -171,7 +172,7 @@ public abstract class ActionBase<TCommand> :
         AppLoggerExtensions.LogError(
             Logger,
             this,
-            Config[TextKeyMessageErrorUnhandled]
+            Config[MessageErrorUnhandled]
             + '\n'
             + message);
 
@@ -216,7 +217,7 @@ public abstract class ActionBase<TCommand> :
                         this,
                         new(com, sender, null));
 
-                var msg = Config[TextKeyFeatureIsBuzy]!;
+                var msg = Config[MessageFeatureIsBuzy]!;
 
                 Signal.Send(this, new ActionErroredEvent(context!,
                     new InvalidOperationException(msg + ": " + GetType().Name)));

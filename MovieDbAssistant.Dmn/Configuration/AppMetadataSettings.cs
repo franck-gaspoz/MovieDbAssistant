@@ -3,7 +3,7 @@
 /// <summary>
 /// The app settings.
 /// </summary>
-public sealed class AppSettings
+public sealed class AppMetadataSettings
 {
     /// <summary>
     /// Gets or sets the title.

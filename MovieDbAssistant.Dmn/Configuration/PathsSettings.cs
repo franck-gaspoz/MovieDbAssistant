@@ -58,4 +58,9 @@ public sealed class PathsSettings
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public required string Output { get; set; }
+
+    /// <summary>
+    /// The path assets.
+    /// </summary>
+    public required string Assets { get; set; }
 }

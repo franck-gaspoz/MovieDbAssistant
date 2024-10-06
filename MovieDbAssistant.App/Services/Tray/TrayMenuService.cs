@@ -4,16 +4,13 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
-
-using static MovieDbAssistant.Dmn.Components.Settings;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -38,11 +35,12 @@ sealed class TrayMenuService
 
     readonly TrayMenuBuilder _trayMenuBuilder;
     readonly Settings _settings;
+    readonly IOptions<AppSettings> _appSettings;
     readonly ILogger<TrayMenuService> _logger;
     readonly ISignalR _signal;
     readonly IConfiguration _config;
     readonly TrayBackgroundWorker _trayBackgroundWorker;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     #endregion
 
@@ -61,18 +59,19 @@ sealed class TrayMenuService
         IConfiguration config,
         TrayMenuBuilder builder,
         Settings settings,
-        IOptions<DmnSettings> dmnSettings)
+        IOptions<DmnSettings> dmnSettings,
+        IOptions<AppSettings> appSettings)
     {
-        _dmnSettings = dmnSettings.Value;
-        (NotifyIcon, _logger, _signal, _config, _settings)
-            = (builder.NotifyIcon, logger, signal, config, settings);
+        _dmnSettings = dmnSettings;
+        (NotifyIcon, _logger, _signal, _config, _settings, _appSettings)
+            = (builder.NotifyIcon, logger, signal, config, settings, appSettings);
         _trayMenuBuilder = builder;
         _trayBackgroundWorker = new(
             logger,
             _signal,
             _config,
             this,
-            _config.GetInt(Anim_Interval_Dot),
+            _appSettings.Value.Anims.Interval.Dot,
             false);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
         NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
@@ -90,13 +89,15 @@ sealed class TrayMenuService
     /// Show balloon tip start.
     /// </summary>
     public void ShowBalloonTip_Start()
-        => ShowBalloonTip(BalloonTip_Start);
+        => ShowBalloonTip(_appSettings.Value.BalloonTips.Start);
 
     /// <summary>
     /// Show balloon tip end.
     /// </summary>
     public void ShowBalloonTip_End()
-        => ShowBalloonTip(BalloonTip_End, icon: ToolTipIcon.Warning);
+        => ShowBalloonTip(
+            _appSettings.Value.BalloonTips.End,
+            icon: ToolTipIcon.Warning);
 
     /// <summary>
     /// Show the info.
@@ -150,7 +151,14 @@ sealed class TrayMenuService
         // balloon tip status text with anim
         var da = new DotAnimator(_trayMenuBuilder.Tooltip + ":\n" + info);
         // animated tray icon
-        var ta = new TrayIconAnimator(logger, _signal, _config, this, _settings);
+        var ta = new TrayIconAnimator(
+            logger,
+            _signal,
+            _config,
+            this,
+            _settings,
+            _appSettings);
+
         ta.Setup(() =>
         {
             ta.OnStop(this);
@@ -167,7 +175,7 @@ sealed class TrayMenuService
                 var msg = da.Next();
                 tray.NotifyIcon.Text = msg;
             },
-            _config.GetInt(Anim_Interval_Dot),
+            _appSettings.Value.Anims.Interval.Dot,
             stopOnBallonTipClosed: false,
             onStop: () =>
             {
@@ -192,15 +200,13 @@ sealed class TrayMenuService
     /// <summary>
     /// Show balloon tip.
     /// </summary>
-    /// <param name="key">key. if kery not null, text is ignored</param>
     /// <param name="text">text if key is null. is ignored if key is not null</param>
     /// <param name="icon">The icon.</param>
     public void ShowBalloonTip(
-        string? key = null,
-        string? text = null,
+        string text,
         ToolTipIcon icon = ToolTipIcon.Info) => NotifyIcon.ShowBalloonTip(
-            _config.GetInt(BalloonTip_Delay),
-            _dmnSettings.App.Title,
-            text ?? _config[key!]!,
+            _appSettings.Value.BalloonTips.Delay,
+            _dmnSettings.Value.App.Title,
+            text,
             icon);
 }

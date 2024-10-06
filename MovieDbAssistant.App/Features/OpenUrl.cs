@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Signal;
 
@@ -17,9 +19,15 @@ namespace MovieDbAssistant.App.Features;
 sealed class OpenUrl : ISignalHandler<OpenUrlCommand>
 {
     readonly IConfiguration _config;
+    readonly IOptions<AppSettings> _appSettings;
 
-    public OpenUrl(IConfiguration configuration)
-         => _config = configuration;
+    public OpenUrl(
+        IConfiguration configuration,
+        IOptions<AppSettings> appSettings)
+    {
+        _config = configuration;
+        _appSettings = appSettings;
+    }
 
     /// <summary>
     /// run the feature
@@ -32,7 +40,7 @@ sealed class OpenUrl : ISignalHandler<OpenUrlCommand>
         {
             StartInfo = new ProcessStartInfo()
             {
-                FileName = _config[OpenBrowser_CommandLine],
+                FileName = _appSettings.Value.Tools.OpenBrowser.CommandLine,
                 Arguments = path,
                 UseShellExecute = true,
                 RedirectStandardOutput = false,

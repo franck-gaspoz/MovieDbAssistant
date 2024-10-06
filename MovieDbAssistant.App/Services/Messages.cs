@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
@@ -13,33 +14,34 @@ sealed class Messages
 {
     readonly IConfiguration _config;
 
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
+    readonly IOptions<AppSettings> _appSettings;
 
     public Messages(IConfiguration config,
-        IOptions<DmnSettings> dmnSettings)
-        => (_config, _dmnSettings) = (config, dmnSettings.Value);
+        IOptions<DmnSettings> dmnSettings,
+        IOptions<AppSettings> appSettings)
+        => (_config, _dmnSettings, _appSettings) 
+            = (config, dmnSettings, appSettings);
 
     /// <summary>
     /// warning alert box
     /// </summary>
-    /// <param name="key">message key</param>
     /// <param name="text">additional text</param>
-    public void Warn(string key, string? text = null)
+    public void Warn(string text)
         => MessageBox.Show(
-            _config[key]! + text ?? "",
-            Caption(Message_Warning),
+            text,
+            Caption(_appSettings.Value.Texts.Warning),
             MessageBoxButtons.OK,
             MessageBoxIcon.Warning);
 
     /// <summary>
     /// info alert box
     /// </summary>
-    /// <param name="key">message key</param>
     /// <param name="text">additional text</param>
-    public void Info(string key, string? text = null)
+    public void Info(string text)
         => MessageBox.Show(
-            _config[key]! + text ?? "",
-            Caption(Message_Info),
+            text,
+            Caption(_appSettings.Value.Texts.Info),
             MessageBoxButtons.OK,
             MessageBoxIcon.Information);
 
@@ -48,13 +50,13 @@ sealed class Messages
     /// </summary>
     /// <param name="errorTypeKey">error type</param>
     /// <param name="errorMessage">error message</param>
-    public void Err(string errorTypeKey, string errorMessage)
+    public void Err(string errorType, string errorMessage)
         => MessageBox.Show(
-            _config[errorTypeKey]! + errorMessage,
-            Caption(Message_Error),
+            errorType + errorMessage,
+            Caption(_appSettings.Value.Texts.Error),
             MessageBoxButtons.OK,
             MessageBoxIcon.Error);
 
     string Caption(string postFixKey)
-        => _dmnSettings.App.Title! + ": " + _config[postFixKey]!;
+        => _dmnSettings.Value.App.Title! + ": " + _config[postFixKey]!;
 }

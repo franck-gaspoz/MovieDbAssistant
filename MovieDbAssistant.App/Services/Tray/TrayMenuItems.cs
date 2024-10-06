@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
+using MovieDbAssistant.App.Configuration;
 using MovieDbAssistant.App.Services.Tray.Models;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
@@ -22,7 +23,8 @@ sealed class TrayMenuItems
     readonly IConfiguration _config;
     readonly IServiceProvider _servicesProvider;
     readonly ISignalR _signal;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<AppSettings> _appSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     TrayMenuService _trayMenu =>
         _servicesProvider.GetRequiredService<TrayMenuService>();
@@ -31,10 +33,12 @@ sealed class TrayMenuItems
         IConfiguration config,
         IServiceProvider servicesProvider,
         ISignalR signal,
-        IOptions<DmnSettings> dmnSettings)
+        IOptions<DmnSettings> dmnSettings,
+        IOptions<AppSettings> appSettings)
     {
-        _dmnSettings = dmnSettings.Value;
+        _dmnSettings = dmnSettings;
         _signal = signal;
+        _appSettings = appSettings;
         _config = config;
         _servicesProvider = servicesProvider;
     }
@@ -57,7 +61,7 @@ sealed class TrayMenuItems
             // deco
 
             (new ToolStripLabel {
-                Text = _dmnSettings.App.Title+" "+version,
+                Text = _dmnSettings.Value.App.Title+" "+version,
                 BackColor = Color.Black,
                 ForeColor = Color.DodgerBlue,
                 Padding = new Padding(8),
@@ -69,7 +73,7 @@ sealed class TrayMenuItems
             (new ToolStripSeparator(),null),  // ------ 
             (new ToolStripMenuItem {
                 Tag = Item_Id_Build_Query,
-                Text = T(Label_BuildQueryFile), },
+                Text = _appSettings.Value.Texts.BuildFromQueryFile },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
                         () => _signal.Send(this,new BuildQueryFileCommand("")));
@@ -77,7 +81,7 @@ sealed class TrayMenuItems
 
             (new ToolStripMenuItem {
                 Tag = Item_Id_Build_Json,
-                Text = T(Label_BuildJsonFile) },
+                Text = _appSettings.Value.Texts.BuildFromJsonFile },
                 o => { o.Click += new EventHandler((c,e) => {
                     RunBuildAction(
                         () => _signal.Send(this, new BuildJsonFileCommand("")));
@@ -85,7 +89,7 @@ sealed class TrayMenuItems
 
             (new ToolStripMenuItem {
                 Tag = Item_Id_Build_Input,
-                Text = T(Label_BuildFromInputFolder) },
+                Text = _appSettings.Value.Texts.BuildFromInputFolder },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
                         () => _signal.Send(this, new BuildInputFolderCommand()));
@@ -93,7 +97,7 @@ sealed class TrayMenuItems
 
             (new ToolStripMenuItem {
                 Tag = Item_Id_Build_Clipboard,
-                Text = T(Label_BuildClipb) },
+                Text = _appSettings.Value.Texts.BuildFromClipboard },
                 o => { o.Click += new EventHandler((c,e) => {
                      RunBuildAction(
                         () => _signal.Send(this, new BuildClipboardCommand()));
@@ -101,36 +105,36 @@ sealed class TrayMenuItems
 
             // tools
             (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = T(Label_OpenCmdLine) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.OpenCmdLine },
             o => { o.Click += new EventHandler((c,e) => {
                 _signal.Send(this, new OpenCommandLineCommand());
             });}),
 
-            (new ToolStripMenuItem { Text = T(Label_OpenOutpFolder) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.OpenOutpFolder },
             o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Paths.Output));
+                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Value.Paths.Output));
             });}),
 
-            (new ToolStripMenuItem { Text = T(Label_OpenInpFolder) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.OpenInpFolder },
             o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Paths.Input));
+                _signal.Send(this, new ExploreFolderCommand(_dmnSettings.Value.Paths.Input));
             });}),
 
             // settings, help
             (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = T(Label_Help) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Help },
             o => { o.Click += new EventHandler((c,e) => {
                 _signal.Send(this, new OpenUrlCommand(_config[Url_HelpGitHub]!));
                  });}),
 
-            (new ToolStripMenuItem { Text = T(Label_Settings) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Settings },
             o => { o.Click += new EventHandler((c,e) => {
                 // TODO: implements
             });}),
 
             // exit
             (new ToolStripSeparator(),null), // ------ 
-            (new ToolStripMenuItem { Text = T(Label_Exit) },
+            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.Exit },
             o => { o.Click += new EventHandler((c,e) =>  {
                 _trayMenu.ShowBalloonTip_End();
                 _signal.Send(this, new ExitCommand());

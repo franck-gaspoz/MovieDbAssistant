@@ -25,7 +25,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     readonly ILogger<HtmlDocumentBuilder> _logger;
     readonly HtmlMovieDocumentBuilder _htmlMovieDocumentBuilder;
     readonly TemplateBuilder _templateBuilder;
-    readonly DmnSettings _dmnSettings;
+    readonly IOptions<DmnSettings> _dmnSettings;
 
     public HtmlDocumentBuilder(
         IConfiguration config,
@@ -38,7 +38,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         _logger = logger;
         _htmlMovieDocumentBuilder = htmlMovieDocumentBuilder;
         _templateBuilder = templateBuilder;
-        _dmnSettings = dmnSettings.Value;
+        _dmnSettings = dmnSettings;
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         context.Target = folder;
 
         _logger.LogInformation(this,
-            _config[_dmnSettings.Texts.ProcMovieList]
+            _dmnSettings.Value.Texts.ProcMovieList
             + Path.GetFileName(context.Source));
 
         // get template & prepare output
@@ -99,16 +99,16 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                     .Options
                     .PageIndexPath(
                         context,
-                        _dmnSettings.Build.Html.Extension),
+                        _dmnSettings.Value.Build.Html.Extension),
                 index > 0 ?
                     Folder_Back + context.PageFilePath(
                         data.Movies[index - 1].Key!,
-                        _dmnSettings.Build.Html.Extension)
+                        _dmnSettings.Value.Build.Html.Extension)
                     : null,
                 index < data.Movies.Count - 1 ?
                     Folder_Back + context.PageFilePath(
                         data.Movies[index + 1].Key!,
-                        _dmnSettings.Build.Html.Extension)
+                        _dmnSettings.Value.Build.Html.Extension)
                     : null
                 );
             builders.Add(builder);
