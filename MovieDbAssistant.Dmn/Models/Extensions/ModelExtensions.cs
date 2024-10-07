@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Text;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Configuration;
@@ -39,6 +41,11 @@ public static class ModelExtensions
         IOptions<DmnSettings> dmnSettings)
     {
         var key = data.Title!.ToHexString();
+        StringBuilder sb = new();
+        foreach (var c in key)
+            if (char.IsAsciiLetterOrDigit(c))
+                sb.Append(c);
+        key = new string(sb.ToString().ToCharArray());
         data.Key = key;
         data.UpdateFilename(dmnSettings);
     }

@@ -8,5 +8,10 @@ public enum SpidersIds
     /// <summary>
     /// imdb
     /// </summary>
-    imdb
+    imdb,
+
+    /// <summary>
+    /// none (test)
+    /// </summary>
+    none
 }

@@ -33,6 +33,9 @@
     <None Remove="input\-output.json" />
     <None Remove="input\-query1.txt" />
     <None Remove="input\-query2.txt" />
+    <None Remove="input\-shmovies.json" />
+    <None Remove="input\-zombies.json" />
+    <None Remove="input\animals.json" />
     <None Remove="input\query0.txt" />
     <None Remove="input\README.md" />
     <None Remove="output\README.md" />
@@ -122,6 +125,9 @@
     <Content Include="input\-histoire.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="input\animals.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="input\query0.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -132,6 +138,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-shmovies.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-zombies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="output\README.md">

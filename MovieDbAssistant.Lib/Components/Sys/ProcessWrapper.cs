@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 
 using Microsoft.Extensions.Logging;
 
@@ -33,6 +34,27 @@ public sealed class ProcessWrapper : IIdentifiable
     /// <value>A <see cref="SharedCounter"/></value>
     public SharedCounter InstanceId { get; }
 
+    string _remain = "";
+    string _remain_error = "";
+
+    /// <summary>
+    /// Gets the out stream.
+    /// </summary>
+    /// <value>A <see cref="StringBuilder"/></value>
+    public StringBuilder OutStream { get; } = new();
+
+    /// <summary>
+    /// Gets the err stream.
+    /// </summary>
+    /// <value>A <see cref="StringBuilder"/></value>
+    public StringBuilder ErrStream { get; } = new();
+
+    /// <summary>
+    /// Gets a value indicating whether has errors.
+    /// </summary>
+    /// <value>A <see cref="bool"/></value>
+    public bool HasErrors => ErrStream.Length > 0;
+
     public ProcessWrapper(
         ILogger<ProcessWrapper> logger)
     {
@@ -55,12 +77,13 @@ public sealed class ProcessWrapper : IIdentifiable
             filename,
             args)
         {
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
+            UseShellExecute = true,
+            RedirectStandardOutput = false,
+            RedirectStandardError = false,
             RedirectStandardInput = false,
-            CreateNoWindow = false,
-            WindowStyle = ProcessWindowStyle.Normal,            
+            CreateNoWindow = true,
+            WindowStyle = ProcessWindowStyle.Normal,   
+            WorkingDirectory = Path.GetDirectoryName(filename)
         };
 
         using var process = Process.Start(Psi!);
@@ -71,9 +94,15 @@ public sealed class ProcessWrapper : IIdentifiable
             process.ErrorDataReceived += Process_ErrorDataReceived;
             if (waitForExit)
                 process.WaitForExit();
+            
+            OutStream.Append(_remain);
+            OutStream.Append(process.StandardOutput.ReadToEnd());
+            ErrStream.Append(_remain_error);
+            ErrStream.Append(process.StandardError.ReadToEnd());
 
-            var tx = process.StandardOutput.ReadToEnd();
-            var terr = process.StandardError.ReadToEnd();
+            var tx = OutStream.ToString();
+            var terr = ErrStream.ToString();
+
             if (!string.IsNullOrWhiteSpace(tx))
                 AppendLog(tx, false);
             if (!string.IsNullOrWhiteSpace(terr))
@@ -98,9 +127,6 @@ public sealed class ProcessWrapper : IIdentifiable
         if (s == null) return;
         AppendLogDelta(s, ref _remain);
     }
-
-    string _remain = "";
-    string _remain_error = "";
 
     void AppendLog(string txt,bool isError)
     {

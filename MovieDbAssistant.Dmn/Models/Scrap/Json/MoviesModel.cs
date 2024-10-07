@@ -42,4 +42,16 @@ public sealed class MoviesModel
         Movies.AddRange(movies);
         return this;
     }
+
+    /// <summary>
+    /// merge another model into this one
+    /// </summary>
+    /// <param name="moviesModel">The movies model.</param>
+    /// <returns>A <see cref="MoviesModel? "/>this model</returns>
+    public MoviesModel? Merge(MoviesModel? moviesModel)
+    {
+        if (moviesModel == null) return moviesModel;
+        Movies.AddRange(moviesModel.Movies);
+        return this;
+    }
 }

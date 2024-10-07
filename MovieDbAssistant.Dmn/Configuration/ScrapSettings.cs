@@ -12,6 +12,16 @@ public sealed class ScrapSettings
     public required string ToolPath { get; set; }
 
     /// <summary>
+    /// output model prefix
+    /// </summary>
+    public required string OutputModelPrefix { get;set;}
+
+    /// <summary>
+    /// output model postfix
+    /// </summary>
+    public required string OutputModelPostfix { get; set; }
+
+    /// <summary>
     /// Gets or sets a value indicating whether skip if temp output file already exists.
     /// </summary>
     /// <value>A <see cref="bool"/></value>
@@ -22,6 +32,5 @@ public sealed class ScrapSettings
     /// </summary>
     /// <value>A <see cref="FiltersSettings"/></value>
     public required FiltersSettings DefaultFilters { get; set; }
-
 
 }

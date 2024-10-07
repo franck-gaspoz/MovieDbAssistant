@@ -30,6 +30,7 @@ public sealed class MovieDbScrapper : IIdentifiable
     readonly IConfiguration _config;
     readonly IOptions<DmnSettings> _dmnSettings;
     readonly ProcessWrapper _processWrapper;
+    readonly ScraperOutputModelTransformer _scraperOutputModelTransformer;
     readonly BackgroundWorkerWrapper _worker;
     bool _completed;
     Exception? _exception;
@@ -45,7 +46,8 @@ public sealed class MovieDbScrapper : IIdentifiable
         ISignalR signal,
         IConfiguration config,
         IOptions<DmnSettings> dmnSettings,
-        ProcessWrapper processWrapper
+        ProcessWrapper processWrapper,
+        ScraperOutputModelTransformer scraperOutputModelTransformer
         )
     {
         InstanceId = new(this);
@@ -54,6 +56,7 @@ public sealed class MovieDbScrapper : IIdentifiable
         _config = config;
         _dmnSettings = dmnSettings;
         _processWrapper = processWrapper;
+        _scraperOutputModelTransformer = scraperOutputModelTransformer;
         _worker = new(logger, _signal, this);
         _worker.Setup(
             o => _completed = true);
@@ -79,6 +82,7 @@ public sealed class MovieDbScrapper : IIdentifiable
         string? filters,
         QueryModel query)
     {
+        MoviesModel? result = null;
         _completed = false;
         _worker.RunAction(
             this
@@ -111,6 +115,11 @@ public sealed class MovieDbScrapper : IIdentifiable
                 _processWrapper.Start(toolPath,args);
 
                 _completed = true;
+                if (_processWrapper.HasErrors) return;
+
+                // get & build the output
+
+                result = GetAndBuildOutput(output);
             }
             , _config
             );
@@ -118,8 +127,17 @@ public sealed class MovieDbScrapper : IIdentifiable
         {
             Thread.Yield();
         }
-        return null;
+        return result;
     }
 
-
+    /// <summary>
+    /// Get and build output.
+    /// </summary>
+    /// <param name="output">The output.</param>
+    /// <returns>A <see cref="MovieModel? "/></returns>
+    public MoviesModel GetAndBuildOutput(string output)
+    {
+        var src = File.ReadAllText(output);
+        return _scraperOutputModelTransformer.Transform(src);
+    }
 }

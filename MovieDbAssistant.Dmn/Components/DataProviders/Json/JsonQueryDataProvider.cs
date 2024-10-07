@@ -9,7 +9,6 @@ using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Logger;
-using MovieDbAssistant.Lib.Components.Sys;
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 
@@ -19,6 +18,8 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 /// </summary>
 public sealed class JsonQueryDataProvider : JsonDataProvider
 {
+    const string SEPARATOR_TEMP_FILENAME_ID = "-";
+
     readonly IConfiguration _config;
     readonly SourceModelAdapterFactory _sourceModelAdapterFactory;
     readonly IServiceProvider _serviceProvider;
@@ -27,7 +28,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
     public JsonQueryDataProvider(
         ILogger<JsonQueryDataProvider> logger,
         IConfiguration config,
-        IOptions<DmnSettings> settings,        
+        IOptions<DmnSettings> settings,
         SourceModelAdapterFactory sourceModelAdapterFactory,
         IServiceProvider serviceProvider)
         : base(logger)
@@ -37,7 +38,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         _sourceModelAdapterFactory = sourceModelAdapterFactory;
         _serviceProvider = serviceProvider;
     }
-    
+
     /// <summary>
     /// get from query model
     /// </summary>
@@ -50,42 +51,54 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
 
         var qid = query.Metadata!.InstanceId.Value + "";
         var outputFile = qid + ".json";
-        var output = Path.Combine(
-            Directory.GetCurrentDirectory(),
-            _settings.Value.Paths.Temp,
-            outputFile
-            );
-
-        if (_settings.Value.Scrap.SkipIfTempOutputFileAlreadyExists
-            && File.Exists(output))
-        {
-            Logger.LogWarning(
-                this,
-                $"skip search query (file '{output}' already exists): #{qid}: {query}");
-            return null;
-        }
 
         Logger.LogInformation(
             this,
             $"handle search query #{qid}: {query}");
 
+        var aggregateModel = new MoviesModel();
+
         query.Spiders
             .ToList()
             .ForEach(spiderId =>
             {
-                var filters = _sourceModelAdapterFactory
-                    .Create(spiderId)
-                    .CreateFilter(query);
+                var output = Path.Combine(
+                     Directory.GetCurrentDirectory(),
+                     _settings.Value.Paths.Temp,
+                     spiderId + SEPARATOR_TEMP_FILENAME_ID + outputFile
+                );
+
+                MoviesModel? models = null;
 
                 var scraper = _serviceProvider
                     .GetRequiredService<MovieDbScrapper>();
-                scraper.Scrap(
-                    spiderId,
-                    output,
-                    filters,
-                    query);
+
+                if (_settings.Value.Scrap.SkipIfTempOutputFileAlreadyExists
+                    && File.Exists(output))
+                {
+                    Logger.LogWarning(
+                        this,
+                        $"skip search query (file '{output}' already exists): #{qid}: {query}");
+
+                    models = scraper.GetAndBuildOutput(output);
+                }
+                else
+                {
+                    var filters = _sourceModelAdapterFactory
+                        .Create(spiderId)
+                        .CreateFilter(query);
+
+                    models = scraper.Scrap(
+                        spiderId,
+                        output,
+                        filters,
+                        query);
+                }
+
+                aggregateModel.Merge(models);
+
             });
 
-        return null;
+        return aggregateModel;
     }
 }
