@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
 using MovieDbAssistant.Dmn.Components.Scrapper;
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -93,6 +94,9 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         output,
                         filters,
                         query);
+
+                    if (models != null)
+                        Logger.LogInformation(this, $"scrap #{query.InstanceId()} completed");
                 }
 
                 aggregateModel.Merge(models);

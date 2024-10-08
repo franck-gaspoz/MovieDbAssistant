@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Extensions;
 
@@ -62,4 +63,12 @@ public static class ModelExtensions
         foreach (var movieModel in data.Movies)
             movieModel.SetupModel(dmnSettings);
     }
+
+    /// <summary>
+    /// gets the instance id of the query model
+    /// </summary>
+    /// <param name="model">query model</param>
+    /// <returns>instance id</returns>
+    public static int InstanceId(this QueryModel model)
+        => model.Metadata!.InstanceId.Value;
 }

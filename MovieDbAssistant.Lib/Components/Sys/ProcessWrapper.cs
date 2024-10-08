@@ -68,21 +68,23 @@ public sealed class ProcessWrapper : IIdentifiable
     /// <param name="filename">The filename.</param>
     /// <param name="args">The args.</param>
     /// <param name="waitForExit">wait for exit (default true)</param>
+    /// <param name="redirectStreams">redirect streams: catch outputs (default: false)</param>
     public void Start(
         string filename,
         IEnumerable<string> args,
-        bool waitForExit = true)
+        bool waitForExit = true,
+        bool redirectStreams = false)
     {
         Psi = new ProcessStartInfo(
             filename,
             args)
         {
-            UseShellExecute = true,
-            RedirectStandardOutput = false,
-            RedirectStandardError = false,
-            RedirectStandardInput = false,
-            CreateNoWindow = true,
-            WindowStyle = ProcessWindowStyle.Normal,   
+            UseShellExecute = !redirectStreams,
+            RedirectStandardOutput = redirectStreams,
+            RedirectStandardError = redirectStreams,
+            RedirectStandardInput = redirectStreams,
+            CreateNoWindow = false,
+            WindowStyle = ProcessWindowStyle.Hidden,   
             WorkingDirectory = Path.GetDirectoryName(filename)
         };
 
@@ -92,13 +94,22 @@ public sealed class ProcessWrapper : IIdentifiable
         {
             process.OutputDataReceived += Process_OutputDataReceived;
             process.ErrorDataReceived += Process_ErrorDataReceived;
+            
             if (waitForExit)
                 process.WaitForExit();
-            
-            OutStream.Append(_remain);
-            OutStream.Append(process.StandardOutput.ReadToEnd());
-            ErrStream.Append(_remain_error);
-            ErrStream.Append(process.StandardError.ReadToEnd());
+
+            while (!process.HasExited)
+            {
+                Thread.Yield();
+            }
+
+            if (redirectStreams)
+            {
+                OutStream.Append(_remain);
+                OutStream.Append(process.StandardOutput.ReadToEnd());
+                ErrStream.Append(_remain_error);
+                ErrStream.Append(process.StandardError.ReadToEnd());
+            }
 
             var tx = OutStream.ToString();
             var terr = ErrStream.ToString();

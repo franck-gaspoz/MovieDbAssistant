@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.ComponentModels;
@@ -103,19 +104,26 @@ public sealed class MovieDbScrapper : IIdentifiable
                 var args = new List<string>
                 {
                     spiderId.ToString().ToLower(),
-                    output.DblQuote(),
-                    query.Title.DblQuote()
+                    output,
+                    query.Title
                 };
                 if (filters != null)
                     args.Add(filters.DblQuote());
 
                 _logger.LogInformation(this,
-                    $"scrap: spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");
+                    $"scrap: #{query.InstanceId()} spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");
 
                 _processWrapper.Start(toolPath,args);
 
                 _completed = true;
-                if (_processWrapper.HasErrors) return;
+                var hasErrors = _processWrapper.HasErrors
+                    | !File.Exists(output);
+                if (hasErrors)
+                {
+                    _logger.LogError(this, $"scrap #{query.InstanceId()} has failed");
+                    // TODO: throw new ex (task fail)
+                    return;
+                }
 
                 // get & build the output
 

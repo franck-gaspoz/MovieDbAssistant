@@ -1,0 +1,1804 @@
+{
+  "movies": [
+    {
+      "url": "https://www.imdb.com/title/tt7818356/",
+      "id": "tt7818356",
+      "title": "Pinkfong! Animal Songs",
+      "summary": "Enjoy a collection of songs about animals beloved by children, including our hit songs \"Baby Shark\" and \"Did You See My Tail?\" Meet Pinkfong's fun, educational videos that captured the heart...",
+      "interests": [ "Animation", "Family", "Music", "Short" ],
+      "rating": "5,8",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "11 juil. 2024",
+      "year": "2024",
+      "vote": "20",
+      "director": "Bommie Han",
+      "writers": [ "Bommie Han", "Marie Segoine", "Matt Anipen" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Bommie Han",
+          "picUrl": null,
+          "characters": [ "Woman", "\u2026" ]
+        },
+        {
+          "actor": "Marie Segoine",
+          "picUrl": null,
+          "characters": [ "Girl", "\u2026" ]
+        },
+        {
+          "actor": "Matt Anipen",
+          "picUrl": null,
+          "characters": [ "Man", "\u2026" ]
+        },
+        {
+          "actor": "Danielle Lynn Segoine",
+          "picUrl": null,
+          "characters": [ "Children" ]
+        },
+        {
+          "actor": "Mike Yantzi",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BY2Q5YmJmOTYtMzM5YS00OGM4LTllZTYtZDNmZDViYWY1NWVhXkEyXkFqcGc@._V1_QL75_UX140_CR0,5,140,140_.jpg" ],
+          "characters": [ "Man", "\u2026" ]
+        },
+        {
+          "actor": "Robert William Gardiner",
+          "picUrl": null,
+          "characters": [ "Man", "\u2026" ]
+        },
+        {
+          "actor": "Max Gowan",
+          "picUrl": null,
+          "characters": [ "Man" ]
+        },
+        {
+          "actor": "Sharon Kwon",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNWU0MmJjNTYtYWRlZi00NjkwLWFkNTAtYzE4YTc3NTk5MTA4XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Woman" ]
+        },
+        {
+          "actor": "Pinkfong",
+          "picUrl": null,
+          "characters": null
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BYzA4YzdhOTYtYzhjYS00MGVmLWE5ZDMtNTYzNzdmMDdhZTM3XkEyXkFqcGc@._V1_QL75_UX190_CR0,1,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Pinkfong! Animal Songs (2016)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BYzA4YzdhOTYtYzhjYS00MGVmLWE5ZDMtNTYzNzdmMDdhZTM3XkEyXkFqcGc@._V1_QL75_UX190_CR0,1,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BYzA4YzdhOTYtYzhjYS00MGVmLWE5ZDMtNTYzNzdmMDdhZTM3XkEyXkFqcGc@._V1_QL75_UX285_CR0,2,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BYzA4YzdhOTYtYzhjYS00MGVmLWE5ZDMtNTYzNzdmMDdhZTM3XkEyXkFqcGc@._V1_QL75_UX380_CR0,3,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BYzA4YzdhOTYtYzhjYS00MGVmLWE5ZDMtNTYzNzdmMDdhZTM3XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt1318034/",
+      "id": "tt1318034",
+      "title": "Coeur animal",
+      "summary": "In a remote region of rural Switzerland, a farmer and his wife eke out a harsh existence, appearing to live in a century far removed from our own. Paul is incapable of showing any kindness t...",
+      "interests": [ "Drama" ],
+      "rating": "6,9",
+      "ratingCount": "10",
+      "duration": "1h 31min",
+      "releaseDate": null,
+      "year": null,
+      "vote": "198",
+      "director": "S\u00e9verine Cornamusaz",
+      "writers": [ "Marcel Beaulieu", "S\u00e9verine Cornamusaz", "No\u00eblle Revaz" ],
+      "stars": [ "Olivier Rabourdin", "Camille Japy", "Antonio Bu\u00edl" ],
+      "actors": [
+        {
+          "actor": "Olivier Rabourdin",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEyNjU2MDI3MF5BMl5BanBnXkFtZTcwOTk3MDE1Mw@@._V1_QL75_UY140_CR36,0,140,140_.jpg" ],
+          "characters": [ "Paul" ]
+        },
+        {
+          "actor": "Camille Japy",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYTc2NGNiNzktMmRkNC00ZjU2LWEyYjEtNjI3M2RiNjAzYWViXkEyXkFqcGc@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Rosine" ]
+        },
+        {
+          "actor": "Antonio Bu\u00edl",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOWQyNWZhMTktMDI2ZC00MGNlLTk5NDEtOWMzMWM0OWZmYmNhXkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Eusebio" ]
+        },
+        {
+          "actor": "Alexandra Karamisaris",
+          "picUrl": null,
+          "characters": [ "Claudie" ]
+        },
+        {
+          "actor": "Pierre-Isa\u00efe Duc",
+          "picUrl": null,
+          "characters": [ "Camionneur", "(as Pierre-Isaie Duc)" ]
+        },
+        {
+          "actor": "Franziska Kahl",
+          "picUrl": null,
+          "characters": [ "M\u00e8re" ]
+        },
+        {
+          "actor": "Magdalena Meier",
+          "picUrl": null,
+          "characters": [ "R\u00e9ceptionniste" ]
+        },
+        {
+          "actor": "Pierre-Louis Normand",
+          "picUrl": null,
+          "characters": [ "L\u00e9on" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOWE5NDMzYzgtNzVlMi00YTMzLTg5MGYtOTUyZTdlN2NkZDg3XkEyXkFqcGc@._V1_QL75_UX190_CR0,1,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Coeur animal (2009)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOWE5NDMzYzgtNzVlMi00YTMzLTg5MGYtOTUyZTdlN2NkZDg3XkEyXkFqcGc@._V1_QL75_UX190_CR0,1,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOWE5NDMzYzgtNzVlMi00YTMzLTg5MGYtOTUyZTdlN2NkZDg3XkEyXkFqcGc@._V1_QL75_UX285_CR0,1,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOWE5NDMzYzgtNzVlMi00YTMzLTg5MGYtOTUyZTdlN2NkZDg3XkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOWE5NDMzYzgtNzVlMi00YTMzLTg5MGYtOTUyZTdlN2NkZDg3XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt32620430/",
+      "id": "tt32620430",
+      "title": "Untitled Jean-Paul Gaultier/Benoit Philippon Animated Feature",
+      "summary": "A clothes moth dreams of becoming a fashion designer. It travels to Paris to organize a runway show unveiling its clothing line.",
+      "interests": [ "Animation" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": null,
+      "releaseDate": null,
+      "year": null,
+      "vote": null,
+      "director": "Beno\u00eet Philippon",
+      "writers": [ "Emilie Fr\u00e8che", "Amanda Sthers" ],
+      "stars": [ "Madonna", "Rossy de Palma" ],
+      "actors": [
+        {
+          "actor": "Madonna",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTA3NDQ3NTAxNDVeQTJeQWpwZ15BbWU3MDI1MjQ1OTY@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": null
+        },
+        {
+          "actor": "Rossy de Palma",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTg3Nzg0ODUwM15BMl5BanBnXkFtZTcwMjc2NjIzNQ@@._V1_QL75_UX140_CR0,8,140,140_.jpg" ],
+          "characters": null
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": null,
+      "minPicWidth": null,
+      "minPicAlt": null,
+      "picsUrls": null,
+      "picFullUrl": null,
+      "picsSizes": null
+    },
+    {
+      "url": "https://www.imdb.com/title/tt13114692/",
+      "id": "tt13114692",
+      "title": "Animation en folies!",
+      "summary": "The National Film Board of Canada occupies a unique place within the world of animation - forging its own inimitable blend of innovation and artistry. Animation Express showcases this vital ...",
+      "interests": [ "Animation" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "Vid\u00e9o",
+      "releaseDate": "3h 42min",
+      "year": null,
+      "vote": null,
+      "director": "Various",
+      "writers": [ "Various" ],
+      "stars": null,
+      "actors": null,
+      "anecdotes": "Features Madame Tutli-Putli (2007)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZWY1MGJmMTQtMmZlMS00MzA1LTg2N2EtZTMzODdkZTdkY2QzXkEyXkFqcGc@._V1_QL75_UY281_CR27,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animation en folies! (2009)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZWY1MGJmMTQtMmZlMS00MzA1LTg2N2EtZTMzODdkZTdkY2QzXkEyXkFqcGc@._V1_QL75_UY281_CR27,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZWY1MGJmMTQtMmZlMS00MzA1LTg2N2EtZTMzODdkZTdkY2QzXkEyXkFqcGc@._V1_QL75_UY422_CR41,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZWY1MGJmMTQtMmZlMS00MzA1LTg2N2EtZTMzODdkZTdkY2QzXkEyXkFqcGc@._V1_QL75_UY562_CR55,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZWY1MGJmMTQtMmZlMS00MzA1LTg2N2EtZTMzODdkZTdkY2QzXkEyXkFqcGc@._V1_QL75_UY281_CR27",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt26242038/",
+      "id": "tt26242038",
+      "title": "Anime galleggianti",
+      "summary": "\"Anime galleggianti\" is a magical journey through the atemporal land of Sardinia inspired by Ovid's \"Metamorphoses\", mixing classical mythology with contemporary themes, literary tradition w...",
+      "interests": [ "Fantasy" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": null,
+      "releaseDate": null,
+      "year": null,
+      "vote": null,
+      "director": "Maria Gim\u00e9nez Cavallo",
+      "writers": [ "Maria Gim\u00e9nez Cavallo", "Jackson Giuricich" ],
+      "stars": [ "Anastasiya Bogach", "Juliette Jouan", "Emiliana Gimelli" ],
+      "actors": [
+        {
+          "actor": "Anastasiya Bogach",
+          "picUrl": null,
+          "characters": [ "Arachne" ]
+        },
+        {
+          "actor": "Juliette Jouan",
+          "picUrl": null,
+          "characters": [ "Callisto" ]
+        },
+        {
+          "actor": "Emiliana Gimelli",
+          "picUrl": null,
+          "characters": [ "Lachesis" ]
+        },
+        {
+          "actor": "Giovanni Andrea Vinci",
+          "picUrl": null,
+          "characters": [ "Hades" ]
+        },
+        {
+          "actor": "Benjamin Miyakawa",
+          "picUrl": null,
+          "characters": [ "Orpheus" ]
+        },
+        {
+          "actor": "Gerardo Ferrara",
+          "picUrl": null,
+          "characters": [ "Bacchus" ]
+        },
+        {
+          "actor": "Enrica Mura",
+          "picUrl": null,
+          "characters": [ "Daphne" ]
+        },
+        {
+          "actor": "Oph\u00e9lie Joh",
+          "picUrl": null,
+          "characters": [ "Diana" ]
+        },
+        {
+          "actor": "Rapha\u00eblle Dupire",
+          "picUrl": null,
+          "characters": [ "Europa" ]
+        },
+        {
+          "actor": "Andrea Flirst",
+          "picUrl": null,
+          "characters": [ "Pythagoras" ]
+        },
+        {
+          "actor": "Vanessa Podda",
+          "picUrl": null,
+          "characters": [ "Clotho" ]
+        },
+        {
+          "actor": "Antonello Foddis",
+          "picUrl": null,
+          "characters": [ "Tiresias" ]
+        },
+        {
+          "actor": "Riccardo Bombagi",
+          "picUrl": null,
+          "characters": [ "Apollo" ]
+        },
+        {
+          "actor": "Maura Fancello",
+          "picUrl": null,
+          "characters": [ "Persephone" ]
+        },
+        {
+          "actor": "Ornella D'Agostino",
+          "picUrl": null,
+          "characters": [ "Filonzana" ]
+        },
+        {
+          "actor": "Egidiana Carta",
+          "picUrl": null,
+          "characters": [ "Demetra" ]
+        },
+        {
+          "actor": "Valentina Picciau",
+          "picUrl": null,
+          "characters": [ "Eurydice" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMWYyOTczN2QtZTdjNS00NjU3LWIyYTYtMGU5ZDRkNTg0ZjcwXkEyXkFqcGc@._V1_QL75_UX190_CR0,3,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Anime galleggianti",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMWYyOTczN2QtZTdjNS00NjU3LWIyYTYtMGU5ZDRkNTg0ZjcwXkEyXkFqcGc@._V1_QL75_UX190_CR0,3,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMWYyOTczN2QtZTdjNS00NjU3LWIyYTYtMGU5ZDRkNTg0ZjcwXkEyXkFqcGc@._V1_QL75_UX285_CR0,5,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMWYyOTczN2QtZTdjNS00NjU3LWIyYTYtMGU5ZDRkNTg0ZjcwXkEyXkFqcGc@._V1_QL75_UX380_CR0,7,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMWYyOTczN2QtZTdjNS00NjU3LWIyYTYtMGU5ZDRkNTg0ZjcwXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt5815824/",
+      "id": "tt5815824",
+      "title": "72 Cutest Animals",
+      "summary": "This series examines the nature of cuteness and how adorability helps some animal species to survive and thrive in a variety of environments.",
+      "interests": [ "Documentary" ],
+      "rating": "5,7",
+      "ratingCount": "10",
+      "duration": "Mini-s\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "27min",
+      "year": null,
+      "vote": "540",
+      "director": "Graham Mitchell",
+      "writers": [ "Graham Mitchell", "Bob Humphries", "Kym Illman" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Graham Mitchell",
+          "picUrl": null,
+          "characters": [ "Narrator" ]
+        },
+        {
+          "actor": "Bob Humphries",
+          "picUrl": null,
+          "characters": [ "Self - Wildlife & Eco Photographer" ]
+        },
+        {
+          "actor": "Kym Illman",
+          "picUrl": null,
+          "characters": [ "Self - Photographer" ]
+        },
+        {
+          "actor": "Anthony Powell",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Rachael Thomas",
+          "picUrl": null,
+          "characters": [ "Self - Zookeeper, National Zoo & Aquarium" ]
+        },
+        {
+          "actor": "Brett McKechnie",
+          "picUrl": null,
+          "characters": [ "Self - Zookeeper, Owner, Gorge Wildlife Park" ]
+        },
+        {
+          "actor": "Amber Canestrini",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Teagan Goolmeer",
+          "picUrl": null,
+          "characters": [ "Self - Rottnest Island Authority" ]
+        },
+        {
+          "actor": "Sally Robinson",
+          "picUrl": null,
+          "characters": [ "Self - Wildlife & Eco Photographer" ]
+        },
+        {
+          "actor": "Emma Start",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Peter Strain",
+          "picUrl": null,
+          "characters": [ "Self - Photo Artist" ]
+        },
+        {
+          "actor": "Erin Clitheroe",
+          "picUrl": null,
+          "characters": [ "Self - Marine Ranger" ]
+        },
+        {
+          "actor": "Cara Phillips",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Holly Thompson",
+          "picUrl": null,
+          "characters": [ "Self - Primate Supervisor, Perth Zoo" ]
+        },
+        {
+          "actor": "Brendan Sheean",
+          "picUrl": null,
+          "characters": [ "Self - Zookeeper, National Zoo & Aquarium" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNWRjMjk2YzUtOGM1YS00ZTA5LWE2ZTctYjY5MTE5YmFhNTZlXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "72 Cutest Animals (2016)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNWRjMjk2YzUtOGM1YS00ZTA5LWE2ZTctYjY5MTE5YmFhNTZlXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNWRjMjk2YzUtOGM1YS00ZTA5LWE2ZTctYjY5MTE5YmFhNTZlXkEyXkFqcGc@._V1_QL75_UY422_CR7,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNWRjMjk2YzUtOGM1YS00ZTA5LWE2ZTctYjY5MTE5YmFhNTZlXkEyXkFqcGc@._V1_QL75_UY562_CR10,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNWRjMjk2YzUtOGM1YS00ZTA5LWE2ZTctYjY5MTE5YmFhNTZlXkEyXkFqcGc@._V1_QL75_UY281_CR5",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0096821/",
+      "id": "tt0096821",
+      "title": "Animated Self-Portraits",
+      "summary": "An animated film compiled by David Ehrlich consisting of 19 animators from different countries all explaining themselves through their animation.",
+      "interests": [ "Animation", "Short" ],
+      "rating": "6,6",
+      "ratingCount": "10",
+      "duration": "8min",
+      "releaseDate": "30 sept. 2024",
+      "year": "2024",
+      "vote": "315",
+      "director": "Jir\u00ed Barta",
+      "writers": [ "Jir\u00ed Barta", "Sally Cruikshank", "Borivoj Dovnikovic-Bordo" ],
+      "stars": null,
+      "actors": null,
+      "anecdotes": "Edited from Autoportrait (1988)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMjE3MzNjM2YtOTUyZi00MmMyLTkzZDUtOTQ5MTVmMDFmY2I0XkEyXkFqcGc@._V1_QL75_UY281_CR92,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animated Self-Portraits (1989)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMjE3MzNjM2YtOTUyZi00MmMyLTkzZDUtOTQ5MTVmMDFmY2I0XkEyXkFqcGc@._V1_QL75_UY281_CR92,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMjE3MzNjM2YtOTUyZi00MmMyLTkzZDUtOTQ5MTVmMDFmY2I0XkEyXkFqcGc@._V1_QL75_UY422_CR137,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMjE3MzNjM2YtOTUyZi00MmMyLTkzZDUtOTQ5MTVmMDFmY2I0XkEyXkFqcGc@._V1_QL75_UY562_CR183,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMjE3MzNjM2YtOTUyZi00MmMyLTkzZDUtOTQ5MTVmMDFmY2I0XkEyXkFqcGc@._V1_QL75_UY281_CR92",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt16606592/",
+      "id": "tt16606592",
+      "title": "Le r\u00e8gne animal",
+      "summary": "Un p\u00e8re et son fils partent \u00e0 l'aventure, dans un monde o\u00f9 certains humains ont commenc\u00e9 \u00e0 muter avec d'autres esp\u00e8ces animales.",
+      "interests": [ "Adventure", "Drama", "Horror", "Mystery", "Sci-Fi" ],
+      "rating": "6,7",
+      "ratingCount": "10",
+      "duration": "2h 8min",
+      "releaseDate": "26 f\u00e9vr. 2024",
+      "year": "2024",
+      "vote": "9\u00a0k",
+      "director": "Thomas Cailley",
+      "writers": [ "Thomas Cailley", "Pauline Munier" ],
+      "stars": [ "Romain Duris", "Paul Kircher", "Ad\u00e8le Exarchopoulos" ],
+      "actors": [
+        {
+          "actor": "Romain Duris",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTY5NjUwNDA4OF5BMl5BanBnXkFtZTcwMDc1NzU1Mw@@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Fran\u00e7ois Marindaze" ]
+        },
+        {
+          "actor": "Paul Kircher",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjRmMDJmMTYtNmU0NS00M2Y4LWJlNGUtYTY0NjlmYjVmNTcxXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "\u00c9mile Marindaze" ]
+        },
+        {
+          "actor": "Ad\u00e8le Exarchopoulos",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTg2NTQ1NDkwNF5BMl5BanBnXkFtZTgwOTA3NDYyMDE@._V1_QL75_UY140_CR30,0,140,140_.jpg" ],
+          "characters": [ "Julia Izquierdo" ]
+        },
+        {
+          "actor": "Tom Mercier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYWQ3MWExZjQtN2NhOC00ZGViLWI1ZDUtMmIwOWE3ODEwY2JmXkEyXkFqcGc@._V1_QL75_UX140_CR0,14,140,140_.jpg" ],
+          "characters": [ "Fix" ]
+        },
+        {
+          "actor": "Billie Blain",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzNmMjc1YjktYzk4NS00ZjI0LWE0OTMtYjdiNzQ2ZGJkNTE2XkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Nina Moktari" ]
+        },
+        {
+          "actor": "Xavier Aubert",
+          "picUrl": null,
+          "characters": [ "Jacques" ]
+        },
+        {
+          "actor": "Saadia Benta\u00efeb",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU0NDEyMzYwMV5BMl5BanBnXkFtZTgwMTU0Mjg5MzI@._V1_QL75_UY140_CR39,0,140,140_.jpg" ],
+          "characters": [ "Na\u00efma" ]
+        },
+        {
+          "actor": "Gabriel Caballero",
+          "picUrl": null,
+          "characters": [ "Victor" ]
+        },
+        {
+          "actor": "Iliana Khelifa",
+          "picUrl": null,
+          "characters": [ "Ma\u00eblle" ]
+        },
+        {
+          "actor": "Paul Muguruza",
+          "picUrl": null,
+          "characters": [ "Jordan" ]
+        },
+        {
+          "actor": "Ma\u00eblle Benkimoun",
+          "picUrl": null,
+          "characters": [ "Grenouille" ]
+        },
+        {
+          "actor": "Nathalie Richard",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjJhY2M0MDUtYzc1Ny00OGY4LTliN2QtN2RlMjg3NmU2YzIyXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Professeure Val\u00e9rie Beaudoin" ]
+        },
+        {
+          "actor": "Tom Rivoire",
+          "picUrl": null,
+          "characters": [ "Lieutenant gendarmerie" ]
+        },
+        {
+          "actor": "Francois-Xavier Raffier",
+          "picUrl": null,
+          "characters": [ "Gendarme Bonnel" ]
+        },
+        {
+          "actor": "Florence Deretz",
+          "picUrl": null,
+          "characters": [ "Lana Marindaze" ]
+        },
+        {
+          "actor": "Louise Lehry",
+          "picUrl": null,
+          "characters": [ "Professeure principale" ]
+        },
+        {
+          "actor": "Jean Boronat",
+          "picUrl": null,
+          "characters": [ "Professeur EPS" ]
+        },
+        {
+          "actor": "Nicolas Avin\u00e9e",
+          "picUrl": null,
+          "characters": [ "Conducteur voisin" ]
+        }
+      ],
+      "anecdotes": "Thomas Cailley cut a 2 minutes epilogue between the film's screening at the Cannes film festival and its official release.\nAccording to him, \"in the end [he] felt like it was more interesting not to answer all the questions that the epilogue answered. To leave them open.\"Guide the Waywritten by Bethanie Aggett, Lawrence Max Gale Hayes, Louis David Greenwood",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNjYyMDI5MWYtMmRlZi00N2U4LWFmY2YtZDEzODhiNDEyNGYzXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Le r\u00e8gne animal (2023)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNjYyMDI5MWYtMmRlZi00N2U4LWFmY2YtZDEzODhiNDEyNGYzXkEyXkFqcGc@._V1_QL75_UX190_CR0,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNjYyMDI5MWYtMmRlZi00N2U4LWFmY2YtZDEzODhiNDEyNGYzXkEyXkFqcGc@._V1_QL75_UX285_CR0,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNjYyMDI5MWYtMmRlZi00N2U4LWFmY2YtZDEzODhiNDEyNGYzXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNjYyMDI5MWYtMmRlZi00N2U4LWFmY2YtZDEzODhiNDEyNGYzXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt11348980/",
+      "id": "tt11348980",
+      "title": "Animal",
+      "summary": "Les adolescents Bella et Vipulan voyagent pour rencontrer des scientifiques et des militants du monde entier, \u00e0 la recherche d'une autre fa\u00e7on de vivre aux c\u00f4t\u00e9s d'autres esp\u00e8ces, en tant qu...",
+      "interests": [ "Documentary" ],
+      "rating": "7,0",
+      "ratingCount": "10",
+      "duration": "1h 45min",
+      "releaseDate": null,
+      "year": null,
+      "vote": "193",
+      "director": "Cyril Dion",
+      "writers": [ "Walter Bouvais", "Cyril Dion" ],
+      "stars": [ "Bella Lack", "Vipulan Puvaneswaran", "Anthony Barnosky" ],
+      "actors": [
+        {
+          "actor": "Bella Lack",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Vipulan Puvaneswaran",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Anthony Barnosky",
+          "picUrl": null,
+          "characters": [ "Self", "(as Anthony D. Barnosky)" ]
+        },
+        {
+          "actor": "Afroz Shah",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Claire Nouvian",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Chris Davies",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Laurent Helaine",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Eloi Laurent",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Jane Goodall",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTkwNjAzNDI0NF5BMl5BanBnXkFtZTgwNzQ1NTk0MzI@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Dino J. Martins",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Baptiste Morizot",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Jean-Marc Landry",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Xavier Broquet",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Claude Leterrier",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Perrine Herv\u00e9-Gruyer",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Charles Herv\u00e9-Gruyer",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Nicolas Vereecken",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Carlos Alvarado",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMjQ4ZTNiZjMtYTBiMi00ZjQwLTk2MjMtOTM3ZGIxMGU1MzA1XkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animal (2021)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMjQ4ZTNiZjMtYTBiMi00ZjQwLTk2MjMtOTM3ZGIxMGU1MzA1XkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMjQ4ZTNiZjMtYTBiMi00ZjQwLTk2MjMtOTM3ZGIxMGU1MzA1XkEyXkFqcGc@._V1_QL75_UY422_CR12,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMjQ4ZTNiZjMtYTBiMi00ZjQwLTk2MjMtOTM3ZGIxMGU1MzA1XkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMjQ4ZTNiZjMtYTBiMi00ZjQwLTk2MjMtOTM3ZGIxMGU1MzA1XkEyXkFqcGc@._V1_QL75_UY281_CR8",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0805797/",
+      "id": "tt0805797",
+      "title": "Animal Atlas",
+      "summary": "Animal Atlas travels the globe to meet every kind of animal imaginable, from the familiar to the astounding. We learn about the way they live, and the adaptations that allow them to survive ...",
+      "interests": [ "Animal Adventure", "Documentary", "Family" ],
+      "rating": "7,7",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "18 nov. 2006",
+      "year": "2006",
+      "vote": "52",
+      "director": "Eric Schwartz",
+      "writers": [ "Eric Schwartz" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Eric Schwartz",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNDI4NzMwMmItNzE1ZC00N2RkLTk1NDktZjY5MGE5YzNjY2QwXkEyXkFqcGc@._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Self - Host" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOWU3ZjFlODktMzZhNC00ZjUyLTljZWYtYzRkMzA5ZTM3OWQwXkEyXkFqcGc@._V1_QL75_UY281_CR116,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animal Atlas (2004)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOWU3ZjFlODktMzZhNC00ZjUyLTljZWYtYzRkMzA5ZTM3OWQwXkEyXkFqcGc@._V1_QL75_UY281_CR116,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOWU3ZjFlODktMzZhNC00ZjUyLTljZWYtYzRkMzA5ZTM3OWQwXkEyXkFqcGc@._V1_QL75_UY422_CR174,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOWU3ZjFlODktMzZhNC00ZjUyLTljZWYtYzRkMzA5ZTM3OWQwXkEyXkFqcGc@._V1_QL75_UY562_CR232,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOWU3ZjFlODktMzZhNC00ZjUyLTljZWYtYzRkMzA5ZTM3OWQwXkEyXkFqcGc@._V1_QL75_UY281_CR116",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt2101313/",
+      "id": "tt2101313",
+      "title": "Football de la jungle",
+      "summary": "Everybody is busy with the preparations for the event of the year, the largest soccer game of all time. The favoured team of the \"Wild Dogs \" assumed the challenge of equally favoured \"Lionk...",
+      "interests": [ "Adventure", "Comedy", "Fantasy", "Sport" ],
+      "rating": "1,2",
+      "ratingCount": "10",
+      "duration": "Jeu vid\u00e9o",
+      "releaseDate": "9 avr. 2017",
+      "year": "2017",
+      "vote": "135",
+      "director": "Roswitha Haas",
+      "writers": [ "Roswitha Haas" ],
+      "stars": [ "Armin Drogat", "Georg Feils", "Simone Greiss" ],
+      "actors": [
+        {
+          "actor": "Armin Drogat",
+          "picUrl": null,
+          "characters": [ "Wabuu" ]
+        },
+        {
+          "actor": "Georg Feils",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Simone Greiss",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Melanie Langer",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Bernd Moehrle",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Thorsten Morawietz",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Herma Rotkirch",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Raija Siikavirta",
+          "picUrl": null,
+          "characters": null
+        }
+      ],
+      "anecdotes": "There is an endless \"bongo drum\" music track layered over the entirety of the cartoon's English version, even when other music is being played.The audio is out of sync with the visuals even more so than in other English-language versions of Dingo Pictures cartoons. All of the voice acting was done by one person, and very rarely do his lines correspond to the mouth movements of the characters.Featured in Phelous & the Movies: Animal Soccer World (Dingo Pictures) (2019)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOGYxNDZlYzAtYzJjMy00MDdiLTg3OWMtODQ4N2MwMGUyNmY4XkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Football de la jungle (2005)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOGYxNDZlYzAtYzJjMy00MDdiLTg3OWMtODQ4N2MwMGUyNmY4XkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOGYxNDZlYzAtYzJjMy00MDdiLTg3OWMtODQ4N2MwMGUyNmY4XkEyXkFqcGc@._V1_QL75_UY422_CR6,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOGYxNDZlYzAtYzJjMy00MDdiLTg3OWMtODQ4N2MwMGUyNmY4XkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOGYxNDZlYzAtYzJjMy00MDdiLTg3OWMtODQ4N2MwMGUyNmY4XkEyXkFqcGc@._V1_QL75_UY281_CR5",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt6510634/",
+      "id": "tt6510634",
+      "title": "Animals",
+      "summary": "A collision with a sheep on a country road initiates a whole series of weird and unsettling experiences for Anna and Nick which ultimately leave them both incapable of being certain exactly ...",
+      "interests": [ "Mystery", "Thriller" ],
+      "rating": "6,6",
+      "ratingCount": "10",
+      "duration": "1h 35min",
+      "releaseDate": "14 f\u00e9vr. 2017",
+      "year": "2017",
+      "vote": "728",
+      "director": "Greg Zglinski",
+      "writers": [ "J\u00f6rg Kalt", "Greg Zglinski" ],
+      "stars": [ "Birgit Minichmayr", "Philipp Hochmair", "Mona Petri" ],
+      "actors": [
+        {
+          "actor": "Birgit Minichmayr",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjIyOTI1Njg2NF5BMl5BanBnXkFtZTcwNjIxNTgyMg@@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Anna" ]
+        },
+        {
+          "actor": "Philipp Hochmair",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNmIxZGEyOGMtODcyMi00OWJmLTg2MzYtNDE1NmMzYTg0MGYyXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Nick" ]
+        },
+        {
+          "actor": "Mona Petri",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjMzNDg4NGQtMzcwNS00ZWJlLWI3NDQtMWY3MmRlNjZjMzU1XkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Mischa", "\u2026" ]
+        },
+        {
+          "actor": "Mehdi Nebbou",
+          "picUrl": null,
+          "characters": [ "Tarek" ]
+        },
+        {
+          "actor": "Michael Ostrowski",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZGQ3YjM3ZmUtNzg2NC00ZWUxLWFjZDUtODZlNjcwZmE4MjQ2XkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Harald" ]
+        },
+        {
+          "actor": "Philip Lenkowsky",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzQxNDQ5MmMtMDg0NS00ZDcxLWJhMmUtNjQ3YWZjNzA3ZGZmXkEyXkFqcGc@._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Barman" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNjdlNGQxNGMtZTk4OC00MjI1LTg4ZWItZWRkZDFjZjk4NTUwXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animals (2017)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNjdlNGQxNGMtZTk4OC00MjI1LTg4ZWItZWRkZDFjZjk4NTUwXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNjdlNGQxNGMtZTk4OC00MjI1LTg4ZWItZWRkZDFjZjk4NTUwXkEyXkFqcGc@._V1_QL75_UY422_CR5,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNjdlNGQxNGMtZTk4OC00MjI1LTg4ZWItZWRkZDFjZjk4NTUwXkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNjdlNGQxNGMtZTk4OC00MjI1LTg4ZWItZWRkZDFjZjk4NTUwXkEyXkFqcGc@._V1_QL75_UY281_CR4",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt10275508/",
+      "id": "tt10275508",
+      "title": "The Kid: An Animated Adventure",
+      "summary": "Animated version of Charlie Chaplin's 'The Kid' set in a futuristic New York City.",
+      "interests": [ "Animation", "Sci-Fi" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": null,
+      "releaseDate": null,
+      "year": null,
+      "vote": null,
+      "director": "Christian Volckman",
+      "writers": [ "Christian Volckman", "Rupert Wyatt" ],
+      "stars": [ "Jacob Tremblay" ],
+      "actors": [
+        {
+          "actor": "Jacob Tremblay",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzA4M2UzMGItNjMyMy00MjhmLWIwMWYtNzM5NGE2ODQzNDFjXkEyXkFqcGc@._V1_QL75_UX140_CR0,22,140,140_.jpg" ],
+          "characters": [ "The Kid", "(voix)" ]
+        }
+      ],
+      "anecdotes": "Rupert Wyatt was credited as the co-director.",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BOTU4NDJiNjktNzA5Yi00Yjg4LTlkMDEtMTdjMDlmNmUyNjYyXkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "The Kid: An Animated Adventure",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BOTU4NDJiNjktNzA5Yi00Yjg4LTlkMDEtMTdjMDlmNmUyNjYyXkEyXkFqcGc@._V1_QL75_UY281_CR8,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BOTU4NDJiNjktNzA5Yi00Yjg4LTlkMDEtMTdjMDlmNmUyNjYyXkEyXkFqcGc@._V1_QL75_UY422_CR12,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BOTU4NDJiNjktNzA5Yi00Yjg4LTlkMDEtMTdjMDlmNmUyNjYyXkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BOTU4NDJiNjktNzA5Yi00Yjg4LTlkMDEtMTdjMDlmNmUyNjYyXkEyXkFqcGc@._V1_QL75_UY281_CR8",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0472971/",
+      "id": "tt0472971",
+      "title": "Rayman",
+      "summary": "Enslaved by evil circus owner Rigatoni, Rayman and friends escape his villainous circus but are chased by Inspector Grub, determined to capture the \"fugitives.\" Will they find freedom?",
+      "interests": [ "Action", "Adventure", "Animation" ],
+      "rating": "7,1",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "21 juin 2022",
+      "year": "2022",
+      "vote": "114",
+      "director": "Billy West",
+      "writers": [ "Billy West", "Carlos Alazraqui", "Danny Mann" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Billy West",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNDZkN2EwOWItOGI1OS00MTAxLWI2NmYtZDUxZTc1MmM3MWEwXkEyXkFqcGc@._V1_QL75_UX140_CR0,5,140,140_.jpg" ],
+          "characters": [ "Rayman" ]
+        },
+        {
+          "actor": "Carlos Alazraqui",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQyMTk3MzIyOF5BMl5BanBnXkFtZTcwODA0MDk5Nw@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Cookie", "\u2026" ]
+        },
+        {
+          "actor": "Danny Mann",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzI3MTUzNmEtYjJiOC00NTkwLWJlMTEtOGEzZmY4ZTVmZjgwXkEyXkFqcGc@._V1_QL75_UX140_CR0,10,140,140_.jpg" ],
+          "characters": [ "Inspector Grub", "\u2026" ]
+        },
+        {
+          "actor": "Emmanuel Garijo",
+          "picUrl": null,
+          "characters": [ "Rayman" ]
+        },
+        {
+          "actor": "Carolyn Lawrence",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTM3NjE5ODY1Ml5BMl5BanBnXkFtZTYwOTEwOTk0._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Betina" ]
+        },
+        {
+          "actor": "Lacey Chabert",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU1Nzc3NzAwMl5BMl5BanBnXkFtZTcwNzY1ODk0Mg@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Betina" ]
+        },
+        {
+          "actor": "Kath Soucie",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjNiZWIzYzktY2M5NS00MDMwLThiYmYtZTJmNGE5ZmMyYzJhXkEyXkFqcGc@._V1_CR232,166,3333,5000_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Betina" ]
+        },
+        {
+          "actor": "Candi Milo",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYzQzZmM1MDEtNDUwZi00ZGRlLWIyNmYtNmE4MTdiNTk4ZWViXkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Old Lady" ]
+        },
+        {
+          "actor": "Brian Stepanek",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZTM5MGQ0YTItZGY5Zi00ZmY4LWIyYzItNDIzYmRjNzE4ZGY3XkEyXkFqcGc@._V1_QL75_UY140_CR36,0,140,140_.jpg" ],
+          "characters": [ "Additional Voices (2000)" ]
+        },
+        {
+          "actor": "Marie Vincent",
+          "picUrl": null,
+          "characters": [ "Additional Voices (2000)" ]
+        },
+        {
+          "actor": "Philippe Bozo",
+          "picUrl": null,
+          "characters": [ "Additional Voices (2000)" ]
+        },
+        {
+          "actor": "Olivier H\u00e9mon",
+          "picUrl": null,
+          "characters": [ "Additional Voices (2000)" ]
+        },
+        {
+          "actor": "Michel Elias",
+          "picUrl": null,
+          "characters": [ "Cookie", "\u2026" ]
+        },
+        {
+          "actor": "Patrick Guillemin",
+          "picUrl": null,
+          "characters": [ "Admiral Razorbeard (2000)" ]
+        },
+        {
+          "actor": "Patricia Legrand",
+          "picUrl": null,
+          "characters": [ "Betina (2000)" ]
+        },
+        {
+          "actor": "Catherine Hamilty",
+          "picUrl": null,
+          "characters": [ "Additional Voices (2000)" ]
+        },
+        {
+          "actor": "Patrice Baudrier",
+          "picUrl": null,
+          "characters": [ "LacMac (2000)" ]
+        },
+        {
+          "actor": "Emmanuel Fouquet",
+          "picUrl": null,
+          "characters": [ "Additional Voices (2000)" ]
+        }
+      ],
+      "anecdotes": "Despite having an official English Dub, the series only ever aired in France, Germany, and the Netherlands.Featured in Rayman's Dream Team (1999)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZDlmNDM4MTMtZTlhMS00MGE0LWI3NjMtY2UyY2QzMmY2YmM0XkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Rayman (1999)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZDlmNDM4MTMtZTlhMS00MGE0LWI3NjMtY2UyY2QzMmY2YmM0XkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZDlmNDM4MTMtZTlhMS00MGE0LWI3NjMtY2UyY2QzMmY2YmM0XkEyXkFqcGc@._V1_QL75_UY422_CR5,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZDlmNDM4MTMtZTlhMS00MGE0LWI3NjMtY2UyY2QzMmY2YmM0XkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZDlmNDM4MTMtZTlhMS00MGE0LWI3NjMtY2UyY2QzMmY2YmM0XkEyXkFqcGc@._V1_QL75_UY281_CR4",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt27671044/",
+      "id": "tt27671044",
+      "title": "Animal Well",
+      "summary": "Encounter lively creatures small and large, helpful and ominous as you discover unconventional upgrades and unravel the well's secrets.",
+      "interests": [ "Action", "Adventure", "Fantasy", "Horror", "Mystery" ],
+      "rating": "7,8",
+      "ratingCount": "10",
+      "duration": "Jeu vid\u00e9o",
+      "releaseDate": null,
+      "year": null,
+      "vote": "98",
+      "director": "Billy Basso",
+      "writers": [ "Billy Basso" ],
+      "stars": [ "Billy Basso" ],
+      "actors": null,
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BY2IwNzZmZWYtNWI5Yy00YzlmLTljNjQtOTZiNDg1OTI3NWM2XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animal Well (2024)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BY2IwNzZmZWYtNWI5Yy00YzlmLTljNjQtOTZiNDg1OTI3NWM2XkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BY2IwNzZmZWYtNWI5Yy00YzlmLTljNjQtOTZiNDg1OTI3NWM2XkEyXkFqcGc@._V1_QL75_UX285_CR0,3,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BY2IwNzZmZWYtNWI5Yy00YzlmLTljNjQtOTZiNDg1OTI3NWM2XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BY2IwNzZmZWYtNWI5Yy00YzlmLTljNjQtOTZiNDg1OTI3NWM2XkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0190882/",
+      "id": "tt0190882",
+      "title": "Wild Animals",
+      "summary": "Two Korean ex-pats meet in Paris by chance encounter. One a petty thief and wannabe artist/painter (Chong-Hae), the other a tough guy (Hong San). Hong San saves Chong-Hae from a gang of thug...",
+      "interests": [ "Comedy", "Crime", "Drama" ],
+      "rating": "6,1",
+      "ratingCount": "10",
+      "duration": "1h 45min",
+      "releaseDate": "26 ao\u00fbt 2013",
+      "year": "2013",
+      "vote": "948",
+      "director": "Kim Ki-duk",
+      "writers": [ "Kim Ki-duk" ],
+      "stars": [ "Cho Jae-hyun", "Jang Dong-jik", "Ryun Jang" ],
+      "actors": [
+        {
+          "actor": "Cho Jae-hyun",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZTY5ODUyZTUtNzc1OC00Y2QxLTlkNWMtYjQyNWFiY2E4MzIzXkEyXkFqcGc@._V1_QL75_UY140_CR37,0,140,140_.jpg" ],
+          "characters": [ "Cheong-hae", "(as Jae-hyeon Jo)" ]
+        },
+        {
+          "actor": "Jang Dong-jik",
+          "picUrl": null,
+          "characters": [ "Hong-san", "(as Dong-jik Jang)" ]
+        },
+        {
+          "actor": "Ryun Jang",
+          "picUrl": null,
+          "characters": [ "Laura" ]
+        },
+        {
+          "actor": "Sasha Rucavina",
+          "picUrl": null,
+          "characters": [ "Corrine" ]
+        },
+        {
+          "actor": "Richard Bohringer",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjQ0MDUwNjU4NV5BMl5BanBnXkFtZTcwNDE2NjgwNQ@@._V1_QL75_UY140_CR34,0,140,140_.jpg" ],
+          "characters": [ "Boss" ]
+        },
+        {
+          "actor": "Denis Lavant",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTY1MDA3NTQxNV5BMl5BanBnXkFtZTcwODUyNDc3MQ@@._V1_QL75_UX140_CR0,9,140,140_.jpg" ],
+          "characters": [ "Emil" ]
+        },
+        {
+          "actor": "Laurent Buro",
+          "picUrl": null,
+          "characters": [ "Pare" ]
+        },
+        {
+          "actor": "Bruno Guillot",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Fanny Perusse",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Xavier Schliwanski",
+          "picUrl": null,
+          "characters": null
+        },
+        {
+          "actor": "Pascal Tourain",
+          "picUrl": null,
+          "characters": null
+        }
+      ],
+      "anecdotes": "Referenced in Time (2006)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMzFhOTMxMTMtMTgyYi00MmYwLTlhODgtNzYzMDJmNWY0ZGNlXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Wild Animals (1997)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMzFhOTMxMTMtMTgyYi00MmYwLTlhODgtNzYzMDJmNWY0ZGNlXkEyXkFqcGc@._V1_QL75_UY281_CR4,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMzFhOTMxMTMtMTgyYi00MmYwLTlhODgtNzYzMDJmNWY0ZGNlXkEyXkFqcGc@._V1_QL75_UY422_CR5,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMzFhOTMxMTMtMTgyYi00MmYwLTlhODgtNzYzMDJmNWY0ZGNlXkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMzFhOTMxMTMtMTgyYi00MmYwLTlhODgtNzYzMDJmNWY0ZGNlXkEyXkFqcGc@._V1_QL75_UY281_CR4",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt33077003/",
+      "id": "tt33077003",
+      "title": "Le Grand No\u00ebl des animaux",
+      "summary": "Immerse yourself in these modern, heartwarming tales where animals embark on enchanting journeys, from France to Japan via the Far North and its northern lights, to spread joy and generosity...",
+      "interests": [ "Animation", "Family" ],
+      "rating": null,
+      "ratingCount": null,
+      "duration": "1h 12min",
+      "releaseDate": null,
+      "year": null,
+      "vote": null,
+      "director": "Camille Alm\u00e9ras",
+      "writers": [ "Camille Alm\u00e9ras", "Ceylan Beyoglu", "Natalia Chernysheva" ],
+      "stars": [ "Camille Alm\u00e9ras", "Ceylan Beyoglu", "Natalia Chernysheva" ],
+      "actors": null,
+      "anecdotes": null,
+      "minPicUrl": null,
+      "minPicWidth": null,
+      "minPicAlt": null,
+      "picsUrls": null,
+      "picFullUrl": null,
+      "picsSizes": null
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0196050/",
+      "id": "tt0196050",
+      "title": "R\u00e9mi sans famille",
+      "summary": "A compelling story in which orphaned Remi gets hired out to a traveling street entertainer Vitalis when her foster parents fall on hard times.",
+      "interests": [ "Anime", "Coming-of-Age", "Slice of Life", "Adventure", "Animation", "Drama", "Family", "History" ],
+      "rating": "7,9",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "24min",
+      "year": null,
+      "vote": "1,2\u00a0k",
+      "director": "K\u00f4ichi Kitamura",
+      "writers": [ "K\u00f4ichi Kitamura", "Mami Koyama", "Akira Murayama" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "K\u00f4ichi Kitamura",
+          "picUrl": null,
+          "characters": [ "Alan" ]
+        },
+        {
+          "actor": "Mami Koyama",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjg0NDZhMDMtZmEzYi00OTBhLTlmNDUtMjg1M2NkMzg0MWFmXkEyXkFqcGc@._V1_QL75_UX140_CR0,16,140,140_.jpg" ],
+          "characters": [ "Simone" ]
+        },
+        {
+          "actor": "Akira Murayama",
+          "picUrl": null,
+          "characters": [ "Paul" ]
+        },
+        {
+          "actor": "Masako Sugaya",
+          "picUrl": null,
+          "characters": [ "Remi" ]
+        }
+      ],
+      "anecdotes": "In 1996, a new adaptation of this story was aired in Japan. Remi, Nobody's Girl (Ie Naki Ko Remi) was created by Nippon Animation as part of their famous World Masterpiece Theater series.Finnish version is edited into a made-for-television movie.Referenced in Nicky Larson et le parfum de Cupidon (2018)Saa Aruki Hajime You(Opening Theme)Music by Takeo WatanabePerformed by Ayako Sawada",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BZGVjNmIxYmQtYWIwYy00NjJkLThhZjctY2JiMDQwNDIwYzlhXkEyXkFqcGc@._V1_QL75_UY281_CR6,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "R\u00e9mi sans famille (1977)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BZGVjNmIxYmQtYWIwYy00NjJkLThhZjctY2JiMDQwNDIwYzlhXkEyXkFqcGc@._V1_QL75_UY281_CR6,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BZGVjNmIxYmQtYWIwYy00NjJkLThhZjctY2JiMDQwNDIwYzlhXkEyXkFqcGc@._V1_QL75_UY422_CR9,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BZGVjNmIxYmQtYWIwYy00NjJkLThhZjctY2JiMDQwNDIwYzlhXkEyXkFqcGc@._V1_QL75_UY562_CR12,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BZGVjNmIxYmQtYWIwYy00NjJkLThhZjctY2JiMDQwNDIwYzlhXkEyXkFqcGc@._V1_QL75_UY281_CR6",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0119923/",
+      "id": "tt0119923",
+      "title": "Post co\u00eftum animal triste",
+      "summary": "The end of an affair from the woman's point of view.",
+      "interests": [ "Drama", "Romance" ],
+      "rating": "5,8",
+      "ratingCount": "10",
+      "duration": "1h 37min",
+      "releaseDate": "13 nov. 1998",
+      "year": "1998",
+      "vote": "669",
+      "director": "Brigitte Ro\u00fcan",
+      "writers": [ "Santiago Amigorena", "Philippe Le Guay", "Jean-Louis Richard" ],
+      "stars": [ "Brigitte Ro\u00fcan", "Patrick Chesnais", "Boris Terral" ],
+      "actors": [
+        {
+          "actor": "Brigitte Ro\u00fcan",
+          "picUrl": null,
+          "characters": [ "Diane", "\u2026" ]
+        },
+        {
+          "actor": "Patrick Chesnais",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYjQyMzU2ZDUtOTM2Yy00ODI1LTk5NzMtNzcyOTAzOTIyOTQ0XkEyXkFqcGc@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Philippe", "\u2026" ]
+        },
+        {
+          "actor": "Boris Terral",
+          "picUrl": null,
+          "characters": [ "Emilio", "\u2026" ]
+        },
+        {
+          "actor": "Nils Tavernier",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMmIyNmFlMTUtYzQyMS00N2I3LWJkMjAtZTU4MGY1NTdlOTNkXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Fran\u00e7ois Narou", "\u2026" ]
+        },
+        {
+          "actor": "Jean-Louis Richard",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMDhmZmI3M2YtZWNiNy00MGRiLTljMjctOGZhYjA1ZTVkZTdmXkEyXkFqcGc@._V1_QL75_UY140_CR55,0,140,140_.jpg" ],
+          "characters": [ "Weyoman-Lebeau", "\u2026" ]
+        },
+        {
+          "actor": "Fran\u00e7oise Arnoul",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZjBmODA4M2ItZDdmYS00NWUyLTk5YjMtZTM4OTIzZDc2NTY3XkEyXkFqcGc@._V1_QL75_UY140_CR28,0,140,140_.jpg" ],
+          "characters": [ "Madame LePluche" ]
+        },
+        {
+          "actor": "Emmanuelle Bach",
+          "picUrl": null,
+          "characters": [ "Caroline", "\u2026" ]
+        },
+        {
+          "actor": "Carmen Chaplin",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjAyMjEwNzA2NF5BMl5BanBnXkFtZTcwOTc3NjkzMQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Copine Narou" ]
+        },
+        {
+          "actor": "Ga\u00eblle Le Fur",
+          "picUrl": null,
+          "characters": [ "Isabelle", "\u2026" ]
+        },
+        {
+          "actor": "Elodie Pong",
+          "picUrl": null,
+          "characters": [ "Designer" ]
+        },
+        {
+          "actor": "Roberto Plate",
+          "picUrl": null,
+          "characters": [ "Miguel" ]
+        },
+        {
+          "actor": "Olivier Lechat",
+          "picUrl": null,
+          "characters": [ "Victor" ]
+        },
+        {
+          "actor": "F\u00e9lix Dedet-Ro\u00fcan",
+          "picUrl": null,
+          "characters": [ "Basile" ]
+        },
+        {
+          "actor": "Jean Delavalade",
+          "picUrl": null,
+          "characters": [ "Ded\u00e9" ]
+        },
+        {
+          "actor": "Jean-Claude Chapuis",
+          "picUrl": null,
+          "characters": [ "Musical Classes Player" ]
+        },
+        {
+          "actor": "Jean-Fran\u00e7ois Ro\u00fcan",
+          "picUrl": null,
+          "characters": [ "Sales Manager" ]
+        },
+        {
+          "actor": "Bernard Budaga",
+          "picUrl": null,
+          "characters": [ "Emilio's Grandfather" ]
+        },
+        {
+          "actor": "Nicolas Dedet",
+          "picUrl": null,
+          "characters": [ "Homeless Person" ]
+        }
+      ],
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMjEwNDYxNjg1M15BMl5BanBnXkFtZTcwMjY3NTcxMQ@@._V1_QL75_UX190_CR0,31,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Post co\u00eftum animal triste (1997)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMjEwNDYxNjg1M15BMl5BanBnXkFtZTcwMjY3NTcxMQ@@._V1_QL75_UX190_CR0,31,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMjEwNDYxNjg1M15BMl5BanBnXkFtZTcwMjY3NTcxMQ@@._V1_QL75_UX285_CR0,47,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMjEwNDYxNjg1M15BMl5BanBnXkFtZTcwMjY3NTcxMQ@@._V1_QL75_UX380_CR0,62,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMjEwNDYxNjg1M15BMl5BanBnXkFtZTcwMjY3NTcxMQ@@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt30470947/",
+      "id": "tt30470947",
+      "title": "Miraculous anime",
+      "summary": "Cette s\u00e9rie repr\u00e9sente ce \u00e0 quoi \u00ab miraculeux \u00bb aurait d\u00fb ressembler en 2012, mais le projet a \u00e9t\u00e9 annul\u00e9 et transform\u00e9 d'anime en 3D 3 ans plus tard.",
+      "interests": [ "Action", "Adventure", "Animation", "Sci-Fi" ],
+      "rating": "8,7",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "40min",
+      "year": null,
+      "vote": "48",
+      "director": null,
+      "writers": null,
+      "stars": null,
+      "actors": null,
+      "anecdotes": null,
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNjgzZDFkMWItODUwZC00YjRiLTk2YWQtMWEwMzU2ZGIwZTFjXkEyXkFqcGc@._V1_QL75_UX190_CR0,16,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Miraculous anime (2012)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNjgzZDFkMWItODUwZC00YjRiLTk2YWQtMWEwMzU2ZGIwZTFjXkEyXkFqcGc@._V1_QL75_UX190_CR0,16,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNjgzZDFkMWItODUwZC00YjRiLTk2YWQtMWEwMzU2ZGIwZTFjXkEyXkFqcGc@._V1_QL75_UX285_CR0,24,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNjgzZDFkMWItODUwZC00YjRiLTk2YWQtMWEwMzU2ZGIwZTFjXkEyXkFqcGc@._V1_QL75_UX380_CR0,32,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNjgzZDFkMWItODUwZC00YjRiLTk2YWQtMWEwMzU2ZGIwZTFjXkEyXkFqcGc@._V1_QL75_UX190_CR0",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt3917210/",
+      "id": "tt3917210",
+      "title": "Life, Animated",
+      "summary": "A coming-of-age story about a boy and his family who overcame great challenges by turning Disney animated movies into a language to express love, loss, kinship and brotherhood.",
+      "interests": [ "Comedy", "Documentary", "Drama", "Family", "Fantasy", "Romance" ],
+      "rating": "7,4",
+      "ratingCount": "10",
+      "duration": "1h 32min",
+      "releaseDate": "29 juin 2016",
+      "year": "2016",
+      "vote": "6,2\u00a0k",
+      "director": "Roger Ross Williams",
+      "writers": [ "Ron Suskind", "Emily Hubley", "Kate Rose" ],
+      "stars": [ "Owen Suskind", "Cornelia Suskind", "Ron Suskind" ],
+      "actors": [
+        {
+          "actor": "Owen Suskind",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjg3MTI0NzY3Ml5BMl5BanBnXkFtZTgwNTg3NTE1MDI@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Cornelia Suskind",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Ron Suskind",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQxNzAyNDk1NF5BMl5BanBnXkFtZTgwMTQzNjM2MjE@._V1_QL75_UY140_CR24,0,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Walter Suskind",
+          "picUrl": null,
+          "characters": [ "Self - Owen Suskind's big brother" ]
+        },
+        {
+          "actor": "Alan Rosenblatt",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Emily Jathas",
+          "picUrl": null,
+          "characters": [ "Self - Owen Suskind's girlfriend" ]
+        },
+        {
+          "actor": "Michelle Garcia Winner",
+          "picUrl": null,
+          "characters": [ "Self - Speech language pathologist" ]
+        },
+        {
+          "actor": "Jonathan Freeman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTgxODM4ODU4MF5BMl5BanBnXkFtZTcwODE2MjIyOA@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Gilbert Gottfried",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI2NDAwMzA5MV5BMl5BanBnXkFtZTgwMDY5OTQzNTM@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Self" ]
+        },
+        {
+          "actor": "Jeffrey Ortiz",
+          "picUrl": null,
+          "characters": [ "Self" ]
+        }
+      ],
+      "anecdotes": "Alan Rosenblatt: The image of autism in the early 90's was not terribly flattering.Featured in 20/20: Finding Owen: A Boy's Story (2016)Happy Birthday(uncredited)Written by Mildred J. Hill and Patty S. Hill",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMTcwNTMzODI4Nl5BMl5BanBnXkFtZTgwMjM2NTQxOTE@._V1_QL75_UY281_CR3,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Owen Suskind in Life, Animated (2016)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMTcwNTMzODI4Nl5BMl5BanBnXkFtZTgwMjM2NTQxOTE@._V1_QL75_UY281_CR3,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMTcwNTMzODI4Nl5BMl5BanBnXkFtZTgwMjM2NTQxOTE@._V1_QL75_UY422_CR3,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMTcwNTMzODI4Nl5BMl5BanBnXkFtZTgwMjM2NTQxOTE@._V1_QL75_UY562_CR5,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMTcwNTMzODI4Nl5BMl5BanBnXkFtZTgwMjM2NTQxOTE@._V1_QL75_UY281_CR3",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt10098452/",
+      "id": "tt10098452",
+      "title": "Animals",
+      "summary": "Brahim est un jeune homme, la joie de sa m\u00e8re. Un jour, il trouvera l'amour de sa vie. Il deviendra un p\u00e8re de famille, il rendra tout le monde fier. Un jour, il sera m\u00fbr et \u00e9panoui. Un jour...",
+      "interests": [ "Crime", "Drama" ],
+      "rating": "6,5",
+      "ratingCount": "10",
+      "duration": "1h 31min",
+      "releaseDate": "30 juil. 2022",
+      "year": "2022",
+      "vote": "705",
+      "director": "Nabil Ben Yadir",
+      "writers": [ "Nabil Ben Yadir", "Antoine Cuypers" ],
+      "stars": [ "Soufiane Chilah", "Gianni Guettaf", "Vincent Overath" ],
+      "actors": [
+        {
+          "actor": "Soufiane Chilah",
+          "picUrl": null,
+          "characters": [ "Brahim" ]
+        },
+        {
+          "actor": "Gianni Guettaf",
+          "picUrl": null,
+          "characters": [ "Lo\u00efc" ]
+        },
+        {
+          "actor": "Vincent Overath",
+          "picUrl": null,
+          "characters": [ "Geoffroy" ]
+        },
+        {
+          "actor": "Lionel Maisin",
+          "picUrl": null,
+          "characters": [ "Christophe" ]
+        },
+        {
+          "actor": "Serkan Sancak",
+          "picUrl": null,
+          "characters": [ "Milos" ]
+        },
+        {
+          "actor": "Anne-Marie Loop",
+          "picUrl": null,
+          "characters": [ "Brahim's Mother" ]
+        },
+        {
+          "actor": "Amid Chakir",
+          "picUrl": null,
+          "characters": [ "Brahim's Father" ]
+        },
+        {
+          "actor": "Salim Talbi",
+          "picUrl": null,
+          "characters": [ "Mehdi" ]
+        },
+        {
+          "actor": "Mounya Boudiaf",
+          "picUrl": null,
+          "characters": [ "Monia" ]
+        },
+        {
+          "actor": "Sonia Hardoub",
+          "picUrl": null,
+          "characters": [ "Saliha" ]
+        },
+        {
+          "actor": "Rapha\u00ebl Lamaassab",
+          "picUrl": null,
+          "characters": [ "Yassine" ]
+        },
+        {
+          "actor": "Camille Freychet",
+          "picUrl": null,
+          "characters": [ "Young Girl in the Street" ]
+        },
+        {
+          "actor": "Thierry Hellin",
+          "picUrl": null,
+          "characters": [ "Lo\u00efc's Father" ]
+        },
+        {
+          "actor": "Alain Bellot",
+          "picUrl": null,
+          "characters": [ "Husband of Lo\u00efc's Father" ]
+        },
+        {
+          "actor": "Madeleine Baudot",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYmFkMjExMmYtZGUxZC00YzlhLWFkNDEtYjYyMzQ3MzQxZmZmXkEyXkFqcGc@._V1_QL75_UY140_CR42,0,140,140_.jpg" ],
+          "characters": [ "Melissa" ]
+        },
+        {
+          "actor": "Christine Wayenbergh",
+          "picUrl": null,
+          "characters": [ "Friend of the Mother" ]
+        },
+        {
+          "actor": "Caroline Allard",
+          "picUrl": null,
+          "characters": [ "Friend of the Mother" ]
+        },
+        {
+          "actor": "Th\u00e9a Simon",
+          "picUrl": null,
+          "characters": [ "Lo\u00efc's Sister" ]
+        }
+      ],
+      "anecdotes": "Inspired by the homophobic murder of 32-year-old Ihsane Jarfi on April 22, 2012 in Liege, Belgium. Jarfi was beaten to death by four men. His naked body was found in a field two weeks later with 17 rib fractures, among other severe injuries. Three of the murderers were sentenced to life in prison and the fourth murderer was sentenced to 30 years in prison.",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNDU4NTRmZWItYzFmMS00MjU5LWE2NDctNDE1ZTZmOGEzNWVmXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animals (2021)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BNDU4NTRmZWItYzFmMS00MjU5LWE2NDctNDE1ZTZmOGEzNWVmXkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNDU4NTRmZWItYzFmMS00MjU5LWE2NDctNDE1ZTZmOGEzNWVmXkEyXkFqcGc@._V1_QL75_UY422_CR7,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNDU4NTRmZWItYzFmMS00MjU5LWE2NDctNDE1ZTZmOGEzNWVmXkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNDU4NTRmZWItYzFmMS00MjU5LWE2NDctNDE1ZTZmOGEzNWVmXkEyXkFqcGc@._V1_QL75_UY281_CR5",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0985047/",
+      "id": "tt0985047",
+      "title": "Animal 2",
+      "summary": "James \"Animal\" Allen (Ving Rhames) took the fall for the crimes of his older son (Vicellous Shannon) and is now serving a life term at Folsom Prison.",
+      "interests": [ "Action", "Crime", "Drama" ],
+      "rating": "5,0",
+      "ratingCount": "10",
+      "duration": "1h 33min",
+      "releaseDate": "10 janv. 2009",
+      "year": "2009",
+      "vote": "1,1\u00a0k",
+      "director": "Ryan Combs",
+      "writers": [ "Jacob L. Adams" ],
+      "stars": [ "Ving Rhames", "Vicellous Shannon", "Richard Waugh" ],
+      "actors": [
+        {
+          "actor": "Ving Rhames",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTMwMTgyMzc4MV5BMl5BanBnXkFtZTYwNjE5Mjk1._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Animal" ]
+        },
+        {
+          "actor": "Vicellous Shannon",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI0NTc3MjY4OV5BMl5BanBnXkFtZTYwNjE4OTM0._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Darius" ]
+        },
+        {
+          "actor": "Richard Waugh",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjY2ZWFjNGMtNmM1NC00MjBkLTlhMDEtZGNkZjJhNzRiM2U4XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Warden Zemer" ]
+        },
+        {
+          "actor": "Yannick Bisson",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNjM3OGMxYzEtOWFkZC00MmYzLTg0NTEtYmI0N2ZhOGE3MDQ0XkEyXkFqcGc@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Dillen" ]
+        },
+        {
+          "actor": "Deborah Valente",
+          "picUrl": null,
+          "characters": [ "Kate" ]
+        },
+        {
+          "actor": "Conrad Dunn",
+          "picUrl": null,
+          "characters": [ "Kasada" ]
+        },
+        {
+          "actor": "Benz Antoine",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZGVjYjNjMzYtZDUzMi00Y2YzLTk0OTMtZDA2NGI1NTU5YzkyXkEyXkFqcGc@._V1_CR320,100,1058,1586_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Captain Ellis" ]
+        },
+        {
+          "actor": "K.C. Collins",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BYTMwZTE0NjEtYmVmYi00ZDFjLTk4ZmEtZDFkZTQzMzhkZDA0XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "James Jr" ]
+        },
+        {
+          "actor": "Kedar Brown",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI5MzMyMTMxMl5BMl5BanBnXkFtZTYwOTI1ODky._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Lou", "(as Kedar)" ]
+        },
+        {
+          "actor": "Kevin Duhaney",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU3NDQ2NjY0OF5BMl5BanBnXkFtZTcwMjQyMzM5OQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Tommy" ]
+        },
+        {
+          "actor": "Michael Miller",
+          "picUrl": null,
+          "characters": [ "Ant" ]
+        },
+        {
+          "actor": "Cl\u00e9 Bennett",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMzFhOGJmNDUtODZhNy00MzkxLTk2ODMtNTY1NTlkZjUyNzMxXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Twist" ]
+        },
+        {
+          "actor": "Stephen R. Hart",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTM1NjIzMjkyNF5BMl5BanBnXkFtZTcwNjI2NTQ3MQ@@._V1_QL75_UY140_CR35,0,140,140_.jpg" ],
+          "characters": [ "Inmate 2", "(as Stephen Hart)" ]
+        },
+        {
+          "actor": "Odeen Eccleston",
+          "picUrl": null,
+          "characters": [ "Young Woman" ]
+        },
+        {
+          "actor": "Jana Williams",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTg4NjQ4Nzc4Nl5BMl5BanBnXkFtZTYwMjI3Mjc0._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Receptionist" ]
+        },
+        {
+          "actor": "Merwin Mondesir",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjI5MDc4NTg1NF5BMl5BanBnXkFtZTcwNDU0NDMxOA@@._V1_QL75_UX140_CR0,14,140,140_.jpg" ],
+          "characters": [ "Scarface" ]
+        },
+        {
+          "actor": "James Maquade",
+          "picUrl": null,
+          "characters": [ "Guard 1" ]
+        },
+        {
+          "actor": "Moses Nyarko",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMmZhZDg2MmMtMTZkYS00MzI3LWFhZjktNjk2NDQ1MjE5ZDE5XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Ralo" ]
+        }
+      ],
+      "anecdotes": "Toutes les informations contiennent des spoilersFollows Animal (2005)Sinful LifeWritten by Matthew Paul Gonzales and Sashany GonzalesPerformed by Zawles and Debbie ValentePublished by: Rainbow Children Publishing and Zawles Entertainment",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMTg0NDgwOTI0NF5BMl5BanBnXkFtZTcwNDY3OTI1MQ@@._V1_QL75_UY281_CR4,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Animal 2 (2008)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMTg0NDgwOTI0NF5BMl5BanBnXkFtZTcwNDY3OTI1MQ@@._V1_QL75_UY281_CR4,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMTg0NDgwOTI0NF5BMl5BanBnXkFtZTcwNDY3OTI1MQ@@._V1_QL75_UY422_CR5,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMTg0NDgwOTI0NF5BMl5BanBnXkFtZTcwNDY3OTI1MQ@@._V1_QL75_UY562_CR7,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMTg0NDgwOTI0NF5BMl5BanBnXkFtZTcwNDY3OTI1MQ@@._V1_QL75_UY281_CR4",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt2239947/",
+      "id": "tt2239947",
+      "title": "Political Animals",
+      "summary": "Une ancienne Premi\u00e8re Dame divorc\u00e9e occupe actuellement le poste de secr\u00e9taire d'\u00c9tat. Elle s'occupe des probl\u00e8mes du D\u00e9partement d'\u00c9tat tout en essayant de garder sa famille unie.",
+      "interests": [ "Political Drama", "Drama" ],
+      "rating": "7,6",
+      "ratingCount": "10",
+      "duration": "Mini-s\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "1h",
+      "year": null,
+      "vote": "6,6\u00a0k",
+      "director": "Greg Berlanti",
+      "writers": [ "Sigourney Weaver", "Carla Gugino", "James Wolk" ],
+      "stars": [ "Greg Berlanti" ],
+      "actors": [
+        {
+          "actor": "Sigourney Weaver",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTk1MTcyNTE3OV5BMl5BanBnXkFtZTcwMTA0MTMyMw@@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Elaine Barrish" ]
+        },
+        {
+          "actor": "Carla Gugino",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNzQyNTgzOTI2OF5BMl5BanBnXkFtZTgwNTMyMDk0NjE@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Susan Berg" ]
+        },
+        {
+          "actor": "James Wolk",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BODc2OTUwMjM5Ml5BMl5BanBnXkFtZTgwNjg2MjAwMDE@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Douglas Hammond" ]
+        },
+        {
+          "actor": "Sebastian Stan",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMWEwYjgxMDQtYmRkOS00MGFiLThjMzMtZGQ2ZjBhMTcyOWNlXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "T.J. Hammond" ]
+        },
+        {
+          "actor": "Brittany Ishibashi",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOGQzOGNhZGEtMzhjZC00OTRmLWExY2QtYTMwMGM1NDhjMTcwXkEyXkFqcGc@._V1_CR1,0,1199,1799_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Anne Ogami" ]
+        },
+        {
+          "actor": "Ellen Burstyn",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTU4MjYxMDc3MF5BMl5BanBnXkFtZTYwNzU3MDIz._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Margaret Barrish" ]
+        },
+        {
+          "actor": "Ciar\u00e1n Hinds",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTIyNjM0MzU0NF5BMl5BanBnXkFtZTcwOTIxMzg1MQ@@._V1_QL75_UX140_CR0,6,140,140_.jpg" ],
+          "characters": [ "Bud Hammond" ]
+        },
+        {
+          "actor": "Adrian Pasdar",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTI4MzQ3ODM2Nl5BMl5BanBnXkFtZTYwODMxNjI3._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "President Paul Garcetti" ]
+        },
+        {
+          "actor": "Roger Bart",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNWUzYTRjMjItZjM1Mi00ZmU5LTllMWYtOGE1M2NmNDc3M2RmXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Barry Harris" ]
+        },
+        {
+          "actor": "Dylan Baker",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BNTY1MzAwNTk5NV5BMl5BanBnXkFtZTYwMzkwMjY1._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Vice President Fred Collier" ]
+        },
+        {
+          "actor": "Dan Futterman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTgwODA1NjY0MV5BMl5BanBnXkFtZTYwODExNDQ0._V1_QL75_UX140_CR0,11,140,140_.jpg" ],
+          "characters": [ "Alex Davies" ]
+        },
+        {
+          "actor": "Meghann Fahy",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOWEwZThmZGEtNDBlYy00NWY4LTg5YzItM2Y0ZTcwOWYxODViXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg" ],
+          "characters": [ "Georgia Gibbons" ]
+        },
+        {
+          "actor": "Linda Powell",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjEwMDUxMDIyMV5BMl5BanBnXkFtZTcwMDM0MDkxMw@@._V1_QL75_UY140_CR36,0,140,140_.jpg" ],
+          "characters": [ "Pauline Samson" ]
+        },
+        {
+          "actor": "R.J. Kelly",
+          "picUrl": null,
+          "characters": [ "Secret Service Agent Sam" ]
+        },
+        {
+          "actor": "Griffin Newman",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BOTU3YTI4NWMtNWY3Ni00YmJkLWIyZjQtOGRmYmEzMzVlZWM5XkEyXkFqcGc@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Russ" ]
+        },
+        {
+          "actor": "LaMonica Garrett",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMjM4MjU4MzI1OF5BMl5BanBnXkFtZTgwMDUxOTEzNjE@._V1_QL75_UX140_CR0,1,140,140_.jpg" ],
+          "characters": [ "Agent Clark" ]
+        },
+        {
+          "actor": "Kristine Nielsen",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTQwOTgwNDgyMF5BMl5BanBnXkFtZTcwNjExNjUzOA@@._V1_QL75_UX140_CR0,12,140,140_.jpg" ],
+          "characters": [ "Alice" ]
+        },
+        {
+          "actor": "Ming Lo",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTczMjAzMTY3OF5BMl5BanBnXkFtZTYwNTU3NzAz._V1_QL75_UY140_CR38,0,140,140_.jpg" ],
+          "characters": [ "Ambassador Libao" ]
+        }
+      ],
+      "anecdotes": "Actors Sebastian Stan and Dylan Baker also starred together in cancelled TV series, Kings (2009), where Stan also played a gay character.Featured in Chelsea Lately: \u00c9pisode #6.109 (2012)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMjIxMjY3MjgyNl5BMl5BanBnXkFtZTcwOTc1Mjc5Nw@@._V1_QL75_UY281_CR12,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Sigourney Weaver, Carla Gugino, Ciar\u00e1n Hinds, Sebastian Stan, and James Wolk in Political Animals (2012)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMjIxMjY3MjgyNl5BMl5BanBnXkFtZTcwOTc1Mjc5Nw@@._V1_QL75_UY281_CR12,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMjIxMjY3MjgyNl5BMl5BanBnXkFtZTcwOTc1Mjc5Nw@@._V1_QL75_UY422_CR17,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMjIxMjY3MjgyNl5BMl5BanBnXkFtZTcwOTc1Mjc5Nw@@._V1_QL75_UY562_CR23,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMjIxMjY3MjgyNl5BMl5BanBnXkFtZTcwOTc1Mjc5Nw@@._V1_QL75_UY281_CR12",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    },
+    {
+      "url": "https://www.imdb.com/title/tt0286336/",
+      "id": "tt0286336",
+      "title": "Les animaux du bois des Quat'Sous",
+      "summary": "A group of wild animal friends are forced to move to a park after humans drive them away from their old home.",
+      "interests": [ "Adventure", "Animation", "Family" ],
+      "rating": "8,3",
+      "ratingCount": "10",
+      "duration": "S\u00e9rie t\u00e9l\u00e9vis\u00e9e",
+      "releaseDate": "25min",
+      "year": null,
+      "vote": "3,7\u00a0k",
+      "director": "Ron Moody",
+      "writers": [ "Ron Moody", "Stacey Gregg", "Rupert Farley" ],
+      "stars": null,
+      "actors": [
+        {
+          "actor": "Ron Moody",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BMTUyNTg0MzIyMl5BMl5BanBnXkFtZTgwMjYzOTU5NTE@._V1_QL75_UX140_CR0,13,140,140_.jpg" ],
+          "characters": [ "Toad", "\u2026" ]
+        },
+        {
+          "actor": "Stacey Gregg",
+          "picUrl": null,
+          "characters": [ "Adder", "\u2026" ]
+        },
+        {
+          "actor": "Rupert Farley",
+          "picUrl": null,
+          "characters": [ "Fox", "\u2026" ]
+        },
+        {
+          "actor": "Sally Grace",
+          "picUrl": null,
+          "characters": [ "Weasel", "\u2026" ]
+        },
+        {
+          "actor": "Jeremy Barrett",
+          "picUrl": null,
+          "characters": [ "Mr. Rabbit", "\u2026" ]
+        },
+        {
+          "actor": "Pamela Keevil Kral",
+          "picUrl": null,
+          "characters": [ "Mrs. Squirrel", "\u2026" ]
+        },
+        {
+          "actor": "Jon Glover",
+          "picUrl": [ "https://m.media-amazon.com/images/M/MV5BZWQ3ZGZkNTEtYjhjOS00N2ZiLWI2NDYtZTM5ZWQxOWY5M2RkXkEyXkFqcGc@._V1_QL75_UY140_CR18,0,140,140_.jpg" ],
+          "characters": [ "Scarface" ]
+        },
+        {
+          "actor": "Maximira Figueiredo",
+          "picUrl": null,
+          "characters": [ "Coruja" ]
+        },
+        {
+          "actor": "Paulo Porto",
+          "picUrl": null,
+          "characters": [ "Sr. Coelho" ]
+        },
+        {
+          "actor": "Patr\u00edcia Scalvi",
+          "picUrl": null,
+          "characters": [ "Sra. Fais\u00e3o" ]
+        },
+        {
+          "actor": "Neuza Azevedo",
+          "picUrl": null,
+          "characters": [ "Toupeira" ]
+        },
+        {
+          "actor": "Nair Silva",
+          "picUrl": null,
+          "characters": [ "Sra. Lagartixa" ]
+        },
+        {
+          "actor": "Francisco Bretas",
+          "picUrl": null,
+          "characters": [ "Sapo" ]
+        },
+        {
+          "actor": "Daoiz Cabezudo",
+          "picUrl": null,
+          "characters": [ "Gar\u00e7a" ]
+        },
+        {
+          "actor": "L\u00facia Helena",
+          "picUrl": null,
+          "characters": [ "Sra. Ouri\u00e7o" ]
+        },
+        {
+          "actor": "Jefferson Ger\u00f4nimo",
+          "picUrl": null,
+          "characters": [ "Sr. Rato" ]
+        },
+        {
+          "actor": "Carlos Falat",
+          "picUrl": null,
+          "characters": [ "Sr. Ouri\u00e7o" ]
+        },
+        {
+          "actor": "Paulo Celestino Filho",
+          "picUrl": null,
+          "characters": [ "Cervo Branco" ]
+        }
+      ],
+      "anecdotes": "The episodes were alternately animated in Britain and in France.Vehicles are seen driving on the right throughout the series. Traffic keeps to the left on British roads.Mr Rabbit: Do you remember when my throat was so sore, I couldn't talk at all?Mrs Rabbit: Yes, dear. It was lovely.Edited into Journey Home: The Animals of Farthing Wood (1996)",
+      "minPicUrl": "https://m.media-amazon.com/images/M/MV5BMjI3MWIxNDUtNzkzNS00YTdhLWIzODEtMzU0Yjk1ZjQxOWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+      "minPicWidth": "190",
+      "minPicAlt": "Les animaux du bois des Quat'Sous (1993)",
+      "picsUrls": [ "https://m.media-amazon.com/images/M/MV5BMjI3MWIxNDUtNzkzNS00YTdhLWIzODEtMzU0Yjk1ZjQxOWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR5,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BMjI3MWIxNDUtNzkzNS00YTdhLWIzODEtMzU0Yjk1ZjQxOWQ0XkEyXkFqcGc@._V1_QL75_UY422_CR6,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BMjI3MWIxNDUtNzkzNS00YTdhLWIzODEtMzU0Yjk1ZjQxOWQ0XkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg" ],
+      "picFullUrl": "https://m.media-amazon.com/images/M/MV5BMjI3MWIxNDUtNzkzNS00YTdhLWIzODEtMzU0Yjk1ZjQxOWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR5",
+      "picsSizes": [ "50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw" ]
+    }
+  ]
+}
