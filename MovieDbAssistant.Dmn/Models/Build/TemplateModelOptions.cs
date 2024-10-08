@@ -40,6 +40,11 @@ public sealed class TemplateModelOptions
     public string? ListMoviePicNotAvailable { get; set; }
 
     /// <summary>
+    /// alternate url page movie detail movie pic not available
+    /// </summary>
+    public string? DetailMoviePicNotAvailable { get; set; }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.
     /// </summary>
     /// <param name="pageList">page list</param>

@@ -49,6 +49,7 @@ public sealed class TemplateBuilder
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
     const string Template_Var_ListMoviePicNotAvailable = "listMoviePicNotAvailable";
+    const string Template_Var_DetailMoviePicNotAvailable = "detailMoviePicNotAvailable";
 
     const string Template_Var_Page_Title_Details = "pageTitleDetails";
     const string Template_Var_Title_List = "titleList";
@@ -433,6 +434,10 @@ public sealed class TemplateBuilder
             {
                 Template_Var_ListMoviePicNotAvailable,
                 _tpl!.Options.ListMoviePicNotAvailable
+            },
+            {
+                Template_Var_DetailMoviePicNotAvailable,
+                _tpl!.Options.DetailMoviePicNotAvailable
             }
         };
 

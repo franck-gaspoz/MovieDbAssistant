@@ -227,6 +227,17 @@ body.movie-page-list td:has(> .alternate-pic-list-enabled) {
     vertical-align: middle;
 }
 
+body.movie-page-detail .alternate-pic-list-enabled {
+    width: 280px;
+    opacity: 0.6;
+    padding-right: 2em;
+}
+
+body.movie-page-detail td:has(> .alternate-pic-list-enabled) {
+    vertical-align: middle;
+    text-align: center;
+}
+
 body.movie-page-detail .summary {
     font-family: comicn;
     font-size: 1.4em;
