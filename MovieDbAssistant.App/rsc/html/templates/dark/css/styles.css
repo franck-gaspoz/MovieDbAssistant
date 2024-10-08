@@ -212,6 +212,21 @@ body.movie-page-list .summary {
     display: inline-block;
 }
 
+body.movie-page-list .alternate-pic-list 
+{
+    
+}
+
+body.movie-page-list .alternate-pic-list-enabled {
+    width: Calc(190px - 1em);
+    opacity: 0.8;
+    padding-right: 1em;
+}
+
+body.movie-page-list td:has(> .alternate-pic-list-enabled) {
+    vertical-align: middle;
+}
+
 body.movie-page-detail .summary {
     font-family: comicn;
     font-size: 1.4em;

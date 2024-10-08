@@ -35,45 +35,9 @@ public sealed class TemplateModelOptions
     public string? AuthorLink { get; set; }
 
     /// <summary>
-    /// movie not available alternate pic url
+    /// alternate url page movie list movie pic not available
     /// </summary>
-    public string? MoviePicNotAvailable { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ++++++++++++++++++++++
+    public string? ListMoviePicNotAvailable { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.

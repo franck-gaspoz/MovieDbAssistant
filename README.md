@@ -73,7 +73,7 @@ initial version
 
 functionalities:
 
-- build html movie documents from:
+- build html movie catalogs documents from:
     - scrapper [MovieDbScraper](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md) `json` output
     - direct scrap from queries given in files (several formats are supported)
     - direct scrap from a query given in last text clipboard entry
