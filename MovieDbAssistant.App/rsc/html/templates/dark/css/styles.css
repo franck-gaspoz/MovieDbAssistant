@@ -52,12 +52,12 @@ td {
 .movie-page-nav-container a {
     text-decoration: none;
 }
-    
+
 .nav-icon {
     filter: invert(100%);
     width: 48px;
     height: 48px;
-    opacity: 35%;
+    opacity: 90%;
     margin-right: 1em;
 }
 
@@ -75,7 +75,7 @@ td {
 
 .nav-icon:hover {
     cursor: pointer;
-    opacity: 90%;
+    opacity: 50%;
 }
 
 .icon-back {

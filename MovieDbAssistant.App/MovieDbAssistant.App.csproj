@@ -30,13 +30,13 @@
     <None Remove="input\-gardiens.json" />
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
-    <None Remove="input\-movie.json" />
     <None Remove="input\-my-movies.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
     <None Remove="input\-query1.txt" />
     <None Remove="input\-query2.txt" />
     <None Remove="input\-zombies.json" />
+    <None Remove="input\movie.json" />
     <None Remove="input\README.md" />
     <None Remove="input\shmovies.json" />
     <None Remove="output\README.md" />
@@ -119,7 +119,7 @@
     <Content Include="db\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\-movie.json">
+    <Content Include="input\movie.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-output.json">

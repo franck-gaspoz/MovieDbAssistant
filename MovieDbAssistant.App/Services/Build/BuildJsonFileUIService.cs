@@ -21,7 +21,7 @@ namespace MovieDbAssistant.App.Services.Build;
 /// <summary>
 /// The build service.
 /// </summary>
-[Scoped]
+[Transient]
 sealed class BuildJsonFileUIService :
     BuildUIServiceBase<BuildJsonFileCommand>
 {

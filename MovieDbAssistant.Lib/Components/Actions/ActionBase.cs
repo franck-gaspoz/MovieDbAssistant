@@ -217,7 +217,7 @@ public abstract class ActionBase<TCommand> :
                         this,
                         new(com, sender, null));
 
-                var msg = Config[MessageFeatureIsBuzy]!;
+                var msg = MessageFeatureIsBuzy;
 
                 Signal.Send(this, new ActionErroredEvent(context!,
                     new InvalidOperationException(msg + ": " + GetType().Name)));
