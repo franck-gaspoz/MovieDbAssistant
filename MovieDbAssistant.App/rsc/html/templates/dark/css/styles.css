@@ -371,7 +371,7 @@ body.movie-page-detail .sources {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .grid {
