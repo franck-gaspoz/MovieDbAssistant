@@ -1,4 +1,4 @@
-﻿#define TEST_SOURCE
+﻿//#define TEST_SOURCE
 
 using System.Collections;
 
@@ -142,7 +142,7 @@ public sealed class TemplateBuilder
         var docContext = Context.DocContext;
 
         data.SetupModel(_dmnSettings);
-#if true || TEST_SOURCE
+#if TEST_SOURCE
         foreach (var movie in data.Movies)
         {
             movie.Sources.Download = _tpl!.Options.HelpLink+"#"+movie.Key;
