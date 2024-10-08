@@ -168,7 +168,6 @@ public sealed class TemplateBuilder
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
     public TemplateBuilder BuildPageDetail(
-        DocumentBuilderContext context,
         HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {

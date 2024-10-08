@@ -74,7 +74,6 @@ public sealed class HtmlMovieDocumentBuilder
                 .BuilderOptions[Template_Id]
                 .ToString()!)
             .BuildPageDetail(
-                context,
                 htmlContext,
                 data);
     }
