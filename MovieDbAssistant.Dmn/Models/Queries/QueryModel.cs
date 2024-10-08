@@ -1,5 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
+using MovieDbAssistant.Lib.Components.Extensions;
+
 namespace MovieDbAssistant.Dmn.Models.Queries;
 
 /// <summary>
@@ -17,6 +19,24 @@ public sealed record class QueryModel
     /// </summary>
     /// <value>A <see cref="QueryMetadata? "/></value>
     public QueryMetadata? Metadata { get; set; }
+
+    /// <summary>
+    /// quasi unique key
+    /// </summary>
+    public string Key =>
+        _title.ToHexLettersAndDigitsString()
+        + Count?.ToString()
+        + Year?.ToString()
+        + Languages.IfNullElse(() => "", x => string.Join("",
+            x.Select(x => x.ToHexLettersAndDigitsString())))
+        + Countries.IfNullElse(() => "", x => string.Join("",
+            x.Select(x => x.ToHexLettersAndDigitsString())))
+        + UserRating.ToHexLettersAndDigitsString()
+        + TitleTypes.IfNullElse(() => "", x => string.Join("",
+            x.Select(x => x.ToString().ToHexLettersAndDigitsString())))
+        + Genres.IfNullElse(() => "", x => string.Join("",
+            x.Select(x => x.ToString().ToHexLettersAndDigitsString())))
+        ;
 
     string? _title;
     /// <summary>

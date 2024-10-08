@@ -51,7 +51,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         if (source is not QueryModel query) return null;
 
         var qid = query.Metadata!.InstanceId.Value + "";
-        var outputFile = qid + ".json";
+        var outputFile = query.Key + ".json";
 
         Logger.LogInformation(
             this,

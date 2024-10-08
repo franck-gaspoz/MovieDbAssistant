@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Lib.Components.Extensions;
+﻿using System.Text;
+
+namespace MovieDbAssistant.Lib.Components.Extensions;
 
 /// <summary>
 /// string extensions
@@ -10,11 +12,29 @@ public static class StringExtensions
     /// </summary>
     /// <param name="value">The value.</param>
     /// <returns>A <see cref="string"/></returns>
-    public static string ToHexString(this string value)
+    public static string ToHexString(this string? value)
     {
+        if (value == null) return string.Empty;
         var bytes = System.Text.Encoding.UTF8.GetBytes(value);
         var base64String = Convert.ToBase64String(bytes);
         return base64String;
+    }
+
+    /// <summary>
+    /// Converts to hex having only letters and digits
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string ToHexLettersAndDigitsString(this string? value)
+    {
+        if (value == null) return string.Empty;
+        var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+        var base64String = Convert.ToBase64String(bytes);
+        StringBuilder sb = new();
+        foreach (var c in base64String)
+            if (char.IsAsciiLetterOrDigit(c))
+                sb.Append(c);
+        return sb.ToString();
     }
 
     /// <summary>

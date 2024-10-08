@@ -41,12 +41,7 @@ public static class ModelExtensions
         this MovieModel data,
         IOptions<DmnSettings> dmnSettings)
     {
-        var key = data.Title!.ToHexString();
-        StringBuilder sb = new();
-        foreach (var c in key)
-            if (char.IsAsciiLetterOrDigit(c))
-                sb.Append(c);
-        key = new string(sb.ToString().ToCharArray());
+        var key = data.Title!.ToHexLettersAndDigitsString();
         data.Key = key;
         data.UpdateFilename(dmnSettings);
     }

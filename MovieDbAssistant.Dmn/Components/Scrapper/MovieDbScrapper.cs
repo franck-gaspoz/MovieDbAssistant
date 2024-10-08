@@ -115,19 +115,21 @@ public sealed class MovieDbScrapper : IIdentifiable
 
                 _processWrapper.Start(toolPath,args);
 
-                _completed = true;
                 var hasErrors = _processWrapper.HasErrors
                     | !File.Exists(output);
                 if (hasErrors)
                 {
                     _logger.LogError(this, $"scrap #{query.InstanceId()} has failed");
                     // TODO: throw new ex (task fail)
+                    _completed = true;
                     return;
                 }
 
                 // get & build the output
 
                 result = GetAndBuildOutput(output);
+                _completed = true;
+
             }
             , _config
             );

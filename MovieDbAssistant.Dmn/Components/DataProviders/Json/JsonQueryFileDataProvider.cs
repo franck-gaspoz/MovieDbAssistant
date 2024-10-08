@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Collections.Generic;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Components.Builders.Models;
@@ -55,9 +57,12 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             var moviesModel = provider.Get(query);
             if (moviesModel != null)
             {
-                var t = _moviesModelMergeBuilder.Collapse(moviesModel);
-                if (t!=null)
-                    movies.Add(t);
+                //var t = _moviesModelMergeBuilder.Collapse(moviesModel);
+
+                //movies.Add(t);
+
+                //all results
+                movies.AddRange(moviesModel.Movies);
             }
         });
 

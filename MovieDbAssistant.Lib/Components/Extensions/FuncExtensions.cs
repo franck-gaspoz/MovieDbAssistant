@@ -44,4 +44,24 @@ public static class FuncExtensions
             onTrue(t!);
         return c;
     }
+
+    /// <summary>
+    /// action if an object is not null or null
+    /// </summary>
+    /// <param name="check">value that triggers the acion if false</param>
+    /// <param name="onTrue">action executed if flag is false</param>
+    /// <returns></returns>
+    public static R IfNullElse<T,R>(
+        this T? check, 
+        Func<R> onTrue,
+        Func<T,R> onFalse)
+        where T : class
+    {
+        var t = check;
+        var c = t == null;
+
+        return c?
+            onTrue()        
+            : onFalse(t!);
+    }
 }
