@@ -53,6 +53,7 @@ public sealed class TemplateBuilder
 
     const string Template_Var_Page_Title_Details = "pageTitleDetails";
     const string Template_Var_Title_List = "titleList";
+    const string Template_Var_SubTitle_List = "subTitleList";
     const string Template_Var_Page_Title_List = "pageTitleList";
     const string Template_Var_Template_Id = "templateId";
     const string Template_Var_Template_Version = "templateVersion";
@@ -148,7 +149,7 @@ public sealed class TemplateBuilder
 #endif
         ExportData(data);
         var page = _tpl!.Templates.TplList!;
-        page = SetVars(page);
+        (page, var props) = SetVars(page, htmlContext);
         page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
@@ -162,10 +163,12 @@ public sealed class TemplateBuilder
     /// <summary>
     /// build a page details
     /// </summary>
+    ///<param name="context">doc builder context</param>
     /// <param name="htmlContext">html document builder context</param>
     /// <param name="data">The data.</param>
     /// <returns>A <see cref="TemplateBuilder"/></returns>
     public TemplateBuilder BuildPageDetail(
+        DocumentBuilderContext context,
         HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {
@@ -312,7 +315,6 @@ public sealed class TemplateBuilder
         MovieModel? data = null)
     {
         var src = JsonSerializer.Serialize(
-            //htmlContext,
             GetTemplateProps(true, data, htmlContext),
             JsonSerializerProperties.Value)!;
 
@@ -438,6 +440,10 @@ public sealed class TemplateBuilder
             {
                 Template_Var_DetailMoviePicNotAvailable,
                 _tpl!.Options.DetailMoviePicNotAvailable
+            },
+            {
+                Template_Var_SubTitle_List,
+                htmlContext?.SubTitle
             }
         };
 
@@ -491,11 +497,11 @@ public sealed class TemplateBuilder
             }
             else
             {
+                // not a model or null model
                 var k = kvp.Key;
                 if (prefix != null)
                     k = prefix + '.' + k;
 
-                // not a model or null model
                 tpl = SetVar(
                     tpl,
                     KeyToVar(k),

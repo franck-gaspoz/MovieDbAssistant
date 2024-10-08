@@ -70,7 +70,10 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         context.MakeOutputDirs();
 
         var htmlContext = new HtmlDocumentBuilderContext(
-            0, data.Movies.Count, string.Empty, null, null);
+            0, data.Movies.Count, string.Empty, null, null)
+        {
+            Folder = folderName
+        };
 
         _templateBuilder.LoadTemplate(
             context,

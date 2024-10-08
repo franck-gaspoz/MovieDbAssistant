@@ -1,4 +1,5 @@
 ﻿using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
@@ -41,6 +42,18 @@ public sealed class HtmlDocumentBuilderContext
     /// </summary>
     /// <value>A <see cref="string? "/></value>
     public string? NextLink { get; set; }
+
+    /// <summary>
+    /// source folder
+    /// </summary>
+    public string? Folder { get; set; }
+
+    /// <summary>
+    /// Gets the sub title.
+    /// </summary>
+    /// <value>A <see cref="string? "/></value>
+    public string? SubTitle => Folder != null ?
+        " | " + Folder.ToLower().ToFirstUpper() : null;
 
     public HtmlDocumentBuilderContext(MoviesModel data)
         : this(0, data.Movies.Count, string.Empty, null, null) { }

@@ -73,7 +73,10 @@ public sealed class HtmlMovieDocumentBuilder
             context
                 .BuilderOptions[Template_Id]
                 .ToString()!)
-            .BuildPageDetail(htmlContext,data);
+            .BuildPageDetail(
+                context,
+                htmlContext,
+                data);
     }
 
     void IgnoreDocument(MovieModel data)
