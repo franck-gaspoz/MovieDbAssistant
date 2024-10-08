@@ -53,7 +53,7 @@ public sealed class HtmlDocumentBuilderContext
     /// </summary>
     /// <value>A <see cref="string? "/></value>
     public string? SubTitle => Folder != null ?
-        " | " + Folder.ToLower().ToFirstUpper() : null;
+        Folder.ToLower().ToFirstUpper() : null;
 
     public HtmlDocumentBuilderContext(MoviesModel data)
         : this(0, data.Movies.Count, string.Empty, null, null) { }
