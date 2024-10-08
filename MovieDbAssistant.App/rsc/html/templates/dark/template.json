@@ -21,6 +21,8 @@
     },
     "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
     "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+    "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
+    "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
@@ -60,7 +62,8 @@
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
     "/js/jquery-3.7.1.min.js:/js",
     "/js/template.js:/js",
-    "/img/image-not-availble-300x175.jpg:/img"
+    "/img/image-not-availble-300x175.jpg:/img",
+    "/img/image-404-630x630.jpg:/img"
   ],
   "Files": [
     "/img",
