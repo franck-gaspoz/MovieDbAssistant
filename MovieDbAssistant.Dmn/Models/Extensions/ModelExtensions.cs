@@ -8,6 +8,7 @@ using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Extensions;
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Models.Extensions;
@@ -41,10 +42,23 @@ public static class ModelExtensions
         this MovieModel data,
         IOptions<DmnSettings> dmnSettings)
     {
-        var key = data.Title!.ToHexLettersAndDigitsString();
+        var key = data.HashKey();
         data.Key = key;
         data.UpdateFilename(dmnSettings);
     }
+
+    /// <summary>
+    /// Hashes the key.
+    /// </summary>
+    /// <param name="data">The data.</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string HashKey(this MovieModel? data) =>
+        (
+            data?.Title!.ToHexLettersAndDigitsString()
+            + data?.Id!.ToHexLettersAndDigitsString()
+        )
+        ?? string.Empty
+        ;
 
     /// <summary>
     /// setup the movie models (setup extra properties)

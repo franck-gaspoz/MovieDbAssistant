@@ -9,7 +9,7 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 public sealed partial class MovieModel
 {
     /// <summary>
-    /// key (base64) from setup
+    /// key (base64,lettersAndDigits) from setup
     /// <para>initialized by <code>SetupModel</code></para>
     /// </summary>
     public string? Key { get; set; }
