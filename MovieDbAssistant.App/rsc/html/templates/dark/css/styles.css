@@ -385,6 +385,10 @@ body.movie-page-detail .sources {
     display: none !important;
 }
 
+.hidden-temp {
+    display: none;
+}
+
 .grid {
     display:grid;
 }
