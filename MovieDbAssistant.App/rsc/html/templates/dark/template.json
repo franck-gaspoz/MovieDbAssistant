@@ -19,6 +19,7 @@
       "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
       "PageTitle": "My Movies"
     },
+    "MoviePicNotAvailable": "/img/image-not-availble-300x175.jpg",
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
@@ -57,7 +58,8 @@
     "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
     "/js/jquery-3.7.1.min.js:/js",
-    "/js/template.js:/js"
+    "/js/template.js:/js",
+    "/img/image-not-availble-300x175.jpg"
   ],
   "Files": [
     "/img",

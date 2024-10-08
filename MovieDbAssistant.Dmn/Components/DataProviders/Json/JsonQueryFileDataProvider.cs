@@ -57,6 +57,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             var moviesModel = provider.Get(query);
             if (moviesModel != null)
             {
+                // TODO
                 //var t = _moviesModelMergeBuilder.Collapse(moviesModel);
 
                 //movies.Add(t);
