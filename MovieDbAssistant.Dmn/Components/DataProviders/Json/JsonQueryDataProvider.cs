@@ -99,6 +99,16 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         Logger.LogInformation(this, $"scrap #{query.InstanceId()} completed");
                 }
 
+                if (models!=null)
+                    foreach ( var model in models.Movies )
+                    {
+                        model.Scraper = Path.GetFileName(
+                            _settings.Value.Scrap.ToolPath);
+                        model.SpiderId = spiderId.ToString();
+                        model.Sources.Play = query.Metadata.Source;
+                        model.Sources.Download = query.Metadata.Download;
+                    }
+
                 aggregateModel.Merge(models);
 
             });

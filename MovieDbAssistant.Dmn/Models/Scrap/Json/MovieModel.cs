@@ -16,9 +16,14 @@ public sealed partial class MovieModel
     public string Url { get; set; } = string.Empty;
 
     /// <summary>
-    /// infos about the scraper
+    /// infos about the scraper: tool name
     /// </summary>
-    public string Scraper { get; set; } = string.Empty;
+    public string? Scraper { get; set; }
+
+    /// <summary>
+    /// infos about the scrap : spider id
+    /// </summary>
+    public string? SpiderId { get; set; }
 
     /// <summary>
     /// movie sources
