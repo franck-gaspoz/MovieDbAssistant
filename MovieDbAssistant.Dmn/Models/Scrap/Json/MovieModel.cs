@@ -1,5 +1,7 @@
 ﻿using System.Diagnostics;
 
+using MovieDbAssistant.Dmn.Models.Queries;
+
 namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 #pragma warning disable CD1606 // The property must have a documentation header.
@@ -16,14 +18,9 @@ public sealed partial class MovieModel
     public string Url { get; set; } = string.Empty;
 
     /// <summary>
-    /// infos about the scraper: tool name
+    /// model meta data
     /// </summary>
-    public string? Scraper { get; set; }
-
-    /// <summary>
-    /// infos about the scrap : spider id
-    /// </summary>
-    public string? SpiderId { get; set; }
+    public MovieModelMetaData MetaData { get; set; } = new();
 
     /// <summary>
     /// movie sources

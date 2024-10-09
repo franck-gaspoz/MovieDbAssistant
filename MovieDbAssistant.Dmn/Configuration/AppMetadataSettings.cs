@@ -22,4 +22,9 @@ public sealed class AppMetadataSettings
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public required string VersionDate { get; set; }
+
+    /// <summary>
+    /// movie db scraper tool version
+    /// </summary>
+    public required string MovieDbScraperToolVersion { get; set; }
 }

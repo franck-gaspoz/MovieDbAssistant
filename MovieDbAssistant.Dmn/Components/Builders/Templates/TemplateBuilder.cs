@@ -488,12 +488,14 @@ public sealed class TemplateBuilder
         {
             var val = kvp.Value;
             var varnp = KeyToVar(kvp.Key);
+            var vtype = val?.GetType();
 
             if (val != null
-                && val!.GetType().Namespace!
+                && vtype!.Namespace!
                     .StartsWith(GetType()
                         .Namespace!
-                        .Split('.')[0]))
+                        .Split('.')[0])
+                    && !vtype!.IsArray)
             {
                 // model not null
                 SetVars(

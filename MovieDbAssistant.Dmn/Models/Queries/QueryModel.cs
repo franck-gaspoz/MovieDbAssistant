@@ -23,7 +23,7 @@ public sealed record class QueryModel
     /// <summary>
     /// quasi unique key
     /// </summary>
-    public string Key =>
+    public string HashKey =>
         _title.ToHexLettersAndDigitsString()
         + Count?.ToString()
         + Year?.ToString()

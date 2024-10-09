@@ -51,7 +51,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         if (source is not QueryModel query) return null;
 
         var qid = query.Metadata!.InstanceId.Value + "";
-        var outputFile = query.Key + ".json";
+        var outputFile = query.HashKey + ".json";
 
         Logger.LogInformation(
             this,
@@ -102,11 +102,14 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                 if (models!=null)
                     foreach ( var model in models.Movies )
                     {
-                        model.Scraper = Path.GetFileName(
+                        model.MetaData.ScraperTool = Path.GetFileName(
                             _settings.Value.Scrap.ToolPath);
-                        model.SpiderId = spiderId.ToString();
+                        model.MetaData.ScraperToolVersion = _settings.Value
+                            .App.MovieDbScraperToolVersion;
+                        model.MetaData.SpiderId = spiderId.ToString();
                         model.Sources.Play = query.Metadata.Source;
                         model.Sources.Download = query.Metadata.Download;
+                        model.MetaData.Query = query;
                     }
 
                 aggregateModel.Merge(models);
