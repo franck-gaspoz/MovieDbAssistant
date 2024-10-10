@@ -376,6 +376,7 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="rsc\html\templates\dark\js\" />
   </ItemGroup>
 
   <ItemGroup>

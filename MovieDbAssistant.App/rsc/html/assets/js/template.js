@@ -60,11 +60,9 @@ class Template {
      */
 
     props = {
-        /*"Interests": (o, value) => o.hseps(value),
+        "Interests": (o, value) => o.hseps(value),
         "Stars": (o, value) => o.hseps(value),
-        "Actors": (o, value) => o.hseps(value, x => o.actorSimple(x)),
-        "PicsUrls": null,
-        "PicsSizes": null*/
+        "Actors": (o, value) => o.hseps(value, x => o.actorSimple(x))
     };
 
     hseps(t, tr) {
@@ -100,6 +98,31 @@ class Template {
             this.addItem(e)
         })
         this.removeItemModel()
+        this.setAlternatePics()
+    }
+
+    setAlternatePics() {
+        var $pics = $('.movie-page-list .alternate-pic-list')
+        var altUrl = props['listMoviePicNotAvailable']
+        var altnfUrl = props['listMoviePicNotFound']
+        this.setupAlternatePic($pics, altUrl, altnfUrl)
+        $pics = $('.movie-page-detail .alternate-pic-list')
+        altUrl = props['detailMoviePicNotAvailable']
+        altnfUrl = props['detailMoviePicNotFound']
+        this.setupAlternatePic($pics, altUrl, altnfUrl)
+    }
+
+    setupAlternatePic($set, altUrl, altnfUrl) {
+        $set.each((i, e) => {
+            var $e = $(e)
+            $e.on('error', () => {
+                const src = $e.attr('src')
+                const url = (!src || src == '' || src == 'null') ?
+                    altUrl : altnfUrl
+                $e.attr('src', url)
+                $e.addClass('alternate-pic-list-enabled')
+            })
+        });
     }
 
     /**@param {MovieModel} data movie */
@@ -149,6 +172,7 @@ class Template {
         $src.html(html)
         this.setStates(null, data)
         this.setLinks($src)
+        this.setAlternatePics()
     }
 
     setLinks($from) {
@@ -379,4 +403,15 @@ function addBackImgLoadedHandler(src) {
     var img = new Image();
     img.addEventListener('load', () => handleBackImgLoaded(img), false);
     img.src = src;
+}
+
+function setupItemsLinkId() {
+    var t = window.location.href.split('#')
+    if (t.length == 2) {
+        var $it = $("[id='" + t[1] + "']")
+        $('.movie-list').scrollTop(
+            $it.offset().top
+            - $it.height()
+        )
+    }
 }

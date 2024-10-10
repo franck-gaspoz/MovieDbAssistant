@@ -87,7 +87,7 @@ public sealed class ImdbSourceModelAdapter :
                 .ToArray());
 
         Add(Query_Param_Release_Date, model.Year == null ? null
-            : model.Year + "-01-01," + model.Year + "-31-12");
+            : model.Year + "-01-01," + model.Year + "-12-31");
 
         return _filtersBuilder.ToUrlQuery();
     }
