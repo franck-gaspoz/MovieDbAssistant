@@ -272,6 +272,16 @@ body.movie-page-detail .movie-page-detail-content-container {
     padding-bottom: 0em;
 }
 
+body.movie-page-detail .cell-title {
+    padding-top: 0.5em;
+}
+
+body.movie-page-detail .title {
+    line-height: 0.7em;
+    display: inline-block;
+    padding-bottom: 0.1em;
+}
+
 .cell-int {
     margin-left: 1em;
 }
