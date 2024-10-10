@@ -15,7 +15,7 @@ public sealed class FiltersSettings
     /// Gets or sets the languages.
     /// </summary>
     /// <value>An array of strings</value>
-    public required string[] Languages { get; set; }
+    public required string[]? Languages { get; set; }
 
     /// <summary>
     /// Gets or sets the count.

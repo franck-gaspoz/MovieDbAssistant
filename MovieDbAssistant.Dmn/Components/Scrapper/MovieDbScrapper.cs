@@ -100,15 +100,16 @@ public sealed class MovieDbScrapper : IIdentifiable
 
                 // args
 
-                /// spiderId outputFile title [filters]=
+                /// spiderId outputFile title [filters]
                 var args = new List<string>
                 {
-                    spiderId.ToString().ToLower(),
+                    spiderId.ToString(),
                     output,
                     query.Title
                 };
-                if (filters != null)
-                    args.Add(filters.DblQuote());
+                if (/*false &&*/ filters != null)
+                    args.Add(filters);
+                        //.Replace("&",""));
 
                 _logger.LogInformation(this,
                     $"scrap: #{query.InstanceId()} spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");

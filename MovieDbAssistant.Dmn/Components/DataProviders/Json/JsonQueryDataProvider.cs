@@ -112,6 +112,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         model.MetaData.Query = query;
                     }
 
+                // merge spider models in catalog
                 aggregateModel.Merge(models);
 
             });

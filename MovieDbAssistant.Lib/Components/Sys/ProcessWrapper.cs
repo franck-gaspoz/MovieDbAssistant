@@ -84,7 +84,7 @@ public sealed class ProcessWrapper : IIdentifiable
             RedirectStandardError = redirectStreams,
             RedirectStandardInput = redirectStreams,
             CreateNoWindow = false,
-            WindowStyle = ProcessWindowStyle.Hidden,   
+            WindowStyle = ProcessWindowStyle.Normal,   
             WorkingDirectory = Path.GetDirectoryName(filename)
         };
 

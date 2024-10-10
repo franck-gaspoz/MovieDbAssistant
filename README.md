@@ -19,8 +19,10 @@ Can scrap data from:
 
 ## dependencies
 
-- `MovieDbScrapper`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
-- `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+- **APP**
+
+    - `MovieDbScrapper`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
+    - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
 
 - **CLI**
 
@@ -28,7 +30,6 @@ Can scrap data from:
 
 - **GUI**
 
-    - `PInvoke.User32`: [https://github.com/dotnet/pinvoke](https://github.com/dotnet/pinvoke)
     - framework `net8.0-windows10.0.22621.0`
 
 ___
@@ -68,7 +69,7 @@ ___
 
 ## Releases History
 
-/10/2024 - 1.0
+2024//10 - 1.0
 initial version
 
 functionalities:
@@ -77,5 +78,3 @@ functionalities:
     - scrapper [MovieDbScraper](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md) `json` output
     - direct scrap from queries given in files (several formats are supported)
     - direct scrap from a query given in last text clipboard entry
-
-

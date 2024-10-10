@@ -49,13 +49,13 @@ public sealed record class QueryModel
         set
         {
             _title = value;
-            string pattern = @"\b\d{4}\b";
+            var pattern = @"\b\d{4}\b";
             var matches = Regex.Matches(value, pattern);
             if (matches.Count != 0)
             {
-                Year = matches[0].Value;
+                _year = matches[0].Value;
                 if (_title.EndsWith(Year))
-                    _title = _title[..^Year.Length];
+                    _title = _title[..^Year.Length].Trim();
             }
         }
     }
@@ -65,11 +65,20 @@ public sealed record class QueryModel
     /// </summary>
     public int? Count { get; set; }
 
+    string? _year;
     /// <summary>
     /// Gets or sets the year.
     /// </summary>
     /// <value>A <see cref="string? "/></value>
-    public string? Year { get; set; }
+    public string? Year
+    {
+        get => _year;
+        set
+        {
+            if (value!=null)
+                _year = value;
+        }
+    }
 
     /// <summary>
     /// Gets or sets the languages

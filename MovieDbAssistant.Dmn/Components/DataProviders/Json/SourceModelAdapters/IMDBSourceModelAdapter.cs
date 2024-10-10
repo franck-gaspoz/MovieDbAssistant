@@ -21,7 +21,7 @@ public sealed class ImdbSourceModelAdapter :
 
     const string Query_Param_Languages = "languages";
     const string Query_Param_Count = "count";
-    const string Query_Param_Countries = "countries";
+    const string Query_Param_Countries = "country_of_origin";
     const string Query_Param_UserRating = "user-rating";
     const string Query_Param_Titles_Types = "title_type";
     const string Query_Param_Release_Date = "release_date";
@@ -52,6 +52,7 @@ public sealed class ImdbSourceModelAdapter :
     {
         transform ??= x => x;
         if (values == null) return;
+        if (values.Length == 0) return;
         _filtersBuilder.Add(key,
             string.Join(Separator_StringArrayValues, 
                 values.Select(x => transform(x))));
@@ -86,7 +87,7 @@ public sealed class ImdbSourceModelAdapter :
                 .ToArray());
 
         Add(Query_Param_Release_Date, model.Year == null ? null
-            : model.Year + "-01-01");
+            : model.Year + "-01-01," + model.Year + "-31-12");
 
         return _filtersBuilder.ToUrlQuery();
     }
