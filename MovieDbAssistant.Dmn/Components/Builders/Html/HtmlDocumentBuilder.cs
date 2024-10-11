@@ -113,7 +113,10 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                         data.Movies[index + 1].Key!,
                         _dmnSettings.Value.Build.Html.Extension)
                     : null
-                );
+                )
+            {
+                Folder = folderName
+            };
             builders.Add(builder);
             index++;
         }
