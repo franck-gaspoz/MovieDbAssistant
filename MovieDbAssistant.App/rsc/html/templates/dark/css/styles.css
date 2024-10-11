@@ -391,7 +391,7 @@ body.movie-page-detail .sources {
 
 .bottom-nav-container-left {
     grid-column: 1;
-    padding-left: 1em;
+    padding-left: 1.5em;
     text-align: left;
 }
 
@@ -416,13 +416,28 @@ body.movie-page-detail .sources {
 
 .nav-text {
     opacity: 70%;
+    font-family: 'vonique';
+    font-size: 1.3em;
+    text-shadow: 0 0 0px rgba(0, 0, 0, 0), 0 0 15px rgba(0, 0, 0, 1);
+}
+
+.nav-counters {
+    opacity: 70%;
+    vertical-align: bottom;
     font-family: 'quesha';
     font-size: 2em;
 }
 
-.nav-counters {
-    opacity: 50%;
-    vertical-align: bottom;
+.nav-clock {
+    width: 5em;
+    display: inline-block;
+    font-family: 'dotmatrix';
+    position: relative;
+    top: -4px;
+}
+
+.nav-date {
+    padding-right: 5em;
 }
 
 /* #endregion */
@@ -578,6 +593,16 @@ body.movie-page-detail .sources {
 @font-face {
     font-family: momtypew;
     src: url('../fonts/MomTypewritter.ttf');
+}
+
+@font-face {
+    font-family: lcd;
+    src: url('../fonts/Open 24 Display St.ttf');
+}
+
+@font-face {
+    font-family: dotmatrix;
+    src: url('../fonts/Renegade Master.ttf');
 }
 
 /* #endregion */
