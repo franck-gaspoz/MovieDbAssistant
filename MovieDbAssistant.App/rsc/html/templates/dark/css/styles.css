@@ -422,7 +422,8 @@ body.movie-page-list .movie-page-bottom-nav-container {
     opacity: 70%;
     font-family: 'vonique';
     font-size: 1.3em;
-    text-shadow: 0 0 0px rgba(0, 0, 0, 0), 0 0 15px rgba(0, 0, 0, 1);
+    /*text-shadow: 0 0 0px rgba(0, 0, 0, 0), 0 0 15px rgba(0, 0, 0, 1);*/
+    text-shadow: 4px 0px 15px rgba(0, 0, 0, 1);
 }
 
 .nav-counters {
