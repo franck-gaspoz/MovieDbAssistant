@@ -33,9 +33,14 @@ public sealed partial class MovieModel
     public string? Title { get; set; }
 
     /// <summary>
-    /// scraped title by opposite to queried title in case of built for a query (Title)
+    /// scraped title by opposite to queried title
     /// </summary>
     public string? OriginalTitle { get; set; }
+
+    /// <summary>
+    /// queried title by opposite to scraped title in case of built for a query (filter Title)
+    /// </summary>
+    public string? QueryTitle { get; set; }
 
     public string? Summary { get; set; }
 

@@ -49,9 +49,10 @@ public sealed class MovieModelFromQueryBuilder
     public MovieModel Build()
     {
         var o = _data!.Clone();
-        o.OriginalTitle = _data!.OriginalTitle;
+        o.OriginalTitle = _data!.Title;
         if (_settings.Value.Scrap.KeepQueriedTitle)
-            o.Title = _query!.Title;
+            o.Title = _query?.Title;
+        o.QueryTitle = _query?.Title;
         return o;
     }
 }

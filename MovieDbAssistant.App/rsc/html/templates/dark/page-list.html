@@ -79,7 +79,9 @@
 
         <div class="movie-list-item-container hidden" id="ItemModel">
 
-            <a name="{{key}}"></a>
+           <!-- <a name="{{key}}"></a> -->
+
+            <!-- movie item -->
 
             <div class="movie-list-item-background">
 
@@ -95,6 +97,9 @@
                                         <td width="100%" class="cell-title" valign="top">
                                             <span class="title if-title">{{title}}</span>
                                             <br />
+                                            <span class="query-title if-queryTitle">from query: &nbsp;
+                                                <span class="query-title-value">{{queryTitle}}</span>
+                                            </span>                                            
                                             <span class="interests text if-interests">{{interests}}</span>
                                             <br />
                                             <span class="summary text if-summary">{{summary}}</span>

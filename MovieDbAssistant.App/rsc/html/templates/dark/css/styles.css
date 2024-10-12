@@ -46,6 +46,10 @@ td {
 
 /* #endregion */
 
+/* #region common */
+
+/* #endregion */
+
 .video-background {
     width: 100%;
     height: 100%;
@@ -199,6 +203,19 @@ body.movie-page-detail .summary {
 .title {
     font-size: 48px;
     font-family: 'quesha';
+}
+
+.query-title {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #cdcded;
+}
+
+.query-title-value {
+    font-family: comicn;
+    font-size: 1.5em;
+    vertical-align: baseline;
+    color: palegreen;
 }
 
 body.movie-page-detail {
