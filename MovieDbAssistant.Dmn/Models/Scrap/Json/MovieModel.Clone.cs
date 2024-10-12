@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
+﻿using MovieDbAssistant.Lib.Components.Extensions;
+
+namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 /// <summary>
 /// The movie model.
@@ -9,7 +11,7 @@ public sealed partial class MovieModel
     /// gets a clone
     /// </summary>
     /// <returns>A <see cref="MovieModel? "/></returns>
-    public MovieModel? Clone()
+    public MovieModel Clone()
     => new()
     {
         // root model
@@ -20,7 +22,7 @@ public sealed partial class MovieModel
         Id = Id,
         Title = Title,
         Summary = Summary,
-        Interests = new(Interests),
+        Interests = Interests.Clone()!,
         Rating = Rating,
         RatingCount = RatingCount,
         Duration = Duration,
@@ -28,8 +30,8 @@ public sealed partial class MovieModel
         Year = Year,
         Vote = Vote,
         Director = Director,
-        Writers = new(Writers),
-        Stars = new(Stars),
+        Writers = Writers.Clone()!,
+        Stars = Stars.Clone()!,
         Actors = Actors.Select(x => x.Clone()).ToList(),
         Anecdotes = Anecdotes,
         MinPicUrl = MinPicUrl,
@@ -37,7 +39,8 @@ public sealed partial class MovieModel
         MinPicAlt = MinPicAlt,
         PicsUrls = PicsUrls != null ? new(PicsUrls) : null,
         PicFullUrl = PicFullUrl,
-        PicsSizes = new(PicsSizes),
+        PicsSizes = PicsSizes.Clone()!,
+        OriginalTitle = OriginalTitle,
 
         // db
 

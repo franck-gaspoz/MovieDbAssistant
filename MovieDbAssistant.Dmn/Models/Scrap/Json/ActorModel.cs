@@ -9,7 +9,7 @@ public sealed partial class ActorModel
 {
     public string? Actor { get; set; }
 
-    public List<string> PicUrl { get; set; } = [];
+    public List<string>? PicUrl { get; set; } = [];
 
-    public List<string> Characters { get; set; } = [];
+    public List<string>? Characters { get; set; } = [];
 }

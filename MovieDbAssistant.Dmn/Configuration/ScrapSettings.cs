@@ -28,6 +28,11 @@ public sealed class ScrapSettings
     public bool SkipIfTempOutputFileAlreadyExists { get; set; }
 
     /// <summary>
+    /// if true, keep queried title when enter a new movie model for a query, thus replace the remote title    
+    /// </summary>
+    public bool KeepQueriedTitle { get; set; }
+
+    /// <summary>
     /// Gets or sets the default filters.
     /// </summary>
     /// <value>A <see cref="FiltersSettings"/></value>

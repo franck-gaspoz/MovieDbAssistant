@@ -101,4 +101,14 @@ public static class TypeExtensions
 
         mi.Invoke(target, [args]);
     }
+
+
+    /// <summary>
+    /// clone a list of T
+    /// </summary>
+    /// <typeparam name="T"/>
+    /// <param name="t">The T.</param>
+    /// <returns>A TODO: Add missing XML "/&gt;</returns>
+    public static List<T>? Clone<T>(this List<T>? t)
+        => t != null ? new List<T>(t) : null;
 }

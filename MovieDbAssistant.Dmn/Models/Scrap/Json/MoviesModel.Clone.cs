@@ -1,15 +1,17 @@
 ﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
-#pragma warning disable CD1606 // The property must have a documentation header.
-
 /// <summary>
 /// The movies model.
 /// </summary>
 public sealed partial class MoviesModel
 {
     /// <summary>
-    /// movies models
+    /// gets a clone
     /// </summary>
-    public List<MovieModel> Movies { get; set; } = [];
-
+    /// <returns>A <see cref="MoviesModel"/></returns>
+    public MoviesModel Clone()
+        => new()
+        {
+            Movies = Movies
+        };
 }

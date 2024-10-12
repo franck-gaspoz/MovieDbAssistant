@@ -74,13 +74,17 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
                 var best = moviesModel!.HavingBestSearchScore();
                 if (best != null)
                 {
-
+                    var builder = _serviceProvider
+                        .GetRequiredService<MovieModelFromQueryBuilder>()
+                            .Setup(query, best);
+                    var movie = builder.Build();
+                    movies.Add(movie);
                 }
                 else
                     createDefault = true;
 
                 //all results
-                movies.AddRange(moviesModel!.Movies);
+                //movies.AddRange(moviesModel!.Movies);
             }
             
             if (createDefault)

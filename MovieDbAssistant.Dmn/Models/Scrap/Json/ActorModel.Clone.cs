@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
+﻿using MovieDbAssistant.Lib.Components.Extensions;
+
+namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 /// <summary>
 /// The actor model.
@@ -12,8 +14,8 @@ public sealed partial class ActorModel
     public ActorModel Clone()
         => new()
         {
-            Actor = Actor,
-            Characters = new(Characters),
-            PicUrl = new(PicUrl)
+            Actor = this.Actor,
+            Characters =  this.Characters.Clone(),
+            PicUrl = this.PicUrl.Clone()
         };
 }
