@@ -96,7 +96,7 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
             _movie!.Title/*?.ToLower()*/ == "Astérix & Obélix: L'Empire du Milieu"
             //&& _movie.Director == "Peyton Reed"
             )
-            Debugger.Break()
+            //Debugger.Break()
             ;
 
         const double titleWeight = 10d;

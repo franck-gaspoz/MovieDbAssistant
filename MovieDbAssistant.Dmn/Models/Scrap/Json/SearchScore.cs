@@ -19,6 +19,6 @@ public sealed class SearchScore
     /// value: 0...2
     /// </summary>
     public double? Value =>
-        Affinity ?? 0
-        + DataCompletion ?? 0;
+        (Affinity ?? 0)
+        + (DataCompletion ?? 0);
 }
