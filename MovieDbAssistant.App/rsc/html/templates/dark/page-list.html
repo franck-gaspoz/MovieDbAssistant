@@ -50,7 +50,30 @@
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
+    <!-- bottom nav bar -->
+
+    <div class="movie-page-bottom-nav-container">
+        <div class="bottom-nav-container-grid">
+            <div class="bottom-nav-container-left">
+                <span class="nav-text">{{pageTitleDetails}}</span>
+            </div>
+            <div class="bottom-nav-container-middle">
+                <span class="nav-text">{{subTitleList}}</span>
+            </div>
+            <div class="bottom-nav-container-right">
+                <span class="with-date nav-text nav-date">{{date}}</span>
+            </div>
+            <div class="bottom-nav-container-right">
+                <span class="with-clock nav-text nav-clock">{{clock}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- page list title -->
+
     <div class="movie-page-list-title">{{titleList}} : {{subTitleList}}</div>
+
+    <!-- movie list -->
 
     <div class="movie-list">
 
@@ -61,8 +84,8 @@
             <div class="movie-list-item-background">
 
                 <div class="movie-list-item"
-                        data-attr-key="{{key}}"
-                        data-attr-id="{{id}}">
+                     data-attr-key="{{key}}"
+                     data-attr-id="{{id}}">
 
                     <table width="100%">
                         <tr>
@@ -75,7 +98,7 @@
                                             <span class="interests text if-interests">{{interests}}</span>
                                             <br />
                                             <span class="summary text if-summary">{{summary}}</span>
-                                        </td>                                        
+                                        </td>
 
                                         <td valign="top" class="cell-rating-year grid no-padding-right min-width-8em">
 
@@ -120,16 +143,16 @@
                             </td>
 
                             <td class="movie-pic-container" valign="top">
-                                <img src="{{minPicUrl}}" class="alternate-pic-list"/>
+                                <img src="{{minPicUrl}}" class="alternate-pic-list" />
                             </td>
                         </tr>
                     </table>
 
                 </div>
             </div>
-        
-        </div>            
-        
+
+        </div>
+
     </div>
 
 </body>

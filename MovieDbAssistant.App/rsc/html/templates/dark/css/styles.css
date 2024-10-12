@@ -375,6 +375,10 @@ body.movie-page-detail .sources {
     z-index: 15;
 }
 
+body.movie-page-list .movie-page-bottom-nav-container {
+    font-size: 1.5em;
+}
+
 .bottom-nav-container-grid {
     display: grid;
     grid-template-rows: auto;
