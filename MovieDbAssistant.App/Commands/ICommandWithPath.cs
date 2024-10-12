@@ -9,5 +9,5 @@ public interface ICommandWithPath
     /// Gets the path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    string Path { get;}
+    string Path { get; }
 }

@@ -5,7 +5,7 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 /// <summary>
 /// The movie model meta data.
 /// </summary>
-public sealed class MovieModelMetaData
+public sealed partial class MovieModelMetaData
 {
     /// <summary>
     /// query model

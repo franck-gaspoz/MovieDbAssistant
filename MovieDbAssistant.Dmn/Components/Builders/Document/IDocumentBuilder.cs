@@ -1,7 +1,6 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders;
-using MovieDbAssistant.Dmn.Models.Scrap.Json;
+﻿using MovieDbAssistant.Dmn.Models.Scrap.Json;
 
-namespace MovieDbAssistant.Dmn.Components.Builder;
+namespace MovieDbAssistant.Dmn.Components.Builders.Document;
 
 public interface IDocumentBuilder
 {

@@ -3,7 +3,7 @@
 /// <summary>
 /// The search score.
 /// </summary>
-public sealed class SearchScore
+public partial class SearchScore
 {
     /// <summary>
     /// affinity to the query model. greater is better. 0...1

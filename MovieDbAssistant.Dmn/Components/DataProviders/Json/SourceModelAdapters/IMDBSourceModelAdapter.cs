@@ -48,13 +48,13 @@ public sealed class ImdbSourceModelAdapter :
         _filtersBuilder.Add(key, value);
     }
 
-    void Add(string key, string[]? values, Func<string,string>? transform = null)
+    void Add(string key, string[]? values, Func<string, string>? transform = null)
     {
         transform ??= x => x;
         if (values == null) return;
         if (values.Length == 0) return;
         _filtersBuilder.Add(key,
-            string.Join(Separator_StringArrayValues, 
+            string.Join(Separator_StringArrayValues,
                 values.Select(x => transform(x))));
     }
 
@@ -64,16 +64,16 @@ public sealed class ImdbSourceModelAdapter :
         Add(Query_Param_Languages, model.Languages ??
             _dmnSettings.Value.Scrap.DefaultFilters.Languages);
 
-        Add(Query_Param_Count, (model.Count ?? 
+        Add(Query_Param_Count, (model.Count ??
             _dmnSettings.Value.Scrap.DefaultFilters.Count)
-                .ToString() );
+                .ToString());
 
-        Add(Query_Param_Countries, model.Countries 
+        Add(Query_Param_Countries, model.Countries
             ?? _dmnSettings.Value.Scrap.DefaultFilters.Countries);
 
         Add(Query_Param_UserRating, model.UserRating);
 
-        Add(Query_Param_Titles_Types, 
+        Add(Query_Param_Titles_Types,
             model.TitleTypes?.Select(
                 x => x.ToString()
                     .ToFirstLower())

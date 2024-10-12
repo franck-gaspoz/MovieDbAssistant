@@ -2,14 +2,11 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using MovieDbAssistant.Dmn.Components.Builder;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Logger;
 
-using static MovieDbAssistant.Dmn.Globals;
-
-namespace MovieDbAssistant.Dmn.Components.Builders;
+namespace MovieDbAssistant.Dmn.Components.Builders.Document;
 
 #pragma warning disable CA1822 // Marquer les membres comme étant static
 
@@ -148,10 +145,8 @@ public sealed class DocumentBuilderContext
         BuilderType = builderType;
         DataProviderType = dataProviderType;
         if (builderOptions != null)
-        {
             foreach (var kvp in builderOptions)
                 BuilderOptions.TryAdd(kvp.Key, kvp.Value);
-        }
     }
 
     /// <summary>
@@ -211,7 +206,7 @@ public sealed class DocumentBuilderContext
         var folder = Path.GetDirectoryName(path)!;
         if (!Directory.Exists(folder))
             Directory.CreateDirectory(folder);
-            
+
         _logger.LogInformation(this, "add output file: " + path);
         File.WriteAllText(path, content);
     }

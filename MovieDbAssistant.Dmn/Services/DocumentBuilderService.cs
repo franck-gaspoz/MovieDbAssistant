@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using MovieDbAssistant.Dmn.Components.Builders;
+using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.ComponentModels;

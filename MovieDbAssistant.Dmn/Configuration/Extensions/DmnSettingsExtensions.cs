@@ -11,14 +11,14 @@ public static class DmnSettingsExtensions
     /// Gets the output path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public static string OutputPath(this DmnSettings dmnSettings) 
+    public static string OutputPath(this DmnSettings dmnSettings)
         => dmnSettings.Paths.Output.NormalizePath();
 
     /// <summary>
     /// Gets the input path.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    public static string InputPath(this DmnSettings dmnSettings) 
+    public static string InputPath(this DmnSettings dmnSettings)
         => dmnSettings.Paths.Input.NormalizePath();
 
     /// <summary>

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.App.Commands;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components.Builders;
+using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json;
 using MovieDbAssistant.Dmn.Configuration;

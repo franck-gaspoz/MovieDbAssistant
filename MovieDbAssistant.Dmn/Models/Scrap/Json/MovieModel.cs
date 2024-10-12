@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
 
-using MovieDbAssistant.Dmn.Models.Queries;
-
 namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 #pragma warning disable CD1606 // The property must have a documentation header.

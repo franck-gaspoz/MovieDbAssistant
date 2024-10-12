@@ -60,11 +60,11 @@ public sealed class MovieModelSearchScoreDataCompletionBuilder
 
         AddNote(_movie!.Title, hightWeight);
         AddNote(_movie!.Year, hightWeight);
-        AddNote(_movie!.Summary, hightWeight);     
-        
+        AddNote(_movie!.Summary, hightWeight);
+
         AddNote(_movie!.Rating, hightWeight);
         AddNote(_movie!.RatingCount, hightWeight);
-        
+
         AddNote(_movie!.Duration, medWeight);
         AddNote(_movie!.ReleaseDate, medWeight);
         AddNote(_movie!.MinPicUrl, medWeight);

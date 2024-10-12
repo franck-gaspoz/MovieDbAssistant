@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -102,7 +100,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         Logger.LogInformation(this, $"scrap #{query.InstanceId()} completed");
                 }
 
-                if (models!=null)
+                if (models != null)
                     query.SetupPostQuery(models, _settings.Value, spiderId);
 
                 // merge spider models in catalog

@@ -1,5 +1,4 @@
-﻿using MovieDbAssistant.Lib.Components.Actions.Commands;
-using MovieDbAssistant.Lib.Components.Signal;
+﻿using MovieDbAssistant.Lib.Components.Signal;
 
 namespace MovieDbAssistant.Lib.Components.Actions.EventsArgs;
 

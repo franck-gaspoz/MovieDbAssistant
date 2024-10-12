@@ -18,7 +18,7 @@ sealed class Messages
     public Messages(IConfiguration config,
         IOptions<DmnSettings> dmnSettings,
         IOptions<AppSettings> appSettings)
-        => (_config, _dmnSettings, _appSettings) 
+        => (_config, _dmnSettings, _appSettings)
             = (config, dmnSettings, appSettings);
 
     /// <summary>

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.App.Components;
 using MovieDbAssistant.App.Components.Tray;
 using MovieDbAssistant.App.Configuration;
-using MovieDbAssistant.Dmn.Components;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;

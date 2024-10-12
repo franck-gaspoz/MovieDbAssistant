@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-using MovieDbAssistant.Dmn.Models.Queries;
+﻿using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Extensions;
@@ -15,7 +13,7 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
 {
     MovieModel? _movie;
     QueryModel? _query;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MovieModelSearchScoreAffinityBuilder"/> class.
     /// </summary>
@@ -63,7 +61,7 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
         else
         {
             distLeven = src.LevenshteinDistance(target);
-            distLeven = 1d / (distLeven+1);
+            distLeven = 1d / (distLeven + 1);
         }
         return distLeven;
     }
@@ -83,7 +81,7 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
                 : 1d / Math.Abs(srcd - targetd);
         return dist;
     }
-    
+
     /// <summary>
     /// build the search score
     /// </summary>

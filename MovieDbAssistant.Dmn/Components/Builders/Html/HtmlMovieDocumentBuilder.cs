@@ -1,18 +1,16 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.Builders.Document;
+using MovieDbAssistant.Dmn.Components.Builders.Templates;
+using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
-using MovieDbAssistant.Dmn.Components.Builders.Templates;
 
-using static MovieDbAssistant.Dmn.Globals;
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
-using MovieDbAssistant.Dmn.Models.Extensions;
-using System.Runtime;
-using Microsoft.Extensions.Options;
-using MovieDbAssistant.Dmn.Configuration;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 

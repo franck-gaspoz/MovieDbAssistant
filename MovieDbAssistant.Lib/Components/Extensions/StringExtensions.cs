@@ -60,22 +60,22 @@ public static class StringExtensions
     {
         // Create the destination directory if it doesn't exist
         Directory.CreateDirectory(destinationDir);
-        
+
         if (!Directory.Exists(destinationDir))
             Directory.CreateDirectory(destinationDir);
 
         // Copy all files
-        foreach (string file in Directory.GetFiles(sourceDir))
+        foreach (var file in Directory.GetFiles(sourceDir))
         {
-            string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+            var destFile = Path.Combine(destinationDir, Path.GetFileName(file));
             File.Copy(file, destFile, true);
         }
 
         // Copy all subdirectories
-        foreach (string directory in Directory.GetDirectories(sourceDir))
+        foreach (var directory in Directory.GetDirectories(sourceDir))
         {
             var dir = Path.GetFileName(directory);
-            string destDir = Path.Combine(destinationDir, dir);
+            var destDir = Path.Combine(destinationDir, dir);
             CopyDirectory(directory, destDir, dir);
         }
     }
@@ -112,21 +112,21 @@ public static class StringExtensions
     /// <returns>distance</returns>
     public static int LevenshteinDistance(this string s, string t)
     {
-        int n = s.Length;
-        int m = t.Length;
-        int[,] d = new int[n + 1, m + 1];
+        var n = s.Length;
+        var m = t.Length;
+        var d = new int[n + 1, m + 1];
 
         if (n == 0) return m;
         if (m == 0) return n;
 
-        for (int i = 0; i <= n; i++) d[i, 0] = i;
-        for (int j = 0; j <= m; j++) d[0, j] = j;
+        for (var i = 0; i <= n; i++) d[i, 0] = i;
+        for (var j = 0; j <= m; j++) d[0, j] = j;
 
-        for (int i = 1; i <= n; i++)
+        for (var i = 1; i <= n; i++)
         {
-            for (int j = 1; j <= m; j++)
+            for (var j = 1; j <= m; j++)
             {
-                int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
+                var cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
                 d[i, j] = Math.Min(
                     Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
                     d[i - 1, j - 1] + cost

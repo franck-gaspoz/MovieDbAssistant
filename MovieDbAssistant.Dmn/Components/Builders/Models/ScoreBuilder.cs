@@ -34,7 +34,7 @@ public class ScoreBuilder
     {
         Note += note * weight;
         TotWeight += weight;
-    }  
+    }
 
     /// <summary>
     /// build the average

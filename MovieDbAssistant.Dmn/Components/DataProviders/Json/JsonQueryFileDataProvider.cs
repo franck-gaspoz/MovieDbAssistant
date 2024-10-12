@@ -56,8 +56,10 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
                 .GetRequiredService<JsonQueryDataProvider>();
             var moviesModel = provider.Get(query);
 
-            if (moviesModel != null
-                && moviesModel.Movies.Count>0)                
+            var createDefault = moviesModel == null
+                || moviesModel.Movies.Count ==0;
+
+            if (!createDefault)
             {
                 // TODO
                 //var t = _moviesModelMergeBuilder.Collapse(moviesModel);
@@ -65,16 +67,23 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 
                 // compute search score
 
-                moviesModel.BuildSearchScore(
+                moviesModel!.BuildSearchScore(
                     _serviceProvider,
                     query);
 
-                var best = moviesModel.HavingBestSearchScore();
+                var best = moviesModel!.HavingBestSearchScore();
+                if (best != null)
+                {
+
+                }
+                else
+                    createDefault = true;
 
                 //all results
-                movies.AddRange(moviesModel.Movies);
+                movies.AddRange(moviesModel!.Movies);
             }
-            else
+            
+            if (createDefault)
             {
                 var defaultModel = query.CreateDefaultMovieModel();
                 movies.Add(defaultModel);

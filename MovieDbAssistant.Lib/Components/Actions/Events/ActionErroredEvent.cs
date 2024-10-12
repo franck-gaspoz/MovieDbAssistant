@@ -1,6 +1,4 @@
-﻿using MovieDbAssistant.Lib.Components.Signal;
-
-namespace MovieDbAssistant.Lib.Components.Actions.Events;
+﻿namespace MovieDbAssistant.Lib.Components.Actions.Events;
 
 /// <summary>
 /// action errored event
@@ -13,7 +11,7 @@ public sealed record ActionErroredEvent(
     ActionContext Context,
     Exception? Exception = null,
     string? Message = null,
-    string? StackTrace = null) 
+    string? StackTrace = null)
     : ActionEventBase(Context)
 {
     /// <summary>

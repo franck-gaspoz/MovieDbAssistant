@@ -1,15 +1,9 @@
-﻿using System.Text;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.Extensions;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Models.Extensions;
 

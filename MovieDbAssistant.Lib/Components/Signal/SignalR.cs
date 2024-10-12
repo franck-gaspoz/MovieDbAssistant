@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -63,7 +62,7 @@ public sealed class SignalR : ISignalR
         object listener,
         object publisher)
     {
-        _logger.LogTrace(caller,TraceLogPrefix + " subscribe: " + listener.GetId() + " --> " + publisher.GetId());
+        _logger.LogTrace(caller, TraceLogPrefix + " subscribe: " + listener.GetId() + " --> " + publisher.GetId());
         MapSubscriber(listener, publisher);
         return this;
     }
@@ -80,12 +79,12 @@ public sealed class SignalR : ISignalR
         object listener,
         object publisher)
     {
-        _logger.LogTrace(caller, TraceLogPrefix 
-            + $" subscribe ONCE : " 
-            + listener.GetId() 
-            + " --> " 
+        _logger.LogTrace(caller, TraceLogPrefix
+            + $" subscribe ONCE : "
+            + listener.GetId()
+            + " --> "
             + publisher.GetId());
-        MapSubscriber(listener, publisher,true);
+        MapSubscriber(listener, publisher, true);
         return this;
     }
 
@@ -96,9 +95,9 @@ public sealed class SignalR : ISignalR
         object publisher,
         string? details = "")
     {
-        _logger.LogTrace(caller, TraceLogPrefix 
-            + $" UNSUBSCRIBE{details}: " + listener.GetId() 
-            + " --> " 
+        _logger.LogTrace(caller, TraceLogPrefix
+            + $" UNSUBSCRIBE{details}: " + listener.GetId()
+            + " --> "
             + publisher.GetId());
         if (_subscribeMap.TryGetValue(publisher, out var list))
             list.Remove(listener);
@@ -143,7 +142,7 @@ public sealed class SignalR : ISignalR
     {
         GetHandlerMethod(sigType, handler, out var methodInfo);
         if (methodInfo != null)
-            _logger.LogDebug(this,sender.GetId() + " --> internal signal: " + sigType.Name + " --> " + handler.GetId());
+            _logger.LogDebug(this, sender.GetId() + " --> internal signal: " + sigType.Name + " --> " + handler.GetId());
         return methodInfo?.Invoke(handler, [sender, signal]);
     }
 
@@ -206,7 +205,7 @@ public sealed class SignalR : ISignalR
                 var target = _serviceProvider.GetService(handlerType);
                 if (target != null)
                 {
-                    _logger.LogTrace(this,TraceLogPrefix2+$"({signal.GetId()}) catched by type: " + target.GetId());
+                    _logger.LogTrace(this, TraceLogPrefix2 + $"({signal.GetId()}) catched by type: " + target.GetId());
                     methodInfo.Invoke(target, [sender, signal]);
                 }
             }

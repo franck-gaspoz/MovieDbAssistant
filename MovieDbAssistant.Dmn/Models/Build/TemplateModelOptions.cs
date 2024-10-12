@@ -1,4 +1,4 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders;
+﻿using MovieDbAssistant.Dmn.Components.Builders.Document;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -61,8 +61,8 @@ public sealed class TemplateModelOptions
     /// <param name="pageDetail">The page detail.</param>
     public TemplateModelOptions(
         TemplateModelPageOption pageList,
-        TemplateModelPageOption pageDetail) 
-        => (PageDetail,PageList) = (pageDetail, pageList);
+        TemplateModelPageOption pageDetail)
+        => (PageDetail, PageList) = (pageDetail, pageList);
 
 
     /// <summary>
@@ -73,5 +73,5 @@ public sealed class TemplateModelOptions
     /// <returns>A <see cref="string"/></returns>
     public string PageIndexPath(DocumentBuilderContext docBuilderContext,
         string extension)
-        => docBuilderContext.TplFilePath(PageList.Filename!,extension);
+        => docBuilderContext.TplFilePath(PageList.Filename!, extension);
 }

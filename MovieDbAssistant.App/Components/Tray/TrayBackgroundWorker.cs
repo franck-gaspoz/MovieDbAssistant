@@ -33,7 +33,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
         TrayMenuService trayMenuService,
         int interval,
         bool stopOnBallonTipClosed = true,
-        bool autoRepeat = true) : base(logger,signal, string.Empty)
+        bool autoRepeat = true) : base(logger, signal, string.Empty)
     {
         Owner = this;
         _config = config;

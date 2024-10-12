@@ -75,7 +75,7 @@ public sealed record class QueryModel
         get => _year;
         set
         {
-            if (value!=null)
+            if (value != null)
                 _year = value;
         }
     }

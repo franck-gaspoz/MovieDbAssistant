@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace MovieDbAssistant.Dmn.Models.Scrap.Json.Extensions;
+﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json.Extensions;
 
 /// <summary>
 /// The movies model extensions: search functions
@@ -16,16 +14,16 @@ public static partial class MoviesModelExtensions
     {
         if (data.Movies.Count == 0) return null;
         var set = data.Movies
-            .Where(x => x.MetaData.SearchScore!=null &&
+            .Where(x => x.MetaData.SearchScore != null &&
                 x.MetaData.SearchScore.Affinity != null);
-        
+
         if (!set.Any())
         {
             return data.Movies.Count > 1
                 ? data.Movies.First()
                 : null;
         }
-        
+
         var max = set.Max(x => x.MetaData.SearchScore!.Affinity);
         return set.FirstOrDefault(x => x.MetaData.SearchScore!.Affinity == max);
     }

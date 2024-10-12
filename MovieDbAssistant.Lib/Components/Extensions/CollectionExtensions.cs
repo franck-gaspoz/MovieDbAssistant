@@ -13,8 +13,8 @@ public static class CollectionExtensions
     /// <param name="dic">The dic.</param>
     /// <param name="key">The key.</param>
     /// <param name="value">The value.</param>
-    public static void TryAdd<TKey,TValue>(
-        this Dictionary<TKey,List<TValue>> dic,
+    public static void TryAdd<TKey, TValue>(
+        this Dictionary<TKey, List<TValue>> dic,
         TKey key,
         TValue value)
         where TKey : notnull

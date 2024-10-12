@@ -26,7 +26,7 @@ public class JsonDataProvider : IDataProvider, IIdentifiable
     public SharedCounter InstanceId { get; }
 
     public JsonDataProvider(ILogger<JsonDataProvider> logger)
-        => (InstanceId,Logger) = (new(this),logger);
+        => (InstanceId, Logger) = (new(this), logger);
 
     /// <summary>
     /// get from text

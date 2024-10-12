@@ -31,7 +31,7 @@ sealed class OpenCommandLine : ISignalHandler<OpenCommandLineCommand>
     /// run the feature
     /// </summary>
     public void Handle(
-        object sender, 
+        object sender,
         OpenCommandLineCommand com)
     {
         var proc = new Process()

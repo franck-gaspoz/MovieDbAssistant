@@ -26,7 +26,7 @@ public sealed class MoviesModel
     /// sort by title
     /// </summary>
     public void Sort() => Movies.Sort(new Comparison<MovieModel>(
-        (x, y) => x.Title == null ? 
+        (x, y) => x.Title == null ?
             -1 : x.Title.CompareTo(y.Title)
         ));
 

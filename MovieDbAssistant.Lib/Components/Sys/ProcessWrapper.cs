@@ -84,7 +84,7 @@ public sealed class ProcessWrapper : IIdentifiable
             RedirectStandardError = redirectStreams,
             RedirectStandardInput = redirectStreams,
             CreateNoWindow = false,
-            WindowStyle = ProcessWindowStyle.Normal,   
+            WindowStyle = ProcessWindowStyle.Normal,
             WorkingDirectory = Path.GetDirectoryName(filename)
         };
 
@@ -94,7 +94,7 @@ public sealed class ProcessWrapper : IIdentifiable
         {
             process.OutputDataReceived += Process_OutputDataReceived;
             process.ErrorDataReceived += Process_ErrorDataReceived;
-            
+
             if (waitForExit)
                 process.WaitForExit();
 
@@ -139,7 +139,7 @@ public sealed class ProcessWrapper : IIdentifiable
         AppendLogDelta(s, ref _remain);
     }
 
-    void AppendLog(string txt,bool isError)
+    void AppendLog(string txt, bool isError)
     {
         var t = txt.Split('\n');
         foreach (var s in t)

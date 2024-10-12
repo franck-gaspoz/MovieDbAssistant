@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime;
-
-using MovieDbAssistant.Dmn.Configuration;
+﻿using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 
