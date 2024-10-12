@@ -196,6 +196,7 @@ class Template {
         Object.assign(p, data)
         Object.assign(p, props)
         var src = $it[0].outerHTML
+        window.pvars = []
         src = this.parseVars(src, p)
 
         var $container = $('.movie-list')
@@ -362,12 +363,17 @@ class Template {
                 if (prefix)
                     varnp = prefix + '.' + varnp
 
+                const srcVarName = this.getVar(varnp)
                 tpl = tpl.replaceAll(
-                    this.getVar(varnp),
+                    srcVarName,
                     this.props[p] ?
                         this.props[p](this, val)
                         : data[p]
                 )
+
+                // store as array for debug
+                if (!window.pvars) window.pvars = []
+                window.pvars.push(srcVarName)
             }
         }
         return tpl

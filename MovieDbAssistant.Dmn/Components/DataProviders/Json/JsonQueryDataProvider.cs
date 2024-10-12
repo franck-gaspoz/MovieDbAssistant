@@ -1,8 +1,11 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reflection;
+
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
 using MovieDbAssistant.Dmn.Components.Scrapper;
 using MovieDbAssistant.Dmn.Configuration;
@@ -100,17 +103,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                 }
 
                 if (models!=null)
-                    foreach ( var model in models.Movies )
-                    {
-                        model.MetaData.ScraperTool = Path.GetFileName(
-                            _settings.Value.Scrap.ToolPath);
-                        model.MetaData.ScraperToolVersion = _settings.Value
-                            .App.MovieDbScraperToolVersion;
-                        model.MetaData.SpiderId = spiderId.ToString();
-                        model.Sources.Play = query.Metadata.Source;
-                        model.Sources.Download = query.Metadata.Download;
-                        model.MetaData.Query = query;
-                    }
+                    query.SetupPostQuery(models, _settings.Value, spiderId);
 
                 // merge spider models in catalog
                 aggregateModel.Merge(models);

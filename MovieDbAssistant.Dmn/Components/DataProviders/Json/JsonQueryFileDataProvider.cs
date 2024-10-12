@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Components.Builders.Models;
+using MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 using MovieDbAssistant.Dmn.Components.Query;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Dmn.Models.Scrap.Json.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
@@ -45,9 +45,9 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
 
         var file = File.ReadAllText(src);
 
-        var queries = _queryBuilder.Build(src,file);
+        var queries = _queryBuilder.Build(src, file);
 
-        if (queries==null) return null;
+        if (queries == null) return null;
 
         var movies = new List<MovieModel>();
         queries.ForEach(query =>
@@ -55,15 +55,29 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             var provider = _serviceProvider
                 .GetRequiredService<JsonQueryDataProvider>();
             var moviesModel = provider.Get(query);
-            if (moviesModel != null)
+
+            if (moviesModel != null
+                && moviesModel.Movies.Count>0)                
             {
                 // TODO
                 //var t = _moviesModelMergeBuilder.Collapse(moviesModel);
-
                 //movies.Add(t);
+
+                // compute search score
+
+                moviesModel.BuildSearchScore(
+                    _serviceProvider,
+                    query);
+
+                var best = moviesModel.HavingBestSearchScore();
 
                 //all results
                 movies.AddRange(moviesModel.Movies);
+            }
+            else
+            {
+                var defaultModel = query.CreateDefaultMovieModel();
+                movies.Add(defaultModel);
             }
         });
 

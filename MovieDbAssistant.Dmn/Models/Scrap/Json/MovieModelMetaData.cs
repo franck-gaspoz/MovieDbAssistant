@@ -26,4 +26,9 @@ public sealed class MovieModelMetaData
     /// infos about the scrap : spider id
     /// </summary>
     public string? SpiderId { get; set; }
+
+    /// <summary>
+    /// score related to a search
+    /// </summary>
+    public SearchScore? SearchScore { get; set; } = new();
 }
