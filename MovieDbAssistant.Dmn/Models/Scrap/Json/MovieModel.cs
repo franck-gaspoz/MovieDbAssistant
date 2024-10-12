@@ -7,9 +7,14 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 /// <summary>
 /// The movie model
 /// </summary>
-[DebuggerDisplay("{Title} | {MinPicAlt}")]
+[DebuggerDisplay("{Title} | {_score}")]
 public sealed partial class MovieModel
 {
+    /// <summary>
+    /// dynamic after query score
+    /// </summary>
+    string _score => $"aff={MetaData?.SearchScore?.Affinity} dco={MetaData?.SearchScore?.DataCompletion} v={MetaData?.SearchScore?.Value}";
+
     /// <summary>
     /// url of scraped page: details
     /// </summary>

@@ -36,6 +36,11 @@ public sealed class QueryMetadata : IIdentifiable
     public int? QueryFileLine { get; set; }
 
     /// <summary>
+    /// query cache file if any, else null
+    /// </summary>
+    public string? QueryCacheFile { get; set; }
+
+    /// <summary>
     /// Gets the instance id.
     /// </summary>
     /// <value>A <see cref="SharedCounter? "/></value>

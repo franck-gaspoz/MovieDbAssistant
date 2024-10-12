@@ -101,7 +101,11 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                 }
 
                 if (models != null)
-                    query.SetupPostQuery(models, _settings.Value, spiderId);
+                    query.SetupPostQuery(
+                        models,
+                        _settings.Value,
+                        spiderId,
+                        output);
 
                 // merge spider models in catalog
                 aggregateModel.Merge(models);

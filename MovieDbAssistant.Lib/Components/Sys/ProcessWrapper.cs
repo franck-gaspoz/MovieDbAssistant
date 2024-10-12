@@ -73,7 +73,8 @@ public sealed class ProcessWrapper : IIdentifiable
         string filename,
         IEnumerable<string> args,
         bool waitForExit = true,
-        bool redirectStreams = false)
+        bool redirectStreams = false,
+        bool showWindow = true)
     {
         Psi = new ProcessStartInfo(
             filename,
@@ -83,8 +84,10 @@ public sealed class ProcessWrapper : IIdentifiable
             RedirectStandardOutput = redirectStreams,
             RedirectStandardError = redirectStreams,
             RedirectStandardInput = redirectStreams,
-            CreateNoWindow = true,
-            WindowStyle = ProcessWindowStyle.Hidden,
+            CreateNoWindow = showWindow,
+            WindowStyle = showWindow?
+                ProcessWindowStyle.Normal
+                : ProcessWindowStyle.Hidden,
             WorkingDirectory = Path.GetDirectoryName(filename)
         };
 

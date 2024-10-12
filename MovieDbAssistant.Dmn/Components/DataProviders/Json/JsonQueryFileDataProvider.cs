@@ -1,9 +1,15 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using System.Runtime;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Components.Builders.Models;
 using MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 using MovieDbAssistant.Dmn.Components.Query;
+using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Dmn.Models.Scrap.Json.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -19,17 +25,20 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
     readonly QueryBuilder _queryBuilder;
     readonly MoviesModelMergeBuilder _moviesModelMergeBuilder;
     readonly IServiceProvider _serviceProvider;
+    readonly IOptions<DmnSettings> _settings;
 
     public JsonQueryFileDataProvider(
         ILogger<JsonQueryFileDataProvider> logger,
         QueryBuilder queryBuilder,
         MoviesModelMergeBuilder moviesModelMergeBuilder,
-        IServiceProvider serviceProvider)
+        IServiceProvider serviceProvider,
+        IOptions<DmnSettings> settings)
         : base(logger)
     {
         _queryBuilder = queryBuilder;
         _moviesModelMergeBuilder = moviesModelMergeBuilder;
         _serviceProvider = serviceProvider;
+        _settings = settings;
     }
 
     /// <inheritdoc/>
@@ -90,6 +99,11 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             if (createDefault)
             {
                 var defaultModel = query.CreateDefaultMovieModel();
+                query.SetupPostQuery(
+                        defaultModel,
+                        _settings.Value,
+                        null,
+                        null);
                 movies.Add(defaultModel);
             }
         });

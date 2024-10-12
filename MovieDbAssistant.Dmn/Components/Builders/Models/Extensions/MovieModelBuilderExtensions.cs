@@ -1,6 +1,7 @@
 ﻿using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Lib.Components.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 
@@ -20,7 +21,8 @@ public static partial class MovieModelBuilderExtensions
         var data = new MovieModel
         {
             Title = query.Title,
-            Year = query.Year
+            Year = query.Year,
+            Id  = query.Title.ToHexLettersAndDigitsString()
         };
         return data;
     }
@@ -32,22 +34,25 @@ public static partial class MovieModelBuilderExtensions
     /// <param name="model">The model.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="spiderId">The spider id.</param>
+    /// <param name="output">output result file path</param>
     /// <returns>A <see cref="MovieModel"/></returns>
     public static MovieModel SetupPostQuery(
         this QueryModel query,
         MovieModel model,
         DmnSettings settings,
-        SpidersIds spiderId
+        SpidersIds? spiderId,
+        string? output
         )
     {
         model.MetaData.ScraperTool = Path.GetFileName(
         settings.Scrap.ToolPath);
         model.MetaData.ScraperToolVersion = settings
             .App.MovieDbScraperToolVersion;
-        model.MetaData.SpiderId = spiderId.ToString();
+        model.MetaData.SpiderId = spiderId?.ToString();
         model.Sources.Play = query.Metadata?.Source;
         model.Sources.Download = query.Metadata?.Download;
         model.MetaData.Query = query;
+        model.MetaData.Query.Metadata!.QueryCacheFile = output;
         return model;
     }
 
@@ -58,19 +63,22 @@ public static partial class MovieModelBuilderExtensions
     /// <param name="models">The models.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="spiderId">The spider id.</param>
+    /// <param name="output">output result file path</param>
     /// <returns>A <see cref="MovieModel"/></returns>
     public static MoviesModel SetupPostQuery(
         this QueryModel query,
         MoviesModel models,
         DmnSettings settings,
-        SpidersIds spiderId
+        SpidersIds spiderId,
+        string? output
         )
     {
         foreach (var model in models.Movies)
             query.SetupPostQuery(
                 model,
                 settings,
-                spiderId);
+                spiderId,
+                output);
         return models;
     }
 }
