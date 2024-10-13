@@ -97,8 +97,9 @@
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
-    <None Remove="rsc\html\templates\dark\page-details.html" />
-    <None Remove="rsc\html\templates\dark\page-list.html" />
+    <None Remove="rsc\html\templates\dark\parts\html.tpl.html" />
+    <None Remove="rsc\html\templates\dark\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\dark\page-list.tpl.html" />
     <None Remove="rsc\html\templates\dark\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
@@ -342,10 +343,13 @@
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\page-list.html">
+    <Content Include="rsc\html\templates\dark\parts\html.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\page-details.html">
+    <Content Include="rsc\html\templates\dark\pages\page-list.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\pages\page-details.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\template.json">

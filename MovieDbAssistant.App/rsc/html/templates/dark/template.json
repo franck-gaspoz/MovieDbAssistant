@@ -4,8 +4,8 @@
   "Version": "1.0",
   "VersionDate": "2024/10/03",
   "Templates": {
-    "List": "page-list.html",
-    "Details": "page-details.html"
+    "List": "pages/page-list.tpl.html",
+    "Details": "pages/page-details.html"
   },
   "Options": {
     "PageList": {
