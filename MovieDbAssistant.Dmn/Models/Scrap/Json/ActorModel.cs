@@ -5,11 +5,11 @@
 /// <summary>
 /// The actor model.
 /// </summary>
-public sealed partial class ActorModel
+public sealed class ActorModel
 {
     public string? Actor { get; set; }
 
-    public List<string>? PicUrl { get; set; } = [];
+    public List<string> PicUrl { get; set; } = [];
 
-    public List<string>? Characters { get; set; } = [];
+    public List<string> Characters { get; set; } = [];
 }

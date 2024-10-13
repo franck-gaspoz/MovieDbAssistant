@@ -14,8 +14,8 @@ public sealed partial class ActorModel
     public ActorModel Clone()
         => new()
         {
-            Actor = this.Actor,
-            Characters =  this.Characters.Clone(),
-            PicUrl = this.PicUrl.Clone()
+            Actor = Actor,
+            Characters = Characters.Clone(),
+            PicUrl = PicUrl.Clone()
         };
 }

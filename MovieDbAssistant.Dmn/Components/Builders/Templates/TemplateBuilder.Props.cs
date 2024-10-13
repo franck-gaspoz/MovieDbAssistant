@@ -1,6 +1,7 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders.Html;
+﻿using System.Reflection;
+
+using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using System.Reflection;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 

@@ -1,6 +1,4 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders.Document;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template model options.
