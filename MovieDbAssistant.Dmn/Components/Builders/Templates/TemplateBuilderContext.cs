@@ -21,7 +21,7 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public sealed class TemplateBuilderContext
 {
     readonly IConfiguration _config;
-    readonly ILogger<TemplateModel> _logger;
+    readonly ILogger<TemplateBuilderContext> _logger;
     readonly IOptions<DmnSettings> _dmnSettings;
 
     /// <summary>
@@ -90,7 +90,7 @@ public sealed class TemplateBuilderContext
     /// <param name="logger">The logger.</param>
     public TemplateBuilderContext(
         IConfiguration config,
-        ILogger<TemplateModel> logger,
+        ILogger<TemplateBuilderContext> logger,
         IOptions<DmnSettings> dmnSettings)
     {
         _config = config;
@@ -114,7 +114,7 @@ public sealed class TemplateBuilderContext
     }
 
     /// <summary>
-    /// Templates the model.
+    /// Template to model.
     /// </summary>
     /// <returns>A <see cref="TemplateModel"/></returns>
     public TemplateModel TemplateModel()

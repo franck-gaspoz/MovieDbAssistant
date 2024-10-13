@@ -42,6 +42,7 @@ public class AppLogger(
         Exception? exception,
         Func<TState, Exception?, string> formatter)
     {
+        _ = Name;
         var config = _appLoggerConfiguration;
         if (!config.IsEnabled) return;
 

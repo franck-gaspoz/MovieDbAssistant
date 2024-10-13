@@ -23,7 +23,7 @@ public sealed partial class MoviesModel
     /// <summary>
     /// sort by title
     /// </summary>
-    public MoviesModel Sort() 
+    public MoviesModel Sort()
     {
         Movies.Sort(new Comparison<MovieModel>(
             (x, y) => x.Title == null ?
@@ -39,7 +39,7 @@ public sealed partial class MoviesModel
     public MoviesModel Index()
     {
         var idx = 0;
-        foreach ( var item in Movies) 
+        foreach (var item in Movies)
             item.ListIndex = idx++;
         return this;
     }

@@ -1,29 +1,13 @@
 ﻿<!DOCTYPE html>
-<html lang="{{lang}}"
-      data-template-id="{{templateId}}"
-      data-template-version="{{templateVersion}}"
-      data-template-version-date="{{templateVersionDate}}"
-      data-software="{{software}}"
-      data-software-id="{{softwareId}}"
-      data-software-version="{{softwareVersion}}"
-      data-software-version-date="{{softwareVersionDate}}"
-      data-built-at="{{builtAt}}"
-      >
+<html {{{html}}}>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{pageTitleDetails}} : {{title}}</title>
-
-    <link rel="icon" type="image/ico" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-
-    <link rel="help" href="{{linkHelp}}" />
-    <link rel="author" href="{{linkAuthor}}" />
+    {{{head-metas}}}
     <meta name="description" content="{{title}} | Movie details | {{software}} ({{softwareId}}) github {{linkRepo}}" />
+    {{{head-links}}}
 
-    <!-- init -->
-    <script src="../js/jquery-3.7.1.min.js"></script>
-    <script src="../js/template.js"></script>
+    <title>{{pageTitleDetails}} : {{title}}</title>
+    {{{head-scripts}}}
+
     <script type="text/javascript">
 
         const data = {{data}};
@@ -47,54 +31,29 @@
             background-size: cover;
         }
     </style>
-    <!-- -->
 </head>
 
 <body class="movie-page-detail prevent-select">
 
-    <div class="movie-page-detail-background-container">
+    <!-- #region background -->
+
+    <div class="movie-page-background-container">
         <img id="Image_Background" class="hidden-temp" src="" alt="background pic" />
     </div>
 
-    <div class="movie-page-detail-background-container vignette vignette2">
-    </div>
+    {{{background-vignette}}}
 
     <div id="Image_BackgroundIdle"
          class="movie-page-detail-background-idle-container image-background-idle">
     </div>
 
+    <!-- #endregion -->
+
     <div class="movie-page-detail-content-container">
 
-        <!-- top nav bar -->
+        {{{page-detail-navbar-top}}}
 
-        <div class="movie-page-top-nav-container">
-            <img data-href="{{movies.home}}" src="../img/house.png" alt="icon home" class="nav-icon margin-right-double" />
-            <img data-href="{{movies.previous}}" src="../img/left-arrow.png" alt="previous movie" class="nav-icon if-movies-previous" />
-            <img data-href="{{movies.next}}" src="../img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-movies-next" />
-            <span class="nav-text nav-counters">{{movies.index}} / {{movies.total}}</span>
-            <span class="hsep"></span>
-            <span class="hsep"></span>
-            <img data-href="{{movies.home}}#{{key}}" src="../img/back.png" alt="back to list" class="nav-icon icon-back" />
-        </div>
-
-        <!-- bottom nav bar -->
-
-        <div class="movie-page-bottom-nav-container">
-            <div class="bottom-nav-container-grid">
-                <div class="bottom-nav-container-left">
-                    <span class="nav-text">{{pageTitleDetails}}</span>
-                </div>
-                <div class="bottom-nav-container-middle">
-                    <span class="nav-text">{{subTitleList}}</span>
-                </div>
-                <div class="bottom-nav-container-right">
-                    <span class="with-date nav-text nav-date">{{date}}</span>
-                </div>
-                <div class="bottom-nav-container-right">
-                    <span class="with-clock nav-text nav-clock">{{clock}}</span>
-                </div>
-            </div>
-        </div>
+        {{{navbar-bottom}}}
 
         <!-- movie details -->
         <div class="movie-list">

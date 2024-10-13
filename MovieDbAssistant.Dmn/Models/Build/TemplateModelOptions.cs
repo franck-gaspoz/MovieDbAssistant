@@ -20,6 +20,11 @@ public sealed class TemplateModelOptions
     public TemplateModelPageOption PageDetail { get; set; }
 
     /// <summary>
+    /// paths
+    /// </summary>
+    public PathsModel Paths { get; set; }
+
+    /// <summary>
     /// repo link
     /// </summary>
     public string? RepoLink { get; set; }

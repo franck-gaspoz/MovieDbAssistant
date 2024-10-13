@@ -3,11 +3,16 @@
   "Name": "Dark",
   "Version": "1.0",
   "VersionDate": "2024/10/03",
+  "Author": "Franck Gaspoz",
   "Templates": {
-    "List": "page-list.html",
-    "Details": "page-details.html"
+    "List": "page-list.tpl.html",
+    "Details": "page-details.tpl.html"
   },
   "Options": {
+    "Paths": {
+      "Pages": "pages",
+      "Parts": "parts"
+    },
     "PageList": {
       "Background": "cinema-wallpaper-16.jpg",
       "Title": "My Movies",
@@ -62,8 +67,8 @@
     "/icons/play.png:/img",
     "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
-    "/js/jquery-3.7.1.min.js:/js",
-    "/js/template.js:/js",
+    "/js/ext/jquery-3.7.1.min.js:/js/ext",
+    "/js/core/template-1.0.0.js:/js/core",
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img"
   ],

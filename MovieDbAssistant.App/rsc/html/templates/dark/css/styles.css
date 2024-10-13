@@ -33,7 +33,7 @@ td {
 
 /* #region pages containers */
 
-.movie-page-detail-background-container,
+.movie-page-background-container,
 .movie-page-detail-background-drop-container,
 .movie-page-detail-content-container,
 .movie-page-detail-background-idle-container {
@@ -67,11 +67,11 @@ td {
     z-index: 10;
 }
 
-.movie-page-detail-background-container {
+.movie-page-background-container {
     z-index: 3;
 }
 
-.movie-page-detail-background-container img {
+.movie-page-background-container img {
     position: relative;
 }
 
@@ -430,6 +430,37 @@ body.movie-page-list .movie-page-bottom-nav-container {
 }
 
 .bottom-nav-container-right {
+    grid-column: 3;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.top-nav-container-grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    height: 100%;
+}
+
+.top-nav-container-left,
+.top-nav-container-middle,
+.top-nav-container-right {
+    grid-row: 1;
+}
+
+.top-nav-container-left {
+    grid-column: 1;
+    padding-left: 1.5em;
+    text-align: left;
+}
+
+.top-nav-container-middle {
+    grid-column: 2;
+    text-align: center;
+}
+
+.top-nav-container-right {
     grid-column: 3;
     text-align: right;
     padding-right: 1em;

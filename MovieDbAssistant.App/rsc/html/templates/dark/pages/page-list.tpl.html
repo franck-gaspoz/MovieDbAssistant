@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html {{{html}}}>
+<head>
+    {{{head-metas}}}
+    <meta name="description" content="Movies List | {{software}} ({{softwareId}}) github {{linkRepo}}" />
+    {{{head-links}}}
+
+    <title>{{pageTitleList}} | {{subTitleList}}</title>
+
+    {{{head-scripts}}}
+    <script src="{{basePath}}js/data/data.js"></script>
+
+    <script type="text/javascript">
+
+        const props = {{props}};
+
+        $(document).ready(() => {
+            var o = new Template(true);
+            o.buildItems(data);
+            setupItemsLinkId();
+        });
+
+    </script>
+
+    <style>
+        body {
+            background-image: url('{{basePath}}img/{{background}}');
+        }
+    </style>
+
+</head>
+
+<body class="movie-page-list prevent-select">
+
+    <!-- background pane -->
+
+    {{{background-vignette}}}
+
+    {{{page-list-navbar-top}}}
+
+    {{{navbar-bottom}}}
+
+    <!-- movie list -->
+
+    <div class="movie-list">
+
+        {{{movie-list-item-container}}}
+
+    </div>
+
+</body>
+
+</html>

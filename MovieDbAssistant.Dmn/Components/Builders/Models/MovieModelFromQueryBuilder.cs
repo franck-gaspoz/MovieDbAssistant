@@ -22,10 +22,7 @@ public sealed class MovieModelFromQueryBuilder
     /// </summary>
     public MovieModelFromQueryBuilder(
         IOptions<DmnSettings> settings
-    )
-    {
-        _settings = settings;
-    }
+    ) => _settings = settings;
 
     /// <summary>
     /// setup the builder

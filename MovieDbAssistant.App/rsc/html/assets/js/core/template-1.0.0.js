@@ -402,7 +402,7 @@ function handleBackImgLoaded(img) {
     var $i = $('#Image_Background')
     var w = img.naturalWidth
     var h = img.naturalHeight
-    var $c = $('.movie-page-detail-background-container')
+    var $c = $('.movie-page-background-container')
     var wc = $c.width()
     var hc = $c.height()
     var maxw = w >= h

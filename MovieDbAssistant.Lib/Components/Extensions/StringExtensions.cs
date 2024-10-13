@@ -136,5 +136,4 @@ public static class StringExtensions
 
         return d[n, m];
     }
-
 }

@@ -92,14 +92,6 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
     /// <returns>An <see cref="int"/></returns>
     public double Build()
     {
-        if (/*_query!.Title?.ToLower()?.StartsWith("ant man") == true*/
-            //&& 
-            _movie!.Title/*?.ToLower()*/ == "Astérix & Obélix: L'Empire du Milieu"
-            //&& _movie.Director == "Peyton Reed"
-            )
-            //Debugger.Break()
-            ;
-
         const double titleWeight = 10d;
         const double yearWeight = 2d;
 

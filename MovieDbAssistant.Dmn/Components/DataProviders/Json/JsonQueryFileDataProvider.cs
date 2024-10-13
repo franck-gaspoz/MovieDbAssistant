@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -9,7 +6,6 @@ using MovieDbAssistant.Dmn.Components.Builders.Models;
 using MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 using MovieDbAssistant.Dmn.Components.Query;
 using MovieDbAssistant.Dmn.Configuration;
-using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Dmn.Models.Scrap.Json.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -69,7 +65,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             var moviesModel = provider.Get(query);
 
             var createDefault = moviesModel == null
-                || moviesModel.Movies.Count ==0;
+                || moviesModel.Movies.Count == 0;
 
             if (!createDefault)
             {
@@ -98,7 +94,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
                 //all results
                 //movies.AddRange(moviesModel!.Movies);
             }
-            
+
             if (createDefault)
             {
                 var defaultModel = query.CreateDefaultMovieModel();
@@ -117,7 +113,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
                 .Query!
                 .Metadata!
                 .QueryCacheFiles!);
-        
+
         queryCacheFiles = queryCacheFiles.Distinct().ToList();
 
         // encapsulate type and add meta data (query,..)

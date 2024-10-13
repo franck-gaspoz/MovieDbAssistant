@@ -31,14 +31,14 @@
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
     <None Remove="input\-movie.json" />
+    <None Remove="input\-ok.ru.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
     <None Remove="input\-query1.txt" />
     <None Remove="input\-query2.txt" />
     <None Remove="input\-shmovies.json" />
-    <None Remove="input\-zombies.json" />
-    <None Remove="input\ok.ru.txt" />
     <None Remove="input\README.md" />
+    <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
     <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
     <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
@@ -97,8 +97,18 @@
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
-    <None Remove="rsc\html\templates\dark\page-details.html" />
-    <None Remove="rsc\html\templates\dark\page-list.html" />
+    <None Remove="rsc\html\templates\dark\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\head-links.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\head-metas.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\head-scripts.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\html.tpl.html" />
+    <None Remove="rsc\html\templates\dark\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\dark\page-list.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\movie-list-item-container.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\navbar-bottom.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\dark\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
@@ -108,7 +118,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="input\ok.ru.txt">
+    <Content Include="input\-ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -156,7 +166,7 @@
     <Content Include="input\-shmovies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\-zombies.json">
+    <Content Include="input\zombies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="output\README.md">
@@ -216,10 +226,10 @@
     <Content Include="rsc\html\assets\img\image-not-availble-300x175.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\assets\js\jquery-3.7.1.min.js">
+    <Content Include="rsc\html\assets\js\ext\jquery-3.7.1.min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\assets\js\template.js">
+    <Content Include="rsc\html\assets\js\core\template-1.0.0.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg">
@@ -342,10 +352,40 @@
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\page-list.html">
+    <Content Include="rsc\html\templates\dark\parts\head-links.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\page-details.html">
+    <Content Include="rsc\html\templates\dark\parts\head-metas.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\head-scripts.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\background-vignette.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\movie-list-item-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\navbar-bottom.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\html.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\pages\page-list.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\pages\page-details.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\template.json">
