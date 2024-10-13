@@ -5,11 +5,13 @@ version: 1.0.0
 ___
 
 The template engine transforms movies data into html web pages. A **template** is constitued of
-by a set of files (js,img,css;...) and by **pages** and **parts** of pages. A specific
+a set of files (js,img,css;...) and by **pages** and **parts** of pages. A specific
 language inside `html` allows to integrate fragments of content and some **values** from
 the **movies data** and from the **properties** of the **template**, the **engine** and the **application settings**.
 
 ___
+
+Previous level: [manual](manual.md)
 
 Index
 
