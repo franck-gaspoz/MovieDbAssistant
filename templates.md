@@ -204,7 +204,7 @@ A template is specified in the file named `template.json` at the root of the tem
     "/fonts",
     "/js"
   ]
-}s
+}
 ```
 
 <a name="tc"></a>
