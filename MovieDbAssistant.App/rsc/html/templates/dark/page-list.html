@@ -47,6 +47,8 @@
 
 <body class="movie-page-list prevent-select">
 
+    <!-- background pane -->
+
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
@@ -77,13 +79,15 @@
 
     <div class="movie-list">
 
-        <div class="movie-list-item-container hidden" id="ItemModel">
+        <!-- movie item container -->
 
-           <!-- <a name="{{key}}"></a> -->
+        <div class="movie-list-item-container hidden" id="ItemModel" data-index="{{listIndex}}">
 
-            <!-- movie item -->
+            <!-- movie item background -->
 
             <div class="movie-list-item-background">
+
+                <!-- movie item -->
 
                 <div class="movie-list-item"
                      data-attr-key="{{key}}"
@@ -97,9 +101,10 @@
                                         <td width="100%" class="cell-title" valign="top">
                                             <span class="title if-title">{{title}}</span>
                                             <br />
-                                            <span class="query-title if-queryTitle">from query: &nbsp;
+                                            <span class="query-title if-queryTitle">
+                                                from query: &nbsp;
                                                 <span class="query-title-value">{{queryTitle}}</span>
-                                            </span>                                            
+                                            </span>
                                             <span class="interests text if-interests">{{interests}}</span>
                                             <br />
                                             <span class="summary text if-summary">{{summary}}</span>
@@ -154,6 +159,7 @@
                     </table>
 
                 </div>
+            
             </div>
 
         </div>
