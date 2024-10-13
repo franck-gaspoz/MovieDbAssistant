@@ -31,7 +31,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{F03B6F94-AF14-4C45-A12F-C51DB5A9D8E3}"
 	ProjectSection(SolutionItems) = preProject
 		credits.txt = credits.txt
+		manual.md = manual.md
 		doc\notes.txt = doc\notes.txt
+		templates.md = templates.md
 	EndProjectSection
 EndProject
 Global

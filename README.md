@@ -52,17 +52,11 @@ ___
 
 Available on `Windows 10.0.22621.0` and more. This application runs as a tray icon.
 
-:arrow_right: run `MovieDbAssistant.exe`
+:arrow_right: build `MovieDbAssistant.app` and run 🗔 `MovieDbAssistant.exe`
 
 :arrow_right: select an action from the tray menu
 
-___
-
-### 🗔 Any plateform command line
-
-Available on Windows, Linux, OSX
-
-run `MovieDbAssistantCLI.exe` from a `shell`
+:point_right: consult the **manual** here : [manual.md](/docs/manual.md)
 
 ___
 
