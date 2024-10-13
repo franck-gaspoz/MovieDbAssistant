@@ -22,7 +22,7 @@ public static partial class MovieModelBuilderExtensions
         {
             Title = query.Title,
             Year = query.Year,
-            Id  = query.Title.ToHexLettersAndDigitsString()
+            Id = query.Title.ToHexLettersAndDigitsString()
         };
         return data;
     }
@@ -34,25 +34,26 @@ public static partial class MovieModelBuilderExtensions
     /// <param name="model">The model.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="spiderId">The spider id.</param>
-    /// <param name="output">output result file path</param>
+    /// <param name="queryCacheFiles">output result file path (ignored if null)</param>
     /// <returns>A <see cref="MovieModel"/></returns>
     public static MovieModel SetupPostQuery(
         this QueryModel query,
         MovieModel model,
         DmnSettings settings,
         SpidersIds? spiderId,
-        string? output
+        List<string>? queryCacheFiles
         )
     {
         model.MetaData.ScraperTool = Path.GetFileName(
-        settings.Scrap.ToolPath);
+            settings.Scrap.ToolPath);
         model.MetaData.ScraperToolVersion = settings
             .App.MovieDbScraperToolVersion;
         model.MetaData.SpiderId = spiderId?.ToString();
         model.Sources.Play = query.Metadata?.Source;
         model.Sources.Download = query.Metadata?.Download;
         model.MetaData.Query = query;
-        model.MetaData.Query.Metadata!.QueryCacheFile = output;
+        if (queryCacheFiles != null)
+            model.MetaData.Query.Metadata!.QueryCacheFiles = queryCacheFiles;
         return model;
     }
 
@@ -63,22 +64,27 @@ public static partial class MovieModelBuilderExtensions
     /// <param name="models">The models.</param>
     /// <param name="settings">The settings.</param>
     /// <param name="spiderId">The spider id.</param>
-    /// <param name="output">output result file path</param>
+    /// <param name="queryCacheFiles">output result file path</param>
     /// <returns>A <see cref="MovieModel"/></returns>
     public static MoviesModel SetupPostQuery(
         this QueryModel query,
         MoviesModel models,
         DmnSettings settings,
         SpidersIds spiderId,
-        string? output
+        List<string>? queryCacheFiles
         )
     {
+        if (queryCacheFiles != null)
+            models.QueryCacheFiles =
+                models.QueryCacheFiles
+                    .AddRangeDistinct(queryCacheFiles)!;
+
         foreach (var model in models.Movies)
             query.SetupPostQuery(
                 model,
                 settings,
                 spiderId,
-                output);
+                queryCacheFiles);
         return models;
     }
 }

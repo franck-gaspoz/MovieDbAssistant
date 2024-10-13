@@ -48,7 +48,8 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
     }
 
     /// <summary>
-    /// build leven distance note: 0: worse, ..,  1: match
+    /// build leven distance note: 0: worse, .., 1:dist=0 1.1: match
+    /// <para>strict equality is superior by 0.1 to swap equality (dist=0)</para>
     /// </summary>
     /// <param name="src">src</param>
     /// <param name="target">target</param>
@@ -60,8 +61,10 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
             distLeven = 0;
         else
         {
-            distLeven = src.LevenshteinDistance(target);
-            distLeven = 1d / (distLeven + 1);
+            var distLevenStrict = src.LevenshteinDistance(target);
+            distLeven = 1d / (distLevenStrict + 1);
+            if (distLevenStrict == 0)
+                distLeven += 0.1;
         }
         return distLeven;
     }

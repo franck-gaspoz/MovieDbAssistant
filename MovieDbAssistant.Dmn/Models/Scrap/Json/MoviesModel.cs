@@ -12,4 +12,8 @@ public sealed partial class MoviesModel
     /// </summary>
     public List<MovieModel> Movies { get; set; } = [];
 
+    /// <summary>
+    /// all collection movies query result cache files
+    /// </summary>
+    public List<string> QueryCacheFiles { get; set; } = [];
 }

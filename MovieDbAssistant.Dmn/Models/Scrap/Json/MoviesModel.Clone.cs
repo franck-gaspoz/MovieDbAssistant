@@ -12,6 +12,7 @@ public sealed partial class MoviesModel
     public MoviesModel Clone()
         => new()
         {
-            Movies = Movies
+            Movies = Movies,
+            QueryCacheFiles = QueryCacheFiles
         };
 }

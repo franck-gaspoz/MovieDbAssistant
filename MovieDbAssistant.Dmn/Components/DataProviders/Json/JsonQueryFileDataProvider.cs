@@ -103,7 +103,7 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
                         defaultModel,
                         _settings.Value,
                         null,
-                        null);
+                        moviesModel?.QueryCacheFiles);
                 movies.Add(defaultModel);
             }
         });

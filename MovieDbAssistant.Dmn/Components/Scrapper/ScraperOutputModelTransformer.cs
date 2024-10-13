@@ -39,7 +39,7 @@ public sealed class ScraperOutputModelTransformer
     }
 
     /// <summary>
-    /// fix the json wraping it with OutputModelPostfix / OutputModelPrefix
+    /// fix the json wraping it inside OutputModelPostfix / OutputModelPrefix
     /// </summary>
     /// <param name="output"></param>
     /// <returns>string</returns>

@@ -47,6 +47,8 @@ public sealed partial class MoviesModel
     public MoviesModel? Merge(MoviesModel? moviesModel)
     {
         if (moviesModel == null) return moviesModel;
+        QueryCacheFiles.AddRange(moviesModel.QueryCacheFiles);
+        QueryCacheFiles = QueryCacheFiles.Distinct().ToList();
         Movies.AddRange(moviesModel.Movies);
         return this;
     }

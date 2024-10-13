@@ -21,6 +21,7 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     const string SEPARATOR_TEMP_FILENAME_ID = "-";
+    const string File_Extension_Json = ".json";
 
     readonly IConfiguration _config;
     readonly SourceModelAdapterFactory _sourceModelAdapterFactory;
@@ -52,7 +53,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         if (source is not QueryModel query) return null;
 
         var qid = query.Metadata!.InstanceId.Value + "";
-        var outputFile = query.HashKey + ".json";
+        var outputFile = query.HashKey + File_Extension_Json;
 
         Logger.LogInformation(
             this,
@@ -105,7 +106,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         models,
                         _settings.Value,
                         spiderId,
-                        output);
+                        [output]);
 
                 // merge spider models in catalog
                 aggregateModel.Merge(models);

@@ -38,7 +38,7 @@ public sealed class QueryMetadata : IIdentifiable
     /// <summary>
     /// query cache file if any, else null
     /// </summary>
-    public string? QueryCacheFile { get; set; }
+    public List<string>? QueryCacheFiles { get; set; }
 
     /// <summary>
     /// Gets the instance id.
