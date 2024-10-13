@@ -54,7 +54,8 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         data
             .Filter()
             .Distinct()
-            .Sort();
+            .Sort()
+            .Index();
 
         var folderName = Path.GetFileNameWithoutExtension(context.Source);
         var folder = Path.Combine(context.OutputPath, folderName);

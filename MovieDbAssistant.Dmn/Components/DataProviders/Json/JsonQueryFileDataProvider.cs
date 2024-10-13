@@ -59,6 +59,9 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
         if (queries == null) return null;
 
         var movies = new List<MovieModel>();
+
+        var queryCacheFiles = new List<string>();
+
         queries.ForEach(query =>
         {
             var provider = _serviceProvider
@@ -108,10 +111,20 @@ public sealed class JsonQueryFileDataProvider : JsonFileDataProvider
             }
         });
 
+        foreach (var movie in movies)
+            queryCacheFiles.AddRange(movie
+                .MetaData!
+                .Query!
+                .Metadata!
+                .QueryCacheFiles!);
+        
+        queryCacheFiles = queryCacheFiles.Distinct().ToList();
+
         // encapsulate type and add meta data (query,..)
         var data = new MoviesModel()
         {
-            Movies = movies
+            Movies = movies,
+            QueryCacheFiles = queryCacheFiles
         };
 
         return data;

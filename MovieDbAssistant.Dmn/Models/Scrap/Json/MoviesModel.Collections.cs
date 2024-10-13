@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
+﻿using MovieDbAssistant.Lib.Components.Extensions;
+
+namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 /// <summary>
 /// The movies model.
@@ -21,10 +23,26 @@ public sealed partial class MoviesModel
     /// <summary>
     /// sort by title
     /// </summary>
-    public void Sort() => Movies.Sort(new Comparison<MovieModel>(
-        (x, y) => x.Title == null ?
-            -1 : x.Title.CompareTo(y.Title)
-        ));
+    public MoviesModel Sort() 
+    {
+        Movies.Sort(new Comparison<MovieModel>(
+            (x, y) => x.Title == null ?
+                -1 : x.Title.CompareTo(y.Title)
+            ));
+        return this;
+    }
+
+    /// <summary>
+    /// index movies in the list (from 0)
+    /// </summary>
+    /// <returns>A <see cref="MoviesModel"/></returns>
+    public MoviesModel Index()
+    {
+        var idx = 0;
+        foreach ( var item in Movies) 
+            item.ListIndex = idx++;
+        return this;
+    }
 
     /// <summary>
     /// remove unacceptable models
@@ -47,8 +65,8 @@ public sealed partial class MoviesModel
     public MoviesModel? Merge(MoviesModel? moviesModel)
     {
         if (moviesModel == null) return moviesModel;
-        QueryCacheFiles.AddRange(moviesModel.QueryCacheFiles);
-        QueryCacheFiles = QueryCacheFiles.Distinct().ToList();
+        QueryCacheFiles = QueryCacheFiles.AddRangeDistinct(
+            moviesModel.QueryCacheFiles)!;
         Movies.AddRange(moviesModel.Movies);
         return this;
     }
