@@ -15,8 +15,8 @@ Index
 
 - [Template folder structure](#tfs)
 - [Application resources folder](#arf)
-- Template specification
-- Template configuration
+- [Template specification](#tps)
+- [Template configuration])(#tc)
 - [Template language](#tpl)
 - [Template data & properties](#tdp)
 
@@ -90,6 +90,130 @@ These resources can be copied on template demand at build time.
 	      📄 template-1.0.0.js
 	   📁 ext
 	📁 movie-page-list-wallpapers
+```
+
+<a name="tps"></a>
+## Template specification
+
+A template is specified in the file named `template.json` at the root of the template folder.
+
+```json
+{
+  // template id
+  "Id": "dark",
+  // template display name
+  "Name": "Dark",
+  "Description": "minimalist with movies pictures and dark panes"
+  "Version": "1.0.0",
+  "VersionDate": "2024/10/03",
+  "Author": "F. G.",
+
+  // template files
+
+  "Templates": {
+	// list page template
+    "List": "page-list.tpl.html",
+	// details page template
+    "Details": "page-details.tpl.html"
+  },
+
+  // template options
+
+  "Options": {
+    "Paths": {
+	  // folder of pages templates
+      "Pages": "pages",
+	  // folder of parts templates
+      "Parts": "parts"
+    },
+	// page list options
+    "PageList": {
+      "Background": "cinema-wallpaper-16.jpg",
+      "Title": "My Movies",
+      "PageTitle": "My Movies",
+      "Filename": "index"
+    },
+	// page detail options
+    "PageDetail": {
+      "Background": "../img/cinema-wallpaper-16.jpg",
+      "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
+      "PageTitle": "My Movies"
+    },
+	// common options
+    "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+    "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+    "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
+    "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
+    "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
+  },
+  // template to produce an horizontal separator for string arrays values
+  "HSep": "<span class=\"hsep\"></span>",
+
+  // back-end functions mapped to variables that must be transformed
+
+  "Transforms": [
+    {
+      "Target": "Interests",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "Stars",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "Actors",
+      "Operation": "Transform_Array"
+    },
+    {
+      "Target": "ActorModel",
+      "Operation": "Transform_ActorSimple"
+    }
+  ],
+
+  // copy files from the resources folder
+
+  "Resources": [
+    "/fonts/ComicNeue-Light.ttf:/fonts",
+    "/fonts/MomTypewritter.ttf:/fonts",
+    "/fonts/Play Chickens.ttf:/fonts",
+    "/fonts/Quesha.ttf:/fonts",
+    "/fonts/Vonique 92_D.otf:/fonts",
+    "/fonts/Open 24 Display St.ttf:/fonts",
+    "/fonts/Renegade Master.ttf:/fonts",
+    "/icons/back.png:/img",
+    "/icons/download.png:/img",
+    "/icons/favicon.ico:/img",
+    "/icons/house.png:/img",
+    "/icons/left-arrow.png:/img",
+    "/icons/play.png:/img",
+    "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
+    "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
+    "/js/ext/jquery-3.7.1.min.js:/js/ext",
+    "/js/core/template-1.0.0.js:/js/core",
+    "/img/image-not-availble-300x175.jpg:/img",
+    "/img/image-404-630x630.jpg:/img"
+  ],
+  
+  // copy folders & files from the template folder
+
+  "Files": [
+    "/img",
+    "/css",
+    "/fonts",
+    "/js"
+  ]
+}s
+```
+
+<a name="tc"></a>
+## Template configuration
+
+Some sections of the application settings concern the template engine.
+
+```json
+
 ```
 
 <a name="tpl"></a>
