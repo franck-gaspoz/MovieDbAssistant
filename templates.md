@@ -1,4 +1,4 @@
-___
+﻿___
 
 # Movie Db Assistant : Templates
 version: 1.0.0
@@ -14,7 +14,7 @@ ___
 Index
 
 - [Template folder structure](#tfs)
-- Application resources folder
+- [Application resources folder](#arf)
 - Template specification
 - Template configuration
 - [Template language](#tpl)
@@ -25,7 +25,72 @@ ___
 <a name="tfs"></a>
 ## Template folder structure
 
+```yaml
+# path /rsc/html/templates/
 
+📁 templates
+	📁 <templateId>
+		📄 template.json
+		📁 pages
+		   📄 page-details.tpl.html
+		   📄 page-list.tpl.html
+		📁 parts
+		   # any tpl file
+		   📄 ...
+		# any specific folder and/or files
+		📁 css
+		📁 js
+		📁 img	
+		📁 ...
+		📄 ...
+```
+
+this is the minimalistic folder structure of a template with id **`templateId`**,
+defining the mandatory two pages *list* and *detail*, including any **`part`** and any files for doing this.
+
+The elements names indicated here may change since they are inflected throught the template configuration.
+
+### exemple
+
+the default theme **`dark`** contains these files/folders:
+
+```yaml
+📁 templates
+	📁 dark
+		📄 template.json
+		📁 pages
+		   📄 page-details.tpl.html
+		   📄 page-list.tpl.html
+		📁 parts
+		   📄 head.tpl.html
+		   📄 head-links.tpl.html
+		   📄 head-metas.tpl.html
+		   📄 head-scripts.tpl.html
+		   📄 html.tpl.html
+		📁 css
+		   📄 styles.css
+```
+
+<a name="tfs"></a>
+## Application resources folder
+
+Templates can rely on resources provided by the application.
+These resources can be copied on template demand at build time.
+
+```yaml
+# path rsc/html/assets/
+
+📁 assets
+    📁 fonts
+	📁 icons
+	📁 img
+	📁 js
+	   📁 core
+          # the mandatory template engine js
+	      📄 template-1.0.0.js
+	   📁 ext
+	📁 movie-page-list-wallpapers
+```
 
 <a name="tpl"></a>
 ## Template language
@@ -126,7 +191,7 @@ const data = {
 	"Title": "I.S.S.",
 	"OriginalTitle": "I.S.S.",
 	"QueryTitle": "I.S.S.",
-	"Summary": "Lorsqu'une guerre mondiale �clate sur Terre, entre l'Am�rique et la Russie, les deux nations contactent secr�tement leurs astronautes � bord de l'ISS et leur donnent des instructions pour pr...",
+	"Summary": "Lorsqu'une guerre mondiale éclate sur Terre, entre l'Amérique et la Russie, les deux nations contactent secrètement leurs astronautes à bord de l'ISS et leur donnent des instructions pour pr...",
 	"Interests": [
 		"Psychological Thriller",
 		"Space Sci-Fi",
@@ -136,9 +201,9 @@ const data = {
 	"Rating": "5,3",
 	"RatingCount": "10",
 	"Duration": "1h 35min",
-	"ReleaseDate": "10 f�vr. 2024",
+	"ReleaseDate": "10 févr. 2024",
 	"Year": "2024",
-	"Vote": "10�k",
+	"Vote": "10 k",
 	"Director": "Gabriela Cowperthwaite",
 	"Writers": [
 		"Nick Shafir"
@@ -160,7 +225,7 @@ const data = {
 		},
 		/* ... */
 		{
-			"Actor": "Pilou Asb�k",
+			"Actor": "Pilou Asbæk",
 			"PicUrl": [
 				"https://m.media-amazon.com/images/M/MV5BZmU4NmE5NGYtYzk0Mi00MDQyLTgxZWUtNGEyMGRkYjQ2N2E3XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg"
 			],
