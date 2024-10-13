@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Configuration;
+﻿using MovieDbAssistant.Dmn.Models.Queries;
+
+namespace MovieDbAssistant.Dmn.Configuration;
 
 /// <summary>
 /// filters settings
@@ -22,4 +24,9 @@ public sealed class FiltersSettings
     /// </summary>
     /// <value>An <see cref="int"/></value>
     public int Count { get; set; }
+
+    /// <summary>
+    /// type of title (movie,game,..)
+    /// </summary>
+    public TitleTypes[]? Types { get; set; }
 }

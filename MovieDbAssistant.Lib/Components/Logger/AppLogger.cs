@@ -21,7 +21,7 @@ public class AppLogger(
     AppLoggerConfiguration __appLoggerConfiguration = new();
     AppLoggerConfiguration _appLoggerConfiguration
     {
-        get => configure!=null 
+        get => configure != null
             ? configure(__appLoggerConfiguration)
             : __appLoggerConfiguration;
         set => __appLoggerConfiguration = value;
@@ -45,15 +45,15 @@ public class AppLogger(
         var config = _appLoggerConfiguration;
         if (!config.IsEnabled) return;
 
-        void Dbg(string caller,string? msg)
+        void Dbg(string caller, string? msg)
         {
             msg = msg?.Replace('\n', ' ');
             Debug.WriteLine($"{_itemCount++,6} | {AppLoggerConfiguration.GetLogLevel(logLevel),5} | {Environment.CurrentManagedThreadId,5} | {caller,30} | {msg}");
         }
 
         var msg = state?.ToString() ?? string.Empty;
-        var (caller,message) = msg.ExtractCallerMessage();
-        Dbg(caller,message);
+        var (caller, message) = msg.ExtractCallerMessage();
+        Dbg(caller, message);
 
         if (exception != null)
         {

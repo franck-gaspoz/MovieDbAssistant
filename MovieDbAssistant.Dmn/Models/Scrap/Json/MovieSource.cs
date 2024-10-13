@@ -3,7 +3,7 @@
 /// <summary>
 /// sources of a movie
 /// </summary>
-public sealed class MovieSources
+public sealed partial class MovieSources
 {
     /// <summary>
     /// file url

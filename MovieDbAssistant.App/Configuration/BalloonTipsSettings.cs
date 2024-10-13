@@ -4,7 +4,7 @@
 /// The balloon settings.
 /// </summary>
 public sealed class BalloonTipsSettings
-{    
+{
     /// <summary>
     /// The balloon tip start.
     /// </summary>

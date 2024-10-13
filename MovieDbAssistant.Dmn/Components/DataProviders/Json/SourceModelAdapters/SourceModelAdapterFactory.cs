@@ -32,18 +32,18 @@ public sealed class SourceModelAdapterFactory : IIdentifiable
     /// </summary>
     /// <param name="spiderId">spider id</param>
     /// <returns>source model adapter</returns>
-    public ISourceModelAdapter Create(SpidersIds spiderId)
+    public ISourceQueryModelAdapter Create(SpidersIds spiderId)
     {
-        var typeName = typeof(ISourceModelAdapter).Namespace
+        var typeName = typeof(ISourceQueryModelAdapter).Namespace
             + NamespaceSeparator
             + spiderId.ToString()
                 .ToFirstUpper()
-            + nameof(ISourceModelAdapter)[1..];
+            + nameof(ISourceQueryModelAdapter)[1..];
 
         var type = GetType().Assembly
             .GetType(typeName);
 
-        return (ISourceModelAdapter)_serviceProvider
+        return (ISourceQueryModelAdapter)_serviceProvider
             .GetRequiredService(type!);
     }
 }

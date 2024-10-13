@@ -6,7 +6,7 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters
 /// <summary>
 /// source model adapter interface
 /// </summary>
-public interface ISourceModelAdapter
+public interface ISourceQueryModelAdapter
 {
     /// <summary>
     /// instance id

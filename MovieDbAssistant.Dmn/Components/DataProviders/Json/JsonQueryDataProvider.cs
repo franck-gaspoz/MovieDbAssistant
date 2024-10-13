@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 using MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
 using MovieDbAssistant.Dmn.Components.Scrapper;
 using MovieDbAssistant.Dmn.Configuration;
@@ -20,6 +21,7 @@ namespace MovieDbAssistant.Dmn.Components.DataProviders.Json;
 public sealed class JsonQueryDataProvider : JsonDataProvider
 {
     const string SEPARATOR_TEMP_FILENAME_ID = "-";
+    const string File_Extension_Json = ".json";
 
     readonly IConfiguration _config;
     readonly SourceModelAdapterFactory _sourceModelAdapterFactory;
@@ -51,7 +53,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
         if (source is not QueryModel query) return null;
 
         var qid = query.Metadata!.InstanceId.Value + "";
-        var outputFile = query.HashKey + ".json";
+        var outputFile = query.HashKey + File_Extension_Json;
 
         Logger.LogInformation(
             this,
@@ -99,18 +101,12 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                         Logger.LogInformation(this, $"scrap #{query.InstanceId()} completed");
                 }
 
-                if (models!=null)
-                    foreach ( var model in models.Movies )
-                    {
-                        model.MetaData.ScraperTool = Path.GetFileName(
-                            _settings.Value.Scrap.ToolPath);
-                        model.MetaData.ScraperToolVersion = _settings.Value
-                            .App.MovieDbScraperToolVersion;
-                        model.MetaData.SpiderId = spiderId.ToString();
-                        model.Sources.Play = query.Metadata.Source;
-                        model.Sources.Download = query.Metadata.Download;
-                        model.MetaData.Query = query;
-                    }
+                if (models != null)
+                    query.SetupPostQuery(
+                        models,
+                        _settings.Value,
+                        spiderId,
+                        [output]);
 
                 // merge spider models in catalog
                 aggregateModel.Merge(models);

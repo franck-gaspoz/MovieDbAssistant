@@ -25,7 +25,7 @@ public interface ISignalR : IIdentifiable
     /// <param name="listener">listener</param>
     /// <param name="publisher">publisher</param>
     /// <param name="once">if true, map for the next handling only</param>
-    void MapSubscriber(object listener, object publisher,bool once);
+    void MapSubscriber(object listener, object publisher, bool once);
 
     /// <summary>
     /// Get handler method.

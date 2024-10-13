@@ -15,7 +15,7 @@ public sealed class QueryMetadata : IIdentifiable
     /// Gets or sets the source.
     /// </summary>
     /// <value>A <see cref="string? "/></value>
-    public string? Source { get; set;}
+    public string? Source { get; set; }
 
     /// <summary>
     /// Gets or sets the download.
@@ -33,7 +33,12 @@ public sealed class QueryMetadata : IIdentifiable
     /// Gets or sets the query file line.
     /// </summary>
     /// <value>An <see cref="int? "/></value>
-    public int? QueryFileLine {  get; set; }
+    public int? QueryFileLine { get; set; }
+
+    /// <summary>
+    /// query cache file if any, else null
+    /// </summary>
+    public List<string>? QueryCacheFiles { get; set; }
 
     /// <summary>
     /// Gets the instance id.

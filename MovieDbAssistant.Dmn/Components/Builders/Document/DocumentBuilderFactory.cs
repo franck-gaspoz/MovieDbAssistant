@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-using MovieDbAssistant.Dmn.Components.Builder;
+using MovieDbAssistant.Dmn.Components.DataProviders;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
-namespace MovieDbAssistant.Dmn.Components.DataProviders;
+namespace MovieDbAssistant.Dmn.Components.Builders.Document;
 
 #pragma warning disable CA1822 // Marquer les membres comme étant static
 

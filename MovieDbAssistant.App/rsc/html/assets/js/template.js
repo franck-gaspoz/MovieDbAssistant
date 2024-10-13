@@ -8,6 +8,9 @@ const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
 const Separator_ClassCondition_ClassResult = '--'
 
+const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 /**
  * front sode template engine
  * @class
@@ -92,13 +95,70 @@ class Template {
      * @property {string[]} Characters characters
      */
 
-    /** @param {MoviesModel} data movies set */
+    /**
+     * build page movies list
+     * @param {MoviesModel} data movies set
+     */
     buildItems(data) {
         data.Movies.forEach((e, i) => {
             this.addItem(e)
         })
         this.removeItemModel()
+        this.postInitCommon()
+    }
+
+    /**
+     * build page movie detail
+     * @param {MovieModel} data movie
+     */
+    buildDetails(data) {
+        var $src = $(Tag_Body)
+        var html = $src[0].outerHTML
+        html = this.parseVars(html, data)
+        $src.html(html)
+        this.setStates(null, data)
+        this.setLinks($src)
+        this.postInitCommon()
+    }
+
+    postInitCommon() {
         this.setAlternatePics()
+        this.enableClock()
+        this.enableDate()
+    }
+
+    enableDate() {
+        this.dateUpdate()
+        setTimeout(() => this.enableDate(), 1000 * 30)
+    }
+
+    dateUpdate() {
+        const now = new Date()
+        const day = now.getDay();
+        const date = now.getDate();
+        const month = now.getMonth();
+        const year = now.getFullYear();
+        const str = `${dayNames[day].substring(0, 3)} ${date} ${monthNames[month].substring(0, 3)}`;
+        props['date'] = str
+        $('.with-date').html(str)
+    }
+
+    enableClock() {
+        this.clockUpdate()
+        setTimeout(() => this.enableClock(), 500)
+    }
+
+    clockUpdate() {
+        this.clockUpdating = true
+        const now = new Date()
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
+        //const str = hours + " : " + minutes + " : " + seconds;
+        const str = hours + " : " + minutes;
+        props['clock'] = str
+        $('.with-clock').html(str)
+        this.clockUpdating = false
     }
 
     setAlternatePics() {
@@ -136,6 +196,7 @@ class Template {
         Object.assign(p, data)
         Object.assign(p, props)
         var src = $it[0].outerHTML
+        window.pvars = []
         src = this.parseVars(src, p)
 
         var $container = $('.movie-list')
@@ -162,17 +223,6 @@ class Template {
     removeItemModel() {
         const $it = $('#ItemModel')
         $it.remove()
-    }
-
-    /** @param {MovieModel} data movie */
-    buildDetails(data) {
-        var $src = $(Tag_Body)
-        var html = $src[0].outerHTML
-        html = this.parseVars(html, data)
-        $src.html(html)
-        this.setStates(null, data)
-        this.setLinks($src)
-        this.setAlternatePics()
     }
 
     setLinks($from) {
@@ -313,12 +363,17 @@ class Template {
                 if (prefix)
                     varnp = prefix + '.' + varnp
 
+                const srcVarName = this.getVar(varnp)
                 tpl = tpl.replaceAll(
-                    this.getVar(varnp),
+                    srcVarName,
                     this.props[p] ?
                         this.props[p](this, val)
                         : data[p]
                 )
+
+                // store as array for debug
+                if (!window.pvars) window.pvars = []
+                window.pvars.push(srcVarName)
             }
         }
         return tpl

@@ -8,5 +8,5 @@ public sealed class UrlsSettings
     /// <summary>
     /// The url help git hub.
     /// </summary>
-    public required string HelpGitHub {get;set;}
+    public required string HelpGitHub { get; set; }
 }

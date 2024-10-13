@@ -73,7 +73,8 @@ public sealed class ProcessWrapper : IIdentifiable
         string filename,
         IEnumerable<string> args,
         bool waitForExit = true,
-        bool redirectStreams = false)
+        bool redirectStreams = false,
+        bool showWindow = true)
     {
         Psi = new ProcessStartInfo(
             filename,
@@ -83,8 +84,10 @@ public sealed class ProcessWrapper : IIdentifiable
             RedirectStandardOutput = redirectStreams,
             RedirectStandardError = redirectStreams,
             RedirectStandardInput = redirectStreams,
-            CreateNoWindow = false,
-            WindowStyle = ProcessWindowStyle.Normal,   
+            CreateNoWindow = showWindow,
+            WindowStyle = showWindow?
+                ProcessWindowStyle.Normal
+                : ProcessWindowStyle.Hidden,
             WorkingDirectory = Path.GetDirectoryName(filename)
         };
 
@@ -94,7 +97,7 @@ public sealed class ProcessWrapper : IIdentifiable
         {
             process.OutputDataReceived += Process_OutputDataReceived;
             process.ErrorDataReceived += Process_ErrorDataReceived;
-            
+
             if (waitForExit)
                 process.WaitForExit();
 
@@ -139,7 +142,7 @@ public sealed class ProcessWrapper : IIdentifiable
         AppendLogDelta(s, ref _remain);
     }
 
-    void AppendLog(string txt,bool isError)
+    void AppendLog(string txt, bool isError)
     {
         var t = txt.Split('\n');
         foreach (var s in t)

@@ -9,7 +9,7 @@ namespace MovieDbAssistant.Dmn.Components.Query;
 /// The query list format title parser.
 /// </summary>
 [Singleton]
-public sealed class QueryListFormatTitleParser : 
+public sealed class QueryListFormatTitleParser :
     IIdentifiable,
     IQueryListFormatParser
 {
@@ -17,17 +17,17 @@ public sealed class QueryListFormatTitleParser :
     /// Gets the instance id.
     /// </summary>
     /// <value>A <see cref="SharedCounter"/></value>
-    public SharedCounter InstanceId {get;}
+    public SharedCounter InstanceId { get; }
 
-    public QueryListFormatTitleParser() 
+    public QueryListFormatTitleParser()
         => InstanceId = new(this);
 
     /// <inheritdoc/>
     public List<QueryModel> Parse(string[] lines)
     {
         var queries = new List<QueryModel>();
-        
-        void AddQueryModel(string title,int i)
+
+        void AddQueryModel(string title, int i)
         {
             var model = new QueryModel(title);
             model.Metadata ??= new();
@@ -39,7 +39,7 @@ public sealed class QueryListFormatTitleParser :
         {
             var s = lines[i];
             if (!s.IsCommentLine() && !s.IsEmptyLine())
-                AddQueryModel(s.Trim(),i);
+                AddQueryModel(s.Trim(), i);
         }
         return queries;
     }

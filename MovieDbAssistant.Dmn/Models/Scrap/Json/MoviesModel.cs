@@ -5,53 +5,15 @@
 /// <summary>
 /// The movies model.
 /// </summary>
-public sealed class MoviesModel
+public sealed partial class MoviesModel
 {
+    /// <summary>
+    /// movies models
+    /// </summary>
     public List<MovieModel> Movies { get; set; } = [];
 
     /// <summary>
-    /// apply distinct on movie list
+    /// all collection movies query result cache files
     /// </summary>
-    public MoviesModel Distinct()
-    {
-        var movies = Movies.GroupBy(x => x.Id)
-            .Select(x => x.First())
-            .ToList();
-        Movies.Clear();
-        Movies.AddRange(movies);
-        return this;
-    }
-
-    /// <summary>
-    /// sort by title
-    /// </summary>
-    public void Sort() => Movies.Sort(new Comparison<MovieModel>(
-        (x, y) => x.Title == null ? 
-            -1 : x.Title.CompareTo(y.Title)
-        ));
-
-    /// <summary>
-    /// remove unacceptable models
-    /// </summary>
-    public MoviesModel Filter()
-    {
-        var movies = Movies
-            .Where(x => !string.IsNullOrWhiteSpace(x.Title))
-            .ToList();
-        Movies.Clear();
-        Movies.AddRange(movies);
-        return this;
-    }
-
-    /// <summary>
-    /// merge another model into this one
-    /// </summary>
-    /// <param name="moviesModel">The movies model.</param>
-    /// <returns>A <see cref="MoviesModel? "/>this model</returns>
-    public MoviesModel? Merge(MoviesModel? moviesModel)
-    {
-        if (moviesModel == null) return moviesModel;
-        Movies.AddRange(moviesModel.Movies);
-        return this;
-    }
+    public List<string> QueryCacheFiles { get; set; } = [];
 }

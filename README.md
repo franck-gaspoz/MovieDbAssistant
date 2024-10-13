@@ -17,20 +17,30 @@ Can scrap data from:
 ![html5](https://img.shields.io/static/v1?label=&message=HTML5&color=cdf998&style=plastic&logo=html5) ![css3](https://img.shields.io/static/v1?label=&message=CSS3&color=cdf998&style=plastic&logo=css3&logoColor=black)
 ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
-## dependencies
+## Dependencies
 
-- **APP**
+- **App (GUI)**
 
-    - `MovieDbScrapper`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md)
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - framework `net8.0-windows10.0.22621.0` (`Microsoft.Windows.Desktop.App.WindowsForms`)
+    - `OS`: Windows 10.0.22621.0 and +
+
+- **Dmn**
+
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - `MovieDbSpiders`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md)
     - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+    - `OS`: Linux, Windows, 
 
-- **CLI**
+- **Lib**
 
-    - `CommandLine.NetCore`: [/CommandLine.NetCore/blob/main/README.md](https://github.com/franck-gaspoz/CommandLine.NetCore/blob/main/README.md)
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - `OS`: Linux, Windows, OSX
 
-- **GUI**
+- **Web Api (*coming soon*)**
 
-    - framework `net8.0-windows10.0.22621.0`
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - `OS`: Linux, Windows, OSX
 
 ___
 
@@ -69,12 +79,17 @@ ___
 
 ## Releases History
 
-2024//10 - 1.0
+2024/../10 - 1.0
 initial version
 
 functionalities:
 
 - build html movie catalogs documents from:
-    - scrapper [MovieDbScraper](https://github.com/franck-gaspoz/MovieDbScraper/blob/master/README.md) `json` output
+    - use [MovieDbSpiders](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md) `json` output
     - direct scrap from queries given in files (several formats are supported)
+    - multi format queries
     - direct scrap from a query given in last text clipboard entry
+    - html catalog templates
+    - html catalog resources : backgrounds, fonts, css, js template engine
+- Windows setup for System Tray GUI
+

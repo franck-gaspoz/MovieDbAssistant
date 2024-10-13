@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
 
-using MovieDbAssistant.Dmn.Models.Queries;
-
 namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 #pragma warning disable CD1606 // The property must have a documentation header.
@@ -9,9 +7,14 @@ namespace MovieDbAssistant.Dmn.Models.Scrap.Json;
 /// <summary>
 /// The movie model
 /// </summary>
-[DebuggerDisplay("{Title} | {MinPicAlt}")]
+[DebuggerDisplay("{Title} | {_score}")]
 public sealed partial class MovieModel
 {
+    /// <summary>
+    /// dynamic after query score
+    /// </summary>
+    string _score => $"aff={MetaData?.SearchScore?.Affinity} dco={MetaData?.SearchScore?.DataCompletion} v={MetaData?.SearchScore?.Value}";
+
     /// <summary>
     /// url of scraped page: details
     /// </summary>
@@ -33,6 +36,16 @@ public sealed partial class MovieModel
     public string? Id { get; set; }
 
     public string? Title { get; set; }
+
+    /// <summary>
+    /// scraped title by opposite to queried title
+    /// </summary>
+    public string? OriginalTitle { get; set; }
+
+    /// <summary>
+    /// queried title by opposite to scraped title in case of built for a query (filter Title)
+    /// </summary>
+    public string? QueryTitle { get; set; }
 
     public string? Summary { get; set; }
 

@@ -14,7 +14,7 @@ public sealed class ScrapSettings
     /// <summary>
     /// output model prefix
     /// </summary>
-    public required string OutputModelPrefix { get;set;}
+    public required string OutputModelPrefix { get; set; }
 
     /// <summary>
     /// output model postfix
@@ -25,7 +25,12 @@ public sealed class ScrapSettings
     /// Gets or sets a value indicating whether skip if temp output file already exists.
     /// </summary>
     /// <value>A <see cref="bool"/></value>
-    public bool SkipIfTempOutputFileAlreadyExists {  get; set; }
+    public bool SkipIfTempOutputFileAlreadyExists { get; set; }
+
+    /// <summary>
+    /// if true, keep queried title when enter a new movie model for a query, thus replace the remote title    
+    /// </summary>
+    public bool KeepQueriedTitle { get; set; }
 
     /// <summary>
     /// Gets or sets the default filters.

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-using MovieDbAssistant.Dmn.Components.Builder;
+using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Dmn.Components.Builders.Templates;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
@@ -10,7 +10,6 @@ using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
 
 using static MovieDbAssistant.Dmn.Components.Builders.Html.HtmDocumentBuilderSettings;
-using static MovieDbAssistant.Dmn.Globals;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 
@@ -47,7 +46,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
     /// <param name="context">The context.</param>
     /// <param name="data">The data.</param>
     public void Build(
-        DocumentBuilderContext context, 
+        DocumentBuilderContext context,
         MoviesModel data)
     {
         _logger.LogInformation(this, $"process json: {data.Movies.Count} movies");
@@ -55,7 +54,8 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
         data
             .Filter()
             .Distinct()
-            .Sort();
+            .Sort()
+            .Index();
 
         var folderName = Path.GetFileNameWithoutExtension(context.Source);
         var folder = Path.Combine(context.OutputPath, folderName);
@@ -84,7 +84,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         // build list pages
 
-            .BuildPageList(htmlContext,data);
+            .BuildPageList(htmlContext, data);
 
         // build detail pages
 
@@ -113,7 +113,10 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                         data.Movies[index + 1].Key!,
                         _dmnSettings.Value.Build.Html.Extension)
                     : null
-                );
+                )
+            {
+                Folder = folderName
+            };
             builders.Add(builder);
             index++;
         }

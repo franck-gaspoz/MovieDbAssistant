@@ -66,7 +66,7 @@ public sealed class TemplateModel
     /// <summary>
     /// gets or sets the resources
     /// </summary>
-    public List<string> Resources {  get; set; } = [];
+    public List<string> Resources { get; set; } = [];
 
     #region working properties
 
@@ -78,7 +78,7 @@ public sealed class TemplateModel
     /// <summary>
     /// transforms
     /// </summary>
-    public List<TransformModel> Transforms { get; set; } = new();
+    public List<TransformModel> Transforms { get; set; } = [];
 
     /// <summary>
     /// horzontal separator html

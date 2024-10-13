@@ -37,7 +37,7 @@ public sealed class TemplatesModel
     public void Load(string templatePath)
     {
         TplList = File.ReadAllText(
-            Path.Combine(templatePath,List));
+            Path.Combine(templatePath, List));
 
         TplDetails = File.ReadAllText(
             Path.Combine(templatePath, Details));

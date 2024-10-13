@@ -11,4 +11,4 @@ namespace MovieDbAssistant.App.Commands;
 public sealed record BuildInputFolderCommand(
     ActionContext? ActionContext = null,
     bool HandleUI = true
-    ) :ActionCommandBase(ActionContext, HandleUI);
+    ) : ActionCommandBase(ActionContext, HandleUI);

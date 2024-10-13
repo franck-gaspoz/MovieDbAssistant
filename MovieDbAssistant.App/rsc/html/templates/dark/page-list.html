@@ -45,26 +45,55 @@
     <!-- -->
 </head>
 
-<body class="movie-page-list">
+<body class="movie-page-list prevent-select">
+
+    <!-- background pane -->
 
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
+    <!-- bottom nav bar -->
+
+    <div class="movie-page-bottom-nav-container">
+        <div class="bottom-nav-container-grid">
+            <div class="bottom-nav-container-left">
+                <span class="nav-text">{{pageTitleDetails}}</span>
+            </div>
+            <div class="bottom-nav-container-middle">
+                <span class="nav-text">{{subTitleList}}</span>
+            </div>
+            <div class="bottom-nav-container-right">
+                <span class="with-date nav-text nav-date">{{date}}</span>
+            </div>
+            <div class="bottom-nav-container-right">
+                <span class="with-clock nav-text nav-clock">{{clock}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- page list title -->
+
     <div class="movie-page-list-title">{{titleList}} : {{subTitleList}}</div>
+
+    <!-- movie list -->
 
     <div class="movie-list">
 
-        <div class="movie-list-item-container hidden" id="ItemModel">
+        <!-- movie item container -->
 
-            <a name="{{key}}"></a>
+        <div class="movie-list-item-container hidden" id="ItemModel" data-index="{{listIndex}}">
+
+            <!-- movie item background -->
 
             <div class="movie-list-item-background">
 
-                <div class="movie-list-item"
-                        data-attr-key="{{key}}"
-                        data-attr-id="{{id}}">
+                <!-- movie item -->
 
-                    <table width="100%">
+                <div class="movie-list-item"
+                     data-attr-key="{{key}}"
+                     data-attr-id="{{id}}">
+
+                    <table width="100%" class="movie-list-item-wrapper">
                         <tr>
                             <td class="no-padding-right">
                                 <table width="100%">
@@ -72,10 +101,14 @@
                                         <td width="100%" class="cell-title" valign="top">
                                             <span class="title if-title">{{title}}</span>
                                             <br />
+                                            <span class="query-title if-queryTitle">
+                                                from query: &nbsp;
+                                                <span class="query-title-value">{{queryTitle}}</span>
+                                            </span>
                                             <span class="interests text if-interests">{{interests}}</span>
                                             <br />
                                             <span class="summary text if-summary">{{summary}}</span>
-                                        </td>                                        
+                                        </td>
 
                                         <td valign="top" class="cell-rating-year grid no-padding-right min-width-8em">
 
@@ -89,7 +122,7 @@
                                                 <span class="year text if-year padding-left text-align-right">{{year}}</span>
                                             </div>
 
-                                            <div class="cell1_1 sources">
+                                            <div class="cell1_1 sources if_no-summary--small-list-item">
                                                 <img data-href="{{sources.play}}" data-target="movie_download" src="./img/play.png" class="nav-icon play-icon if-sources-play" />
                                                 <img data-href="{{sources.download}}" src="./img/download.png" class="nav-icon download-icon no-margin-right if-sources-download" />
                                             </div>
@@ -120,16 +153,17 @@
                             </td>
 
                             <td class="movie-pic-container" valign="top">
-                                <img src="{{minPicUrl}}" class="alternate-pic-list"/>
+                                <img src="{{minPicUrl}}" class="alternate-pic-list" />
                             </td>
                         </tr>
                     </table>
 
                 </div>
+            
             </div>
-        
-        </div>            
-        
+
+        </div>
+
     </div>
 
 </body>

@@ -103,8 +103,7 @@ public static class AppLoggerExtensions
         this ILogger logger,
         object caller,
         string message,
-        Exception exception)
-    {
+        Exception exception) =>
         //logger.LogError(message.CollapseCallerMessage(caller));
         logger.Log(
             LogLevel.Error,
@@ -112,7 +111,6 @@ public static class AppLoggerExtensions
             message.CollapseCallerMessage(caller),
             []
            );
-    }
 
     /// <summary>
     /// Log the info.
@@ -137,7 +135,7 @@ public static class AppLoggerExtensions
     /// </summary>
     /// <param name="message">The message.</param>
     /// <returns>A <see cref="(string Caller,string Message) "/></returns>
-    public static (string Caller,string Message) ExtractCallerMessage(this string message)
+    public static (string Caller, string Message) ExtractCallerMessage(this string message)
     {
         var t = message.Split(Sep_CallerMessage);
         if (t.Length == 1)

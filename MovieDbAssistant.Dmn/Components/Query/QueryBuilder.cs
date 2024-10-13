@@ -17,7 +17,8 @@ public sealed class QueryBuilder : IIdentifiable
 {
     public QueryBuilder(
         ILogger<QueryBuilder> _logger,
-        IServiceProvider _serviceProvider) {
+        IServiceProvider _serviceProvider)
+    {
         InstanceId = new(this);
         this._logger = _logger;
         this._serviceProvider = _serviceProvider;
@@ -40,7 +41,7 @@ public sealed class QueryBuilder : IIdentifiable
     /// <param name="queryFile">query file name</param>
     /// <param name="content">query source file content</param>
     /// <returns>queries models</returns>
-    public List<QueryModel> Build(string queryFile,string content)
+    public List<QueryModel> Build(string queryFile, string content)
     {
         _queries.Clear();
         _lines = content
@@ -53,15 +54,15 @@ public sealed class QueryBuilder : IIdentifiable
                 .GetRequiredService<QueryListFormatTitleParser>()
                     : _serviceProvider.GetRequiredService<QueryListFormatTitleParser>();
 
-        _logger.LogInformation(this, "query parser: "+formatParser.GetType().Name);
+        _logger.LogInformation(this, "query parser: " + formatParser.GetType().Name);
 
         var res = formatParser.Parse(_lines);
-        AddMetadata(queryFile,res);
+        AddMetadata(queryFile, res);
 
         return res;
     }
 
-    static void AddMetadata(string queryFile,List<QueryModel>? queries)
+    static void AddMetadata(string queryFile, List<QueryModel>? queries)
     {
         if (queries == null) return;
         foreach (var query in queries)
@@ -114,8 +115,8 @@ public sealed class QueryBuilder : IIdentifiable
             j--;
         }
 
-        _lines = _lines[i .. (j + 1)];
-        for (i=0;i<_lines.Length;i++)
-            _lines[i]=_lines[i].Trim();
+        _lines = _lines[i..(j + 1)];
+        for (i = 0; i < _lines.Length; i++)
+            _lines[i] = _lines[i].Trim();
     }
 }

@@ -3,7 +3,7 @@
 using MovieDbAssistant.Dmn.Services;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
-namespace MovieDbAssistant.Dmn.Components.Builders;
+namespace MovieDbAssistant.Dmn.Components.Builders.Document;
 
 /// <summary>
 /// document builder service factory.

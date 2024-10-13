@@ -19,4 +19,10 @@ public sealed partial class MovieModel
     /// <para>initialized by <code>SetupModel</code>and others</para>
     /// </summary>
     public string? Filename { get; set; }
+
+    /// <summary>
+    /// index in a list for any purpose
+    /// <para>in a catalog context is setted to index in the owner movies list</para>
+    /// </summary>
+    public int? ListIndex { get; set; }
 }

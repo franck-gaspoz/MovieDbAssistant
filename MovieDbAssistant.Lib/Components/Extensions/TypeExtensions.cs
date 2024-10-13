@@ -60,7 +60,7 @@ public static class TypeExtensions
     /// <param name="o">object</param>
     /// <param name="name">property name</param>
     /// <returns>property value</returns>
-    public static object? GetPropertyValue(this object? o,string name)
+    public static object? GetPropertyValue(this object? o, string name)
     {
         if (o == null) return null;
         var p = o.GetType().GetProperty(name);
@@ -74,8 +74,8 @@ public static class TypeExtensions
     /// <param name="name">event name</param>
     /// <param name="args">event args</param>
     public static void FireEvent(
-        this object target, 
-        string name, 
+        this object target,
+        string name,
         EventArgs args)
     {
         /*
@@ -92,7 +92,7 @@ public static class TypeExtensions
          */
 
         //Event thrower method name //e.g. OnTextChanged
-        String methodName = "On" + name;
+        var methodName = "On" + name;
 
         var mi = target.GetType().GetMethod(
               methodName,

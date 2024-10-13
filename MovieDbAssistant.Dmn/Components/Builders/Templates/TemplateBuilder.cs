@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Build;
@@ -227,8 +228,8 @@ public sealed class TemplateBuilder
         var src = Context.AssetsPath(Context.DocContext!);
         src = Path.Combine(src, t[0][1..]);
         target = Path.Combine(
-            target, 
-            t[1][1..]);       
+            target,
+            t[1][1..]);
 
         if (!Directory.Exists(target))
             Directory.CreateDirectory(target);
@@ -243,7 +244,7 @@ public sealed class TemplateBuilder
                 target,
                 true);
 
-            _logger.LogInformation(this,"file copied: " + src + " to " + target);
+            _logger.LogInformation(this, "file copied: " + src + " to " + target);
         }
     }
 
@@ -273,7 +274,7 @@ public sealed class TemplateBuilder
                 target = Path.Combine(
                         target,
                         Path.GetFileName(src));
-                src.CopyDirectory( target);
+                src.CopyDirectory(target);
 
                 _logger.LogInformation(this, "folder copied: " + src + " to " + target);
             }

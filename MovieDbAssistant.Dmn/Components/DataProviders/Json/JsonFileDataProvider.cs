@@ -25,7 +25,7 @@ public class JsonFileDataProvider : JsonDataProvider
     {
         if (source == null) return null;
         var src = (string)source;
-        
+
         Logger.LogInformation(
             this,
             "parse json: "
