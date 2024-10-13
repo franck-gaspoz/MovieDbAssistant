@@ -18,7 +18,7 @@ Index
 - Template specification
 - Template configuration
 - [Template language](#tpl)
-- Template data & properties
+- [Template data & properties](#tdp)
 
 ___
 
@@ -53,6 +53,7 @@ variable name are:
 
 exemple: 
 
+<a name="tdp"></a>
 ### template data & properties
 
 Templates must by convention integrates these properties in two javascript objects:
