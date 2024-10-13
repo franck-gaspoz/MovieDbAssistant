@@ -215,6 +215,10 @@ example of a movie detail page. aggregate some properties from:
 
 - the template settings
 - the application settings (paths, description,...)
+- some dynamic properties generated server side
+- some dynamic properties generated client side by the template engine (eg: clock, date)
+- some properties can be specific to a template theme
+- the template engine and any of its modules can add and setup in this set any properties
 
 ```js
 const props = {
