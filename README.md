@@ -19,21 +19,29 @@ Can scrap data from:
 
 ## Dependencies
 
-- **APP**
+- **App (GUI)**
 
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - framework `net8.0-windows10.0.22621.0` (`Microsoft.Windows.Desktop.App.WindowsForms`)
+    - `OS`: Windows 10.0.22621.0 and +
+
+- **Dmn**
+
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `MovieDbSpiders`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md)
     - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
+    - `OS`: Linux, Windows, 
+
+- **Lib**
+
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `OS`: Linux, Windows, OSX
 
-- **CLI**
+- **Web Api (*coming soon*)**
 
-    - `CommandLine.NetCore`: [/CommandLine.NetCore/blob/main/README.md](https://github.com/franck-gaspoz/CommandLine.NetCore/blob/main/README.md)
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `OS`: Linux, Windows, OSX
 
-- **GUI**
-
-    - framework `net8.0-windows10.0.22621.0`
-    - `OS`: Windows 10.0.22621.0 and +
 ___
 
 ## Usage
