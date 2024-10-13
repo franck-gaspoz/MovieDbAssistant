@@ -56,7 +56,7 @@ Available on `Windows 10.0.22621.0` and more. This application runs as a tray ic
 
 :arrow_right: select an action from the tray menu
 
-:point_right: consult the **manual** here : [manual.md](/docs/manual.md)
+:point_right: consult the **manual** here : [manual.md](/doc/manual.md)
 
 ___
 
