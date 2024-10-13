@@ -37,12 +37,11 @@
 
     <!-- #region background -->
 
-    <div class="movie-page-detail-background-container">
+    <div class="movie-page-background-container">
         <img id="Image_Background" class="hidden-temp" src="" alt="background pic" />
     </div>
 
-    <div class="movie-page-detail-background-container vignette vignette2">
-    </div>
+    {{{background-vignette}}}
 
     <div id="Image_BackgroundIdle"
          class="movie-page-detail-background-idle-container image-background-idle">
@@ -52,19 +51,9 @@
 
     <div class="movie-page-detail-content-container">
 
-        <!-- top nav bar -->
+        {{{page-detail-navbar-top}}}
 
-        <div class="movie-page-top-nav-container">
-            <img data-href="{{movies.home}}" src="{{basePath}}img/house.png" alt="icon home" class="nav-icon margin-right-double" />
-            <img data-href="{{movies.previous}}" src="{{basePath}}img/left-arrow.png" alt="previous movie" class="nav-icon if-movies-previous" />
-            <img data-href="{{movies.next}}" src="{{basePath}}img/left-arrow.png" alt="next movie" class="nav-icon mirror-h if-movies-next" />
-            <span class="nav-text nav-counters">{{movies.index}} / {{movies.total}}</span>
-            <span class="hsep"></span>
-            <span class="hsep"></span>
-            <img data-href="{{movies.home}}#{{key}}" src="{{basePath}}img/back.png" alt="back to list" class="nav-icon icon-back" />
-        </div>
-
-        {{{nav-bar-bottom}}}
+        {{{navbar-bottom}}}
 
         <!-- movie details -->
         <div class="movie-list">
