@@ -13,7 +13,7 @@ ___
 
 Index
 
-- Template folder structure
+- [Template folder structure](#tfs)
 - Application resources folder
 - Template specification
 - Template configuration
@@ -22,13 +22,18 @@ Index
 
 ___
 
+<a name="tfs"></a>
+## Template folder structure
+
+
+
 <a name="tpl"></a>
 ## Template language
 
 ```html
 <html>
 
-<!-- includes a  part -->
+<!-- includes a part -->
 {{{part}}}
 
 <!-- includes the value of a variable -->
@@ -44,6 +49,14 @@ ___
 <div class="if_no-variable--classname"></div>/
 </html>
 ```
+<br>
+
+**definitions:**
+
+- a `part` is the source code of a template (including template language, html, ...)
+- a `part` can includes `parts`
+- a `variable` is the name of a property (allowing sub objects paths) in the objects `data` and `props`
+- special class names `if-...` are parsed by the template engine and lead to a transforms of html elements depending of the value
 
 ### naming conventions
 
