@@ -16,7 +16,7 @@ Index
 - [Template folder structure](#tfs)
 - [Application resources folder](#arf)
 - [Template specification](#tps)
-- [Template configuration])(#tc)
+- [Template configuration](#tc)
 - [Template language](#tpl)
 - [Template data & properties](#tdp)
 
