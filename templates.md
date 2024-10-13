@@ -62,7 +62,7 @@ Templates must by convention integrates these properties in two javascript objec
 
 #### template `data`
 
-example of a movie detail page. aggregate some properties from:
+example of a movie detail page. Aggregates some properties from:
 - the movie data
 - the data of the query that provided the movie data (if any)
 
@@ -211,7 +211,7 @@ const data = {
 
 #### template `props`
 
-example of a movie detail page. aggregate some properties from:
+example of a movie detail page. Aggregates some properties from:
 
 - the template settings
 - the application settings (paths, description,...)
