@@ -17,11 +17,12 @@ Index
 - Application resources folder
 - Template specification
 - Template configuration
+- [Template language](#tpl)
 - Template data & properties
-- Template language
 
 ___
 
+<a name="tpl"></a>
 ## Template language
 
 ```html
