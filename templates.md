@@ -99,7 +99,7 @@ A template is specified in the file named `template.json` at the root of the tem
 
 ```json
 {
-  // template id
+  /* template id */
   "Id": "dark",
   // template display name
   "Name": "Dark",
