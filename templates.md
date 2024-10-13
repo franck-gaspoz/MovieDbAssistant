@@ -213,7 +213,37 @@ A template is specified in the file named `template.json` at the root of the tem
 Some sections of the application settings concern the template engine.
 
 ```json
+// -----------
+//  Paths
+// -----------
 
+"Paths": {
+	"Assets": "assets",
+	"Temp": "temp",
+	"Output": "output",
+	"OutputPages": "pages",
+	"Input": "input",
+	// Rsc & sub paths
+	"Resources": "rsc",
+	"RscHtml": "html",
+	"RscHtmlTemplates": "templates",
+	"RscHtmlAssets": "assets",
+	"RscHtmlAssetsFonts": "fonts",
+	"RscHtmlAssetsMoviePageListWallpapers": "movie-page-list-wallpapers"
+},
+
+  /* ... */
+
+// --------------
+//  Html builder
+// --------------
+
+"Html": {
+    "Extension": ".html",
+    "TemplateFilename": "template.json",
+    "DataFilename": "js/data/data.js",
+    "TemplateId": "dark",
+}
 ```
 
 <a name="tpl"></a>
