@@ -25,24 +25,24 @@ ___
 <a name="tfs"></a>
 ## Template folder structure
 
-```yaml
+```
 # path /rsc/html/templates/
 
 📁 templates
-	📁 <templateId>
-		📄 template.json
-		📁 pages
-		   📄 page-details.tpl.html
-		   📄 page-list.tpl.html
-		📁 parts
-		   # any tpl file
-		   📄 ...
-		# any specific folder and/or files
-		📁 css
-		📁 js
-		📁 img	
-		📁 ...
-		📄 ...
+    📁 <templateId>
+	📄 template.json
+	📁 pages
+	    📄 page-details.tpl.html
+	    📄 page-list.tpl.html
+	📁 parts
+	    # any tpl file
+	    📄 ...
+	 # any specific folder and/or files
+	📁 css
+	📁 js
+	📁 img	
+	📁 ...
+	📄 ...
 ```
 
 this is the minimalistic folder structure of a template with id **`templateId`**,
@@ -54,21 +54,21 @@ The elements names indicated here may change since they are inflected throught t
 
 the default theme **`dark`** contains these files/folders:
 
-```yaml
+```
 📁 templates
-	📁 dark
-		📄 template.json
-		📁 pages
-		   📄 page-details.tpl.html
-		   📄 page-list.tpl.html
-		📁 parts
-		   📄 head.tpl.html
-		   📄 head-links.tpl.html
-		   📄 head-metas.tpl.html
-		   📄 head-scripts.tpl.html
-		   📄 html.tpl.html
-		📁 css
-		   📄 styles.css
+    📁 dark
+	📄 template.json
+	📁 pages
+	   📄 page-details.tpl.html
+	   📄 page-list.tpl.html
+	📁 parts
+	   📄 head.tpl.html
+	   📄 head-links.tpl.html
+	   📄 head-metas.tpl.html
+	   📄 head-scripts.tpl.html
+	   📄 html.tpl.html
+	📁 css
+	   📄 styles.css
 ```
 
 <a name="tfs"></a>
@@ -77,7 +77,7 @@ the default theme **`dark`** contains these files/folders:
 Templates can rely on resources provided by the application.
 These resources can be copied on template demand at build time.
 
-```yaml
+```
 # path rsc/html/assets/
 
 📁 assets
