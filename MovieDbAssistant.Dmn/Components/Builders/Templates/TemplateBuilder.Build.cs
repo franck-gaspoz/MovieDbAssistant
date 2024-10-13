@@ -52,9 +52,9 @@ public sealed partial class TemplateBuilder
     {
         var docContext = Context.DocContext!;
 
-        var page = IntegratesData(
-            _tpl!.Templates.TplDetails!,
-            data);
+        var page = IncludeParts(_tpl!.Templates.TplDetails!);
+
+        page = IntegratesData(page, data);
         (page, _) = SetVars(page, htmlContext, data);
 
         page = IntegratesProps(page, htmlContext, data);

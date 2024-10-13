@@ -46,6 +46,8 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Link_Previous = Template_Var_Prefix_Movies + "previous";
     const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";
 
+    const string Template_Var_BasePath = "basePath";
+
     Dictionary<string, object?> GetTemplateProps(
         bool pageDetails,
         MovieModel? data = null,
@@ -176,6 +178,10 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_SubTitle_List,
                 htmlContext?.SubTitle
+            },
+            {
+                Template_Var_BasePath,
+                pageDetails ? "../" : "./"
             }
         };
 }

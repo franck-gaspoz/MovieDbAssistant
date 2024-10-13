@@ -4,13 +4,12 @@
     {{{head-metas}}}
     <meta name="description" content="Movies List | {{software}} ({{softwareId}}) github {{linkRepo}}" />
     {{{head-links}}}
-    <link rel="icon" type="image/ico" href="./img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
 
     <title>{{pageTitleList}} | {{subTitleList}}</title>
 
     {{{head-scripts}}}
-    <script src="./js/data/data.js"></script>
+    <script src="{{basePath}}js/data/data.js"></script>
+
     <script type="text/javascript">
 
         const props = {{props}};
@@ -38,24 +37,7 @@
     <div class="movie-page-detail-background-container vignette vignette2">
     </div>
 
-    <!-- bottom nav bar -->
-
-    <div class="movie-page-bottom-nav-container">
-        <div class="bottom-nav-container-grid">
-            <div class="bottom-nav-container-left">
-                <span class="nav-text">{{pageTitleDetails}}</span>
-            </div>
-            <div class="bottom-nav-container-middle">
-                <span class="nav-text">{{subTitleList}}</span>
-            </div>
-            <div class="bottom-nav-container-right">
-                <span class="with-date nav-text nav-date">{{date}}</span>
-            </div>
-            <div class="bottom-nav-container-right">
-                <span class="with-clock nav-text nav-clock">{{clock}}</span>
-            </div>
-        </div>
-    </div>
+    {{{nav-bar-bottom}}}
 
     <!-- page list title -->
 
