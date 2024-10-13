@@ -74,7 +74,10 @@ public sealed partial class TemplateBuilder
 
         tpl = _tpl = Context.TemplateModel();
 
-        tpl.LoadContent(Context.TplPath);
+        tpl.LoadContent(Path.Combine(
+            Context.TplPath,
+            _tpl!.Options.Paths.Pages));
+
         _templates.TryAdd(tpl.Id, tpl);
 
         _logger.LogInformation(this, $"template '{tpl.Name}' loaded");

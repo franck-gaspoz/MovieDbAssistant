@@ -5,7 +5,7 @@
 /// <summary>
 /// The actor model.
 /// </summary>
-public sealed class ActorModel
+public sealed partial class ActorModel
 {
     public string? Actor { get; set; }
 

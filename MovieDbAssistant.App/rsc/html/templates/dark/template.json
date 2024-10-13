@@ -3,11 +3,16 @@
   "Name": "Dark",
   "Version": "1.0",
   "VersionDate": "2024/10/03",
+  "Author": "Franck Gaspoz",
   "Templates": {
-    "List": "pages/page-list.tpl.html",
-    "Details": "pages/page-details.html"
+    "List": "page-list.tpl.html",
+    "Details": "page-details.tpl.html"
   },
   "Options": {
+    "Paths": {
+      "Pages": "pages",
+      "Parts": "parts"
+    },
     "PageList": {
       "Background": "cinema-wallpaper-16.jpg",
       "Title": "My Movies",

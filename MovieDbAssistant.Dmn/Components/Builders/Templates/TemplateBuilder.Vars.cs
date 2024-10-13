@@ -11,6 +11,9 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 /// </summary>
 public partial class TemplateBuilder
 {
+    public const string Var_Prefix = "{{";
+    public const string Var_Postfix = "}}";
+
     static string KeyToVar(string key) => key.ToFirstLower();
 
     string SetVars(string tpl)
@@ -141,5 +144,5 @@ public partial class TemplateBuilder
         return text;
     }
 
-    string Var(string name) => "{{" + name + "}}";
+    string Var(string name) => Var_Prefix + name + Var_Postfix;
 }

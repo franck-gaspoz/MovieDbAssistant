@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Build;
+﻿using MovieDbAssistant.Dmn.Components.Builders.Document;
+
+namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template model options.
@@ -16,6 +18,11 @@ public sealed class TemplateModelOptions
     /// </summary>
     /// <value>A <see cref="TemplateModelPageOption"/></value>
     public TemplateModelPageOption PageDetail { get; set; }
+
+    /// <summary>
+    /// paths
+    /// </summary>
+    public PathsModel Paths { get; set; }
 
     /// <summary>
     /// repo link

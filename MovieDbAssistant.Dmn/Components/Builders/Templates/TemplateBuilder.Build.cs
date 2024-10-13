@@ -10,7 +10,6 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 /// </summary>
 public sealed partial class TemplateBuilder
 {
-
     /// <summary>
     /// build a page list
     /// </summary>
@@ -26,7 +25,9 @@ public sealed partial class TemplateBuilder
         data.SetupModel(_dmnSettings);
 
         ExportData(data);
-        var page = _tpl!.Templates.TplList!;
+
+        var page = IncludeParts(_tpl!.Templates.TplList!);
+
         (page, var props) = SetVars(page, htmlContext);
         page = IntegratesProps(page, htmlContext);
 
