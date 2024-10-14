@@ -1,5 +1,5 @@
 ﻿using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 

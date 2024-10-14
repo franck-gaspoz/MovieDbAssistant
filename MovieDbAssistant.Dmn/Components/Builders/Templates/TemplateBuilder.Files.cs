@@ -3,8 +3,8 @@
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Extensions;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -54,15 +54,20 @@ public partial class TemplateBuilder
         target = Path.Combine(target,
             Path.GetFileName(src));
 
-        if (File.Exists(src))
+        if (File.Exists(src)
+            && src.IsNewerFile(target))
         {
-            File.Copy(
-                src,
-                target,
-                true);
-
             _logger.LogInformation(this, "file copied: " + src + " to " + target);
+            return;
         }
+        if (Directory.Exists(src))
+        {
+            src.CopyDirectory(target);
+
+            _logger.LogInformation(this, "folder copied: " + src + " to " + target);
+            return;
+        }
+        _logger.LogWarning(this, "resource not found: " + src );
     }
 
     void CopyTemplateRsc(string item)

@@ -3,9 +3,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Lib.Components.Signal;
 

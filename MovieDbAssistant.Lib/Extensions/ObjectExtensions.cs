@@ -1,6 +1,6 @@
 ﻿using MovieDbAssistant.Lib.ComponentModels;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// extensions of object

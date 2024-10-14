@@ -1,6 +1,6 @@
 ﻿using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Models;
 
@@ -54,16 +54,16 @@ public sealed class MovieModelSearchScoreDataCompletionBuilder
     /// <returns>An <see cref="int"/></returns>
     public double Build()
     {
-        const double hightWeight = 3d;
+        const double highWeight = 3d;
         const double medWeight = 2d;
         const double lowWeight = 1d;
 
-        AddNote(_movie!.Title, hightWeight);
-        AddNote(_movie!.Year, hightWeight);
-        AddNote(_movie!.Summary, hightWeight);
+        AddNote(_movie!.Title, highWeight);
+        AddNote(_movie!.Year, highWeight);
+        AddNote(_movie!.Summary, highWeight);
 
-        AddNote(_movie!.Rating, hightWeight);
-        AddNote(_movie!.RatingCount, hightWeight);
+        AddNote(_movie!.Rating, highWeight);
+        AddNote(_movie!.RatingCount, highWeight);
 
         AddNote(_movie!.Duration, medWeight);
         AddNote(_movie!.ReleaseDate, medWeight);

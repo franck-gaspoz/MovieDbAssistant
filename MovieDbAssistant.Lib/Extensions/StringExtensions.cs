@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// string extensions
@@ -15,7 +15,7 @@ public static class StringExtensions
     public static string ToHexString(this string? value)
     {
         if (value == null) return string.Empty;
-        var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+        var bytes = Encoding.UTF8.GetBytes(value);
         var base64String = Convert.ToBase64String(bytes);
         return base64String;
     }
@@ -28,7 +28,7 @@ public static class StringExtensions
     public static string ToHexLettersAndDigitsString(this string? value)
     {
         if (value == null) return string.Empty;
-        var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+        var bytes = Encoding.UTF8.GetBytes(value);
         var base64String = Convert.ToBase64String(bytes);
         StringBuilder sb = new();
         foreach (var c in base64String)
@@ -76,7 +76,7 @@ public static class StringExtensions
         {
             var dir = Path.GetFileName(directory);
             var destDir = Path.Combine(destinationDir, dir);
-            CopyDirectory(directory, destDir, dir);
+            directory.CopyDirectory(destDir, dir);
         }
     }
 
@@ -123,16 +123,14 @@ public static class StringExtensions
         for (var j = 0; j <= m; j++) d[0, j] = j;
 
         for (var i = 1; i <= n; i++)
-        {
             for (var j = 1; j <= m; j++)
             {
-                var cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
+                var cost = t[j - 1] == s[i - 1] ? 0 : 1;
                 d[i, j] = Math.Min(
                     Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
                     d[i - 1, j - 1] + cost
                 );
             }
-        }
 
         return d[n, m];
     }

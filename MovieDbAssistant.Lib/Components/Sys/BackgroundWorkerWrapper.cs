@@ -7,10 +7,10 @@ using Microsoft.Extensions.Logging;
 using MovieDbAssistant.Lib.ComponentModels;
 using MovieDbAssistant.Lib.Components.Actions;
 using MovieDbAssistant.Lib.Components.Actions.Events;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.InstanceCounter;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Lib.Components.Sys;
 

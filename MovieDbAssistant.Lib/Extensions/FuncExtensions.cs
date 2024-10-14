@@ -1,4 +1,4 @@
-﻿namespace MovieDbAssistant.Lib.Components.Extensions;
+﻿namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// functional extensions
@@ -53,12 +53,12 @@ public static class FuncExtensions
     /// <param name="check">checked value</param>
     /// <param name="value">func returning value</param>
     /// <returns>value or null</returns>
-    public static Nullable<R> NotNullThen<T, R>(
+    public static R? NotNullThen<T, R>(
         this T? check,
         Func<T, R?> value)
         where R : struct
     {
-        var r = (check != null) ? value(check) : null;
+        var r = check != null ? value(check) : null;
         return r;
     }
 

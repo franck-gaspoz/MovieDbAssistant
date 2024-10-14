@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// ILogger extensions

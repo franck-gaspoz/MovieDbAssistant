@@ -1,4 +1,4 @@
-﻿using MovieDbAssistant.Lib.Components.Extensions;
+﻿using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Configuration.Extensions;
 

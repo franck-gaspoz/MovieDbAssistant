@@ -1,6 +1,6 @@
 ﻿using MovieDbAssistant.Lib.ComponentModels;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// The I identifiable extensions.
@@ -28,9 +28,9 @@ public static class IIdentifiableExtensions
         this IIdentifiable obj,
         Func<string>? getName = null)
     {
-        var res = (!string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
+        var res = !string.IsNullOrWhiteSpace(obj.GetNamePrefix()) ?
                     obj.GetNamePrefix() + ": "
-                    : "");
+                    : "";
         res += obj.ShortId(getName);
         return res;
     }

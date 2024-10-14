@@ -133,7 +133,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         // copy resources
 
-        _templateBuilder.CopyRsc();
-        _templateBuilder.CopyTplRsc();
+        _templateBuilder.CopyTplRsc();  // max. priority files
+        _templateBuilder.CopyRsc();     // don't replace same files
     }
 }

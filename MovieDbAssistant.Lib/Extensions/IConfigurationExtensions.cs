@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// The IConfiguration extensions.

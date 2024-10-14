@@ -1,4 +1,4 @@
-﻿namespace MovieDbAssistant.Lib.Components.Extensions;
+﻿namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// exctensions of collections

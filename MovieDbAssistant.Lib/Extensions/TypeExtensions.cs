@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace MovieDbAssistant.Lib.Components.Extensions;
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// type extensions
@@ -35,9 +35,7 @@ public static class TypeExtensions
     {
         var itfs = type.GetInterfaces();
         foreach (var item in itfs)
-        {
             if (item.HasInterface(ofType)) list.Add(item);
-        }
         return list;
     }
 
