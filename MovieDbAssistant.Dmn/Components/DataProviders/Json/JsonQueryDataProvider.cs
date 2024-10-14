@@ -79,7 +79,7 @@ public sealed class JsonQueryDataProvider : JsonDataProvider
                 if (_settings.Value.Scrap.SkipIfTempOutputFileAlreadyExists
                     && File.Exists(output))
                 {
-                    Logger.LogWarning(
+                    Logger.LogDebug(
                         this,
                         $"skip search query (file '{output}' already exists): #{qid}: {query}");
 

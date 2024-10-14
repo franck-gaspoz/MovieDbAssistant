@@ -54,23 +54,28 @@ public partial class TemplateBuilder
         target = Path.Combine(target,
             Path.GetFileName(src));
 
-        if (File.Exists(src)
-            && src.IsNewerFile(target))
+        bool notFound = true;
+        if (File.Exists(src))
         {
-            _logger.LogInformation(this, "file copied: " + src + " to " + target);
-            return;
+            notFound = false;
+            if (src.IsNewestFile(target))
+            {
+                _logger.LogInformation(this, "file copied: " + src + " to: " + target);
+                return;
+            }
         }
         if (Directory.Exists(src))
         {
+            notFound = false;
             src.CopyDirectory(target);
-
-            _logger.LogInformation(this, "folder copied: " + src + " to " + target);
+            _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             return;
         }
-        _logger.LogWarning(this, "resource not found: " + src );
+        if (notFound)
+            _logger.LogWarning(this, "resource not found: " + src );
     }
 
-    void CopyTemplateRsc(string item)
+    void CopyTemplateRsc(string item,bool preserveNewest = true)
     {
         var src = Path.Combine(Context.TplPath, item[1..]);
         var target = Context.DocContext!.OutputFolder!;
@@ -82,12 +87,17 @@ public partial class TemplateBuilder
             if (!Directory.Exists(tgtFolder))
                 Directory.CreateDirectory(tgtFolder);
 
-            if (File.Exists(src))
+            if (File.Exists(src)
+                && (!preserveNewest || src.IsNewestFile(target)))
+            {
                 File.Copy(
                     src,
                     target);
 
-            _logger.LogInformation(this, "file copied: " + src + " to " + target);
+                _logger.LogInformation(this, "file copied: " + src + " to: " + target);
+            }
+            if (!File.Exists(src))
+                _logger.LogWarning(this, "file not found: " + src);
         }
         else
         {
@@ -98,8 +108,10 @@ public partial class TemplateBuilder
                         Path.GetFileName(src));
                 src.CopyDirectory(target);
 
-                _logger.LogInformation(this, "folder copied: " + src + " to " + target);
+                _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             }
+            else
+                _logger.LogWarning(this, "folder not found: " + src);
         }
     }
 

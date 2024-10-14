@@ -52,35 +52,6 @@ public static class StringExtensions
     }
 
     /// <summary>
-    /// Copy the directory.
-    /// </summary>
-    /// <param name="sourceDir">The source dir.</param>
-    /// <param name="destinationDir">The destination dir.</param>
-    public static void CopyDirectory(this string sourceDir, string destinationDir, string subPath = "")
-    {
-        // Create the destination directory if it doesn't exist
-        Directory.CreateDirectory(destinationDir);
-
-        if (!Directory.Exists(destinationDir))
-            Directory.CreateDirectory(destinationDir);
-
-        // Copy all files
-        foreach (var file in Directory.GetFiles(sourceDir))
-        {
-            var destFile = Path.Combine(destinationDir, Path.GetFileName(file));
-            File.Copy(file, destFile, true);
-        }
-
-        // Copy all subdirectories
-        foreach (var directory in Directory.GetDirectories(sourceDir))
-        {
-            var dir = Path.GetFileName(directory);
-            var destDir = Path.Combine(destinationDir, dir);
-            directory.CopyDirectory(destDir, dir);
-        }
-    }
-
-    /// <summary>
     /// first letter in lower case
     /// </summary>
     /// <param name="s">string</param>
