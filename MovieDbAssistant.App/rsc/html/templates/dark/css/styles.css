@@ -135,10 +135,7 @@ body.movie-page-list .movie-list-item:hover {
 .movie-page-list-title {
     font-size: 48px;
     text-align: center;
-    margin-top: 0.75em;
     font-family: momtypew;
-    position: absolute;
-    z-index: 20;
     color: #22655c;
     text-align: center;
     left: 0px;
@@ -387,8 +384,13 @@ body.movie-page-detail .sources {
     position: absolute;
     top: 0px;
     z-index: 15;
-    padding-top: 0.5em;
+    padding-top: 24px;
     text-align: center;
+    font-size: 24px;
+}
+
+body.movie-page-detail .movie-page-top-nav-container {
+    padding-top: 26px;
 }
 
 .movie-page-bottom-nav-container {

@@ -4,13 +4,20 @@
 
     <div class="top-nav-container-grid">
 
+        <!-- left -->
+
         <div class="top-nav-container-left">
+
             <img data-href="{{movies.home}}" 
                  src="{{basePath}}img/house.png" 
                  alt="icon home" class="nav-icon margin-right-double" />
+
         </div>
 
+        <!-- middle -->
+
         <div class="top-nav-container-middle">
+
             <img data-href="{{movies.previous}}" 
                  src="{{basePath}}img/left-arrow.png" 
                  alt="previous movie" class="nav-icon if-movies-previous" />
@@ -21,14 +28,16 @@
             <span class="hsep"></span>
             <span class="hsep"></span>
             <img data-href="{{movies.home}}#{{key}}" src="{{basePath}}img/back.png" alt="back to list" class="nav-icon icon-back" />
+        
         </div>
 
-        <div class="top-nav-container-right">
-            <span class="nav-text"></span>
-        </div>
+        <!-- right -->
 
         <div class="top-nav-container-right">
-            <span class="nav-text"></span>
+
+            <img src="{{basePath}}img/icons8-settings-50.png"
+                 alt="icon settings" class="nav-icon" />
+
         </div>
 
     </div>

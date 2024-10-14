@@ -21,9 +21,9 @@ ___
 
 ___
 
-### ![icon](./assets/multimedia-small.png) Windows system tray
+### ![icon](./assets/multimedia-small.png) System Tray for Windows™
 
-Available on `Windows 10.0.22621.0` and more. This application runs as a tray icon.
+Available on `Windows 10.0.22621.0` and more. This application run as a tray icon.
 
 :arrow_right: build `MovieDbAssistant.app` and run 🗔 `MovieDbAssistant.exe`
 
@@ -33,27 +33,32 @@ Available on `Windows 10.0.22621.0` and more. This application runs as a tray ic
 
 ____
 
-## Dependencies
+## Projects & Dependencies
 
-- **App (GUI)**
+- **App : Tray Icon GUI for Windows™**
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - framework `net8.0-windows10.0.22621.0` (`Microsoft.Windows.Desktop.App.WindowsForms`)
     - `OS`: Windows 10.0.22621.0 and +
 
-- **Dmn**
+- **App.Core** : application core (*🚧coming soon🚧*)
+
+    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+
+- **Dmn** : app domain
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `MovieDbSpiders`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md)
     - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
-    - `OS`: Linux, Windows, 
+    - `OS`: Linux, Windows, OSX
 
-- **Lib**
+
+- **Lib** : library (infrastructure)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `OS`: Linux, Windows, OSX
 
-- **Web Api (*coming soon*)**
+- **Web Api** (*🚧coming soon🚧*)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `OS`: Linux, Windows, OSX
@@ -68,7 +73,8 @@ ___
 - <a target="_blank" href="https://icons8.com/icon/11511/reply-arrow">Back</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/60449/play-button-circled">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/23353/downloading-updates">Download</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-
+- <a target="_blank" href="https://icons8.com/icon/364/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+ 
 ___
 
 ## Releases History

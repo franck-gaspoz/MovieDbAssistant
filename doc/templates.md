@@ -108,7 +108,7 @@ A template is specified in the file named `template.json` at the root of the tem
   "Description": "minimalist with movies pictures and dark panes"
   "Version": "1.0.0",
   "VersionDate": "2024/10/03",
-  "Author": "F. G.",
+  "Author": "Movie Db Assistant",
 
   // template files
 
