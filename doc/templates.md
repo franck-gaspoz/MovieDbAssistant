@@ -261,7 +261,7 @@ Some sections of the application settings concern the template engine.
 {{variable}}
 
 <!-- replace by the text identified by textId in the user locale -->
-{(text)}
+{{(textId)}}
 
 <!-- set visible if 'variable' is not null and not empty -->
 <div class="if-varname"></div>
