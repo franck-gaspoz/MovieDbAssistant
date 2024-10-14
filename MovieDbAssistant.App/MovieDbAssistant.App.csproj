@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.fr.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
     <None Remove="assets\led-red.ico" />
@@ -118,6 +119,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.fr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="input\-ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

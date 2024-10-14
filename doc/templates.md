@@ -260,14 +260,17 @@ Some sections of the application settings concern the template engine.
 <!-- includes the value of a variable -->
 {{variable}}
 
+<!-- replace by the text identified by textId in the user locale -->
+{(text)}
+
 <!-- set visible if 'variable' is not null and not empty -->
-<div class="if-variable"></div>
+<div class="if-varname"></div>
 
 <!-- set visible if 'variable' is null or empty -->
-<div class="if_no-variable"></div>
+<div class="if_no-varname"></div>
 
 <!-- add class 'classname' if 'variable' is null or empty -->
-<div class="if_no-variable--classname"></div>/
+<div class="if_no-varname--classname"></div>/
 </html>
 ```
 <br>
@@ -276,7 +279,7 @@ Some sections of the application settings concern the template engine.
 
 - a `part` is the source code of a template (including template language, html, ...)
 - a `part` can includes `parts`
-- a `variable` is the name of a property (allowing sub objects paths) in the objects `data` and `props`
+- a `varname` is the name of a property (allowing sub objects paths) in the objects `data` and `props`
 - special class names `if-...` are parsed by the template engine and lead to a transforms of html elements depending of the value
 
 ### naming conventions
