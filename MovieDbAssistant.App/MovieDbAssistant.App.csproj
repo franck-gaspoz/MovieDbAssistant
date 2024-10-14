@@ -100,6 +100,7 @@
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
     <None Remove="rsc\html\templates\dark\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\backgrounds\background-container.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\backgrounds\background-idle.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\head-links.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\head-metas.tpl.html" />
@@ -363,37 +364,40 @@
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\templates\dark\parts\backgrounds\background-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\templates\dark\parts\backgrounds\background-idle.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-links.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page\head-links.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-metas.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page\head-metas.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-scripts.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page\head-scripts.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\parts\backgrounds\background-vignette.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page-list\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page-details\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\panels\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\movie-list-item-container.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page-list\item-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\navbar-bottom.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\panels\navbar-bottom.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\html.tpl.html">
+    <Content Include="rsc\html\templates\dark\parts\page\html.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\pages\page-list.tpl.html">

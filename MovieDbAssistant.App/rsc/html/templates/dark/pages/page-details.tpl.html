@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html {{{html}}}>
+<html {{{page/html}}}>
 <head>
-    {{{head-metas}}}
+    {{{page/head-metas}}}
     <meta name="description" content="{{title}} | Movie details | {{software}} ({{softwareId}}) github {{linkRepo}}" />
-    {{{head-links}}}
+    {{{page/head-links}}}
 
     <title>{{pageTitleDetails}} : {{title}}</title>
-    {{{head-scripts}}}
+    {{{page/head-scripts}}}
 
     <script type="text/javascript">
 
@@ -35,20 +35,15 @@
 
 <body class="movie-page-detail prevent-select">
 
-    <!-- #region background -->
-
-    <div class="movie-page-background-container">
-        <img id="Image_Background" class="hidden-temp" src="" alt="background pic" />
-    </div>
+    {{{backgrounds/background-container}}}
 
     {{{backgrounds/background-vignette}}}
 
     {{{backgrounds/background-idle}}}
 
-    <!-- #endregion -->
-    {{{page-detail-navbar-top}}}
+    {{{page-details/navbar-top}}}
 
-    {{{navbar-bottom}}}
+    {{{panels/navbar-bottom}}}
 
     <div class="movie-page-detail-content-container">
 
