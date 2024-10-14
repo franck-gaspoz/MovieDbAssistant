@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 namespace MovieDbAssistant.Lib.Components.Bootstrap;
 
 /// <summary>
-/// The I service collection extensions.
+/// The I host builder extensions.
 /// </summary>
 public static class IHostBuilderExtensions
 {
