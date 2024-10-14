@@ -5,9 +5,9 @@
 /// </summary>
 public partial class TemplateBuilder
 {
-    public const string Include_Prefix = "{{{";
+    public const string Include_Part_Prefix = "{{{";
 
-    public const string Include_Postfix = "}}}";
+    public const string Include_Part_Postfix = "}}}";
 
     public const string Parts_File_Extensions = ".tpl.html";
     
@@ -23,25 +23,47 @@ public partial class TemplateBuilder
 
     (string content,int nextPos) ParseNextInclude(string tpl,int startPos=0)
     {
-        var x = tpl.IndexOf(Include_Prefix, startPos);
+        var x = tpl.IndexOf(Include_Part_Prefix, startPos);
         if (x < 0) return (tpl, Index_NoNext);
-        var y = tpl.IndexOf(Include_Postfix,x);
+        var y = tpl.IndexOf(Include_Part_Postfix,x);
         if (y < 0) return (tpl, Index_NoNext);
-        var nextY = y + Include_Postfix.Length;
-        var a = x + Include_Postfix.Length;
+        var nextY = y + Include_Part_Postfix.Length;
+        var a = x + Include_Part_Postfix.Length;
         var b = y - 1;
         var name = tpl.Substring(a,b-a+1);
-        var partsPath = Path.Combine(
-            Context.TplPath,
-            _tpl!.Options.Paths.Parts            
-            );
+        
         var partFile = name + Parts_File_Extensions;
-        var file = Path.Combine(partsPath, partFile);
-        if (!File.Exists(file)) return (tpl, Index_NoNext);
+        var file = GetTemlateFile(partFile);
+        if (file==null) return (tpl, Index_NoNext);
+
         var partContent = File.ReadAllText(file);
         var left = tpl[..x];
         var right = tpl[nextY..];
         tpl = left + partContent + right;
         return (tpl, nextY);
     }
+
+    string? GetTemlateFile(string partFile)
+    {
+        // search in tpl
+        var tplPartsPath = Path.Combine(
+            Context.TplPath,
+            _tpl!.Options.Paths.Parts
+            );
+        var file = Path.Combine(tplPartsPath, partFile);
+        if (file != null) return file;
+
+        var rscPartsPath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            _dmnSettings.Value.Paths.Resources,
+            _dmnSettings.Value.Paths.RscHtml,
+            _dmnSettings.Value.Paths.RscHtmlAssets,
+            _dmnSettings.Value.Paths.RscHtmlAssetsTpl
+            );
+        file = Path.Combine(rscPartsPath, partFile);
+        if (file!=null) return file;
+
+        return null;
+    }
+
 }

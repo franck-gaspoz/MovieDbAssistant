@@ -39,7 +39,10 @@ public partial class TemplateBuilder
 
     void CopyRsc(string item)
     {
-        var target = Context.DocContext!.OutputFolder!;
+        var target = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            Context.DocContext!.OutputFolder!);
+
         var t = item.Split(':');
 
         var src = Context.AssetsPath(Context.DocContext!);
@@ -60,6 +63,7 @@ public partial class TemplateBuilder
             notFound = false;
             if (src.IsNewestFile(target))
             {
+                File.Copy(src, target);
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
                 return;
             }
@@ -78,7 +82,9 @@ public partial class TemplateBuilder
     void CopyTemplateRsc(string item,bool preserveNewest = true)
     {
         var src = Path.Combine(Context.TplPath, item[1..]);
-        var target = Context.DocContext!.OutputFolder!;
+        var target = Path.Combine(
+            Directory.GetCurrentDirectory(), 
+            Context.DocContext!.OutputFolder!);
 
         if (!item.StartsWith('/'))
         {
