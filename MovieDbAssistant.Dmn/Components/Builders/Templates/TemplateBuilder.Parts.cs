@@ -33,7 +33,7 @@ public partial class TemplateBuilder
         var name = tpl.Substring(a,b-a+1);
         
         var partFile = name + Parts_File_Extensions;
-        var file = GetTemlateFile(partFile);
+        var file = GetTemplateFile(partFile);
         if (file==null) return (tpl, Index_NoNext);
 
         var partContent = File.ReadAllText(file);
@@ -43,7 +43,7 @@ public partial class TemplateBuilder
         return (tpl, nextY);
     }
 
-    string? GetTemlateFile(string partFile)
+    string? GetTemplateFile(string partFile)
     {
         // search in tpl
         var tplPartsPath = Path.Combine(
