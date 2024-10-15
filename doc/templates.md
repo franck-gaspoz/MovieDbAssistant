@@ -83,14 +83,19 @@ These resources can be copied on template demand at build time.
 # path rsc/html/assets/
 
 📁 assets
+    📁 css
+	# application ui css
+	📄 ui.css
     📁 fonts
 	📁 icons
 	📁 img
 	📁 js
 	   📁 core
-          # the mandatory template engine js
+              # the template engine js
 	      📄 template-1.0.0.js
 	   📁 ext
+	📁 tpl
+	   📁 ui
 	📁 movie-page-list-wallpapers
 ```
 
@@ -256,6 +261,11 @@ Some sections of the application settings concern the template engine.
 
 <!-- includes a part -->
 {{{part}}}
+
+<!-- includes a part with content -->
+{{{part:}}}
+	<!-- ... content transmitted to the template (var 'content') ... -->
+{{{:part}}}
 
 <!-- includes the value of a variable -->
 {{variable}}
