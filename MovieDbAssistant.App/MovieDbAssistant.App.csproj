@@ -466,6 +466,7 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="rsc\html\assets\tpl\NewFolder\" />
     <Folder Include="rsc\html\templates\dark\js\" />
   </ItemGroup>
 

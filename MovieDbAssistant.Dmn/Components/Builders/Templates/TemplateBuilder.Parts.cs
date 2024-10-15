@@ -53,7 +53,8 @@ public partial class TemplateBuilder
         var b = y - 1;
         var name = tpl.Substring(a, b - a + 1);
 
-        (tpl, name, var tpIlProps) = ParseIncludeProps(tpl, name, y + Include_Part_Postfix.Length);
+        (tpl, name, var tpIProps) = ParseIncludeProps(tpl, name, y + Include_Part_Postfix.Length);
+        tpIProps.MergeInto(props);
         (name, var tplProps) = ExtractProps(name);
         tplProps.MergeInto(props);
 
@@ -99,14 +100,17 @@ public partial class TemplateBuilder
 
         var x0 = x;
         var block = tpl.Substring(x0, b - 1 - x0 + 1 - Include_Part_Prefix.Length);
-        ParseNextIncludeProp(block);
+
+        var startIndex = 0;
+        while (startIndex != Index_NoNext)
+            startIndex = ParseNextIncludeProp(block,props,startIndex);
 
         tpl = tpl[..x] + tpl[y..];
 
         return (tpl, name, props);
     }
 
-    int ParseNextIncludeProp(string tpl, int startIndex = 0)
+    int ParseNextIncludeProp(string tpl, Dictionary<string,object?> props, int startIndex = 0)
     {
         var r = Index_NoNext;
         var x = tpl.IndexOf(Include_Part_Prop_Prefix, startIndex);
@@ -124,13 +128,16 @@ public partial class TemplateBuilder
         var z = tpl.IndexOf(Include_Part_Prop_Prefix, y);
         if (z < 0)
         {
-            _logger.LogWarning(this, "parse include prop end sub-block missing: " + tpl[y..]);
-            return r;
+            r = Index_NoNext;
+            z = tpl.Length;
         }
-        r = z;
+        else
+            r = z;
         var a = y + Include_Part_Prop_Postfix.Length;
         var b = z - 1;
         var propValue = tpl.Substring(a, b - a + 1);
+
+        props.AddOrReplace(propName, propValue);
 
         return r;
     }
