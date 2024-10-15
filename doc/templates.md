@@ -262,9 +262,12 @@ Some sections of the application settings concern the template engine.
 <!-- includes a part -->
 {{{part}}}
 
+<!-- includes a part with props values -->
+{{{part(prop1=propValue_1,..propn=propValue_n)}}}
+
 <!-- includes a part with content -->
 {{{part:}}}
-	<!-- ... content transmitted to the template (var 'content') ... -->
+	<!-- ... content transmitted to the template (prop 'content') ... -->
 {{{:part}}}
 
 <!-- includes the value of a variable -->

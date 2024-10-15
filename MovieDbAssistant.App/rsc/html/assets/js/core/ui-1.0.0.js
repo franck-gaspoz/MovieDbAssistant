@@ -3,7 +3,7 @@
 /**
  * open a dialog
  * @param {HTMLElement} this caller
- * @param {string} tplId id of the dialog tpl */
-function openDialog(e, tplId) {
+ * @param {string} tplEId id of the dialog tpl instance */
+function openDialog(e, tplEId) {
 
 }

@@ -1,4 +1,8 @@
-﻿namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
+﻿using Microsoft.Extensions.Logging;
+
+using MovieDbAssistant.Lib.Components.Logger;
+
+namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 /// <summary>
 /// The template builder.
@@ -39,6 +43,9 @@ public partial class TemplateBuilder
         var partContent = File.ReadAllText(file);
 
         // recurse part
+        var nextPos = 0;
+        while (nextPos > Index_NoNext)
+            (partContent, nextPos) = ParseNextInclude(partContent, nextPos);
 
         var left = tpl[..x];
         var right = tpl[nextY..];
@@ -65,6 +72,8 @@ public partial class TemplateBuilder
             );
         file = Path.Combine(rscPartsPath, partFile);
         if (File.Exists(file)) return file;
+
+        _logger.LogWarning(this, "template part not found: " + partFile);
 
         return null;
     }
