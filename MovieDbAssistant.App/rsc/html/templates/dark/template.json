@@ -70,6 +70,7 @@
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
+    "/js/core/ui-1.0.0.js:/js/core",
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
     "/css:/"
