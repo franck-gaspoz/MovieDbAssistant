@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Xml.Linq;
+
+using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Configuration.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
@@ -14,6 +16,12 @@ public partial class TemplateBuilder
     public const string Include_Part_Prefix = "{{{";
 
     public const string Include_Part_Postfix = "}}}";
+
+    public const string Include_Part_Prop_Prefix = "{{--";
+
+    public const string Include_Part_Prop_Postfix = "--}}";
+
+    public const string Include_Part_Block_Begin = "--";
 
     public const string Parts_File_Extensions = ".tpl.html";
     
@@ -46,6 +54,8 @@ public partial class TemplateBuilder
         var a = x + Include_Part_Postfix.Length;
         var b = y - 1;
         var name = tpl.Substring(a,b-a+1);
+
+        (tpl, name, var tpIlProps) = ParseIncludeProps(tpl,name,x);
         (name, var tplProps) = ExtractProps(name);
         tplProps.MergeInto(props);
 
@@ -67,10 +77,55 @@ public partial class TemplateBuilder
         return (tpl, nextY);
     }
 
+    (string tpl, string name, Dictionary<string, object?> props) ParseIncludeProps(
+        string tpl,string name,int x)
+    {
+        var props = new Dictionary<string, object?>();
+        var def = (tpl, name, props);
+
+        if (!name.EndsWith(Include_Part_Block_Begin)) return def;
+        
+        name = name[..^(Include_Part_Block_Begin.Length)];
+        var closeName = Include_Part_Block_Begin + name;
+        var a = x + name.Length;
+        var b = tpl.IndexOf(closeName, a);
+        var y = b;
+        if (y < 0)
+        {
+            _logger.LogWarning(this, "parse include props: missing name close: "+closeName);
+            return def;
+        }
+        y += Include_Part_Postfix.Length+closeName.Length;
+
+        var block = tpl.Substring(a, b - a + 1);
+
+        tpl = tpl[..x] + tpl[y..];
+
+        return (tpl,name,props);
+    }
+
+    int ParseNextIncludeProp(string tpl,int startIndex)
+    {
+        var r = Index_NoNext;
+        var x = tpl.IndexOf(Include_Part_Prop_Prefix, startIndex);
+        if (x < 0) return r;
+
+        var y = tpl.IndexOf(Include_Part_Prop_Postfix, x);
+        if (y < 0)
+        {
+            _logger.LogWarning(this, "parse include prop end sub-block missing: " + tpl[x..]);
+            return r;
+        }
+
+
+        return r;
+    }
+
     (string name,Dictionary<string,object?> props) ExtractProps(string name)
     {
         var props = new Dictionary<string, object?>();
         var def = (name, props);
+
         if (!name.EndsWith(')')) return def;
         var x = name.IndexOf('(');
         if (x<0) {
