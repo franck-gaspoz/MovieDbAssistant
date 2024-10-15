@@ -63,7 +63,7 @@ public partial class TemplateBuilder
             notFound = false;
             if (src.IsNewestFile(target))
             {
-                File.Copy(src, target);
+                File.Copy(src, target, true);
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
                 return;
             }
@@ -96,9 +96,7 @@ public partial class TemplateBuilder
             if (File.Exists(src)
                 && (!preserveNewest || src.IsNewestFile(target)))
             {
-                File.Copy(
-                    src,
-                    target);
+                File.Copy(src,target,true);
 
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
             }
