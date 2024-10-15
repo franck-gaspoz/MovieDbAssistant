@@ -36,7 +36,11 @@
         <div class="top-nav-container-right">
 
             <img src="{{basePath}}img/icons8-settings-50.png"
-                 alt="icon settings" class="nav-icon no-margin-right" />
+                 alt="icon settings" 
+                 class="nav-icon no-margin-right" 
+                 onclick="openDialog(this,'movies-list-settings')" />
+
+            <div class="dialog">{{{movie-list-settings}}}</div>
 
         </div>
 

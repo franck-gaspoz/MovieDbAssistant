@@ -156,6 +156,10 @@ body.movie-page-list .movie-list-item:hover {
     border: black solid 1px;
 }
 
+body.movie-page-detail .movie-list-item {
+    background-color: #000000C0;
+}
+
 .movie-pic-container {
     width: 190px;
     padding-right: 0px;
@@ -569,7 +573,7 @@ body.movie-page-list .movie-page-bottom-nav-container {
 }
 
 table.g-movie-detail-grid2-row-1 {
-    background: linear-gradient(360deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     padding-bottom: 0.5em;
     border-top-left-radius: 1em;
 }

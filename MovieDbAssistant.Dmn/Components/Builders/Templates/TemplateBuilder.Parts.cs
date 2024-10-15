@@ -11,7 +11,7 @@ public partial class TemplateBuilder
 
     public const string Parts_File_Extensions = ".tpl.html";
     
-    const int Index_NoNext = -1;
+    public const int Index_NoNext = -1;
 
     string IncludeParts(string tpl)
     {
@@ -34,7 +34,7 @@ public partial class TemplateBuilder
         
         var partFile = name + Parts_File_Extensions;
         var file = GetTemplateFile(partFile);
-        if (file==null) return (tpl, Index_NoNext);
+        if (file==null) return (tpl, nextY);
 
         var partContent = File.ReadAllText(file);
         var left = tpl[..x];
@@ -51,7 +51,7 @@ public partial class TemplateBuilder
             _tpl!.Options.Paths.Parts
             );
         var file = Path.Combine(tplPartsPath, partFile);
-        if (file != null) return file;
+        if (File.Exists(file)) return file;
 
         var rscPartsPath = Path.Combine(
             Directory.GetCurrentDirectory(),
@@ -61,7 +61,7 @@ public partial class TemplateBuilder
             _dmnSettings.Value.Paths.RscHtmlAssetsTpl
             );
         file = Path.Combine(rscPartsPath, partFile);
-        if (file!=null) return file;
+        if (File.Exists(file)) return file;
 
         return null;
     }

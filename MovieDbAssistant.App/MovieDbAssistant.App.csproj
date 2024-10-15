@@ -41,6 +41,7 @@
     <None Remove="input\README.md" />
     <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
+    <None Remove="rsc\html\assets\css\ui.css" />
     <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
     <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
     <None Remove="rsc\html\assets\fonts\Open 24 Display St.ttf" />
@@ -57,6 +58,7 @@
     <None Remove="rsc\html\assets\icons\play.png" />
     <None Remove="rsc\html\assets\img\image-404-630x630.jpg" />
     <None Remove="rsc\html\assets\img\image-not-availble-300x175.jpg" />
+    <None Remove="rsc\html\assets\js\core\ui-1.0.0.js" />
     <None Remove="rsc\html\assets\js\jquery-3.7.1.min.js" />
     <None Remove="rsc\html\assets\js\template.js" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg" />
@@ -99,7 +101,7 @@
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\message-box.tpl.html" />
+    <None Remove="rsc\html\assets\tpl\ui\controls\frame-button-close.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\background-vignette.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\backgrounds\background-container.tpl.html" />
@@ -115,6 +117,7 @@
     <None Remove="rsc\html\templates\dark\parts\navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\page-details\content-container.tpl.html" />
+    <None Remove="rsc\html\templates\dark\parts\page-details\dialogs\movies-list-settings.tpl.html" />
     <None Remove="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\dark\template.json" />
     <None Remove="rsc\html\README.md" />
@@ -193,6 +196,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\assets\css\ui.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\fonts\ComicNeue-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -239,6 +245,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\img\image-not-availble-300x175.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\js\core\ui-1.0.0.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\js\ext\jquery-3.7.1.min.js">
@@ -367,7 +376,7 @@
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\message-box.tpl.html">
+    <Content Include="rsc\html\assets\tpl\ui\controls\frame-button-close.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html">
@@ -380,6 +389,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\parts\page-details\content-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\dark\parts\page-details\dialogs\movies-list-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\dark\parts\page\head-links.tpl.html">
