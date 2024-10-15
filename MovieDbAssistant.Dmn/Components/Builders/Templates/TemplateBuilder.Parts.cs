@@ -37,6 +37,9 @@ public partial class TemplateBuilder
         if (file==null) return (tpl, nextY);
 
         var partContent = File.ReadAllText(file);
+
+        // recurse part
+
         var left = tpl[..x];
         var right = tpl[nextY..];
         tpl = left + partContent + right;
