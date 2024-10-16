@@ -69,6 +69,7 @@
     align-content: center;
     justify-items: stretch;
     grid-gap: 1em;
+    padding-bottom: 1em;
 }
 
 .dialog-button {
@@ -103,6 +104,7 @@
 
 .dialog-button:hover {
     background: linear-gradient(360deg, rgba(0, 0, 0, 0) 5%, #3F51B5 100%);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 
 .dialog-text-title {
