@@ -136,6 +136,8 @@ public partial class TemplateBuilder
         var a = y + Include_Part_Prop_Postfix.Length;
         var b = z - 1;
         var propValue = tpl.Substring(a, b - a + 1);
+        if (!string.IsNullOrEmpty(propValue))
+            propValue = propValue.Trim();
 
         props.AddOrReplace(propName, propValue);
 

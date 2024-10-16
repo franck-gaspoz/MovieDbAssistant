@@ -1,25 +1,30 @@
-﻿<!-- tpl/ui/dialogs/message-box -->
+﻿<!-- tpl/ui/dialogs/message-box: id={{id}} -->
 
-<div class="dialog-container" id="{{id}}">
+<div class="dialog-container draggable"
+         id="{{id}}">
 
-    <div class="dialog">
-        <div class="dialog-title-bar-container">
-            <div class="dialog-title-bar">
-                <span class="dialog-text-title">
-                    {{title}}
+    <div class="dialog-wrapper">
+
+        <div class="dialog">
+            <div class="dialog-title-bar-container">
+                <div class="dialog-title-bar">
+                    <span class="dialog-text-title">
+                        {{title}}
+                    </span>
+                </div>
+            </div>
+            <div class="dialog-content">
+                <span class="dialog-text-content">
+                    {{content}}
+                </span>
+            </div>
+            <div class="dialog-button-bar">
+                <span class="dialog-text-buttons">
+                    {{buttons}}
                 </span>
             </div>
         </div>
-        <div class="dialog-content">
-            <span class="dialog-text-content">
-                {{content}}
-            </span>
-        </div>
-        <div class="dialog-button-bar">
-            <span class="dialog-text-buttons">
-                {{buttons}}
-            </span>
-        </div>
+
     </div>
 
 </div>

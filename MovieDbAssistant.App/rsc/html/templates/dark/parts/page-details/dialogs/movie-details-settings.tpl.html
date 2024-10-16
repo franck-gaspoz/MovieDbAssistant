@@ -2,14 +2,16 @@
 
 {{{ui/dialogs/message-box--}}}
 
-{{--title--}}
+    {{--dialogId--}}
+    {{id}}
+
+    {{--title--}}
     Options
 
-{{--content--}}
+    {{--content--}}
     hello world
 
-{{--buttons--}}
-    {{{ui/controls/buttons/button(id=ok,label=Ok,col=1)}}}
-    {{{ui/controls/buttons/button(id=cancel,label=Cancel,col=2)}}}
+    {{--buttons--}}
+    {{{ui/controls/buttons/dialog-button-closing(id=ok,label=Ok,col=1)}}}
 
 {{{--ui/dialogs/message-box}}}
