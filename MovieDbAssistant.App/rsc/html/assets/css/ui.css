@@ -28,10 +28,10 @@
     z-index: 20;
     pointer-events: all;
     box-shadow: 0px 0px 60px 60px #000000AA;
-    border-right: #3f51b5DD solid 1px;
+    border-right: #3f51b5FF solid 1px;
     border-left: #3f51b5FF solid 1px;
     border-top: #3f51b5FF solid 0.5px;
-    border-bottom: #3f51b5DD solid 1px;
+    border-bottom: #3f51b5FF solid 1px;
     backdrop-filter: blur(5px);
 }
 
@@ -45,6 +45,8 @@
     border-top-right-radius: 1em;
     border-bottom: #3f51b5DD solid 1px;
     border-left: #3f51b5DD solid 1px;
+    /* border-right: #3f51b599 solid 1px; */
+    border-top: #6f81E5EE solid 1px;
 }
 
 .dialog-title-bar-container {
