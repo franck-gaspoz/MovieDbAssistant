@@ -62,7 +62,8 @@
     border-bottom: #3f51b5DD solid 1px;
     border-left: #3f51b5DD solid 1px;
     border-top: #6f81E5EE solid 1px;
-    cursor: grab;
+    display:grid;
+    grid-template-rows:min-content,auto,min-content
 }
 
 .dialog-title-bar-container {
@@ -123,13 +124,26 @@
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 
+.dialog-icon-container {
+    grid-column: 1;
+    grid-row: 1;
+    display: inline-flex;
+}
+
 .dialog-text-title {
     position: relative;
     top: -3px;
+    grid-column: 1;
+    grid-row: 1;
 }
 
 .dragging .dialog-title-bar {
     cursor: grabbing !important;
+}
+
+.dragging .dialog {
+    background: #000000D0;
+    backdrop-filter: blur(5px);
 }
 
 /* #region transversals styles */
