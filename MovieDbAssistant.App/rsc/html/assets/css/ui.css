@@ -56,7 +56,7 @@
     font-family: 'comicn';
     font-weight: bold;
     grid-row: 1;
-    background: linear-gradient(283deg, rgb(0 0 0 / 0%) 5%, #3F51B5 100%);
+    
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom: #3f51b5DD solid 1px;
@@ -66,8 +66,14 @@
     grid-template-rows:min-content,auto,min-content
 }
 
+.dialog-title-bar-background {
+    background: linear-gradient(283deg, rgb(0 0 0 / 0%) 5%, #3F51B5 100%);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
 .dialog-title-bar-container {
-    background: #253279;
+    background: #1b2764;
     border-radius: 1em 1em 0em 0em;
 }
 
