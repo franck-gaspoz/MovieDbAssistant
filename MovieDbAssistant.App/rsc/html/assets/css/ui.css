@@ -31,6 +31,7 @@
 }
 
 .dialog {
+    font-size: 24px;
     background: #000000FF;
     color: white;
     min-width: 24em;
