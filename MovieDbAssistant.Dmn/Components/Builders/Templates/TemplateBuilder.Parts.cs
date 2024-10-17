@@ -15,6 +15,8 @@ public partial class TemplateBuilder
 
     public const string Include_Part_Postfix = "}}}";
 
+    public const char Include_Part_Prop_Escaper = '\\';
+
     public const string Include_Part_Prop_Prefix = "{{--";
 
     public const string Include_Part_Prop_Postfix = "--}}";
@@ -22,6 +24,8 @@ public partial class TemplateBuilder
     public const string Include_Part_Block_Begin = "--";
 
     public const string Parts_File_Extensions = ".tpl.html";
+
+    public const string Included_Prop_Condition_IfNotNullOrEmpty = "{{-if-not-null-or-empty}}";
 
     public const int Index_NoNext = -1;
 
@@ -93,7 +97,7 @@ public partial class TemplateBuilder
         var y = b;
         if (y < 0)
         {
-            _logger.LogWarning(this, "parse include props: missing name close: " + closeName);
+            _logger.LogError(this, "parse include props: missing name close: " + closeName);
             return def;
         }
         y += Include_Part_Postfix.Length + closeName.Length;
@@ -119,7 +123,7 @@ public partial class TemplateBuilder
         var y = tpl.IndexOf(Include_Part_Prop_Postfix, x);
         if (y < 0)
         {
-            _logger.LogWarning(this, "parse include prop end sub-block missing: " + tpl[x..]);
+            _logger.LogError(this, "parse include prop end sub-block missing: " + tpl[x..]);
             return r;
         }
         var x2 = x + Include_Part_Prop_Prefix.Length;
@@ -153,31 +157,69 @@ public partial class TemplateBuilder
         var x = name.IndexOf('(');
         if (x < 0)
         {
-            _logger.LogWarning(this,
+            _logger.LogError(this,
                 "part include properties delcaration error: missing ( in props list: " + name);
             return def;
         }
         var decl = name[(x + 1)..^1];
+        decl = EscapeCharacters(decl);
+
         name = name[..x];
+        name = EscapeCharacters(name);
+
         var decls = decl.Split(',');
         foreach (var pdecl in decls)
-        {
+        {            
             var t = pdecl.Split('=');
             if (t.Length != 2)
             {
-                _logger.LogWarning(this,
+                _logger.LogError(this,
                     "part include properties declaration error: attempted <key> = <value> but found: "
                     + decl
                     );
                 return def;
             }
-            props.AddOrReplace(t[0], t[1]);
+            props.AddOrReplace(
+                UnescapeCharacters(t[0]), 
+                UnescapeCharacters(t[1]));
         }
 
         return (name, props);
     }
 
-    string? GetTemplateFile(string partFile)
+    static string EscapeCharacters(string s)
+    {
+        var r = "";
+        for (int i=0;i<s.Length;i++)
+        {
+            var c = s[i];
+            if (c == Include_Part_Prop_Escaper
+                && i+1 < s.Length)
+            {
+                var nc = s[i + 1];
+                c = (char)(10000 + (int)nc);
+                i++;
+            }
+            r += c;
+        }
+        return r;
+    }
+
+    static string UnescapeCharacters(string s)
+    {
+        var r = "";
+        for (int i = 0; i < s.Length; i++)
+        {
+            var c = s[i];
+            var n = (int)c;
+            if ( n >= 10000)
+                c = (char)(-10000 + n);
+            r += c;
+        }
+        return r;
+    }
+
+    string ? GetTemplateFile(string partFile)
     {
         // search in tpl
         var tplPartsPath = Path.Combine(
@@ -191,7 +233,7 @@ public partial class TemplateBuilder
         file = Path.Combine(rscPartsPath, partFile);
         if (File.Exists(file)) return file;
 
-        _logger.LogWarning(this, "template part not found: " + partFile);
+        _logger.LogError(this, "template part not found: " + partFile);
 
         return null;
     }

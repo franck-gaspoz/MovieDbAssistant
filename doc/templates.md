@@ -260,33 +260,64 @@ Some sections of the application settings concern the template engine.
 <html>
 
 <!-- includes a part -->
+```
+
+```md
 {{{part}}}
+```
 
+```html
 <!-- includes a part with props values -->
+```
+```html
 {{{part(prop1=propValue_1,..propn=propValue_n)}}}
-
+```
+```html
 <!-- includes a part with props -->
+```
+```html
 {{{part--}}}
 	{{--propName_1--}}
 	<!-- ...value prop name 1... -->
+	...
+	<!-- ...end of value prop name 1... -->
 	{{--propName_n--}}
 	<!-- ......value prop name n... -->
+	...
+	<!-- ...end of value prop name n... -->
 {{{--part}}}
-
+```
+```html
 <!-- includes the value of a variable -->
+```
+```html
 {{variable}}
-
+```
+```html
 <!-- replace by the text identified by textId in the user locale -->
+```
+```html
 {{(textId)}}
-
+```
+```html
 <!-- set visible if 'variable' is not null and not empty -->
+```
+```html
 <div class="if-varname"></div>
-
+```
+```html
 <!-- set visible if 'variable' is null or empty -->
+```
+```html
 <div class="if_no-varname"></div>
-
+```
+```html
 <!-- add class 'classname' if 'variable' is null or empty -->
-<div class="if_no-varname--classname"></div>/
+```
+```html
+<div class="if_no-varname--classname"></div>
+```
+```html
 </html>
 ```
 <br>
@@ -295,8 +326,11 @@ Some sections of the application settings concern the template engine.
 
 - a `part` is the source code of a template (including template language, html, ...)
 - a `part` can includes `parts`
-- a `varname` is the name of a property (allowing sub objects paths) in the objects `data` and `props`
-- special class names `if-...` are parsed by the template engine and lead to a transforms of html elements depending of the value
+- a `varname` is the name of a property (allowing sub objects paths) in the objects `data` and `props`, and in `part included props` in a part context
+- special class names `if-...` are parsed by the template engine and lead to changes on the elements: `visibility` and/or `css classes` depending of the value
+- props values included in parts, with `{{{part(prop1=..)}}}` or `{{--propName_1--}}`, **can't** be handled with the special classes `if-`,`if_no-` beacause they don't belong to the global props scope
+- escaped characters are handled in syntax `prop1=propValue_1,..propn=propValue_n` from syntax `{{{part(prop1=propValue_1,..propn=propValue_n)}}}`. 
+  For example `\,` allowes to have `,` in values from the value list
 
 ### naming conventions
 
