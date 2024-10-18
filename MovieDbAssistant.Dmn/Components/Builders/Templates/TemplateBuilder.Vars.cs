@@ -1,8 +1,11 @@
 ﻿using System.Collections;
+using System.Xml.Linq;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
+
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -88,7 +91,22 @@ public partial class TemplateBuilder
                     VarToString(TransformValue(k, val)));
             }
         }
+
+        // check not extended default decl
+        ExpandIgnoredDefaultDecl(tpl);
+
         return tpl;
+    }
+
+    string ExpandIgnoredDefaultDecl(string text)
+    {
+        var nextPos = 0;
+        /*(text, var defaultValue, nextPos) = ExpandNextVarDefault(
+                text,
+                name,
+                nextPos);*/
+
+        return text;
     }
 
     object? TransformValue(string? key, object? value)
@@ -204,6 +222,7 @@ public partial class TemplateBuilder
         text = text[0..x] + text[y..];
         nextPos = y;
 
+        // consume any other default decl for the same var
         while (nextPos > 0)
             (text, _, nextPos) = ExpandNextVarDefault(
                 text, varName, nextPos);

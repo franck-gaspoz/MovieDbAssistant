@@ -223,12 +223,3 @@
 }
 
 /* #endregion */
-
-/* #region fonts */
-
-@font-face {
-    font-family: bacereg;
-    src: url('../fonts/BrunoAce-Regular.ttf');
-}
-
-/* #endregion */
