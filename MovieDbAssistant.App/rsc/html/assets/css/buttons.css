@@ -1,12 +1,16 @@
-﻿.button-color-blue {
-    background: #2196F350;
-    color: #2196F388;
-    color: #00bfff88;
-}
+﻿/*
+button colors (prop {{color}}) :
+green, blue, red
+*/
 
-.button-color-green {
-    background: #49FF1888;
-    color: #90ee9050;
+.dialog-button-container {
+    padding: 2px;
+    border-left: #FFFFFF22 solid 2px;
+    border-top: #FFFFFF22 solid 2px;
+    border-right: #FFFFFF11 solid 1px;
+    border-radius: 6px;
+    border-bottom: #FFFFFF11 solid 1px;
+    display: inline-block;
 }
 
 .dialog-button {
@@ -29,21 +33,33 @@
 }
 
 .dialog-button.button-color-green {
-    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1855, 0 0 6px #49FF1855, 0 0 8px #49FF1855, 0 0 10px #49FF1855, 0 0 20px #49ff1855;
+    text-shadow: 0 0 4px #49FF1855,
+        0 0 6px #49FF1855,
+        0 0 8px #49FF1855,
+        0 0 10px #49FF1855,
+        0 0 20px #49FF1855,
+        0 0 20px #49FF1855,
+        0 0 20px #49FF1855;
 }
 
 .dialog-button.button-color-blue {
-    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #00bfff55, 0 0 6px #00bfff55, 0 0 8px #00bfff55, 0 0 10px #00bfff55, 0 0 20px #00bfff55;
+    text-shadow: 0 0 4px #00bfff55,
+        0 0 6px #00bfff55,
+        0 0 8px #00bfff55,
+        0 0 10px #00bfff55,
+        0 0 20px #00bfff55,
+        0 0 20px #00bfff55,
+        0 0 20px #00bfff55;
 }
 
-.dialog-button-container {
-    padding: 2px;
-    border-left: #FFFFFF22 solid 2px;
-    border-top: #FFFFFF22 solid 2px;
-    border-right: #FFFFFF11 solid 1px;
-    border-radius: 6px;
-    border-bottom: #FFFFFF11 solid 1px;
-    display: inline-block;
+.dialog-button.button-color-red {
+    text-shadow: 0 0 4px #ff223355,
+        0 0 6px #ff223355,
+        0 0 8px #ff223355,
+        0 0 10px #ff223355,
+        0 0 20px #ff223355,
+        0 0 20px #ff223355,
+        0 0 20px #ff223355;
 }
 
 .dialog-button-container.button-color-green {
@@ -51,8 +67,22 @@
 }
 
 .button-color-green.dialog-button:hover {
-    box-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1888, 0 0 6px #49FF1888, 0 0 8px #49FF1888, 0 0 10px #49FF1888, 0 0 20px #49ff1888;
-    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1888, 0 0 6px #49FF1888, 0 0 8px #49FF1888, 0 0 10px #49FF1888, 0 0 20px #49ff1888;
+    backdrop-filter: invert(1);
+    box-shadow:
+        0 0 5px #FFFFFF88,
+        0 0 0px #FFFFFF88,
+        0 0 2px #FFFFFF88,
+        0 0 4px #49FF1888,
+        0 0 6px #49FF1888,
+        0 0 8px #49FF1888,
+        0 0 10px #49FF1888,
+        -8px -8px 20px 0px #49FF1888;
+
+    text-shadow:
+        0px 0px 10px #49FF18ff,
+        0px 0px 20px #49FF18ff,
+        0px 0px 20px #49FF18ff,
+        0px 0px 50px #49FF18FF;
 }
 
 .dialog-button-container.button-color-blue {
@@ -60,6 +90,43 @@
 }
 
 .button-color-blue.dialog-button:hover {
-    box-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #00bfff88, 0 0 6px #00bfff88, 0 0 8px #00bfff88, 0 0 10px #00bfff88, 0 0 20px #00bfff88;
-    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #00bfff88, 0 0 6px #00bfff88, 0 0 8px #00bfff88, 0 0 10px #00bfff88, 0 0 20px #00bfff88;
+    backdrop-filter: invert(1);
+    box-shadow:
+        0 0 5px #FFFFFF88,
+        0 0 0px #FFFFFF88,
+        0 0 2px #FFFFFF88,
+        0 0 4px #00bfff88,
+        0 0 6px #00bfff88,
+        0 0 8px #00bfff88,
+        0 0 10px #00bfff88,
+        -8px -8px 20px 0px #00bfff88;
+
+    text-shadow:
+        0px 0px 10px #00bfffFF,
+        0px 0px 20px #00bfffFF,
+        0px 0px 20px #00bfffFF,
+        0px 0px 50px #00bfffff;
+}
+
+.dialog-button-container.button-color-red {
+    background: linear-gradient(0deg, black -40%, #F3062150 100%);
+}
+
+.button-color-red.dialog-button:hover {
+    backdrop-filter: invert(1);
+    box-shadow:
+        0 0 5px #FFFFFF88,
+        0 0 0px #FFFFFF88,
+        0 0 2px #FFFFFF88,
+        0 0 4px #ff223388,
+        0 0 6px #ff223388,
+        0 0 8px #ff223388,
+        0 0 10px #ff223388,
+        -8px -8px 20px 0px #ff223388;
+
+    text-shadow:
+        0px 0px 10px #ff2233FF,
+        0px 0px 20px #ff2233FF,
+        0px 0px 20px #ff2233FF,
+        0px 0px 50px #ff223388;
 }
