@@ -93,7 +93,7 @@
     align-content: center;
     justify-items: stretch;
     grid-gap: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
 }
 
 .frame-icon-container {
