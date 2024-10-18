@@ -294,6 +294,12 @@ Some sections of the application settings concern the template engine.
 {{variable}}
 ```
 ```html
+<!-- setup the defaut value of a variable (provided in remplacement of null) -->
+```
+```html
+{{variable:default=...=}}
+```
+```html
 <!-- replace by the text identified by textId in the user locale -->
 ```
 ```html
