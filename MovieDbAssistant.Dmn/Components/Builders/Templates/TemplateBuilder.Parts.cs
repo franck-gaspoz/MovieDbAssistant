@@ -163,7 +163,7 @@ public partial class TemplateBuilder
                 "part include properties delcaration error: missing ( in props list: " + name);
             return def;
         }
-        var decl = name[(x + 1)..^1];
+        var decl = name[(x + 1)..^1].Trim();
         decl = EscapeCharacters(decl);
 
         name = name[..x];
@@ -182,8 +182,8 @@ public partial class TemplateBuilder
                 return def;
             }
             props.AddOrReplace(
-                UnescapeCharacters(t[0]), 
-                UnescapeCharacters(t[1]));
+                UnescapeCharacters(t[0].Trim()), 
+                UnescapeCharacters(t[1].Trim()));
         }
 
         return (name, props);
