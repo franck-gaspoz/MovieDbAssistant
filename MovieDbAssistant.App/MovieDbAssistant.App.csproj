@@ -50,12 +50,13 @@
     <None Remove="rsc\html\assets\fonts\Renegade Master.ttf" />
     <None Remove="rsc\html\assets\fonts\Vonique 92_D.otf" />
     <None Remove="rsc\html\assets\icons\back.png" />
+    <None Remove="rsc\html\assets\icons\close-window.png" />
     <None Remove="rsc\html\assets\icons\download.png" />
     <None Remove="rsc\html\assets\icons\favicon.ico" />
     <None Remove="rsc\html\assets\icons\house.png" />
-    <None Remove="rsc\html\assets\icons\icons8-settings-50.png" />
     <None Remove="rsc\html\assets\icons\left-arrow.png" />
     <None Remove="rsc\html\assets\icons\play.png" />
+    <None Remove="rsc\html\assets\icons\settings.png" />
     <None Remove="rsc\html\assets\img\image-404-630x630.jpg" />
     <None Remove="rsc\html\assets\img\image-not-availble-300x175.jpg" />
     <None Remove="rsc\html\assets\js\core\ui-1.0.0.js" />
@@ -104,6 +105,7 @@
     <None Remove="rsc\html\assets\tpl\ui\controls\buttons\button.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\controls\buttons\dialog-button-closing.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\controls\frame-button-close.tpl.html" />
+    <None Remove="rsc\html\assets\tpl\ui\controls\icons\frame-icon-clickable.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\controls\icons\frame-icon.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html" />
@@ -228,6 +230,9 @@
     <Content Include="rsc\html\assets\icons\back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\icons\close-window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\icons\download.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -237,7 +242,7 @@
     <Content Include="rsc\html\assets\icons\house.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\assets\icons\icons8-settings-50.png">
+    <Content Include="rsc\html\assets\icons\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\left-arrow.png">
@@ -390,6 +395,9 @@
     <Content Include="rsc\html\assets\tpl\ui\controls\buttons\frame-button-close.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\tpl\ui\controls\icons\frame-icon-clickable.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\tpl\ui\controls\icons\frame-icon.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -486,7 +494,6 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="rsc\html\assets\tpl\NewFolder\" />
     <Folder Include="rsc\html\templates\dark\js\" />
   </ItemGroup>
 

@@ -74,7 +74,8 @@ ___
 - <a target="_blank" href="https://icons8.com/icon/60449/play-button-circled">Play</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/23353/downloading-updates">Download</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/364/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
- 
+- <a target="_blank" href="https://icons8.com/icon/23537/close-window">Close Window</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 ___
 
 ## Releases History

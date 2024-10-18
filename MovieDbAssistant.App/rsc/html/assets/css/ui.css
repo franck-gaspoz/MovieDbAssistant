@@ -167,6 +167,46 @@
     top: -2px;
 }
 
+.frame-icon-clickable {
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.frame-icon-clickable:hover {    
+}
+
+.icon-container-clickable {
+    display:grid;
+}
+
+.icon-clickable-background {
+    width: 28px;
+    height: 28px;
+    position: relative;
+    left: 4px;
+    top: 2px;
+    filter: blur(5px);
+}
+
+.icon-clickable-background:hover {
+    cursor: pointer;
+}
+
+.icon-clickable-background-red:hover {
+    background: linear-gradient(0deg, black -50%, red 100%);
+    cursor: pointer;
+}
+
+.icon-container-clickable > img,
+.icon-container-clickable > div {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.icon-container-clickable:hover {
+
+}
+
 /* #region transversals styles */
 
 .dragging {
