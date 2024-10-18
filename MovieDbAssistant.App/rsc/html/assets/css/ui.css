@@ -86,7 +86,6 @@
 }
 
 .dialog-button-bar {
-    padding: 0.5em;
     grid-row: 3;
     display: grid;
     justify-content: center;
