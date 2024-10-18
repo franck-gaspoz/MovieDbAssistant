@@ -65,11 +65,13 @@ public partial class TemplateBuilder
         var partFile = name + Parts_File_Extensions;
         var file = GetTemplateFile(partFile);
         if (file == null) return (tpl, nextY);
-
         var partContent = File.ReadAllText(file);
 
         // parse part vars
         partContent = SetVars(partContent, props);
+
+        // cleanup non initialized vars inside included properties
+
 
         // recurse part
         partContent = ParseIncludes(partContent, props);

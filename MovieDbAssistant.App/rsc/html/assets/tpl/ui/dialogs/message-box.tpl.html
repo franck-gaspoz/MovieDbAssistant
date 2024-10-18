@@ -9,11 +9,15 @@
             <div class="dialog-title-bar-container">
                 <div class="dialog-title-bar-background">
                     <div class="dialog-title-bar">
-                        <span class="dialog-icon-container">
+                        <span class="frame-icon-container">
                             {{icon}}
+                            {{icon:default={{{ui/controls/icons/frame-icon(name=icons8-settings-50.png)}}}=}}
                         </span>
                         <span class="dialog-text-title">
                             {{title}}
+                        </span>
+                        <span class="frame-right-icon-container">
+                            {{{ui/controls/icons/frame-icon(name=icons8-settings-50.png,class=dialog-button-closer)}}}
                         </span>
                     </div>
                 </div>

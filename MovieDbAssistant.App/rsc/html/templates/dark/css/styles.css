@@ -519,10 +519,10 @@ body.movie-page-list .movie-page-bottom-nav-container {
     margin-right: 1em;
 }
 
-    .nav-icon:hover {
-        cursor: pointer;
-        opacity: 50%;
-    }
+.nav-icon:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
 
 .mirror-h {
     rotate: 180deg;

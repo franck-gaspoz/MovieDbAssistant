@@ -53,18 +53,19 @@
 }
 
 .dialog-title-bar {
-    padding: 0.5em;
+    padding: 0.2em;
     font-family: 'comicn';
     font-weight: bold;
     grid-row: 1;
-    
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom: #3f51b5DD solid 1px;
     border-left: #3f51b5DD solid 1px;
     border-top: #6f81E5EE solid 1px;
-    display:grid;
-    grid-template-rows:min-content,auto,min-content
+    display: grid;
+    grid-template-columns: min-content auto min-content;
+    padding-bottom: 0px;
+    padding-top: 0.4em;
 }
 
 .dialog-title-bar-background {
@@ -74,7 +75,7 @@
 }
 
 .dialog-title-bar-container {
-    background: #1b2764;
+    background: #080c1c;
     border-radius: 1em 1em 0em 0em;
 }
 
@@ -131,16 +132,20 @@
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
 }
 
-.dialog-icon-container {
+.frame-icon-container {
     grid-column: 1;
     grid-row: 1;
-    display: inline-flex;
+    padding-left: 4px;
+}
+
+.frame-right-icon-container {
+    grid-column: 3;
+    grid-row: 1;
+    padding-right: 4px;
 }
 
 .dialog-text-title {
-    position: relative;
-    top: -3px;
-    grid-column: 1;
+    grid-column: 1 / 4;
     grid-row: 1;
 }
 
@@ -151,6 +156,15 @@
 .dragging .dialog {
     background: #000000D0;
     backdrop-filter: blur(5px);
+}
+
+.frame-icon {
+    filter: invert(100%);
+    width: 36px;
+    height: 36px;
+    opacity: 90%;
+    position: relative;
+    top: -2px;
 }
 
 /* #region transversals styles */

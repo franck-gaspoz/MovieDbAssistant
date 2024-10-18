@@ -12,7 +12,16 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public partial class TemplateBuilder
 {
     public const string Var_Prefix = "{{";
+
     public const string Var_Postfix = "}}";
+
+    public const string Include_Part_Condition_Separator = ":";
+
+    public const string Include_Part_Condition_Value_Prefix = "=";
+    
+    public const string Include_Part_Condition_Value_Postfix = "=";
+
+    public const string Include_Part_Condition_Default = "default";
 
     static string KeyToVar(string key) => key.ToFirstLower();
 
@@ -138,11 +147,69 @@ public partial class TemplateBuilder
 
     static string VarToString(object? value) => value?.ToString() ?? string.Empty;
 
-    string SetVar(string text, string name, string value)
+    string SetVar(string text, string name, string? value)
     {
-        text = text.Replace(Var(name), value);
+        var varn = Var(name);
+
+        if (varn == value)
+        {
+            // Var(name) == value <=> included prop : no value
+            // avoid (set to null) auto propagated variable in included prop
+            value = null;
+        }
+
+        if (value==null)
+        {
+            var nextPos = 0;
+            (text, var defaultValue, nextPos) = ExpandNextVarDefault(
+                text,
+                name,
+                nextPos);
+
+            if (nextPos > -1)
+            {
+                value = defaultValue;
+            }
+        }
+
+        text = text.Replace(varn, value);
+
         return text;
     }
 
-    string Var(string name) => Var_Prefix + name + Var_Postfix;
+    (string content, string? value, int nextPos) ExpandNextVarDefault(
+        string text,
+        string varName,
+        int startPos)
+    {
+        var nextPos = Index_NoNext;
+        var left = Var_Prefix
+            + varName
+            + Include_Part_Condition_Separator
+            + Include_Part_Condition_Default
+            + Include_Part_Condition_Value_Prefix;
+        var right = Include_Part_Condition_Value_Postfix
+            + Var_Postfix;
+        var def = (text, (string?)null, nextPos);
+
+        var x = text.IndexOf(left, startPos);
+        if (x < 0) return def;
+        var a = x + left.Length;
+        var y = text.IndexOf(right, x);
+        if (y < 0) return def;
+        var b = y - 1;
+        y += right.Length;
+        var decl = text[a..(b + 1)];
+
+        text = text[0..x] + text[y..];
+        nextPos = y;
+
+        while (nextPos > 0)
+            (text, _, nextPos) = ExpandNextVarDefault(
+                text, varName, nextPos);
+        
+        return (text,decl,y);
+    }
+
+    static string Var(string name) => Var_Prefix + name + Var_Postfix;
 }
