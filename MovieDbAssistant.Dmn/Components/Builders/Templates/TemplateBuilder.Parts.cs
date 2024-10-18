@@ -57,8 +57,14 @@ public partial class TemplateBuilder
         var b = y - 1;
         var name = tpl.Substring(a, b - a + 1);
 
-        (tpl, name, var tpIProps) = ParseIncludeProps(tpl, name, y + Include_Part_Postfix.Length);
+        // include with props (..)
+        (tpl, name, var tpIProps) = ParseIncludeProps(
+            tpl,
+            name,
+            y + Include_Part_Postfix.Length);
         tpIProps.MergeInto(props);
+
+        // include with props --
         (name, var tplProps) = ExtractProps(name);
         tplProps.MergeInto(props);
 
@@ -68,10 +74,8 @@ public partial class TemplateBuilder
         var partContent = File.ReadAllText(file);
 
         // parse part vars
-        partContent = SetVars(partContent, props);
-
-        // cleanup non initialized vars inside included properties
-
+        (partContent, var nprops) = SetVars(partContent, props);
+        nprops.MergeInto(props);
 
         // recurse part
         partContent = ParseIncludes(partContent, props);

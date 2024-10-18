@@ -75,10 +75,11 @@ public static class CollectionExtensions
     /// <param name="src">The src.</param>
     /// <param name="target">The target.</param>
     public static void MergeInto<TKey,TValue>(
-        this Dictionary<TKey,TValue> src,
+        this Dictionary<TKey,TValue>? src,
         Dictionary<TKey,TValue> target)
         where TKey: notnull
     {
+        if (src == null) return;
         foreach (var kvp in src)
             target.AddOrReplace(kvp.Key, kvp.Value);
     }

@@ -269,12 +269,15 @@ Some sections of the application settings concern the template engine.
 ```html
 <!-- includes a part with props values -->
 ```
+
 ```html
 {{{part(prop1=propValue_1,..propn=propValue_n)}}}
 ```
+
 ```html
 <!-- includes a part with props -->
 ```
+
 ```html
 {{{part--}}}
 	{{--propName_1--}}
@@ -287,42 +290,65 @@ Some sections of the application settings concern the template engine.
 	<!-- ...end of value prop name n... -->
 {{{--part}}}
 ```
+
 ```html
 <!-- includes the value of a variable -->
 ```
+
 ```html
 {{variable}}
 ```
+
 ```html
-<!-- setup the defaut value of a variable (provided in remplacement of null) -->
+<!-- setup the defaut value of a variable: provided in replacement of null in the current 
+ part context, for any value include of the variable) -->
 ```
+
 ```html
 {{variable:default=...=}}
 ```
+
+```html
+<!-- setup the value of a variable: replace value if already in the context. 
+  Is applied in the current part scope before variables are expanded -->
+```
+
+```html
+{{variable:set=...=}}
+```
+
 ```html
 <!-- replace by the text identified by textId in the user locale -->
 ```
+
 ```html
 {{(textId)}}
 ```
+
 ```html
 <!-- set visible if 'variable' is not null and not empty -->
 ```
+
 ```html
 <div class="if-varname"></div>
 ```
+
 ```html
 <!-- set visible if 'variable' is null or empty -->
 ```
+
 ```html
 <div class="if_no-varname"></div>
 ```
+
 ```html
 <!-- add class 'classname' if 'variable' is null or empty -->
 ```
+
 ```html
 <div class="if_no-varname--classname"></div>
 ```
+
 ```html
 </html>
 ```

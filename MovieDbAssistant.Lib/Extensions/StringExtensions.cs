@@ -77,6 +77,7 @@ public static class StringExtensions
 
     /// <summary>
     /// Levenshtein distance
+    /// <para>is bijective</para>
     /// </summary>
     /// <param name="s">source</param>
     /// <param name="t">traget</param>
@@ -104,5 +105,37 @@ public static class StringExtensions
             }
 
         return d[n, m];
+    }
+
+    /// <summary>
+    /// Search a string pattern on the left.
+    /// <para>returns <code>-1</code> if not found</para>
+    /// </summary>
+    /// <param name="s">The string to search in</param>
+    /// <param name="pat">The pattern to search.</param>
+    /// <returns>An <see cref="int"/></returns>
+    public static int SearchLeft(this string s,string pat,int fromIndex)
+    {
+        var i = fromIndex;
+        if (i < 0) return -1;
+        var l = pat.Length;
+        if (s[i..(i + l)] == pat) return i;
+        return s.SearchLeft( pat, fromIndex-1 );
+    }
+
+    /// <summary>
+    /// Search a string pattern on the left.
+    /// <para>returns <code>-1</code> if not found</para>
+    /// </summary>
+    /// <param name="s">The string to search in</param>
+    /// <param name="pat">The pattern to search.</param>
+    /// <returns>An <see cref="int"/></returns>
+    public static int SearchRight(this string s, string pat, int fromIndex)
+    {
+        var i = fromIndex;
+        if (i < 0) return -1;
+        var l = pat.Length;
+        if (s[i..(i + l)] == pat) return i;
+        return s.SearchRight(pat, fromIndex + 1);
     }
 }

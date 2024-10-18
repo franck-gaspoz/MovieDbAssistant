@@ -75,3 +75,16 @@ body {
         transform: translate(-50%, -50%) rotate(1turn);
     }
 }
+
+---------------------------------------------------
+
+    /* vegas */
+    /* background: linear-gradient(360deg, rgba(0, 0, 0, 0) 5%, #3F51B5 100%);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;*/
+    
+----------------------------------------------------
+
+text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1855, 0 0 6px #49FF1855, 0 0 8px #49FF1855, 0 0 10px #49FF1855, 0 0 20px #49ff1855;
+
+#90ee9050
+
