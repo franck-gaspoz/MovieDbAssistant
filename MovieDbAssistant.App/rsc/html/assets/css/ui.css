@@ -54,7 +54,7 @@
 
 .dialog-title-bar {
     padding: 0.2em;
-    font-family: 'comicn';
+    font-family: 'bacereg';
     font-weight: bold;
     grid-row: 1;
     border-top-left-radius: 1em;
@@ -113,6 +113,10 @@
     border-radius: 6px;
     font-size: 22px;
     cursor: pointer;
+    background: black;
+    /*text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1888, 0 0 6px #49FF1888, 0 0 8px #49FF1888, 0 0 10px #49FF1888, 0 0 20px #49ff1888;*/
+    /*text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #4918ff88, 0 0 6px #4918ff88, 0 0 8px #4918ff88, 0 0 10px #4918ff88, 0 0 20px #4918ff88;*/
+    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1855, 0 0 6px #49FF1855, 0 0 8px #49FF1855, 0 0 10px #49FF1855, 0 0 20px #49ff1855;
 }
 
 .dialog-button-container {
@@ -123,13 +127,18 @@
     border-radius: 6px;
     border-bottom: #FFFFFF11 solid 1px;
     /*box-shadow: 0px 0px 8px 4px #FFFFFF11;*/
-    background: #00000044;
+    /*background: #00000044;*/
     display: inline-block;
+    background: linear-gradient(0deg, black -40%, #90ee9050 100%);
 }
 
 .dialog-button:hover {
-    background: linear-gradient(360deg, rgba(0, 0, 0, 0) 5%, #3F51B5 100%);
-    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+    /* vegas */
+    /* background: linear-gradient(360deg, rgba(0, 0, 0, 0) 5%, #3F51B5 100%);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;*/
+    
+    box-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1888, 0 0 6px #49FF1888, 0 0 8px #49FF1888, 0 0 10px #49FF1888, 0 0 20px #49ff1888;
+    text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1888, 0 0 6px #49FF1888, 0 0 8px #49FF1888, 0 0 10px #49FF1888, 0 0 20px #49ff1888;
 }
 
 .frame-icon-container {
@@ -212,3 +221,14 @@
 .dragging {
     cursor: grabbing;
 }
+
+/* #endregion */
+
+/* #region fonts */
+
+@font-face {
+    font-family: bacereg;
+    src: url('../fonts/BrunoAce-Regular.ttf');
+}
+
+/* #endregion */

@@ -41,7 +41,10 @@
     <None Remove="input\README.md" />
     <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
+    <None Remove="rsc\html\assets\css\buttons.css" />
+    <None Remove="rsc\html\assets\css\icons.css" />
     <None Remove="rsc\html\assets\css\ui.css" />
+    <None Remove="rsc\html\assets\fonts\BrunoAce-Regular.ttf" />
     <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
     <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
     <None Remove="rsc\html\assets\fonts\Open 24 Display St.ttf" />
@@ -203,7 +206,16 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\assets\css\buttons.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\css\icons.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\css\ui.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\fonts\BrunoAce-Regular.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\fonts\ComicNeue-Light.ttf">
@@ -494,6 +506,7 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="rsc\html\assets\css\themes\" />
     <Folder Include="rsc\html\templates\dark\js\" />
   </ItemGroup>
 
