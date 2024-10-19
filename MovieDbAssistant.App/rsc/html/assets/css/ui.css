@@ -83,6 +83,7 @@
     padding: 0.5em;
     font-family: 'comicn';
     grid-row: 2;
+    font-size:32px;
 }
 
 .dialog-button-bar {
