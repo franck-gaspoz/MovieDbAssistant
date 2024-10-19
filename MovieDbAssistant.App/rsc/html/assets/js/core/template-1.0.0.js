@@ -379,21 +379,16 @@ class Template {
         return tpl
     }
 
-    firstLower(txt) {
-        return txt.charAt(0).toLowerCase() + txt.slice(1);
-    }
-
     getVar(name) {
         return '{{' + this.getVarname(name) + '}}';
     }
 
     getVarname(name) {
-        return this.firstLower(name);
-        //.replaceAll('.', '-')
+        return firstLower(name);
     }
 
     getVarnameForClass(name) {
-        return this.firstLower(name)
+        return firstLower(name)
             .replaceAll('.', '-')
     }
 }
