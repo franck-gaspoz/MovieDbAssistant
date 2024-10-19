@@ -40,7 +40,7 @@
     border-radius: 1em;
     border: black solid 2px;
     align-items: center;
-    grid-template-rows: 2.2em auto 3em;
+    grid-template-rows: 2.2em auto min-content;
     position: absolute;
     z-index: 20;
     pointer-events: all;
@@ -94,7 +94,7 @@
     align-content: center;
     justify-items: stretch;
     grid-gap: 1em;
-    padding-bottom: 2.5em;
+    margin-bottom: 2em;
 }
 
 .frame-icon-container {

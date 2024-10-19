@@ -1,11 +1,14 @@
 ﻿<!-- tpl/ui/dialogs/message-box: id={{id}} -->
 
-<div class="dialog-container draggable"
+<div class="dialog-container draggable {{dialogClass}}"
          id="{{id}}">
 
     <div class="dialog-wrapper">
 
-        <div class="dialog">
+        <div class="dialog" style="
+            min-height:{{minHeight}}{{minHeight:default==}};
+            min-width:{{minWidth}}{{minWidth:default==}}">
+
             <div class="dialog-title-bar-container">
                 <div class="dialog-title-bar-background">
                     <div class="dialog-title-bar">
