@@ -80,10 +80,10 @@
 }
 
 .dialog-content {
-    padding: 0.5em;
     font-family: 'comicn';
     grid-row: 2;
-    font-size:32px;
+    font-size: 32px;
+    margin: 36px;
 }
 
 .dialog-button-bar {
@@ -94,7 +94,8 @@
     align-content: center;
     justify-items: stretch;
     grid-gap: 1em;
-    margin-bottom: 2em;
+    margin: 36px;
+    margin-top: 0em;
 }
 
 .frame-icon-container {

@@ -64,6 +64,7 @@
     <None Remove="rsc\html\assets\img\image-404-630x630.jpg" />
     <None Remove="rsc\html\assets\img\image-not-availble-300x175.jpg" />
     <None Remove="rsc\html\assets\js\core\ui-1.0.0.js" />
+    <None Remove="rsc\html\assets\js\core\util-1.0.0.js" />
     <None Remove="rsc\html\assets\js\jquery-3.7.1.min.js" />
     <None Remove="rsc\html\assets\js\template.js" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg" />
@@ -274,6 +275,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\js\core\ui-1.0.0.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\js\core\util-1.0.0.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\js\ext\jquery-3.7.1.min.js">

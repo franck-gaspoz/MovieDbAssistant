@@ -59,7 +59,7 @@
     "/fonts/Vonique 92_D.otf:/fonts",
     "/fonts/Open 24 Display St.ttf:/fonts",
     "/fonts/Renegade Master.ttf:/fonts",
-    "/fonts/BrunoAce-Regular.ttf:/fonts",    
+    "/fonts/BrunoAce-Regular.ttf:/fonts",
     "/icons/back.png:/img",
     "/icons/download.png:/img",
     "/icons/favicon.ico:/img",
@@ -73,6 +73,7 @@
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
     "/js/core/ui-1.0.0.js:/js/core",
+    "/js/core/util-1.0.0.js:/js/core",
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
     "/css:/"
