@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Configuration.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Extensions;
@@ -28,6 +29,8 @@ public partial class TemplateBuilder
     public const string Included_Prop_Condition_IfNotNullOrEmpty = "{{-if-not-null-or-empty}}";
 
     public const int Index_NoNext = -1;
+
+    public const string Prop_Name_Tpl_Name = "tpl-name";
 
     string IncludeParts(string tpl, Dictionary<string, object?>? props = null)
     {
@@ -70,8 +73,16 @@ public partial class TemplateBuilder
 
         var partFile = name + Parts_File_Extensions;
         var file = GetTemplateFile(partFile);
-        if (file == null) return (tpl, nextY);
-        var partContent = File.ReadAllText(file);
+        if (file == (null,null)) 
+            return (tpl, nextY);
+        var partContent = File.ReadAllText(file.Path!);
+
+        // set auto props
+        props.AddOrReplace(
+            Prop_Name_Tpl_Name,
+            file.Folder!  
+                + '/'
+                + name);
 
         // parse part vars
         (partContent, var nprops) = SetVars(partContent, props);
@@ -225,7 +236,7 @@ public partial class TemplateBuilder
         return r;
     }
 
-    string ? GetTemplateFile(string partFile)
+    (string? Folder,string? Path) GetTemplateFile(string partFile)
     {
         // search in tpl
         var tplPartsPath = Path.Combine(
@@ -233,15 +244,18 @@ public partial class TemplateBuilder
             _tpl!.Options.Paths.Parts
             );
         var file = Path.Combine(tplPartsPath, partFile);
-        if (File.Exists(file)) return file;
+        if (File.Exists(file)) 
+            return (_tpl!.Options.Paths.Parts,file);
 
         var rscPartsPath = _dmnSettings.Value.EngineTpsPath();
         file = Path.Combine(rscPartsPath, partFile);
-        if (File.Exists(file)) return file;
+        if (File.Exists(file)) 
+            return (_dmnSettings.Value.Paths.RscHtmlAssetsTpl
+                , file);
 
         _logger.LogError(this, "template part not found: " + partFile);
 
-        return null;
+        return (null,null);
     }
 
 }
