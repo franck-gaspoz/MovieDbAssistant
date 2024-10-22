@@ -10,7 +10,7 @@ green, blue, red, yellow
     border-right: #FFFFFF11 solid 1px;
     border-radius: 6px;
     border-bottom: #FFFFFF11 solid 1px;
-    display: inline-block;
+    display: inline-flex;
 }
 
 .dialog-button {
