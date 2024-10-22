@@ -33,36 +33,21 @@ green, blue, red, yellow
 }
 
 .dialog-button-small {
-    font-family: 'vonique';
-    display: inline-block;
-    /*height: 100%;*/
-    line-height: unset;
-    /* padding-top: 0.8em; */
-    /* padding-bottom: 0.3em; */
-    box-sizing: border-box;
-    /* padding-left: 0.2em; */
-    /* padding-right: 0.2em; */
+    background: #FF000050;
     padding: 0px !important;
-    border-left: #FFFFFF77 solid 1px;
-    border-top: #FFFFFF77 solid 1px;
-    border: #FFFFFF44 solid 1px;
-    border-radius: 6px;
-    font-size: 22px;
-    cursor: pointer;
-    background: black;
-    width: 22px;
-    height: 22px;
-    border: yellow solid 1px;
+    line-height: unset;
+    width: 28px;
+    height: 26px;
+    font-size: 14px !important;
+    padding-top: 4px !important;
 }
 
 .dialog-button-small-container {
     padding: 0px !important;
     padding-bottom: 0.0em !important;
-    display:flex !important;
-}
-
-.dialog-button-small {
-    font-size: 14px !important;
+    display: flex !important;
+    margin-top: 2px;
+    margin-right: 4px;
 }
 
 .dialog-button.button-color-green {
