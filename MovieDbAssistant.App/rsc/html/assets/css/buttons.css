@@ -10,7 +10,7 @@ green, blue, red, yellow
     border-right: #FFFFFF11 solid 1px;
     border-radius: 6px;
     border-bottom: #FFFFFF11 solid 1px;
-    display: inline-flex;
+    display: block;
 }
 
 .dialog-button {
@@ -30,6 +30,39 @@ green, blue, red, yellow
     font-size: 22px;
     cursor: pointer;
     background: black;
+}
+
+.dialog-button-small {
+    font-family: 'vonique';
+    display: inline-block;
+    /*height: 100%;*/
+    line-height: unset;
+    /* padding-top: 0.8em; */
+    /* padding-bottom: 0.3em; */
+    box-sizing: border-box;
+    /* padding-left: 0.2em; */
+    /* padding-right: 0.2em; */
+    padding: 0px !important;
+    border-left: #FFFFFF77 solid 1px;
+    border-top: #FFFFFF77 solid 1px;
+    border: #FFFFFF44 solid 1px;
+    border-radius: 6px;
+    font-size: 22px;
+    cursor: pointer;
+    background: black;
+    width: 22px;
+    height: 22px;
+    border: yellow solid 1px;
+}
+
+.dialog-button-small-container {
+    padding: 0px !important;
+    padding-bottom: 0.0em !important;
+    display:flex !important;
+}
+
+.dialog-button-small {
+    font-size: 14px !important;
 }
 
 .dialog-button.button-color-green {

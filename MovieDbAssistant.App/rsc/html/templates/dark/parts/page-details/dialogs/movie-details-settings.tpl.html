@@ -1,32 +1,31 @@
 ﻿<!-- page-details/dialogs/movie-list-settings -->
-
 {{{ui/dialogs/message-box--}}}
 
-    {{--dialogId--}}
-    {{id}}
+{{--dialogId--}}
+{{id}}
 
-    {{--title--}}
+{{--title--}}
     Options
 
-    {{--minWidth--}}
+{{--minWidth--}}
     14em
-    {{--minHeight--}}
+{{--minHeight--}}
     14em
 
-    {{--icon--}}
-    {{icon}}
+{{--icon--}}
+{{icon}}
 
-    {{--content--}}
+{{--content--}}
     hello world
 
-    {{--buttons--}}
-    {{{ui/controls/buttons/dialog-button-closing(
-        id=ok,label=Ok,col=1,dialogId={{id}})}}}
-    {{{ui/controls/buttons/dialog-button-closing(
-        id=cancel,label=Cancel,col=2,color=green,dialogId={{id}})}}}
-    {{{ui/controls/buttons/dialog-button-closing(
-        id=close,label=Close,col=3,color=red,dialogId={{id}})}}}
-    {{{ui/controls/buttons/dialog-button-closing(
-        id=start,label=Start,col=4,color=yellow,dialogId={{id}})}}}
+{{--buttons--}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=ok,label=Ok,col=1,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=cancel,label=Cancel,col=2,color=green,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=close,label=Close,col=3,color=red,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=start,label=Start,col=4,color=yellow,dialogId={{id}},buttonContainerClass=)}}}
 
 {{{--ui/dialogs/message-box}}}

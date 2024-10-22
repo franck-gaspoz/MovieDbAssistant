@@ -1,6 +1,7 @@
 ﻿<!-- {{tpl-name}} id={{id}} dialogId={{dialogId}} -->
 
-{{{ui/controls/icons/frame-icon-clickable(
-    name=close-window.png,
-    bgClass=dialog-button-closer icon-clickable-background-red frame-icon,
-    class=dialog-button-closer)}}}
+{{{ui/controls/buttons/button(
+    id={{id}},label={{label}},color=red,
+    buttonContainerClass=dialog-button-small-container,
+    label=X,
+    class=dialog-button-closer dialog-button-small)}}}
