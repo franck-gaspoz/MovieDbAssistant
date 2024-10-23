@@ -60,6 +60,20 @@ public sealed class TemplateBuilderContext
     public string TplContent => _tplContent ?? (_tplContent =
         File.ReadAllText(TplFile)!);
 
+    TemplateModel? _tplModel;
+
+    /// <summary>
+    /// Template to model.
+    /// </summary>
+    /// <returns>A <see cref="TemplateModel"/></returns>
+    public TemplateModel TemplateModel
+        => _tplModel ?? (_tplModel =
+            JsonSerializer.Deserialize<TemplateModel>(
+                TplContent,
+                JsonSerializerProperties.Value)
+                    ?? throw new InvalidOperationException("template spec not found: "
+                        + TplFile));
+
     /// <summary>
     /// assets path
     /// </summary>
@@ -113,14 +127,4 @@ public sealed class TemplateBuilderContext
         return this;
     }
 
-    /// <summary>
-    /// Template to model.
-    /// </summary>
-    /// <returns>A <see cref="TemplateModel"/></returns>
-    public TemplateModel TemplateModel()
-        => JsonSerializer.Deserialize<TemplateModel>(
-            TplContent,
-            JsonSerializerProperties.Value)
-                ?? throw new InvalidOperationException("template spec not found: "
-                    + TplFile);
 }

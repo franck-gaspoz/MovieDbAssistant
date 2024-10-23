@@ -74,7 +74,7 @@ public partial class TemplateBuilder
                     && !vtype!.IsArray)
             {
                 // model not null
-                SetVars(
+                (tpl, _) = SetVars(
                     tpl,
                     val.GetProperties(),
                     prefix != null ?
@@ -85,7 +85,7 @@ public partial class TemplateBuilder
             else
             {
                 // not a model or null model
-                var k = kvp.Key;
+                var k = KeyToVar(kvp.Key);
                 if (prefix != null)
                     k = prefix + '.' + k;
 
@@ -221,7 +221,7 @@ public partial class TemplateBuilder
                     o?.GetType()?.GetGenericArguments()[0]?.Name,
                     x));
             o = string.Join(
-                _tpl!.HSep,
+                _tpl!.Options.HSep,
                 t);
         }
         return o;

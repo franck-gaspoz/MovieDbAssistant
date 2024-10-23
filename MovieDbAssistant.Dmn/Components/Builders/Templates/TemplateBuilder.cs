@@ -72,7 +72,7 @@ public sealed partial class TemplateBuilder
             return this;
         }
 
-        tpl = _tpl = Context.TemplateModel();
+        tpl = _tpl = Context.TemplateModel;
 
         tpl.LoadContent(Path.Combine(
             Context.TplPath,

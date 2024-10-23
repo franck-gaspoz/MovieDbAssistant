@@ -1,12 +1,30 @@
 {
   "Id": "dark",
   "Name": "Dark",
-  "Version": "1.0",
+  "Version": "1.0.0",
   "VersionDate": "2024/10/03",
   "Author": "Franck Gaspoz",
   "Templates": {
     "List": "page-list.tpl.html",
     "Details": "page-details.tpl.html"
+  },
+  "Theme": {
+    "Ui": {
+      "Id": "blue-neon",
+      "Ver": "1.0.0"
+    },
+    "Fonts": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "Icons": {
+      "Id": "blue-neon",
+      "Ver": "1.0.0"
+    },
+    "Buttons": {
+      "Id": "blue-neon",
+      "Ver": "1.0.0"
+    }
   },
   "Options": {
     "Paths": {
@@ -30,9 +48,20 @@
     "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
+    "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "HSep": "<span class=\"hsep\"></span>",
+
+    "Properties": {
+      "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+      "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+      "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
+      "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
+      "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+      "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+      "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+      "HSep": "<span class=\"hsep\"></span>"
+    }
   },
-  "HSep": "<span class=\"hsep\"></span>",
   "Transforms": [
     {
       "Target": "Interests",

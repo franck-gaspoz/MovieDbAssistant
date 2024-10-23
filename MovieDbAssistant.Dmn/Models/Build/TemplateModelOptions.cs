@@ -1,4 +1,6 @@
-﻿using MovieDbAssistant.Dmn.Components.Builders.Document;
+﻿using System.Text.Json;
+
+using MovieDbAssistant.Dmn.Components.Builders.Document;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -58,6 +60,17 @@ public sealed class TemplateModelOptions
     /// alternate url page movie detail movie pic not found
     /// </summary>
     public string? DetailMoviePicNotFound { get; set; }
+
+    /// <summary>
+    /// horzontal separator html
+    /// </summary>
+    public string HSep { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the properties.
+    /// </summary>
+    /// <value>A <see cref="JsonElement? "/></value>
+    public JsonElement? Properties { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.

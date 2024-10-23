@@ -10,6 +10,8 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 /// </summary>
 public sealed partial class TemplateBuilder
 {
+    const string Template_Var_Tpl = "tpl";
+
     const string Template_Var_Software = "software";
     const string Template_Var_Software_Id = "softwareId";
     const string Template_Var_Software_Version = "softwareVersion";
@@ -53,6 +55,10 @@ public sealed partial class TemplateBuilder
         MovieModel? data = null,
         HtmlDocumentBuilderContext? htmlContext = null) => new()
         {
+            {
+                Template_Var_Tpl,
+                _tpl
+            },
             {
                 Template_Var_OutputPages,
                 _dmnSettings.Value.Paths.OutputPages

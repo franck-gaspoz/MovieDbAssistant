@@ -32,17 +32,21 @@
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
     <None Remove="input\-movie.json" />
+    <None Remove="input\-ok.ru.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
     <None Remove="input\-query1.txt" />
     <None Remove="input\-query2.txt" />
     <None Remove="input\-shmovies.json" />
-    <None Remove="input\ok.ru.txt" />
     <None Remove="input\README.md" />
     <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
     <None Remove="rsc\html\assets\css\buttons.css" />
     <None Remove="rsc\html\assets\css\icons.css" />
+    <None Remove="rsc\html\assets\css\themes\blue-neon\buttons-1.0.0.css" />
+    <None Remove="rsc\html\assets\css\themes\blue-neon\icons-1.0.0.css" />
+    <None Remove="rsc\html\assets\css\themes\blue-neon\ui-1.0.0.css" />
+    <None Remove="rsc\html\assets\css\themes\blue-neon\ui-fonts-1.0.0.css" />
     <None Remove="rsc\html\assets\css\ui-fonts.css" />
     <None Remove="rsc\html\assets\css\ui.css" />
     <None Remove="rsc\html\assets\fonts\BrunoAce-Regular.ttf" />
@@ -145,7 +149,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\ok.ru.txt">
+    <Content Include="input\-ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -212,6 +216,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\css\icons.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\css\themes\blue-neon\buttons-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\css\themes\blue-neon\icons-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\css\themes\blue-neon\ui-fonts-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\css\themes\blue-neon\ui-1.0.0.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\css\ui-fonts.css">
@@ -514,7 +530,6 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="rsc\html\assets\css\themes\" />
     <Folder Include="rsc\html\templates\dark\js\" />
   </ItemGroup>
 

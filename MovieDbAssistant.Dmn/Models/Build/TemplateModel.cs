@@ -10,11 +10,13 @@ public sealed class TemplateModel
         string version,
         string versionDate,
         string id,
+        TemplateThemeModel theme,
         TemplatesModel templates,
         TemplateModelOptions options,
         List<string> files,
         string? path)
     {
+        Theme = theme;
         Name = name;
         Version = version;
         VersionDate = versionDate;
@@ -45,6 +47,12 @@ public sealed class TemplateModel
     /// </summary>
     /// <value>A <see cref="string"/></value>
     public string Id { get; set; }
+
+    /// <summary>
+    /// Gets or sets the theme.
+    /// </summary>
+    /// <value>A <see cref="TemplateThemeModel"/></value>
+    public TemplateThemeModel Theme { get; set; }
 
     /// <summary>
     /// template contents
@@ -79,11 +87,6 @@ public sealed class TemplateModel
     /// transforms
     /// </summary>
     public List<TransformModel> Transforms { get; set; } = [];
-
-    /// <summary>
-    /// horzontal separator html
-    /// </summary>
-    public string HSep { get; set; } = string.Empty;
 
     #endregion
 
