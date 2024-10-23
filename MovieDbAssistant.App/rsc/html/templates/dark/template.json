@@ -49,7 +49,6 @@
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "HSep": "<span class=\"hsep\"></span>",
 
     "Properties": {
       "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
