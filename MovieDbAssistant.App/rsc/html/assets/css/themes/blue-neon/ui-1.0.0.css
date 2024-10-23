@@ -112,6 +112,7 @@
 .dialog-text-title {
     grid-column: 1 / 4;
     grid-row: 1;
+    font-family: "vonique";
 }
 
 .dragging .dialog-title-bar {

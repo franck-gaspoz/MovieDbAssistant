@@ -41,14 +41,10 @@
     <None Remove="input\README.md" />
     <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
-    <None Remove="rsc\html\assets\css\buttons.css" />
-    <None Remove="rsc\html\assets\css\icons.css" />
     <None Remove="rsc\html\assets\css\themes\blue-neon\buttons-1.0.0.css" />
     <None Remove="rsc\html\assets\css\themes\blue-neon\icons-1.0.0.css" />
     <None Remove="rsc\html\assets\css\themes\blue-neon\ui-1.0.0.css" />
     <None Remove="rsc\html\assets\css\themes\blue-neon\ui-fonts-1.0.0.css" />
-    <None Remove="rsc\html\assets\css\ui-fonts.css" />
-    <None Remove="rsc\html\assets\css\ui.css" />
     <None Remove="rsc\html\assets\fonts\BrunoAce-Regular.ttf" />
     <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
     <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
@@ -212,12 +208,6 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
-    <Content Include="rsc\html\assets\css\buttons.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\css\icons.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="rsc\html\assets\css\themes\blue-neon\buttons-1.0.0.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -228,12 +218,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\css\themes\blue-neon\ui-1.0.0.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\css\ui-fonts.css">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\css\ui.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\fonts\BrunoAce-Regular.ttf">
