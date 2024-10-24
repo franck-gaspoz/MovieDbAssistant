@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Dynamic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
+using MovieDbAssistant.Lib.Extensions; 
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -68,6 +70,12 @@ public sealed class TemplateModel
     /// <value>A <see cref="JsonElement? "/></value>
     [JsonPropertyName("props")]
     public JsonElement? Props { get; set; }
+
+    /// <summary>
+    /// dynamic props
+    /// </summary>
+    public dynamic DProps
+        => Props.ToDynamic();
 
     /// <summary>
     /// Gets or sets the options.

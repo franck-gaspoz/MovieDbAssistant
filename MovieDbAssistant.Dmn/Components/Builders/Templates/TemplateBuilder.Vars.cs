@@ -32,6 +32,8 @@ public partial class TemplateBuilder
     public const string Include_Part_Condition_Value_Postfix = "=";
 
     public const string Include_Part_Condition_Default = "default";
+    
+    public const string Tpl_Prop_HSep = "hSep";
 
     static string KeyToVar(string key) => key.ToFirstLower();
 
@@ -244,6 +246,11 @@ public partial class TemplateBuilder
         return o;
     }
 
+    string? _ihsep = null;
+    string _hsep =>
+        _ihsep ?? (_ihsep = _tpl!.DProps[Tpl_Prop_HSep]
+            .ToString());
+
     /// <summary>
     /// Transform the array.
     /// </summary>
@@ -259,7 +266,7 @@ public partial class TemplateBuilder
                     o?.GetType()?.GetGenericArguments()[0]?.Name,
                     x));
             o = string.Join(
-                _tpl!.Options.HSep,
+                _hsep,
                 t);
         }
         return o;

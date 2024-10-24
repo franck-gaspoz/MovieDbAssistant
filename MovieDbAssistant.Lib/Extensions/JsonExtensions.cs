@@ -19,7 +19,7 @@ public static class JsonExtensions
     /// </summary>
     /// <param name="element">The element.</param>
     /// <returns>An <see cref="object"/></returns>
-    public static object? ToDynamic(this JsonElement? element)
+    public static dynamic ToDynamic(this JsonElement? element)
     {
         if (element == null) return null;
         var json = JsonObject.Create(element!.Value)!
