@@ -1,47 +1,47 @@
 {
-  "Id": "blue-neon",
-  "Name": "Blue Neon",
-  "Version": "1.0.0",
-  "VersionDate": "2024/10/03",
-  "Author": "Franck Gaspoz",
-  "Theme": {
-    "Ui": {
-      "Id": "blue-neon",
-      "Ver": "1.0.0"
+  "id": "blue-neon",
+  "name": "Blue Neon",
+  "version": "1.0.0",
+  "versionDate": "2024/10/03",
+  "author": "Franck Gaspoz",
+  "theme": {
+    "ui": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
     },
     "Fonts": {
       "id": "blue-neon",
       "ver": "1.0.0"
     },
-    "Icons": {
-      "Id": "blue-neon",
-      "Ver": "1.0.0"
+    "icons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
     },
-    "Buttons": {
-      "Id": "blue-neon",
-      "Ver": "1.0.0"
+    "buttons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
     }
   },
   
-  "Templates": {
-    "List": "page-list.tpl.html",
-    "Details": "page-details.tpl.html"
+  "templates": {
+    "list": "page-list.tpl.html",
+    "details": "page-details.tpl.html"
   },
 
-  "Pages": [
+  "pages": [
     {
-      "Id": "list",
-      "Layout": "list",
-      "Tpl": "page-list.tpl.html"
+      "id": "list",
+      "layout": "list",
+      "tpl": "page-list.tpl.html"
     },
     {
-      "Id": "detail",
-      "Layout": "detail",
-      "Tpl": "page-details.tpl.html"
+      "id": "detail",
+      "layout": "detail",
+      "tpl": "page-details.tpl.html"
     }
   ],
 
-  "Props": {
+  "props": {
     "listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
     "detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
     "listMoviePicNotFound": "./img/image-404-630x630.jpg",

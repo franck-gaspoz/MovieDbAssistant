@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Build;
+﻿using System.Text.Json.Serialization;
+
+namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template theme model.
@@ -9,24 +11,28 @@ public sealed class TemplateThemeModel
     /// Gets or sets the UI.
     /// </summary>
     /// <value>A <see cref="TemplateThemeComponentModel"/></value>
+    [JsonPropertyName("ui")]
     public TemplateThemeComponentModel Ui { get; set; }
 
     /// <summary>
     /// Gets or sets the fonts.
     /// </summary>
     /// <value>A <see cref="TemplateThemeComponentModel"/></value>
+    [JsonPropertyName("fonts")] 
     public TemplateThemeComponentModel Fonts { get; set; }
 
     /// <summary>
     /// Gets or sets the icons.
     /// </summary>
     /// <value>A <see cref="TemplateThemeComponentModel"/></value>
+    [JsonPropertyName("icons")] 
     public TemplateThemeComponentModel Icons { get; set; }
 
     /// <summary>
     /// Gets or sets the buttons.
     /// </summary>
     /// <value>A <see cref="TemplateThemeComponentModel"/></value>
+    [JsonPropertyName("buttons")] 
     public TemplateThemeComponentModel Buttons { get; set; }
 
     /// <summary>

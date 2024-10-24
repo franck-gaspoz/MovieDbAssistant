@@ -36,28 +36,33 @@ public sealed class TemplateModel
     /// <summary>
     /// name
     /// </summary>
+    [JsonPropertyName("name")]
     public string Name { get; set; }
 
     /// <summary>
     /// version number
     /// </summary>
+    [JsonPropertyName("version")]
     public string Version { get; set; }
 
     /// <summary>
     /// version date
     /// </summary>
+    [JsonPropertyName("versionDate")]
     public string VersionDate { get; set; }
 
     /// <summary>
     /// Gets or sets the id.
     /// </summary>
     /// <value>A <see cref="string"/></value>
+    [JsonPropertyName("id")]
     public string Id { get; set; }
 
     /// <summary>
     /// Gets or sets the theme.
     /// </summary>
     /// <value>A <see cref="TemplateThemeModel"/></value>
+    [JsonPropertyName("theme")]
     public TemplateThemeModel Theme { get; set; }
 
     /// <summary>
@@ -91,11 +96,13 @@ public sealed class TemplateModel
     /// Gets or sets the files.
     /// </summary>
     /// <value>A list of strings.</value>
+    [JsonPropertyName("files")] 
     public List<string> Files { get; set; } = [];
 
     /// <summary>
     /// gets or sets the resources
     /// </summary>
+    [JsonPropertyName("resources")] 
     public List<string> Resources { get; set; } = [];
 
     #region working properties
@@ -103,11 +110,13 @@ public sealed class TemplateModel
     /// <summary>
     /// path on disk of the template folder
     /// </summary>
+    [JsonPropertyName("path")] 
     public string? Path { get; set; }
 
     /// <summary>
     /// transforms
     /// </summary>
+    [JsonPropertyName("transforms")] 
     public List<TransformModel> Transforms { get; set; } = [];
 
     #endregion
