@@ -1,4 +1,5 @@
 ﻿using System.Dynamic;
+using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using MovieDbAssistant.Lib.Extensions; 
@@ -74,6 +75,8 @@ public sealed class TemplateModel
     /// <summary>
     /// dynamic props
     /// </summary>
+    [JsonIgnore]
+    [IgnoreDataMember]
     public dynamic DProps
         => Props.ToDynamic();
 
