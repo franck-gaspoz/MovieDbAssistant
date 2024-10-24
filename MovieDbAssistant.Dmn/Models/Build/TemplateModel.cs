@@ -2,6 +2,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+using MovieDbAssistant.Dmn.Components.Builders.Document;
+using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
@@ -16,11 +18,10 @@ public sealed class TemplateModel
         string version,
         string versionDate,
         string id,
-        TemplateThemeModel theme,
+        ThemeModel theme,
         List<PageModel> pages,
         TemplatesModel templates,
         JsonElement? props,
-        TemplateModelOptions options,
         List<string> files,
         List<string> resources,
         string? path,
@@ -35,7 +36,6 @@ public sealed class TemplateModel
         Pages = pages;
         Templates = templates;
         Props = props;
-        Options = options;
         Files = files;
         Resources = resources;
         Path = path;
@@ -71,9 +71,9 @@ public sealed class TemplateModel
     /// <summary>
     /// Gets or sets the theme.
     /// </summary>
-    /// <value>A <see cref="TemplateThemeModel"/></value>
+    /// <value>A <see cref="ThemeModel"/></value>
     [JsonPropertyName("theme")]
-    public TemplateThemeModel Theme { get; set; }
+    public ThemeModel Theme { get; set; }
 
     /// <summary>
     /// pages
@@ -100,13 +100,6 @@ public sealed class TemplateModel
     [IgnoreDataMember]
     public dynamic DProps
         => Props.ToDynamic();
-
-    /// <summary>
-    /// Gets or sets the options.
-    /// </summary>
-    /// <value>A <see cref="TemplateModelOptions"/></value>
-    [JsonPropertyName("options")]
-    public TemplateModelOptions Options { get; set; }
 
     /// <summary>
     /// Gets or sets the files.
@@ -154,4 +147,15 @@ public sealed class TemplateModel
         Path = templatePath;
         return this;
     }
+
+    /// <summary>
+    /// Pages index path.
+    /// </summary>
+    /// <param name="docBuilderContext">doc builder context</param>
+    /// <param name="extension">extension</param>
+    /// <returns>A <see cref="string"/></returns>
+    public string PageIndexPath(DocumentBuilderContext docBuilderContext,
+        string extension)
+            => docBuilderContext.TplFilePath(
+                this.PageList()!.Filename!, extension);
 }

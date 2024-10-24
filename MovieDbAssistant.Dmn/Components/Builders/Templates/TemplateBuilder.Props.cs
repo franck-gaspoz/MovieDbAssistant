@@ -2,6 +2,7 @@
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Dmn.Models.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -70,14 +71,14 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_Background ,
                 !pageDetails?
-                    _tpl!.Options.PageList.Background
+                    _tpl!.PageList()!.Background
                     : (data==null || data.PicFullUrl == null)?
-                        _tpl!.Options.PageList.Background
+                        _tpl!.PageList()!.Background
                         : data.PicFullUrl
             },
             {
                 Template_Var_BackgroundIdle,
-                _tpl!.Options.PageDetail.BackgroundIdle
+                _tpl!.PageDetail()!.BackgroundIdle
             },
             {
                 Template_Var_Index,
@@ -101,15 +102,15 @@ public sealed partial class TemplateBuilder
             },
             {
                 Template_Var_Title_List,
-                _tpl.Options.PageList.Title
+                _tpl.PageList()!.Title
             },
             {
                 Template_Var_Page_Title_List,
-                _tpl.Options.PageList.PageTitle
+                _tpl.PageList()!.PageTitle
             },
             {
                 Template_Var_Page_Title_Details,
-                _tpl.Options.PageDetail.PageTitle
+                _tpl.PageDetail()!.PageTitle
             },
             {
                 Template_Var_Template_Id,

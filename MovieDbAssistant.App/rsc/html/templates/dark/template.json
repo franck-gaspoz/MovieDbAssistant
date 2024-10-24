@@ -36,7 +36,7 @@
   "pages": [
     {
       "id": "list",
-      "layout": "list",
+      "layout": "List",
       "tpl": "page-list.tpl.html",
       "background": "cinema-wallpaper-16.jpg",
       "title": "My Movies",
@@ -45,7 +45,7 @@
     },
     {
       "id": "detail",
-      "layout": "detail",
+      "layout": "Detail",
       "tpl": "page-details.tpl.html",
       "background": "../img/cinema-wallpaper-16.jpg",
       "backgroundIdle": "../img/cinema-wallpaper-40.jpg",

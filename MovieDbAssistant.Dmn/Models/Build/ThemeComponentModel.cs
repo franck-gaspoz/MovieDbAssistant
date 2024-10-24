@@ -5,7 +5,7 @@ namespace MovieDbAssistant.Dmn.Models.Build;
 /// <summary>
 /// The template theme model.
 /// </summary>
-public sealed class TemplateThemeComponentModel
+public sealed class ThemeComponentModel
 {
     /// <summary>
     /// Gets or sets the id.
@@ -22,11 +22,11 @@ public sealed class TemplateThemeComponentModel
     public string Ver { get; set; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="TemplateThemeComponentModel"/> class.
+    /// Initializes a new instance of the <see cref="ThemeComponentModel"/> class.
     /// </summary>
     /// <param name="id">The id.</param>
     /// <param name="ver">The ver.</param>
-    public TemplateThemeComponentModel(string id, string ver)
+    public ThemeComponentModel(string id, string ver)
     {
         Id = id;
         Ver = ver;

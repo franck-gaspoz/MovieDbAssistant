@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
 using MovieDbAssistant.Dmn.Configuration;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
@@ -74,4 +76,32 @@ public static class ModelExtensions
     /// <returns>instance id</returns>
     public static int InstanceId(this QueryModel model)
         => model.Metadata!.InstanceId.Value;
+
+    /// <summary>
+    /// get pages having a layout
+    /// </summary>
+    /// <param name="tpl">The tpl.</param>
+    /// <param name="layout">The layout.</param>
+    /// <returns>A list of pagemodels.</returns>
+    public static IEnumerable<PageModel> GetPages(this TemplateModel tpl, Layouts layout)
+        => tpl.Pages
+            .Where(x => x.Layout == layout.ToString());
+
+    /// <summary>
+    /// Page the list.
+    /// </summary>
+    /// <param name="tpl">The tpl.</param>
+    /// <returns>A <see cref="PageModel? "/></returns>
+    public static PageModel? PageList(this TemplateModel tpl)
+        => tpl.GetPages(Layouts.List)
+            .FirstOrDefault();
+
+    /// <summary>
+    /// Pages the detail.
+    /// </summary>
+    /// <param name="tpl">The tpl.</param>
+    /// <returns>A <see cref="PageModel? "/></returns>
+    public static PageModel? PageDetail(this TemplateModel tpl)
+        => tpl.GetPages(Layouts.Detail)
+            .FirstOrDefault();
 }

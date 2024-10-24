@@ -99,7 +99,6 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                 index,
                 data.Movies.Count,
                 Folder_Back + _templateBuilder.TemplateModel
-                    .Options
                     .PageIndexPath(
                         context,
                         _dmnSettings.Value.Build.Html.Extension),
