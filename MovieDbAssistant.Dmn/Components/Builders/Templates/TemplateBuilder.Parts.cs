@@ -241,11 +241,11 @@ public partial class TemplateBuilder
         // search in tpl
         var tplPartsPath = Path.Combine(
             Context.TplPath,
-            _tpl!.Options.Paths.Parts
+            _tpl!.Paths.Parts
             );
         var file = Path.Combine(tplPartsPath, partFile);
         if (File.Exists(file)) 
-            return (_tpl!.Options.Paths.Parts,file);
+            return (_tpl!.Paths.Parts,file);
 
         var rscPartsPath = _dmnSettings.Value.EngineTpsPath();
         file = Path.Combine(rscPartsPath, partFile);

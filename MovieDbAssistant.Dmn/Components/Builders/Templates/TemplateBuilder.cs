@@ -76,7 +76,7 @@ public sealed partial class TemplateBuilder
 
         tpl.LoadContent(Path.Combine(
             Context.TplPath,
-            _tpl!.Options.Paths.Pages));
+            _tpl!.Paths.Pages));
 
         _templates.TryAdd(tpl.Id, tpl);
 

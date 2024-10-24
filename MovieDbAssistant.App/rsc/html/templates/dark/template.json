@@ -22,22 +22,34 @@
       "ver": "1.0.0"
     }
   },
-  
+
   "templates": {
     "list": "page-list.tpl.html",
     "details": "page-details.tpl.html"
+  },
+
+  "Paths": {
+    "Pages": "pages",
+    "Parts": "parts"
   },
 
   "pages": [
     {
       "id": "list",
       "layout": "list",
-      "tpl": "page-list.tpl.html"
+      "tpl": "page-list.tpl.html",
+      "background": "cinema-wallpaper-16.jpg",
+      "title": "My Movies",
+      "pageTitle": "My Movies",
+      "filename": "index"
     },
     {
       "id": "detail",
       "layout": "detail",
-      "tpl": "page-details.tpl.html"
+      "tpl": "page-details.tpl.html",
+      "background": "../img/cinema-wallpaper-16.jpg",
+      "backgroundIdle": "../img/cinema-wallpaper-40.jpg",
+      "pageTitle": "My Movies"
     }
   ],
 
@@ -70,25 +82,26 @@
     }
   },
 
-  "Transforms": [
+  "transforms": [
     {
-      "Target": "interests",
-      "Operation": "Transform_Array"
+      "target": "interests",
+      "operation": "Transform_Array"
     },
     {
-      "Target": "stars",
-      "Operation": "Transform_Array"
+      "target": "stars",
+      "operation": "Transform_Array"
     },
     {
-      "Target": "actors",
-      "Operation": "Transform_Array"
+      "target": "actors",
+      "operation": "Transform_Array"
     },
     {
-      "Target": "ActorModel",
-      "Operation": "Transform_ActorSimple"
+      "target": "ActorModel",
+      "operation": "Transform_ActorSimple"
     }
   ],
-  "Resources": [
+  
+  "resources": [
     "/fonts/ComicNeue-Light.ttf:/fonts",
     "/fonts/MomTypewritter.ttf:/fonts",
     "/fonts/Play Chickens.ttf:/fonts",
@@ -116,10 +129,12 @@
     "/img/image-404-630x630.jpg:/img",
     "/themes/blue-neon:/theme"
   ],
-  "Files": [
+
+  "files": [
     "/img",
     "/css",
     "/fonts",
     "/js"
   ]
+
 }

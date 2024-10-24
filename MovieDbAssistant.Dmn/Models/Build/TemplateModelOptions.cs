@@ -20,22 +20,15 @@ public sealed class TemplateModelOptions
     public TemplateModelPageOption PageDetail { get; set; }
 
     /// <summary>
-    /// paths
-    /// </summary>
-    public PathsModel Paths { get; set; }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.
     /// </summary>
     /// <param name="pageList">page list</param>
     /// <param name="pageDetail">The page detail.</param>
-    /// <param name="paths">paths</param>
     public TemplateModelOptions(
         TemplateModelPageOption pageList,
-        TemplateModelPageOption pageDetail,
-        PathsModel paths)
-        => (PageDetail, PageList, Paths)
-            = (pageDetail, pageList, paths);
+        TemplateModelPageOption pageDetail)
+        => (PageDetail, PageList)
+            = (pageDetail, pageList);
 
     /// <summary>
     /// Pages index path.

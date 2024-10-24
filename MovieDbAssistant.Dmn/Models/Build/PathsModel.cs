@@ -1,8 +1,29 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Build;
+﻿using System.Text.Json.Serialization;
+
+namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The paths model.
 /// </summary>
 /// <param name="Pages"> tpl pages path </param>
 /// <param name="Parts"> tpl parts path </param>
-public sealed record PathsModel(string Pages, string Parts);
+public sealed class PathsModel
+{
+    /// <summary>
+    /// pages
+    /// </summary>
+    [JsonPropertyName("pages")]
+    public string Pages { get; set; }
+
+    /// <summary>
+    /// parts
+    /// </summary>
+    [JsonPropertyName("parts")]
+    public string Parts { get; set; }
+
+    public PathsModel(string pages, string parts)
+    {
+        Pages = pages;
+        Parts = parts;
+    }
+}

@@ -1,8 +1,8 @@
-﻿using System.Dynamic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using MovieDbAssistant.Lib.Extensions; 
+
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -17,20 +17,30 @@ public sealed class TemplateModel
         string versionDate,
         string id,
         TemplateThemeModel theme,
+        List<PageModel> pages,
         TemplatesModel templates,
+        JsonElement? props,
         TemplateModelOptions options,
         List<string> files,
-        string? path)
+        List<string> resources,
+        string? path,
+        PathsModel paths,
+        List<TransformModel> transforms)
     {
-        Theme = theme;
         Name = name;
         Version = version;
         VersionDate = versionDate;
         Id = id;
+        Theme = theme;
+        Pages = pages;
         Templates = templates;
+        Props = props;
         Options = options;
         Files = files;
+        Resources = resources;
         Path = path;
+        Paths = paths;
+        Transforms = transforms;
     }
 
     /// <summary>
@@ -66,6 +76,12 @@ public sealed class TemplateModel
     public TemplateThemeModel Theme { get; set; }
 
     /// <summary>
+    /// pages
+    /// </summary>
+    [JsonPropertyName("pages")]
+    public List<PageModel> Pages { get; set; }
+
+    /// <summary>
     /// template contents
     /// </summary>
     public TemplatesModel Templates { get; set; }
@@ -96,13 +112,13 @@ public sealed class TemplateModel
     /// Gets or sets the files.
     /// </summary>
     /// <value>A list of strings.</value>
-    [JsonPropertyName("files")] 
+    [JsonPropertyName("files")]
     public List<string> Files { get; set; } = [];
 
     /// <summary>
     /// gets or sets the resources
     /// </summary>
-    [JsonPropertyName("resources")] 
+    [JsonPropertyName("resources")]
     public List<string> Resources { get; set; } = [];
 
     #region working properties
@@ -110,13 +126,19 @@ public sealed class TemplateModel
     /// <summary>
     /// path on disk of the template folder
     /// </summary>
-    [JsonPropertyName("path")] 
+    [JsonPropertyName("path")]
     public string? Path { get; set; }
+
+    /// <summary>
+    /// paths
+    /// </summary>
+    [JsonPropertyName("paths")]
+    public PathsModel Paths { get; set; }
 
     /// <summary>
     /// transforms
     /// </summary>
-    [JsonPropertyName("transforms")] 
+    [JsonPropertyName("transforms")]
     public List<TransformModel> Transforms { get; set; } = [];
 
     #endregion
