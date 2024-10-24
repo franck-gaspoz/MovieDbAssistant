@@ -1,14 +1,14 @@
 ﻿@font-face {
     font-family: bacereg;
-    src: url('../fonts/BrunoAce-Regular.ttf');
+    src: url('fonts/BrunoAce-Regular.ttf');
 }
 
 @font-face {
     font-family: comicn;
-    src: url('../fonts/ComicNeue-Light.ttf');
+    src: url('fonts/ComicNeue-Light.ttf');
 }
 
 @font-face {
     font-family: vonique;
-    src: url('../fonts/Vonique 92_D.otf');
+    src: url('fonts/Vonique 92_D.otf');
 }

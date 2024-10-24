@@ -17,9 +17,15 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 */
 class Template {
 
+    /**
+     * @type {Layout} layout
+     */
+    layout = null
+
     constructor(enableAvoidNextItemClick) {
         window.tpl = this
         this.enableAvoidNextItemClick = enableAvoidNextItemClick
+        this.layout = new Layout()
     }
 
     /** @type {boolean} avoid next item click in case overlapped click */
@@ -163,12 +169,12 @@ class Template {
 
     setAlternatePics() {
         var $pics = $('.movie-page-list .alternate-pic-list')
-        var altUrl = props['listMoviePicNotAvailable']
-        var altnfUrl = props['listMoviePicNotFound']
+        var altUrl = props.tpl.listMoviePicNotAvailable;
+        var altnfUrl = props.tpl.listMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
         $pics = $('.movie-page-detail .alternate-pic-list')
-        altUrl = props['detailMoviePicNotAvailable']
-        altnfUrl = props['detailMoviePicNotFound']
+        altUrl = props.tpl.detailMoviePicNotAvailable;
+        altnfUrl = props.tpl.detailMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
     }
 

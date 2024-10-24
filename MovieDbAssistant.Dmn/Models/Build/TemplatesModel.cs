@@ -22,12 +22,14 @@ public sealed class TemplatesModel
     /// template list content
     /// </summary>
     [IgnoreDataMember]
+    [JsonIgnore]
     public string? TplList { get; set; }
 
     /// <summary>
     /// template details content
     /// </summary>
     [IgnoreDataMember]
+    [JsonIgnore]
     public string? TplDetails { get; set; }
 
     public TemplatesModel(string list, string details)

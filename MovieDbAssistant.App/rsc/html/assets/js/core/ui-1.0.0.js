@@ -76,7 +76,7 @@ function activateDrag(elem, container) {
 /* #endregion */
 
 /**
- * front ui engine
+ * ui engine
  * @class
 */
 class UI {
