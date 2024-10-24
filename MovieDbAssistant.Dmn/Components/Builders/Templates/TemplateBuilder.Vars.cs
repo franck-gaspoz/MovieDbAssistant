@@ -1,8 +1,14 @@
 ﻿using System.Collections;
+using System.Reflection;
+using System.Text.Json.Serialization;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
+
+using Newtonsoft.Json.Linq;
+
+using JObject = Newtonsoft.Json.Linq.JObject;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -66,6 +72,30 @@ public partial class TemplateBuilder
             var varnp = KeyToVar(kvp.Key);
             var vtype = val?.GetType();
 
+            if (val != null && val is JObject jval)
+            {
+                // dynamic json
+                var jprops = new Dictionary<string, object?>();
+                foreach (var jprop in jval.Children())
+                {
+                    var propval = jprop.HasValues ?
+                        jprop.Values().FirstOrDefault()
+                        : null;
+
+                    if (propval != null)
+                        jprops.Add(
+                            propval.Path, 
+                            propval.Value<object?>());
+                }
+                (tpl, _) = SetVars(
+                    tpl,
+                    jprops,
+                    prefix != null ?
+                        prefix + '.' + varnp
+                        : varnp
+                        );
+            }
+
             if (val != null
                 && vtype!.Namespace!
                     .StartsWith(GetType()
@@ -76,7 +106,8 @@ public partial class TemplateBuilder
                 // model not null
                 (tpl, _) = SetVars(
                     tpl,
-                    val.GetProperties(),
+                    val.GetProperties(x =>
+                        x.GetCustomAttribute<JsonIgnoreAttribute>(true) == null),
                     prefix != null ?
                         prefix + '.' + varnp
                         : varnp

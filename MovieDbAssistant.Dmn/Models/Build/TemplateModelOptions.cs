@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 
 using MovieDbAssistant.Dmn.Components.Builders.Document;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -71,6 +72,8 @@ public sealed class TemplateModelOptions
     /// </summary>
     /// <value>A <see cref="JsonElement? "/></value>
     public JsonElement? Properties { get; set; }
+
+    public object? Props => Properties.ToDynamic();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.

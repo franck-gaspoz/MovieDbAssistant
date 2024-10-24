@@ -43,12 +43,20 @@ public static class TypeExtensions
     /// get public properties of object
     /// </summary>
     /// <param name="data">data</param>
+    /// <param name="filter">any filter predicate or null</param>
     /// <returns>dictionary of names -&gt; value</returns>
-    public static Dictionary<string, object?> GetProperties(this object data)
+    public static Dictionary<string, object?> GetProperties(
+        this object data,
+        Func<PropertyInfo,bool>? filter = null
+        )
     {
         var r = new Dictionary<string, object?>();
-        foreach (var p in data.GetType().GetProperties())
+        var props = data.GetType().GetProperties()
+            .Where(x => filter == null || filter(x));
+
+        foreach (var p in props)
             r.Add(p.Name, p.GetValue(data));
+
         return r;
     }
 
