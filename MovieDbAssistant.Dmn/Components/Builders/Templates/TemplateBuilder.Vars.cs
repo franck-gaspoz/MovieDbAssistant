@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
@@ -72,20 +74,25 @@ public partial class TemplateBuilder
             var varnp = KeyToVar(kvp.Key);
             var vtype = val?.GetType();
 
-            if (val != null && val is JObject jval)
+            if (val != null && val is JsonElement jval)
             {
                 // dynamic json
                 var jprops = new Dictionary<string, object?>();
-                foreach (var jprop in jval.Children())
+                foreach (var jprop in jval.EnumerateObject())
                 {
-                    var propval = jprop.HasValues ?
-                        jprop.Values().FirstOrDefault()
-                        : null;
+                    var propval = jprop.Value;
 
-                    if (propval != null)
-                        jprops.Add(
-                            propval.Path, 
-                            propval.Value<object?>());
+                    if (propval.ValueKind != JsonValueKind.Undefined)
+                    {
+                        if (propval.ValueKind == JsonValueKind.Object)
+                            jprops.Add(
+                                jprop.Name,
+                                propval);
+                        else
+                            jprops.Add(
+                                jprop.Name,
+                                propval.ToString());
+                    }
                 }
                 (tpl, _) = SetVars(
                     tpl,
@@ -107,7 +114,7 @@ public partial class TemplateBuilder
                 (tpl, _) = SetVars(
                     tpl,
                     val.GetProperties(x =>
-                        x.GetCustomAttribute<JsonIgnoreAttribute>(true) == null),
+                        x.GetCustomAttribute<IgnoreDataMemberAttribute>(true) == null),
                     prefix != null ?
                         prefix + '.' + varnp
                         : varnp

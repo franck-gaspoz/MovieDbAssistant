@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace MovieDbAssistant.Dmn.Models.Build;
 
@@ -20,13 +21,13 @@ public sealed class TemplatesModel
     /// <summary>
     /// template list content
     /// </summary>
-    [JsonIgnore]
+    [IgnoreDataMember]
     public string? TplList { get; set; }
 
     /// <summary>
     /// template details content
     /// </summary>
-    [JsonIgnore]
+    [IgnoreDataMember]
     public string? TplDetails { get; set; }
 
     public TemplatesModel(string list, string details)

@@ -1,4 +1,7 @@
-﻿namespace MovieDbAssistant.Dmn.Models.Build;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+
+namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// template properties model
@@ -60,9 +63,17 @@ public sealed class TemplateModel
     public TemplatesModel Templates { get; set; }
 
     /// <summary>
+    /// Gets or sets the template dynamic json properties. (fits js needs)
+    /// </summary>
+    /// <value>A <see cref="JsonElement? "/></value>
+    [JsonPropertyName("props")]
+    public JsonElement? Props { get; set; }
+
+    /// <summary>
     /// Gets or sets the options.
     /// </summary>
     /// <value>A <see cref="TemplateModelOptions"/></value>
+    [JsonPropertyName("options")]
     public TemplateModelOptions Options { get; set; }
 
     /// <summary>

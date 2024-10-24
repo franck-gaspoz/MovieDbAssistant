@@ -2,7 +2,7 @@
 <html {{{page/html}}}>
 <head>
     {{{page/head-metas}}}
-    <meta name="description" content="{{(MoviesList)}} (test text include / lang) | {{software}} ({{softwareId}}) github {{linkRepo}}" />
+    <meta name="description" content="{{(MoviesList)}} (test text include / lang) | {{software}} ({{softwareId}}) github {{tpl.props.repoLink}}" />
     {{{page/head-links}}}
 
     <title>{{pageTitleList}} | {{subTitleList}}</title>
@@ -11,8 +11,6 @@
     <script src="{{basePath}}js/data/data.js"></script>
 
     <script type="text/javascript">
-
-        // option = {{tpl.options.hSep}} {{tpl.options.props.repoLink}}
 
         const props = {{props}};
 

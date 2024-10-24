@@ -22,10 +22,36 @@
       "Ver": "1.0.0"
     }
   },
+  
   "Templates": {
     "List": "page-list.tpl.html",
     "Details": "page-details.tpl.html"
   },
+
+  "Pages": [
+    {
+      "Id": "list",
+      "Layout": "list",
+      "Tpl": "page-list.tpl.html"
+    },
+    {
+      "Id": "detail",
+      "Layout": "detail",
+      "Tpl": "page-details.tpl.html"
+    }
+  ],
+
+  "Props": {
+    "listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+    "detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+    "listMoviePicNotFound": "./img/image-404-630x630.jpg",
+    "detailMoviePicNotFound": "../img/image-404-630x630.jpg",
+    "repoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "helpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "authorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "hSep": "<span class=\"hsep\"></span>"
+  },
+
   "Options": {
     "Paths": {
       "Pages": "pages",
@@ -42,6 +68,7 @@
       "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
       "PageTitle": "My Movies"
     },
+
     "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
     "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
     "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
@@ -49,18 +76,7 @@
     "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "HSep": "<span class=\"hsep\"></span>",
-
-    "Properties": {
-      "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
-      "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
-      "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
-      "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
-      "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-      "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-      "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-      "HSep": "<span class=\"hsep\"></span>"
-    }
+    "HSep": "<span class=\"hsep\"></span>"
   },
   "Transforms": [
     {

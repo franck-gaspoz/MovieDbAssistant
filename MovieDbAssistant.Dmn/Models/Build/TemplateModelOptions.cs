@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Lib.Extensions;
@@ -66,14 +68,6 @@ public sealed class TemplateModelOptions
     /// horzontal separator html
     /// </summary>
     public string HSep { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Gets or sets the properties.
-    /// </summary>
-    /// <value>A <see cref="JsonElement? "/></value>
-    public JsonElement? Properties { get; set; }
-
-    public object? Props => Properties.ToDynamic();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateModelOptions"/> class.
