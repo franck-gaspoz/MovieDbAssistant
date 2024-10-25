@@ -21,6 +21,12 @@ public sealed class PathsModel
     [JsonPropertyName("parts")]
     public string Parts { get; set; }
 
+    /// <summary>
+    /// handled tpl extensions
+    /// </summary>
+    [JsonPropertyName("handledExtensions")]
+    public List<string> HandledExtensions { get; set; } = new();
+
     public PathsModel(string pages, string parts)
     {
         Pages = pages;
