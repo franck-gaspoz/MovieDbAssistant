@@ -41,16 +41,20 @@ public sealed partial class TemplateBuilder
 
     static readonly ConcurrentDictionary<string, TemplateModel> _templates = [];
 
+    readonly TemplatesSourceCache _templatesSourceCache;
+
     public TemplateBuilder(
         IConfiguration configuration,
         ILogger<TemplateBuilder> logger,
         TemplateBuilderContext context,
-        IOptions<DmnSettings> dmnSettings)
+        IOptions<DmnSettings> dmnSettings,
+        TemplatesSourceCache templatesSourceCache)
     {
         _config = configuration;
         _logger = logger;
         Context = context;
         _dmnSettings = dmnSettings;
+        _templatesSourceCache = templatesSourceCache;
     }
 
     /// <summary>
@@ -74,9 +78,17 @@ public sealed partial class TemplateBuilder
 
         tpl = _tpl = Context.TemplateModel;
 
-        tpl.LoadContent(Path.Combine(
+        _templatesSourceCache.Load(
+            Path.Combine(
+                Context.TplPath,
+                _tpl!.Paths.Pages),
+            _tpl.Pages
+            );
+
+        /*tpl.LoadContent(Path.Combine(
             Context.TplPath,
-            _tpl!.Paths.Pages));
+            _tpl!.Paths.Pages));*/
+
 
         _templates.TryAdd(tpl.Id, tpl);
 

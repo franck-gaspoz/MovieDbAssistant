@@ -20,7 +20,6 @@ public sealed class TemplateModel
         string id,
         ThemeModel theme,
         List<PageModel> pages,
-        TemplatesModel templates,
         JsonElement? props,
         List<string> files,
         List<string> resources,
@@ -34,7 +33,6 @@ public sealed class TemplateModel
         Id = id;
         Theme = theme;
         Pages = pages;
-        Templates = templates;
         Props = props;
         Files = files;
         Resources = resources;
@@ -80,11 +78,6 @@ public sealed class TemplateModel
     /// </summary>
     [JsonPropertyName("pages")]
     public List<PageModel> Pages { get; set; }
-
-    /// <summary>
-    /// template contents
-    /// </summary>
-    public TemplatesModel Templates { get; set; }
 
     /// <summary>
     /// Gets or sets the template dynamic json properties. (fits js needs)
@@ -135,18 +128,6 @@ public sealed class TemplateModel
     public List<TransformModel> Transforms { get; set; } = [];
 
     #endregion
-
-    /// <summary>
-    /// load template contents
-    /// </summary>
-    /// <param name="templatePath">template folder</param>
-    /// <returns>this object</returns>
-    public TemplateModel LoadContent(string templatePath)
-    {
-        Templates.Load(templatePath);
-        Path = templatePath;
-        return this;
-    }
 
     /// <summary>
     /// Pages index path.

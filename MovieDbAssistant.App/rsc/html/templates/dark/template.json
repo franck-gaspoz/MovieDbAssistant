@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "versionDate": "2024/10/03",
   "author": "Franck Gaspoz",
+  
   "theme": {
     "ui": {
       "id": "blue-neon",
@@ -23,14 +24,9 @@
     }
   },
 
-  "templates": {
-    "list": "page-list.tpl.html",
-    "details": "page-details.tpl.html"
-  },
-
-  "Paths": {
-    "Pages": "pages",
-    "Parts": "parts"
+  "paths": {
+    "pages": "pages",
+    "parts": "parts"
   },
 
   "pages": [
