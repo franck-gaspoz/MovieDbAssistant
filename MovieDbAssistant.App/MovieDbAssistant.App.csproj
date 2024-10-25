@@ -125,24 +125,24 @@
     <None Remove="rsc\html\assets\tpl\ui\controls\icons\frame-icon.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\background-vignette.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\backgrounds\background-container.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\backgrounds\background-idle.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\head-links.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\head-metas.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\head-scripts.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\html.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\page-details.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\page-list.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\movie-list-item-container.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\navbar-bottom.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\page-detail-navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\page-details\content-container.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\page-list-navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
-    <None Remove="rsc\html\templates\blue-neon-1.0.0\template.json" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-links.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-metas.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-scripts.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\html.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\page-list.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\movie-list-item-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-bottom.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-detail-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
     <None Remove="temp\README.md" />
@@ -468,58 +468,58 @@
     <Content Include="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\backgrounds\background-container.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\backgrounds\background-idle.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-details\content-container.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page\head-links.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-links.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page\head-metas.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-metas.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page\head-scripts.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-scripts.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\backgrounds\background-vignette.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-vignette.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-list\navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-details\navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\panels\navbar-top.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page-list\item-container.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\item-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\panels\navbar-bottom.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-bottom.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\parts\page\html.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\html.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\pages\page-list.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\pages\page-details.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\blue-neon-1.0.0\template.json">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\template.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\README.md">
@@ -562,11 +562,11 @@
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\img\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\js\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\tpl\" />
-    <Folder Include="rsc\html\templates\blue-neon-1.0.0\js\" />
+    <Folder Include="rsc\html\templates\cine-static-1.0.0\js\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="rsc\html\templates\blue-neon-1.0.0\css\styles.css">
+    <None Update="rsc\html\templates\cine-static-1.0.0\css\styles.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

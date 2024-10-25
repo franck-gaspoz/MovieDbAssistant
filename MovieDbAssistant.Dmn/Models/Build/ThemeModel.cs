@@ -12,7 +12,7 @@ public sealed class ThemeModel
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
     [JsonPropertyName("kernel")]
-    public ThemeComponentModel Engine { get; set; }
+    public ThemeComponentModel Kernel { get; set; }
 
     /// <summary>
     /// Gets or sets the UI.

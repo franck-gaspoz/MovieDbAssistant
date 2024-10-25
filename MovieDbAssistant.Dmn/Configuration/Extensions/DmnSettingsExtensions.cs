@@ -40,7 +40,7 @@ public static class DmnSettingsExtensions
     /// </summary>
     /// <param name="dmnSettings">dmn settings</param>
     /// <returns>path</returns>
-    public static string EngineTpsPath(
+    public static string EngineTplPath(
         this DmnSettings dmnSettings)
         => Path.Combine(
             Directory.GetCurrentDirectory(),

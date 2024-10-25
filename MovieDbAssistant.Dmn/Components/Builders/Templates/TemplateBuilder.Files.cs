@@ -45,7 +45,7 @@ public partial class TemplateBuilder
 
         var t = item.Split(':');
 
-        var src = Context.AssetsPath(Context.DocContext!);
+        var src = Context.AssetsPath;
         src = Path.Combine(src, t[0][1..]);
         target = Path.Combine(
             target,

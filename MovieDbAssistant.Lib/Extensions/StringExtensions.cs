@@ -8,6 +8,14 @@ namespace MovieDbAssistant.Lib.Extensions;
 public static class StringExtensions
 {
     /// <summary>
+    /// Converts to slash left right.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>A <see cref="string"/></returns>
+    public static string? ToSlashLeftRight(this string? text)
+        => text?.Replace('\\', '/');
+
+    /// <summary>
     /// Converts to hex string.
     /// </summary>
     /// <param name="value">The value.</param>

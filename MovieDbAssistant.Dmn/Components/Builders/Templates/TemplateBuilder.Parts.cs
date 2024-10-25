@@ -32,6 +32,8 @@ public partial class TemplateBuilder
 
     public const string Prop_Name_Tpl_Name = "tpl-name";
 
+    public const string Path_Tpl = "tpl";
+
     string IncludeParts(string tpl, Dictionary<string, object?>? props = null)
     {
         tpl = ParseIncludes(tpl, props ?? []);
@@ -80,9 +82,10 @@ public partial class TemplateBuilder
         // set auto props
         props.AddOrReplace(
             Prop_Name_Tpl_Name,
-            file.Folder!  
-                + '/'
-                + name);
+            file.Folder!
+                .ToSlashLeftRight()
+                    + '/'
+                    + Path.GetFileName(name));
 
         // parse part vars
         (partContent, var nprops) = SetVars(partContent, props);
@@ -238,6 +241,12 @@ public partial class TemplateBuilder
 
     (string? Folder,string? Path) GetTemplateFile(string partFile)
     {
+        string RelPath(string path)
+            => Path.GetDirectoryName(
+                path.Replace(
+                    Context.RscPath, 
+                    string.Empty))!;
+
         // search in tpl
         var tplPartsPath = Path.Combine(
             Context.TplPath,
@@ -245,13 +254,29 @@ public partial class TemplateBuilder
             );
         var file = Path.Combine(tplPartsPath, partFile);
         if (File.Exists(file)) 
-            return (_tpl!.Paths.Parts,file);
+            return (RelPath(file), file);
 
-        var rscPartsPath = _dmnSettings.Value.EngineTpsPath();
+        // search in theme
+        var themeTplPath = Path.Combine(
+            Context.ThemePath(_tpl!),
+            Path_Tpl );
+        file = Path.Combine(themeTplPath, partFile);
+        if (File.Exists(file))
+            return (RelPath(file), file);
+
+        // search in 'kernel' theme
+        var kernelTplPath = Path.Combine(
+            Context.ThemeKernelPath(_tpl!),
+            Path_Tpl);
+        file = Path.Combine(kernelTplPath, partFile);
+        if (File.Exists(file))
+            return (RelPath(file), file);
+
+        // search in rsc (engine)
+        var rscPartsPath = _dmnSettings.Value.EngineTplPath();
         file = Path.Combine(rscPartsPath, partFile);
-        if (File.Exists(file)) 
-            return (_dmnSettings.Value.Paths.RscHtmlAssetsTpl
-                , file);
+        if (File.Exists(file))
+            return (RelPath(file), file);
 
         _logger.LogError(this, "template part not found: " + partFile);
 

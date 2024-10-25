@@ -97,14 +97,60 @@ public sealed class TemplateBuilderContext
     /// <summary>
     /// assets path
     /// </summary>
-    /// <param name="context">doc builder context</param>
     /// <returns>assets path</returns>
-    public string AssetsPath(DocumentBuilderContext context) =>
+    public string AssetsPath =>
         Path.Combine(
-            context.RscPath,
+            DocContext!.RscPath,
             _dmnSettings.Value.Paths.RscHtml,
             _dmnSettings.Value.Paths.RscHtmlAssets)
                 .NormalizePath();
+
+    /// <summary>
+    /// themes path
+    /// </summary>
+    /// <returns>themes path</returns>
+    public string ThemesPath =>
+        Path.Combine(
+            DocContext!.RscPath,
+            _dmnSettings.Value.Paths.RscHtml,
+            _dmnSettings.Value.Paths.RscHtmlAssets,
+            _dmnSettings.Value.Paths.RscHtmlAssetsThemes)
+                .NormalizePath();
+
+    /// <summary>
+    /// gets a theme path
+    /// </summary>
+    /// <param name="context">doc builder context</param>
+    /// <param name="templateId">template id</param>
+    /// <param name="templateVersion">template version</param>
+    /// <returns>theme path</returns>
+    public string ThemePath(
+        string templateId,
+        string templateVersion) =>
+            Path.Combine(
+                ThemesPath,
+                templateId+Separator_Id_Version+templateVersion
+                );
+
+    /// <summary>
+    /// gets the theme kernel path
+    /// </summary>
+    /// <param name="tpl">template model</param>
+    /// <returns>theme kernel path</returns>
+    public string ThemeKernelPath(TemplateModel tpl)
+        => ThemePath(
+            tpl.Theme.Kernel.Id,
+            tpl.Theme.Kernel.Ver);
+
+    /// <summary>
+    /// gets the tpl theme path
+    /// </summary>
+    /// <param name="tpl">tpl</param>
+    /// <returns>theme path</returns>
+    public string ThemePath( TemplateModel tpl )
+        => ThemePath(
+            tpl.Id, tpl.Version
+            );
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateBuilderContext"/> class.
