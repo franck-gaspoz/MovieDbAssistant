@@ -1,4 +1,8 @@
-﻿namespace MovieDbAssistant.Lib.Extensions;
+﻿using Microsoft.Extensions.Logging;
+
+using MovieDbAssistant.Lib.Components.Logger;
+
+namespace MovieDbAssistant.Lib.Extensions;
 
 /// <summary>
 /// The file extensions.
@@ -23,21 +27,33 @@ public static class FileExtensions
     /// <param name="sourceDir">The source dir.</param>
     /// <param name="destinationDir">The destination dir.</param>
     /// <param name="preserveNewest">preserve newest files when target already exists</param>
+    /// <param name="logger">logger</param>
     public static void CopyDirectory(
         this string sourceDir, 
         string destinationDir,
-        bool preserveNewest = true)
+        bool preserveNewest = true,
+        ILogger? logger = null)
     {
         // Create the destination directory if it doesn't exist
         if (!Directory.Exists(destinationDir))
+        {
             Directory.CreateDirectory(destinationDir);
+            logger?.LogInformation(
+                logger,
+                "folder created: " + destinationDir);
+        }
 
         // Copy all files
         foreach (var file in Directory.GetFiles(sourceDir))
         {
             var destFile = Path.Combine(destinationDir, Path.GetFileName(file));
-            if (!preserveNewest || file.IsNewestFile(destFile))  
+            if (!preserveNewest || file.IsNewestFile(destFile))
+            {
                 File.Copy(file, destFile, true);
+                logger?.LogInformation(
+                    logger,
+                    "file copied: " + destFile);
+            }
         }
 
         // Copy all subdirectories
@@ -45,7 +61,11 @@ public static class FileExtensions
         {
             var dir = Path.GetFileName(directory);
             var destDir = Path.Combine(destinationDir, dir);
-            directory.CopyDirectory(destDir,preserveNewest);
+            directory.CopyDirectory(destDir,preserveNewest,logger);            
         }
+
+        logger?.LogInformation(
+            logger,
+            "folder copied: " + destinationDir);
     }
 }

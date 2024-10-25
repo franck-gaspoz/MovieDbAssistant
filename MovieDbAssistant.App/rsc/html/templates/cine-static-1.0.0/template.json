@@ -82,7 +82,7 @@
       "operation": "Transform_ActorSimple"
     }
   ],
-  
+
   "resources": [
     "/fonts/ComicNeue-Light.ttf:/fonts",
     "/fonts/MomTypewritter.ttf:/fonts",
@@ -92,6 +92,7 @@
     "/fonts/Open 24 Display St.ttf:/fonts",
     "/fonts/Renegade Master.ttf:/fonts",
     "/fonts/BrunoAce-Regular.ttf:/fonts",
+
     "/icons/back.png:/img",
     "/icons/download.png:/img",
     "/icons/favicon.ico:/img",
@@ -100,15 +101,19 @@
     "/icons/play.png:/img",
     "/icons/settings.png:/img",
     "/icons/close-window.png:/img",
+
+    "/img/image-not-availble-300x175.jpg:/img",
+    "/img/image-404-630x630.jpg:/img",
+
     "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
+
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
     "/js/core/ui-1.0.0.js:/js/core",
     "/js/core/ui-layout-1.0.0.js:/js/core",
     "/js/core/util-1.0.0.js:/js/core",
-    "/img/image-not-availble-300x175.jpg:/img",
-    "/img/image-404-630x630.jpg:/img",
+
     "/themes/blue-neon-1.0.0:/theme"
   ],
 

@@ -71,7 +71,7 @@ public partial class TemplateBuilder
         if (Directory.Exists(src))
         {
             notFound = false;
-            src.CopyDirectory(target);
+            src.CopyDirectory(target,logger:_logger);
             _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             return;
         }
@@ -110,7 +110,7 @@ public partial class TemplateBuilder
                 target = Path.Combine(
                         target,
                         Path.GetFileName(src));
-                src.CopyDirectory(target);
+                src.CopyDirectory(target,logger: _logger);
 
                 _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             }
