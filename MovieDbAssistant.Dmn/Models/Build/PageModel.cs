@@ -57,7 +57,7 @@ public sealed class PageModel
     /// Gets or sets the filename.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("Filename")]
+    [JsonPropertyName("filename")]
     public string? Filename { get; set; }
 
     public PageModel(

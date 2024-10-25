@@ -12,6 +12,7 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public sealed partial class TemplateBuilder
 {
     const string Template_Var_Tpl = "tpl";
+    const string Template_Var_Page = "page";
 
     const string Template_Var_Software = "software";
     const string Template_Var_Software_Id = "softwareId";
@@ -19,16 +20,9 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Software_Version_Date = "softwareVersionDate";
     const string Template_Var_BuiltAt = "builtAt";
     const string Template_Var_Lang = "lang";
-    //const string Template_Var_Link_Repo = "linkRepo";
-    //const string Template_Var_Link_Help = "linkHelp";
-    //const string Template_Var_Link_Author = "linkAuthor";
 
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
-    //const string Template_Var_ListMoviePicNotAvailable = "listMoviePicNotAvailable";
-    //const string Template_Var_DetailMoviePicNotAvailable = "detailMoviePicNotAvailable";
-    //const string Template_Var_ListMoviePicNotFound = "listMoviePicNotFound";
-    //const string Template_Var_DetailMoviePicNotFound = "detailMoviePicNotFound";
 
     const string Template_Var_Page_Title_Details = "pageTitleDetails";
     const string Template_Var_Title_List = "titleList";
@@ -39,10 +33,12 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Template_VersionDate = "templateVersionDate";
 
     const string Template_Var_Prefix_Output = "output.";
+
     const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
     const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
 
     const string Template_Var_Prefix_Movies = "movies.";
+
     const string Template_Var_Index = Template_Var_Prefix_Movies + "index";
     const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
     const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
@@ -59,6 +55,12 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_Tpl,
                 _tpl
+            },
+            {
+                Template_Var_Page,
+                !pageDetails?
+                    _tpl!.PageList()!
+                    :_tpl!.PageDetail()
             },
             {
                 Template_Var_OutputPages,
