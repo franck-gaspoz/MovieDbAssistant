@@ -1,5 +1,4 @@
 ﻿using MovieDbAssistant.Dmn.Components.Builders.Html;
-using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
@@ -29,7 +28,7 @@ public sealed partial class TemplateBuilder
 
         var page = IncludeParts(_templatesSourceCache.PageList()?.Content!);
 
-        (page, var props,var nprops) = SetVars(page, htmlContext);
+        (page, var props, var nprops) = SetVars(page, htmlContext);
         page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
