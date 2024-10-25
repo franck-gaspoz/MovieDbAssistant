@@ -60,24 +60,6 @@
     "hSep": "<span class=\"hsep\"></span>"
   },
 
-  "Options": {
-    "Paths": {
-      "Pages": "pages",
-      "Parts": "parts"
-    },
-    "PageList": {
-      "Background": "cinema-wallpaper-16.jpg",
-      "Title": "My Movies",
-      "PageTitle": "My Movies",
-      "Filename": "index"
-    },
-    "PageDetail": {
-      "Background": "../img/cinema-wallpaper-16.jpg",
-      "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
-      "PageTitle": "My Movies"
-    }
-  },
-
   "transforms": [
     {
       "target": "interests",
