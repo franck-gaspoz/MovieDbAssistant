@@ -52,7 +52,10 @@ public partial class TemplateBuilder
             t[1][1..]);
 
         if (!Directory.Exists(target))
+        {
             Directory.CreateDirectory(target);
+            _logger.LogInformation(this, "folder created: " + target);
+        }
 
         target = Path.Combine(target,
             Path.GetFileName(src));
@@ -63,7 +66,14 @@ public partial class TemplateBuilder
             notFound = false;
             if (src.IsNewestFile(target))
             {
-                File.Copy(src, target, true);
+                // ***-***-***-***-***-***-***-***-***-***-***-***
+                if (target.EndsWith(Parts_File_Extensions))
+                {
+                    File.Copy(src, target, true);
+                }
+                else
+                    File.Copy(src, target, true);
+                // ***-***-***-***-***-***-***-***-***-***-***-***
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
                 return;
             }

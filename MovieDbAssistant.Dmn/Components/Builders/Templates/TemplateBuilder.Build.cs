@@ -27,14 +27,12 @@ public sealed partial class TemplateBuilder
 
         ExportData(data);
 
-        //var page = IncludeParts(_tpl!.Templates.TplList!);
         var page = IncludeParts(_templatesSourceCache.PageList()?.Content!);
 
         (page, var props,var nprops) = SetVars(page, htmlContext);
         page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
-            //_tpl.Options.PageList.Filename!,
             _tpl!.PageList()!
                 .Filename!,
             _dmnSettings.Value.Build.Html.Extension,
