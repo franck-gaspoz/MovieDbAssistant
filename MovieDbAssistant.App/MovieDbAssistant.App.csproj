@@ -118,13 +118,6 @@
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\buttons\button.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\buttons\dialog-button-closing.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\frame-button-close.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\icons\frame-icon-clickable.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\icons\frame-icon.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\controls\icons\nav-icon.tpl.html" />
-    <None Remove="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\background-vignette.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html" />
@@ -447,27 +440,6 @@
     <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\buttons\dialog-button-closing.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\buttons\button.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\buttons\frame-button-close.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\icons\frame-icon-clickable.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\icons\frame-icon.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\controls\icons\nav-icon.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\tpl\ui\dialogs\message-box.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -562,6 +534,7 @@
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\img\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\js\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\tpl\" />
+    <Folder Include="rsc\html\assets\tpl\" />
     <Folder Include="rsc\html\templates\cine-static-1.0.0\js\" />
   </ItemGroup>
 
