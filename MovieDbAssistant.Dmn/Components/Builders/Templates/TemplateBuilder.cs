@@ -62,13 +62,16 @@ public sealed partial class TemplateBuilder
     /// </summary>
     /// <param name="docContext">biulder context</param>
     /// <param name="templateId">The template id.</param>
+    /// <param name="templateVersion">tpl version</param>
     public TemplateBuilder LoadTemplate(
         DocumentBuilderContext docContext,
-        string templateId)
+        string templateId,
+        string templateVersion)
     {
         Context.For(
             docContext,
-            templateId);
+            templateId,
+            templateVersion);
 
         if (_templates.TryGetValue(templateId, out var tpl))
         {
@@ -84,11 +87,6 @@ public sealed partial class TemplateBuilder
                 _tpl!.Paths.Pages),
             _tpl.Pages
             );
-
-        /*tpl.LoadContent(Path.Combine(
-            Context.TplPath,
-            _tpl!.Paths.Pages));*/
-
 
         _templates.TryAdd(tpl.Id, tpl);
 

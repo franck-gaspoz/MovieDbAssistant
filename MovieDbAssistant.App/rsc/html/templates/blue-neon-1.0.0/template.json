@@ -4,13 +4,17 @@
   "version": "1.0.0",
   "versionDate": "2024/10/03",
   "author": "Franck Gaspoz",
-  
+
   "theme": {
+    "kernel": {
+      "id": "core",
+      "ver": "1.0.0"
+    },
     "ui": {
       "id": "blue-neon",
       "ver": "1.0.0"
     },
-    "Fonts": {
+    "fonts": {
       "id": "blue-neon",
       "ver": "1.0.0"
     },
@@ -105,7 +109,7 @@
     "/js/core/util-1.0.0.js:/js/core",
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
-    "/themes/blue-neon:/theme"
+    "/themes/blue-neon-1.0.0:/theme"
   ],
 
   "files": [

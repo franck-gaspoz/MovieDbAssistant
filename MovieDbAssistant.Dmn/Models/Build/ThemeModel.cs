@@ -8,6 +8,13 @@ namespace MovieDbAssistant.Dmn.Models.Build;
 public sealed class ThemeModel
 {
     /// <summary>
+    /// Gets or sets the kernel.
+    /// </summary>
+    /// <value>A <see cref="ThemeComponentModel"/></value>
+    [JsonPropertyName("kernel")]
+    public ThemeComponentModel Engine { get; set; }
+
+    /// <summary>
     /// Gets or sets the UI.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>

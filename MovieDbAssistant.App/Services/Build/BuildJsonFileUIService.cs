@@ -68,7 +68,8 @@ sealed class BuildJsonFileUIService :
                     typeof(HtmlDocumentBuilder),
                     new Dictionary<string, object>
                     {
-                        { Template_Id , DmnSettings.Value.Build.Html.TemplateId }
+                        { Template_Id , DmnSettings.Value.Build.Html.TemplateId },
+                        { Template_Version , DmnSettings.Value.Build.Html.TemplateVersion }
                     }));
 
     /// <inheritdoc/>

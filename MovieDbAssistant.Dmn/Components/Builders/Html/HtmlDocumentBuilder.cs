@@ -79,6 +79,9 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
             context,
             context
                 .BuilderOptions[Template_Id]
+                .ToString()!,
+            context
+                .BuilderOptions[Template_Version]
                 .ToString()!
             )
 

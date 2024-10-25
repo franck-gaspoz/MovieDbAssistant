@@ -9,4 +9,9 @@ public sealed class HtmDocumentBuilderSettings
     /// template id
     /// </summary>
     public const string Template_Id = "Template_Id";
+
+    /// <summary>
+    /// template id
+    /// </summary>
+    public const string Template_Version = "Template_Version";
 }

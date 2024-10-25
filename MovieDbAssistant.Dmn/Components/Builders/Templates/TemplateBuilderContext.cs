@@ -20,6 +20,24 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 [Transient]
 public sealed class TemplateBuilderContext
 {
+    /// <summary>
+    /// doc builder context
+    /// </summary>
+    public DocumentBuilderContext? DocContext { get; set; }
+
+    /// <summary>
+    /// Gets or sets the template id.
+    /// </summary>
+    /// <value>A <see cref="string? "/></value>
+    public string? TemplateId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the template version.
+    /// </summary>
+    /// <value>A <see cref="string? "/></value>
+    public string? TemplateVersion { get; set; }
+
+    private const string Separator_Id_Version = "-";
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilderContext> _logger;
     readonly IOptions<DmnSettings> _dmnSettings;
@@ -31,7 +49,9 @@ public sealed class TemplateBuilderContext
         Path.Combine(
             RscPath,
             _dmnSettings.Value.Paths.RscHtmlTemplates,
-            TemplateId!);
+            TemplateId!
+                + Separator_Id_Version
+                + TemplateVersion!);
 
     /// <summary>
     /// Gets the rsc path.
@@ -87,17 +107,6 @@ public sealed class TemplateBuilderContext
                 .NormalizePath();
 
     /// <summary>
-    /// doc builder context
-    /// </summary>
-    public DocumentBuilderContext? DocContext { get; set; }
-
-    /// <summary>
-    /// Gets or sets the template id.
-    /// </summary>
-    /// <value>A <see cref="string? "/></value>
-    public string? TemplateId { get; set; }
-
-    /// <summary>
     /// Initializes a new instance of the <see cref="TemplateBuilderContext"/> class.
     /// </summary>
     /// <param name="config">The config.</param>
@@ -117,13 +126,16 @@ public sealed class TemplateBuilderContext
     /// </summary>
     /// <param name="context">The context.</param>
     /// <param name="templateId">The template id.</param>
+    /// <param name="templateVersion">tpl version</param>
     /// <returns>A <see cref="TemplateBuilderContext"/></returns>
     public TemplateBuilderContext For(
         DocumentBuilderContext context,
-        string templateId)
+        string templateId,
+        string templateVersion)
     {
         DocContext = context;
         TemplateId = templateId;
+        TemplateVersion = templateVersion;
         return this;
     }
 
