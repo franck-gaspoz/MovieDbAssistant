@@ -217,7 +217,7 @@ class Template {
                 }
                 window.location =
                     './'
-                    + props['output.pages'/*Template_Var_OutputPages*/]
+                    + props.output.pages
                     + '/'
                     + data.filename
             })

@@ -4,6 +4,7 @@ using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Interface;
+using MovieDbAssistant.Dmn.Models.Build;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -15,10 +16,8 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Tpl = "tpl";
     const string Template_Var_Page = "page";
 
-    const string Template_Var_Software = "software";
-    const string Template_Var_Software_Id = "softwareId";
-    const string Template_Var_Software_Version = "softwareVersion";
-    const string Template_Var_Software_Version_Date = "softwareVersionDate";
+    const string Template_Var_App = "app";
+
     const string Template_Var_BuiltAt = "builtAt";
     const string Template_Var_Lang = "lang";
 
@@ -33,20 +32,9 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Template_Version = "templateVersion";
     const string Template_Var_Template_VersionDate = "templateVersionDate";
 
-    const string Template_Var_Prefix_Output = "output.";
-
-    const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
-    const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
+    const string Template_Var_Output = "output";
 
     const string Template_Var_Navigation = "navigation";
-
-    const string Template_Var_Prefix_Movies = "movies.";
-
-    const string Template_Var_Index = Template_Var_Prefix_Movies + "index";
-    const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
-    const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
-    const string Template_Var_Link_Previous = Template_Var_Prefix_Movies + "previous";
-    const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";
 
     const string Template_Var_BasePath = "basePath";
 
@@ -66,12 +54,11 @@ public sealed partial class TemplateBuilder
                     :_tpl!.PageDetail()
             },
             {
-                Template_Var_OutputPages,
-                _dmnSettings.Value.Paths.OutputPages
-            },
-            {
-                Template_Var_Build_Ext_Html,
-                _dmnSettings.Value.Build.Html.Extension
+                Template_Var_Output,
+                new OutputModel(
+                    _dmnSettings.Value.Build.Html.Extension,
+                    _dmnSettings.Value.Paths.OutputPages
+                    )    
             },
             {
                 Template_Var_Background ,
@@ -96,28 +83,8 @@ public sealed partial class TemplateBuilder
                 )
             },
             {
-                Template_Var_Index,
-                htmlContext?.Index+1
-            },
-            {
-                Template_Var_Total,
-                htmlContext?.Total
-            },
-            {
-                Template_Var_Link_Home,
-                htmlContext?.HomeLink
-            },
-            {
-                Template_Var_Link_Previous,
-                htmlContext?.PreviousLink
-            },
-            {
-                Template_Var_Link_Next,
-                htmlContext?.NextLink
-            },
-            {
                 Template_Var_Title_List,
-                _tpl.PageList()!.Title
+                _tpl!.PageList()!.Title
             },
             {
                 Template_Var_Page_Title_List,
@@ -140,26 +107,19 @@ public sealed partial class TemplateBuilder
                 _tpl.VersionDate
             },
             {
-                Template_Var_Software_Id,
-                Assembly.GetExecutingAssembly()
-                    .GetName()
-                    .Name!
-                    .Split('.')[0]
-            },
-            {
-                Template_Var_Software,
-                _dmnSettings.Value.App.Title
-            },
-            {
-                Template_Var_Software_Version,
-                Assembly.GetExecutingAssembly()
-                    .GetName()
-                    .Version!
-                    .ToString()
-            },
-            {
-                Template_Var_Software_Version_Date,
-                _dmnSettings.Value.App.VersionDate
+                Template_Var_App,
+                new AppModel(
+                    _dmnSettings.Value.App.Title,
+                    Assembly.GetExecutingAssembly()
+                        .GetName()
+                        .Name!
+                        .Split('.')[0],
+                    Assembly.GetExecutingAssembly()
+                        .GetName()
+                        .Version!
+                        .ToString(),
+                    _dmnSettings.Value.App.VersionDate
+                    )                
             },
             {
                 Template_Var_BuiltAt,
