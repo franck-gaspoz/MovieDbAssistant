@@ -3,8 +3,6 @@ using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
 
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 /// <summary>
@@ -119,7 +117,7 @@ public sealed partial class TemplateBuilder
     {
         var docContext = Context.DocContext!;
         var text = File.ReadAllText(filePath);
-        
+
         var page = IncludeParts(text);
         (page, _) = SetVars(
             page,
@@ -134,7 +132,7 @@ public sealed partial class TemplateBuilder
 
     string RemoveTplPostfix(string filePath)
     {
-        foreach ( var ext in _tpl!.Paths.HandleExtensions)
+        foreach (var ext in _tpl!.Paths.HandleExtensions)
         {
             if (filePath.EndsWith(ext))
                 filePath = filePath.Replace(

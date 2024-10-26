@@ -37,7 +37,7 @@ public sealed class TemplateBuilderContext
     /// <value>A <see cref="string? "/></value>
     public string? TemplateVersion { get; set; }
 
-    private const string Separator_Id_Version = "-";
+    const string Separator_Id_Version = "-";
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilderContext> _logger;
     readonly IOptions<DmnSettings> _dmnSettings;
@@ -129,7 +129,7 @@ public sealed class TemplateBuilderContext
         string templateVersion) =>
             Path.Combine(
                 ThemesPath,
-                templateId+Separator_Id_Version+templateVersion
+                templateId + Separator_Id_Version + templateVersion
                 );
 
     /// <summary>
@@ -147,7 +147,7 @@ public sealed class TemplateBuilderContext
     /// </summary>
     /// <param name="tpl">tpl</param>
     /// <returns>theme path</returns>
-    public string ThemePath( TemplateModel tpl )
+    public string ThemePath(TemplateModel tpl)
         => ThemePath(
             tpl.Id, tpl.Version
             );

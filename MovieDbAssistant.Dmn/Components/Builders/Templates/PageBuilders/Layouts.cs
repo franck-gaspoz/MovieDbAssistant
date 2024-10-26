@@ -4,7 +4,7 @@
 /// pages layouts
 /// </summary>
 public enum Layouts
-{    
+{
     /// <summary>
     /// movie list page
     /// </summary>

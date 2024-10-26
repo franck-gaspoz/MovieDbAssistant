@@ -15,7 +15,7 @@ public static class FileExtensions
     /// <param name="left">The left.</param>
     /// <param name="right">The right.</param>
     /// <returns>A <see cref="bool"/></returns>
-    public static bool IsNewestFile(this string left,string right)
+    public static bool IsNewestFile(this string left, string right)
         => !File.Exists(right)
             || File.Exists(left)
                 && new FileInfo(left).LastWriteTimeUtc >
@@ -29,11 +29,11 @@ public static class FileExtensions
     /// <param name="preserveNewest">preserve newest files when target already exists</param>
     /// <param name="logger">logger</param>
     public static void CopyDirectory(
-        this string sourceDir, 
+        this string sourceDir,
         string destinationDir,
         bool preserveNewest = true,
         ILogger? logger = null,
-        Func<string,string,bool>? fileCopyPreHandler = null)
+        Func<string, string, bool>? fileCopyPreHandler = null)
     {
         // Create the destination directory if it doesn't exist
         if (!Directory.Exists(destinationDir))
@@ -48,9 +48,9 @@ public static class FileExtensions
         foreach (var file in Directory.GetFiles(sourceDir))
         {
             var destFile = Path.Combine(destinationDir, Path.GetFileName(file));
-                                   
+
             if (
-                (fileCopyPreHandler==null || !fileCopyPreHandler(file, destFile))
+                (fileCopyPreHandler == null || !fileCopyPreHandler(file, destFile))
                 && (!preserveNewest || file.IsNewestFile(destFile)))
             {
                 File.Copy(file, destFile, true);
@@ -65,7 +65,7 @@ public static class FileExtensions
         {
             var dir = Path.GetFileName(directory);
             var destDir = Path.Combine(destinationDir, dir);
-            directory.CopyDirectory(destDir,preserveNewest,logger,fileCopyPreHandler);            
+            directory.CopyDirectory(destDir, preserveNewest, logger, fileCopyPreHandler);
         }
 
         logger?.LogInformation(

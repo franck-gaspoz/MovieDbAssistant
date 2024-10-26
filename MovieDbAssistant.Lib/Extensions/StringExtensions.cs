@@ -122,13 +122,13 @@ public static class StringExtensions
     /// <param name="s">The string to search in</param>
     /// <param name="pat">The pattern to search.</param>
     /// <returns>An <see cref="int"/></returns>
-    public static int SearchLeft(this string s,string pat,int fromIndex)
+    public static int SearchLeft(this string s, string pat, int fromIndex)
     {
         var i = fromIndex;
         if (i < 0) return -1;
         var l = pat.Length;
         if (s[i..(i + l)] == pat) return i;
-        return s.SearchLeft( pat, fromIndex-1 );
+        return s.SearchLeft(pat, fromIndex - 1);
     }
 
     /// <summary>

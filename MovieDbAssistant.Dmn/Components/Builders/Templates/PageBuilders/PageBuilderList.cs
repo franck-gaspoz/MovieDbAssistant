@@ -12,8 +12,5 @@ public sealed class PageBuilderList : IPageBuilder
     /// <inheritdoc/>
     public TemplateBuilder Build(
         HtmlDocumentBuilderContext htmlContext,
-        object data)
-    {
-        throw new NotImplementedException();
-    }
+        object data) => throw new NotImplementedException();
 }

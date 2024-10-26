@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template theme model.
@@ -11,35 +9,30 @@ public sealed class ThemeModel
     /// Gets or sets the kernel.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
-    [JsonPropertyName("kernel")]
     public ThemeComponentModel Kernel { get; set; }
 
     /// <summary>
     /// Gets or sets the UI.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
-    [JsonPropertyName("ui")]
     public ThemeComponentModel Ui { get; set; }
 
     /// <summary>
     /// Gets or sets the fonts.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
-    [JsonPropertyName("fonts")] 
     public ThemeComponentModel Fonts { get; set; }
 
     /// <summary>
     /// Gets or sets the icons.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
-    [JsonPropertyName("icons")] 
     public ThemeComponentModel Icons { get; set; }
 
     /// <summary>
     /// Gets or sets the buttons.
     /// </summary>
     /// <value>A <see cref="ThemeComponentModel"/></value>
-    [JsonPropertyName("buttons")] 
     public ThemeComponentModel Buttons { get; set; }
 
     /// <summary>
@@ -50,6 +43,7 @@ public sealed class ThemeModel
     /// <param name="icons">The icons.</param>
     /// <param name="buttons">The buttons.</param>
     public ThemeModel(
+        ThemeComponentModel kernel,
         ThemeComponentModel ui,
         ThemeComponentModel fonts,
         ThemeComponentModel icons,
@@ -59,5 +53,6 @@ public sealed class ThemeModel
         Fonts = fonts;
         Icons = icons;
         Buttons = buttons;
+        Kernel = kernel;
     }
 }

@@ -12,7 +12,7 @@ public static class JsonExtensions
 {
     static readonly Lazy<JsonSerializerOptions> _jsonSerializerOptions =
         new(() => new JsonSerializerOptions
-            { WriteIndented = true });
+        { WriteIndented = true });
 
     /// <summary>
     /// Converts to the dynamic.

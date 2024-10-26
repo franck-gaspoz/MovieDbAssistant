@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The paths model.
@@ -12,19 +10,16 @@ public sealed class PathsModel
     /// <summary>
     /// pages
     /// </summary>
-    [JsonPropertyName("pages")]
     public string Pages { get; set; }
 
     /// <summary>
     /// parts
     /// </summary>
-    [JsonPropertyName("parts")]
     public string Parts { get; set; }
 
     /// <summary>
     /// handled tpl extensions
     /// </summary>
-    [JsonPropertyName("handleExtensions")]
     public List<string> HandleExtensions { get; set; } = [];
 
     public PathsModel(string pages, string parts)

@@ -55,11 +55,11 @@ public static class CollectionExtensions
     /// <typeparam name="TValue">values type</typeparam>
     /// <param name="dic"></param>
     /// <param name="value"></param>
-    public static void AddOrReplace<TKey,TValue>(
-        this Dictionary<TKey,TValue> dic,
+    public static void AddOrReplace<TKey, TValue>(
+        this Dictionary<TKey, TValue> dic,
         TKey key,
         TValue value)
-        where TKey: notnull
+        where TKey : notnull
     {
         if (!dic.ContainsKey(key))
             dic.Add(key, value);
@@ -74,10 +74,10 @@ public static class CollectionExtensions
     /// <typeparam name="TValue"/>
     /// <param name="src">The src.</param>
     /// <param name="target">The target.</param>
-    public static void MergeInto<TKey,TValue>(
-        this Dictionary<TKey,TValue>? src,
-        Dictionary<TKey,TValue> target)
-        where TKey: notnull
+    public static void MergeInto<TKey, TValue>(
+        this Dictionary<TKey, TValue>? src,
+        Dictionary<TKey, TValue> target)
+        where TKey : notnull
     {
         if (src == null) return;
         foreach (var kvp in src)

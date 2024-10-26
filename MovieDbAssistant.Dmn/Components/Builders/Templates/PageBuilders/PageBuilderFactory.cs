@@ -7,10 +7,7 @@ public sealed class PageBuilderFactory
 {
     readonly IServiceProvider _serviceProvider;
 
-    public PageBuilderFactory(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
+    public PageBuilderFactory(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
     /// <summary>
     /// creates a page builder factory. delegates creates to the service provider

@@ -45,16 +45,14 @@
       "tpl": "page-list.tpl.html",
       "background": "cinema-wallpaper-16.jpg",
       "title": "My Movies",
-      "pageTitle": "My Movies",
       "filename": "index"
     },
     {
       "id": "detail",
       "layout": "Detail",
       "tpl": "page-details.tpl.html",
-      "background": "../img/cinema-wallpaper-16.jpg",
       "backgroundIdle": "../img/cinema-wallpaper-40.jpg",
-      "pageTitle": "My Movies"
+      "title": "My Movies"
     }
   ],
 
