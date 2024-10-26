@@ -24,8 +24,8 @@ public sealed class PathsModel
     /// <summary>
     /// handled tpl extensions
     /// </summary>
-    [JsonPropertyName("handledExtensions")]
-    public List<string> HandledExtensions { get; set; } = [];
+    [JsonPropertyName("handleExtensions")]
+    public List<string> HandleExtensions { get; set; } = [];
 
     public PathsModel(string pages, string parts)
     {

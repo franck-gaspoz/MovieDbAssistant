@@ -31,9 +31,9 @@
   "paths": {
     "pages": "pages",
     "parts": "parts",
-    "handledExtensions": [
-      ".tpl.css",
+    "handleExtensions": [
       ".tpl.html",
+      ".tpl.css",
       ".tpl.js"
     ]
   },

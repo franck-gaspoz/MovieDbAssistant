@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 
-using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Configuration.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Extensions;
@@ -73,9 +72,9 @@ public partial class TemplateBuilder
         (name, var tplProps) = ExtractProps(name);
         tplProps.MergeInto(props);
 
-        var partFile = name + Parts_File_Extensions;
+        var partFile = name;// + Parts_File_Extensions;
         var file = GetTemplateFile(partFile);
-        if (file == (null,null)) 
+        if (file == (null, null))
             return (tpl, nextY);
         var partContent = File.ReadAllText(file.Path!);
 
@@ -127,14 +126,14 @@ public partial class TemplateBuilder
 
         var startIndex = 0;
         while (startIndex != Index_NoNext)
-            startIndex = ParseNextIncludeProp(block,props,startIndex);
+            startIndex = ParseNextIncludeProp(block, props, startIndex);
 
         tpl = tpl[..x] + tpl[y..];
 
         return (tpl, name, props);
     }
 
-    int ParseNextIncludeProp(string tpl, Dictionary<string,object?> props, int startIndex = 0)
+    int ParseNextIncludeProp(string tpl, Dictionary<string, object?> props, int startIndex = 0)
     {
         var r = Index_NoNext;
         var x = tpl.IndexOf(Include_Part_Prop_Prefix, startIndex);
@@ -147,7 +146,7 @@ public partial class TemplateBuilder
             return r;
         }
         var x2 = x + Include_Part_Prop_Prefix.Length;
-        var propName = tpl.Substring(x2,y-x2);
+        var propName = tpl.Substring(x2, y - x2);
 
         var z = tpl.IndexOf(Include_Part_Prop_Prefix, y);
         if (z < 0)
@@ -189,7 +188,7 @@ public partial class TemplateBuilder
 
         var decls = decl.Split(',');
         foreach (var pdecl in decls)
-        {            
+        {
             var t = pdecl.Split('=');
             if (t.Length != 2)
             {
@@ -200,7 +199,7 @@ public partial class TemplateBuilder
                 return def;
             }
             props.AddOrReplace(
-                UnescapeCharacters(t[0].Trim()), 
+                UnescapeCharacters(t[0].Trim()),
                 UnescapeCharacters(t[1].Trim()));
         }
 
@@ -210,14 +209,14 @@ public partial class TemplateBuilder
     static string EscapeCharacters(string s)
     {
         var r = "";
-        for (int i=0;i<s.Length;i++)
+        for (var i = 0; i < s.Length; i++)
         {
             var c = s[i];
             if (c == Include_Part_Prop_Escaper
-                && i+1 < s.Length)
+                && i + 1 < s.Length)
             {
                 var nc = s[i + 1];
-                c = (char)(10000 + (int)nc);
+                c = (char)(10000 + nc);
                 i++;
             }
             r += c;
@@ -228,24 +227,44 @@ public partial class TemplateBuilder
     static string UnescapeCharacters(string s)
     {
         var r = "";
-        for (int i = 0; i < s.Length; i++)
+        for (var i = 0; i < s.Length; i++)
         {
             var c = s[i];
             var n = (int)c;
-            if ( n >= 10000)
+            if (n >= 10000)
                 c = (char)(-10000 + n);
             r += c;
         }
         return r;
     }
 
-    (string? Folder,string? Path) GetTemplateFile(string partFile)
+    (string? Folder, string? Path) GetTemplateFile(
+        string partFileWithoutExt,
+        string ext="")
     {
+        (string? Folder, string? Path) deflt = (null, null);
+
         string RelPath(string path)
             => Path.GetDirectoryName(
                 path.Replace(
-                    Context.RscPath, 
+                    Context.RscPath,
                     string.Empty))!;
+
+        if (ext=="")
+        {
+            foreach ( var e in _tpl!.Paths.HandleExtensions )
+            {
+                var r = GetTemplateFile(partFileWithoutExt, e);
+                if (r != deflt)
+                    return r;
+            }
+
+            _logger.LogError(this, "template part not found: " + partFileWithoutExt);
+
+            return deflt;
+        }
+
+        var partFile = partFileWithoutExt + ext;
 
         // search in tpl
         var tplPartsPath = Path.Combine(
@@ -253,13 +272,13 @@ public partial class TemplateBuilder
             _tpl!.Paths.Parts
             );
         var file = Path.Combine(tplPartsPath, partFile);
-        if (File.Exists(file)) 
+        if (File.Exists(file))
             return (RelPath(file), file);
 
         // search in theme
         var themeTplPath = Path.Combine(
             Context.ThemePath(_tpl!),
-            Path_Tpl );
+            Path_Tpl);
         file = Path.Combine(themeTplPath, partFile);
         if (File.Exists(file))
             return (RelPath(file), file);
@@ -278,9 +297,7 @@ public partial class TemplateBuilder
         if (File.Exists(file))
             return (RelPath(file), file);
 
-        _logger.LogError(this, "template part not found: " + partFile);
-
-        return (null,null);
+        return deflt;
     }
 
 }

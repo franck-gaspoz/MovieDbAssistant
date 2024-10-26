@@ -75,4 +75,12 @@ public sealed partial class TemplateBuilder
 
         return this;
     }
+
+    /// <summary>
+    /// must Handle template.
+    /// </summary>
+    /// <param name="filePath">The file path.</param>
+    /// <returns>A <see cref="bool"/></returns>
+    public bool IsHandlableTemplateFile(string filePath)
+        => _tpl!.Paths.HandleExtensions.Any(x => filePath.EndsWith(x));
 }
