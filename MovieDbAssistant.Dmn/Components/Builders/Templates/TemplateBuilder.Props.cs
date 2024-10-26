@@ -46,7 +46,7 @@ public sealed partial class TemplateBuilder
         _tpl!.PageList()!
             .SubTitle = htmlContext?.SubTitle;
 
-        return new()
+        var props = new Dictionary<string, object?>()
         {
             {
                 Template_Var_Tpl,
@@ -75,18 +75,6 @@ public sealed partial class TemplateBuilder
                     htmlContext?.Total ?? 0
                 )
             },
-            /*{
-                Template_Var_Title_List,
-                _tpl!.PageList()!.Title
-            },
-            {
-                Template_Var_Page_Title_List,
-                _tpl!.PageList()!.PageTitle
-            },
-            {
-                Template_Var_Page_Title_Details,
-                _tpl!.PageDetail()!.PageTitle
-            },*/
             {
                 Template_Var_App,
                 new AppModel(
@@ -110,14 +98,11 @@ public sealed partial class TemplateBuilder
                 Template_Var_Lang,
                 _dmnSettings.Value.App.Lang
             },
-            /*{
-                Template_Var_SubTitle_List,
-                htmlContext?.SubTitle
-            },*/
             {
                 Template_Var_BasePath,
                 pageDetails ? "../" : "./"
             }
         };
+        return props;
     }
 }

@@ -25,12 +25,13 @@ public partial class TemplateBuilder
     }
 
     string IntegratesProps(
+        bool pageDetails,
         string tpl,
         HtmlDocumentBuilderContext htmlContext,
         MovieModel? data = null)
     {
         var src = JsonSerializer.Serialize(
-            GetTemplateProps(true, data, htmlContext),
+            GetTemplateProps(pageDetails, data, htmlContext),
             JsonSerializerProperties.Value)!;
 
         tpl = SetVar(tpl, Var_Props, src);

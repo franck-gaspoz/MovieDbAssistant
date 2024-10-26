@@ -29,7 +29,7 @@ public sealed partial class TemplateBuilder
         var page = IncludeParts(_templatesSourceCache.PageList()?.Content!);
 
         (page, var props, var nprops) = SetVars(page, htmlContext);
-        page = IntegratesProps(page, htmlContext);
+        page = IntegratesProps(false, page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
             _tpl!.PageList()!
@@ -58,7 +58,7 @@ public sealed partial class TemplateBuilder
         page = IntegratesData(page, data);
         (page, _, _) = SetVars(page, htmlContext, data);
 
-        page = IntegratesProps(page, htmlContext, data);
+        page = IntegratesProps(true, page, htmlContext, data);
         (page, _) = SetVars(page,
             GetTemplateProps(true, data, htmlContext));
 
