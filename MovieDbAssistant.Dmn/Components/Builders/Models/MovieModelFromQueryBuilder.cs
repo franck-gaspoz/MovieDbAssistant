@@ -47,7 +47,7 @@ public sealed class MovieModelFromQueryBuilder
     {
         var o = _data!.Clone();
         o.OriginalTitle = _data!.Title;
-        if (_settings.Value.Scrap.KeepQueriedTitle)
+        if (_settings.Value.Scrap.KeepQueryTitle)
             o.Title = _query?.Title;
         o.QueryTitle = _query?.Title;
         return o;

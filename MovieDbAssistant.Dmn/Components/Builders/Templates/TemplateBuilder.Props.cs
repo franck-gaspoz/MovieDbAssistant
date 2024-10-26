@@ -3,6 +3,7 @@
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Dmn.Models.Extensions;
+using MovieDbAssistant.Dmn.Models.Interface;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -36,6 +37,8 @@ public sealed partial class TemplateBuilder
 
     const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
     const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
+
+    const string Template_Var_Navigation = "navigation";
 
     const string Template_Var_Prefix_Movies = "movies.";
 
@@ -81,6 +84,16 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_BackgroundIdle,
                 _tpl!.PageDetail()!.BackgroundIdle
+            },
+            {
+                Template_Var_Navigation,
+                new MovieListNavigationModel(
+                    htmlContext?.HomeLink ?? string.Empty,
+                    (htmlContext?.Index ?? -1)+1,
+                    htmlContext?.NextLink,
+                    htmlContext?.PreviousLink,
+                    htmlContext?.Total ?? 0
+                )
             },
             {
                 Template_Var_Index,

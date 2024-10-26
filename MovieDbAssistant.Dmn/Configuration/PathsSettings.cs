@@ -54,12 +54,6 @@ public sealed class PathsSettings
     public required string RscHtmlAssetsTpl { get; set; }
 
     /// <summary>
-    /// Gets or sets the rsc html assets fonts.
-    /// </summary>
-    /// <value>A <see cref="string"/></value>
-    public required string RscHtmlAssetsFonts { get; set; }
-
-    /// <summary>
     /// Gets or sets the input.
     /// </summary>
     /// <value>A <see cref="string"/></value>

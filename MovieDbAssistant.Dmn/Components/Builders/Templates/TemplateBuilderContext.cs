@@ -90,7 +90,7 @@ public sealed class TemplateBuilderContext
         => _tplModel ?? (_tplModel =
             JsonSerializer.Deserialize<TemplateModel>(
                 TplContent,
-                JsonSerializerProperties.Value)
+                JsonDeserializerProperties.Value)
                     ?? throw new InvalidOperationException("template spec not found: "
                         + TplFile));
 

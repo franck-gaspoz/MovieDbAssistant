@@ -38,7 +38,7 @@ public class JsonDataProvider : IDataProvider, IIdentifiable
         if (source == null) return null;
         var r = JsonSerializer.Deserialize<MoviesModel>(
             (string)source,
-            JsonSerializerProperties.Value);
+            JsonDeserializerProperties.Value);
 
         return r!;
     }

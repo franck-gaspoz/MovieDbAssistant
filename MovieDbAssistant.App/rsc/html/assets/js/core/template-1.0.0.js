@@ -43,35 +43,35 @@ class Template {
     /**
      * @typedef MovieModel movie model
      * @type {object}
-     * @property {string} Id provider id
-     * @property {string} Key title hash
-     * @property {string} Url provider web page url
-     * @property {string} Title title
-     * @property {string} Summary summary
-     * @property {string[]} Interests interests
-     * @property {string} Rating rating
-     * @property {string} RatingCount rating count
-     * @property {string} Duration duration
-     * @property {string} ReleaseDate releasedate
-     * @property {string} Year year
-     * @property {string} Vote vote
-     * @property {string} Director director
-     * @property {string[]} Writers writers
-     * @property {string[]} Stars stars 
-     * @property {ActorModel[]} Actors actors 
-     * @property {string} Anecdotes anecdotes
-     * @property {string} MinPicUrl min pic url
-     * @property {string} MinPicAlt min pic alt
-     * @property {string} MinPicWidth min pic width
-     * @property {string[]} PicsUrls pics urls
-     * @property {string} PicFullUrl pic full size url
-     * @property {string[]} PicsSizes pics sizes 
+     * @property {string} id provider id
+     * @property {string} key title hash
+     * @property {string} url provider web page url
+     * @property {string} title title
+     * @property {string} summary summary
+     * @property {string[]} interests interests
+     * @property {string} rating rating
+     * @property {string} ratingCount rating count
+     * @property {string} duration duration
+     * @property {string} releaseDate releasedate
+     * @property {string} year year
+     * @property {string} vote vote
+     * @property {string} director director
+     * @property {string[]} writers writers
+     * @property {string[]} stars stars 
+     * @property {ActorModel[]} actors actors 
+     * @property {string} anecdotes anecdotes
+     * @property {string} minPicUrl min pic url
+     * @property {string} minPicAlt min pic alt
+     * @property {string} minPicWidth min pic width
+     * @property {string[]} picsUrls pics urls
+     * @property {string} picFullUrl pic full size url
+     * @property {string[]} picsSizes pics sizes 
      */
 
     props = {
-        "Interests": (o, value) => o.hseps(value),
-        "Stars": (o, value) => o.hseps(value),
-        "Actors": (o, value) => o.hseps(value, x => o.actorSimple(x))
+        "interests": (o, value) => o.hseps(value),
+        "stars": (o, value) => o.hseps(value),
+        "actors": (o, value) => o.hseps(value, x => o.actorSimple(x))
     };
 
     hseps(t, tr) {
@@ -81,6 +81,7 @@ class Template {
             .join(this.hsep())
     }
 
+    // TODO: props.tpl.props.hSep
     hsep() {
         return '<span class="hsep"></span>';
     }
@@ -96,9 +97,9 @@ class Template {
 
     /**
      * @typedef ActorModel actor model
-     * @property {string} Actor actor
-     * @property {string} PicUrl pic url
-     * @property {string[]} Characters characters
+     * @property {string} actor actor
+     * @property {string} picUrl pic url
+     * @property {string[]} characters characters
      */
 
     /**
@@ -106,7 +107,7 @@ class Template {
      * @param {MoviesModel} data movies set
      */
     buildItems(data) {
-        data.Movies.forEach((e, i) => {
+        data.movies.forEach((e, i) => {
             this.addItem(e)
         })
         this.removeItemModel()
@@ -162,7 +163,7 @@ class Template {
         const seconds = now.getSeconds().toString().padStart(2, '0');
         //const str = hours + " : " + minutes + " : " + seconds;
         const str = hours + " : " + minutes;
-        props['clock'] = str
+        props.clock = str
         $('.with-clock').html(str)
         this.clockUpdating = false
     }
@@ -218,7 +219,7 @@ class Template {
                     './'
                     + props['output.pages'/*Template_Var_OutputPages*/]
                     + '/'
-                    + data.Filename
+                    + data.filename
             })
         this.setStates($e, p)
         this.setLinks($e)
