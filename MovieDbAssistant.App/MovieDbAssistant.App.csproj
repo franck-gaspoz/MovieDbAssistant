@@ -27,7 +27,6 @@
     <None Remove="assets\led-red.ico" />
     <None Remove="assets\multimedia.ico" />
     <None Remove="db\README.md" />
-    <None Remove="input\-animals.json" />
     <None Remove="input\-gardiens.json" />
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
@@ -38,8 +37,9 @@
     <None Remove="input\-query1.txt" />
     <None Remove="input\-query2.txt" />
     <None Remove="input\-shmovies.json" />
+    <None Remove="input\-zombies.json" />
+    <None Remove="input\animals.json" />
     <None Remove="input\README.md" />
-    <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
     <None Remove="rsc\html\assets\README.md" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\buttons-1.0.0.css" />
@@ -183,7 +183,7 @@
     <Content Include="input\-histoire.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\-animals.json">
+    <Content Include="input\animals.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-query0.txt">
@@ -201,7 +201,7 @@
     <Content Include="input\-shmovies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\zombies.json">
+    <Content Include="input\-zombies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="output\README.md">

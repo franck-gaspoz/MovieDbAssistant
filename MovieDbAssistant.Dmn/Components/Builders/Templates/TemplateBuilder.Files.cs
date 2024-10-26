@@ -69,6 +69,7 @@ public partial class TemplateBuilder
                 !TryHandleRscTemplateFile(src,target)
                 && src.IsNewestFile(target))
             {
+                File.Copy(src, target, true);
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
                 return;
             }
