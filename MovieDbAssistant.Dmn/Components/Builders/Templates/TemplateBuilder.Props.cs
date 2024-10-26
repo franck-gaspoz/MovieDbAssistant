@@ -2,6 +2,7 @@
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Dmn.Models.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -10,22 +11,18 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 /// </summary>
 public sealed partial class TemplateBuilder
 {
+    const string Template_Var_Tpl = "tpl";
+    const string Template_Var_Page = "page";
+
     const string Template_Var_Software = "software";
     const string Template_Var_Software_Id = "softwareId";
     const string Template_Var_Software_Version = "softwareVersion";
     const string Template_Var_Software_Version_Date = "softwareVersionDate";
     const string Template_Var_BuiltAt = "builtAt";
     const string Template_Var_Lang = "lang";
-    const string Template_Var_Link_Repo = "linkRepo";
-    const string Template_Var_Link_Help = "linkHelp";
-    const string Template_Var_Link_Author = "linkAuthor";
 
     const string Template_Var_Background = "background";
     const string Template_Var_BackgroundIdle = "backgroundIdle";
-    const string Template_Var_ListMoviePicNotAvailable = "listMoviePicNotAvailable";
-    const string Template_Var_DetailMoviePicNotAvailable = "detailMoviePicNotAvailable";
-    const string Template_Var_ListMoviePicNotFound = "listMoviePicNotFound";
-    const string Template_Var_DetailMoviePicNotFound = "detailMoviePicNotFound";
 
     const string Template_Var_Page_Title_Details = "pageTitleDetails";
     const string Template_Var_Title_List = "titleList";
@@ -36,10 +33,12 @@ public sealed partial class TemplateBuilder
     const string Template_Var_Template_VersionDate = "templateVersionDate";
 
     const string Template_Var_Prefix_Output = "output.";
+
     const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
     const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
 
     const string Template_Var_Prefix_Movies = "movies.";
+
     const string Template_Var_Index = Template_Var_Prefix_Movies + "index";
     const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
     const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
@@ -54,6 +53,16 @@ public sealed partial class TemplateBuilder
         HtmlDocumentBuilderContext? htmlContext = null) => new()
         {
             {
+                Template_Var_Tpl,
+                _tpl
+            },
+            {
+                Template_Var_Page,
+                !pageDetails?
+                    _tpl!.PageList()!
+                    :_tpl!.PageDetail()
+            },
+            {
                 Template_Var_OutputPages,
                 _dmnSettings.Value.Paths.OutputPages
             },
@@ -64,14 +73,14 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_Background ,
                 !pageDetails?
-                    _tpl!.Options.PageList.Background
+                    _tpl!.PageList()!.Background
                     : (data==null || data.PicFullUrl == null)?
-                        _tpl!.Options.PageList.Background
+                        _tpl!.PageList()!.Background
                         : data.PicFullUrl
             },
             {
                 Template_Var_BackgroundIdle,
-                _tpl!.Options.PageDetail.BackgroundIdle
+                _tpl!.PageDetail()!.BackgroundIdle
             },
             {
                 Template_Var_Index,
@@ -95,15 +104,15 @@ public sealed partial class TemplateBuilder
             },
             {
                 Template_Var_Title_List,
-                _tpl.Options.PageList.Title
+                _tpl.PageList()!.Title
             },
             {
                 Template_Var_Page_Title_List,
-                _tpl.Options.PageList.PageTitle
+                _tpl.PageList()!.PageTitle
             },
             {
                 Template_Var_Page_Title_Details,
-                _tpl.Options.PageDetail.PageTitle
+                _tpl.PageDetail()!.PageTitle
             },
             {
                 Template_Var_Template_Id,
@@ -146,35 +155,7 @@ public sealed partial class TemplateBuilder
             {
                 Template_Var_Lang,
                 _dmnSettings.Value.App.Lang
-            },
-            {
-                Template_Var_Link_Repo,
-                _tpl!.Options.RepoLink
-            },
-            {
-                Template_Var_Link_Help,
-                _tpl!.Options.HelpLink
-            },
-            {
-                Template_Var_Link_Author,
-                _tpl!.Options.AuthorLink
-            },
-            {
-                Template_Var_ListMoviePicNotAvailable,
-                _tpl!.Options.ListMoviePicNotAvailable
-            },
-            {
-                Template_Var_DetailMoviePicNotAvailable,
-                _tpl!.Options.DetailMoviePicNotAvailable
-            },
-            {
-                Template_Var_ListMoviePicNotFound,
-                _tpl!.Options.ListMoviePicNotFound
-            },
-            {
-                Template_Var_DetailMoviePicNotFound,
-                _tpl!.Options.DetailMoviePicNotFound
-            },
+            },            
             {
                 Template_Var_SubTitle_List,
                 htmlContext?.SubTitle

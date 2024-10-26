@@ -3,7 +3,7 @@
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.DataProviders.Json.SourceModelAdapters;
 

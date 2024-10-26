@@ -12,14 +12,20 @@ const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Frida
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 /**
- * front sode template engine
+ * front template engine
  * @class
 */
 class Template {
 
+    /**
+     * @type {Layout} layout
+     */
+    layout = null
+
     constructor(enableAvoidNextItemClick) {
         window.tpl = this
         this.enableAvoidNextItemClick = enableAvoidNextItemClick
+        this.layout = new Layout()
     }
 
     /** @type {boolean} avoid next item click in case overlapped click */
@@ -163,12 +169,12 @@ class Template {
 
     setAlternatePics() {
         var $pics = $('.movie-page-list .alternate-pic-list')
-        var altUrl = props['listMoviePicNotAvailable']
-        var altnfUrl = props['listMoviePicNotFound']
+        var altUrl = props.tpl.listMoviePicNotAvailable;
+        var altnfUrl = props.tpl.listMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
         $pics = $('.movie-page-detail .alternate-pic-list')
-        altUrl = props['detailMoviePicNotAvailable']
-        altnfUrl = props['detailMoviePicNotFound']
+        altUrl = props.tpl.detailMoviePicNotAvailable;
+        altnfUrl = props.tpl.detailMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
     }
 
@@ -379,21 +385,16 @@ class Template {
         return tpl
     }
 
-    firstLower(txt) {
-        return txt.charAt(0).toLowerCase() + txt.slice(1);
-    }
-
     getVar(name) {
         return '{{' + this.getVarname(name) + '}}';
     }
 
     getVarname(name) {
-        return this.firstLower(name);
-        //.replaceAll('.', '-')
+        return firstLower(name);
     }
 
     getVarnameForClass(name) {
-        return this.firstLower(name)
+        return firstLower(name)
             .replaceAll('.', '-')
     }
 }

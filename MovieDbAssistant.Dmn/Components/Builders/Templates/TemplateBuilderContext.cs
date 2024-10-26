@@ -8,7 +8,7 @@ using MovieDbAssistant.Dmn.Components.Builders.Document;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -20,6 +20,24 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 [Transient]
 public sealed class TemplateBuilderContext
 {
+    /// <summary>
+    /// doc builder context
+    /// </summary>
+    public DocumentBuilderContext? DocContext { get; set; }
+
+    /// <summary>
+    /// Gets or sets the template id.
+    /// </summary>
+    /// <value>A <see cref="string? "/></value>
+    public string? TemplateId { get; set; }
+
+    /// <summary>
+    /// Gets or sets the template version.
+    /// </summary>
+    /// <value>A <see cref="string? "/></value>
+    public string? TemplateVersion { get; set; }
+
+    private const string Separator_Id_Version = "-";
     readonly IConfiguration _config;
     readonly ILogger<TemplateBuilderContext> _logger;
     readonly IOptions<DmnSettings> _dmnSettings;
@@ -31,7 +49,9 @@ public sealed class TemplateBuilderContext
         Path.Combine(
             RscPath,
             _dmnSettings.Value.Paths.RscHtmlTemplates,
-            TemplateId!);
+            TemplateId!
+                + Separator_Id_Version
+                + TemplateVersion!);
 
     /// <summary>
     /// Gets the rsc path.
@@ -60,28 +80,77 @@ public sealed class TemplateBuilderContext
     public string TplContent => _tplContent ?? (_tplContent =
         File.ReadAllText(TplFile)!);
 
+    TemplateModel? _tplModel;
+
+    /// <summary>
+    /// Template to model.
+    /// </summary>
+    /// <returns>A <see cref="TemplateModel"/></returns>
+    public TemplateModel TemplateModel
+        => _tplModel ?? (_tplModel =
+            JsonSerializer.Deserialize<TemplateModel>(
+                TplContent,
+                JsonSerializerProperties.Value)
+                    ?? throw new InvalidOperationException("template spec not found: "
+                        + TplFile));
+
     /// <summary>
     /// assets path
     /// </summary>
-    /// <param name="context">doc builder context</param>
     /// <returns>assets path</returns>
-    public string AssetsPath(DocumentBuilderContext context) =>
+    public string AssetsPath =>
         Path.Combine(
-            context.RscPath,
+            DocContext!.RscPath,
             _dmnSettings.Value.Paths.RscHtml,
             _dmnSettings.Value.Paths.RscHtmlAssets)
                 .NormalizePath();
 
     /// <summary>
-    /// doc builder context
+    /// themes path
     /// </summary>
-    public DocumentBuilderContext? DocContext { get; set; }
+    /// <returns>themes path</returns>
+    public string ThemesPath =>
+        Path.Combine(
+            DocContext!.RscPath,
+            _dmnSettings.Value.Paths.RscHtml,
+            _dmnSettings.Value.Paths.RscHtmlAssets,
+            _dmnSettings.Value.Paths.RscHtmlAssetsThemes)
+                .NormalizePath();
 
     /// <summary>
-    /// Gets or sets the template id.
+    /// gets a theme path
     /// </summary>
-    /// <value>A <see cref="string? "/></value>
-    public string? TemplateId { get; set; }
+    /// <param name="context">doc builder context</param>
+    /// <param name="templateId">template id</param>
+    /// <param name="templateVersion">template version</param>
+    /// <returns>theme path</returns>
+    public string ThemePath(
+        string templateId,
+        string templateVersion) =>
+            Path.Combine(
+                ThemesPath,
+                templateId+Separator_Id_Version+templateVersion
+                );
+
+    /// <summary>
+    /// gets the theme kernel path
+    /// </summary>
+    /// <param name="tpl">template model</param>
+    /// <returns>theme kernel path</returns>
+    public string ThemeKernelPath(TemplateModel tpl)
+        => ThemePath(
+            tpl.Theme.Kernel.Id,
+            tpl.Theme.Kernel.Ver);
+
+    /// <summary>
+    /// gets the tpl theme path
+    /// </summary>
+    /// <param name="tpl">tpl</param>
+    /// <returns>theme path</returns>
+    public string ThemePath( TemplateModel tpl )
+        => ThemePath(
+            tpl.Id, tpl.Version
+            );
 
     /// <summary>
     /// Initializes a new instance of the <see cref="TemplateBuilderContext"/> class.
@@ -103,24 +172,17 @@ public sealed class TemplateBuilderContext
     /// </summary>
     /// <param name="context">The context.</param>
     /// <param name="templateId">The template id.</param>
+    /// <param name="templateVersion">tpl version</param>
     /// <returns>A <see cref="TemplateBuilderContext"/></returns>
     public TemplateBuilderContext For(
         DocumentBuilderContext context,
-        string templateId)
+        string templateId,
+        string templateVersion)
     {
         DocContext = context;
         TemplateId = templateId;
+        TemplateVersion = templateVersion;
         return this;
     }
 
-    /// <summary>
-    /// Template to model.
-    /// </summary>
-    /// <returns>A <see cref="TemplateModel"/></returns>
-    public TemplateModel TemplateModel()
-        => JsonSerializer.Deserialize<TemplateModel>(
-            TplContent,
-            JsonSerializerProperties.Value)
-                ?? throw new InvalidOperationException("template spec not found: "
-                    + TplFile);
 }

@@ -15,3 +15,76 @@ ref from output to rsc
 body {
     background-image: url(../../../../../rsc/html/assets/movie-page-list-wallpapers/cinema-wallpaper-16.jpg);
 }
+
+/*// Glow Border Animation //*/
+
+.animated-border-box, .animated-border-box-glow {
+    /**/max-height: 200px;
+    max-width: 250px;*/
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+    /* Border Radius */
+    border-radius: 10px;
+}
+
+.animated-border-box-glow {
+    overflow: hidden;
+    /* Glow Blur */
+    filter: blur(20px);
+}
+
+.animated-border-box:before, .animated-border-box-glow:before {
+    content: '';
+    z-index: -2;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    position: absolute;
+    width: 99999px;
+    height: 99999px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    /*border color, change middle color*/
+    background-image: conic-gradient(rgba(0,0,0,0), #1976ed, rgba(0,0,0,0) 25%);
+    /* change speed here */
+    animation: rotate 4s linear infinite;
+}
+
+.animated-border-box:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    /* border width */
+    left: 5px;
+    top: 5px;
+    /* double the px from the border width left */
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    /*bg color*/
+    background: #292a2e;
+    /*box border radius*/
+    border-radius: 7px;
+}
+
+@keyframes rotate {
+    100% {
+        transform: translate(-50%, -50%) rotate(1turn);
+    }
+}
+
+---------------------------------------------------
+
+    /* vegas */
+    /* background: linear-gradient(360deg, rgba(0, 0, 0, 0) 5%, #3F51B5 100%);
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;*/
+    
+----------------------------------------------------
+
+text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1855, 0 0 6px #49FF1855, 0 0 8px #49FF1855, 0 0 10px #49FF1855, 0 0 20px #49ff1855;
+
+#90ee9050
+

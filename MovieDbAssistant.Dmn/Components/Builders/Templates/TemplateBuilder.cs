@@ -41,16 +41,20 @@ public sealed partial class TemplateBuilder
 
     static readonly ConcurrentDictionary<string, TemplateModel> _templates = [];
 
+    readonly TemplatesSourceCache _templatesSourceCache;
+
     public TemplateBuilder(
         IConfiguration configuration,
         ILogger<TemplateBuilder> logger,
         TemplateBuilderContext context,
-        IOptions<DmnSettings> dmnSettings)
+        IOptions<DmnSettings> dmnSettings,
+        TemplatesSourceCache templatesSourceCache)
     {
         _config = configuration;
         _logger = logger;
         Context = context;
         _dmnSettings = dmnSettings;
+        _templatesSourceCache = templatesSourceCache;
     }
 
     /// <summary>
@@ -58,13 +62,16 @@ public sealed partial class TemplateBuilder
     /// </summary>
     /// <param name="docContext">biulder context</param>
     /// <param name="templateId">The template id.</param>
+    /// <param name="templateVersion">tpl version</param>
     public TemplateBuilder LoadTemplate(
         DocumentBuilderContext docContext,
-        string templateId)
+        string templateId,
+        string templateVersion)
     {
         Context.For(
             docContext,
-            templateId);
+            templateId,
+            templateVersion);
 
         if (_templates.TryGetValue(templateId, out var tpl))
         {
@@ -72,11 +79,14 @@ public sealed partial class TemplateBuilder
             return this;
         }
 
-        tpl = _tpl = Context.TemplateModel();
+        tpl = _tpl = Context.TemplateModel;
 
-        tpl.LoadContent(Path.Combine(
-            Context.TplPath,
-            _tpl!.Options.Paths.Pages));
+        _templatesSourceCache.Load(
+            Path.Combine(
+                Context.TplPath,
+                _tpl!.Paths.Pages),
+            _tpl.Pages
+            );
 
         _templates.TryAdd(tpl.Id, tpl);
 

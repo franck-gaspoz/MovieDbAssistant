@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Lib.Components.Signal;
 

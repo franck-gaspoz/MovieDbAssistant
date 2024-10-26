@@ -1,7 +1,7 @@
 ﻿using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Dmn.Models.Queries;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Models.Extensions;
 

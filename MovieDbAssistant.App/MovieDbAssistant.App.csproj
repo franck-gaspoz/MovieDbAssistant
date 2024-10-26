@@ -21,6 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.fr.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
     <None Remove="assets\led-red.ico" />
@@ -40,6 +41,17 @@
     <None Remove="input\README.md" />
     <None Remove="input\zombies.json" />
     <None Remove="output\README.md" />
+    <None Remove="rsc\html\assets\README.md" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\buttons-1.0.0.css" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.css" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.tpl.css" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\fonts\BrunoAce-Regular.ttf" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\fonts\ComicNeue-Light.ttf" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\fonts\Vonique 92_D.otf" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\icons-1.0.0.css" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\ui-1.0.0.css" />
+    <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\ui-fonts-1.0.0.css" />
+    <None Remove="rsc\html\assets\fonts\BrunoAce-Regular.ttf" />
     <None Remove="rsc\html\assets\fonts\ComicNeue-Light.ttf" />
     <None Remove="rsc\html\assets\fonts\MomTypewritter.ttf" />
     <None Remove="rsc\html\assets\fonts\Open 24 Display St.ttf" />
@@ -48,13 +60,18 @@
     <None Remove="rsc\html\assets\fonts\Renegade Master.ttf" />
     <None Remove="rsc\html\assets\fonts\Vonique 92_D.otf" />
     <None Remove="rsc\html\assets\icons\back.png" />
+    <None Remove="rsc\html\assets\icons\close-window.png" />
     <None Remove="rsc\html\assets\icons\download.png" />
     <None Remove="rsc\html\assets\icons\favicon.ico" />
     <None Remove="rsc\html\assets\icons\house.png" />
     <None Remove="rsc\html\assets\icons\left-arrow.png" />
     <None Remove="rsc\html\assets\icons\play.png" />
+    <None Remove="rsc\html\assets\icons\settings.png" />
     <None Remove="rsc\html\assets\img\image-404-630x630.jpg" />
     <None Remove="rsc\html\assets\img\image-not-availble-300x175.jpg" />
+    <None Remove="rsc\html\assets\js\core\ui-1.0.0.js" />
+    <None Remove="rsc\html\assets\js\core\ui-layout-1.0.0.js" />
+    <None Remove="rsc\html\assets\js\core\util-1.0.0.js" />
     <None Remove="rsc\html\assets\js\jquery-3.7.1.min.js" />
     <None Remove="rsc\html\assets\js\template.js" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-1.jpg" />
@@ -97,19 +114,32 @@
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-7.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-8.jpg" />
     <None Remove="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg" />
-    <None Remove="rsc\html\templates\dark\parts\background-vignette.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\head-links.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\head-metas.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\head-scripts.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\html.tpl.html" />
-    <None Remove="rsc\html\templates\dark\page-details.tpl.html" />
-    <None Remove="rsc\html\templates\dark\page-list.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\movie-list-item-container.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\navbar-bottom.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\dark\template.json" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\button.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\dialog-button-closing.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\frame-button-close.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon-clickable.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-links.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-metas.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-scripts.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\html.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\page-list.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\movie-list-item-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-bottom.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-detail-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\README.md" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
     <None Remove="temp\README.md" />
@@ -118,6 +148,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.fr.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="input\-ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -181,6 +216,33 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\assets\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\css\buttons-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.tpl.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\fonts\BrunoAce-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\fonts\ComicNeue-Light.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\fonts\Vonique 92_D.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\css\icons-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-fonts-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\fonts\BrunoAce-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\fonts\ComicNeue-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -205,6 +267,9 @@
     <Content Include="rsc\html\assets\icons\back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\icons\close-window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\icons\download.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -212,6 +277,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\house.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\settings.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\left-arrow.png">
@@ -224,6 +292,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\img\image-not-availble-300x175.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\js\core\ui-1.0.0.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\js\core\util-1.0.0.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\js\ext\jquery-3.7.1.min.js">
@@ -352,43 +426,82 @@
     <Content Include="rsc\html\assets\movie-page-list-wallpapers\cinema-wallpaper-9.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-links.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\button.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-metas.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\dialog-button-closing.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\head-scripts.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\buttons\frame-button-close.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\background-vignette.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon-clickable.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\page-list-navbar-top.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\page-detail-navbar-top.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\navbar-top.tpl.html">
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\movie-list-item-container.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\navbar-bottom.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\parts\html.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\pages\page-list.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\pages\page-details.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\dark\template.json">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-links.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-metas.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-scripts.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-vignette.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\item-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-bottom.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\html.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\template.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\README.md">
@@ -404,6 +517,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\js\core\ui-layout-1.0.0.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="assets\multimedia.ico">
@@ -424,11 +540,16 @@
 
   <ItemGroup>
     <Folder Include="Events\" />
-    <Folder Include="rsc\html\templates\dark\js\" />
+    <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\icons\" />
+    <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\img\" />
+    <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\js\" />
+    <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\tpl\" />
+    <Folder Include="rsc\html\assets\tpl\" />
+    <Folder Include="rsc\html\templates\cine-static-1.0.0\js\" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="rsc\html\templates\dark\css\styles.css">
+    <None Update="rsc\html\templates\cine-static-1.0.0\css\styles.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

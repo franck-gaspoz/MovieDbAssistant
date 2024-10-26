@@ -29,4 +29,10 @@ public sealed class HtmlSettings
     /// <value>A <see cref="string"/></value>
     public required string TemplateId { get; set; }
 
+    /// <summary>
+    /// Gets or sets the template version.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public required string TemplateVersion { get; set; }
+
 }

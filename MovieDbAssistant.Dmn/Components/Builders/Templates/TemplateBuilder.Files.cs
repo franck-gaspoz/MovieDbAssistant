@@ -3,8 +3,8 @@
 using Microsoft.Extensions.Logging;
 
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Extensions;
 
 using static MovieDbAssistant.Dmn.Globals;
 
@@ -39,36 +39,63 @@ public partial class TemplateBuilder
 
     void CopyRsc(string item)
     {
-        var target = Context.DocContext!.OutputFolder!;
+        var target = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            Context.DocContext!.OutputFolder!);
+
         var t = item.Split(':');
 
-        var src = Context.AssetsPath(Context.DocContext!);
+        var src = Context.AssetsPath;
         src = Path.Combine(src, t[0][1..]);
         target = Path.Combine(
             target,
             t[1][1..]);
 
         if (!Directory.Exists(target))
+        {
             Directory.CreateDirectory(target);
+            _logger.LogInformation(this, "folder created: " + target);
+        }
 
         target = Path.Combine(target,
             Path.GetFileName(src));
 
+        bool notFound = true;
         if (File.Exists(src))
         {
-            File.Copy(
-                src,
-                target,
-                true);
-
-            _logger.LogInformation(this, "file copied: " + src + " to " + target);
+            notFound = false;
+            
+            if (
+                !TryHandleRscTemplateFile(src,target)
+                && src.IsNewestFile(target))
+            {
+                File.Copy(src, target, true);
+                _logger.LogInformation(this, "file copied: " + src + " to: " + target);
+                return;
+            }
         }
+        if (Directory.Exists(src))
+        {
+            notFound = false;
+            src.CopyDirectory(
+                target,
+                logger:_logger,
+                fileCopyPreHandler: (src,target) 
+                    => TryHandleRscTemplateFile(src,target));
+
+            _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
+            return;
+        }
+        if (notFound)
+            _logger.LogWarning(this, "resource not found: " + src );
     }
 
-    void CopyTemplateRsc(string item)
+    void CopyTemplateRsc(string item,bool preserveNewest = true)
     {
         var src = Path.Combine(Context.TplPath, item[1..]);
-        var target = Context.DocContext!.OutputFolder!;
+        var target = Path.Combine(
+            Directory.GetCurrentDirectory(), 
+            Context.DocContext!.OutputFolder!);
 
         if (!item.StartsWith('/'))
         {
@@ -77,12 +104,15 @@ public partial class TemplateBuilder
             if (!Directory.Exists(tgtFolder))
                 Directory.CreateDirectory(tgtFolder);
 
-            if (File.Exists(src))
-                File.Copy(
-                    src,
-                    target);
+            if (File.Exists(src)
+                && (!preserveNewest || src.IsNewestFile(target)))
+            {
+                File.Copy(src,target,true);
 
-            _logger.LogInformation(this, "file copied: " + src + " to " + target);
+                _logger.LogInformation(this, "file copied: " + src + " to: " + target);
+            }
+            if (!File.Exists(src))
+                _logger.LogWarning(this, "file not found: " + src);
         }
         else
         {
@@ -91,10 +121,12 @@ public partial class TemplateBuilder
                 target = Path.Combine(
                         target,
                         Path.GetFileName(src));
-                src.CopyDirectory(target);
+                src.CopyDirectory(target,logger: _logger);
 
-                _logger.LogInformation(this, "folder copied: " + src + " to " + target);
+                _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             }
+            else
+                _logger.LogWarning(this, "folder not found: " + src);
         }
     }
 

@@ -1,0 +1,32 @@
+﻿<!-- {{tpl-name}} -->
+
+{{{ui/dialogs/message-box--}}}
+
+{{--dialogId--}}
+{{id}}
+
+{{--title--}}
+    Options
+
+{{--minWidth--}}
+    14em
+{{--minHeight--}}
+    14em
+
+{{--icon--}}
+{{icon}}
+
+{{--content--}}
+    hello world
+
+{{--buttons--}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=button_ok,label=Ok,col=1,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=button_cancel,label=Cancel,col=2,color=green,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=button_close,label=Close,col=3,color=red,dialogId={{id}},buttonContainerClass=)}}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=button_start,label=Start,col=4,color=yellow,dialogId={{id}},buttonContainerClass=)}}}
+
+{{{--ui/dialogs/message-box}}}

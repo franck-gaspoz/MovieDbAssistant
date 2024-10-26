@@ -1,7 +1,9 @@
 ﻿using MovieDbAssistant.Dmn.Components.Builders.Html;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
-using MovieDbAssistant.Lib.Components.Extensions;
+using MovieDbAssistant.Lib.Extensions;
+
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -26,13 +28,14 @@ public sealed partial class TemplateBuilder
 
         ExportData(data);
 
-        var page = IncludeParts(_tpl!.Templates.TplList!);
+        var page = IncludeParts(_templatesSourceCache.PageList()?.Content!);
 
-        (page, var props) = SetVars(page, htmlContext);
+        (page, var props, var nprops) = SetVars(page, htmlContext);
         page = IntegratesProps(page, htmlContext);
 
         Context.DocContext!.AddOutputFile(
-            _tpl.Options.PageList.Filename!,
+            _tpl!.PageList()!
+                .Filename!,
             _dmnSettings.Value.Build.Html.Extension,
             page);
 
@@ -52,16 +55,16 @@ public sealed partial class TemplateBuilder
     {
         var docContext = Context.DocContext!;
 
-        var page = IncludeParts(_tpl!.Templates.TplDetails!);
+        var page = IncludeParts(_templatesSourceCache.PageDetail()?.Content!);
 
         page = IntegratesData(page, data);
-        (page, _) = SetVars(page, htmlContext, data);
+        (page, _, _) = SetVars(page, htmlContext, data);
 
         page = IntegratesProps(page, htmlContext, data);
-        page = SetVars(page,
+        (page, _) = SetVars(page,
             GetTemplateProps(true, data, htmlContext));
 
-        page = SetVars(page, data.GetProperties());
+        (page, _) = SetVars(page, data.GetProperties());
 
         Context.DocContext!.AddOutputFile(
             Path
@@ -72,5 +75,72 @@ public sealed partial class TemplateBuilder
             page);
 
         return this;
+    }
+
+    /// <summary>
+    /// must Handle template.
+    /// </summary>
+    /// <param name="filePath">The file path.</param>
+    /// <returns>A <see cref="bool"/></returns>
+    public bool IsHandlableRscTemplateFile(string filePath, out string? ext)
+    {
+        ext = _tpl!.Paths
+            .HandleExtensions
+            .Where(x => filePath.EndsWith(x))
+            .FirstOrDefault();
+        return ext != null;
+    }
+
+    /// <summary>
+    /// try to handle a resource template file if is handlable
+    /// </summary>
+    /// <param name="filePath">file pathh</param>
+    /// <param name="targetFilePath">target file path</param>
+    /// <returns>true if handled, else false</returns>
+    public bool TryHandleRscTemplateFile(
+        string filePath,
+        string targetFilePath)
+    {
+        if (!IsHandlableRscTemplateFile(filePath, out var ext)) return false;
+
+        BuildFile(filePath, targetFilePath);
+
+        return true;
+    }
+
+    /// <summary>
+    /// build a file
+    /// </summary>
+    /// <param name="filePath">src file path</param>
+    /// <param name="targetFilePath">target file path</param>
+    public TemplateBuilder BuildFile(
+        string filePath,
+        string targetFilePath)
+    {
+        var docContext = Context.DocContext!;
+        var text = File.ReadAllText(filePath);
+        
+        var page = IncludeParts(text);
+        (page, _) = SetVars(
+            page,
+            GetTemplateProps(true, null, null));
+
+        Context.DocContext!.AddOutputFile(
+            RemoveTplPostfix(targetFilePath),
+            page);
+
+        return this;
+    }
+
+    string RemoveTplPostfix(string filePath)
+    {
+        foreach ( var ext in _tpl!.Paths.HandleExtensions)
+        {
+            if (filePath.EndsWith(ext))
+                filePath = filePath.Replace(
+                    ext,
+                    '.' + ext.Split('.')[2]);
+        }
+        return filePath;
     }
 }

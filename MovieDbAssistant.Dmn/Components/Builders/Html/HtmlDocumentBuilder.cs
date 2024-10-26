@@ -79,6 +79,9 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
             context,
             context
                 .BuilderOptions[Template_Id]
+                .ToString()!,
+            context
+                .BuilderOptions[Template_Version]
                 .ToString()!
             )
 
@@ -99,7 +102,6 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
                 index,
                 data.Movies.Count,
                 Folder_Back + _templateBuilder.TemplateModel
-                    .Options
                     .PageIndexPath(
                         context,
                         _dmnSettings.Value.Build.Html.Extension),
@@ -133,7 +135,7 @@ public sealed class HtmlDocumentBuilder : IDocumentBuilder
 
         // copy resources
 
-        _templateBuilder.CopyRsc();
-        _templateBuilder.CopyTplRsc();
+        _templateBuilder.CopyTplRsc();  // max. priority files
+        _templateBuilder.CopyRsc();     // don't replace same files
     }
 }

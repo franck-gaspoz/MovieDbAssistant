@@ -1,4 +1,4 @@
-﻿using MovieDbAssistant.Lib.Components.Extensions;
+﻿using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Configuration.Extensions;
 
@@ -34,4 +34,19 @@ public static class DmnSettingsExtensions
                 Directory.GetCurrentDirectory(),
                 dmnSettings.Paths.Assets,
                 filename));
+
+    /// <summary>
+    /// path of engin tpl parts
+    /// </summary>
+    /// <param name="dmnSettings">dmn settings</param>
+    /// <returns>path</returns>
+    public static string EngineTplPath(
+        this DmnSettings dmnSettings)
+        => Path.Combine(
+            Directory.GetCurrentDirectory(),
+            dmnSettings.Paths.Resources,
+            dmnSettings.Paths.RscHtml,
+            dmnSettings.Paths.RscHtmlAssets,
+            dmnSettings.Paths.RscHtmlAssetsTpl
+            );
 }

@@ -10,8 +10,9 @@ The `Movie Db Assistant` is a small tools chain that helps to build **html movie
 - work within single or list of queries
 - build stand alone html movie cataloges, that can be packed in a small `zip` file
 - provides html pages displaying a movie list and, movie details
+- template engine and template language: build any content from parts of content (html, *coming soon: js,css,...*)
 
-*[coming soon]*
+**next release planned:**
 
 serves a **web application** on `local host`, that provides GUI for :
 

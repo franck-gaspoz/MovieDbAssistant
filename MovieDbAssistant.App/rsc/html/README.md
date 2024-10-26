@@ -1,14 +1,8 @@
-﻿# resources folder / html
+﻿# /rsc /html /templates
 
 ___
 
-:arrow_right: html builders resources
+html catalogs templates
 
-:point_right: there is a folder per **theme**
 
-## `/dark`
-- `template.json` : specification
-- `/img` : images
-- `/css` : css
-- `/js` : javascript
 
