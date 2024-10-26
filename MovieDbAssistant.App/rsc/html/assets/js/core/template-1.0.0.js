@@ -143,7 +143,7 @@ class Template {
         const day = now.getDay();
         const date = now.getDate();
         const month = now.getMonth();
-        const year = now.getFullYear();
+        //const year = now.getFullYear();
         const str = `${dayNames[day].substring(0, 3)} ${date} ${monthNames[month].substring(0, 3)}`;
         props['date'] = str
         $('.with-date').html(str)
@@ -169,12 +169,12 @@ class Template {
 
     setAlternatePics() {
         var $pics = $('.movie-page-list .alternate-pic-list')
-        var altUrl = props.tpl.listMoviePicNotAvailable;
-        var altnfUrl = props.tpl.listMoviePicNotFound;
+        var altUrl = props.tpl.props.listMoviePicNotAvailable;
+        var altnfUrl = props.tpl.props.listMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
         $pics = $('.movie-page-detail .alternate-pic-list')
-        altUrl = props.tpl.detailMoviePicNotAvailable;
-        altnfUrl = props.tpl.detailMoviePicNotFound;
+        altUrl = props.tpl.props.detailMoviePicNotAvailable;
+        altnfUrl = props.tpl.props.detailMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
     }
 
