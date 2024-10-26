@@ -64,16 +64,11 @@ public partial class TemplateBuilder
         if (File.Exists(src))
         {
             notFound = false;
-            if (src.IsNewestFile(target))
+            
+            if (
+                !TryHandleRscTemplateFile(src,target)
+                && src.IsNewestFile(target))
             {
-                // ***-***-***-***-***-***-***-***-***-***-***-***
-                if (target.EndsWith(Parts_File_Extensions))
-                {
-                    File.Copy(src, target, true);
-                }
-                else
-                    File.Copy(src, target, true);
-                // ***-***-***-***-***-***-***-***-***-***-***-***
                 _logger.LogInformation(this, "file copied: " + src + " to: " + target);
                 return;
             }
@@ -81,7 +76,12 @@ public partial class TemplateBuilder
         if (Directory.Exists(src))
         {
             notFound = false;
-            src.CopyDirectory(target,logger:_logger);
+            src.CopyDirectory(
+                target,
+                logger:_logger,
+                fileCopyPreHandler: (src,target) 
+                    => TryHandleRscTemplateFile(src,target));
+
             _logger.LogInformation(this, "folder copied: " + src + " to: " + target);
             return;
         }

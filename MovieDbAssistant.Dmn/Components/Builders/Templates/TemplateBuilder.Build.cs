@@ -3,6 +3,8 @@ using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
 
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
 /// <summary>
@@ -53,7 +55,6 @@ public sealed partial class TemplateBuilder
     {
         var docContext = Context.DocContext!;
 
-        //var page = IncludeParts(_tpl!.Templates.TplDetails!);
         var page = IncludeParts(_templatesSourceCache.PageDetail()?.Content!);
 
         page = IntegratesData(page, data);
@@ -81,6 +82,65 @@ public sealed partial class TemplateBuilder
     /// </summary>
     /// <param name="filePath">The file path.</param>
     /// <returns>A <see cref="bool"/></returns>
-    public bool IsHandlableTemplateFile(string filePath)
-        => _tpl!.Paths.HandleExtensions.Any(x => filePath.EndsWith(x));
+    public bool IsHandlableRscTemplateFile(string filePath, out string? ext)
+    {
+        ext = _tpl!.Paths
+            .HandleExtensions
+            .Where(x => filePath.EndsWith(x))
+            .FirstOrDefault();
+        return ext != null;
+    }
+
+    /// <summary>
+    /// try to handle a resource template file if is handlable
+    /// </summary>
+    /// <param name="filePath">file pathh</param>
+    /// <param name="targetFilePath">target file path</param>
+    /// <returns>true if handled, else false</returns>
+    public bool TryHandleRscTemplateFile(
+        string filePath,
+        string targetFilePath)
+    {
+        if (!IsHandlableRscTemplateFile(filePath, out var ext)) return false;
+
+        BuildFile(filePath, targetFilePath);
+
+        return true;
+    }
+
+    /// <summary>
+    /// build a file
+    /// </summary>
+    /// <param name="filePath">src file path</param>
+    /// <param name="targetFilePath">target file path</param>
+    public TemplateBuilder BuildFile(
+        string filePath,
+        string targetFilePath)
+    {
+        var docContext = Context.DocContext!;
+        var text = File.ReadAllText(filePath);
+        
+        var page = IncludeParts(text);
+        (page, _) = SetVars(
+            page,
+            GetTemplateProps(true, null, null));
+
+        Context.DocContext!.AddOutputFile(
+            RemoveTplPostfix(targetFilePath),
+            page);
+
+        return this;
+    }
+
+    string RemoveTplPostfix(string filePath)
+    {
+        foreach ( var ext in _tpl!.Paths.HandleExtensions)
+        {
+            if (filePath.EndsWith(ext))
+                filePath = filePath.Replace(
+                    ext,
+                    '.' + ext.Split('.')[2]);
+        }
+        return filePath;
+    }
 }

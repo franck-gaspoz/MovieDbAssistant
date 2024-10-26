@@ -32,7 +32,8 @@ public static class FileExtensions
         this string sourceDir, 
         string destinationDir,
         bool preserveNewest = true,
-        ILogger? logger = null)
+        ILogger? logger = null,
+        Func<string,string,bool>? fileCopyPreHandler = null)
     {
         // Create the destination directory if it doesn't exist
         if (!Directory.Exists(destinationDir))
@@ -47,7 +48,10 @@ public static class FileExtensions
         foreach (var file in Directory.GetFiles(sourceDir))
         {
             var destFile = Path.Combine(destinationDir, Path.GetFileName(file));
-            if (!preserveNewest || file.IsNewestFile(destFile))
+                                   
+            if (
+                (fileCopyPreHandler==null || !fileCopyPreHandler(file, destFile))
+                && (!preserveNewest || file.IsNewestFile(destFile)))
             {
                 File.Copy(file, destFile, true);
                 logger?.LogInformation(
@@ -61,7 +65,7 @@ public static class FileExtensions
         {
             var dir = Path.GetFileName(directory);
             var destDir = Path.Combine(destinationDir, dir);
-            directory.CopyDirectory(destDir,preserveNewest,logger);            
+            directory.CopyDirectory(destDir,preserveNewest,logger,fileCopyPreHandler);            
         }
 
         logger?.LogInformation(

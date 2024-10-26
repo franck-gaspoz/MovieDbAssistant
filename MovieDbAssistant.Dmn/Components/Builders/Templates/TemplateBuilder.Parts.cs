@@ -23,8 +23,6 @@ public partial class TemplateBuilder
 
     public const string Include_Part_Block_Begin = "--";
 
-    public const string Parts_File_Extensions = ".tpl.html";
-
     public const string Included_Prop_Condition_IfNotNullOrEmpty = "{{-if-not-null-or-empty}}";
 
     public const int Index_NoNext = -1;
