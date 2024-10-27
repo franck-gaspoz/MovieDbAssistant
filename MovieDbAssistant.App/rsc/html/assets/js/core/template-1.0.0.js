@@ -1,17 +1,13 @@
-﻿const ID_Model_Item = 'ItemModel';
-const ID_Model_Class_Movie_List = 'movie-list';
+﻿const Separator_ClassCondition_ClassResult = '--'
 
-const Tag_Body = 'body';
-const Tag_Html = 'html';
+const Tpl_Var_Prefix = '{{'
+const Tpl_Var_Postfix = '}}'
 
 const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
 
-const Separator_ClassCondition_ClassResult = '--'
 
-const Var_System = "system";
-const Var_Clock = Var_System+".now";
-
+// TODO: culture this
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -85,9 +81,12 @@ class Template {
             .join(this.hsep())
     }
 
-    // TODO: props.tpl.props.hSep
+    /**
+     * gets the horizontal separator from the template
+     * @returns
+     */
     hsep() {
-        return '<span class="hsep"></span>';
+        return props.tpl.props.hSep;
     }
 
     /**
@@ -128,61 +127,14 @@ class Template {
         html = this.parseVars(html, data)
         $src.html(html)
         this.setStates(null, data)
-        this.setLinks($src)
+        this.layout.setLinks($src)
         this.postInitCommon()
     }
 
     postInitCommon() {
-        this.setAlternatePics()
-        this.enableClock()
-        this.enableDate()
-    }
-
-    enableDate() {
-        this.dateUpdate()
-        setTimeout(() => this.enableDate(), 1000 * 30)
-    }
-
-    dateUpdate() {
-        const now = new Date()
-        const day = now.getDay();
-        const date = now.getDate();
-        const month = now.getMonth();
-        //const year = now.getFullYear();
-        const str = `${dayNames[day].substring(0, 3)} ${date} ${monthNames[month].substring(0, 3)}`;
-
-        var vnow = this.getVarNow()
-        vnow.date = str
-
-        $('.with-date').html(str)
-    }
-
-    enableClock() {
-        this.clockUpdate()
-        setTimeout(() => this.enableClock(), 1000 * 30)
-    }
-
-    clockUpdate() {
-        this.clockUpdating = true
-        const now = new Date()
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const seconds = now.getSeconds().toString().padStart(2, '0');
-        //const str = hours + " : " + minutes + " : " + seconds;
-        const str = hours + " : " + minutes;
-
-        var vnow = this.getVarNow()
-        vnow.clock = str
-
-        $('.with-clock').html(str)
-        this.clockUpdating = false
-    }
-
-    getVarNow() {
-        if (!this.getVar(Var_Clock))
-            this.setVar( Var_Clock,
-                { date: null, clock: null })
-        return this.getVar(Var_Clock)
+        this.layout.setAlternatePics()
+        this.layout.enableClock()
+        this.layout.enableDate()
     }
 
     /**
@@ -191,7 +143,7 @@ class Template {
      * @param {any} value value
      */
     setVar(path, value) {
-        const t = path.split('.')
+        const t = path.split(Dot)
         var vars = props.vars
         var i = 0        
         var k = ''
@@ -230,37 +182,16 @@ class Template {
             }
         }
     }
-
-    setAlternatePics() {
-        var $pics = $('.movie-page-list .alternate-pic-list')
-        var altUrl = props.tpl.props.listMoviePicNotAvailable;
-        var altnfUrl = props.tpl.props.listMoviePicNotFound;
-        this.setupAlternatePic($pics, altUrl, altnfUrl)
-        $pics = $('.movie-page-detail .alternate-pic-list')
-        altUrl = props.tpl.props.detailMoviePicNotAvailable;
-        altnfUrl = props.tpl.props.detailMoviePicNotFound;
-        this.setupAlternatePic($pics, altUrl, altnfUrl)
-    }
-
-    setupAlternatePic($set, altUrl, altnfUrl) {
-        $set.each((i, e) => {
-            var $e = $(e)
-            $e.on('error', () => {
-                const src = $e.attr('src')
-                const url = (!src || src == '' || src == 'null') ?
-                    altUrl : altnfUrl
-                $e.attr('src', url)
-                $e.addClass('alternate-pic-list-enabled')
-            })
-        });
-    }
-
-    /**@param {MovieModel} data movie */
+   
+    /**
+     * add a new movie item in list
+     * @param {MovieModel} data movie
+     */
     addItem(data) {
-        const $it = $('#ItemModel').clone()
-        $it.removeAttr('id')
-        $it.removeClass('hidden')
-        $it.attr('id', data.key);
+        const $it = $(Query_Prefix_Id+Id_Item_Model).clone()
+        $it.removeAttr(Class_Id)
+        $it.removeClass(Class_Hidden)
+        $it.attr(Class_Id, data.key);
 
         var p = {}
         Object.assign(p, data)
@@ -269,49 +200,30 @@ class Template {
         window.pvars = []
         src = this.parseVars(src, p)
 
-        var $container = $('.movie-list')
+        var $container = $(Query_Prefix_Class + Class_Movie_List)
         var $e = $(src)
         $container.append($e)
-        $e.find('.movie-list-item')
-            .on('click', () => {
+        $e.find(Query_Prefix_Class + Class_Movie_List_Item)
+            .on(Event_Click, () => {
                 if (this.avoidNextItemClick) {
                     this.avoidNextItemClick = false
                     return
                 }
                 window.location =
-                    './'
+                    Path_Current
                     + props.output.pages
-                    + '/'
+                    + Slash
                     + data.filename
             })
         this.setStates($e, p)
-        this.setLinks($e)
+        this.layout.setLinks($e)
 
         $e.show()
     }
 
     removeItemModel() {
-        const $it = $('#ItemModel')
+        const $it = $(Query_Prefix_Id + Id_Item_Model)
         $it.remove()
-    }
-
-    setLinks($from) {
-        var $t = $("[data-href]", $from)
-        $t.each((i, e) => {
-            var $e = $(e)
-            var href = $e.attr('data-href')
-            var target = $e.attr('data-target')
-            $e.on('click', e => {
-                if (this.enableAvoidNextItemClick) {
-                    this.avoidNextItemClick = true;
-                }
-                if (!target)
-                    window.location = href;
-                else {
-                    window.open(href, target)
-                }
-            })
-        })
     }
 
     setStates($from, data, prefix) {
@@ -323,28 +235,28 @@ class Template {
             var val = data[p]
             var varnp = this.getVarname(p)
 
-            if (typeof val == 'object'
-                && val && val.constructor.name != 'Array'
+            if (typeof val == Type_Name_Object
+                && val && val.constructor.name != Type_Name_Array
             ) {
                 this.setStates(
                     $from,
                     val,
                     prefix ?
-                        prefix + '.' + varnp
+                        prefix + Dot + varnp
                         : varnp)
             }
             else {
 
                 if (prefix)
-                    p = prefix + '.' + varnp
+                    p = prefix + Dot + varnp
 
-                if (!val || val == '') {
+                if (!val || val == Text_Empty) {
 
                     // if- : show if not null and no empty
                     var cn = cl(Class_Prefx_If) + this.getVarnameForClass(p)
                     $(cn, $from)
                         .each((i, e) => {
-                            $(e).addClass('hidden')
+                            $(e).addClass(Class_Hidden)
                         });
 
                     // if_no- : show if null or emptpy
@@ -352,12 +264,12 @@ class Template {
                     $(cn, $from)
                         .each((i, e) => {
                             var $e = $(e)
-                            var classList = $e.attr("class");
+                            var classList = $e.attr(Attr_Class);
                             var classArr = classList.split(/\s+/);
                             $.each(classArr, (i, v) => {
                                 if (!v.includes(Separator_ClassCondition_ClassResult)) {
                                     if (v.startsWith(cn)) {
-                                        $(e).removeClass('hidden')
+                                        $(e).removeClass(Class_Hidden)
                                     }
                                 }
                             });
@@ -366,11 +278,11 @@ class Template {
                     // if_no-prop--cn : enable class cn if null or empty
                     cn = Class_Prefx_If_No + this.getVarnameForClass(p)
                         + Separator_ClassCondition_ClassResult
-                    var cns = "[class*='" + cn + "']";
+                    var cns = Query_Contains_Class_Prefix + cn + Query_Selector_Postfix;
                     $(cns, $from)
                         .each((i, e) => {
                             var $e = $(e)
-                            var classList = $e.attr("class");
+                            var classList = $e.attr(Attr_Class);
                             var classArr = classList.split(/\s+/);
                             $.each(classArr, (i, v) => {
                                 if (v.includes(cn)) {
@@ -382,19 +294,19 @@ class Template {
                         });
                 }
 
-                if (val && val != '') {
+                if (val && val != Text_Empty) {
 
                     // if_no- : hide coz if null or emptpy
                     cn = cl(Class_Prefx_If_No) + this.getVarnameForClass(p)
                     $(cn, $from)
                         .each((i, e) => {
                             var $e = $(e)
-                            var classList = $e.attr("class");
+                            var classList = $e.attr(Attr_Class);
                             var classArr = classList.split(/\s+/);
                             $.each(classArr, (i, v) => {
                                 if (!v.includes(Separator_ClassCondition_ClassResult)) {
                                     if (v.startsWith(cn)) {
-                                        $(e).addClass('hidden')
+                                        $(e).addClass(Class_Hidden)
                                     }
                                 }
                             });
@@ -417,8 +329,8 @@ class Template {
             var val = data[p]
             var varnp = this.getVarname(p)
 
-            if (typeof val == 'object'
-                && val && val.constructor.name != 'Array'
+            if (typeof val == Type_Name_Object
+                && val && val.constructor.name != Type_Name_Array
             ) {
                 // sub object is ignored if null
 
@@ -426,12 +338,12 @@ class Template {
                     tpl,
                     val,
                     prefix ?
-                        prefix + '.' + varnp
+                        prefix + Dot + varnp
                         : varnp)
             }
             else {
                 if (prefix)
-                    varnp = prefix + '.' + varnp
+                    varnp = prefix + Dot + varnp
 
                 const srcVarName = this.getVarTag(varnp)
                 tpl = tpl.replaceAll(
@@ -450,7 +362,7 @@ class Template {
     }
 
     getVarTag(name) {
-        return '{{' + this.getVarname(name) + '}}';
+        return Tpl_Var_Prefix + this.getVarname(name) + Tpl_Var_Postfix;
     }
 
     getVarname(name) {
@@ -459,77 +371,15 @@ class Template {
 
     getVarnameForClass(name) {
         return firstLower(name)
-            .replaceAll('.', '-')
+            .replaceAll(Dot, Dash)
     }
-}
-
-function handleBackImgLoaded(img) {
-    var $i = $('#Image_Background')
-    var w = img.naturalWidth
-    var h = img.naturalHeight
-    var $c = $('.movie-page-background-container')
-    var wc = $c.width()
-    var hc = $c.height()
-    var maxw = w >= h
-    var aw = w, ah = h
-
-    var w0 = w
-    var h0 = h
-    while (w > wc && h > hc) {
-        aw = w
-        ah = h
-        w /= 1.2
-        h /= 1.2
-    }
-    w = aw
-    h = ah
-    var zoom = w / w0;
-
-    var setwh = false
-    if (w < wc) {
-        var z = wc / w
-        w *= z
-        h *= z
-        setwh = true
-    }
-
-    if (h < hc) {
-        var z = hc / h
-        w *= z
-        h *= z
-        setwh = true
-    }
-
-    var cl = maxw ?
-        'width100p' : 'height100p'
-    var left = w >= wc ?
-        -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
-    var top = h >= hc ?
-        -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
-    $i.addClass(cl)
-    $i.css('left', left + 'px')
-    $i.css('top', top + 'px')
-    $i.css('zoom', zoom)
-    if (setwh) {
-        $i.css('width', w + 'px')
-        $i.css('height', h + 'px')
-    }
-
-    $i[0].src = img.src
-    $i.fadeIn(1000)
-}
-
-function addBackImgLoadedHandler(src) {
-    var img = new Image();
-    img.addEventListener('load', () => handleBackImgLoaded(img), false);
-    img.src = src;
 }
 
 function setupItemsLinkId() {
-    var t = window.location.href.split('#')
+    var t = window.location.href.split(HRef_Id_Separator)
     if (t.length == 2) {
-        var $it = $("[id='" + t[1] + "']")
-        $('.movie-list').scrollTop(
+        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+        $(Query_Prefix_Class+Class_Movie_List).scrollTop(
             $it.offset().top
             - $it.height()
         )

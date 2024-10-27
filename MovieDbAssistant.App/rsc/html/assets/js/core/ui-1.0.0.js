@@ -1,15 +1,9 @@
-﻿const Class_Dialog_Hidden = "dialog-hidden"
-const Class_Dialog_Visible = "dialog-visible"
-
-const Dialog_FadeIn_Time = 100
-const Dialog_FadeOut_Time = 200
-
-/**
+﻿/**
  * open a dialog
  * @param {HTMLElement} this caller
  * @param {string} tplEId id of the dialog tpl instance */
 function openDialog(e, tplEId) {
-    var $tpl = $('#' + tplEId)
+    var $tpl = $(Query_Prefix_Id + tplEId)
     $tpl.fadeIn(Dialog_FadeIn_Time)
 }
 
@@ -18,7 +12,7 @@ function openDialog(e, tplEId) {
  * @param {HTMLElement} this caller
  * @param {string} tplEId id of the dialog tpl instance */
 function closeDialog(e, tplEId) {
-    var $tpl = $('#' + tplEId)
+    var $tpl = $(Query_Prefix_Id + tplEId)
     $tpl.fadeOut(Dialog_FadeOut_Time)
 }
 
@@ -42,15 +36,15 @@ function activateDrag(elem, container) {
         // get the mouse cursor position at startup:
         pos3 = ev.clientX;
         pos4 = ev.clientY;
-        $container.on('mouseup', () => {
+        $container.on(Event_MouseUp, () => {
             closeDragElement(e);
         })
 
         // call a function whenever the cursor moves:
-        $container.on('mousemove', ev => {
+        $container.on(Event_MouseMove, ev => {
             elementDrag(ev)
         })
-        $e.addClass("dragging")
+        $e.addClass(Class_Dragging)
     }
 
     function elementDrag(e) {
@@ -61,15 +55,15 @@ function activateDrag(elem, container) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position:
-        elem.style.top = (elem.offsetTop - pos2) + "px";
-        elem.style.left = (elem.offsetLeft - pos1) + "px";
+        elem.style.top = (elem.offsetTop - pos2) + Unit_Px;
+        elem.style.left = (elem.offsetLeft - pos1) + Unit_Px;
     }
 
     function closeDragElement(e) {
         // stop moving when mouse button is released:
-        $container.off('onmouseup')
-        $container.off('mousemove')
-        $e.removeClass("dragging")
+        $container.off(Event_MouseUp)
+        $container.off(Event_MouseMove)
+        $e.removeClass(Class_Dragging)
     }
 }
 
@@ -85,21 +79,23 @@ class UI {
         window.ui = this
     }
 
-    /** setup */
+    /**
+     * setup
+     */
     setup() {
 
         // activate dialogs 'closer' buttons
-        $('.dialog-button-closer').each((i, e) => {
+        $(Query_Prefix_Class+Class_Dialog_Button_Closer).each((i, e) => {
             const $e = $(e)
-            const id = $e.attr('data-dialog-id')
-            $e.on('click', ev => {
+            const id = $e.attr(Data_Dialog_Id)
+            $e.on(Event_Click, ev => {
                 closeDialog(e, id)
             })
         })
 
         // activate draggables (drag.js)
-        $('.draggable').each((i, e) => {
-            activateDrag(e, $('body')[0])
+        $(Query_Prefix_Class+ Class_Draggable).each((i, e) => {
+            activateDrag(e, $(Tag_Body)[0])
         })
     }
 }
