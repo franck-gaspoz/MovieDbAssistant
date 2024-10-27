@@ -91,7 +91,7 @@ function _tpl() {
 
 /**
  * gets the layout object
- * @returns {Layout} object layout
+ * @returns {UILayout} object layout
  */
 function _layout() {
     return window.layout
@@ -107,6 +107,8 @@ function _ui() {
 
 /*#endregion ----- */
 
+/*#region strings */
+
 /**
  * first letter in lower case
  * @param {string} txt text
@@ -115,3 +117,5 @@ function _ui() {
 function firstLower(txt) {
     return txt.charAt(0).toLowerCase() + txt.slice(1);
 }
+
+/*#endregion */

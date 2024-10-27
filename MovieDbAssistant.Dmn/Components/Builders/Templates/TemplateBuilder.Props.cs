@@ -30,6 +30,10 @@ public sealed partial class TemplateBuilder
 
     const string Template_Var_Vars = "vars";
 
+    const string Folder_Back = "../";
+
+    const string Folder_Current = "./";
+
     Dictionary<string, object?> GetTemplateProps(
         BuildModel build,
         MovieModel? data = null,
@@ -101,7 +105,7 @@ public sealed partial class TemplateBuilder
             : _tpl!.PageDetail();
 
     static string GetPropsBasePath(bool pageDetail) 
-        => pageDetail ? "../" : "./";
+        => pageDetail ? Folder_Back : Folder_Current;
 
     OutputModel GetPropsOutputModel() => new(
         _dmnSettings.Value.Build.Html.Extension,

@@ -18,14 +18,14 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 class Template {
 
     /**
-     * @type {Layout} layout
+     * @type {UILayout} layout
      */
     layout = null
 
     constructor(enableAvoidNextItemClick) {
         window.tpl = this
         this.enableAvoidNextItemClick = enableAvoidNextItemClick
-        this.layout = new Layout()
+        this.layout = new UILayout()
     }
 
     /** @type {boolean} avoid next item click in case overlapped click */
@@ -372,16 +372,5 @@ class Template {
     getVarnameForClass(name) {
         return firstLower(name)
             .replaceAll(Dot, Dash)
-    }
-}
-
-function setupItemsLinkId() {
-    var t = window.location.href.split(HRef_Id_Separator)
-    if (t.length == 2) {
-        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
-        $(Query_Prefix_Class+Class_Movie_List).scrollTop(
-            $it.offset().top
-            - $it.height()
-        )
     }
 }

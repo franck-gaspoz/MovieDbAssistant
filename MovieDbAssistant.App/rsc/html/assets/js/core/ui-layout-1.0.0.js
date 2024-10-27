@@ -1,9 +1,8 @@
 ﻿/**
  * ui layout
- * uses window.props provided by template.js
  * @class
 */
-class Layout {
+class UILayout {
 
     constructor() {
         window.layout = this
@@ -14,10 +13,10 @@ class Layout {
      * @returns
      */
     getVarNow() {
-        if (!this.getVar(Var_Clock))
-            this.setVar(Var_Clock,
+        if (!_tpl().getVar(Var_Clock))
+            _tpl().setVar(Var_Clock,
                 { date: null, clock: null })
-        return this.getVar(Var_Clock)
+        return _tpl().getVar(Var_Clock)
     }
 
     /**
@@ -212,4 +211,18 @@ function addBackImgLoadedHandler(src) {
     var img = new Image();
     img.addEventListener(Event_Load, () => handleBackImgLoaded(img), false);
     img.src = src;
+}
+
+/**
+ * setup items links id (movie list)
+ */
+function setupItemsLinkId() {
+    var t = window.location.href.split(HRef_Id_Separator)
+    if (t.length == 2) {
+        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+        $(Query_Prefix_Class + Class_Movie_List).scrollTop(
+            $it.offset().top
+            - $it.height()
+        )
+    }
 }
