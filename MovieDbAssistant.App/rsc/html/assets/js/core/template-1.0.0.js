@@ -68,7 +68,7 @@ class Template {
      * @property {string[]} picsSizes pics sizes 
      */
 
-    props = {
+    transforms = {
         "interests": (o, value) => o.hseps(value),
         "stars": (o, value) => o.hseps(value),
         "actors": (o, value) => o.hseps(value, x => o.actorSimple(x))
@@ -348,8 +348,8 @@ class Template {
                 const srcVarName = this.getVarTag(varnp)
                 tpl = tpl.replaceAll(
                     srcVarName,
-                    this.props[p] ?
-                        this.props[p](this, val)
+                    this.transforms[p] ?
+                        this.transforms[p](this, val)
                         : data[p]
                 )
 
