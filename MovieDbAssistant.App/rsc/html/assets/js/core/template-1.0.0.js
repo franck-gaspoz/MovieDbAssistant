@@ -6,7 +6,11 @@ const Tag_Html = 'html';
 
 const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
+
 const Separator_ClassCondition_ClassResult = '--'
+
+const Var_System = "system";
+const Var_Clock = Var_System+".now";
 
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -175,9 +179,56 @@ class Template {
     }
 
     getVarNow() {
-        if (!props.vars.now)
-            props.vars.now = { date: null, clock: null }
-        return props.vars.now
+        if (!this.getVar(Var_Clock))
+            this.setVar( Var_Clock,
+                { date: null, clock: null })
+        return this.getVar(Var_Clock)
+    }
+
+    /**
+     * set a prop variable value
+     * @param {string} path var path in props.vars (separator point, first letter lower)
+     * @param {any} value value
+     */
+    setVar(path, value) {
+        const t = path.split('.')
+        var vars = props.vars
+        var i = 0        
+        var k = ''
+        while (i <= t.length - 1) {
+            k = t[i]
+            if (i == t.length - 1) {
+                vars[t[i]] = value
+                return
+            } else {
+                if (!vars[k])
+                    vars[k] = {}
+                vars = vars[k]
+                i++
+            }
+        }        
+    }
+
+    /**
+     * get a var value
+     * @param {any} path var path (in props.vars)
+     * @returns value at path
+     */
+    getVar(path) {
+        const t = path.split('.')
+        var vars = props.vars
+        var i = 0
+        var k = ''
+        while (i <= t.length - 1)
+        {
+            k = t[i]
+            if (i == t.length - 1) {
+                return vars[t[i]]
+            } else {
+                vars = vars[k]
+                i++
+            }
+        }
     }
 
     setAlternatePics() {
@@ -382,7 +433,7 @@ class Template {
                 if (prefix)
                     varnp = prefix + '.' + varnp
 
-                const srcVarName = this.getVar(varnp)
+                const srcVarName = this.getVarTag(varnp)
                 tpl = tpl.replaceAll(
                     srcVarName,
                     this.props[p] ?
@@ -398,7 +449,7 @@ class Template {
         return tpl
     }
 
-    getVar(name) {
+    getVarTag(name) {
         return '{{' + this.getVarname(name) + '}}';
     }
 
