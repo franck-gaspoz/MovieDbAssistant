@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
 using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Interface;
@@ -14,11 +15,13 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public sealed partial class TemplateBuilder
 {
     const string Template_Var_Tpl = "tpl";
+    
     const string Template_Var_Page = "page";
 
     const string Template_Var_App = "app";
 
-    const string Template_Var_BuiltAt = "builtAt";
+    const string Template_Var_Build = "build";
+    
     const string Template_Var_Lang = "lang";
 
     const string Template_Var_Output = "output";
@@ -28,10 +31,13 @@ public sealed partial class TemplateBuilder
     const string Template_Var_BasePath = "basePath";
 
     Dictionary<string, object?> GetTemplateProps(
-        bool pageDetails,
+        BuildModel build,
         MovieModel? data = null,
         HtmlDocumentBuilderContext? htmlContext = null)
     {
+        build.FinishedAt = DateTime.UtcNow;
+        var pageDetails = build.Layout == Layouts.Detail;
+
         // TODO: to be done by the builder layout = Detail
         if (pageDetails)
             _tpl!.PageDetail()!
@@ -66,6 +72,10 @@ public sealed partial class TemplateBuilder
                     )
             },
             {
+                Template_Var_Build,
+                build
+            },
+            {
                 Template_Var_Navigation,
                 new MovieListNavigationModel(
                     htmlContext?.HomeLink ?? string.Empty,
@@ -89,10 +99,6 @@ public sealed partial class TemplateBuilder
                         .ToString(),
                     _dmnSettings.Value.App.VersionDate
                     )
-            },
-            {
-                Template_Var_BuiltAt,
-                DateTime.Now.ToString()
             },
             {
                 Template_Var_Lang,

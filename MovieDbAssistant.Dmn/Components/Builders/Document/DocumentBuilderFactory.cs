@@ -5,8 +5,6 @@ using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Document;
 
-#pragma warning disable CA1822 // Marquer les membres comme étant static
-
 /// <summary>
 /// document builder factory.
 /// </summary>

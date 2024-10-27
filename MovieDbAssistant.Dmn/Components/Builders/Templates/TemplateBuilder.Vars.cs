@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
 
@@ -32,27 +33,27 @@ public partial class TemplateBuilder
 
     static string KeyToVar(string key) => key.ToFirstLower();
 
-    (string tpl, Dictionary<string, object?>? nprops) SetVars(string tpl)
-    {
-        (tpl, var nprops) = SetVars(tpl, GetTemplateProps(false, null, null));
-        return (tpl, nprops);
-    }
-
     (string tpl, Dictionary<string, object?> tplProps, Dictionary<string, object?>? nprops)
-        SetVars(string tpl, HtmlDocumentBuilderContext htmlContext)
+        SetVars(
+            BuildModel build,
+            string tpl, 
+            HtmlDocumentBuilderContext htmlContext)
     {
-        var props = GetTemplateProps(false, null, htmlContext);
+        var props = GetTemplateProps(build, null, htmlContext);
         (tpl, var nprops) = SetVars(tpl, props);
         return (tpl, props, nprops);
     }
 
-    (string tpl, Dictionary<string, object?> tplProps, Dictionary<string, object?>? nprops)
+    (string tpl, 
+        Dictionary<string, object?> tplProps, 
+        Dictionary<string, object?>? nprops)
         SetVars(
+            BuildModel build,
             string tpl,
             HtmlDocumentBuilderContext htmlContext,
             MovieModel data)
     {
-        var props = GetTemplateProps(true, data, htmlContext);
+        var props = GetTemplateProps(build, data, htmlContext);
         (tpl, var nprops) = SetVars(tpl, props);
         return (tpl, props, nprops);
     }
@@ -150,7 +151,7 @@ public partial class TemplateBuilder
             if (name != null)
                 nprops.AddOrReplace(name, value);
         }
-        if (nprops.Any())
+        if (nprops.Count != 0)
             (text, _) = SetVars(text, nprops, skipExpandDefaultDecls: true);
         return (text, nprops);
     }

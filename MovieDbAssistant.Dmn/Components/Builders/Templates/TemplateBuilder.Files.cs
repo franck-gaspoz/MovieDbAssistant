@@ -142,4 +142,16 @@ public partial class TemplateBuilder
             _dmnSettings.Value.Build.Html.DataFilename,
             src);
     }
+
+    string RemoveTplPostfix(string filePath)
+    {
+        foreach (var ext in _tpl!.Paths.HandleExtensions)
+        {
+            if (filePath.EndsWith(ext))
+                filePath = filePath.Replace(
+                    ext,
+                    '.' + ext.Split('.')[2]);
+        }
+        return filePath;
+    }
 }

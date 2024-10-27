@@ -1,6 +1,8 @@
 ﻿using System.Text.Json;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 using static MovieDbAssistant.Dmn.Globals;
@@ -13,8 +15,8 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public partial class TemplateBuilder
 {
     string IntegratesData(
-    string tpl,
-    MovieModel data)
+        string tpl,
+        MovieModel data)
     {
         var src = JsonSerializer.Serialize(
             data,
@@ -25,13 +27,16 @@ public partial class TemplateBuilder
     }
 
     string IntegratesProps(
-        bool pageDetails,
+        BuildModel build,
         string tpl,
         HtmlDocumentBuilderContext htmlContext,
         MovieModel? data = null)
     {
         var src = JsonSerializer.Serialize(
-            GetTemplateProps(pageDetails, data, htmlContext),
+            GetTemplateProps(
+                build,
+                data, 
+                htmlContext),
             JsonSerializerProperties.Value)!;
 
         tpl = SetVar(tpl, Var_Props, src);
