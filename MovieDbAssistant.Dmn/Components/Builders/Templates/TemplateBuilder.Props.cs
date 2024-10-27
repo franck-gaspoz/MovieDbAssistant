@@ -21,14 +21,14 @@ public sealed partial class TemplateBuilder
     const string Template_Var_App = "app";
 
     const string Template_Var_Build = "build";
-    
-    const string Template_Var_Lang = "lang";
 
     const string Template_Var_Output = "output";
 
     const string Template_Var_Navigation = "navigation";
 
     const string Template_Var_BasePath = "basePath";
+
+    const string Template_Var_Modules = "modules";
 
     Dictionary<string, object?> GetTemplateProps(
         BuildModel build,
@@ -97,12 +97,9 @@ public sealed partial class TemplateBuilder
                         .GetName()
                         .Version!
                         .ToString(),
-                    _dmnSettings.Value.App.VersionDate
+                    _dmnSettings.Value.App.VersionDate,
+                    _dmnSettings.Value.App.Lang
                     )
-            },
-            {
-                Template_Var_Lang,
-                _dmnSettings.Value.App.Lang
             },
             {
                 Template_Var_BasePath,

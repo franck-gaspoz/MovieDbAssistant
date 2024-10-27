@@ -20,6 +20,12 @@ public sealed class BuildModel
     public DateTime? FinishedAt { get; set; }
 
     /// <summary>
+    /// build duration
+    /// </summary>
+    public double? Duration => FinishedAt == null ? null
+        : (FinishedAt!.Value - StartedAt).TotalMilliseconds;
+
+    /// <summary>
     /// layout
     /// </summary>
     public Layouts Layout { get; set; }

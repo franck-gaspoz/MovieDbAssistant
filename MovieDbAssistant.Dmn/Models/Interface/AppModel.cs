@@ -30,17 +30,29 @@ public sealed class AppModel
     public string VersionDate { get; set; }
 
     /// <summary>
+    /// lang of the app
+    /// </summary>
+    public string Lang { get; set; }
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="AppModel"/> class.
     /// </summary>
     /// <param name="name">The name.</param>
     /// <param name="id">The id.</param>
     /// <param name="version">The version.</param>
     /// <param name="versionDate">The version date.</param>
-    public AppModel(string name, string id, string version, string versionDate)
+    /// <param name="lang">app lang</param>
+    public AppModel(
+        string name,
+        string id,
+        string version,
+        string versionDate,
+        string lang)
     {
         Name = name;
         Id = id;
         Version = version;
         VersionDate = versionDate;
+        Lang = lang;
     }
 }
