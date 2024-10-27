@@ -189,9 +189,9 @@ class Template {
      */
     addItem(data) {
         const $it = $(Query_Prefix_Id+Id_Item_Model).clone()
-        $it.removeAttr(Class_Id)
+        $it.removeAttr(Attr_Id)
         $it.removeClass(Class_Hidden)
-        $it.attr(Class_Id, data.key);
+        $it.attr(Attr_Id, data.key);
 
         var p = {}
         Object.assign(p, data)
