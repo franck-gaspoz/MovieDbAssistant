@@ -28,7 +28,7 @@ public sealed partial class TemplateBuilder
 
     const string Template_Var_BasePath = "basePath";
 
-    const string Template_Var_Modules = "modules";
+    const string Template_Var_Vars = "vars";
 
     Dictionary<string, object?> GetTemplateProps(
         BuildModel build,
@@ -36,10 +36,10 @@ public sealed partial class TemplateBuilder
         HtmlDocumentBuilderContext? htmlContext = null)
     {
         build.FinishedAt = DateTime.UtcNow;
-        var pageDetails = build.Layout == Layouts.Detail;
+        var pageDetail = build.Layout == Layouts.Detail;
 
         // TODO: to be done by the builder layout = Detail
-        if (pageDetails)
+        if (pageDetail)
             _tpl!.PageDetail()!
                 .Background =
                     (data == null || data.PicFullUrl == null) ?
@@ -60,16 +60,11 @@ public sealed partial class TemplateBuilder
             },
             {
                 Template_Var_Page,
-                !pageDetails?
-                    _tpl!.PageList()!
-                    :_tpl!.PageDetail()
+                GetPropsPageModel(pageDetail)
             },
             {
                 Template_Var_Output,
-                new OutputModel(
-                    _dmnSettings.Value.Build.Html.Extension,
-                    _dmnSettings.Value.Paths.OutputPages
-                    )
+                GetPropsOutputModel()
             },
             {
                 Template_Var_Build,
@@ -77,35 +72,62 @@ public sealed partial class TemplateBuilder
             },
             {
                 Template_Var_Navigation,
-                new MovieListNavigationModel(
-                    htmlContext?.HomeLink ?? string.Empty,
-                    (htmlContext?.Index ?? -1)+1,
-                    htmlContext?.NextLink,
-                    htmlContext?.PreviousLink,
-                    htmlContext?.Total ?? 0
-                )
+                GetPropsNavigationModel(htmlContext)
             },
             {
                 Template_Var_App,
-                new AppModel(
-                    _dmnSettings.Value.App.Title,
-                    Assembly.GetExecutingAssembly()
-                        .GetName()
-                        .Name!
-                        .Split('.')[0],
-                    Assembly.GetExecutingAssembly()
-                        .GetName()
-                        .Version!
-                        .ToString(),
-                    _dmnSettings.Value.App.VersionDate,
-                    _dmnSettings.Value.App.Lang
-                    )
+                GetPropsApplicationModel()
             },
             {
                 Template_Var_BasePath,
-                pageDetails ? "../" : "./"
+                GetPropsBasePath(pageDetail)
+            },
+            {
+                Template_Var_Vars,
+                GetPropsVarsModel()
             }
         };
         return props;
     }
+
+    VarsModel GetPropsVarsModel()
+    {
+        return new VarsModel();
+    }
+
+    PageModel? GetPropsPageModel(bool pageDetail) 
+        => !pageDetail ?
+            _tpl!.PageList()!
+            : _tpl!.PageDetail();
+
+    static string GetPropsBasePath(bool pageDetail) 
+        => pageDetail ? "../" : "./";
+
+    OutputModel GetPropsOutputModel() => new(
+        _dmnSettings.Value.Build.Html.Extension,
+        _dmnSettings.Value.Paths.OutputPages
+        );
+
+    static MovieListNavigationModel GetPropsNavigationModel(
+        HtmlDocumentBuilderContext? htmlContext) => new(
+            htmlContext?.HomeLink ?? string.Empty,
+            (htmlContext?.Index ?? -1) + 1,
+            htmlContext?.NextLink,
+            htmlContext?.PreviousLink,
+            htmlContext?.Total ?? 0
+        );
+
+    AppModel GetPropsApplicationModel() => new(
+        _dmnSettings.Value.App.Title,
+        Assembly.GetExecutingAssembly()
+            .GetName()
+            .Name!
+            .Split('.')[0],
+        Assembly.GetExecutingAssembly()
+            .GetName()
+            .Version!
+            .ToString(),
+        _dmnSettings.Value.App.VersionDate,
+        _dmnSettings.Value.App.Lang
+        );
 }

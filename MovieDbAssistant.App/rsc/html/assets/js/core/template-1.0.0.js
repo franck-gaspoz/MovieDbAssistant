@@ -146,13 +146,16 @@ class Template {
         const month = now.getMonth();
         //const year = now.getFullYear();
         const str = `${dayNames[day].substring(0, 3)} ${date} ${monthNames[month].substring(0, 3)}`;
-        props['date'] = str
+
+        var vnow = this.getVarNow()
+        vnow.date = str
+
         $('.with-date').html(str)
     }
 
     enableClock() {
         this.clockUpdate()
-        setTimeout(() => this.enableClock(), 500)
+        setTimeout(() => this.enableClock(), 1000 * 30)
     }
 
     clockUpdate() {
@@ -163,9 +166,18 @@ class Template {
         const seconds = now.getSeconds().toString().padStart(2, '0');
         //const str = hours + " : " + minutes + " : " + seconds;
         const str = hours + " : " + minutes;
-        props.clock = str
+
+        var vnow = this.getVarNow()
+        vnow.clock = str
+
         $('.with-clock').html(str)
         this.clockUpdating = false
+    }
+
+    getVarNow() {
+        if (!props.vars.now)
+            props.vars.now = { date: null, clock: null }
+        return props.vars.now
     }
 
     setAlternatePics() {
