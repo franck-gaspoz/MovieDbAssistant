@@ -4,9 +4,9 @@
 version: 1.0.0
 ___
 
-The template engine transforms movies data into html web pages. A **template** is constitued of
+The template engine transforms movies data into a catalog of html web pages. A **template** is constitued of
 a set of files (js,img,css;...) and by **pages** and **parts** of pages. A specific
-language inside `html` allows to integrate fragments of content and some **values** from
+language inside `sources files (html,css,js,...)` allows to integrate fragments of content and **values** from
 the **movies data** and from the **properties** of the **template**, the **engine** and the **application settings**.
 
 ___
@@ -54,21 +54,38 @@ The elements names indicated here may change since they are inflected throught t
 
 ### exemple
 
-the default theme **`dark`** contains these files/folders:
+the default theme **`cine-static-1.0.0`** contains these files/folders:
 
 ```
 📁 templates
-    📁 dark
+    📁 cine-static-1.0.0
 	📄 template.json
 	📁 pages
 	   📄 page-details.tpl.html
 	   📄 page-list.tpl.html
 	📁 parts
-	   📄 head.tpl.html
-	   📄 head-links.tpl.html
-	   📄 head-metas.tpl.html
-	   📄 head-scripts.tpl.html
-	   📄 html.tpl.html
+	   📁 backgrounds
+	      📄 background-container.tpl.html
+	      📄 background-idle.tpl.html
+	      📄 background-vignette.tpl.html
+	   📁 page
+	      📄 head-links.tpl.html
+	      📄 head-metas.tpl.html
+	      📄 head-scripts.tpl.html
+	      📄 html.tpl.html
+	   📁 page-details
+	      📁 dialogs
+		  📄 movie-details-settings.tpl.html
+	      📄 content-container.tpl.html
+	      📄 navbar-top.tpl.html
+	   📁 page-list
+	      📁 dialogs
+		  📄 movie-list-settings.tpl.html
+	      📄 item-container.tpl.html
+	      📄 navbar-top.tpl.html
+	   📁 panels
+	      📄 navbar-bottom.tpl.html
+	      📄 navbar-top.tpl.html	   
 	📁 css
 	   📄 styles.css
 ```
@@ -79,24 +96,75 @@ the default theme **`dark`** contains these files/folders:
 Templates can rely on resources provided by the application.
 These resources can be copied on template demand at build time.
 
+Resources files are classified in 3 categories:
+
+- `static files`: images,icons,sounds,js,css,html,...
+- `themes`:
+    themes are styles and templates dedicated to the UI. A theme is composed of:
+    - `static files`: images,icons,sounds,js,css,html,...
+	- `templates`
+	- `buttons` styles
+	- `icons` styles
+	- `ui` styles
+	- `ui fonts`
+- `templates`: any kind of text file that can be processed as a template: `*.tpl.html`,`*.tpl.js`,`*.tpl.css`, ...
+
+### static files
+
 ```
-# path rsc/html/assets/
+# path: rsc/html/assets/
 
 📁 assets
-    📁 css
-	# application ui css
-	📄 ui.css
     📁 fonts
-	📁 icons
-	📁 img
-	📁 js
-	   📁 core
-              # the template engine js
-	      📄 template-1.0.0.js
-	   📁 ext
-	📁 tpl
-	   📁 ui
-	📁 movie-page-list-wallpapers
+    📁 icons
+    📁 img
+    📁 js
+       📁 core
+          # the template & app engine js files
+          📄 template-1.0.0.js
+          📄 ui-1.0.0.js
+          📄 ui-layout-1.0.0.js
+          📄 util-1.0.0.js
+       📁 ext
+          📄 jquery-3.7.1.min.js
+    📁 movie-page-list-wallpapers
+```
+
+### themes files
+this is the default UI theme 'style part' : (buttons,icons,ui,fonts,...)
+
+```
+# path: rsc/html/assets/themes
+
+📁 themes
+    📁 blue-neon-1.0.0
+       📁 css
+          📄 buttons-1.0.0.css
+          📄 icons-1.0.0.css
+          📄 ui-1.0.0.tpl.css
+          📄 ui-fonts-1.0.0.css
+       📁 fonts
+           ...
+```
+this is the default UI theme 'structure part' : (dialogs,controls,buttons,...)
+```
+# path: rsc/html/assets/themes
+
+📁 themes
+    📁 core-1.0.0
+       📁 tpl
+          📁 ui
+             📁 controls
+                📁 buttons
+                   📄 button.tpl.html
+                   📄 dialog-button-closing.tpl.html
+                   📄 frame-button-close.tpl.html
+                📁 icons
+                   📄 frame-icon.tpl.html
+                   📄 frame-icon-clickable.tpl.html
+                   📄 nav-icon.tpl.html
+             📁 dialogs
+                📄 message-box.tpl.html
 ```
 
 <a name="tps"></a>
