@@ -22,17 +22,10 @@ class Template {
      */
     layout = null
 
-    constructor(enableAvoidNextItemClick) {
+    constructor() {
         window.tpl = this
-        this.enableAvoidNextItemClick = enableAvoidNextItemClick
         this.layout = new UILayout()
     }
-
-    /** @type {boolean} avoid next item click in case overlapped click */
-    avoidNextItemClick = false
-
-    /** @type {boolean} enabed/disable feature 'avoid next item click' to prevent possible overlapped clicks */
-    enableAvoidNextItemClick = false
 
     /**
      * @typedef MoviesModel movies model
@@ -205,10 +198,6 @@ class Template {
         $container.append($e)
         $e.find(Query_Prefix_Class + Class_Movie_List_Item)
             .on(Event_Click, () => {
-                if (this.avoidNextItemClick) {
-                    this.avoidNextItemClick = false
-                    return
-                }
                 window.location =
                     Path_Current
                     + props.output.pages

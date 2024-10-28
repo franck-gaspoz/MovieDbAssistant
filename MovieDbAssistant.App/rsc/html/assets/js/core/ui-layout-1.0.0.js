@@ -130,14 +130,12 @@ class UILayout {
             var href = $e.attr(Data_HRef)
             var target = $e.attr(Data_Target)
             $e.on(Event_Click, e => {
-                if (this.enableAvoidNextItemClick) {
-                    this.avoidNextItemClick = true;
-                }
                 if (!target)
                     window.location = href;
                 else {
                     window.open(href, target)
                 }
+                e.stopPropagation()
             })
         })
     }
