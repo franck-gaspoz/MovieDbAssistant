@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// page model
@@ -10,54 +8,45 @@ public sealed class PageModel
     /// <summary>
     /// page id
     /// </summary>
-    [JsonPropertyName("id")]
     public string Id { get; set; }
 
     /// <summary>
     /// layout
     /// </summary>
-    [JsonPropertyName("layout")]
     public string Layout { get; set; }
 
     /// <summary>
     /// template file
     /// </summary>
-    [JsonPropertyName("tpl")]
     public string Tpl { get; set; }
 
     /// <summary>
     /// Gets or sets the background (template overrided)
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("background")]
     public string? Background { get; set; }
 
     /// <summary>
     /// Gets or sets the background for idle phase
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("backgroundIdle")]
     public string? BackgroundIdle { get; set; }
 
     /// <summary>
     /// Gets or sets the title.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("title")]
     public string? Title { get; set; }
 
     /// <summary>
-    /// Gets or sets the title.
+    /// sub title
     /// </summary>
-    /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("pageTitle")]
-    public string? PageTitle { get; set; }
+    public string? SubTitle { get; set; }
 
     /// <summary>
     /// Gets or sets the filename.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("filename")]
     public string? Filename { get; set; }
 
     public PageModel(
@@ -67,7 +56,7 @@ public sealed class PageModel
         string? background,
         string? backgroundIdle,
         string? title,
-        string? pageTitle,
+        string? subTitle,
         string? filename)
     {
         Id = id;
@@ -76,7 +65,7 @@ public sealed class PageModel
         Background = background;
         BackgroundIdle = backgroundIdle;
         Title = title;
-        PageTitle = pageTitle;
+        SubTitle = subTitle;
         Filename = filename;
     }
 }

@@ -1,9 +1,9 @@
 ﻿using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Extensions;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
-
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -22,6 +22,7 @@ public sealed partial class TemplateBuilder
         HtmlDocumentBuilderContext htmlContext,
         MoviesModel data)
     {
+        var build = new BuildModel(Layouts.List);
         var docContext = Context.DocContext;
 
         data.SetupModel(_dmnSettings);
@@ -30,8 +31,8 @@ public sealed partial class TemplateBuilder
 
         var page = IncludeParts(_templatesSourceCache.PageList()?.Content!);
 
-        (page, var props, var nprops) = SetVars(page, htmlContext);
-        page = IntegratesProps(page, htmlContext);
+        (page, var props, var nprops) = SetVars(build, page, htmlContext);
+        page = IntegratesProps(build, page, htmlContext, null);
 
         Context.DocContext!.AddOutputFile(
             _tpl!.PageList()!
@@ -53,16 +54,17 @@ public sealed partial class TemplateBuilder
         HtmlDocumentBuilderContext htmlContext,
         MovieModel data)
     {
+        var build = new BuildModel(Layouts.Detail);
         var docContext = Context.DocContext!;
 
         var page = IncludeParts(_templatesSourceCache.PageDetail()?.Content!);
 
         page = IntegratesData(page, data);
-        (page, _, _) = SetVars(page, htmlContext, data);
+        (page, _, _) = SetVars(build, page, htmlContext, data);
 
-        page = IntegratesProps(page, htmlContext, data);
+        page = IntegratesProps(build, page, htmlContext, data);
         (page, _) = SetVars(page,
-            GetTemplateProps(true, data, htmlContext));
+            GetTemplateProps(build, data, htmlContext));
 
         (page, _) = SetVars(page, data.GetProperties());
 
@@ -119,28 +121,17 @@ public sealed partial class TemplateBuilder
     {
         var docContext = Context.DocContext!;
         var text = File.ReadAllText(filePath);
-        
+        var build = new BuildModel(Layouts.None);
+
         var page = IncludeParts(text);
         (page, _) = SetVars(
             page,
-            GetTemplateProps(true, null, null));
+            GetTemplateProps(build, null, null));
 
         Context.DocContext!.AddOutputFile(
             RemoveTplPostfix(targetFilePath),
             page);
 
         return this;
-    }
-
-    string RemoveTplPostfix(string filePath)
-    {
-        foreach ( var ext in _tpl!.Paths.HandleExtensions)
-        {
-            if (filePath.EndsWith(ext))
-                filePath = filePath.Replace(
-                    ext,
-                    '.' + ext.Split('.')[2]);
-        }
-        return filePath;
     }
 }

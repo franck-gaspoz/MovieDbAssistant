@@ -1,5 +1,7 @@
 ﻿using System.Text.Json;
 
+using MovieDbAssistant.Dmn.Components.Json;
+
 namespace MovieDbAssistant.Dmn;
 
 /// <summary>
@@ -11,6 +13,21 @@ public sealed class Globals
     /// json serializer properties
     /// </summary>
     public static readonly Lazy<JsonSerializerOptions> JsonSerializerProperties
+        = new(() =>
+        {
+            var opts = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                WriteIndented = true,
+                PropertyNamingPolicy = new FirstLowerCaseNamingPolicy()
+            };
+            return opts;
+        });
+
+    /// <summary>
+    /// json serializer properties
+    /// </summary>
+    public static readonly Lazy<JsonSerializerOptions> JsonDeserializerProperties
         = new(() =>
             new JsonSerializerOptions
             {

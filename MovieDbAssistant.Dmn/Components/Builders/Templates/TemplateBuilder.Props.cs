@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
-using MovieDbAssistant.Dmn.Models.Scrap.Json;
+using MovieDbAssistant.Dmn.Components.Builders.Templates.PageBuilders;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Extensions;
+using MovieDbAssistant.Dmn.Models.Interface;
+using MovieDbAssistant.Dmn.Models.Scrap.Json;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -12,45 +15,48 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 public sealed partial class TemplateBuilder
 {
     const string Template_Var_Tpl = "tpl";
+    
     const string Template_Var_Page = "page";
 
-    const string Template_Var_Software = "software";
-    const string Template_Var_Software_Id = "softwareId";
-    const string Template_Var_Software_Version = "softwareVersion";
-    const string Template_Var_Software_Version_Date = "softwareVersionDate";
-    const string Template_Var_BuiltAt = "builtAt";
-    const string Template_Var_Lang = "lang";
+    const string Template_Var_App = "app";
 
-    const string Template_Var_Background = "background";
-    const string Template_Var_BackgroundIdle = "backgroundIdle";
+    const string Template_Var_Build = "build";
 
-    const string Template_Var_Page_Title_Details = "pageTitleDetails";
-    const string Template_Var_Title_List = "titleList";
-    const string Template_Var_SubTitle_List = "subTitleList";
-    const string Template_Var_Page_Title_List = "pageTitleList";
-    const string Template_Var_Template_Id = "templateId";
-    const string Template_Var_Template_Version = "templateVersion";
-    const string Template_Var_Template_VersionDate = "templateVersionDate";
+    const string Template_Var_Output = "output";
 
-    const string Template_Var_Prefix_Output = "output.";
-
-    const string Template_Var_OutputPages = Template_Var_Prefix_Output + "pages";
-    const string Template_Var_Build_Ext_Html = Template_Var_Prefix_Output + "ext";
-
-    const string Template_Var_Prefix_Movies = "movies.";
-
-    const string Template_Var_Index = Template_Var_Prefix_Movies + "index";
-    const string Template_Var_Total = Template_Var_Prefix_Movies + "total";
-    const string Template_Var_Link_Home = Template_Var_Prefix_Movies + "home";
-    const string Template_Var_Link_Previous = Template_Var_Prefix_Movies + "previous";
-    const string Template_Var_Link_Next = Template_Var_Prefix_Movies + "next";
+    const string Template_Var_Navigation = "navigation";
 
     const string Template_Var_BasePath = "basePath";
 
+    const string Template_Var_Vars = "vars";
+
+    const string Folder_Back = "../";
+
+    const string Folder_Current = "./";
+
     Dictionary<string, object?> GetTemplateProps(
-        bool pageDetails,
+        BuildModel build,
         MovieModel? data = null,
-        HtmlDocumentBuilderContext? htmlContext = null) => new()
+        HtmlDocumentBuilderContext? htmlContext = null)
+    {
+        build.FinishedAt = DateTime.UtcNow;
+        var pageDetail = build.Layout == Layouts.Detail;
+
+        // TODO: to be done by the builder layout = Detail
+        if (pageDetail)
+            _tpl!.PageDetail()!
+                .Background =
+                    (data == null || data.PicFullUrl == null) ?
+                        _tpl!.PageList()!.Background
+                        : data.PicFullUrl;
+
+        // TODO: to be done by builder layout = List & Detail
+        _tpl!.PageDetail()!
+            .SubTitle = htmlContext?.SubTitle;
+        _tpl!.PageList()!
+            .SubTitle = htmlContext?.SubTitle;
+
+        var props = new Dictionary<string, object?>()
         {
             {
                 Template_Var_Tpl,
@@ -58,111 +64,74 @@ public sealed partial class TemplateBuilder
             },
             {
                 Template_Var_Page,
-                !pageDetails?
-                    _tpl!.PageList()!
-                    :_tpl!.PageDetail()
+                GetPropsPageModel(pageDetail)
             },
             {
-                Template_Var_OutputPages,
-                _dmnSettings.Value.Paths.OutputPages
+                Template_Var_Output,
+                GetPropsOutputModel()
             },
             {
-                Template_Var_Build_Ext_Html,
-                _dmnSettings.Value.Build.Html.Extension
+                Template_Var_Build,
+                build
             },
             {
-                Template_Var_Background ,
-                !pageDetails?
-                    _tpl!.PageList()!.Background
-                    : (data==null || data.PicFullUrl == null)?
-                        _tpl!.PageList()!.Background
-                        : data.PicFullUrl
+                Template_Var_Navigation,
+                GetPropsNavigationModel(htmlContext)
             },
             {
-                Template_Var_BackgroundIdle,
-                _tpl!.PageDetail()!.BackgroundIdle
-            },
-            {
-                Template_Var_Index,
-                htmlContext?.Index+1
-            },
-            {
-                Template_Var_Total,
-                htmlContext?.Total
-            },
-            {
-                Template_Var_Link_Home,
-                htmlContext?.HomeLink
-            },
-            {
-                Template_Var_Link_Previous,
-                htmlContext?.PreviousLink
-            },
-            {
-                Template_Var_Link_Next,
-                htmlContext?.NextLink
-            },
-            {
-                Template_Var_Title_List,
-                _tpl.PageList()!.Title
-            },
-            {
-                Template_Var_Page_Title_List,
-                _tpl.PageList()!.PageTitle
-            },
-            {
-                Template_Var_Page_Title_Details,
-                _tpl.PageDetail()!.PageTitle
-            },
-            {
-                Template_Var_Template_Id,
-                _tpl.Id
-            },
-            {
-                Template_Var_Template_Version,
-                _tpl.Version
-            },
-            {
-                Template_Var_Template_VersionDate,
-                _tpl.VersionDate
-            },
-            {
-                Template_Var_Software_Id,
-                Assembly.GetExecutingAssembly()
-                    .GetName()
-                    .Name!
-                    .Split('.')[0]
-            },
-            {
-                Template_Var_Software,
-                _dmnSettings.Value.App.Title
-            },
-            {
-                Template_Var_Software_Version,
-                Assembly.GetExecutingAssembly()
-                    .GetName()
-                    .Version!
-                    .ToString()
-            },
-            {
-                Template_Var_Software_Version_Date,
-                _dmnSettings.Value.App.VersionDate
-            },
-            {
-                Template_Var_BuiltAt,
-                DateTime.Now.ToString()
-            },
-            {
-                Template_Var_Lang,
-                _dmnSettings.Value.App.Lang
-            },            
-            {
-                Template_Var_SubTitle_List,
-                htmlContext?.SubTitle
+                Template_Var_App,
+                GetPropsApplicationModel()
             },
             {
                 Template_Var_BasePath,
-                pageDetails ? "../" : "./"
+                GetPropsBasePath(pageDetail)
+            },
+            {
+                Template_Var_Vars,
+                GetPropsVarsModel()
             }
         };
+        return props;
+    }
+
+    VarsModel GetPropsVarsModel()
+    {
+        return new VarsModel();
+    }
+
+    PageModel? GetPropsPageModel(bool pageDetail) 
+        => !pageDetail ?
+            _tpl!.PageList()!
+            : _tpl!.PageDetail();
+
+    static string GetPropsBasePath(bool pageDetail) 
+        => pageDetail ? Folder_Back : Folder_Current;
+
+    OutputModel GetPropsOutputModel() => new(
+        _dmnSettings.Value.Build.Html.Extension,
+        _dmnSettings.Value.Paths.OutputPages
+        );
+
+    static MovieListNavigationModel GetPropsNavigationModel(
+        HtmlDocumentBuilderContext? htmlContext) => new(
+            htmlContext?.HomeLink ?? string.Empty,
+            (htmlContext?.Index ?? -1) + 1,
+            htmlContext?.NextLink,
+            htmlContext?.PreviousLink,
+            htmlContext?.Total ?? 0
+        );
+
+    AppModel GetPropsApplicationModel() => new(
+        _dmnSettings.Value.App.Title,
+        Assembly.GetExecutingAssembly()
+            .GetName()
+            .Name!
+            .Split('.')[0],
+        Assembly.GetExecutingAssembly()
+            .GetName()
+            .Version!
+            .ToString(),
+        _dmnSettings.Value.App.VersionDate,
+        _dmnSettings.Value.App.Lang
+        );
 }

@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The transform model.
@@ -11,14 +9,12 @@ public sealed class TransformModel
     /// Gets or sets the target.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("target")]
     public string Target { get; set; }
 
     /// <summary>
     /// Gets or sets the operation.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("operation")] 
     public string Operation { get; set; }
 
     public TransformModel(string target, string operation)

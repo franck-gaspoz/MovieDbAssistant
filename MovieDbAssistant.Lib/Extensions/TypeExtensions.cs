@@ -47,7 +47,7 @@ public static class TypeExtensions
     /// <returns>dictionary of names -&gt; value</returns>
     public static Dictionary<string, object?> GetProperties(
         this object data,
-        Func<PropertyInfo,bool>? filter = null
+        Func<PropertyInfo, bool>? filter = null
         )
     {
         var r = new Dictionary<string, object?>();

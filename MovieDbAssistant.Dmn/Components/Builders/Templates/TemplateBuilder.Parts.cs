@@ -238,7 +238,7 @@ public partial class TemplateBuilder
 
     (string? Folder, string? Path) GetTemplateFile(
         string partFileWithoutExt,
-        string ext="")
+        string ext = "")
     {
         (string? Folder, string? Path) deflt = (null, null);
 
@@ -248,9 +248,9 @@ public partial class TemplateBuilder
                     Context.RscPath,
                     string.Empty))!;
 
-        if (ext=="")
+        if (ext == "")
         {
-            foreach ( var e in _tpl!.Paths.HandleExtensions )
+            foreach (var e in _tpl!.Paths.HandleExtensions)
             {
                 var r = GetTemplateFile(partFileWithoutExt, e);
                 if (r != deflt)

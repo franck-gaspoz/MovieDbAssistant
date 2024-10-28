@@ -5,6 +5,8 @@ using MovieDbAssistant.Lib.Extensions;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
+#pragma warning disable CA1822 // mark as static
+
 /// <summary>
 /// template properties model
 /// </summary>

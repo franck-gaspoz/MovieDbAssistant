@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace MovieDbAssistant.Dmn.Models.Build;
+﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
 /// <summary>
 /// The template theme model.
@@ -11,14 +9,12 @@ public sealed class ThemeComponentModel
     /// Gets or sets the id.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("id")]
     public string Id { get; set; }
 
     /// <summary>
     /// Gets or sets the ver.
     /// </summary>
     /// <value>A <see cref="string"/></value>
-    [JsonPropertyName("ver")] 
     public string Ver { get; set; }
 
     /// <summary>

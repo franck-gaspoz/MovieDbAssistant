@@ -2,10 +2,10 @@
 <html {{{page/html}}}>
 <head>
     {{{page/head-metas}}}
-    <meta name="description" content="{{(MoviesList)}} (test text include / lang) | {{software}} ({{softwareId}}) github {{tpl.props.repoLink}}" />
+    <meta name="description" content="{{(MoviesList)}} (test text include / lang) | {{app.name}} ({{app.id}}) github {{tpl.props.repoLink}}" />
     {{{page/head-links}}}
 
-    <title>{{pageTitleList}} | {{subTitleList}}</title>
+    <title>{{page.title}} | {{page.subTitle}}</title>
 
     {{{page/head-scripts}}}
     <script src="{{basePath}}js/data/data.js"></script>
@@ -26,7 +26,7 @@
 
     <style>
         body {
-            background-image: url('{{basePath}}img/{{background}}');
+            background-image: url('{{basePath}}img/{{page.background}}');
         }
     </style>
 

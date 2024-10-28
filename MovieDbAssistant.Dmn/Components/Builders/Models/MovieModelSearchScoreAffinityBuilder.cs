@@ -68,7 +68,7 @@ public sealed class MovieModelSearchScoreAffinityBuilder : ScoreBuilder
         }
         return distLeven;
     }
- 
+
     /// <summary>
     /// build numeric distance note: 0: worse, ..,  1: match
     /// </summary>

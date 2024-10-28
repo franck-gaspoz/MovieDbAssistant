@@ -1,69 +1,228 @@
 ﻿/**
  * ui layout
- * uses window.props provided by template.js
  * @class
 */
-class Layout {
+class UILayout {
 
     constructor() {
         window.layout = this
     }
 
+    /**
+     * get var now
+     * @returns
+     */
+    getVarNow() {
+        if (!_tpl().getVar(Var_Clock))
+            _tpl().setVar(Var_Clock,
+                { date: null, clock: null })
+        return _tpl().getVar(Var_Clock)
+    }
+
+    /**
+     * enable date update
+     */
     enableDate() {
         this.dateUpdate()
         setTimeout(() => this.enableDate(), 1000 * 30)
     }
 
+    /**
+     * update the date
+     */
     dateUpdate() {
         const now = new Date()
         const day = now.getDay();
         const date = now.getDate();
         const month = now.getMonth();
-        const year = now.getFullYear();
+        //const year = now.getFullYear();
         const str = `${dayNames[day].substring(0, 3)} ${date} ${monthNames[month].substring(0, 3)}`;
-        props['date'] = str
-        $('.with-date').html(str)
+
+        var vnow = this.getVarNow()
+        vnow.date = str
+
+        $(Query_Prefix_Class + Class_Date_With).html(str)
     }
 
+    /**
+     * enable clock update
+     */
     enableClock() {
         this.clockUpdate()
-        setTimeout(() => this.enableClock(), 500)
+        setTimeout(() => this.enableClock(), 1000 * 30)
     }
 
+    /**
+     * clock update
+     */
     clockUpdate() {
         this.clockUpdating = true
         const now = new Date()
         const hours = now.getHours().toString().padStart(2, '0');
         const minutes = now.getMinutes().toString().padStart(2, '0');
-        //const seconds = now.getSeconds().toString().padStart(2, '0');
+        const seconds = now.getSeconds().toString().padStart(2, '0');
         //const str = hours + " : " + minutes + " : " + seconds;
         const str = hours + " : " + minutes;
-        props['clock'] = str
-        $('.with-clock').html(str)
+
+        var vnow = this.getVarNow()
+        vnow.clock = str
+
+        $(Query_Prefix_Class + Class_Clock_With).html(str)
         this.clockUpdating = false
     }
 
+    /**
+     * set alternate pics values
+     */
     setAlternatePics() {
-        var $pics = $('.movie-page-list .alternate-pic-list')
-        var altUrl = props.tpl.listMoviePicNotAvailable;
-        var altnfUrl = props.tpl.listMoviePicNotFound;
+        var $pics = $(
+            Query_Prefix_Class + Class_Movie_Page_List
+            + Space
+            + Query_Prefix_Class + Class_Alternate_Pic_List)
+
+        var altUrl = props.tpl.props.listMoviePicNotAvailable;
+        var altnfUrl = props.tpl.props.listMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
-        $pics = $('.movie-page-detail .alternate-pic-list')
-        altUrl = props.tpl.detailMoviePicNotAvailable;
-        altnfUrl = props.tpl.detailMoviePicNotFound;
+
+        $pics = $(
+            Query_Prefix_Class + Class_Movie_Page_Detail
+            + Space
+            + Query_Prefix_Class + Class_Alternate_Pic_List)
+
+        altUrl = props.tpl.props.detailMoviePicNotAvailable;
+        altnfUrl = props.tpl.props.detailMoviePicNotFound;
         this.setupAlternatePic($pics, altUrl, altnfUrl)
     }
 
+    /**
+     * setup alternate pics
+     * @param {any} $set items
+     * @param {any} altUrl alternate url
+     * @param {any} altnfUrl alternate url if src null or white spaces
+     */
     setupAlternatePic($set, altUrl, altnfUrl) {
         $set.each((i, e) => {
             var $e = $(e)
-            $e.on('error', () => {
-                const src = $e.attr('src')
-                const url = (!src || src == '' || src == 'null') ?
+            $e.on(Event_Error, () => {
+                const src = $e.attr(Attr_Src)
+                const url = (!src || src == Text_Empty || src == Text_Null) ?
                     altUrl : altnfUrl
-                $e.attr('src', url)
-                $e.addClass('alternate-pic-list-enabled')
+                $e.attr(Attr_Src, url)
+                $e.addClass(Class_Alternate_Pic_List_Enabled)
             })
         });
+    }
+
+    /**
+     * setup links
+     * @param {any} $from root object
+     */
+    setLinks($from) {
+
+        var $t = $(
+            Query_Select_Prefix
+            + Data_HRef
+            + Query_Select_Postfix,
+            $from)
+
+        $t.each((i, e) => {
+            var $e = $(e)
+            var href = $e.attr(Data_HRef)
+            var target = $e.attr(Data_Target)
+            $e.on(Event_Click, e => {
+                if (this.enableAvoidNextItemClick) {
+                    this.avoidNextItemClick = true;
+                }
+                if (!target)
+                    window.location = href;
+                else {
+                    window.open(href, target)
+                }
+            })
+        })
+    }
+}
+
+/**
+ * handle background image loaded event
+ * @param {any} img
+ */
+function handleBackImgLoaded(img) {
+    var $i = $('#Image_Background')
+    var w = img.naturalWidth
+    var h = img.naturalHeight
+    var $c = $('.movie-page-background-container')
+    var wc = $c.width()
+    var hc = $c.height()
+    var maxw = w >= h
+    var aw = w, ah = h
+
+    var w0 = w
+    var h0 = h
+    while (w > wc && h > hc) {
+        aw = w
+        ah = h
+        w /= 1.2
+        h /= 1.2
+    }
+    w = aw
+    h = ah
+    var zoom = w / w0;
+
+    var setwh = false
+    if (w < wc) {
+        var z = wc / w
+        w *= z
+        h *= z
+        setwh = true
+    }
+
+    if (h < hc) {
+        var z = hc / h
+        w *= z
+        h *= z
+        setwh = true
+    }
+
+    var cl = maxw ?
+        'width100p' : 'height100p'
+    var left = w >= wc ?
+        -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
+    var top = h >= hc ?
+        -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
+    $i.addClass(cl)
+    $i.css('left', left + 'px')
+    $i.css('top', top + 'px')
+    $i.css('zoom', zoom)
+    if (setwh) {
+        $i.css('width', w + 'px')
+        $i.css('height', h + 'px')
+    }
+
+    $i[0].src = img.src
+    $i.fadeIn(1000)
+}
+
+/**
+ * handle the loading of the background image
+ * @param {any} src
+ */
+function addBackImgLoadedHandler(src) {
+    var img = new Image();
+    img.addEventListener(Event_Load, () => handleBackImgLoaded(img), false);
+    img.src = src;
+}
+
+/**
+ * setup items links id (movie list)
+ */
+function setupItemsLinkId() {
+    var t = window.location.href.split(HRef_Id_Separator)
+    if (t.length == 2) {
+        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+        $(Query_Prefix_Class + Class_Movie_List).scrollTop(
+            $it.offset().top
+            - $it.height()
+        )
     }
 }

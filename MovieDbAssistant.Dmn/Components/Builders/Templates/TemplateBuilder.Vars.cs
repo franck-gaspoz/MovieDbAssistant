@@ -2,15 +2,11 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 using MovieDbAssistant.Dmn.Components.Builders.Html;
+using MovieDbAssistant.Dmn.Models.Build;
 using MovieDbAssistant.Dmn.Models.Scrap.Json;
 using MovieDbAssistant.Lib.Extensions;
-
-using Newtonsoft.Json.Linq;
-
-using JObject = Newtonsoft.Json.Linq.JObject;
 
 namespace MovieDbAssistant.Dmn.Components.Builders.Templates;
 
@@ -32,40 +28,40 @@ public partial class TemplateBuilder
     public const string Include_Part_Condition_Value_Postfix = "=";
 
     public const string Include_Part_Condition_Default = "default";
-    
+
     public const string Tpl_Prop_HSep = "hSep";
 
     static string KeyToVar(string key) => key.ToFirstLower();
 
-    (string tpl,Dictionary<string,object?>? nprops) SetVars(string tpl)
+    (string tpl, Dictionary<string, object?> tplProps, Dictionary<string, object?>? nprops)
+        SetVars(
+            BuildModel build,
+            string tpl, 
+            HtmlDocumentBuilderContext htmlContext)
     {
-        (tpl,var nprops) = SetVars(tpl, GetTemplateProps(false, null, null));
-        return (tpl,nprops);
-    }
-
-    (string tpl, Dictionary<string, object?> tplProps, Dictionary<string, object?>? nprops) 
-        SetVars(string tpl, HtmlDocumentBuilderContext htmlContext)
-    {
-        var props = GetTemplateProps(false, null, htmlContext);
-        (tpl,var nprops) = SetVars(tpl, props);
+        var props = GetTemplateProps(build, null, htmlContext);
+        (tpl, var nprops) = SetVars(tpl, props);
         return (tpl, props, nprops);
     }
 
-    (string tpl, Dictionary<string, object?> tplProps, Dictionary<string, object?>? nprops) 
+    (string tpl, 
+        Dictionary<string, object?> tplProps, 
+        Dictionary<string, object?>? nprops)
         SetVars(
+            BuildModel build,
             string tpl,
             HtmlDocumentBuilderContext htmlContext,
             MovieModel data)
     {
-        var props = GetTemplateProps(true, data, htmlContext);
-        (tpl,var nprops) = SetVars(tpl, props);
+        var props = GetTemplateProps(build, data, htmlContext);
+        (tpl, var nprops) = SetVars(tpl, props);
         return (tpl, props, nprops);
     }
 
-    (string tpl,Dictionary<string,object?>? nprops) SetVars(
+    (string tpl, Dictionary<string, object?>? nprops) SetVars(
         string tpl,
         Dictionary<string, object?> vars,
-        string? prefix = null, 
+        string? prefix = null,
         bool skipExpandDefaultDecls = false)
     {
         Dictionary<string, object?>? nprops = null;
@@ -138,12 +134,12 @@ public partial class TemplateBuilder
 
         // expand not yet extended default decl
         if (!skipExpandDefaultDecls)
-            (tpl,nprops) = ExpandIgnoredDefaultDecls(tpl);
+            (tpl, nprops) = ExpandIgnoredDefaultDecls(tpl);
 
-        return (tpl,nprops);
+        return (tpl, nprops);
     }
 
-    (string text, Dictionary<string, object?> nprops) 
+    (string text, Dictionary<string, object?> nprops)
         ExpandIgnoredDefaultDecls(string text)
     {
         var nprops = new Dictionary<string, object?>();
@@ -152,16 +148,16 @@ public partial class TemplateBuilder
         {
             (text, var name, var value, nextPos) =
                 ExpandIgnoredDefaultDecl(text, nextPos);
-            if (name!=null)
+            if (name != null)
                 nprops.AddOrReplace(name, value);
         }
-        if (nprops.Any())
-            (text, _) = SetVars(text,nprops,skipExpandDefaultDecls:true);
-        return (text,nprops);
+        if (nprops.Count != 0)
+            (text, _) = SetVars(text, nprops, skipExpandDefaultDecls: true);
+        return (text, nprops);
     }
 
     (string text, string? name, string? value, int nextPos) ExpandIgnoredDefaultDecl(
-        string text, 
+        string text,
         int startPos,
         string? expectedName = null)
     {
@@ -187,7 +183,7 @@ public partial class TemplateBuilder
         var value = text[a..(b + 1)];
         var name = text[x1b..x2];
 
-        if (expectedName !=null
+        if (expectedName != null
             && name != expectedName) return def;
 
         text = text[..x1] + text[y..];
@@ -198,7 +194,7 @@ public partial class TemplateBuilder
             (text, _, _, nextPos) = ExpandIgnoredDefaultDecl(
                 text, nextPos, name);
 
-        return (text,name,value,y);
+        return (text, name, value, y);
     }
 
     #region transforms

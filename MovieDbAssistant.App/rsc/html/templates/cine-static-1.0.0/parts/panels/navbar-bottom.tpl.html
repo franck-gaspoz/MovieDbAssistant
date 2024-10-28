@@ -3,16 +3,16 @@
 <div class="movie-page-bottom-nav-container">
     <div class="bottom-nav-container-grid">
         <div class="bottom-nav-container-left">
-            <span class="nav-text">{{pageTitleDetails}}</span>
+            <span class="nav-text">{{page.title}}</span>
         </div>
         <div class="bottom-nav-container-middle">
-            <span class="nav-text">{{subTitleList}}</span>
+            <span class="nav-text">{{page.subTitle}}</span>
         </div>
         <div class="bottom-nav-container-right">
-            <span class="with-date nav-text nav-date">{{date}}</span>
+            <span class="with-date nav-text nav-date">{{vars.system.now.date}}</span>
         </div>
         <div class="bottom-nav-container-right">
-            <span class="with-clock nav-text nav-clock">{{clock}}</span>
+            <span class="with-clock nav-text nav-clock">{{vars.system.now.clock}}</span>
         </div>
     </div>
 </div>

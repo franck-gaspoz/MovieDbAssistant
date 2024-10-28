@@ -32,7 +32,7 @@ public sealed partial class MovieModel
         Director = Director,
         Writers = Writers.Clone()!,
         Stars = Stars.Clone()!,
-        Actors = (Actors == null )? [] : Actors.Select(x => x.Clone()).ToList(),
+        Actors = (Actors == null) ? [] : Actors.Select(x => x.Clone()).ToList(),
         Anecdotes = Anecdotes,
         MinPicUrl = MinPicUrl,
         MinPicWidth = MinPicWidth,
@@ -42,6 +42,8 @@ public sealed partial class MovieModel
         PicsSizes = PicsSizes.Clone()!,
         OriginalTitle = OriginalTitle,
         QueryTitle = QueryTitle,
+        OriginalYear = OriginalYear,
+        QueryYear = QueryYear,
 
         // db
 
