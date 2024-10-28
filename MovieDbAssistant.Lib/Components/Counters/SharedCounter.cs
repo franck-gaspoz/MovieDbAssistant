@@ -5,7 +5,7 @@
 /// </summary>
 public sealed class SharedCounter
 {
-    readonly object _lock = new object();
+    static readonly object _lock = new();
 
     static readonly Dictionary<Type, int> _next = [];
 
