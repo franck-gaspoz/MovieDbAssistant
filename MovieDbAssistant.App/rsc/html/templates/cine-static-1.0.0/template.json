@@ -1,6 +1,7 @@
 {
   "id": "cine-static",
   "name": "Cine Static",
+  "description": "template for static html catalogs with a minimalistic front-end UI",
   "version": "1.0.0",
   "versionDate": "2024/10/03",
   "author": "Franck Gaspoz",

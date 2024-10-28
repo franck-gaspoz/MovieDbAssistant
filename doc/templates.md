@@ -174,82 +174,113 @@ A template is specified in the file named `template.json` at the root of the tem
 
 ```json
 {
+  // global informations
+
   // template id
-  "Id": "dark",
+  "id": "cine-static",
   // template display name
-  "Name": "Dark",
-  "Description": "minimalist with movies pictures and dark panes"
-  "Version": "1.0.0",
-  "VersionDate": "2024/10/03",
-  "Author": "Movie Db Assistant",
+  "name": "Cine Static",
+  "description": "template for static html catalogs with a minimalistic front-end UI",
+  "version": "1.0.0",
+  "versionDate": "2024/10/03",
+  "author": "Movie Db Assistant",
+
+  // theme: refers to engine resources themes
+
+  "theme": {
+    "kernel": {
+      "id": "core",
+      "ver": "1.0.0"
+    },
+    "ui": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "fonts": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "icons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "buttons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    }
+  },
+
+  // spec of paths
+
+"paths": {
+    "pages": "pages",
+    "parts": "parts",
+    "handleExtensions": [
+      ".tpl.html",
+      ".tpl.css",
+      ".tpl.js"
+    ]
+  },
 
   // template files
+  
+  // description of templates pages
 
-  "Templates": {
-	// list page template
-    "List": "page-list.tpl.html",
-	// details page template
-    "Details": "page-details.tpl.html"
-  },
-
-  // template options
-
-  "Options": {
-    "Paths": {
-	  // folder of pages templates
-      "Pages": "pages",
-	  // folder of parts templates
-      "Parts": "parts"
-    },
-	// page list options
-    "PageList": {
-      "Background": "cinema-wallpaper-16.jpg",
-      "Title": "My Movies",
-      "PageTitle": "My Movies",
-      "Filename": "index"
-    },
-	// page detail options
-    "PageDetail": {
-      "Background": "../img/cinema-wallpaper-16.jpg",
-      "BackgroundIdle": "../img/cinema-wallpaper-40.jpg",
-      "PageTitle": "My Movies"
-    },
-	// common options
-    "ListMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
-    "DetailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
-    "ListMoviePicNotFound": "./img/image-404-630x630.jpg",
-    "DetailMoviePicNotFound": "../img/image-404-630x630.jpg",
-    "RepoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "HelpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "AuthorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md"
-  },
-  // template to produce an horizontal separator for string arrays values
-  "HSep": "<span class=\"hsep\"></span>",
-
-  // back-end functions mapped to variables that must be transformed
-
-  "Transforms": [
+  "pages": [
     {
-      "Target": "Interests",
-      "Operation": "Transform_Array"
+      "id": "list",
+      "layout": "List",
+      "tpl": "page-list.tpl.html",
+      "background": "cinema-wallpaper-16.jpg",
+      "title": "My Movies",
+      "filename": "index"
     },
     {
-      "Target": "Stars",
-      "Operation": "Transform_Array"
-    },
-    {
-      "Target": "Actors",
-      "Operation": "Transform_Array"
-    },
-    {
-      "Target": "ActorModel",
-      "Operation": "Transform_ActorSimple"
+      "id": "detail",
+      "layout": "Detail",
+      "tpl": "page-details.tpl.html",
+      "backgroundIdle": "../img/cinema-wallpaper-40.jpg",
+      "title": "My Movies"
     }
   ],
 
-  // copy files from the resources folder
+  // template properties
 
-  "Resources": [
+  "props": {
+    "listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+    "detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+    "listMoviePicNotFound": "./img/image-404-630x630.jpg",
+    "detailMoviePicNotFound": "../img/image-404-630x630.jpg",
+    "repoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "helpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "authorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "hSep": "<span class=\"hsep\"></span>"
+  },
+
+  // back-end functions mapped to variables that must be transformed
+
+  "transforms": [
+    {
+      "target": "interests",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "stars",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "actors",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "ActorModel",
+      "operation": "Transform_ActorSimple"
+    }
+  ],
+
+  // files and folders that will be copied (and eventually tpl interpreted) from the resources folder
+
+  resources": [
     "/fonts/ComicNeue-Light.ttf:/fonts",
     "/fonts/MomTypewritter.ttf:/fonts",
     "/fonts/Play Chickens.ttf:/fonts",
@@ -257,23 +288,35 @@ A template is specified in the file named `template.json` at the root of the tem
     "/fonts/Vonique 92_D.otf:/fonts",
     "/fonts/Open 24 Display St.ttf:/fonts",
     "/fonts/Renegade Master.ttf:/fonts",
+    "/fonts/BrunoAce-Regular.ttf:/fonts",
+
     "/icons/back.png:/img",
     "/icons/download.png:/img",
     "/icons/favicon.ico:/img",
     "/icons/house.png:/img",
     "/icons/left-arrow.png:/img",
     "/icons/play.png:/img",
+    "/icons/settings.png:/img",
+    "/icons/close-window.png:/img",
+
+    "/img/image-not-availble-300x175.jpg:/img",
+    "/img/image-404-630x630.jpg:/img",
+
     "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img",
     "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img",
+
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
-    "/img/image-not-availble-300x175.jpg:/img",
-    "/img/image-404-630x630.jpg:/img"
+    "/js/core/ui-1.0.0.js:/js/core",
+    "/js/core/ui-layout-1.0.0.js:/js/core",
+    "/js/core/util-1.0.0.js:/js/core",
+
+    "/themes/blue-neon-1.0.0:/theme"
   ],
   
-  // copy folders & files from the template folder
+  // files that will be simply copied from the template folder
 
-  "Files": [
+  "files": [
     "/img",
     "/css",
     "/fonts",
@@ -285,27 +328,27 @@ A template is specified in the file named `template.json` at the root of the tem
 <a name="tc"></a>
 ## Template configuration
 
-Some sections of the application settings concern the template engine.
+Some sections of the application settings are related to the template engine.
 
 ```json
 // -----------
 //  Paths
 // -----------
 
-"Paths": {
-	"Assets": "assets",
-	"Temp": "temp",
-	"Output": "output",
-	"OutputPages": "pages",
-	"Input": "input",
-	// Rsc & sub paths
-	"Resources": "rsc",
-	"RscHtml": "html",
-	"RscHtmlTemplates": "templates",
-	"RscHtmlAssets": "assets",
-	"RscHtmlAssetsFonts": "fonts",
-	"RscHtmlAssetsMoviePageListWallpapers": "movie-page-list-wallpapers"
-},
+  "Paths": {
+    "Assets": "assets",
+    "Temp": "temp",
+    "Output": "output",
+    "OutputPages": "pages",
+    "Input": "input",
+    // Rsc & sub paths
+    "Resources": "rsc",
+    "RscHtml": "html",
+    "RscHtmlTemplates": "templates",
+    "RscHtmlAssets": "assets",
+    "RscHtmlAssetsThemes": "themes",
+    "RscHtmlAssetsTpl": "tpl"
+  },
 
   /* ... */
 
@@ -314,11 +357,15 @@ Some sections of the application settings concern the template engine.
 // --------------
 
 "Html": {
-    "Extension": ".html",
-    "TemplateFilename": "template.json",
-    "DataFilename": "js/data/data.js",
-    "TemplateId": "dark",
-}
+      "Extension": ".html",
+      "TemplateFilename": "template.json",
+      "DataFilename": "js/data/data.js",
+      "TemplateId": "cine-static",
+      "TemplateVersion": "1.0.0",
+      "Assets": {
+        "ListWallpaper": "/movie-page-list-wallpapers"
+      }
+    }
 ```
 
 <a name="tpl"></a>
@@ -443,162 +490,161 @@ exemple:
 <a name="tdp"></a>
 ### template data & properties
 
-Templates must by convention integrates these properties in two javascript objects:
+Templates have the responsability by convention to integrates these properties in two javascript objects
+(done by the template engine thorught the html layout builders)
 - `data` : movie or movie list data
-- `props` : a subset of template & application settings (what is really needed by the template)
+- `props` : a subset of `template settings`, `application settings` (what is really needed by the template), and `application variables`
 
 #### template `data`
 
 example of a movie detail page. Aggregates some properties from:
 - the movie data
-- the data of the query that provided the movie data (if any)
+- the data of the query that provided the movie data (if any). if it a simple movie item or a list of movie items depending of the page layout (detail,list)
 
 ```js
 const data = {
-	"Url": "https://www.imdb.com/title/tt13655120/",
-	"MetaData": {
-		"Query": {
-			"Spiders": [
-				0
-			],
-			"Metadata": {
-				"Source": "https://abcd/video/6844335721192",
-				"Download": null,
-				"QueryFile": "C:\\Users\\franc\\source\\repos\\MovieDbAssistant\\MovieDbAssistant.App\\bin\\Debug\\net8.0-windows10.0.22621.0\\input\\abcd.txt",
-				"QueryFileLine": 9,
-				"QueryCacheFiles": [
-					"C:\\Users\\franc\\source\\repos\\MovieDbAssistant\\MovieDbAssistant.App\\bin\\Debug\\net8.0-windows10.0.22621.0\\temp\\imdb-SS5TLlMu2023.json"
-				],
-				"InstanceId": {
-					"Value": 3
-				}
-			},
-			"HashKey": "SS5TLlMu2023",
-			"Title": "I.S.S.",
-			"Count": null,
-			"Year": "2023",
-			"Languages": null,
-			"Countries": null,
-			"UserRating": null,
-			"TitleTypes": null,
-			"Genres": null
-		},
-		"ScraperTool": "movie-db-scrapper-windows-64bit-intel-1.1.1.exe",
-		"ScraperToolVersion": "1.1.1",
-		"SpiderId": "imdb",
-		"SearchScore": {
-			"Affinity": 1.0833333333333333,
-			"DataCompletion": 1,
-			"Value": 2.083333333333333
-		}
-	},
-	"Sources": {
-		"Download": null,
-		"Play": "https://abcd/video/6844335721192"
-	},
-	"Id": "tt13655120",
-	"Title": "I.S.S.",
-	"OriginalTitle": "I.S.S.",
-	"QueryTitle": "I.S.S.",
-	"Summary": "Lorsqu'une guerre mondiale éclate sur Terre, entre l'Amérique et la Russie, les deux nations contactent secrètement leurs astronautes à bord de l'ISS et leur donnent des instructions pour pr...",
-	"Interests": [
-		"Psychological Thriller",
-		"Space Sci-Fi",
-		"Sci-Fi",
-		"Thriller"
-	],
-	"Rating": "5,3",
-	"RatingCount": "10",
-	"Duration": "1h 35min",
-	"ReleaseDate": "10 févr. 2024",
-	"Year": "2024",
-	"Vote": "10 k",
-	"Director": "Gabriela Cowperthwaite",
-	"Writers": [
-		"Nick Shafir"
-	],
-	"Stars": [
-		"Ariana DeBose",
-		"Chris Messina",
-		"John Gallagher Jr."
-	],
-	"Actors": [
-		{
-			"Actor": "Ariana DeBose",
-			"PicUrl": [
-				"https://m.media-amazon.com/images/M/MV5BNzk1NTNiYzgtZjgzZS00NTk1LWExMDYtYWRhNTVhZDRkNTczXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg"
-			],
-			"Characters": [
-				"Dr. Kira Foster"
-			]
-		},
-		/* ... */
-		{
-			"Actor": "Pilou Asbæk",
-			"PicUrl": [
-				"https://m.media-amazon.com/images/M/MV5BZmU4NmE5NGYtYzk0Mi00MDQyLTgxZWUtNGEyMGRkYjQ2N2E3XkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg"
-			],
-			"Characters": [
-				"Alexey Pulov"
-			]
-		}
-	],
-	"Anecdotes": "In December 2020, Nick Shafir's screenplay I.S.S. was included on that year's \"Black List\" of most-liked unproduced screenplays.@1:09, the word \"Canada\" on the Canadarm is reversed, showing that the filmmakers flipped the image.Referenced in Film Threat: I.S.S. + FOUNDERS DAY + MORE JANUARY GARBAGE | Film Threat Livecast (2024)Wind of ChangeWritten by Klaus MeinePerformed by ScorpionsPublished by BMG Platinum Songs US (BMI)All Rights Administered by BMG Rights Management (US) LLCLicensed by Sony Music Entertainment UK Limited",
-	"MinPicUrl": "https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR2,0,190,281_.jpg",
-	"MinPicWidth": "190",
-	"MinPicAlt": "I.S.S. (2023)",
-	"PicsUrls": [
-		"https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR2,0,190,281_.jpg",
-		"https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY422_CR3,0,285,422_.jpg",
-		"https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg"
-	],
-	"MedPicUrl": "https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg",
-	"PicFullUrl": "https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR2",
-	"PicsSizes": [
-		"50vw",
-		" (min-width: 480px) 34vw",
-		" (min-width: 600px) 26vw",
-		" (min-width: 1024px) 16vw",
-		" (min-width: 1280px) 16vw"
-	],
-	"Key": "SS5TLlMudHQxMzY1NTEyMA",
-	"Filename": "SS5TLlMudHQxMzY1NTEyMA.html",
-	"ListIndex": 28,
-	"output.pages": "pages",
-	"output.ext": ".html",
-	"background": "https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR2",
-	"backgroundIdle": "../img/cinema-wallpaper-40.jpg",
-	"movies.index": 29,
-	"movies.total": 98,
-	"movies.home": "../index.html",
-	"movies.previous": "../pages\\SGlwcG9jcmF0ZQdHQyODkxMDcw.html",
-	"movies.next": "../pages\\SWJpemEdHQ3OTQyOTM2.html",
-	"titleList": "My Movies",
-	"pageTitleList": "My Movies",
-	"pageTitleDetails": "My Movies",
-	"templateId": "dark",
-	"templateVersion": "1.0",
-	"templateVersionDate": "2024/10/03",
-	"softwareId": "MovieDbAssistant",
-	"software": "Movie Db Assistant",
-	"softwareVersion": "1.0.0.0",
-	"softwareVersionDate": "2024/10/03",
-	"builtAt": "13/10/2024 03:19:53",
-	"lang": "en",
-	"linkRepo": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"linkHelp": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"linkAuthor": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
-	"detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
-	"listMoviePicNotFound": "./img/image-404-630x630.jpg",
-	"detailMoviePicNotFound": "../img/image-404-630x630.jpg",
-	"subTitleList": "abcd"
+    "url": "https://www.imdb.com/title/tt0343818/",
+    "metaData": {
+        "query": {
+            "spiders": [0],
+            "metadata": {
+                "source": "https://ok.ru/video/8211840567985",
+                "download": null,
+                "queryFile": "C:\\\\Users\\\\franc\\\\source\\\\repos\\\\MovieDbAssistant\\\\MovieDbAssistant.App\\\\bin\\\\Debug\\\\net8.0-windows10.0.22621.0\\\\input\\\\query2.txt",
+                "queryFileLine": 17,
+                "queryCacheFiles": ["C:\\\\Users\\\\franc\\\\source\\\\repos\\\\MovieDbAssistant\\\\MovieDbAssistant.App\\\\bin\\\\Debug\\\\net8.0-windows10.0.22621.0\\\\temp\\\\imdb-aSByb2JvdA.json"],
+                "instanceId": {
+                    "value": 2
+                }
+            },
+            "hashKey": "aSByb2JvdA",
+            "title": "i robot",
+            "count": null,
+            "year": null,
+            "languages": null,
+            "countries": null,
+            "userRating": null,
+            "titleTypes": null,
+            "genres": null
+        },
+        "scraperTool": "movie-db-scrapper-windows-64bit-intel-1.1.1.exe",
+        "scraperToolVersion": "1.1.1",
+        "spiderId": "imdb",
+        "searchScore": {
+            "affinity": 0.4166666666666667,
+            "dataCompletion": 1,
+            "value": 1.4166666666666667
+        }
+    },
+    "sources": {
+        "download": null,
+        "play": "https://ok.ru/video/8211840567985"
+    },
+    "id": "tt0343818",
+    "title": "I, Robot",
+    "originalTitle": "I, Robot",
+    "queryTitle": "i robot",
+    "summary": "En 2035, un policier méfiant à l'égard des robots enquête sur un crime susceptible d'avoir été commis par un robot, ce qui mène à une plus grande menace pour l'humanité.",
+    "interests": ["Artificial Intelligence", "Cyber Thriller", "Cyberpunk", "Action", "Mystery", "Sci-Fi", "Thriller"],
+    "rating": "7,1",
+    "ratingCount": "10",
+    "duration": "1h 55min",
+    "releaseDate": "10 août 2004",
+    "year": "2004",
+    "vote": "585 k",
+    "director": "Alex Proyas",
+    "writers": ["Jeff Vintar", "Akiva Goldsman", "Isaac Asimov"],
+    "stars": ["Will Smith", "Bridget Moynahan", "Bruce Greenwood"],
+    "actors": [{
+        "actor": "Will Smith",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMGY5MWVlOGUtOWQ1NC00OWJlLWJmNjQtYWJlYzQwOTYxYzY5XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_QL75_UX500_CR0,47,500,281_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Bridget Moynahan",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BZGVlZmQxNTctOGRhMi00ZTZjLTliYmMtYTliOWMxZGRjMDIwXkEyXkFqcGdeQWFybm8@._V1_QL75_UX500_CR0,0,500,281_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Bruce Greenwood",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMDZiMGFlYjktNGM2OS00YzVjLWJmNTItMGYyMDBhN2YzMzNkXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_QL75_UX500_CR0,47,500,281_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Alan Tudyk",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMTBlNWRmMjEtYzFhNS00MDczLWE4NDktMDc4N2ViZmE5MjNlXkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_QL75_UX500_CR0,47,500,281_.jpg"],
+        "characters": null
+    }, {
+        "actor": "James Cromwell",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BNTczMzk1MjU1MV5BMl5BanBnXkFtZTcwNDk2MzAyMg@@._V1_QL75_UX140_CR0,9,140,140_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Adrian Ricard",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMTc0Nzc3ODE3OF5BMl5BanBnXkFtZTcwNDQxOTU3MQ@@._V1_QL75_UX140_CR0,13,140,140_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Chi McBride",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BODYwMDI5MDM1Nl5BMl5BanBnXkFtZTYwODUyNjc4._V1_QL75_UX140_CR0,3,140,140_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Jerry Wasserman",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMjE0MzEwNDUxNV5BMl5BanBnXkFtZTcwNTE1MDAzOQ@@._V1_QL75_UX140_CR0,9,140,140_.jpg"],
+        "characters": null
+    }, {
+        "actor": "Fiona Hogan",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BNzU1NTEzMzMxM15BMl5BanBnXkFtZTgwMzY0MjAzMTE@._V1_QL75_UX140_CR0,12,140,140_.jpg"],
+        "characters": ["Del Spooner"]
+    }, {
+        "actor": "Peter Shinkoda",
+        "picUrl": null,
+        "characters": ["Susan Calvin"]
+    }, {
+        "actor": "Terry Chen",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMTY2NDcyNTI1Ml5BMl5BanBnXkFtZTcwNTYyOTI4Mw@@._V1_QL75_UX140_CR0,1,140,140_.jpg"],
+        "characters": ["Lawrence Robertson"]
+    }, {
+        "actor": "David Haysom",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BYzY4ZjZiZTAtNTk4ZC00YzlmLTk1NTgtOGNmMDU5MDk5NjFlXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg"],
+        "characters": ["Sonny"]
+    }, {
+        "actor": "Scott Heindl",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BM2MzZDc2ZTAtYTNjNC00ZDRhLTg2YzEtOGUwYjAxOTU4Y2M3XkEyXkFqcGc@._V1_CR1,1,1212,1818_QL75_UX140_CR0,12,140,140_.jpg"],
+        "characters": ["Dr. Alfred Lanning"]
+    }, {
+        "actor": "Sharon Wilkins",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BYzIwZWU0MGMtOTBlZi00MmE2LWE5NDgtOWM2NTE5OTU2Yjk4XkEyXkFqcGc@._V1_QL75_UX140_CR0,6,140,140_.jpg"],
+        "characters": ["Granny", "(as Adrian L. Ricard)"]
+    }, {
+        "actor": "Craig March",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMmI1ZWZjNTgtMmJhZS00Y2FjLWIzZWQtYjg2OGQwNjJjYzEwXkEyXkFqcGc@._V1_QL75_UX140_CR0,12,140,140_.jpg"],
+        "characters": ["Lt. John Bergin"]
+    }, {
+        "actor": "Kyanna Cox",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BOTY1N2MwNmUtYWY3Ni00MDk5LWI2N2YtMTFkMzMyMWRlNGE5XkEyXkFqcGc@._V1_CR0,0,1199,1799_QL75_UX140_CR0,12,140,140_.jpg"],
+        "characters": ["Baldez"]
+    }, {
+        "actor": "Darren Moore",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BMTMxODQ5MjgxMF5BMl5BanBnXkFtZTcwMzA3MDYyMQ@@._V1_QL75_UX140_CR0,2,140,140_.jpg"],
+        "characters": ["V.I.K.I."]
+    }, {
+        "actor": "Aaron Douglas",
+        "picUrl": ["https://m.media-amazon.com/images/M/MV5BZTNiMmFjYjQtZDRkOS00N2E0LTg1NzktYjY5NjdiMThiYzRkXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,140_.jpg"],
+        "characters": ["Chin"]
+    }],
+    "anecdotes": "The car used by Will Smith's character is a concept car called Audi RSQ, which was designed exclusively for the film and includes special features suggested by director Alex Proyas.When Spooner is fighting off the NS-5s while Calvin attempts to gain access to V.I.K.I.'s positronic brain, Spooner drops a large gun with a shoulder strap which then appears to spontaneously attach itself around a large guide wire. The gun-strap actually swings over and snags onto the guns clip. If you slow down the shot you can see it easier. Its also explains why the straps length is shortened by half.Detective Del Spooner: Human beings have dreams. Even dogs have dreams, but not you, you are just a machine. An imitation of life. Can a robot write a symphony? Can a robot turn a... canvas into a beautiful masterpiece?Sonny: Can *you*?Instead of opening credits, the beginning of the movie features Isaac Asimov's 3 Laws of Robotics:\\nLAW I. A robot may not injure a human being or, through inaction, allow a human being to come to harm.\\nLAW II. A robot must obey orders given it by human beings except where such orders would conflict with the First Law.\\nLAW III. A robot must protect its own existence as long as such protection does not conflict with the First or Second Law.Post-converted to 3D for Blu-Ray release in 2012.Edited into 2004 MLB All-Star Game (2004)SuperstitionWritten and Performed by Stevie WonderCourtesy of Motown RecordsUnder license from Universal Music Enterprises",
+    "minPicUrl": "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY281_CR11,0,190,281_.jpg",
+    "minPicWidth": "190",
+    "minPicAlt": "Alan Tudyk in I, Robot (2004)",
+    "picsUrls": ["https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY281_CR11,0,190,281_.jpg", "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY422_CR16,0,285,422_.jpg", "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY562_CR21,0,380,562_.jpg"],
+    "medPicUrl": "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY562_CR21,0,380,562_.jpg",
+    "picFullUrl": "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY281_CR11",
+    "picsSizes": ["50vw", " (min-width: 480px) 34vw", " (min-width: 600px) 26vw", " (min-width: 1024px) 16vw", " (min-width: 1280px) 16vw"],
+    "key": "SSwgUm9ib3QdHQwMzQzODE4",
+    "filename": "SSwgUm9ib3QdHQwMzQzODE4.html",
+    "listIndex": 1
 }
 ```
 
 #### template `props`
 
-example of a movie detail page. Aggregates some properties from:
+Aggregates some properties from:
 
 - the template settings
 - the application settings (paths, description,...)
@@ -607,38 +653,139 @@ example of a movie detail page. Aggregates some properties from:
 - some properties can be specific to a template theme
 - the template engine and any of its modules can add and setup any properties in this set
 
+principales properties are:
+
+- `tpl`: tpl settings (from template.json)
+- `page`: related to current page
+- `output`: about tpl output
+- `build`: report about the build
+- `navigation`: informations about the current page related to the owning collection (if any one)
+- `app`: about the application
+- `basePath`: path of the current page relative to the template output root
+- `vars`: runtime variables created on front or back side. it is the place where any routine can add and share variables 
+
 ```js
 const props = {
-	"output.pages": "pages",
-	"output.ext": ".html",
-	"background": "https://m.media-amazon.com/images/M/MV5BNzJkMDhkZTQtMzhkYi00YmI4LWE5ODctYjczZDA5NDUyZWQ0XkEyXkFqcGc@._V1_QL75_UY281_CR2",
-	"backgroundIdle": "../img/cinema-wallpaper-40.jpg",
-	"movies.index": 29,
-	"movies.total": 98,
-	"movies.home": "../index.html",
-	"movies.previous": "../pages\\SGlwcG9jcmF0ZQdHQyODkxMDcw.html",
-	"movies.next": "../pages\\SWJpemEdHQ3OTQyOTM2.html",
-	"titleList": "My Movies",
-	"pageTitleList": "My Movies",
-	"pageTitleDetails": "My Movies",
-	"templateId": "dark",
-	"templateVersion": "1.0",
-	"templateVersionDate": "2024/10/03",
-	"softwareId": "MovieDbAssistant",
-	"software": "Movie Db Assistant",
-	"softwareVersion": "1.0.0.0",
-	"softwareVersionDate": "2024/10/03",
-	"builtAt": "13/10/2024 03:19:53",
-	"lang": "en",
-	"linkRepo": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"linkHelp": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"linkAuthor": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-	"listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
-	"detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
-	"listMoviePicNotFound": "./img/image-404-630x630.jpg",
-	"detailMoviePicNotFound": "../img/image-404-630x630.jpg",
-	"subTitleList": "My Catalog",
-	"clock": "16 : 06",
-	"date": "Sun 13 Oct"
+    "tpl": {
+        "name": "Cine Static",
+        "version": "1.0.0",
+        "versionDate": "2024/10/03",
+        "id": "cine-static",
+        "theme": {
+            "kernel": {
+                "id": "core",
+                "ver": "1.0.0"
+            },
+            "ui": {
+                "id": "blue-neon",
+                "ver": "1.0.0"
+            },
+            "fonts": {
+                "id": "blue-neon",
+                "ver": "1.0.0"
+            },
+            "icons": {
+                "id": "blue-neon",
+                "ver": "1.0.0"
+            },
+            "buttons": {
+                "id": "blue-neon",
+                "ver": "1.0.0"
+            }
+        },
+        "pages": [{
+            "id": "list",
+            "layout": "List",
+            "tpl": "page-list.tpl.html",
+            "background": "cinema-wallpaper-16.jpg",
+            "backgroundIdle": null,
+            "title": "My Movies",
+            "subTitle": "Query2",
+            "filename": "index"
+        }, {
+            "id": "detail",
+            "layout": "Detail",
+            "tpl": "page-details.tpl.html",
+            "background": "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY281_CR11",
+            "backgroundIdle": "../img/cinema-wallpaper-40.jpg",
+            "title": "My Movies",
+            "subTitle": "Query2",
+            "filename": null
+        }],
+        "props": {
+            "listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+            "detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+            "listMoviePicNotFound": "./img/image-404-630x630.jpg",
+            "detailMoviePicNotFound": "../img/image-404-630x630.jpg",
+            "repoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+            "helpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+            "authorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+            "hSep": "<span class=\"hsep\"></span>"
+        },
+        "files": ["/img", "/css", "/fonts", "/js"],
+        "resources": ["/fonts/ComicNeue-Light.ttf:/fonts", "/fonts/MomTypewritter.ttf:/fonts", "/fonts/Play Chickens.ttf:/fonts", "/fonts/Quesha.ttf:/fonts", "/fonts/Vonique 92_D.otf:/fonts", "/fonts/Open 24 Display St.ttf:/fonts", "/fonts/Renegade Master.ttf:/fonts", "/fonts/BrunoAce-Regular.ttf:/fonts", "/icons/back.png:/img", "/icons/download.png:/img", "/icons/favicon.ico:/img", "/icons/house.png:/img", "/icons/left-arrow.png:/img", "/icons/play.png:/img", "/icons/settings.png:/img", "/icons/close-window.png:/img", "/img/image-not-availble-300x175.jpg:/img", "/img/image-404-630x630.jpg:/img", "/movie-page-list-wallpapers/cinema-wallpaper-16.jpg:/img", "/movie-page-list-wallpapers/cinema-wallpaper-40.jpg:/img", "/js/ext/jquery-3.7.1.min.js:/js/ext", "/js/core/template-1.0.0.js:/js/core", "/js/core/ui-1.0.0.js:/js/core", "/js/core/ui-layout-1.0.0.js:/js/core", "/js/core/util-1.0.0.js:/js/core", "/themes/blue-neon-1.0.0:/theme"],
+        "path": null,
+        "paths": {
+            "pages": "pages",
+            "parts": "parts",
+            "handleExtensions": [".tpl.html", ".tpl.css", ".tpl.js"]
+        },
+        "transforms": [{
+            "target": "interests",
+            "operation": "Transform_Array"
+        }, {
+            "target": "stars",
+            "operation": "Transform_Array"
+        }, {
+            "target": "actors",
+            "operation": "Transform_Array"
+        }, {
+            "target": "ActorModel",
+            "operation": "Transform_ActorSimple"
+        }]
+    },
+    "page": {
+        "id": "detail",
+        "layout": "Detail",
+        "tpl": "page-details.tpl.html",
+        "background": "https://m.media-amazon.com/images/M/MV5BNDU2MjkzZWYtNGY5MS00MTNhLWIwZGMtYjY1OWM0YTAxMDVlXkEyXkFqcGc@._V1_QL75_UY281_CR11",
+        "backgroundIdle": "../img/cinema-wallpaper-40.jpg",
+        "title": "My Movies",
+        "subTitle": "Query2",
+        "filename": null
+    },
+    "output": {
+        "ext": ".html",
+        "pages": "pages"
+    },
+    "build": {
+        "startedAt": "2024-10-27T22:13:18.0450789Z",
+        "finishedAt": "2024-10-27T22:13:18.0781515Z",
+        "duration": 33.0726,
+        "layout": 1
+    },
+    "navigation": {
+        "home": "../index.html",
+        "index": 2,
+        "next": "../pages\\TGEgcGxhbsOodGUgZGVzIHNpbmdlcwdHQwMDYzNDQy.html",
+        "previous": "../pages\\QnJhemlsdHQwMDg4ODQ2.html",
+        "total": 6
+    },
+    "app": {
+        "name": "Movie Db Assistant",
+        "id": "MovieDbAssistant",
+        "version": "1.0.0.0",
+        "versionDate": "2024/10/03",
+        "lang": "en"
+    },
+    "basePath": "../",
+    "vars": {
+        "system": {
+            "now": {
+                "date": "Mon 28 Oct",
+                "clock": "01 : 12"
+            }
+        }
+    }
 }
 ```

@@ -17,6 +17,7 @@ public sealed class TemplateModel
         string name,
         string version,
         string versionDate,
+        string description,
         string id,
         ThemeModel theme,
         List<PageModel> pages,
@@ -30,6 +31,7 @@ public sealed class TemplateModel
         Name = name;
         Version = version;
         VersionDate = versionDate;
+        Description = description;
         Id = id;
         Theme = theme;
         Pages = pages;
@@ -55,6 +57,11 @@ public sealed class TemplateModel
     /// version date
     /// </summary>
     public string VersionDate { get; set; }
+
+    /// <summary>
+    /// description
+    /// </summary>
+    public string Description { get; set; }
 
     /// <summary>
     /// Gets or sets the id.
