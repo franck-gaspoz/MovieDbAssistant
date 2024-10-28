@@ -18,7 +18,7 @@
         window.vda = { data, props };
 
         $(document).ready(() => {
-            var o = new Template(false);
+            var o = new Template();
             o.buildDetails(data);
             addBackImgLoadedHandler('{{page.background}}');
             var ui = new UI()
