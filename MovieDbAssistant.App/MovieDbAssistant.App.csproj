@@ -32,12 +32,12 @@
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
     <None Remove="input\-movie.json" />
-    <None Remove="input\-ok.ru.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
     <None Remove="input\-query1.txt" />
     <None Remove="input\-shmovies.json" />
     <None Remove="input\-zombies.json" />
+    <None Remove="input\ok.ru.txt" />
     <None Remove="input\query2.txt" />
     <None Remove="input\README.md" />
     <None Remove="output\README.md" />
@@ -153,7 +153,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\-ok.ru.txt">
+    <Content Include="input\ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
