@@ -9,6 +9,10 @@ public sealed class SharedCounter
 
     static readonly Dictionary<Type, int> _next = [];
 
+    /// <summary>
+    /// Gets the value.
+    /// </summary>
+    /// <value>An <see cref="int"/></value>
     public int Value { get; private set; }
 
     public SharedCounter(object owner)

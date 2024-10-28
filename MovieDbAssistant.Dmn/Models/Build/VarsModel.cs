@@ -1,5 +1,7 @@
 ﻿namespace MovieDbAssistant.Dmn.Models.Build;
 
+#pragma warning disable CA1822 // Marquer les membres comme étant static
+
 /// <summary>
 /// The variables model.
 /// </summary>

@@ -20,20 +20,17 @@ namespace MovieDbAssistant.Dmn.Components.Builders.Html;
 public sealed class HtmlDocumentBuilder : IDocumentBuilder
 {
     const string Folder_Back = "../";
-    readonly IConfiguration _config;
     readonly ILogger<HtmlDocumentBuilder> _logger;
     readonly HtmlMovieDocumentBuilder _htmlMovieDocumentBuilder;
     readonly TemplateBuilder _templateBuilder;
     readonly IOptions<DmnSettings> _dmnSettings;
 
     public HtmlDocumentBuilder(
-        IConfiguration config,
         ILogger<HtmlDocumentBuilder> logger,
         HtmlMovieDocumentBuilder htmlMovieDocumentBuilder,
         TemplateBuilder templateBuilder,
         IOptions<DmnSettings> dmnSettings)
     {
-        _config = config;
         _logger = logger;
         _htmlMovieDocumentBuilder = htmlMovieDocumentBuilder;
         _templateBuilder = templateBuilder;

@@ -43,9 +43,9 @@ public sealed partial class MovieModel
     public string? OriginalTitle { get; set; }
 
     /// <summary>
-    /// queried title by opposite to scraped title in case of built for a query (filter Title)
+    /// query data model
     /// </summary>
-    public string? QueryTitle { get; set; }
+    public QueryDataModel QueryData { get; set; } = new();
 
     public string? Summary { get; set; }
 
@@ -68,11 +68,6 @@ public sealed partial class MovieModel
     /// scraped year
     /// </summary>
     public string? OriginalYear { get; set; }
-
-    /// <summary>
-    /// year from query
-    /// </summary>
-    public string? QueryYear { get; set; }
 
     public string? Vote { get; set; }
 
