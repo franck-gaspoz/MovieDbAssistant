@@ -42,11 +42,6 @@ public sealed partial class MovieModel
     /// </summary>
     public string? OriginalTitle { get; set; }
 
-    /// <summary>
-    /// query data model
-    /// </summary>
-    public QueryDataModel QueryData { get; set; } = new();
-
     public string? Summary { get; set; }
 
     public List<string> Interests { get; set; } = [];

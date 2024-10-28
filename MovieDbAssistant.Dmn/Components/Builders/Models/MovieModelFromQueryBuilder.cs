@@ -50,13 +50,11 @@ public sealed class MovieModelFromQueryBuilder
         o.OriginalTitle = _data!.Title;
         if (_settings.Value.Scrap.Prefers.QueryTitle)
             o.Title = _query?.Title;
-        o.QueryData.Title = _query?.Title;
 
         o.OriginalYear = _data.Year!;
         if (_settings.Value.Scrap.Prefers.QueryYear
             && _query?.Year != null)
             o.Year = _query?.Year;
-        o.QueryData.Year = _query?.Year;
 
         if (_settings.Value.Scrap.Prefers.QueryYearIfDataTitleIsNull
             && _data.Year == null
