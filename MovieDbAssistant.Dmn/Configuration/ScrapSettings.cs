@@ -28,9 +28,9 @@ public sealed class ScrapSettings
     public bool SkipIfTempOutputFileAlreadyExists { get; set; }
 
     /// <summary>
-    /// if true, keep query title when enter a new movie model for a query, thus replace the remote title    
+    /// prefers settings for data query vs scraped
     /// </summary>
-    public bool KeepQueryTitle { get; set; }
+    public PrefersSettings Prefers { get; set; } = new();
 
     /// <summary>
     /// if provided in query, the year replaces the scraped data year

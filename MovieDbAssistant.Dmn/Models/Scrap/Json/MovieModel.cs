@@ -59,7 +59,20 @@ public sealed partial class MovieModel
 
     public string? ReleaseDate { get; set; }
 
+    /// <summary>
+    /// scraped year
+    /// </summary>
     public string? Year { get; set; }
+
+    /// <summary>
+    /// scraped year
+    /// </summary>
+    public string? OriginalYear { get; set; }
+
+    /// <summary>
+    /// year from query
+    /// </summary>
+    public string? QueryYear { get; set; }
 
     public string? Vote { get; set; }
 
