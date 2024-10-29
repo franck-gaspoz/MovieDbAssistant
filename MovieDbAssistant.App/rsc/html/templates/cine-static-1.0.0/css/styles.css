@@ -216,13 +216,13 @@ body.movie-page-detail .summary {
     font-family: 'quesha';
 }
 
-.query-title {
+.metadata-label {
     display: block;
     margin-bottom: 0.5em;
-    color: #cdcded;
+    color: #00BCD4;
 }
 
-.query-title-value {
+.query-title-value, .query-year-value {
     font-family: comicn;
     font-size: 1.5em;
     vertical-align: baseline;

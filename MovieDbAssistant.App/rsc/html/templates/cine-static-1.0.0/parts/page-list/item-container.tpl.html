@@ -21,9 +21,10 @@
                                 <td width="100%" class="cell-title" valign="top">
                                     <span class="title if-title">{{title}}</span>
                                     <br />
-                                    <span class="query-title if-queryTitle">
+                                    <span class="metadata-label if-metaData-query-title">
                                         from query: &nbsp;
-                                        <span class="query-title-value">{{queryTitle}}</span>
+                                        <span class="query-title-value">{{metaData.query.title}}</span>
+                                        &nbsp;<span class="query-year-value if-metaData-query-year">{{metaData.query.year}}</span>
                                     </span>
                                     <span class="interests text if-interests">{{interests}}</span>
                                     <br />
