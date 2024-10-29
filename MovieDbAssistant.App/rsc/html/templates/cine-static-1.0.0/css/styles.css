@@ -287,7 +287,11 @@ body.movie-page-detail .title {
     font-family: 'quesha';
     font-size: 1.9em;
     font-weight: bold;
-    color: #E0E0F0;
+    color: #F0F0F0;
+}
+
+.summary {
+    color: #F0F0F0 !important;
 }
 
 .text {
