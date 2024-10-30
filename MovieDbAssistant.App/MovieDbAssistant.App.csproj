@@ -138,6 +138,7 @@
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list-navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\app-region.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\README.md" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\template.json" />
     <None Remove="rsc\html\README.md" />
@@ -480,6 +481,9 @@
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\app-region.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -549,6 +553,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="rsc\html\templates\cine-static-1.0.0\css\electron-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="rsc\html\templates\cine-static-1.0.0\css\styles.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

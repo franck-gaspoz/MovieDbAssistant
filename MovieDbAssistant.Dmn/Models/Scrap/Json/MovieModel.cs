@@ -29,7 +29,7 @@ public sealed partial class MovieModel
     /// movie sources
     /// </summary>
     public MovieSources Sources { get; set; } = new();
-
+    
     /// <summary>
     /// provider movie id
     /// </summary>
