@@ -1,0 +1,7 @@
+﻿/* #region electron */
+
+.page-app-region-container {
+    -webkit-app-region: drag;
+}
+
+/* #endregion */

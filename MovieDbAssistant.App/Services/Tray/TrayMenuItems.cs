@@ -103,11 +103,7 @@ sealed class TrayMenuItems
             });}),
 
             // tools
-            (new ToolStripSeparator(),null),  // ------ 
-            (new ToolStripMenuItem { Text = _appSettings.Value.Texts.OpenCmdLine },
-            o => { o.Click += new EventHandler((c,e) => {
-                _signal.Send(this, new OpenCommandLineCommand());
-            });}),
+            (new ToolStripSeparator(),null),  // ------
 
             (new ToolStripMenuItem { Text = _appSettings.Value.Texts.OpenOutpFolder },
             o => { o.Click += new EventHandler((c,e) => {

@@ -38,11 +38,6 @@ public sealed class TextsSettings
     public required string BuildFromInputFolder { get; set; }
 
     /// <summary>
-    /// Label open cmd line.
-    /// </summary>
-    public required string OpenCmdLine { get; set; }
-
-    /// <summary>
     /// Label open outp folder.
     /// </summary>
     public required string OpenOutpFolder { get; set; }

@@ -32,13 +32,15 @@
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
     <None Remove="input\-movie.json" />
+    <None Remove="input\-ok.ru.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
     <None Remove="input\-query1.txt" />
+    <None Remove="input\-query2.txt" />
     <None Remove="input\-shmovies.json" />
     <None Remove="input\-zombies.json" />
-    <None Remove="input\ok.ru.txt" />
-    <None Remove="input\query2.txt" />
+    <None Remove="input\ok.ru.arp188.txt" />
+    <None Remove="input\query3.txt" />
     <None Remove="input\README.md" />
     <None Remove="output\README.md" />
     <None Remove="rsc\html\assets\README.md" />
@@ -121,26 +123,46 @@
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-links.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-metas.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\head-scripts.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\html.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\page-details.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\page-list.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\movie-list-item-container.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-bottom.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\navbar-top.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-detail-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-vignette.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
-    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\item-container.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page-list\navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\app-region.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\head-links.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\head-metas.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\head-scripts.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\page\html.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-bottom.tpl.html" />
+    <None Remove="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\README.md" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\template.json" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\background-vignette.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\backgrounds\background-idle.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\head-links.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\head-metas.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\head-scripts.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\html.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\page-details.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\page-list.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\movie-list-item-container.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\navbar-bottom.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page-detail-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page-details\content-container.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page-list-navbar-top.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\page\app-region.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\README.md" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\template.json" />
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
     <None Remove="temp\README.md" />
@@ -154,7 +176,10 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\ok.ru.txt">
+    <Content Include="input\ok.ru.arp188.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -190,7 +215,10 @@
     <Content Include="input\-query0.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\query2.txt">
+    <Content Include="input\query3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-query2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-query1.txt">
@@ -448,10 +476,19 @@
     <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-idle.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-vignette.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\content-container.tpl.html">
@@ -460,7 +497,19 @@
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\item-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\app-region.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-links.tpl.html">
@@ -472,40 +521,79 @@
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\head-scripts.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-vignette.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\navbar-top.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-details\navbar-top.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\app-region.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page-list\item-container.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\html.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-bottom.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\page\html.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
+    <Content Include="rsc\html\templates\cine-static-1.0.0\parts\panels\navbar-top.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\template.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\backgrounds\background-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\backgrounds\background-idle.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-details\content-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-details\dialogs\movie-details-settings.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-list\dialogs\movie-list-settings.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page\head-links.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page\head-metas.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page\head-scripts.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\backgrounds\background-vignette.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-list\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-details\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page\app-region.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\navbar-top.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page-list\item-container.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\navbar-bottom.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\page\html.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\pages\page-list.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\pages\page-details.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\template.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\README.md">
@@ -550,13 +638,23 @@
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\tpl\" />
     <Folder Include="rsc\html\assets\tpl\" />
     <Folder Include="rsc\html\templates\cine-static-1.0.0\js\" />
+    <Folder Include="rsc\html\templates\arp188-static-1.0.0\js\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="rsc\html\assets\icons\refresh-arrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="rsc\html\templates\cine-static-1.0.0\css\electron-1.0.0.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="rsc\html\templates\cine-static-1.0.0\css\styles.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="rsc\html\templates\arp188-static-1.0.0\css\electron-1.0.0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="rsc\html\templates\arp188-static-1.0.0\css\styles.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

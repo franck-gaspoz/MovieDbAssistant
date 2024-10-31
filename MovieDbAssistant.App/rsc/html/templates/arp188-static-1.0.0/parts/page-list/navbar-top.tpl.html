@@ -1,0 +1,27 @@
+﻿<!-- {{tpl-name}} -->
+
+<div class="movie-page-top-nav-container">
+
+    <div class="top-nav-container-grid">
+
+        <!-- left -->
+
+        <div class="top-nav-container-left">
+            <span class="nav-text"></span>
+        </div>
+
+        <!-- middle -->
+
+        <div class="top-nav-container-middle">
+            <div class="movie-page-list-title">{{page.title}} : {{page.subTitle}}</div>
+        </div>
+
+        <!-- right -->
+
+        <div class="top-nav-container-right">
+            {{{ui/controls/icons/nav-icon(name=refresh-arrow.png,alt=icon refresh,class=margin-right-half,onClick=window.location.reload();)}}}
+            {{{ui/controls/icons/nav-icon(name=settings.png,alt=icon settings,class=no-margin-right,onClick=openDialog(this\,'movie-list-settings'))}}}
+        </div>
+
+    </div>
+</div>

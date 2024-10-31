@@ -15,6 +15,7 @@ const Type_Name_Array = 'Array'
 
 const Path_Current = './'
 
+const Event_Resize = 'resize'
 const Event_Load = 'load'
 const Event_Error = 'error'
 const Event_Click = 'click'

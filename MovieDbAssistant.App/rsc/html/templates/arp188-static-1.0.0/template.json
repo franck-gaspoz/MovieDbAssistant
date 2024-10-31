@@ -1,0 +1,131 @@
+{
+  "id": "arp188-static",
+  "name": "Arp 188 Cine Static",
+  "description": "template for static html catalogs with a minimalistic front-end UI",
+  "version": "1.0.0",
+  "versionDate": "2024/10/03",
+  "author": "Gaspard Moyrand",
+
+  "theme": {
+    "kernel": {
+      "id": "core",
+      "ver": "1.0.0"
+    },
+    "ui": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "fonts": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "icons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    },
+    "buttons": {
+      "id": "blue-neon",
+      "ver": "1.0.0"
+    }
+  },
+
+  "paths": {
+    "pages": "pages",
+    "parts": "parts",
+    "handleExtensions": [
+      ".tpl.html",
+      ".tpl.css",
+      ".tpl.js"
+    ]
+  },
+
+  "pages": [
+    {
+      "id": "list",
+      "layout": "List",
+      "tpl": "page-list.tpl.html",
+      "background": "cinema-wallpaper-36.jpg",
+      "title": "My Movies",
+      "filename": "index"
+    },
+    {
+      "id": "detail",
+      "layout": "Detail",
+      "tpl": "page-details.tpl.html",
+      "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg",
+      "title": "ARP 188 Galaxy spiral NC 7825-Xw"
+    }
+  ],
+
+  "props": {
+    "listMoviePicNotAvailable": "./img/image-not-availble-300x175.jpg",
+    "detailMoviePicNotAvailable": "../img/image-not-availble-300x175.jpg",
+    "listMoviePicNotFound": "./img/image-404-630x630.jpg",
+    "detailMoviePicNotFound": "../img/image-404-630x630.jpg",
+    "repoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "helpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "authorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
+    "hSep": "<span class=\"hsep\"></span>"
+  },
+
+  "transforms": [
+    {
+      "target": "interests",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "stars",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "actors",
+      "operation": "Transform_Array"
+    },
+    {
+      "target": "ActorModel",
+      "operation": "Transform_ActorSimple"
+    }
+  ],
+
+  "resources": [
+    "/fonts/ComicNeue-Light.ttf:/fonts",
+    "/fonts/MomTypewritter.ttf:/fonts",
+    "/fonts/Play Chickens.ttf:/fonts",
+    "/fonts/Quesha.ttf:/fonts",
+    "/fonts/Vonique 92_D.otf:/fonts",
+    "/fonts/Open 24 Display St.ttf:/fonts",
+    "/fonts/Renegade Master.ttf:/fonts",
+    "/fonts/BrunoAce-Regular.ttf:/fonts",
+
+    "/icons/back.png:/img",
+    "/icons/download.png:/img",
+    "/icons/favicon.ico:/img",
+    "/icons/house.png:/img",
+    "/icons/left-arrow.png:/img",
+    "/icons/play.png:/img",
+    "/icons/settings.png:/img",
+    "/icons/close-window.png:/img",
+    "/icons/refresh-arrow.png:/img",
+
+    "/img/image-not-availble-300x175.jpg:/img",
+    "/img/image-404-630x630.jpg:/img",
+
+    "/movie-page-list-wallpapers:/img",
+
+    "/js/ext/jquery-3.7.1.min.js:/js/ext",
+    "/js/core/template-1.0.0.js:/js/core",
+    "/js/core/ui-1.0.0.js:/js/core",
+    "/js/core/ui-layout-1.0.0.js:/js/core",
+    "/js/core/util-1.0.0.js:/js/core",
+
+    "/themes/blue-neon-1.0.0:/theme"
+  ],
+
+  "files": [
+    "/img",
+    "/css",
+    "/fonts",
+    "/js"
+  ]
+
+}

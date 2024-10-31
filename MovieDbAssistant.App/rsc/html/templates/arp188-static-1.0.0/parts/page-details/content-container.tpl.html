@@ -1,0 +1,117 @@
+﻿<!-- {{tpl-name}} -->
+
+<div class="movie-page-detail-content-container">
+
+    <!-- movie details -->
+    <div class="movie-list">
+
+        <div class="movie-list-item-container" id="ItemModel">
+
+            <div class="movie-list-item g-movie-list-item"
+                 data-attr-key="{{key}}"
+                 data-attr-id="{{id}}">
+
+                <!-- details -->
+                <div class="g-movie-detail-grid-row-1">
+
+                    <!-- title, genre -->
+                    <table width="100%" class="g-movie-detail-grid2-row-1">
+                        <tr>
+                            <td width="100%" class="cell-title">
+                                <span class="title if-title">{{title}}</span>
+                                <br />
+                                <span class="interests text if-interests">{{interests}}</span>
+                            </td>
+
+                            <td valign="top" class="cell-rating-year grid no-padding-right min-width-8em">
+
+                                <div class="cell1_1 nowrap text-align-right">
+                                    <div class="rating-container if-rating if-ratingCount">
+                                        <span class="rating text if-rating">{{rating}}</span>
+                                        <span class="rating-sep if-rating if-ratingCount">/</span>
+                                        <span class="ratingCount text if-ratingCount">{{ratingCount}}</span>
+                                    </div>
+
+                                    <span class="year text if-year padding-left text-align-right">{{year}}</span>
+                                </div>
+
+                                <div class="cell1_1 sources">
+                                    <img data-href="{{sources.play}}"
+                                         data-target="movie_download"
+                                         src="../img/play.png"
+                                         class="nav-icon play-icon if-sources-play if_no-sources-download--no-margin-right" />
+                                    <img data-href="{{sources.download}}"
+                                         src="../img/download.png"
+                                         class="nav-icon download-icon no-margin-right if-sources-download" />
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="g-movie-detail-grid2-row-2">
+
+                        <!-- director -> release date -->
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <span class="label label-director if-director">director: </span>
+                                    <span class="director text if-director">{{director}}</span>
+                                    <span class="cell-int label label-stars if-stars">stars: </span>
+                                    <span class="stars text if-stars">{{stars}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="summary text if-summary">{{summary}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="label label-duration if-duration">duration: </span>
+                                    <span class="duration text if-duration">{{duration}}</span>
+                                    <span class="cell-int label label-releaseDate if-releaseDate">release date: </span>
+                                    <span class="releaseDate text if-releaseDate">{{releaseDate}}</span>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- actors , page -->
+                        <table width="100%">
+                            <tr>
+                                <td class="no-padding-bottom">
+                                    <div>
+                                        <span class="label label-actors if-actors">actors: </span>
+                                    </div>
+                                    <span class="actors text if-actors">{{actors}}</span>
+                                    <br><br>
+                                    <span class="label label-source if-url">page: </span>
+                                    <a class="url if-url" href="{{url}}">{{url}}</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <!-- pic -->
+                <div class="movie-pic-container g-movie-detail-grid-row-1-col-2" valign="top">
+                    <img src="{{medPicUrl}}" class="alternate-pic-list" />
+                </div>
+
+                <!-- anecdotes -->
+                <div class="cell-external g-movie-detail-grid-row-2">
+                    <div>
+                        <span class="label label-anecdotes if-anecdotes">anecdotes: </span>
+                    </div>
+                    <span class="anecdotes text if-anecdotes">{{anecdotes}}</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

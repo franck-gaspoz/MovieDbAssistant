@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html {{{page/html}}}>
+<head>
+    {{{page/head-metas}}}
+    <meta name="description" content="{{(MoviesList)}} (test text include / lang) | {{app.name}} ({{app.id}}) github {{tpl.props.repoLink}}" />
+    {{{page/head-links}}}
+
+    <title>{{page.title}} | {{page.subTitle}}</title>
+
+    {{{page/head-scripts}}}
+    <script src="{{basePath}}js/data/data.js"></script>
+
+    <script type="text/javascript">
+
+        const props = {{props}};
+
+        $(document).ready(() => {
+            var o = new Template();
+            o.buildItems(data);
+            setupItemsLinkId();
+            var ui = new UI()
+            ui.setup();
+        });
+
+    </script>
+
+    <style>
+        body {
+            background-image: url('{{basePath}}img/movie-page-list-wallpapers/{{page.background}}');
+        }
+    </style>
+
+</head>
+
+<body class="movie-page-list prevent-select">
+
+    {{{backgrounds/background-vignette}}}
+
+    {{{page-list/navbar-top}}}
+
+    {{{page/app-region}}}
+
+    {{{panels/navbar-bottom}}}
+
+    <!-- movie list -->
+
+    <div class="movie-list">
+
+        {{{page-list/item-container}}}
+
+    </div>
+
+    <!-- dialogs -->
+
+    {{{page-list/dialogs/movie-list-settings(id=movie-list-settings)}}}
+
+</body>
+
+</html>

@@ -97,5 +97,16 @@ class UI {
         $(Query_Prefix_Class+ Class_Draggable).each((i, e) => {
             activateDrag(e, $(Tag_Body)[0])
         })
+
+        // window zoom for windowed mode
+        $(window).on(Event_Resize, ev => {
+            var $w= $(window)
+            const winWidth = $w.width()
+            const winHeight = $w.height()
+            console.log('window: w=' + winWidth + ', h=' + winHeight)
+            const refWidth = 1920
+            const z = winWidth / refWidth;
+            $('body').css('zoom', z);
+        });
     }
 }

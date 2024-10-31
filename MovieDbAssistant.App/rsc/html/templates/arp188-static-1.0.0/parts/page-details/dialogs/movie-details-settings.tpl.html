@@ -1,0 +1,26 @@
+﻿<!-- {{tpl-name}} -->
+
+{{{ui/dialogs/message-box--}}}
+
+{{--dialogId--}}
+{{id}}
+
+{{--title--}}
+    Options
+
+{{--minWidth--}}
+    14em
+{{--minHeight--}}
+    14em
+
+{{--icon--}}
+{{icon}}
+
+{{--content--}}
+<span class="movie-page-list-title arp188-msgbox-text">ARP 188 is here</span>
+
+{{--buttons--}}
+{{{ui/controls/buttons/dialog-button-closing(
+    id=button_close,label=Close,col=3,color=red,dialogId={{id}},buttonContainerClass=)}}}
+
+{{{--ui/dialogs/message-box}}}

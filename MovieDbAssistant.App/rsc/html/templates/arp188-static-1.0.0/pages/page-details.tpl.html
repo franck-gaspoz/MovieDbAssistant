@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html {{{page/html}}}>
+<head>
+    {{{page/head-metas}}}
+    <meta name="description" content="{{title}} | Movie details | {{app.name}} ({{app.id}}) github {{tpl.props.repoLink}}" />
+    {{{page/head-links}}}
+
+    <title>{{page.title}} : {{title}}</title>
+    {{{page/head-scripts}}}
+
+    <script type="text/javascript">
+
+        const data = {{data}};
+
+        const props = {{props}};
+
+        Object.assign(data, props);
+        window.vda = { data, props };
+
+        $(document).ready(() => {
+            var o = new Template();
+            o.buildDetails(data);
+            addBackImgLoadedHandler('{{page.background}}');
+            var ui = new UI()
+            ui.setup();
+        });
+
+    </script>
+    
+    <style>
+        .image-background-idle {
+            background-image: url('{{page.backgroundIdle}}');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+</head>
+
+<body class="movie-page-detail prevent-select">
+
+    {{{backgrounds/background-container}}}
+
+    {{{backgrounds/background-vignette}}}
+
+    {{{page/app-region}}}
+
+    {{{backgrounds/background-idle}}}
+
+    {{{page-details/navbar-top}}}
+
+    {{{panels/navbar-bottom}}}
+
+    {{{page-details/content-container}}}
+
+    <!-- dialogs -->
+    {{{page-details/dialogs/movie-details-settings(id=movie-details-settings)}}}
+
+</body>
+
+</html>
