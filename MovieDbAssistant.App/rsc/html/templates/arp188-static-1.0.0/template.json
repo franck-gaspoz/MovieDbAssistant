@@ -3,7 +3,7 @@
   "name": "Arp 188 Cine Static",
   "description": "template for static html catalogs with a minimalistic front-end UI",
   "version": "1.0.0",
-  "versionDate": "2024/10/03",
+  "versionDate": "2024/10/30",
   "author": "Gaspard Moyrand",
 
   "theme": {
@@ -40,7 +40,7 @@
   },
 
   "pages": [
-    {
+    { 
       "id": "list",
       "layout": "List",
       "tpl": "page-list.tpl.html",
