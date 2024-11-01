@@ -6,7 +6,6 @@ const Tpl_Var_Postfix = '}}'
 const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
 
-
 // TODO: culture this
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

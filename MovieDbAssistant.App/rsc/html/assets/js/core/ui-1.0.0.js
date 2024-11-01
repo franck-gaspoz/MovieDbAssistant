@@ -93,7 +93,7 @@ class UI {
             })
         })
 
-        // activate draggables (drag.js)
+        // activate draggables (TODO: drag.js)
         $(Query_Prefix_Class+ Class_Draggable).each((i, e) => {
             activateDrag(e, $(Tag_Body)[0])
         })
@@ -103,10 +103,14 @@ class UI {
             var $w= $(window)
             const winWidth = $w.width()
             const winHeight = $w.height()
-            console.log('window: w=' + winWidth + ', h=' + winHeight)
+            //console.log('window: w=' + winWidth + ', h=' + winHeight)
             const refWidth = 1920
             const z = winWidth / refWidth;
-            $('body').css('zoom', z);
+            $(Tag_Body)
+                .css(Attr_Zoom, z);
+            if (z>0)
+                $(Query_Prefix_Class + Class_Page_Container_App_Region)
+                    .css(Attr_Zoom, 1/z)
         });
     }
 }

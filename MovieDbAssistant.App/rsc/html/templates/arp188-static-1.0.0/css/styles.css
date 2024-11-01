@@ -405,15 +405,6 @@ body.movie-page-detail .sources {
     font-size: 24px;
 }
 
-.page-app-region-container {
-    display: block;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    z-index: 16;
-    min-height: 24px;
-}
-
 body.movie-page-detail .movie-page-top-nav-container {
     padding-top: 26px;
 }
