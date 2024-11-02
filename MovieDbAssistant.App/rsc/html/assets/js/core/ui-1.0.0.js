@@ -93,6 +93,9 @@ class UI {
      * pre setup
      */
     preSetup() {
+        // apply zoom scale
+        this.#applyZoomScale()
+
         // add front props
         this.#setupVariables()
     }
@@ -101,10 +104,6 @@ class UI {
      * setup (on document ready)
      */
     setup() {
-
-        // apply zoom scale
-        this.#applyZoomScale()
-
         // activate dialogs 'closer' buttons
         this.#setupClosersButtons()
 
@@ -161,7 +160,7 @@ class UI {
         const winWidth = $w.width()
         const refWidth = 1920
         const z = winWidth / refWidth;
-        $(Tag_Body)
+        $(Tag_Html)
             .css(Attr_Zoom, z);
         if (z > 0)
             $(Query_Prefix_Class + Class_Page_Container_App_Region)

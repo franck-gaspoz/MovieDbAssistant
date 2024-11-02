@@ -15,13 +15,13 @@
 
         // properties
         const props = {{props}}
+        const tpl = new Template()
+        const layout = new UILayout()
+        const ui = new UI()
+        ui.preSetup()
 
         $(document).ready(() => {
-            // bootstrap template engine
-            const tpl = new Template()
-            const layout = new UILayout()
-            const ui = new UI()
-            ui.preSetup()
+            // bootstrap template engine            
             tpl.buildItems(data)
             layout.postSetup()
             layout.setupItemsLinkId()            
