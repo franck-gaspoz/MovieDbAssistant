@@ -80,9 +80,12 @@ class UI {
     }
 
     /**
-     * setup
+     * setup (on document ready)
      */
     setup() {
+
+        // apply zoom scale
+        this.#applyZoomScale()
 
         // activate dialogs 'closer' buttons
         this.#setupClosersButtons()
@@ -121,16 +124,23 @@ class UI {
      */
     #setupZoom() {
         $(window).on(Event_Resize, ev => {
-            var $w = $(window)
-            const winWidth = $w.width()
-            const winHeight = $w.height()
-            const refWidth = 1920
-            const z = winWidth / refWidth;
-            $(Tag_Body)
-                .css(Attr_Zoom, z);
-            if (z > 0)
-                $(Query_Prefix_Class + Class_Page_Container_App_Region)
-                    .css(Attr_Zoom, 1 / z)
+            this.#applyZoomScale()
         });
+    }
+
+    /**
+     * apply zoom scale
+     */
+    #applyZoomScale() {
+        var $w = $(window)
+        const winWidth = $w.width()
+        //const winHeight = $w.height()
+        const refWidth = 1920
+        const z = winWidth / refWidth;
+        $(Tag_Body)
+            .css(Attr_Zoom, z);
+        if (z > 0)
+            $(Query_Prefix_Class + Class_Page_Container_App_Region)
+                .css(Attr_Zoom, 1 / z)
     }
 }
