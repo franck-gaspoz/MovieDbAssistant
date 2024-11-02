@@ -1,4 +1,4 @@
-﻿# /rsc /html /templates /cine-static-1.0.0
+﻿# / rsc / html / templates / cine-static-1.0.0
 
 ___
 

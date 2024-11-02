@@ -85,32 +85,52 @@ class UI {
     setup() {
 
         // activate dialogs 'closer' buttons
-        $(Query_Prefix_Class+Class_Dialog_Button_Closer).each((i, e) => {
+        this.#setupClosersButtons()
+
+        // activate draggables (TODO: drag.js)
+        this.#setupDraggables()
+
+        // setup zoom for windowed mode
+        this.#setupZoom()
+    }
+
+    /**
+     * setup draggables
+     */
+    #setupDraggables() {
+        $(Query_Prefix_Class + Class_Draggable).each((i, e) => {
+            activateDrag(e, $(Tag_Body)[0])
+        })
+    }
+
+    /**
+     * activate closers buttons
+     */
+    #setupClosersButtons() {
+        $(Query_Prefix_Class + Class_Dialog_Button_Closer).each((i, e) => {
             const $e = $(e)
             const id = $e.attr(Data_Dialog_Id)
             $e.on(Event_Click, ev => {
                 closeDialog(e, id)
             })
         })
+    }
 
-        // activate draggables (TODO: drag.js)
-        $(Query_Prefix_Class+ Class_Draggable).each((i, e) => {
-            activateDrag(e, $(Tag_Body)[0])
-        })
-
-        // window zoom for windowed mode
+    /**
+     * activate zoom for windowed mode
+     */
+    #setupZoom() {
         $(window).on(Event_Resize, ev => {
-            var $w= $(window)
+            var $w = $(window)
             const winWidth = $w.width()
             const winHeight = $w.height()
-            //console.log('window: w=' + winWidth + ', h=' + winHeight)
             const refWidth = 1920
             const z = winWidth / refWidth;
             $(Tag_Body)
                 .css(Attr_Zoom, z);
-            if (z>0)
+            if (z > 0)
                 $(Query_Prefix_Class + Class_Page_Container_App_Region)
-                    .css(Attr_Zoom, 1/z)
+                    .css(Attr_Zoom, 1 / z)
         });
     }
 }
