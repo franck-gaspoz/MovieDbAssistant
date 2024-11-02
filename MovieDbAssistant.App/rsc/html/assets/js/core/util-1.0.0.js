@@ -26,8 +26,9 @@ const Event_MouseMove = 'mousemove'
 
 /*#region kernel */
 
-const Var_System = "system";
-const Var_Clock = Var_System + ".now";
+const Var_System = 'sys';
+const Var_Clock = Var_System + '.now';
+const Var_InDesktopMode = Var_System + '.inDesktopMode';
 
 /*#endregion*/
 
@@ -78,6 +79,8 @@ const Query_Equals_Id_Prefix = "[id='"
 
 const Unit_Px = 'px'
 
+const Undefined = 'undefined';
+
 /*#endregion*/
 
 /*#endregion ----- */
@@ -106,6 +109,10 @@ function _layout() {
  */
 function _ui() {
     return window.ui
+}
+
+function inDesktopMode() {
+    return (typeof IN_DESKTOP_ENV) != Undefined;
 }
 
 /*#endregion ----- */

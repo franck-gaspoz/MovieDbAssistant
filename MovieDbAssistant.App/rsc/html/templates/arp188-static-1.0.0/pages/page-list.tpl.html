@@ -18,11 +18,13 @@
 
         $(document).ready(() => {
             // bootstrap template engine
-            const layout = new UILayout()
             const tpl = new Template()
-            tpl.buildItems(data)
-            layout.setupItemsLinkId()
+            const layout = new UILayout()
             const ui = new UI()
+            ui.preSetup()
+            tpl.buildItems(data)
+            layout.postSetup()
+            layout.setupItemsLinkId()            
             ui.setup();
         });
 

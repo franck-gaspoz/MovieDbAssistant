@@ -3,6 +3,7 @@
  * ------------------
  * dependencies:
  *      util-1.0.0
+ *      template-1.0.0
  *      layout-1.0.0
  */
 
@@ -85,6 +86,15 @@ class UI {
 
     constructor() {
         window.ui = this
+        
+    }
+
+    /**
+     * pre setup
+     */
+    preSetup() {
+        // add front props
+        this.#setupVariables()
     }
 
     /**
@@ -103,6 +113,13 @@ class UI {
 
         // setup zoom for windowed mode
         this.#setupZoom()
+    }
+
+    /**
+     * setup variables
+     */
+    #setupVariables() {
+        _tpl().setVar(Var_InDesktopMode,inDesktopMode())
     }
 
     /**
@@ -142,7 +159,6 @@ class UI {
     #applyZoomScale() {
         var $w = $(window)
         const winWidth = $w.width()
-        //const winHeight = $w.height()
         const refWidth = 1920
         const z = winWidth / refWidth;
         $(Tag_Body)

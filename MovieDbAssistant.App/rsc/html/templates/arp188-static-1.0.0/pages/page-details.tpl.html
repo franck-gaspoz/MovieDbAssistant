@@ -20,11 +20,13 @@
 
         $(document).ready(() => {
             // bootstrap template engine
-            const layout = new UILayout()
             const tpl = new Template()
-            tpl.buildDetails(data)
-            layout.addBackImgLoadedHandler('{{page.background}}')
+            const layout = new UILayout()
             const ui = new UI()
+            ui.preSetup()
+            tpl.buildDetails(data)
+            layout.postSetup()
+            layout.addBackImgLoadedHandler('{{page.background}}')
             ui.setup();
         });
 
