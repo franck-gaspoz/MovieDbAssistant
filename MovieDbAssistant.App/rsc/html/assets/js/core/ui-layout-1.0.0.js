@@ -1,4 +1,11 @@
 ﻿/**
+ * UI Layout
+ * ------------------
+ * dependencies:
+ *      util-1.0.0
+ */
+
+/**
  * ui layout
  * @class
 */
@@ -139,88 +146,98 @@ class UILayout {
             })
         })
     }
-}
 
-/**
- * handle background image loaded event
- * @param {any} img
- */
-function handleBackImgLoaded(img) {
-    var $i = $('#Image_Background')
-    var w = img.naturalWidth
-    var h = img.naturalHeight
-    var $c = $('.movie-page-background-container')
-    var wc = $c.width()
-    var hc = $c.height()
-    var maxw = w >= h
-    var aw = w, ah = h
+    /**
+     * handle background image loaded event
+     * @param {any} img
+     */
+    handleBackImgLoaded(img) {
+        var $i = $('#Image_Background')
+        var w = img.naturalWidth
+        var h = img.naturalHeight
+        var $c = $('.movie-page-background-container')
+        var wc = $c.width()
+        var hc = $c.height()
+        var maxw = w >= h
+        var aw = w, ah = h
 
-    var w0 = w
-    var h0 = h
-    while (w > wc && h > hc) {
-        aw = w
-        ah = h
-        w /= 1.2
-        h /= 1.2
+        var w0 = w
+        var h0 = h
+        while (w > wc && h > hc) {
+            aw = w
+            ah = h
+            w /= 1.2
+            h /= 1.2
+        }
+        w = aw
+        h = ah
+        var zoom = w / w0;
+
+        var setwh = false
+        if (w < wc) {
+            var z = wc / w
+            w *= z
+            h *= z
+            setwh = true
+        }
+
+        if (h < hc) {
+            var z = hc / h
+            w *= z
+            h *= z
+            setwh = true
+        }
+
+        var cl = maxw ?
+            'width100p' : 'height100p'
+        var left = w >= wc ?
+            -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
+        var top = h >= hc ?
+            -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
+
+        $i.addClass(cl)
+        $i.css('left', left + 'px')
+        $i.css('top', top + 'px')
+        $i.css('zoom', zoom)
+        if (setwh) {
+            $i.css('width', w + 'px')
+            $i.css('height', h + 'px')
+        }
+
+        $i[0].src = img.src
+        $i.fadeIn(1000)
     }
-    w = aw
-    h = ah
-    var zoom = w / w0;
 
-    var setwh = false
-    if (w < wc) {
-        var z = wc / w
-        w *= z
-        h *= z
-        setwh = true
+    /**
+     * update background image size and position
+     */
+    updateBackImgSizeAndPos()
+    {
+
     }
 
-    if (h < hc) {
-        var z = hc / h
-        w *= z
-        h *= z
-        setwh = true
+    /**
+    * handle the loading of the background image
+    * @param {any} src
+    */
+    addBackImgLoadedHandler(src) {
+        var img = new Image();
+        img.addEventListener(Event_Load, () => layout.handleBackImgLoaded(img), false);
+        img.src = src;
     }
 
-    var cl = maxw ?
-        'width100p' : 'height100p'
-    var left = w >= wc ?
-        -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
-    var top = h >= hc ?
-        -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
-    $i.addClass(cl)
-    $i.css('left', left + 'px')
-    $i.css('top', top + 'px')
-    $i.css('zoom', zoom)
-    if (setwh) {
-        $i.css('width', w + 'px')
-        $i.css('height', h + 'px')
+    /**
+    * setup items links id (movie list)
+    */
+    setupItemsLinkId() {
+        var t = window.location.href.split(HRef_Id_Separator)
+        if (t.length == 2) {
+            var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+            $(Query_Prefix_Class + Class_Movie_List).scrollTop(
+                $it.offset().top
+                - $it.height()
+            )
+        }
     }
 
-    $i[0].src = img.src
-    $i.fadeIn(1000)
-}
-
-/**
- * handle the loading of the background image
- * @param {any} src
- */
-function addBackImgLoadedHandler(src) {
-    var img = new Image();
-    img.addEventListener(Event_Load, () => handleBackImgLoaded(img), false);
-    img.src = src;
-}
-
-/**
- * setup items links id (movie list)
- */
-function setupItemsLinkId() {
-    var t = window.location.href.split(HRef_Id_Separator)
-    if (t.length == 2) {
-        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
-        $(Query_Prefix_Class + Class_Movie_List).scrollTop(
-            $it.offset().top
-            - $it.height()
-        )
-    }
 }

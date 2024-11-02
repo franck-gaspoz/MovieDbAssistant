@@ -10,18 +10,21 @@
 
     <script type="text/javascript">
 
-        const data = {{data}};
+        // page data
+        const data = {{data}}
 
-        const props = {{props}};
+        // properties
+        const props = {{props}}
 
-        Object.assign(data, props);
-        window.vda = { data, props };
+        Object.assign(data, props)
 
         $(document).ready(() => {
-            var o = new Template();
-            o.buildDetails(data);
-            addBackImgLoadedHandler('{{page.background}}');
-            var ui = new UI()
+            // bootstrap template engine
+            const layout = new UILayout()
+            const tpl = new Template()
+            tpl.buildDetails(data)
+            layout.addBackImgLoadedHandler('{{page.background}}')
+            const ui = new UI()
             ui.setup();
         });
 

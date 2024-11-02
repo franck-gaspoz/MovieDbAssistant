@@ -8,17 +8,21 @@
     <title>{{page.title}} | {{page.subTitle}}</title>
 
     {{{page/head-scripts}}}
+    <!-- page data -->
     <script src="{{basePath}}js/data/data.js"></script>
 
     <script type="text/javascript">
 
-        const props = {{props}};
+        // properties
+        const props = {{props}}
 
         $(document).ready(() => {
-            var o = new Template();
-            o.buildItems(data);
-            setupItemsLinkId();
-            var ui = new UI()
+            // bootstrap template engine
+            const layout = new UILayout()
+            const tpl = new Template()
+            tpl.buildItems(data)
+            layout.setupItemsLinkId()
+            const ui = new UI()
             ui.setup();
         });
 

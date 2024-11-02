@@ -1,4 +1,12 @@
 ﻿/**
+ * UI
+ * ------------------
+ * dependencies:
+ *      util-1.0.0
+ *      layout-1.0.0
+ */
+
+/**
  * open a dialog
  * @param {HTMLElement} this caller
  * @param {string} tplEId id of the dialog tpl instance */

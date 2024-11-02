@@ -1,4 +1,12 @@
-﻿const Separator_ClassCondition_ClassResult = '--'
+﻿/**
+ * Template engine
+ * ------------------
+ * dependencies:
+ *      ui-layout-1.0.0
+ *      util-1.0.0
+ */
+
+const Separator_ClassCondition_ClassResult = '--'
 
 const Tpl_Var_Prefix = '{{'
 const Tpl_Var_Postfix = '}}'
@@ -16,14 +24,8 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 */
 class Template {
 
-    /**
-     * @type {UILayout} layout
-     */
-    layout = null
-
     constructor() {
         window.tpl = this
-        this.layout = new UILayout()
     }
 
     /**
@@ -119,14 +121,14 @@ class Template {
         html = this.parseVars(html, data)
         $src.html(html)
         this.setStates(null, data)
-        this.layout.setLinks($src)
+        layout.setLinks($src)
         this.postInitCommon()
     }
 
     postInitCommon() {
-        this.layout.setAlternatePics()
-        this.layout.enableClock()
-        this.layout.enableDate()
+        layout.setAlternatePics()
+        layout.enableClock()
+        layout.enableDate()
     }
 
     /**
@@ -204,7 +206,7 @@ class Template {
                     + data.filename
             })
         this.setStates($e, p)
-        this.layout.setLinks($e)
+        layout.setLinks($e)
 
         $e.show()
     }
