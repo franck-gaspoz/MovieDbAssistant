@@ -20,7 +20,9 @@
 
         <div class="top-nav-container-right">
             {{{ui/controls/icons/nav-icon(name=refresh-arrow.png,alt=icon refresh,class=margin-right-half,onClick=window.location.reload();)}}}
-            {{{ui/controls/icons/nav-icon(name=settings.png,alt=icon settings,class=no-margin-right,onClick=openDialog(this\,'movie-list-settings'))}}}
+            {{{ui/controls/icons/nav-icon(name=settings.png,alt=icon settings,class=,onClick=ui.openDialog(this\,'movie-list-settings'))}}}
+            {{{ui/controls/icons/nav-icon(name=maximize-window.png,alt=icon maximize window,class=no-margin-right,onClick=ui.mawimizeWindow(this))}}}
+            {{{ui/controls/icons/nav-icon(name=close-window.png,alt=icon close window,class=no-margin-right,onClick=ui.closeWindow(this))}}}
         </div>
 
     </div>
