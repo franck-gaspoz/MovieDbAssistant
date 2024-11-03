@@ -29,13 +29,38 @@ class UI {
     isMinimized = false
 
     constructor() {
-        window.ui = this        
+        window.ui = this
 
         if (inDesktopMode()) {
-            this.isWindowed = app.isWindowed
-            this.isMinimized = app.isMinimized
-            this.isMaximized = app.isMaximized
+            const st = window.sessionStorage
+            if (!st.getItem('app')) {
+                this.#storeAppProps(
+                    app.isWindowed,
+                    app.isMinimized,
+                    app.isMaximized)
+            }
+            var pr = this.#getAppProps()
+            this.isWindowed = pr.isWindowed
+            this.isMinimized = pr.isMinimized
+            this.isMaximized = pr.isMaximized
         }
+    }
+
+    #getAppProps() {
+        const st = window.sessionStorage
+        const str = st.getItem('app')
+        const pr = JSON.parse(str)
+        return pr
+    }
+
+    #storeAppProps(isWindowed, isMinimized, isMaximized) {
+        const st = window.sessionStorage
+        const pr = {
+            'isWindowed': isWindowed,
+            'isMinimized': isMinimized,
+            'isMaximized': isMaximized
+        }
+        st.setItem('app', JSON.stringify(pr))
     }
 
     /**
@@ -174,7 +199,7 @@ class UI {
      * setup variables
      */
     #setupVariables() {
-        _tpl().setVar(Var_InDesktopMode,inDesktopMode())
+        _tpl().setVar(Var_InDesktopMode, inDesktopMode())
     }
 
     /**
@@ -285,7 +310,7 @@ class UI {
             case Signal_Window_State_Changed_Restore:
                 this.isMaximized = false
                 this.isMinimized = false
-        } 
+        }
         switch (name) {
             case Signal_Window_State_Changed_Maximize:
                 this.isMaximized = true
@@ -293,7 +318,7 @@ class UI {
         switch (name) {
             case Signal_Window_State_Changed_Minimize:
                 this.isMinimized = true
-        } 
+        }
 
         if (isWindowStateSignal)
             this.#applyWindowStateCssClasses()
