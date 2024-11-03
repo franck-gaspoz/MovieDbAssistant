@@ -271,6 +271,11 @@ class UI {
                     this.isMinimized = false
                     this.isMaximized = false
                 }
+                if (name == Signal_Window_State_Changed_Leave_FullScreen) {
+                    isWindowed = true
+                    this.isMinimized = false
+                    this.isMaximized = false
+                }
                 this.isWindowed = isWindowed
                 break
         }
