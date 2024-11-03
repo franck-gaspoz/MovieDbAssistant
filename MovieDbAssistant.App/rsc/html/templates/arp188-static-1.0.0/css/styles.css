@@ -457,7 +457,7 @@ body.movie-page-list .movie-page-bottom-nav-container {
 .top-nav-container-grid {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: 0.5fr 2fr 0.5fr;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr;
     align-items: center;
     height: 100%;
 }

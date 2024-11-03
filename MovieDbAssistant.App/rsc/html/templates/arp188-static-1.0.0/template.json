@@ -106,6 +106,8 @@
     "/icons/settings.png:/img",
     "/icons/close-window.png:/img",
     "/icons/maximize-window.png:/img",
+    "/icons/minimize-window.png:/img",
+    "/icons/restore-window.png:/img",
     "/icons/refresh-arrow.png:/img",
 
     "/img/image-not-availble-300x175.jpg:/img",

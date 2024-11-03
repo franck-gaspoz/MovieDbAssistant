@@ -126,6 +126,31 @@
     backdrop-filter: blur(5px);
 }
 
+body.window-fullscreen #button_win_maximize,
+body.window-fullscreen #button_win_restore,
+body.window-fullscreen #button_win_minimize
+{
+    display: none;
+}
+
+body.window-maximized #button_win_restore {
+    display: unset !important;
+}
+
+body.window-windowed #button_win_restore
+{
+    display: none;
+}
+
+body.window-windowed #button_win_maximize {
+    display: unset;
+}
+
+body.window-maximized #button_win_maximize {
+    display: none !important;
+}
+
+
 /* #region transversals styles */
 
 .dragging {
