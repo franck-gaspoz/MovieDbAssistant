@@ -140,6 +140,10 @@ body.movie-page-list .movie-list-item:hover {
     padding: 2em;
     padding-top: 0em;
     padding-bottom: 0.25em;
+    padding-right: 2em;
+}
+
+body.movie-page-list .movie-list-item-container {
     padding-right: 0.75em;
 }
 
