@@ -22,6 +22,14 @@ const Event_Click = 'click'
 const Event_MouseUp = 'mouseup'
 const Event_MouseMove = 'mousemove'
 
+const Signal_Window_DidNavigate = 'Signal_Window_DidNavigate'
+const Signal_Window_State_Changed_Enter_FullScreen = 'Signal_Window_State_Changed_Enter_FullScreen'
+const Signal_Window_State_Changed_Leave_FullScreen = 'Signal_Window_State_Changed_Leave_FullScreen'
+const Signal_Window_State_Changed_Minimize = 'Signal_Window_State_Changed_Minimize'
+const Signal_Window_State_Changed_Restore = 'Signal_Window_State_Changed_Restore'
+const Signal_Window_State_Changed_Maximize = 'Signal_Window_State_Changed_Maximize'
+const Signal_Window_State_Changed_Unmaximize = 'Signal_Window_State_Changed_Unmaximize'
+
 /*#endregion*/
 
 /*#region kernel */
@@ -47,6 +55,11 @@ const Attr_Src = 'src'
 const Attr_Id = 'id'
 const Attr_Class = 'class'
 const Attr_Zoom = 'zoom'
+
+const Class_Ui_Windowed = 'ui-windowed'
+const Class_Ui_Fullscreen = 'ui-fullscreen'
+const Class_Ui_Maximized = 'ui-maximized'
+const Class_Ui_Minimized = 'ui-minimized'
 
 const Class_Page_Container_App_Region = 'page-app-region-container'
 const Class_Hidden = 'hidden'
@@ -111,8 +124,23 @@ function _ui() {
     return window.ui
 }
 
+/**
+ * indicates if currently running in electron app
+ * @returns
+ */
 function inDesktopMode() {
     return (typeof IN_DESKTOP_ENV) != Undefined;
+}
+
+/**
+ * handle a signal
+ * @param {string} name signal name
+ * @param {string} dataStr json data
+ */
+function signal(name, dataStr) {
+    var data = JSON.parse(dataStr)
+    console.log("SIGNAL: " + name + " ----- " + dataStr)
+    _ui().signal(name,data)
 }
 
 /*#endregion ----- */

@@ -13,9 +13,29 @@
 */
 class UI {
 
+    /**
+     * @type {bool} window is windowed
+     */
+    isWindowed = false
+
+    /**
+     * @type {bool} window is maximized
+     */
+    isMaximized = false
+
+    /**
+     * @type {bool} window is minimized
+     */
+    isMinimized = false
+
     constructor() {
-        window.ui = this
-        
+        window.ui = this        
+
+        if (inDesktopMode()) {
+            this.isWindowed = app.isWindowed
+            this.isMinimized = app.isMinimized
+            this.isMaximized = app.isMaximized
+        }
     }
 
     /**
@@ -33,6 +53,10 @@ class UI {
      * setup (on document ready)
      */
     setup() {
+
+        // apply window state css classes
+        this.#applyWindowStateCssClasses()
+
         // activate dialogs 'closer' buttons
         this.#setupClosersButtons()
 
@@ -193,11 +217,80 @@ class UI {
         var $w = $(window)
         const winWidth = $w.width()
         const refWidth = 1920
-        const z = winWidth / refWidth;
+        const z = winWidth / refWidth
+
         $(Tag_Html)
             .css(Attr_Zoom, z);
         if (z > 0)
             $(Query_Prefix_Class + Class_Page_Container_App_Region)
                 .css(Attr_Zoom, 1 / z)
+    }
+
+    /**
+     * apply css classes that indicates ui states
+     * @plateform electron
+     */
+    #applyWindowStateCssClasses() {
+        const $body = $(Tag_Body)
+        const isWindowed = this.isWindowed
+        const isFullscreen = !isWindowed
+        const isMaximized = this.isMaximized
+        const isMinimized = this.isMinimized
+
+        if (!isWindowed) $body.removeClass(Class_Ui_Windowed)
+        else $body.addClass(Class_Ui_Windowed)
+        if (!isFullscreen) $body.removeClass(Class_Ui_Fullscreen)
+        else $body.addClass(Class_Ui_Fullscreen)
+        if (!isMaximized) $body.removeClass(Class_Ui_Maximized)
+        else $body.addClass(Class_Ui_Maximized)
+        if (!isMinimized) $body.removeClass(Class_Ui_Minimized)
+        else $body.addClass(Class_Ui_Minimized)
+    }
+
+    /**
+     * handle a signal
+     * @param {string} name signal name
+     * @param {any} data data
+     */
+    signal(name, data) {
+
+        var isWindowStateSignal = false
+
+        switch (name) {
+            case Signal_Window_State_Changed_Enter_FullScreen:
+            case Signal_Window_State_Changed_Leave_FullScreen:
+            case Signal_Window_State_Changed_Maximize:
+            case Signal_Window_State_Changed_Unmaximize:
+            case Signal_Window_State_Changed_Minimize:
+            case Signal_Window_State_Changed_Restore:
+
+                isWindowStateSignal = true
+                var isWindowed = true
+                if (name == Signal_Window_State_Changed_Enter_FullScreen) {
+                    isWindowed = false
+                    this.isMinimized = false
+                    this.isMaximized = false
+                }
+                this.isWindowed = isWindowed
+                break
+        }
+        switch (name) {
+            case Signal_Window_State_Changed_Leave_FullScreen:
+            case Signal_Window_State_Changed_Unmaximize:
+            case Signal_Window_State_Changed_Restore:
+                this.isMaximized = false
+                this.isMinimized = false
+        } 
+        switch (name) {
+            case Signal_Window_State_Changed_Maximize:
+                this.isMaximized = true
+        }
+        switch (name) {
+            case Signal_Window_State_Changed_Minimize:
+                this.isMinimized = true
+        } 
+
+        if (isWindowStateSignal)
+            this.#applyWindowStateCssClasses()
     }
 }
