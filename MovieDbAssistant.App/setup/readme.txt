@@ -41,3 +41,8 @@ Circular Arrows icon by Icons8
 Releases History
 ____________________________________________
 2024/04/11 - 1.0 initial version
+
+_________________________________________________________________________________
+
+https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md
+franck.gaspoz@gmail.com

@@ -703,5 +703,10 @@
     </None>
   </ItemGroup>
 
+	<Target Name="CopyFiles" AfterTargets="Build">
+		<Copy SourceFiles="LICENSE"
+			  DestinationFiles="$(BIN_PATH)\LICENSE">			
+		</Copy>
+	</Target>
 	
 </Project>

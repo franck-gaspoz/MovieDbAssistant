@@ -1,7 +1,4 @@
-﻿; -- AllPagesExample.iss --
-; Same as Example1.iss, but shows all the wizard pages Setup may potentially display
-
-; SEE THE DOCUMENTATION FOR DETAILS ON CREATING .ISS SCRIPT FILES!
+﻿; Inno Setup 6.3.3
 
 [Setup]
 SourceDir=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\bin\Release\net8.0-windows10.0.22621.0\win-x64
@@ -23,21 +20,24 @@ SolidCompression=yes
 OutputDir=userdocs:Movie Db Assistant
 
 DisableWelcomePage=no
-LicenseFile=C:\Users\franc\source\repos\MovieDbAssistant\LICENSE
+LicenseFile=LICENSE
 //#define Password 'password'
 //Password={#Password}
-InfoBeforeFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\pre-readme.txt
+InfoBeforeFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\readme.txt
 UserInfoPage=no
 PrivilegesRequired=lowest
 DisableDirPage=no
 DisableProgramGroupPage=yes
+
+DisableReadyPage=no
+DisableReadyMemo=no
 
 //InfoAfterFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt
 
 [Files]
 Source: "MovieDbAssistant.exe"; DestDir: "{app}"
 //Source: "MyProg.chm"; DestDir: "{app}"
-Source: "C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt"; DestDir: "{app}";
+Source: "C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\readme.txt"; DestDir: "{app}";
  //Flags: isreadme
 
 [Icons]
@@ -46,8 +46,16 @@ Name: "{group}\Movie Db Assistant"; Filename: "{app}\MovieDbAssistant.exe"
 //[Components]
 //Name: "component"; Description: "Component";
 
-//[Tasks]
+[Tasks]
+
 //Name: "task"; Description: "Task";
+//Name: StartAfterInstall; Description: Run application after install
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
+Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}";
+
+[Run]
+Filename: {app}\readme.txt; Description: View the README file; Flags: postinstall shellexec skipifsilent unchecked
+Filename: {app}\MovieDbAssistant.exe; Description: Run Application; Flags: postinstall nowait skipifsilent
 
 [Code]
 var
@@ -57,8 +65,8 @@ var
 
 procedure InitializeWizard;
 var
-  InputQueryWizardPage: TInputQueryWizardPage;
-  InputOptionWizardPage: TInputOptionWizardPage;
+  //InputQueryWizardPage: TInputQueryWizardPage;
+  //InputOptionWizardPage: TInputOptionWizardPage;
   //InputDirWizardPage: TInputDirWizardPage;
   //InputFileWizardPage: TInputFileWizardPage;
   //OutputMsgWizardPage: TOutputMsgWizardPage;
@@ -69,7 +77,7 @@ begin
   //WizardForm.PasswordEdit.Text := '{#Password}';
   //WizardForm.UserInfoNameEdit.Text := 'Username';
 
-  AfterID := wpSelectTasks;
+  //AfterID := wpSelectTasks;
   
   //AfterID := CreateCustomPage(AfterID, 'CreateCustomPage', 'ADescription').ID;
   
@@ -96,12 +104,19 @@ begin
   //OutputMsgMemoWizardPage := CreateOutputMsgMemoPage(AfterID, 'CreateOutputMsgMemoPage', 'ADescription', 'ASubCaption', 'AMsg');
   //AfterID := OutputMsgMemoWizardPage.ID;
 
-  OutputProgressWizardPage := CreateOutputProgressPage('CreateOutputProgressPage', 'Installing files...');
-  OutputMarqueeProgressWizardPage := CreateOutputMarqueeProgressPage('CreateOutputMarqueeProgressPage', 'Updating system...');
-  OutputProgressWizardPagesAfterID := AfterID;
+  //OutputProgressWizardPage := CreateOutputProgressPage('CreateOutputProgressPage', 'Installing files...');
+  //OutputMarqueeProgressWizardPage := CreateOutputMarqueeProgressPage('CreateOutputMarqueeProgressPage', 'Updating system...');
+  //OutputProgressWizardPagesAfterID := AfterID;
 
   { See CodeDownloadFiles.iss for a CreateDownloadPage example }
 end;
+
+//function ShouldSkipPage(PageID: Integer): Boolean;
+//begin
+//  Result := False;
+//  if PageID = 6 then
+//    Result := True;
+//end;
 
 function NextButtonClick(CurPageID: Integer): Boolean;
 var
@@ -133,8 +148,8 @@ begin
   Result := True;
 end;
 
-function PrepareToInstall(var NeedsRestart: Boolean): String;
-begin
-  if SuppressibleMsgBox('Do you want to stop Setup at the Preparing To Install wizard page?', mbConfirmation, MB_YESNO, IDNO) = IDYES then
-    Result := 'Stopped by user';
-end;
+//function PrepareToInstall(var NeedsRestart: Boolean): String;
+//begin
+//  if SuppressibleMsgBox('Do you want to stop Setup at the Preparing To Install wizard page?', mbConfirmation, MB_YESNO, IDNO) = IDYES then
+//    Result := 'Stopped by user';
+//end;

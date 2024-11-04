@@ -6,3 +6,8 @@ ____________________________________________
 
 installed
 2024/04/11 - 1.0 initial version
+
+_________________________________________________________________________________
+
+https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md
+franck.gaspoz@gmail.com
