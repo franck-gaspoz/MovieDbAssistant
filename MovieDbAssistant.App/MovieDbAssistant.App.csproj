@@ -184,6 +184,8 @@
     <None Remove="setup\LICENSE" />
     <None Remove="setup\post-readme.txt" />
     <None Remove="setup\readme.txt" />
+    <None Remove="setup\setup.bmp" />
+    <None Remove="setup\setup.png" />
     <None Remove="temp\README.md" />
     <None Remove="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe" />
     <None Remove="tools\scrap.bat" />
@@ -658,6 +660,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="setup\readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="setup\setup.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="setup\setup.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="temp\README.md">

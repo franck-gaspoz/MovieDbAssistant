@@ -2,23 +2,29 @@
 
 [Setup]
 SourceDir=..\bin\Release\net8.0-windows10.0.22621.0\win-x64
+
 AppName=Movie Db Assistant
 AppVersion=1.0.0
 AppComments=https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/doc/manual.md
 AppContact=franck.gaspoz@gmail.com
+VersionInfoCompany=franck.gaspoz@gmail.com
 AppCopyright=(c) 2024 GPL-V3 Franck Gaspoz
+VersionInfoCopyright=(c) 2024 GPL-V3 Franck Gaspoz
 AppPublisher=Franck Gaspoz Software
+VersionInfoProductVersion=1.0.0
+
 ArchitecturesAllowed=x64compatible
 AllowCancelDuringInstall=no
 
 WizardStyle=modern
+WizardImageFile=setup\setup.bmp
+
 DefaultDirName={autopf}\Movie Db Assistant
 DefaultGroupName=Movie Db Assistant
 UninstallDisplayIcon={app}\MovieDbAssistant.exe
 Compression=lzma2
 SolidCompression=yes
-//OutputDir=userdocs:Movie Db Assistant
-OutputDir=..\..\..\..\release\Movie Db Assistant
+OutputDir=..\..\..\..\release
 OutputBaseFilename=movie-db-assistant.setup.1.0.0
 
 DisableWelcomePage=no
@@ -37,9 +43,9 @@ DisableReadyMemo=no
 //InfoAfterFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt
 
 [Files]
-//Source: "MovieDbAssistant.exe"; DestDir: "{app}"
-//Source: "setup\readme.txt"; DestDir: "{app}";
-Source: *; DestDir: "{app}"; Flags: recursesubdirs
+Source: "MovieDbAssistant.exe"; DestDir: "{app}"
+Source: "setup\readme.txt"; DestDir: "{app}";
+//Source: *; DestDir: "{app}"; Flags: recursesubdirs
 
 [Icons]
 Name: "{group}\Movie Db Assistant"; Filename: "{app}\MovieDbAssistant.exe"
