@@ -17,13 +17,33 @@ namespace MovieDbAssistant;
 /// </summary>
 public class Program
 {
+    public const string LogFolder = "logs";
+    public const string LogFile = "log.txt";
+    public const string PackageFolder = "package";
+    public const int EXIT_OK = 0;
+
+    /// <summary>
+    /// Gets the log path.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public static string LogPath =>
+        Path.Combine(
+            System.AppContext.BaseDirectory!,
+            LogFolder,
+            LogFile);
+
     /// <summary>
     /// main
     /// </summary>
     /// <param name="args">The args.</param>
     [STAThread]
-    public static void Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
+        var basePath = System.AppContext.BaseDirectory;
+        if (basePath.Contains(PackageFolder))
+            basePath = basePath.Replace(PackageFolder, "");
+        Directory.SetCurrentDirectory(basePath);
+
         Type[] fromTypes =
             [typeof(AppLogger),
             typeof(DmnSettings),
@@ -50,6 +70,7 @@ public class Program
             host.Services
                 .GetRequiredService<TrayApplication>());
 
-        host.Run();
+        await host.RunAsync();
+        return EXIT_OK;
     }
 }

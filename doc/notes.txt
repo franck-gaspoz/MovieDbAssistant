@@ -85,6 +85,10 @@ body {
 ----------------------------------------------------
 
 text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #49ff1855, 0 0 6px #49FF1855, 0 0 8px #49FF1855, 0 0 10px #49FF1855, 0 0 20px #49ff1855;
-
 #90ee9050
 
+----------------------------------------------------
+
+Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
+Remove-AppxPackage MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
+add-appxpackage –register AppxManifest.xml

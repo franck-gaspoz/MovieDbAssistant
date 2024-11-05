@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+	  <Version>1.1.0</Version>
+	  <FileVersion>1.1.0</FileVersion>
+	  <InformationalVersion>1.1.0</InformationalVersion>
 	<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 	<TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -25,17 +28,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Events\**" />
+    <EmbeddedResource Remove="Events\**" />
+    <None Remove="Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="appsettings.fr.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
     <None Remove="assets\led-red.ico" />
     <None Remove="assets\multimedia.ico" />
+    <None Remove="assets\multimedia.png" />
     <None Remove="db\README.md" />
     <None Remove="input\-animals.json" />
     <None Remove="input\-gardiens.json" />
     <None Remove="input\-gardiensgxie.json" />
     <None Remove="input\-histoire.json" />
     <None Remove="input\-movie.json" />
+    <None Remove="input\-ok.ru.arp188.txt" />
     <None Remove="input\-ok.ru.txt" />
     <None Remove="input\-output.json" />
     <None Remove="input\-query0.txt" />
@@ -43,10 +54,10 @@
     <None Remove="input\-query2.txt" />
     <None Remove="input\-shmovies.json" />
     <None Remove="input\-zombies.json" />
-    <None Remove="input\ok.ru.arp188.txt" />
-    <None Remove="input\query3.txt" />
+    <None Remove="input\query-example.txt" />
     <None Remove="input\README.md" />
     <None Remove="LICENSE" />
+    <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
     <None Remove="readme.txt" />
     <None Remove="rsc\html\assets\icons\download.gif" />
@@ -182,7 +193,6 @@
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
     <None Remove="setup\LICENSE" />
-    <None Remove="setup\post-readme.txt" />
     <None Remove="setup\readme.txt" />
     <None Remove="setup\setup.bmp" />
     <None Remove="setup\setup.png" />
@@ -197,7 +207,13 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\ok.ru.arp188.txt">
+    <Content Include="logs\log.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="package\assets\multimedia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-ok.ru.arp188.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-ok.ru.txt">
@@ -236,7 +252,7 @@
     <Content Include="input\-query0.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\query3.txt">
+    <Content Include="input\query-example.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-query2.txt">
@@ -656,9 +672,6 @@
     <Content Include="setup\LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="setup\post-readme.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="setup\readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -697,7 +710,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\icons\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\img\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\js\" />

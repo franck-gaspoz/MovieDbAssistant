@@ -1,17 +1,19 @@
 ﻿; Inno Setup 6.3.3
+; https://jrsoftware.org/isdl.php
 
 [Setup]
 SourceDir=..\bin\Release\net8.0-windows10.0.22621.0\win-x64
 
 AppName=Movie Db Assistant
 AppVersion=1.0.0
+VersionInfoVersion=1.0.0
+VersionInfoProductVersion=1.0.0
 AppComments=https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/doc/manual.md
 AppContact=franck.gaspoz@gmail.com
 VersionInfoCompany=franck.gaspoz@gmail.com
 AppCopyright=(c) 2024 GPL-V3 Franck Gaspoz
 VersionInfoCopyright=(c) 2024 GPL-V3 Franck Gaspoz
 AppPublisher=Franck Gaspoz Software
-VersionInfoProductVersion=1.0.0
 
 ArchitecturesAllowed=x64compatible
 AllowCancelDuringInstall=no
@@ -24,23 +26,21 @@ DefaultGroupName=Movie Db Assistant
 UninstallDisplayIcon={app}\MovieDbAssistant.exe
 Compression=lzma2
 SolidCompression=yes
+PrivilegesRequired=lowest
 OutputDir=..\..\..\..\release
 OutputBaseFilename=movie-db-assistant.setup.1.0.0
+LicenseFile=setup\LICENSE
+InfoBeforeFile=setup\readme.txt
 
 DisableWelcomePage=no
-LicenseFile=setup\LICENSE
-//#define Password 'password'
-//Password={#Password}
-InfoBeforeFile=setup\readme.txt
 UserInfoPage=no
-PrivilegesRequired=lowest
 DisableDirPage=no
 DisableProgramGroupPage=yes
-
 DisableReadyPage=no
 DisableReadyMemo=no
 
-//InfoAfterFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt
+//#define Password 'password'
+//Password={#Password}
 
 [Files]
 Source: "MovieDbAssistant.exe"; DestDir: "{app}"
