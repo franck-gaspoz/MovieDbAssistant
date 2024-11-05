@@ -21,22 +21,22 @@ User & Developer manual: [manual.md](doc/manual.md)
 <table width="100%" border="0">
 <tr>
 <td>
-<p align="center">
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-list.png" 
-  width="70%" 
-  align="center" style="margin-left:auto;margin-right:auto" 
-  alt="html movie catalog in browser: movie list">
-<br><br><i>html movie catalog in browser: movie list</i>
-</p>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-list.png" 
+          width="70%" 
+          align="center" style="margin-left:auto;margin-right:auto" 
+          alt="html movie catalog in browser: movie list">
+        <br><br><i>html movie catalog in browser: movie list</i>
+    </p>
 </td>
 <td>
-<p align="center">
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-details.png" 
-  width="70%" 
-  align="center" style="margin-left:auto;margin-right:auto" 
-  alt="html movie catalog in browser: movie details">
-<br><br><i>html movie catalog in browser: movie details</i>
-</p>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-details.png" 
+          width="70%" 
+          align="center" style="margin-left:auto;margin-right:auto" 
+          alt="html movie catalog in browser: movie details">
+        <br><br><i>html movie catalog in browser: movie details</i>
+    </p>
 </td>
 </tr>
 </table>
@@ -57,25 +57,26 @@ User & Developer manual: [manual.md](doc/manual.md)
 This application run as a tray icon
 
 <br>
-<table width="100%" border="0">
+<table width="100%" border="0" align="center">
 <tr>
 <td>
-<p align="center">
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-icon.png" 
-  width="70%" 
-  align="center" style="margin-left:auto;margin-right:auto" 
-  alt="tray icon">
-<br><br><i>tray icon</i>
-</p>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-icon.png" 
+          width="70%" 
+          align="center" style="margin-left:auto;margin-right:auto" 
+          alt="tray icon">
+        <br><br><i>tray icon</i>
+    </p>
 </td>
 <td>
-<p align="center">
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-menu.png" 
-  width="70%" 
-  align="center" style="margin-left:auto;margin-right:auto" 
-  alt="tray menu">
-<br><br><i>tray menu</i>
-</p>
+    <p align="center">
+        <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-menu.png" 
+          width="70%" 
+          align="center" 
+          style="margin-left:auto;margin-right:auto"
+          alt="tray menu">
+        <br><br><i>tray menu</i>
+    </p>
 </td>
 </tr>
 </table>
