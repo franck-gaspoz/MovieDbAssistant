@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{CC60
 	ProjectSection(SolutionItems) = preProject
 		package\appxmanifest.xml = package\appxmanifest.xml
 		package\make.ps1 = package\make.ps1
+		package\priconfig.xml = package\priconfig.xml
+		package\resources.pri = package\resources.pri
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{5596E057-767D-4644-863B-CB0C2F3637E8}"
