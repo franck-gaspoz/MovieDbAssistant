@@ -1,7 +1,7 @@
 ﻿; Inno Setup 6.3.3
 
 [Setup]
-SourceDir=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\bin\Release\net8.0-windows10.0.22621.0\win-x64
+SourceDir=..\bin\Release\net8.0-windows10.0.22621.0\win-x64
 AppName=Movie Db Assistant
 AppVersion=1.0.0
 AppComments=https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/doc/manual.md
@@ -20,10 +20,10 @@ SolidCompression=yes
 OutputDir=userdocs:Movie Db Assistant
 
 DisableWelcomePage=no
-LicenseFile=LICENSE
+LicenseFile=setup\LICENSE
 //#define Password 'password'
 //Password={#Password}
-InfoBeforeFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\readme.txt
+InfoBeforeFile=setup\readme.txt
 UserInfoPage=no
 PrivilegesRequired=lowest
 DisableDirPage=no
@@ -37,7 +37,7 @@ DisableReadyMemo=no
 [Files]
 Source: "MovieDbAssistant.exe"; DestDir: "{app}"
 //Source: "MyProg.chm"; DestDir: "{app}"
-Source: "C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\readme.txt"; DestDir: "{app}";
+Source: "setup\readme.txt"; DestDir: "{app}";
  //Flags: isreadme
 
 [Icons]
