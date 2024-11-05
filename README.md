@@ -45,10 +45,12 @@ User & Developer manual: [manual.md](doc/manual.md)
 
 👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Db Setup)*
 
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/feature/setup/assets/setup-iss.png" 
-  width="70%" 
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/setup-iss.png" 
+  width="35%" 
   align="center" style="margin-left:auto;margin-right:auto" 
-  alt="html movie catalog in browser: movie list">
+  alt="Inno Setup">
+</p>
 
 ## Build
 
