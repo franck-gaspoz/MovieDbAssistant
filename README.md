@@ -45,10 +45,14 @@ User & Developer manual: [manual.md](doc/manual.md)
 
 👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Db Setup)*
 
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/feature/setup/assets/setup-iss.png" 
+  width="70%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="html movie catalog in browser: movie list">
 
 ## Build
 
-ℹ️ optional steps if you wish to build the app from source
+ optional steps if you wish to build the app from source
 
 ### System Tray application for Windows™ 10.0.22621.0 and above 
 

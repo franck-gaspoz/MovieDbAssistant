@@ -4,7 +4,7 @@
 [Setup]
 SourceDir=..\bin\Release\net8.0-windows10.0.22621.0\win-x64
 
-AppName=Movie Db Assistant - 1.0.0
+AppName=Movie Db Assistant
 AppVersion=1.0.0
 VersionInfoVersion=1.0.0
 VersionInfoProductVersion=1.0.0
