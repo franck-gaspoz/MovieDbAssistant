@@ -41,8 +41,6 @@ User & Developer manual: [manual.md](doc/manual.md)
 </tr>
 </table>
 
-___
-
 ## Install
 
 👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Db Setup)*
@@ -50,9 +48,13 @@ ___
 
 ## Build
 
+ℹ️ optional steps if you wish to build the app from source
+
 ### System Tray application for Windows™ 10.0.22621.0 and above 
 
 Available on `Windows 10.0.22621.0` and more. This application run as a tray icon.
+
+The project has currently no GUI for OSX and Linux systems, even if the app core is multi plateform.
 
 #### Build & Run from source
 
@@ -118,8 +120,7 @@ ___
 
 ## Releases History
 
-2024/../10 - 1.0
-initial version
+2024/04/11 - 1.0.0 - initial version
 
 functionalities:
 
@@ -131,4 +132,5 @@ functionalities:
     - html catalog templates
     - html catalog resources : backgrounds, fonts, css, js template engine
 - Windows setup for System Tray GUI
-
+    - Inno Setup
+    - Windows™.msix/.appx
