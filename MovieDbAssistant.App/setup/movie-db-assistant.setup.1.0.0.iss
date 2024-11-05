@@ -17,7 +17,8 @@ DefaultGroupName=Movie Db Assistant
 UninstallDisplayIcon={app}\MovieDbAssistant.exe
 Compression=lzma2
 SolidCompression=yes
-OutputDir=userdocs:Movie Db Assistant
+//OutputDir=userdocs:Movie Db Assistant
+OutputDir=..\..\..\..\release\Movie Db Assistant
 OutputBaseFilename=movie-db-assistant.setup.1.0.0
 
 DisableWelcomePage=no
