@@ -45,7 +45,7 @@ DisableReadyMemo=no
 [Files]
 Source: "MovieDbAssistant.exe"; DestDir: "{app}"
 Source: "setup\readme.txt"; DestDir: "{app}";
-//Source: *; DestDir: "{app}"; Flags: recursesubdirs
+Source: *; DestDir: "{app}"; Flags: recursesubdirs
 
 [Icons]
 Name: "{group}\Movie Db Assistant"; Filename: "{app}\MovieDbAssistant.exe"
