@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+	  <Version>1.1.0</Version>
+	  <FileVersion>1.1.0</FileVersion>
+	  <InformationalVersion>1.1.0</InformationalVersion>
 	<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 	<TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -182,7 +185,6 @@
     <None Remove="rsc\html\README.md" />
     <None Remove="rsc\README.md" />
     <None Remove="setup\LICENSE" />
-    <None Remove="setup\post-readme.txt" />
     <None Remove="setup\readme.txt" />
     <None Remove="setup\setup.bmp" />
     <None Remove="setup\setup.png" />
@@ -654,9 +656,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="setup\LICENSE">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="setup\post-readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="setup\readme.txt">
