@@ -17,6 +17,20 @@ namespace MovieDbAssistant;
 /// </summary>
 public class Program
 {
+    public const string LogFolder = "logs";
+    public const string LogFile = "log.txt";
+    public const string PackageFolder = "package";
+
+    /// <summary>
+    /// Gets the log path.
+    /// </summary>
+    /// <value>A <see cref="string"/></value>
+    public static string LogPath =>
+        Path.Combine(
+            System.AppContext.BaseDirectory!,
+            LogFolder,
+            LogFile);
+
     /// <summary>
     /// main
     /// </summary>
@@ -24,6 +38,11 @@ public class Program
     [STAThread]
     public static void Main(string[] args)
     {
+        var basePath = System.AppContext.BaseDirectory;
+        if (basePath.Contains(PackageFolder))
+            basePath = basePath.Replace(PackageFolder, "");
+        Directory.SetCurrentDirectory(basePath);
+
         Type[] fromTypes =
             [typeof(AppLogger),
             typeof(DmnSettings),
