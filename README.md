@@ -52,13 +52,41 @@ User & Developer manual: [manual.md](doc/manual.md)
   alt="Inno Setup">
 </p>
 
+## Run
+
+This application run as a tray icon
+
+<br>
+<table width="100%" border="0">
+<tr>
+<td>
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-icon.png" 
+  width="70%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="tray icon">
+<br><br><i>tray icon</i>
+</p>
+</td>
+<td>
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/tray-menu.png" 
+  width="70%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="tray menu">
+<br><br><i>tray menu</i>
+</p>
+</td>
+</tr>
+</table>
+
 ## Build
 
  optional steps if you wish to build the app from source
 
 ### System Tray application for Windows™ 10.0.22621.0 and above 
 
-Available on `Windows 10.0.22621.0` and more. This application run as a tray icon.
+Available on `Windows 10.0.22621.0` and more
 
 The project has currently no GUI for OSX and Linux systems, even if the app core is multi plateform.
 
