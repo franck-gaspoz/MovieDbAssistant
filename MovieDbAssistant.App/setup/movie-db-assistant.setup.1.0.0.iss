@@ -18,6 +18,7 @@ UninstallDisplayIcon={app}\MovieDbAssistant.exe
 Compression=lzma2
 SolidCompression=yes
 OutputDir=userdocs:Movie Db Assistant
+OutputBaseFilename=movie-db-assistant.setup.1.0.0
 
 DisableWelcomePage=no
 LicenseFile=setup\LICENSE
@@ -35,10 +36,9 @@ DisableReadyMemo=no
 //InfoAfterFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt
 
 [Files]
-Source: "MovieDbAssistant.exe"; DestDir: "{app}"
-//Source: "MyProg.chm"; DestDir: "{app}"
-Source: "setup\readme.txt"; DestDir: "{app}";
- //Flags: isreadme
+//Source: "MovieDbAssistant.exe"; DestDir: "{app}"
+//Source: "setup\readme.txt"; DestDir: "{app}";
+Source: *; DestDir: "{app}"; Flags: recursesubdirs
 
 [Icons]
 Name: "{group}\Movie Db Assistant"; Filename: "{app}\MovieDbAssistant.exe"
