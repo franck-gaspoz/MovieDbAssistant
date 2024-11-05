@@ -1,4 +1,5 @@
 ﻿; Inno Setup 6.3.3
+; https://jrsoftware.org/isdl.php
 
 [Setup]
 SourceDir=..\bin\Release\net8.0-windows10.0.22621.0\win-x64
@@ -39,8 +40,6 @@ DisableProgramGroupPage=yes
 
 DisableReadyPage=no
 DisableReadyMemo=no
-
-//InfoAfterFile=C:\Users\franc\source\repos\MovieDbAssistant\MovieDbAssistant.App\setup\post-readme.txt
 
 [Files]
 Source: "MovieDbAssistant.exe"; DestDir: "{app}"
