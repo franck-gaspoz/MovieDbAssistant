@@ -41,9 +41,7 @@ public sealed partial class MovieModel
         PicFullUrl = PicFullUrl,
         PicsSizes = PicsSizes.Clone()!,
         OriginalTitle = OriginalTitle,
-        QueryTitle = QueryTitle,
         OriginalYear = OriginalYear,
-        QueryYear = QueryYear,
 
         // db
 

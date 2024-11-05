@@ -29,7 +29,7 @@ public sealed partial class MovieModel
     /// movie sources
     /// </summary>
     public MovieSources Sources { get; set; } = new();
-
+    
     /// <summary>
     /// provider movie id
     /// </summary>
@@ -41,11 +41,6 @@ public sealed partial class MovieModel
     /// scraped title by opposite to queried title
     /// </summary>
     public string? OriginalTitle { get; set; }
-
-    /// <summary>
-    /// queried title by opposite to scraped title in case of built for a query (filter Title)
-    /// </summary>
-    public string? QueryTitle { get; set; }
 
     public string? Summary { get; set; }
 
@@ -68,11 +63,6 @@ public sealed partial class MovieModel
     /// scraped year
     /// </summary>
     public string? OriginalYear { get; set; }
-
-    /// <summary>
-    /// year from query
-    /// </summary>
-    public string? QueryYear { get; set; }
 
     public string? Vote { get; set; }
 

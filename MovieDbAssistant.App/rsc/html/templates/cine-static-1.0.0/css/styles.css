@@ -75,14 +75,6 @@ td {
     position: relative;
 }
 
-.width100p {
-    width: 100%;
-}
-
-.height100P {
-    height: 100%;
-}
-
 .movie-list {
     overflow-y: auto;
     max-height: Calc(100% - 5.5em);
@@ -191,6 +183,7 @@ body.movie-page-list .alternate-pic-list-enabled {
 
 body.movie-page-list td:has(> .alternate-pic-list-enabled) {
     vertical-align: middle;
+    display: table-cell;
 }
 
 body.movie-page-detail .alternate-pic-list-enabled {
@@ -199,9 +192,18 @@ body.movie-page-detail .alternate-pic-list-enabled {
     padding-right: 2em;
 }
 
-body.movie-page-detail td:has(> .alternate-pic-list-enabled) {
+body.movie-page-detail div:has(> .alternate-pic-list-enabled) {
     vertical-align: middle;
     text-align: center;
+}
+
+body.movie-page-list td:has(> .alternate-pic-list-enabled) {
+    vertical-align: middle;
+    text-align: center;
+}
+
+body.movie-page-detail div.g-movie-list-item:has(.alternate-pic-list-enabled) {
+    align-items:center;
 }
 
 body.movie-page-detail .summary {
@@ -214,13 +216,13 @@ body.movie-page-detail .summary {
     font-family: 'quesha';
 }
 
-.query-title {
+.metadata-label {
     display: block;
     margin-bottom: 0.5em;
-    color: #cdcded;
+    color: #00BCD4;
 }
 
-.query-title-value {
+.query-title-value, .query-year-value {
     font-family: comicn;
     font-size: 1.5em;
     vertical-align: baseline;
@@ -245,6 +247,12 @@ body.movie-page-detail .movie-pic-container img {
 
 body.movie-page-detail .movie-pic-container {
     width: unset;
+}
+
+body.movie-page-list .movie-pic-container {
+    max-height: 281px;
+    overflow: hidden;
+    display: inline-block;
 }
 
 body.movie-page-detail .movie-page-detail-content-container {
@@ -279,7 +287,11 @@ body.movie-page-detail .title {
     font-family: 'quesha';
     font-size: 1.9em;
     font-weight: bold;
-    color: #E0E0F0;
+    color: #F0F0F0;
+}
+
+.summary {
+    color: #F0F0F0 !important;
 }
 
 .text {
@@ -391,6 +403,15 @@ body.movie-page-detail .sources {
     padding-top: 24px;
     text-align: center;
     font-size: 24px;
+}
+
+.page-app-region-container {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 16;
+    min-height: 24px;
 }
 
 body.movie-page-detail .movie-page-top-nav-container {
@@ -589,6 +610,18 @@ table.g-movie-detail-grid2-row-1 {
 
 /* #region structure styles */
 
+.width100p {
+    width: 100%;
+}
+
+.height100P {
+    height: 100%;
+}
+
+.vtop {
+    vertical-align: top;
+}
+
 .prevent-select {
     -moz-user-select: -moz-none;
     -webkit-user-select: none;
@@ -614,6 +647,10 @@ table.g-movie-detail-grid2-row-1 {
 
 .grid {
     display: grid;
+}
+
+.inline-block {
+    display: inline-block;
 }
 
 .cell1_1 {

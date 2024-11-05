@@ -15,18 +15,28 @@ const Type_Name_Array = 'Array'
 
 const Path_Current = './'
 
+const Event_Resize = 'resize'
 const Event_Load = 'load'
 const Event_Error = 'error'
 const Event_Click = 'click'
 const Event_MouseUp = 'mouseup'
 const Event_MouseMove = 'mousemove'
 
+const Signal_Window_DidNavigate = 'Signal_Window_DidNavigate'
+const Signal_Window_State_Changed_Enter_FullScreen = 'Signal_Window_State_Changed_Enter_FullScreen'
+const Signal_Window_State_Changed_Leave_FullScreen = 'Signal_Window_State_Changed_Leave_FullScreen'
+const Signal_Window_State_Changed_Minimize = 'Signal_Window_State_Changed_Minimize'
+const Signal_Window_State_Changed_Restore = 'Signal_Window_State_Changed_Restore'
+const Signal_Window_State_Changed_Maximize = 'Signal_Window_State_Changed_Maximize'
+const Signal_Window_State_Changed_Unmaximize = 'Signal_Window_State_Changed_Unmaximize'
+
 /*#endregion*/
 
 /*#region kernel */
 
-const Var_System = "system";
-const Var_Clock = Var_System + ".now";
+const Var_System = 'sys';
+const Var_Clock = Var_System + '.now';
+const Var_InDesktopMode = Var_System + '.inDesktopMode';
 
 /*#endregion*/
 
@@ -44,7 +54,14 @@ const Data_Dialog_Id = 'data-dialog-id'
 const Attr_Src = 'src'
 const Attr_Id = 'id'
 const Attr_Class = 'class'
+const Attr_Zoom = 'zoom'
 
+const Class_Ui_Windowed = 'window-windowed'
+const Class_Ui_Fullscreen = 'window-fullscreen'
+const Class_Ui_Maximized = 'window-maximized'
+const Class_Ui_Minimized = 'window-minimized'
+
+const Class_Page_Container_App_Region = 'page-app-region-container'
 const Class_Hidden = 'hidden'
 const Class_Clock_With = 'with-clock'
 const Class_Date_With = 'with-date'
@@ -75,6 +92,8 @@ const Query_Equals_Id_Prefix = "[id='"
 
 const Unit_Px = 'px'
 
+const Undefined = 'undefined';
+
 /*#endregion*/
 
 /*#endregion ----- */
@@ -103,6 +122,25 @@ function _layout() {
  */
 function _ui() {
     return window.ui
+}
+
+/**
+ * indicates if currently running in electron app
+ * @returns
+ */
+function inDesktopMode() {
+    return (typeof IN_DESKTOP_ENV) != Undefined;
+}
+
+/**
+ * handle a signal
+ * @param {string} name signal name
+ * @param {string} dataStr json data
+ */
+function signal(name, dataStr) {
+    var data = JSON.parse(dataStr)
+    console.log("SIGNAL: " + name + " ----- " + dataStr)
+    _ui().signal(name,data)
 }
 
 /*#endregion ----- */

@@ -1,0 +1,17 @@
+﻿/* #region electron */
+
+.page-app-region-container {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: 16;
+    min-height: 22px;
+    zoom: 1;
+}
+
+.page-app-region-container {
+    -webkit-app-region: drag;
+}
+
+/* #endregion */

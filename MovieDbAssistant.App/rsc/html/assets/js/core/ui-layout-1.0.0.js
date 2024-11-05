@@ -1,4 +1,12 @@
 ﻿/**
+ * UI Layout
+ * ------------------
+ * dependencies:
+ *      template-1.0.0
+ *      util-1.0.0
+ */
+
+/**
  * ui layout
  * @class
 */
@@ -6,6 +14,15 @@ class UILayout {
 
     constructor() {
         window.layout = this
+    }
+
+    /**
+     * post setup : after tpl built
+     */
+    postSetup() {
+        this.#setAlternatePics()
+        this.#enableClock()
+        this.#enableDate()
     }
 
     /**
@@ -22,15 +39,15 @@ class UILayout {
     /**
      * enable date update
      */
-    enableDate() {
-        this.dateUpdate()
-        setTimeout(() => this.enableDate(), 1000 * 30)
+    #enableDate() {
+        this.#dateUpdate()
+        setTimeout(() => this.#enableDate(), 1000 * 30)
     }
 
     /**
      * update the date
      */
-    dateUpdate() {
+    #dateUpdate() {
         const now = new Date()
         const day = now.getDay();
         const date = now.getDate();
@@ -47,15 +64,15 @@ class UILayout {
     /**
      * enable clock update
      */
-    enableClock() {
-        this.clockUpdate()
-        setTimeout(() => this.enableClock(), 1000 * 30)
+    #enableClock() {
+        this.#clockUpdate()
+        setTimeout(() => this.#enableClock(), 1000 * 30)
     }
 
     /**
      * clock update
      */
-    clockUpdate() {
+    #clockUpdate() {
         this.clockUpdating = true
         const now = new Date()
         const hours = now.getHours().toString().padStart(2, '0');
@@ -74,7 +91,7 @@ class UILayout {
     /**
      * set alternate pics values
      */
-    setAlternatePics() {
+    #setAlternatePics() {
         var $pics = $(
             Query_Prefix_Class + Class_Movie_Page_List
             + Space
@@ -82,7 +99,7 @@ class UILayout {
 
         var altUrl = props.tpl.props.listMoviePicNotAvailable;
         var altnfUrl = props.tpl.props.listMoviePicNotFound;
-        this.setupAlternatePic($pics, altUrl, altnfUrl)
+        this.#setupAlternatePic($pics, altUrl, altnfUrl)
 
         $pics = $(
             Query_Prefix_Class + Class_Movie_Page_Detail
@@ -91,7 +108,7 @@ class UILayout {
 
         altUrl = props.tpl.props.detailMoviePicNotAvailable;
         altnfUrl = props.tpl.props.detailMoviePicNotFound;
-        this.setupAlternatePic($pics, altUrl, altnfUrl)
+        this.#setupAlternatePic($pics, altUrl, altnfUrl)
     }
 
     /**
@@ -100,7 +117,7 @@ class UILayout {
      * @param {any} altUrl alternate url
      * @param {any} altnfUrl alternate url if src null or white spaces
      */
-    setupAlternatePic($set, altUrl, altnfUrl) {
+    #setupAlternatePic($set, altUrl, altnfUrl) {
         $set.each((i, e) => {
             var $e = $(e)
             $e.on(Event_Error, () => {
@@ -130,99 +147,109 @@ class UILayout {
             var href = $e.attr(Data_HRef)
             var target = $e.attr(Data_Target)
             $e.on(Event_Click, e => {
-                if (this.enableAvoidNextItemClick) {
-                    this.avoidNextItemClick = true;
-                }
                 if (!target)
                     window.location = href;
                 else {
                     window.open(href, target)
                 }
+                e.stopPropagation()
             })
         })
     }
-}
 
-/**
- * handle background image loaded event
- * @param {any} img
- */
-function handleBackImgLoaded(img) {
-    var $i = $('#Image_Background')
-    var w = img.naturalWidth
-    var h = img.naturalHeight
-    var $c = $('.movie-page-background-container')
-    var wc = $c.width()
-    var hc = $c.height()
-    var maxw = w >= h
-    var aw = w, ah = h
+    /**
+     * handle background image loaded event
+     * @param {any} img
+     */
+    #handleBackImgLoaded(img) {
+        var $i = $('#Image_Background')
+        var w = img.naturalWidth
+        var h = img.naturalHeight
+        var $c = $('.movie-page-background-container')
+        var wc = $c.width()
+        var hc = $c.height()
+        var maxw = w >= h
+        var aw = w, ah = h
 
-    var w0 = w
-    var h0 = h
-    while (w > wc && h > hc) {
-        aw = w
-        ah = h
-        w /= 1.2
-        h /= 1.2
+        var w0 = w
+        var h0 = h
+        while (w > wc && h > hc) {
+            aw = w
+            ah = h
+            w /= 1.2
+            h /= 1.2
+        }
+        w = aw
+        h = ah
+        var zoom = w / w0;
+
+        var setwh = false
+        if (w < wc) {
+            var z = wc / w
+            w *= z
+            h *= z
+            setwh = true
+        }
+
+        if (h < hc) {
+            var z = hc / h
+            w *= z
+            h *= z
+            setwh = true
+        }
+
+        var cl = maxw ?
+            'width100p' : 'height100p'
+        var left = w >= wc ?
+            -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
+        var top = h >= hc ?
+            -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
+
+        $i.addClass(cl)
+        $i.css('left', left + 'px')
+        $i.css('top', top + 'px')
+        $i.css('zoom', zoom)
+        if (setwh) {
+            $i.css('width', w + 'px')
+            $i.css('height', h + 'px')
+        }
+
+        $i[0].src = img.src
+        $i.fadeIn(1000)
     }
-    w = aw
-    h = ah
-    var zoom = w / w0;
 
-    var setwh = false
-    if (w < wc) {
-        var z = wc / w
-        w *= z
-        h *= z
-        setwh = true
+    /**
+     * update background image size and position
+     */
+    #updateBackImgSizeAndPos()
+    {
+
     }
 
-    if (h < hc) {
-        var z = hc / h
-        w *= z
-        h *= z
-        setwh = true
+    /**
+    * handle the loading of the background image
+    * @param {any} src
+    */
+    addBackImgLoadedHandler(src) {
+        var img = new Image();
+        img.addEventListener(
+            Event_Load,
+            () => this.#handleBackImgLoaded(img), false);
+        img.src = src;
     }
 
-    var cl = maxw ?
-        'width100p' : 'height100p'
-    var left = w >= wc ?
-        -(maxw ? w0 : w - wc) / 2 : (wc - w0) / 2
-    var top = h >= hc ?
-        -(!maxw ? h0 : h - hc) / 2 : (hc - h0) / 2
-    $i.addClass(cl)
-    $i.css('left', left + 'px')
-    $i.css('top', top + 'px')
-    $i.css('zoom', zoom)
-    if (setwh) {
-        $i.css('width', w + 'px')
-        $i.css('height', h + 'px')
+    /**
+    * setup items links id (movie list)
+    */
+    setupItemsLinkId() {
+        var t = window.location.href.split(HRef_Id_Separator)
+        if (t.length == 2) {
+            var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+            $(Query_Prefix_Class + Class_Movie_List).scrollTop(
+                $it.offset().top
+                - $it.height()
+            )
+        }
     }
 
-    $i[0].src = img.src
-    $i.fadeIn(1000)
-}
-
-/**
- * handle the loading of the background image
- * @param {any} src
- */
-function addBackImgLoadedHandler(src) {
-    var img = new Image();
-    img.addEventListener(Event_Load, () => handleBackImgLoaded(img), false);
-    img.src = src;
-}
-
-/**
- * setup items links id (movie list)
- */
-function setupItemsLinkId() {
-    var t = window.location.href.split(HRef_Id_Separator)
-    if (t.length == 2) {
-        var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
-        $(Query_Prefix_Class + Class_Movie_List).scrollTop(
-            $it.offset().top
-            - $it.height()
-        )
-    }
 }

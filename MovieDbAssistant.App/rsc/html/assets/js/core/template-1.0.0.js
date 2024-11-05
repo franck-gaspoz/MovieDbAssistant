@@ -1,4 +1,14 @@
-﻿const Separator_ClassCondition_ClassResult = '--'
+﻿/**
+ * Template engine
+ * ------------------
+ * dependencies:
+ *      ui-layout-1.0.0
+ *      util-1.0.0
+ */
+
+/*#region */
+
+const Separator_ClassCondition_ClassResult = '--'
 
 const Tpl_Var_Prefix = '{{'
 const Tpl_Var_Postfix = '}}'
@@ -6,10 +16,11 @@ const Tpl_Var_Postfix = '}}'
 const Class_Prefx_If = 'if-'
 const Class_Prefx_If_No = 'if_no-'
 
-
-// TODO: culture this
+// TODO: culture/refacto this
 const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+/*#endregion */
 
 /**
  * front template engine
@@ -17,22 +28,9 @@ const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'Jul
 */
 class Template {
 
-    /**
-     * @type {UILayout} layout
-     */
-    layout = null
-
-    constructor(enableAvoidNextItemClick) {
+    constructor() {
         window.tpl = this
-        this.enableAvoidNextItemClick = enableAvoidNextItemClick
-        this.layout = new UILayout()
     }
-
-    /** @type {boolean} avoid next item click in case overlapped click */
-    avoidNextItemClick = false
-
-    /** @type {boolean} enabed/disable feature 'avoid next item click' to prevent possible overlapped clicks */
-    enableAvoidNextItemClick = false
 
     /**
      * @typedef MoviesModel movies model
@@ -68,6 +66,9 @@ class Template {
      * @property {string[]} picsSizes pics sizes 
      */
 
+    /**
+     * properties transforms functions
+     */
     transforms = {
         "interests": (o, value) => o.hseps(value),
         "stars": (o, value) => o.hseps(value),
@@ -113,8 +114,7 @@ class Template {
         data.movies.forEach((e, i) => {
             this.addItem(e)
         })
-        this.removeItemModel()
-        this.postInitCommon()
+        this.#removeItemModel()
     }
 
     /**
@@ -126,15 +126,11 @@ class Template {
         var html = $src[0].outerHTML
         html = this.parseVars(html, data)
         $src.html(html)
-        this.setStates(null, data)
-        this.layout.setLinks($src)
-        this.postInitCommon()
-    }
-
-    postInitCommon() {
-        this.layout.setAlternatePics()
-        this.layout.enableClock()
-        this.layout.enableDate()
+        var p = {}
+        Object.assign(p, data)
+        Object.assign(p, props)
+        this.setStates(null, p)
+        _layout().setLinks($src)
     }
 
     /**
@@ -205,10 +201,6 @@ class Template {
         $container.append($e)
         $e.find(Query_Prefix_Class + Class_Movie_List_Item)
             .on(Event_Click, () => {
-                if (this.avoidNextItemClick) {
-                    this.avoidNextItemClick = false
-                    return
-                }
                 window.location =
                     Path_Current
                     + props.output.pages
@@ -216,16 +208,25 @@ class Template {
                     + data.filename
             })
         this.setStates($e, p)
-        this.layout.setLinks($e)
+        _layout().setLinks($e)
 
         $e.show()
     }
 
-    removeItemModel() {
+    /**
+     * remove item model from dom source
+     */
+    #removeItemModel() {
         const $it = $(Query_Prefix_Id + Id_Item_Model)
         $it.remove()
     }
 
+    /**
+     * set dynamic states
+     * @param {any} $from from element
+     * @param {any} data with data
+     * @param {any} prefix data prefix if any
+     */
     setStates($from, data, prefix) {
 
         var cl = x => '.' + x
@@ -233,7 +234,7 @@ class Template {
         for (var p in data) {
 
             var val = data[p]
-            var varnp = this.getVarname(p)
+            var varnp = this.#getVarname(p)
 
             if (typeof val == Type_Name_Object
                 && val && val.constructor.name != Type_Name_Array
@@ -253,14 +254,14 @@ class Template {
                 if (!val || val == Text_Empty) {
 
                     // if- : show if not null and no empty
-                    var cn = cl(Class_Prefx_If) + this.getVarnameForClass(p)
+                    var cn = cl(Class_Prefx_If) + this.#getVarnameForClass(p)
                     $(cn, $from)
                         .each((i, e) => {
                             $(e).addClass(Class_Hidden)
                         });
 
                     // if_no- : show if null or emptpy
-                    cn = cl(Class_Prefx_If_No) + this.getVarnameForClass(p)
+                    cn = cl(Class_Prefx_If_No) + this.#getVarnameForClass(p)
                     $(cn, $from)
                         .each((i, e) => {
                             var $e = $(e)
@@ -276,7 +277,7 @@ class Template {
                         });
 
                     // if_no-prop--cn : enable class cn if null or empty
-                    cn = Class_Prefx_If_No + this.getVarnameForClass(p)
+                    cn = Class_Prefx_If_No + this.#getVarnameForClass(p)
                         + Separator_ClassCondition_ClassResult
                     var cns = Query_Contains_Class_Prefix + cn + Query_Selector_Postfix;
                     $(cns, $from)
@@ -297,7 +298,7 @@ class Template {
                 if (val && val != Text_Empty) {
 
                     // if_no- : hide coz if null or emptpy
-                    cn = cl(Class_Prefx_If_No) + this.getVarnameForClass(p)
+                    cn = cl(Class_Prefx_If_No) + this.#getVarnameForClass(p)
                     $(cn, $from)
                         .each((i, e) => {
                             var $e = $(e)
@@ -327,7 +328,7 @@ class Template {
         for (var p in data) {
 
             var val = data[p]
-            var varnp = this.getVarname(p)
+            var varnp = this.#getVarname(p)
 
             if (typeof val == Type_Name_Object
                 && val && val.constructor.name != Type_Name_Array
@@ -345,7 +346,7 @@ class Template {
                 if (prefix)
                     varnp = prefix + Dot + varnp
 
-                const srcVarName = this.getVarTag(varnp)
+                const srcVarName = this.#getVarTag(varnp)
                 tpl = tpl.replaceAll(
                     srcVarName,
                     this.transforms[p] ?
@@ -361,15 +362,15 @@ class Template {
         return tpl
     }
 
-    getVarTag(name) {
-        return Tpl_Var_Prefix + this.getVarname(name) + Tpl_Var_Postfix;
+    #getVarTag(name) {
+        return Tpl_Var_Prefix + this.#getVarname(name) + Tpl_Var_Postfix;
     }
 
-    getVarname(name) {
+    #getVarname(name) {
         return firstLower(name);
     }
 
-    getVarnameForClass(name) {
+    #getVarnameForClass(name) {
         return firstLower(name)
             .replaceAll(Dot, Dash)
     }

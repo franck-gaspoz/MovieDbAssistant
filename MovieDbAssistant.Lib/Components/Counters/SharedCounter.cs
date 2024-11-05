@@ -5,10 +5,14 @@
 /// </summary>
 public sealed class SharedCounter
 {
-    readonly object _lock = new object();
+    static readonly object _lock = new();
 
     static readonly Dictionary<Type, int> _next = [];
 
+    /// <summary>
+    /// Gets the value.
+    /// </summary>
+    /// <value>An <see cref="int"/></value>
     public int Value { get; private set; }
 
     public SharedCounter(object owner)
