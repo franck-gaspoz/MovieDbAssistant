@@ -20,6 +20,7 @@ public class Program
     public const string LogFolder = "logs";
     public const string LogFile = "log.txt";
     public const string PackageFolder = "package";
+    public const int EXIT_OK = 0;
 
     /// <summary>
     /// Gets the log path.
@@ -36,7 +37,7 @@ public class Program
     /// </summary>
     /// <param name="args">The args.</param>
     [STAThread]
-    public static void Main(string[] args)
+    public static async Task<int> Main(string[] args)
     {
         var basePath = System.AppContext.BaseDirectory;
         if (basePath.Contains(PackageFolder))
@@ -69,6 +70,7 @@ public class Program
             host.Services
                 .GetRequiredService<TrayApplication>());
 
-        host.Run();
+        await host.RunAsync();
+        return EXIT_OK;
     }
 }

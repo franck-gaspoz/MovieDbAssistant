@@ -8,7 +8,7 @@
 ![html5](https://img.shields.io/static/v1?label=&message=HTML5&color=cdf998&style=plastic&logo=html5) ![css3](https://img.shields.io/static/v1?label=&message=CSS3&color=cdf998&style=plastic&logo=css3&logoColor=black)
 ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
-🚧 under construction 🚧
+<p align="center">🚧 <i>under construction</i> 🚧 ⚡<i>beta release available!</i> ⚡</p>
 
 ___
 
@@ -16,22 +16,63 @@ Generates **Movie catalogs documents** (HTML, stand alone ZIP,...) using **Web C
 Can scrap data from [IMDb](http://www.imdb.com)
 
 User & Developer manual: [manual.md](doc/manual.md)
+
+<br>
+<table width="100%" border="0">
+<tr>
+<td>
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-list.png" 
+  width="70%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="html movie catalog in browser: movie list">
+<br><br><i>html movie catalog in browser: movie list</i>
+</p>
+</td>
+<td>
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/snap-details.png" 
+  width="70%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="html movie catalog in browser: movie details">
+<br><br><i>html movie catalog in browser: movie details</i>
+</p>
+</td>
+</tr>
+</table>
+
 ___
 
-## Usage
+## Install
 
-___
+👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Db Setup)*
 
-### ![icon](./assets/multimedia-small.png) System Tray for Windows™
+
+## Build
+
+### System Tray application for Windows™ 10.0.22621.0 and above 
 
 Available on `Windows 10.0.22621.0` and more. This application run as a tray icon.
 
-:arrow_right: build `MovieDbAssistant.app` and run 🗔 `MovieDbAssistant.exe`
+#### Build & Run from source
 
-:arrow_right: select an action from the tray menu
+- :arrow_right: build `MovieDbAssistant.app` and run 🗔 `MovieDbAssistant.exe`
+
+- :arrow_right: select an action from the tray menu
 
 :point_right: consult the **manual** here : [manual.md](/doc/manual.md)
 
+#### Build & Run from Application appx
+
+You can build an appx app from the tool and the command line:
+- :arrow_right: first publish the app. Using `Visual Studio 2022 Community`, you can publish `MovieDbAssistant.App` with the profile `FolderProfile.win-x64.pubxml`
+- :arrow_right: then make and install the package for local debug:
+```powershell
+# in the project repository
+cd ./package
+./make.ps1
+```
+- :arrow_right: run from the `Windows Start Menu`: Movie Db Assistant
 ____
 
 ## Projects & Dependencies
@@ -55,11 +96,6 @@ ____
 
 
 - **Lib** : library (infrastructure)
-
-    - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
-    - `OS`: Linux, Windows, OSX
-
-- **Web Api** (*🚧coming soon🚧*)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `OS`: Linux, Windows, OSX
