@@ -89,3 +89,5 @@ text-shadow: 0 0 5px #FFFFFF88, 0 0 0px #FFFFFF88, 0 0 2px #FFFFFF88, 0 0 4px #4
 
 ----------------------------------------------------
 
+Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
+
