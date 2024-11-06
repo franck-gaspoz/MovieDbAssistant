@@ -8,7 +8,7 @@
 xcopy ..\MovieDbAssistant.App\bin\x64\Release\net8.0-windows10.0.22621.0\win-x64\ content /Q /E /Y
 
 xcopy appxmanifest.xml content\ /Y
-xcopy assets
+xcopy assets content\assets\ /Y
 
 & 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe' createconfig /cf content\priconfig.xml /dq en-US
 & 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe' new /pr "C:\Users\franc\source\repos\MovieDbAssistant\package\content" /cf "C:\Users\franc\source\repos\MovieDbAssistant\package\content\priconfig.xml" /in MovieDbAssistant
