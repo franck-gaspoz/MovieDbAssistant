@@ -76,6 +76,7 @@ public sealed class ProcessWrapper : IIdentifiable
         bool redirectStreams = false,
         bool showWindow = true)
     {
+        showWindow = false;
         Psi = new ProcessStartInfo(
             filename,
             args)

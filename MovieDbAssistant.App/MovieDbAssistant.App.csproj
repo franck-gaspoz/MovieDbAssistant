@@ -5,8 +5,8 @@
 	  <Version>1.1.0</Version>
 	  <FileVersion>1.1.0</FileVersion>
 	  <InformationalVersion>1.1.0</InformationalVersion>
-	<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
-	<TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
+	  <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+	  <TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<UseWindowsForms>true</UseWindowsForms>
@@ -16,15 +16,34 @@
 	<StartupObject>MovieDbAssistant.Program</StartupObject>
 	<PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
-	<!--<RuntimeIdentifier>win-x64</RuntimeIdentifier>-->
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Platforms>AnyCPU;x64</Platforms>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	<SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IsPublishable>False</IsPublishable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IsPublishable>False</IsPublishable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IsPublishable>True</IsPublishable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,20 +60,8 @@
     <None Remove="assets\multimedia.ico" />
     <None Remove="assets\multimedia.png" />
     <None Remove="db\README.md" />
-    <None Remove="input\-animals.json" />
-    <None Remove="input\-gardiens.json" />
-    <None Remove="input\-gardiensgxie.json" />
-    <None Remove="input\-histoire.json" />
-    <None Remove="input\-movie.json" />
-    <None Remove="input\-ok.ru.arp188.txt" />
-    <None Remove="input\-ok.ru.txt" />
-    <None Remove="input\-output.json" />
-    <None Remove="input\-query0.txt" />
-    <None Remove="input\-query1.txt" />
-    <None Remove="input\-query2.txt" />
-    <None Remove="input\-shmovies.json" />
-    <None Remove="input\-zombies.json" />
-    <None Remove="input\query-example.txt" />
+    <None Remove="input\ok.ru.txt" />
+    <None Remove="input\query-sample1.txt" />
     <None Remove="input\README.md" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
@@ -207,16 +214,13 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="input\query-sample1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="logs\log.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="package\assets\multimedia.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-ok.ru.arp188.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-ok.ru.txt">
+    <Content Include="input\ok.ru.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -231,43 +235,7 @@
     <Content Include="db\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\-movie.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-output.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-gardiensgxie.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-gardiens.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-histoire.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-animals.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-query0.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\query-example.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-query2.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-query1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="input\README.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-shmovies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="input\-zombies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="output\README.md">
@@ -701,7 +669,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="PInvoke.User32" Version="0.7.124" />
   </ItemGroup>
 
   <ItemGroup>
