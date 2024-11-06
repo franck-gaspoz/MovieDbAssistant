@@ -56,6 +56,8 @@ User & Developer manual: [manual.md](doc/manual.md)
 
 This application run as a tray icon
 
+:arrow_right: run from the `Windows Start Menu`: Movie Db Assistant
+
 <br>
 <table width="100%" border="0" align="center">
 <tr>
@@ -99,17 +101,14 @@ The project has currently no GUI for OSX and Linux systems, even if the app core
 
 :point_right: consult the **manual** here : [manual.md](/doc/manual.md)
 
-#### Build & Run from Application appx
+#### Build an application appx package
 
-You can build an appx app from the tool and the command line:
-- :arrow_right: first publish the app. Using `Visual Studio 2022 Community`, you can publish `MovieDbAssistant.App` with the profile `FolderProfile.win-x64.pubxml`
-- :arrow_right: then make and install the package for local debug:
-```powershell
-# in the project repository
-cd ./package
-./make.ps1
-```
-- :arrow_right: run from the `Windows Start Menu`: Movie Db Assistant
+You can build an appx app from the command line:
+- :arrow_right: folder `/package` in repo root contains scripts (that must be adapted to your needs) that helps to build an `msix` application package:
+    
+    - `make.ps1`: prepare a package
+    - `maje-cert.ps1`: create a certificate and sign a package
+
 ____
 
 ## Projects & Dependencies
