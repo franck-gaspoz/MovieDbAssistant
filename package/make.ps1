@@ -21,5 +21,12 @@ xcopy *.pri content\ /Y
 #Add-AppxPackage -Path '.\MovieDbAssistant_1.0.0_x64_win.msix'
 
 # unpack (test)
-& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
+#& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
 
+# sign
+#method (AppxBlockMap.xml:BlockMap:HashMethod) : http://www.w3.org/2001/04/xmlenc#sha256
+
+& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\SignTool.exe' sign /fd SHA256 /a /f franck-gaspoz-software-cert.pfx /p mypassword1234 MovieDbAssistant_1.0.0_x64_win.msix
+
+## Done Adding Additional Store
+## Successfully signed: MovieDbAssistant_1.0.0_x64_win.msix
