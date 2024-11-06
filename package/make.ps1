@@ -1,5 +1,5 @@
 ﻿#-----------------------------------------------
-# make appx: copy publish files + refister appx
+# make appx: copy publish files + register appx
 #-----------------------------------------------
 
 #Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
@@ -14,6 +14,11 @@ xcopy assets content\assets\ /Y
 & 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makepri.exe' new /pr "C:\Users\franc\source\repos\MovieDbAssistant\package\content" /cf "C:\Users\franc\source\repos\MovieDbAssistant\package\content\priconfig.xml" /in MovieDbAssistant
 xcopy *.pri content\ /Y
 
-& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' pack /d content /p MovieDbAssistant.msix
+# default to: SHA256
+& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' pack /d content /p MovieDbAssistant_1.0.0_x64_win.msix
 
 #add-appxpackage –register AppxManifest.xml
+
+# unpack (test)
+& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
+

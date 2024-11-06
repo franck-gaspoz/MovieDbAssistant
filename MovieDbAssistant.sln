@@ -37,6 +37,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{CC605EA7-2735-4DD1-95AD-F0AC900F35B5}"
 	ProjectSection(SolutionItems) = preProject
 		package\appxmanifest.xml = package\appxmanifest.xml
+		package\franck-gaspoz-software-cert.pfx = package\franck-gaspoz-software-cert.pfx
+		package\make-cert.ps1 = package\make-cert.ps1
 		package\make.ps1 = package\make.ps1
 		package\priconfig.xml = package\priconfig.xml
 		package\resources.pri = package\resources.pri

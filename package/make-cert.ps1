@@ -24,3 +24,10 @@ $password = ConvertTo-SecureString -String mypassword1234 -Force -AsPlainText
 Get-ChildItem -Path Cert:\CurrentUser\My\FDC7C1469D9328B522B8078744331C18A55171F6 |
     Export-PfxCertificate -FilePath ./franck-gaspoz-software-cert.pfx -Password $password
 
+# sign
+#method (AppxBlockMap.xml:BlockMap:HashMethod) : http://www.w3.org/2001/04/xmlenc#sha256
+
+& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\SignTool.exe' sign /fd SHA256 /a /f franck-gaspoz-software-cert.pfx /p mypassword1234 MovieDbAssistant_1.0.0_x64_win.msix
+
+## Done Adding Additional Store
+## Successfully signed: MovieDbAssistant_1.0.0_x64_win.msix

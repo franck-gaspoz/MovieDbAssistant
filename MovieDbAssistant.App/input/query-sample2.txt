@@ -1,5 +1,5 @@
-﻿// query 2: format 'title source'
-// ------------------------------
+﻿// query format #2 : 'title source'
+// --------------------------------
 // - empty lines are bloc separators (are ignored at end of file)
 // - commented lines allowed between the 2 lines of specification
 //	-- 1 title per line 

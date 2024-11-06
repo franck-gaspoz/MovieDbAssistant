@@ -1,5 +1,5 @@
-﻿// query 1: format 'Title'
-// -----------------------
+﻿// query format #1 : 'Title'
+// -------------------------
 // - empty lines not allowed (except at start / end)
 // - commented lines allowed
 // - 1 title per line
