@@ -10,6 +10,11 @@ public static class IHostBuilderExtensions
 {
     public const string Filename_Pattern_App_Settings = "appsettings.{0}.json";
 
+    /// <summary>
+    /// Add localized settings.
+    /// </summary>
+    /// <param name="builder">The builder.</param>
+    /// <returns>An <see cref="IHostBuilder"/></returns>
     public static IHostBuilder AddLocalizedSettings(
         this IHostBuilder builder)
     {
