@@ -65,7 +65,7 @@ sealed class TrayBackgroundWorker : BackgroundWorkerWrapper
             );
         Setup(o => { 
             OnStop(this); 
-            onStop?.Invoke(); });   // _preDoWork intended?
+            onStop?.Invoke(); });
 
         base.Run(context, caller);
         return this;
