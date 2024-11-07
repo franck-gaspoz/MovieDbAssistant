@@ -40,14 +40,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{CC60
 		package\franck-gaspoz-software-cert.pfx = package\franck-gaspoz-software-cert.pfx
 		package\make-cert.ps1 = package\make-cert.ps1
 		package\make.ps1 = package\make.ps1
-		package\priconfig.xml = package\priconfig.xml
-		package\resources.pri = package\resources.pri
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{5596E057-767D-4644-863B-CB0C2F3637E8}"
 	ProjectSection(SolutionItems) = preProject
 		package\assets\multimedia.150x150.png = package\assets\multimedia.150x150.png
 		package\assets\multimedia.44x44.png = package\assets\multimedia.44x44.png
+		package\assets\multimedia.ico = package\assets\multimedia.ico
 		package\assets\multimedia.png = package\assets\multimedia.png
 	EndProjectSection
 EndProject

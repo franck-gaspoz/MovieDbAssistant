@@ -18,7 +18,6 @@ xcopy *.pri content\ /Y
 & 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' pack /d content /p MovieDbAssistant_1.0.0_x64_win.msix
 
 #add-appxpackage –register AppxManifest.xml
-#Add-AppxPackage -Path '.\MovieDbAssistant_1.0.0_x64_win.msix'
 
 # unpack (test)
 #& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
@@ -30,3 +29,6 @@ xcopy *.pri content\ /Y
 
 ## Done Adding Additional Store
 ## Successfully signed: MovieDbAssistant_1.0.0_x64_win.msix
+
+Add-AppxPackage -Path '.\MovieDbAssistant_1.0.0_x64_win.msix'
+Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
