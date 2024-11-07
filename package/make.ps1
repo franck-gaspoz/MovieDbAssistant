@@ -5,6 +5,8 @@
 #Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
 #Remove-AppxPackage MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
 
+rmdir content -recurse
+mkdir content
 xcopy ..\MovieDbAssistant.App\bin\x64\Release\net8.0-windows10.0.22621.0\win-x64\ content /Q /E /Y
 
 xcopy appxmanifest.xml content\ /Y
@@ -20,7 +22,8 @@ xcopy *.pri content\ /Y
 #add-appxpackage –register AppxManifest.xml
 
 # unpack (test)
-#& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
+rmdir extract -recurse
+& 'C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64\makeappx.exe' unpack /d extract /p MovieDbAssistant_1.0.0_x64_win.msix
 
 # sign
 #method (AppxBlockMap.xml:BlockMap:HashMethod) : http://www.w3.org/2001/04/xmlenc#sha256
