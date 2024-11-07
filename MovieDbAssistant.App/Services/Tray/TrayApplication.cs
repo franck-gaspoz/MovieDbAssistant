@@ -1,8 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
+using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
+using System;
+using System.Runtime.InteropServices;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -10,13 +14,15 @@ namespace MovieDbAssistant.App.Services.Tray;
 /// The tray application.
 /// </summary>
 [Singleton]
-public sealed class TrayApplication : ApplicationContext
+public sealed partial class TrayApplication : ApplicationContext
 {
+    /// <inheritdoc/>
     public TrayApplication(
         IServiceProvider serviceProvider,
+        IOptions<DmnSettings> dmnSettings, 
         ILogger<TrayApplication> logger)
     {
-        logger.LogInformation(this,"logging to file: " + AppLogger.GetLogFilePath());
+        LogProps(dmnSettings, logger);
 
         serviceProvider
             .GetRequiredService<TrayMenuBuilder>()
@@ -25,5 +31,32 @@ public sealed class TrayApplication : ApplicationContext
         serviceProvider
             .GetRequiredService<TrayMenuService>()
             .ShowBalloonTip_Start();
+    }
+
+    void LogProps(IOptions<DmnSettings> dmnSettings, ILogger<TrayApplication> logger)
+    {
+        void O(string s) => logger.LogInformation(this, s);
+        void Sep() => O("".PadLeft(80, '-'));
+
+        Sep();
+        O(dmnSettings.Value.App.Title);
+        O("logging to file: " + AppLogger.GetLogFilePath());
+        Sep();
+
+        O("environment: ");
+        var vars = Environment.GetEnvironmentVariables().Keys;
+        foreach (var key in vars)
+            O(key + ": " + Environment.GetEnvironmentVariable(
+                key.ToString()!));
+
+        Sep();
+        O("BaseDirectory: " + AppContext.BaseDirectory);
+        O("TargetFrameworkName: " + AppContext.TargetFrameworkName);
+        O("FrameworkDescription: " + RuntimeInformation.FrameworkDescription);
+        O("OSArchitecture: " + RuntimeInformation.OSArchitecture);
+        O("OSDescription: " + RuntimeInformation.OSDescription);
+        O("ProcessArchitecture: " + RuntimeInformation.ProcessArchitecture);
+        O("RuntimeIdentifier: " + RuntimeInformation.RuntimeIdentifier);
+        Sep();
     }
 }

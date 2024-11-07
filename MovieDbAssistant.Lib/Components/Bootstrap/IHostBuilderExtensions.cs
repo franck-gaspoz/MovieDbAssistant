@@ -8,6 +8,7 @@ namespace MovieDbAssistant.Lib.Components.Bootstrap;
 /// </summary>
 public static class IHostBuilderExtensions
 {
+    public const string Filename_Pattern_App_Settings_Devlopment = "appsettings.Development.json";
     public const string Filename_Pattern_App_Settings = "appsettings.{0}.json";
 
     /// <summary>
@@ -26,6 +27,24 @@ public static class IHostBuilderExtensions
             var file2 = string.Format(Filename_Pattern_App_Settings, t[0]);
             if (File.Exists(file2)) conf.AddJsonFile(file2);
             if (File.Exists(file1)) conf.AddJsonFile(file1);
+        });
+        return builder;
+    }
+
+    /// <summary>
+    /// onfigure app env settings
+    /// </summary>
+    /// <param name="builder">The builder.</param>
+    /// <returns>An <see cref="IHostBuilder"/></returns>
+    public static IHostBuilder AddEnvironmentSettings(
+        this IHostBuilder builder)
+    {        
+        builder.ConfigureAppConfiguration(conf =>
+        {
+#if DEBUG
+            if (File.Exists(Filename_Pattern_App_Settings_Devlopment))
+                conf.AddJsonFile(Filename_Pattern_App_Settings_Devlopment);
+#endif
         });
         return builder;
     }

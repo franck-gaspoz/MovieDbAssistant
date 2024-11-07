@@ -54,6 +54,7 @@ public class Program
             typeof(AppSettings)];
 
         var host = Host.CreateDefaultBuilder(args)
+            .AddEnvironmentSettings()
             .AddLocalizedSettings()
             .ConfigureServices((context, services) => services
                 .AutoRegister(fromTypes)
