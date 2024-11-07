@@ -39,8 +39,12 @@ public class Program
     [STAThread]
     public static async Task<int> Main(string[] args)
     {
+        // setup base directory
+        // msix: C:\Program Files\WindowsApps\FranckGaspoz.Software.MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
+        // inno setup: TODO: fix and test
+        // dev: /bin/...
         var basePath = System.AppContext.BaseDirectory;
-        if (basePath.Contains(PackageFolder))
+        if (basePath.Contains(PackageFolder))            
             basePath = basePath.Replace(PackageFolder, "");
         Directory.SetCurrentDirectory(basePath);
 
@@ -65,6 +69,7 @@ public class Program
 
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(false);
+        Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
 
         Application.Run(
             host.Services
