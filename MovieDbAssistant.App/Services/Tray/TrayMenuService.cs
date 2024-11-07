@@ -156,13 +156,13 @@ sealed class TrayMenuService
             _appSettings,
             _dmnSettings);
 
-        ta.Setup(() =>
+        ta.Setup(o =>     // leads to a crash : _action == null
         {
-            ta.OnStop(this);
             _trayMenuBuilder.SetIcon();
             NotifyIcon.Text = _trayMenuBuilder.Tooltip;
-        })
-        .Run(context, caller);
+        });
+
+        ta.Run(context, caller);
 
         AnimInfo(
             context,
