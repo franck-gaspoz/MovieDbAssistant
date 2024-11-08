@@ -44,17 +44,25 @@ public sealed partial class TrayApplication : ApplicationContext
         O("logging to file: " + AppLogger.GetLogFilePath());
         Sep();
 
-        O("environment: ");
+        O("- environment");
+        Sep();
+
         var vars = Environment.GetEnvironmentVariables().Keys;
         foreach (var key in vars)
             O(key + ": " + Environment.GetEnvironmentVariable(
                 key.ToString()!));
 
         Sep();
+        O("- paths");
+        Sep();
+
         foreach (var p in Enum.GetValues<Environment.SpecialFolder>())
             O(p + ": " + Environment.GetFolderPath(p));
 
         Sep();
+        O("- properties");
+        Sep();
+
         O("IsWindowsAppRunningMode: " + Env.IsWindowsAppRunningMode);
         O("InitialBaseDirectory: " + Env.InitialBaseDirectory);
         O("BaseDirectory: " + AppContext.BaseDirectory);
