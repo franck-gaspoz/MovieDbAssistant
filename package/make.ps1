@@ -33,5 +33,6 @@ xcopy *.pri content\ /Y
 ## Done Adding Additional Store
 ## Successfully signed: MovieDbAssistant_1.0.0_x64_win.msix
 
+Remove-AppPackage FranckGaspoz.Software.MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
 Add-AppxPackage -Path '.\MovieDbAssistant_1.0.0_x64.msix'
 Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"

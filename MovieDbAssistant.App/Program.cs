@@ -9,7 +9,6 @@ using MovieDbAssistant.Lib.Components.Bootstrap;
 using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
-
 using MovieDbAssistant.Lib.Components.Sys;
 
 namespace MovieDbAssistant;
@@ -19,6 +18,7 @@ namespace MovieDbAssistant;
 /// </summary>
 public class Program
 {
+    const string AppId = "5781ECE5-AA4A-4653-A02E-D118FF1C1A2F";
     const string AppDataFolder = "MovieDbAssistant";
     const string PackageFolder = "package";
 
@@ -28,22 +28,37 @@ public class Program
     public const int EXIT_OK = 0;
 
     /// <summary>
+    /// instance already running exit code
+    /// </summary>
+    public const int EXIT_INSTANCE_ALLREADY_RUNNING = 1;
+
+    /// <summary>
     /// main
     /// </summary>
     /// <param name="args">The args.</param>
     [STAThread]
     public static async Task<int> Main(string[] args)
     {
+        using var mutex = new Mutex(false, AppId);
+
+        if (!mutex.WaitOne(0))
+        {
+            Console.WriteLine("already running");
+            return EXIT_INSTANCE_ALLREADY_RUNNING;
+        }
+
         // setup env
         Env.Init(AppDataFolder);
 
         // setup base directory
         // msix: C:\Program Files\WindowsApps\FranckGaspoz.Software.MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
-        // inno setup: TODO: fix and test
+        // inno setup: installation folder
         // dev: /bin/...
+
+        // fix base path
         var basePath = System.AppContext.BaseDirectory;
         Env.InitialBaseDirectory = basePath;
-        if (basePath.Contains(PackageFolder))            
+        if (basePath.Contains(PackageFolder))
             basePath = basePath.Replace(PackageFolder, "");
         Directory.SetCurrentDirectory(basePath);
 
@@ -78,4 +93,5 @@ public class Program
         await host.RunAsync();
         return EXIT_OK;
     }
+
 }

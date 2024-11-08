@@ -1,4 +1,6 @@
-﻿using MovieDbAssistant.Lib.Components.Logger;
+﻿using System.Xml.Linq;
+
+using MovieDbAssistant.Lib.Components.Logger;
 
 namespace MovieDbAssistant.Lib.Components.Sys;
 

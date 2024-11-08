@@ -71,7 +71,15 @@ sealed class TrayMenuService
             _appSettings.Value.Anims.Interval.Dot,
             false);
         NotifyIcon.BalloonTipClosed += NotifyIcon_BalloonTipClosed;
-        NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClosed;
+        NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClicked;
+    }
+
+    void NotifyIcon_BalloonTipClicked(
+        object? sender,
+        EventArgs e)
+    {
+        _logger.LogTrace(this, "balloon clicked");
+        //BalloonTipClosed?.Invoke(sender, e);
     }
 
     void NotifyIcon_BalloonTipClosed(

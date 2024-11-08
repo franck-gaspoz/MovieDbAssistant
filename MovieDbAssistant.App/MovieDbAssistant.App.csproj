@@ -20,6 +20,7 @@
     <Platforms>AnyCPU;x64</Platforms>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<SignAssembly>False</SignAssembly>
+	  <Copyright>© Franck Gaspoz Software GPLv3</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
