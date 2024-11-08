@@ -10,6 +10,8 @@ using MovieDbAssistant.Lib.Components.DependencyInjection;
 using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 
+using MovieDbAssistant.Lib.Components.Sys;
+
 namespace MovieDbAssistant;
 
 /// <summary>
@@ -17,20 +19,13 @@ namespace MovieDbAssistant;
 /// </summary>
 public class Program
 {
-    public const string LogFolder = "logs";
-    public const string LogFile = "log.txt";
-    public const string PackageFolder = "package";
-    public const int EXIT_OK = 0;
+    const string AppDataFolder = "MovieDbAssistant";
+    const string PackageFolder = "package";
 
     /// <summary>
-    /// Gets the log path.
+    /// ok exit code
     /// </summary>
-    /// <value>A <see cref="string"/></value>
-    public static string LogPath =>
-        Path.Combine(
-            System.AppContext.BaseDirectory!,
-            LogFolder,
-            LogFile);
+    public const int EXIT_OK = 0;
 
     /// <summary>
     /// main
@@ -39,6 +34,9 @@ public class Program
     [STAThread]
     public static async Task<int> Main(string[] args)
     {
+        // setup env
+        Env.Init(AppDataFolder);
+
         // setup base directory
         // msix: C:\Program Files\WindowsApps\FranckGaspoz.Software.MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
         // inno setup: TODO: fix and test

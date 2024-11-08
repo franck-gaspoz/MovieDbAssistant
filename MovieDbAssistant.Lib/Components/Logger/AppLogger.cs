@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.Logging;
 
+using MovieDbAssistant.Lib.Components.Sys;
+
 namespace MovieDbAssistant.Lib.Components.Logger;
 
 #pragma warning disable IDE1006 // Styles d'affectation de noms
@@ -16,11 +18,20 @@ namespace MovieDbAssistant.Lib.Components.Logger;
 public class AppLogger : ILogger
 {
     static int _itemCount = 0;
-    const string LogFilePath = "logs/log.txt";
+
+    /// <summary>
+    /// log file name
+    /// </summary>
+    public const string LogFile = "log.txt";
+
+    /// <summary>
+    /// logs rel path
+    /// </summary>
+    public const string LogPath = "logs";
 
     readonly string _name;
     readonly Func<AppLoggerConfiguration, AppLoggerConfiguration>? _configure;
-    static string _logFilePath;
+    static string _logPath;
 
     static object _logLock = new();
 
@@ -28,14 +39,14 @@ public class AppLogger : ILogger
         string name,
         Func<AppLoggerConfiguration, AppLoggerConfiguration>? configure, 
         AppLoggerConfiguration? appLoggerConfiguration = null,
-        string? logFilePath = LogFilePath)
+        string? logPath = null)
     {
         _name = name;
         _configure = configure;
         if (appLoggerConfiguration!=null)
             _appLoggerConfiguration = appLoggerConfiguration;
-        logFilePath ??= LogFilePath;
-        _logFilePath = logFilePath;
+        logPath ??= LogPath;
+        _logPath = logPath;
     }
 
     AppLoggerConfiguration __appLoggerConfiguration = new();
@@ -103,30 +114,55 @@ public class AppLogger : ILogger
     /// Get log file path.
     /// </summary>
     /// <returns>A <see cref="string"/></returns>
-    public static string GetLogFilePath(string? logFilePath = null) 
+    public static string GetLogFilePath(string? logPath = null) 
         => Path.Combine(
-            Directory.GetCurrentDirectory(), 
-            (logFilePath ?? _logFilePath) ?? LogFilePath);
+            GetLogPath(logPath),
+            LogFile);
+
+    /// <summary>
+    /// Get log path.
+    /// </summary>
+    /// <returns>A <see cref="string"/></returns>
+    public static string GetLogPath(string? logPath = null)
+        => Path.Combine(
+            Env.AppUserDataPath,
+            (logPath ?? _logPath) ?? LogPath);
 
     /// <summary>
     /// Clear log file.
     /// </summary>
-    /// <param name="logFilePath">The log file path.</param>
-    public static void ClearLogFile(string? logFilePath = null)
+    /// <param name="logPath">The log file path.</param>
+    public static void ClearLogFile(string? logPath = null)
         => File.WriteAllText(
-            GetLogFilePath(logFilePath),
+            GetLogFilePath(logPath),
             string.Empty);
+
+    /// <summary>
+    /// ensures the log file exists in logPath or default log path
+    /// <para>log folder is created if missing</para>
+    /// <para>log file is created if missing</para>
+    /// </summary>
+    /// <param name="logPath">log path</param>
+    public static void EnsureLogFileExists(string? logPath = null)
+    {
+        var lp = GetLogPath(logPath);
+        if (!Directory.Exists(lp))
+            Directory.CreateDirectory(lp);
+        var lfp = GetLogFilePath(logPath);
+        if (!File.Exists(lfp))
+            File.WriteAllText(lfp, string.Empty);
+    }
 
     /// <summary>
     /// Appends a line to the log file
     /// </summary>
     /// <param name="newLine">The new line.</param>
-    /// <param name="logFilePath">The log file path.</param>
-    public static void AppendLine(string newLine,string? logFilePath = null)
+    /// <param name="logPath">The log file path.</param>
+    public static void AppendLine(string newLine,string? logPath = null)
     {
         lock (_logLock)
         {
-            AppendLogFile(newLine, GetLogFilePath(logFilePath));
+            AppendLogFile(newLine, GetLogFilePath(logPath));
         }
     }
 }

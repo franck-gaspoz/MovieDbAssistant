@@ -1,12 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.InteropServices;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
-using System;
-using System.Runtime.InteropServices;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -19,7 +19,7 @@ public sealed partial class TrayApplication : ApplicationContext
     /// <inheritdoc/>
     public TrayApplication(
         IServiceProvider serviceProvider,
-        IOptions<DmnSettings> dmnSettings, 
+        IOptions<DmnSettings> dmnSettings,
         ILogger<TrayApplication> logger)
     {
         LogProps(dmnSettings, logger);
@@ -48,6 +48,10 @@ public sealed partial class TrayApplication : ApplicationContext
         foreach (var key in vars)
             O(key + ": " + Environment.GetEnvironmentVariable(
                 key.ToString()!));
+
+        Sep();
+        foreach (var p in Enum.GetValues<Environment.SpecialFolder>())
+            O(p + ": " + Environment.GetFolderPath(p));
 
         Sep();
         O("BaseDirectory: " + AppContext.BaseDirectory);

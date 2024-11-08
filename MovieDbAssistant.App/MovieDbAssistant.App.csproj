@@ -63,6 +63,7 @@
     <None Remove="db\README.md" />
     <None Remove="input\ok.ru.txt" />
     <None Remove="input\query-sample1.txt" />
+    <None Remove="input\query-sample2.txt" />
     <None Remove="input\README.md" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
@@ -221,6 +222,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="input\query-sample1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\query-sample2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="logs\log.txt">
