@@ -156,7 +156,7 @@ sealed class TrayMenuService
             _appSettings,
             _dmnSettings);
 
-        ta.Setup(o =>     // leads to a crash : _action == null
+        ta.Setup(o => 
         {
             _trayMenuBuilder.SetIcon();
             NotifyIcon.Text = _trayMenuBuilder.Tooltip;
