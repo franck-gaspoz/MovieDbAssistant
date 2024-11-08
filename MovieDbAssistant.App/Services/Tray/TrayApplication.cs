@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using MovieDbAssistant.Dmn.Configuration;
 using MovieDbAssistant.Lib.Components.DependencyInjection.Attributes;
 using MovieDbAssistant.Lib.Components.Logger;
+using MovieDbAssistant.Lib.Components.Sys;
 
 namespace MovieDbAssistant.App.Services.Tray;
 
@@ -54,6 +55,8 @@ public sealed partial class TrayApplication : ApplicationContext
             O(p + ": " + Environment.GetFolderPath(p));
 
         Sep();
+        O("IsWindowsAppRunningMode: " + Env.IsWindowsAppRunningMode);
+        O("InitialBaseDirectory: " + Env.InitialBaseDirectory);
         O("BaseDirectory: " + AppContext.BaseDirectory);
         O("TargetFrameworkName: " + AppContext.TargetFrameworkName);
         O("FrameworkDescription: " + RuntimeInformation.FrameworkDescription);

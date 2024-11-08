@@ -42,6 +42,7 @@ public class Program
         // inno setup: TODO: fix and test
         // dev: /bin/...
         var basePath = System.AppContext.BaseDirectory;
+        Env.InitialBaseDirectory = basePath;
         if (basePath.Contains(PackageFolder))            
             basePath = basePath.Replace(PackageFolder, "");
         Directory.SetCurrentDirectory(basePath);
