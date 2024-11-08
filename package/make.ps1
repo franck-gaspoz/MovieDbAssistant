@@ -1,6 +1,6 @@
-﻿#-----------------------------------------------
-# make appx: copy publish files + register appx
-#-----------------------------------------------
+﻿#------------------------------------------------------
+# make appx: copy publish files + make & register appx
+#------------------------------------------------------
 
 #Get-AppxPackage -publisher "CN=Franck Gaspoz Software, O=Franck Gaspoz Corporation, C=US"
 #Remove-AppxPackage MovieDbAssistant_1.0.0.0_x64__xtrrbsjxvn07w
