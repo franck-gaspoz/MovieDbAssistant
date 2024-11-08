@@ -44,7 +44,7 @@
       "id": "list",
       "layout": "List",
       "tpl": "page-list.tpl.html",
-      "background": "cinema-wallpaper-36.jpg",
+      "background": "cinema-wallpaper-17.jpg",
       "title": "My Movies",
       "filename": "index"
     },

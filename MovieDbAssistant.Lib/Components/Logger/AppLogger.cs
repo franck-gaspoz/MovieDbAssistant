@@ -22,7 +22,7 @@ public class AppLogger : ILogger
     /// <summary>
     /// log file name
     /// </summary>
-    public const string LogFile = "log.txt";
+    public const string LogFile = "app.log";
 
     /// <summary>
     /// logs rel path
