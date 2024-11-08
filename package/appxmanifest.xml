@@ -19,7 +19,7 @@
 	</Properties>
 	
 	<Resources>
-		<Resource Language="en-US" />
+		<Resource Language="EN-US" />
 	</Resources>
 	
 	<Dependencies>
