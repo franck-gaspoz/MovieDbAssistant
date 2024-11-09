@@ -770,7 +770,8 @@ table.g-movie-detail-grid2-row-1 {
     backdrop-filter: none;
 }
 
-.top-nav-container-right div.icon-container {
+.top-nav-container-right div.icon-container,
+.top-nav-container-left div.icon-container {
     display: inline;
 }
 
