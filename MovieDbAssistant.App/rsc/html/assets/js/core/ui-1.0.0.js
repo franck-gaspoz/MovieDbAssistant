@@ -320,7 +320,9 @@ class UI {
                 this.isMinimized = true
         }
 
-        if (isWindowStateSignal)
+        if (isWindowStateSignal) {
+            this.#storeAppProps(this.isWindowed, this.isMinimized, this.isMaximized)
             this.#applyWindowStateCssClasses()
+        }
     }
 }
