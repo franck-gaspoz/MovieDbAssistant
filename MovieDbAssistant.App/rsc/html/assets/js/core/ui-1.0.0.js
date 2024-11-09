@@ -4,7 +4,7 @@
  * dependencies:
  *      util-1.0.0
  *      template-1.0.0
- *      layout-1.0.0
+ *      ui-layout-1.0.0
  */
 
 /**
@@ -34,10 +34,13 @@ class UI {
         if (inDesktopMode()) {
             const st = window.sessionStorage
             if (!st.getItem('app')) {
+                console.log("add session storage");
                 this.#storeAppProps(
                     app.isWindowed,
                     app.isMinimized,
                     app.isMaximized)
+            } else {
+                console.log("get session storage");
             }
             var pr = this.#getAppProps()
             this.isWindowed = pr.isWindowed
@@ -54,6 +57,7 @@ class UI {
     }
 
     #storeAppProps(isWindowed, isMinimized, isMaximized) {
+        console.log("update session storage");
         const st = window.sessionStorage
         const pr = {
             'isWindowed': isWindowed,
@@ -64,14 +68,23 @@ class UI {
     }
 
     /**
-     * pre setup
+     * init after create
      */
-    preSetup() {
+    init() {
         // apply zoom scale
         this.#applyZoomScale()
 
         // add front props
         this.#setupVariables()
+    }
+
+    /**
+     * setup after body tag loaded
+     */
+    beforeLoadSetup() {
+        
+        // apply window state css classes
+        this.#applyWindowStateCssClasses()
     }
 
     /**

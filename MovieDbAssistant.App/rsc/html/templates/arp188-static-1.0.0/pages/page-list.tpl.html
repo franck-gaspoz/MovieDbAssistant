@@ -15,14 +15,14 @@
 
         // properties
         const props = {{props}}
-        // template engine
+        // bootstrap template engine
         const tpl = new Template()
         const layout = new UILayout()
         const ui = new UI()
-        ui.preSetup()
+        ui.init()
 
         $(document).ready(() => {
-            // bootstrap template engine            
+            // run tpl engine
             tpl.buildItems(data)
             layout.postSetup()
             layout.setupItemsLinkId()            
@@ -40,6 +40,11 @@
 </head>
 
 <body class="movie-page-list prevent-select">
+
+    <script type="text/javascript">
+        // setup body
+        _ui().beforeLoadSetup()
+    </script>
 
     {{{backgrounds/background-vignette}}}
 
