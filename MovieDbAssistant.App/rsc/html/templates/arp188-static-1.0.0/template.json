@@ -52,8 +52,8 @@
       "id": "detail",
       "layout": "Detail",
       "tpl": "page-details.tpl.html",
-      "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg",
-      "title": "ARP 188 Galaxy spiral NC 7825-Xw"
+      "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-17.jpg",
+      "title": "My Movies"
     }
   ],
 
