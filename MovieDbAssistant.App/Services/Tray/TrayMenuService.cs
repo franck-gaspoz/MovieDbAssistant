@@ -78,7 +78,7 @@ sealed class TrayMenuService
         object? sender,
         EventArgs e)
     {
-        _logger.LogTrace(this, "balloon clicked");
+        _logger.LogTrace(this, "balloon clicked");        
     }
 
     void NotifyIcon_BalloonTipClosed(
