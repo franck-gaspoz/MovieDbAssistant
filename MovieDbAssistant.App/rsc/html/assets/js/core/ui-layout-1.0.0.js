@@ -242,13 +242,14 @@ class UILayout {
     * setup items links id (movie list)
     */
     setupItemsLinkId() {
-        var t = window.location.href.split(HRef_Id_Separator)
+        const t = window.location.href.split(HRef_Id_Separator)
         if (t.length == 2) {
-            var $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
-            $(Query_Prefix_Class + Class_Movie_List).scrollTop(
-                $it.offset().top
-                - $it.height()
-            )
+            const $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
+            const zoom = _ui().getZoomScale()
+            if (zoom==0) zoom = 1
+            var top = ($it.offset().top - $it.height())
+                * 1/zoom
+            $(Query_Prefix_Class + Class_Movie_List).scrollTop(top)
         }
     }
 

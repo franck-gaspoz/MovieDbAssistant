@@ -252,16 +252,25 @@ class UI {
      * apply zoom scale
      */
     #applyZoomScale() {
-        var $w = $(window)
-        const winWidth = $w.width()
-        const refWidth = 1920
-        const z = winWidth / refWidth
+        const z = this.getZoomScale()
 
         $(Tag_Html)
             .css(Attr_Zoom, z);
         if (z > 0)
             $(Query_Prefix_Class + Class_Page_Container_App_Region)
                 .css(Attr_Zoom, 1 / z)
+    }
+
+    /**
+     * get zoom scale of current window
+     * @returns
+     */
+    getZoomScale() {
+        var $w = $(window)
+        const winWidth = $w.width()
+        const refWidth = 1920
+        const z = winWidth / refWidth
+        return z
     }
 
     /**
