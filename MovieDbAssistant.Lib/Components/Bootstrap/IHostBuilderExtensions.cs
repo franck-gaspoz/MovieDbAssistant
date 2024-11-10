@@ -8,8 +8,9 @@ namespace MovieDbAssistant.Lib.Components.Bootstrap;
 /// </summary>
 public static class IHostBuilderExtensions
 {
-    public const string Filename_Pattern_App_Settings_Devlopment = "appsettings.Development.json";
+    public const string Filename_Pattern_App_Settings_Development = "appsettings.Development.json";
     public const string Filename_Pattern_App_Settings = "appsettings.{0}.json";
+    public const string DefaultCulture = "EN-US";
 
     /// <summary>
     /// Add localized settings.
@@ -21,10 +22,12 @@ public static class IHostBuilderExtensions
     {
         builder.ConfigureAppConfiguration(conf =>
         {
-            var currentCulture = Thread.CurrentThread.CurrentCulture.Name;
+            var currentCulture = Thread.CurrentThread.CurrentCulture.Name.ToUpper();
             var t = currentCulture.Split('-');
             var file1 = string.Format(Filename_Pattern_App_Settings, currentCulture);
             var file2 = string.Format(Filename_Pattern_App_Settings, t[0]);
+            var file3 = string.Format(Filename_Pattern_App_Settings, DefaultCulture);
+            if (File.Exists(file3)) conf.AddJsonFile(file3);
             if (File.Exists(file2)) conf.AddJsonFile(file2);
             if (File.Exists(file1)) conf.AddJsonFile(file1);
         });
@@ -42,8 +45,8 @@ public static class IHostBuilderExtensions
         builder.ConfigureAppConfiguration(conf =>
         {
 #if DEBUG
-            if (File.Exists(Filename_Pattern_App_Settings_Devlopment))
-                conf.AddJsonFile(Filename_Pattern_App_Settings_Devlopment);
+            if (File.Exists(Filename_Pattern_App_Settings_Development))
+                conf.AddJsonFile(Filename_Pattern_App_Settings_Development);
 #endif
         });
         return builder;

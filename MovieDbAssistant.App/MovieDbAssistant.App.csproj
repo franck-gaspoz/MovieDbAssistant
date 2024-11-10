@@ -54,7 +54,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="appsettings - Copier.Development.json" />
+    <None Remove="appsettings - Copier.FR.json" />
     <None Remove="appsettings.Development.json" />
+    <None Remove="appsettings.EN-US.json" />
     <None Remove="appsettings.fr.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
@@ -70,6 +73,7 @@
     <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
     <None Remove="readme.txt" />
+    <None Remove="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg" />
     <None Remove="rsc\html\assets\icons\download.gif" />
     <None Remove="rsc\html\assets\icons\four-squares.png" />
     <None Remove="rsc\html\assets\icons\installing-updates.gif" />
@@ -213,12 +217,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.EN-US.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.EN-US.FR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.EN-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="appsettings.Development.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="appsettings.fr.json">
+    <Content Include="appsettings.FR.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -262,6 +281,9 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\icons\download.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

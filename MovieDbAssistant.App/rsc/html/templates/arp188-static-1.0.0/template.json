@@ -114,6 +114,7 @@
     "/img/image-404-630x630.jpg:/img",
 
     "/movie-page-list-wallpapers:/img",
+    "/backgrounds:/img",
 
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
