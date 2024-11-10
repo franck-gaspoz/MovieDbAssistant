@@ -209,7 +209,7 @@
     <None Remove="setup\setup.png" />
     <None Remove="temp\README.md" />
     <None Remove="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe" />
-    <None Remove="tools\scrap.bat" />
+    <None Remove="tools\scrap-imdb.ps1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -667,7 +667,7 @@
     <Content Include="temp\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tools\scrap.bat">
+    <Content Include="tools\scrap-imdb.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe">
