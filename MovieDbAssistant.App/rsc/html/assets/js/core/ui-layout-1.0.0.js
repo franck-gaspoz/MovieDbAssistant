@@ -130,9 +130,11 @@ class UILayout {
         $set.each((i, e) => {
             var $e = $(e)
 
-            $e.on(Event_Load, (e) => {
+            $e.on(Event_Load, e => {
                 t.#imgNum++
-                console.debug(t.#imgNum + ' / ' + t.#imgCount)
+                const $item = $(e.target).closest('movie-list-item-container')
+                //$item.fadeIn(List_Item_FadeIn_Time)
+                //console.debug(t.#imgNum + ' / ' + t.#imgCount)
                 if (t.#imgNum == t.#imgCount) {
                     // all pic loaded
                     if (t.onPicLoaded) t.onPicLoaded()
@@ -259,9 +261,9 @@ class UILayout {
     }
 
     /**
-    * setup items links id (movie list)
+    * scroll to item in movie list
     */
-    setupItemsLinkId() {
+    scrollToItemInMovieList() {
         const t = window.location.href.split(HRef_Id_Separator)
         if (t.length == 2) {
             const $it = $(Query_Equals_Id_Prefix + t[1] + Query_Selector_Postfix)
@@ -275,14 +277,11 @@ class UILayout {
 
     /**
      * show the move list (on movie list page only)
-     * @returns
      */
     showList() {
         const $movieList = $('.movie-list')
         console.debug('show list')
         $movieList.fadeIn(List_FadeIn_Time)
-        this.setupItemsLinkId()
-        $movieList.removeClass('no-vertical-scroll')
-        return        
+        this.scrollToItemInMovieList()
     }
 }

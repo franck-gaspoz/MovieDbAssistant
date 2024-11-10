@@ -691,6 +691,10 @@ table.g-movie-detail-grid2-row-1 {
     overflow-y:hidden;
 }
 
+.vertical-scroll {
+    overflow-y: scroll;
+}
+
 /* #endregion */
 
 /* #region fonts */
