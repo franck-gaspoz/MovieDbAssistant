@@ -57,13 +57,13 @@
     <None Remove="appsettings - Copier.Development.json" />
     <None Remove="appsettings - Copier.FR.json" />
     <None Remove="appsettings.Development.json" />
-    <None Remove="appsettings.EN-US.json" />
-    <None Remove="appsettings.fr.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
     <None Remove="assets\led-red.ico" />
     <None Remove="assets\multimedia.ico" />
     <None Remove="assets\multimedia.png" />
+    <None Remove="culture-settings.EN-US.json" />
+    <None Remove="culture-settings.json" />
     <None Remove="db\README.md" />
     <None Remove="input\-query-sample1.txt" />
     <None Remove="input\-query-sample2.txt" />
@@ -217,17 +217,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.EN-US.Development.json">
+    <Content Include="culture-settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="appsettings.EN-US.FR.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Include="appsettings.EN-US.json">
+    <Content Include="culture-settings.EN-US.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -237,7 +232,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="appsettings.FR.json">
+    <Content Include="culture-settings.FR.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

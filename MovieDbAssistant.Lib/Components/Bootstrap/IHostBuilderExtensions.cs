@@ -9,7 +9,7 @@ namespace MovieDbAssistant.Lib.Components.Bootstrap;
 public static class IHostBuilderExtensions
 {
     public const string Filename_Pattern_App_Settings_Development = "appsettings.Development.json";
-    public const string Filename_Pattern_App_Settings = "appsettings.{0}.json";
+    public const string Filename_Pattern_App_Settings_Culture = "culture-settings.{0}.json";
     public const string DefaultCulture = "EN-US";
 
     /// <summary>
@@ -24,9 +24,9 @@ public static class IHostBuilderExtensions
         {
             var currentCulture = Thread.CurrentThread.CurrentCulture.Name.ToUpper();
             var t = currentCulture.Split('-');
-            var file1 = string.Format(Filename_Pattern_App_Settings, currentCulture);
-            var file2 = string.Format(Filename_Pattern_App_Settings, t[0]);
-            var file3 = string.Format(Filename_Pattern_App_Settings, DefaultCulture);
+            var file1 = string.Format(Filename_Pattern_App_Settings_Culture, currentCulture);
+            var file2 = string.Format(Filename_Pattern_App_Settings_Culture, t[0]);
+            var file3 = string.Format(Filename_Pattern_App_Settings_Culture, DefaultCulture);
             if (File.Exists(file3)) conf.AddJsonFile(file3);
             if (File.Exists(file2)) conf.AddJsonFile(file2);
             if (File.Exists(file1)) conf.AddJsonFile(file1);
