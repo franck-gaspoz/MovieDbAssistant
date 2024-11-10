@@ -649,6 +649,10 @@ table.g-movie-detail-grid2-row-1 {
     display: grid;
 }
 
+.block {
+    display: block;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -681,6 +685,10 @@ table.g-movie-detail-grid2-row-1 {
 
 .text-align-right {
     text-align: right;
+}
+
+.no-vertical-scroll {
+    overflow-y:hidden;
 }
 
 /* #endregion */

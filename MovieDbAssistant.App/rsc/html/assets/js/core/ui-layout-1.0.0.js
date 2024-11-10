@@ -23,6 +23,7 @@ class UILayout {
         this.#setAlternatePics()
         this.#enableClock()
         this.#enableDate()
+        return this
     }
 
     /**
@@ -88,6 +89,8 @@ class UILayout {
         this.clockUpdating = false
     }
 
+    #imgCount = 0
+
     /**
      * set alternate pics values
      */
@@ -97,6 +100,7 @@ class UILayout {
             + Space
             + Query_Prefix_Class + Class_Alternate_Pic_List)
 
+        this.#imgCount = $pics.length
         var altUrl = props.tpl.props.listMoviePicNotAvailable;
         var altnfUrl = props.tpl.props.listMoviePicNotFound;
         this.#setupAlternatePic($pics, altUrl, altnfUrl)
@@ -106,10 +110,14 @@ class UILayout {
             + Space
             + Query_Prefix_Class + Class_Alternate_Pic_List)
 
+        this.#imgCount += $pics.length
         altUrl = props.tpl.props.detailMoviePicNotAvailable;
         altnfUrl = props.tpl.props.detailMoviePicNotFound;
         this.#setupAlternatePic($pics, altUrl, altnfUrl)
     }
+
+    onPicLoaded = null
+    #imgNum = 0
 
     /**
      * setup alternate pics
@@ -118,8 +126,19 @@ class UILayout {
      * @param {any} altnfUrl alternate url if src null or white spaces
      */
     #setupAlternatePic($set, altUrl, altnfUrl) {
+        const t = this
         $set.each((i, e) => {
             var $e = $(e)
+
+            $e.on(Event_Load, (e) => {
+                t.#imgNum++
+                console.debug(t.#imgNum + ' / ' + t.#imgCount)
+                if (t.#imgNum == t.#imgCount) {
+                    // all pic loaded
+                    if (t.onPicLoaded) t.onPicLoaded()
+                }
+            })
+
             $e.on(Event_Error, () => {
                 const src = $e.attr(Attr_Src)
                 const url = (!src || src == Text_Empty || src == Text_Null) ?
@@ -129,6 +148,7 @@ class UILayout {
             })
         });
     }
+
 
     /**
      * setup links
@@ -253,4 +273,16 @@ class UILayout {
         }
     }
 
+    /**
+     * show the move list (on movie list page only)
+     * @returns
+     */
+    showList() {
+        const $movieList = $('.movie-list')
+        console.debug('show list')
+        $movieList.fadeIn(List_FadeIn_Time)
+        this.setupItemsLinkId()
+        $movieList.removeClass('no-vertical-scroll')
+        return        
+    }
 }

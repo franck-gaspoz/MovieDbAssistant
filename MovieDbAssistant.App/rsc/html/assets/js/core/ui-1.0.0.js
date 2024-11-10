@@ -92,9 +92,6 @@ class UI {
      */
     setup() {
 
-        // apply window state css classes
-        this.#applyWindowStateCssClasses()
-
         // activate dialogs 'closer' buttons
         this.#setupClosersButtons()
 
@@ -102,7 +99,7 @@ class UI {
         this.#setupDraggables()
 
         // setup zoom for windowed mode
-        this.#setupZoom()
+        this.#enableAutoZoom()
     }
 
     /**
@@ -242,7 +239,7 @@ class UI {
     /**
      * activate zoom for windowed mode
      */
-    #setupZoom() {
+    #enableAutoZoom() {
         $(window).on(Event_Resize, ev => {
             this.#applyZoomScale()
         });
