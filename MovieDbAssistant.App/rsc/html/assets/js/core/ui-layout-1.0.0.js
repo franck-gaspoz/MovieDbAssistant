@@ -17,12 +17,18 @@ class UILayout {
     }
 
     /**
-     * post setup : after tpl built
+     * enable widgets
      */
-    postSetup() {
-        this.#setAlternatePics()
+    enableGlobalWidgets() {
         this.#enableClock()
         this.#enableDate()
+    }
+
+    /**
+     * post setup : after tpl built
+     */
+    postSetup() {        
+        this.#setAlternatePics()
         return this
     }
 
