@@ -172,6 +172,7 @@
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
@@ -569,6 +570,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
