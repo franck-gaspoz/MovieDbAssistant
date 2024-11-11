@@ -109,6 +109,7 @@
     "/icons/minimize-window.png:/img",
     "/icons/restore-window.png:/img",
     "/icons/refresh-arrow.png:/img",
+    "/icons/spinner.gif:/img",
 
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
