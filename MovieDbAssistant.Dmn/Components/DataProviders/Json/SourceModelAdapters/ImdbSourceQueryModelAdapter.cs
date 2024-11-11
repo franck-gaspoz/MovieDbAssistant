@@ -45,11 +45,16 @@ public sealed class ImdbSourceQueryModelAdapter : SourceQueryModelAdapterAbstrac
         Add(Query_Param_Countries, model.Countries
             ?? DmnSettings.Value.Scrap.DefaultFilters.Countries);
 
-        if (model.RatingMin != null)
+        var ratingMin = model.RatingMin ??
+            DmnSettings.Value.Scrap.DefaultFilters.RatingMin;
+        var ratingMax = model.RatingMax ??
+            DmnSettings.Value.Scrap.DefaultFilters.RatingMax;
+
+        if (ratingMin != null)
         {
-            var rating = model.RatingMin;
-            if (model.RatingMax != null)
-                rating += Query_Separator_Criteria + model.RatingMax;
+            var rating = ratingMin;
+            if (ratingMax != null)
+                rating += Query_Separator_Criteria + ratingMax;
             Add(Query_Param_UserRating, rating);
         }
 
