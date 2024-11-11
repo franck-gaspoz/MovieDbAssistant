@@ -739,7 +739,6 @@ table.g-movie-detail-grid2-row-1 {
 .dialog {
     background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
     background-size: cover;
-    border: none;
 }
 
 .movie-page-list .dialog {
@@ -760,8 +759,7 @@ table.g-movie-detail-grid2-row-1 {
 }
 
 .dialog-title-bar {
-    border-bottom: none;
-    border-left: none;
+    border: none;
 }
 
 .dragging .dialog {
@@ -769,15 +767,14 @@ table.g-movie-detail-grid2-row-1 {
     backdrop-filter: none;
 }
 
-.dialog-container.dragging .dialog 
-{
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-8.jpg');
+.dialog-container.dragging .dialog {
+    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
     background-size: cover;
     backdrop-filter: none;
 }
 
 .movie-page-list .dialog-container.dragging .dialog {
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg');
+    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
     background-size: cover;
     backdrop-filter: none;
 }
