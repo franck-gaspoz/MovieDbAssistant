@@ -47,6 +47,7 @@ const HRef_Id_Separator = '#'
 const Dialog_FadeIn_Time = 100
 const Dialog_FadeOut_Time = 200
 const List_FadeIn_Time = 300
+const Details_FadeIn_Time = 50
 
 const Data_HRef = 'data-href'
 const Data_Target = 'data-target'

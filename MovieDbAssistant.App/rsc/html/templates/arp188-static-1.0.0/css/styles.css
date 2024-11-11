@@ -75,7 +75,7 @@ td {
     position: relative;
 }
 
-.movie-list {
+.movie-list,.movie-details {
     overflow-y: auto;
     max-height: Calc(100% - 5.5em);
 }

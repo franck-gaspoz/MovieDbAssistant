@@ -27,6 +27,7 @@
         $(document).ready(() => {
             // run tpl engine
             tpl.buildDetails(data)
+            layout.onPicLoaded = () => layout.showDetails()
             layout.postSetup()
             layout.addBackImgLoadedHandler('{{page.background}}')
             ui.setup();

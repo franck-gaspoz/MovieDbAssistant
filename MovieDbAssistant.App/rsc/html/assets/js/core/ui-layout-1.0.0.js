@@ -282,12 +282,21 @@ class UILayout {
     }
 
     /**
-     * show the move list (on movie list page only)
+     * show the movie list (on movie list page only)
      */
     showList() {
         const $movieList = $('.movie-list')
         console.debug('show list')
         $movieList.fadeIn(List_FadeIn_Time)
         this.scrollToItemInMovieList()
+    }
+
+    /**
+     * show the movie details (on movie details page only)
+     */
+    showDetails() {
+        const $movieDetails = $('.movie-details')
+        console.debug('show details')
+        $movieDetails.fadeIn(Details_FadeIn_Time)
     }
 }
