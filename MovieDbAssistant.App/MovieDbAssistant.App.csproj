@@ -73,6 +73,13 @@
     <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
     <None Remove="readme.txt" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fog-centered-bluegray.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fog-centered-violet.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sky-flash-lights.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-smoke-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-smoke-centered-green.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-spacetrip-white-stars.webp" />
+    <None Remove="rsc\html\assets\backgrounds\smoke-gray-dark.jpeg" />
     <None Remove="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg" />
     <None Remove="rsc\html\assets\icons\download.gif" />
     <None Remove="rsc\html\assets\icons\four-squares.png" />
@@ -276,6 +283,27 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
+    <Content Include="rsc\html\assets\backgrounds\anim-fog-centered-bluegray.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-fog-centered-violet.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sky-flash-lights.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-smoke-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-smoke-centered-green.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-spacetrip-white-stars.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\smoke-gray-dark.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -737,12 +737,14 @@ table.g-movie-detail-grid2-row-1 {
 /* SURCHARGE themeS de base */
 
 .dialog {
-    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .movie-page-list .dialog {
-    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
 }
 
 .arp188-msgbox-text {
@@ -768,15 +770,19 @@ table.g-movie-detail-grid2-row-1 {
 }
 
 .dialog-container.dragging .dialog {
-    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
-    background-size: cover;
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     backdrop-filter: none;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .movie-page-list .dialog-container.dragging .dialog {
-    background-image: url('../img/backgrounds/smoky-colored-blue-violet.jpg');
-    background-size: cover;
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     backdrop-filter: none;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .top-nav-container-right div.icon-container,
