@@ -48,7 +48,7 @@
 
     box-shadow: 2px 6px 20px 5px #000000EE;
     border: none;
-    outline: #EEEEFF22 solid 1px;
+    outline: #EEEEFF33 solid 1px;
 
     border-radius: {{frame-radius}};
 }
