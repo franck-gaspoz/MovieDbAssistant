@@ -151,7 +151,8 @@
 
 body.window-fullscreen #button_win_maximize,
 body.window-fullscreen #button_win_restore,
-body.window-fullscreen #button_win_minimize
+body.window-fullscreen #button_win_minimize,
+body.window-fullscreen #button_win_close
 {
     display: none;
 }
