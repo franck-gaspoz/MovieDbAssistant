@@ -19,10 +19,18 @@
         <!-- right -->
 
         <div class="bottom-nav-container-right">
-            <span class="with-date nav-text nav-date">{{vars.sys.now.date}}</span>
-        </div>
-        <div class="bottom-nav-container-right">
-            <span class="with-clock nav-text nav-clock">{{vars.sys.now.clock}}</span>
+
+            <div class="bottom-nav-container-right-left">
+                {{{ui/controls/icons/nav-icon(id=,class=icon-loading,name=spinner.gif,alt=icon spinner loading)}}}
+            </div>
+
+            <div class="bottom-nav-container-right-right">
+                <span class="with-date nav-text nav-date">{{vars.sys.now.date}}</span>
+            </div>
+            <div class="bottom-nav-container-right-right">
+                <span class="with-clock nav-text nav-clock">{{vars.sys.now.clock}}</span>
+            </div>
+
         </div>
 
     </div>

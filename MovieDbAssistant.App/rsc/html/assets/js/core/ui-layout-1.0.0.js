@@ -6,6 +6,8 @@
  *      util-1.0.0
  */
 
+//const Class_Movie_List = ''
+
 /**
  * ui layout
  * @class
@@ -288,6 +290,7 @@ class UILayout {
         const $movieList = $('.movie-list')
         console.debug('show list')
         $movieList.fadeIn(List_FadeIn_Time)
+        $('.icon-loading').fadeOut()
         this.scrollToItemInMovieList()
     }
 
@@ -298,5 +301,6 @@ class UILayout {
         const $movieDetails = $('.movie-details')
         console.debug('show details')
         $movieDetails.fadeIn(Details_FadeIn_Time)
+        $('.icon-loading').fadeOut()
     }
 }
