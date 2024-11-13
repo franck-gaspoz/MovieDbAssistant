@@ -19,7 +19,7 @@ public sealed class TemplateModel
         string versionDate,
         string description,
         string id,
-        string author,
+        List<string> authors,
         ThemeModel theme,
         List<PageModel> pages,
         JsonElement? props,
@@ -30,7 +30,7 @@ public sealed class TemplateModel
         List<TransformModel> transforms)
     {
         Name = name;
-        Author = author;
+        Authors = authors;
         Version = version;
         VersionDate = versionDate;
         Description = description;
@@ -53,7 +53,7 @@ public sealed class TemplateModel
     /// <summary>
     /// author
     /// </summary>
-    public string Author { get; set; }
+    public List<string> Authors { get; set; }
 
     /// <summary>
     /// version number

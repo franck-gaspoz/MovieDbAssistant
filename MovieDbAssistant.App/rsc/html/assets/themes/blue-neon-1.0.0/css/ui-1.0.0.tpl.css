@@ -39,17 +39,17 @@
     min-width: 24em;
     min-height: 12em;
     display: grid;
-    
     align-items: center;
     grid-template-rows: 2.2em auto 2.5em;
     position: absolute;
     z-index: 20;
     pointer-events: all;
-
     box-shadow: 2px 6px 20px 5px #000000EE;
     border: none;
-    outline: #EEEEFF33 solid 1px;
-
+    /*outline: #EEEEFF33 solid 1px;*/
+    /*outline: #0ed0ff66 solid 1px;*/
+    /*outline: #52738F77 solid 2px;*/
+    outline: #59b3ff88 solid 2px;
     border-radius: {{frame-radius}};
 }
 

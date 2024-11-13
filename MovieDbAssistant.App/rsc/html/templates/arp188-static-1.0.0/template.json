@@ -4,7 +4,7 @@
   "description": "template for static html catalogs with a minimalistic front-end UI",
   "version": "1.0.0",
   "versionDate": "2024/10/30",
-  "author": "Gaspard Moyrand",
+  "authors": [ "Gaspard Moyrand", "Franck Gaspoz" ],
 
   "theme": {
     "kernel": {
@@ -133,5 +133,4 @@
     "/fonts",
     "/js"
   ]
-
 }
