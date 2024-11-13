@@ -244,6 +244,7 @@ class UILayout {
             $i.css('height', h + 'px')
         }
 
+        this.hideBarLoading()
         $i[0].src = img.src
         $i.fadeIn(1000)
     }
@@ -264,7 +265,10 @@ class UILayout {
         var img = new Image();
         img.addEventListener(
             Event_Load,
-            () => this.#handleBackImgLoaded(img), false);
+            () => this.#handleBackImgLoaded(img), false)
+        img.addEventListener(
+            Event_Error,
+            () => this.hideBarLoading(), false)
         img.src = src;
     }
 
@@ -302,5 +306,12 @@ class UILayout {
         console.debug('show details')
         $movieDetails.fadeIn(Details_FadeIn_Time)
         $('.icon-loading').fadeOut()
+    }
+
+    /**
+     * hide bar loading
+     */
+    hideBarLoading() {
+        $('.icon-bar-loading').fadeOut()
     }
 }

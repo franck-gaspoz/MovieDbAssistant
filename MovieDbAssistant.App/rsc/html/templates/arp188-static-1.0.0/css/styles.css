@@ -471,6 +471,8 @@ body.movie-page-list .movie-page-bottom-nav-container {
 .bottom-nav-container-right-left {
     text-align: left;
     grid-column: 1;
+    display: grid;
+    grid-auto-columns: 50px;
 }
 
 .bottom-nav-container-right-right {
@@ -576,6 +578,16 @@ body.movie-page-list .movie-page-bottom-nav-container {
     vertical-align: bottom;
     position: relative;
     top: -0.25em;
+}
+
+.icon-bar-loading {
+    vertical-align: bottom;
+    position: relative;
+    top: -0.25em;
+}
+
+body.movie-page-list .icon-bar-loading {
+    display: none;
 }
 
 /* #endregion  */
@@ -687,6 +699,11 @@ table.g-movie-detail-grid2-row-1 {
 .cell1_1 {
     grid-row: 1;
     grid-column: 1;
+}
+
+.cell2_1 {
+    grid-row: 1;
+    grid-column: 2;
 }
 
 .nowrap {

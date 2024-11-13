@@ -7,7 +7,7 @@
 //	-- [play url][,download url]
 //  followed by
 //	-- empty line or end of file
-// - extract and remove any year at end of title for use in query (year=)
+// - extract and remove any year (format YYYY) at end of title for use in query (filter year=)
 //
 wargames
 https://ok.ru/video/8211801574065
