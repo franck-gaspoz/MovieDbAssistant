@@ -75,7 +75,7 @@ td {
     position: relative;
 }
 
-.movie-list {
+.movie-list,.movie-details {
     overflow-y: auto;
     max-height: Calc(100% - 5.5em);
 }
@@ -456,6 +456,29 @@ body.movie-page-list .movie-page-bottom-nav-container {
     grid-column: 3;
     text-align: right;
     padding-right: 1em;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.bottom-nav-container-right-left,
+.bottom-nav-container-right-right {
+    grid-row: 1;
+    max-height: 49px;
+}
+
+.bottom-nav-container-right-left {
+    text-align: left;
+    grid-column: 1;
+    display: grid;
+    grid-auto-columns: 50px;
+}
+
+.bottom-nav-container-right-right {
+    text-align: right;
+    grid-column: 2;
+    text-wrap: nowrap;
 }
 
 .top-nav-container-grid {
@@ -549,6 +572,22 @@ body.movie-page-list .movie-page-bottom-nav-container {
     transform: scaleY(-1);
     position: relative;
     top: 0.28em;
+}
+
+.icon-loading {
+    vertical-align: bottom;
+    position: relative;
+    top: -0.25em;
+}
+
+.icon-bar-loading {
+    vertical-align: bottom;
+    position: relative;
+    top: -0.25em;
+}
+
+body.movie-page-list .icon-bar-loading {
+    display: none;
 }
 
 /* #endregion  */
@@ -649,6 +688,10 @@ table.g-movie-detail-grid2-row-1 {
     display: grid;
 }
 
+.block {
+    display: block;
+}
+
 .inline-block {
     display: inline-block;
 }
@@ -656,6 +699,11 @@ table.g-movie-detail-grid2-row-1 {
 .cell1_1 {
     grid-row: 1;
     grid-column: 1;
+}
+
+.cell2_1 {
+    grid-row: 1;
+    grid-column: 2;
 }
 
 .nowrap {
@@ -681,6 +729,14 @@ table.g-movie-detail-grid2-row-1 {
 
 .text-align-right {
     text-align: right;
+}
+
+.no-vertical-scroll {
+    overflow-y:hidden;
+}
+
+.vertical-scroll {
+    overflow-y: scroll;
 }
 
 /* #endregion */
@@ -725,13 +781,14 @@ table.g-movie-detail-grid2-row-1 {
 /* SURCHARGE themeS de base */
 
 .dialog {
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-8.jpg');
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     background-size: cover;
-    border: none;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .movie-page-list .dialog {
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg');
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
 }
 
 .arp188-msgbox-text {
@@ -748,8 +805,7 @@ table.g-movie-detail-grid2-row-1 {
 }
 
 .dialog-title-bar {
-    border-bottom: none;
-    border-left: none;
+    border: none;
 }
 
 .dragging .dialog {
@@ -757,20 +813,24 @@ table.g-movie-detail-grid2-row-1 {
     backdrop-filter: none;
 }
 
-.dialog-container.dragging .dialog 
-{
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-8.jpg');
-    background-size: cover;
+.dialog-container.dragging .dialog {
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     backdrop-filter: none;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .movie-page-list .dialog-container.dragging .dialog {
-    background-image: url('../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg');
-    background-size: cover;
+    background-image: url('../img/backgrounds/anim-fog-centered-bluegray.webp');
     backdrop-filter: none;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
 }
 
-.top-nav-container-right div.icon-container {
+.top-nav-container-right div.icon-container,
+.top-nav-container-left div.icon-container {
     display: inline;
 }
 

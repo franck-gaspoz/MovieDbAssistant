@@ -4,7 +4,7 @@
   "description": "template for static html catalogs with a minimalistic front-end UI",
   "version": "1.0.0",
   "versionDate": "2024/10/30",
-  "author": "Gaspard Moyrand",
+  "authors": [ "Gaspard Moyrand", "Franck Gaspoz" ],
 
   "theme": {
     "kernel": {
@@ -44,7 +44,7 @@
       "id": "list",
       "layout": "List",
       "tpl": "page-list.tpl.html",
-      "background": "cinema-wallpaper-36.jpg",
+      "background": "cinema-wallpaper-17.jpg",
       "title": "My Movies",
       "filename": "index"
     },
@@ -52,8 +52,8 @@
       "id": "detail",
       "layout": "Detail",
       "tpl": "page-details.tpl.html",
-      "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-37.jpg",
-      "title": "ARP 188 Galaxy spiral NC 7825-Xw"
+      "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-17.jpg",
+      "title": "My Movies"
     }
   ],
 
@@ -99,6 +99,7 @@
 
     "/icons/back.png:/img",
     "/icons/download.png:/img",
+    "/icons/anim-bar-loading.gif:/img",
     "/icons/favicon.ico:/img",
     "/icons/house.png:/img",
     "/icons/left-arrow.png:/img",
@@ -109,11 +110,13 @@
     "/icons/minimize-window.png:/img",
     "/icons/restore-window.png:/img",
     "/icons/refresh-arrow.png:/img",
+    "/icons/anim-spinner.gif:/img",
 
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
 
     "/movie-page-list-wallpapers:/img",
+    "/backgrounds:/img",
 
     "/js/ext/jquery-3.7.1.min.js:/js/ext",
     "/js/core/template-1.0.0.js:/js/core",
@@ -130,5 +133,4 @@
     "/fonts",
     "/js"
   ]
-
 }

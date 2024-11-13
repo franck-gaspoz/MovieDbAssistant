@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-	  <Version>1.1.0</Version>
-	  <FileVersion>1.1.0</FileVersion>
-	  <InformationalVersion>1.1.0</InformationalVersion>
+	  <Version>1.0.0</Version>
+	  <FileVersion>1.0.0</FileVersion>
+	  <InformationalVersion>1.0.0</InformationalVersion>
 	  <TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 	  <TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -20,6 +20,7 @@
     <Platforms>AnyCPU;x64</Platforms>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	<SignAssembly>False</SignAssembly>
+	  <Copyright>© Franck Gaspoz Software GPLv3</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -53,20 +54,83 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.fr.json" />
+    <None Remove="appsettings - Copier.Development.json" />
+    <None Remove="appsettings - Copier.FR.json" />
+    <None Remove="appsettings.Development.json" />
     <None Remove="appsettings.json" />
     <None Remove="assets\led-black.ico" />
     <None Remove="assets\led-red.ico" />
     <None Remove="assets\multimedia.ico" />
     <None Remove="assets\multimedia.png" />
+    <None Remove="culture-settings.EN-US.json" />
+    <None Remove="culture-settings.json" />
     <None Remove="db\README.md" />
-    <None Remove="input\ok.ru.txt" />
-    <None Remove="input\query-sample1.txt" />
+    <None Remove="input\-query-sample1.txt" />
+    <None Remove="input\-query-sample2.txt" />
+    <None Remove="input\Catalog Nov. 2024.txt" />
     <None Remove="input\README.md" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
     <None Remove="readme.txt" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-black-darkgray.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-black-yellow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-raimbow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-red.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-equalizer.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-landscape-violet.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-moving-dots-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-rotate-plasma-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-slpash-landscape.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-spiral-red.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-tree-lightcyan.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-wave-wire-green.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-wire-landscape-raimbow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-geom-wires-bright-colored.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-rotate-square-lightcyan.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-tentacles.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dabstract-zoom-water-black.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-3dplasma-raimbow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-brightviolet.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-dots-moving-pink.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-ribbon-black-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-ribbon-black-red.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-stars-up-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstract-stars-up-yellow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-abstractfog-glow-blue-magenta.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-blob-cube-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fire-dots-red-yellow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fog-centered-bluegray.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fog-centered-lightred.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-fog-centered-violet.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-lucioles-glow-bright.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-lucioles-glow-pink.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-morphing-robotgirl-manga.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-plasma-thin.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-ribbon-blue-cyan.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-ribbon-blue-red.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-ribbon-light-cyan-pink.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-ring-bluegreen.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-ring-bluegreen2.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-black-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-black-red.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-black-yellow.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-black.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-day-blue-green.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sea-glass.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-sky-flash-lights.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-smoke-blue.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-smoke-centered-green.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-smoke-green.webp" />
+    <None Remove="rsc\html\assets\backgrounds\anim-spacetrip-white-stars.webp" />
+    <None Remove="rsc\html\assets\backgrounds\smoke-gray-dark.jpeg" />
+    <None Remove="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg" />
+    <None Remove="rsc\html\assets\icons\anim-bar-loading.gif" />
+    <None Remove="rsc\html\assets\icons\anim-movie-1.gif" />
+    <None Remove="rsc\html\assets\icons\anim-movie-2.gif" />
+    <None Remove="rsc\html\assets\icons\anim-spinner.gif" />
+    <None Remove="rsc\html\assets\icons\bar-loading.gif" />
     <None Remove="rsc\html\assets\icons\download.gif" />
     <None Remove="rsc\html\assets\icons\four-squares.png" />
     <None Remove="rsc\html\assets\icons\installing-updates.gif" />
@@ -76,6 +140,7 @@
     <None Remove="rsc\html\assets\icons\minimize-window.png" />
     <None Remove="rsc\html\assets\icons\restore-window.png" />
     <None Remove="rsc\html\assets\icons\screensharing.png" />
+    <None Remove="rsc\html\assets\icons\spinner.gif" />
     <None Remove="rsc\html\assets\icons\upload.gif" />
     <None Remove="rsc\html\assets\README.md" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\buttons-1.0.0.css" />
@@ -157,6 +222,8 @@
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\frame-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
+    <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
@@ -205,22 +272,40 @@
     <None Remove="setup\setup.png" />
     <None Remove="temp\README.md" />
     <None Remove="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe" />
-    <None Remove="tools\scrap.bat" />
+    <None Remove="tools\scrap-imdb.ps1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.fr.json">
+    <Content Include="culture-settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\query-sample1.txt">
+    <Content Include="culture-settings.EN-US.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="culture-settings.FR.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="input\-query-sample1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\-query-sample2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="logs\log.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\ok.ru.txt">
+    <Content Include="input\Catalog Nov. 2024.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -250,13 +335,178 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="assets\multimedia.ico" />
-    <Content Include="rsc\html\assets\icons\download.gif">
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-black-darkgray.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-black-yellow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-raimbow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-cristal-red.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-equalizer.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-landscape-violet.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-moving-dots-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-rotate-plasma-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-slpash-landscape.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-spiral-red.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-tree-lightcyan.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-wave-wire-green.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-wire-landscape-raimbow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-geom-wires-bright-colored.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-rotate-square-lightcyan.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-tentacles.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dabstract-zoom-water-black.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-3dplasma-raimbow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-brightviolet.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-dots-moving-pink.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-ribbon-black-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-ribbon-black-red.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-stars-up-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstract-stars-up-yellow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-abstractfog-glow-blue-magenta.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-blob-cube-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-fire-dots-red-yellow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-fog-centered-bluegray.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-fog-centered-lightred.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-fog-centered-violet.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-lucioles-glow-bright.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-lucioles-glow-pink.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-morphing-robotgirl-manga.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-plasma-thin.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-ribbon-blue-cyan.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-ribbon-blue-red.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-ribbon-light-cyan-pink.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-ring-bluegreen.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-ring-bluegreen2.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-black-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-black-red.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-black-yellow.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-black.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-day-blue-green.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sea-glass.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-sky-flash-lights.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-smoke-blue.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-smoke-centered-green.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-smoke-green.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\anim-spacetrip-white-stars.webp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\smoke-gray-dark.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\backgrounds\smoky-colored-blue-violet.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\anim-bar-loading.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\anim-movie-1.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\anim-movie-2.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\anim-spinner.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\four-squares.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\icons\installing-updates.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\list.png">
@@ -275,9 +525,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\screensharing.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="rsc\html\assets\icons\upload.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\README.md">
@@ -511,6 +758,12 @@
     <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -652,7 +905,7 @@
     <Content Include="temp\README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tools\scrap.bat">
+    <Content Include="tools\scrap-imdb.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="tools\movie-db-scrapper-windows-64bit-intel-1.1.1.exe">

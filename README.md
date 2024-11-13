@@ -12,8 +12,34 @@
 
 ___
 
-Generates **Movie catalogs documents** (HTML, stand alone ZIP,...) using **Web Crawlers** and a **templating system**.
+Generates **Movie catalogs documents** (HTML, stand alone ZIP,...) from a **list of movies titles** using **Web Crawlers** and a **templating system**.
 Can scrap data from [IMDb](http://www.imdb.com)
+
+```mermaid
+---
+title: flow chart
+---
+    flowchart LR
+
+    txt>list of movies titles .txt<br>----------------------------<br>title 1<br>title 2<br>...<br>title n<br>]
+    mdba[Movie Db Assistant]
+    scrapers[[scrapers]]
+    websites[(web sites)]
+    tple[[template engine]]
+    tpls>templates:<br>--------------<br>front engine js<br>themes<br>styles css<br>media]
+    mvc[(movie catalog web site)]
+
+    txt-- parse input file -->mdba
+
+    mdba-- scrapers queries -->scrapers
+    mdba-- movies data -->tple
+
+    scrapers-- json -->mdba
+    scrapers-- scrawl -->websites 
+
+    tpls-.->tple
+    tple-- generates -->mvc 
+```
 
 User & Developer manual: [manual.md](doc/manual.md)
 
@@ -87,11 +113,11 @@ This application run as a tray icon
 
  optional steps if you wish to build the app from source
 
-### System Tray application for Windows™ 10.0.22621.0 and above 
+### System Tray application for ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF)™ 10.0.22621.0 and above 
 
 Available on `Windows 10.0.22621.0` and more
 
-The project has currently no GUI for OSX and Linux systems, even if the app core is multi plateform.
+The project has currently no GUI for `OSX` and `Linux systems`, even if the app core is multi plateform.
 
 #### Build & Run from source
 
@@ -118,24 +144,24 @@ ____
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - framework `net8.0-windows10.0.22621.0` (`Microsoft.Windows.Desktop.App.WindowsForms`)
     - `OS`: Windows 10.0.22621.0 and +
+    ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF)
 
 - **App.Core** : application core (*🚧coming soon🚧*)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
 - **Dmn** : app domain
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `MovieDbSpiders`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md)
     - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
-    - `OS`: Linux, Windows, OSX
-
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
 - **Lib** : library (infrastructure)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
-    - `OS`: Linux, Windows, OSX
-
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 ___
 
 ## Credits
@@ -149,7 +175,7 @@ ___
 - <a target="_blank" href="https://icons8.com/icon/364/settings">Settings</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/23537/close-window">Close Window</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 - <a target="_blank" href="https://icons8.com/icon/C19x5dib8DcR/circular-arrows">Circular Arrows</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-
+- <a target="_blank" href="https://icons8.com/icon/SYOcualEVLca/spinner">Spinner</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 ___
 
 ## Releases History

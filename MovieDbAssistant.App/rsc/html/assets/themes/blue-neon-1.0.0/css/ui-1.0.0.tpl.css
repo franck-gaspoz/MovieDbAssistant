@@ -39,17 +39,32 @@
     min-width: 24em;
     min-height: 12em;
     display: grid;
-    border: black solid 2px;
     align-items: center;
-    grid-template-rows: 2.2em auto min-content;
+    grid-template-rows: 2.2em auto 2.5em;
     position: absolute;
     z-index: 20;
     pointer-events: all;
+    box-shadow: 2px 6px 20px 5px #000000EE;
+    border: none;
+    /*outline: #EEEEFF33 solid 1px;*/
+    /*outline: #0ed0ff66 solid 1px;*/
+    /*outline: #52738F77 solid 2px;*/
+    outline: #59b3ff88 solid 2px;
+    border-radius: {{frame-radius}};
+}
+
+.dialog-content-background {
+    background: #00000088;
+    grid-row: 1 / 4;
+    height: 100%;
+    grid-column: 1;
+}
+
+.dialog-frame {
+    border: black solid 2px;
+    grid-template-rows: auto;
+    display: grid;
     box-shadow: 2px 6px 15px 5px #000000AA;
-    border-right: #3f51b5FF solid 1px;
-    border-left: #3f51b5FF solid 1px;
-    border-top: #3f51b5FF solid 0.5px;
-    border-bottom: #3f51b5FF solid 1px;
     border-radius: {{frame-radius}};
 }
 
@@ -77,7 +92,9 @@
 
 .dialog-title-bar-container {
     background: #080c1c;
-    border-radius: {{frame-radius}} {{frame-radius}} 0em 0em;
+    grid-row: 1;
+    grid-column: 1;
+    border-radius: {{frame-radius}} {{frame-radius}} 0em 0em;                                             
 }
 
 .dialog-content {
@@ -85,6 +102,8 @@
     grid-row: 2;
     font-size: 32px;
     margin: 36px;
+    grid-row: 2;
+    grid-column: 1;
 }
 
 .dialog-button-bar {
@@ -97,6 +116,8 @@
     grid-gap: 1em;
     margin: 36px;
     margin-top: 0em;
+    grid-row: 3;
+    grid-column: 1;
 }
 
 .frame-icon-container {
@@ -126,9 +147,12 @@
     backdrop-filter: blur(5px);
 }
 
+/* #region window electron */
+
 body.window-fullscreen #button_win_maximize,
 body.window-fullscreen #button_win_restore,
-body.window-fullscreen #button_win_minimize
+body.window-fullscreen #button_win_minimize,
+body.window-fullscreen #button_win_close
 {
     display: none;
 }
@@ -150,6 +174,31 @@ body.window-maximized #button_win_maximize {
     display: none !important;
 }
 
+/* #endregion */
+
+/* #region settings dialogs */
+
+.settings-row {
+    display: grid;
+    grid-auto-columns: 5em auto;
+}
+
+.settings-row-head {
+    text-align: left;
+}
+
+.settings-column-label {
+    grid-column: 1;
+    text-align: right;
+}
+
+.settings-column-text {
+    grid-column: 2;
+    text-align: left;
+    padding-left: 1em;
+}
+
+/* #endregion */
 
 /* #region transversals styles */
 
