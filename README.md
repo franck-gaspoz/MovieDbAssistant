@@ -113,11 +113,11 @@ This application run as a tray icon
 
  optional steps if you wish to build the app from source
 
-### System Tray application for Windows™ 10.0.22621.0 and above 
+### System Tray application for ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF)™ 10.0.22621.0 and above 
 
 Available on `Windows 10.0.22621.0` and more
 
-The project has currently no GUI for OSX and Linux systems, even if the app core is multi plateform.
+The project has currently no GUI for `OSX` and `Linux systems`, even if the app core is multi plateform.
 
 #### Build & Run from source
 
@@ -144,24 +144,24 @@ ____
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - framework `net8.0-windows10.0.22621.0` (`Microsoft.Windows.Desktop.App.WindowsForms`)
     - `OS`: Windows 10.0.22621.0 and +
+    ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF)
 
 - **App.Core** : application core (*🚧coming soon🚧*)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
 - **Dmn** : app domain
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
     - `MovieDbSpiders`: [/MovieDbScraper/blob/master/README.md](https://github.com/franck-gaspoz/MovieDbSpiders/blob/master/README.md)
     - `NewtonSoft.Json`: [https://github.com/JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
-    - `OS`: Linux, Windows, OSX
-
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
 - **Lib** : library (infrastructure)
 
     - `SDK`: `Microsoft.NET.Sdk` (`Microsoft.NETCore.App`)
-    - `OS`: Linux, Windows, OSX
-
+    - `OS`: ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 ___
 
 ## Credits
