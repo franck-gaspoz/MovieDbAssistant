@@ -32,7 +32,7 @@ title: flow chart
     txt-- parse input file -->mdba
 
     mdba-- scrapers queries -->scrapers
-    mdba-- build -->tple
+    mdba-- movies data -->tple
 
     scrapers-- json -->mdba
     scrapers-- scrawl -->websites 
