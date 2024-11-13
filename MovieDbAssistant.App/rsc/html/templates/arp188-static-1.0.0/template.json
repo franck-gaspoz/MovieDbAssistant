@@ -99,7 +99,7 @@
 
     "/icons/back.png:/img",
     "/icons/download.png:/img",
-    "/icons/bar-loading.gif:/img",
+    "/icons/anim-bar-loading.gif:/img",
     "/icons/favicon.ico:/img",
     "/icons/house.png:/img",
     "/icons/left-arrow.png:/img",
@@ -110,8 +110,7 @@
     "/icons/minimize-window.png:/img",
     "/icons/restore-window.png:/img",
     "/icons/refresh-arrow.png:/img",
-    "/icons/spinner.gif:/img",
-    "/icons/installing-updates.gif:/img",
+    "/icons/anim-spinner.gif:/img",
 
     "/img/image-not-availble-300x175.jpg:/img",
     "/img/image-404-630x630.jpg:/img",
