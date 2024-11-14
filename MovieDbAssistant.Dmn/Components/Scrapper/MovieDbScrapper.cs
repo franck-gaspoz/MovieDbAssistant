@@ -104,9 +104,8 @@ public sealed class MovieDbScrapper : IIdentifiable
                     output,
                     query.Title
                 };
-                if (/*false &&*/ filters != null)
+                if (filters != null)
                     args.Add(filters);
-                //.Replace("&",""));
 
                 _logger.LogInformation(this,
                     $"scrap: #{query.InstanceId()} spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");
