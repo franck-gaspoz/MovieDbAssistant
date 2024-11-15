@@ -105,10 +105,16 @@
     "/icons/left-arrow.png:/img",
     "/icons/play.png:/img",
     "/icons/settings.png:/img",
+
     "/icons/close-window.png:/img",
     "/icons/maximize-window.png:/img",
     "/icons/minimize-window.png:/img",
     "/icons/restore-window.png:/img",
+    "/icons/close-window-frameless.png:/img",
+    "/icons/maximize-window-frameless.png:/img",
+    "/icons/minimize-window-frameless.png:/img",
+    "/icons/restore-window-frameless.png:/img",
+
     "/icons/refresh-arrow.png:/img",
     "/icons/anim-spinner.gif:/img",
 

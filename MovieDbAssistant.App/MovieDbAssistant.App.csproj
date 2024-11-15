@@ -132,13 +132,17 @@
     <None Remove="rsc\html\assets\icons\anim-movie-2.gif" />
     <None Remove="rsc\html\assets\icons\anim-spinner.gif" />
     <None Remove="rsc\html\assets\icons\bar-loading.gif" />
+    <None Remove="rsc\html\assets\icons\close-window-frameless.png" />
     <None Remove="rsc\html\assets\icons\download.gif" />
     <None Remove="rsc\html\assets\icons\four-squares.png" />
     <None Remove="rsc\html\assets\icons\installing-updates.gif" />
     <None Remove="rsc\html\assets\icons\list.png" />
+    <None Remove="rsc\html\assets\icons\maximize-window-frameless.png" />
     <None Remove="rsc\html\assets\icons\maximize-window.png" />
     <None Remove="rsc\html\assets\icons\menu.png" />
+    <None Remove="rsc\html\assets\icons\minimize-window-frameless.png" />
     <None Remove="rsc\html\assets\icons\minimize-window.png" />
+    <None Remove="rsc\html\assets\icons\restore-window-frameless.png" />
     <None Remove="rsc\html\assets\icons\restore-window.png" />
     <None Remove="rsc\html\assets\icons\screensharing.png" />
     <None Remove="rsc\html\assets\icons\spinner.gif" />
@@ -224,7 +228,9 @@
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\controls\icons\nav-icon.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\dialogs\message-box.tpl.html" />
     <None Remove="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings-row.tpl.html" />
     <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html" />
+    <None Remove="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings\row-item.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\pages\page-list.tpl.html" />
     <None Remove="rsc\html\templates\cine-static-1.0.0\parts\backgrounds\background-container.tpl.html" />
@@ -510,10 +516,16 @@
     <Content Include="rsc\html\assets\icons\anim-spinner.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\icons\close-window-frameless.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\icons\four-squares.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\list.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\maximize-window-frameless.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\maximize-window.png">
@@ -522,7 +534,13 @@
     <Content Include="rsc\html\assets\icons\menu.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="rsc\html\assets\icons\minimize-window-frameless.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="rsc\html\assets\icons\minimize-window.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\icons\restore-window-frameless.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\icons\restore-window.png">
@@ -765,7 +783,13 @@
     <Content Include="rsc\html\assets\themes\core-1.0.0\tpl\ui\window\frame-buttons.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings.tpl.html">
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings\row-item.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings\row-head.tpl.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\templates\arp188-static-1.0.0\parts\panels\settings\panel.tpl.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\templates\cine-static-1.0.0\pages\page-details.tpl.html">

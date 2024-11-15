@@ -178,28 +178,71 @@ body.window-maximized #button_win_maximize {
 
 /* #region settings dialogs */
 
-.settings-row {
+.settings-row-background {
+    grid-column: 1 / span 2;
+    background-color: #00000088;
+    grid-row: 1;
+}
+
+.settings-row-background img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+}
+
+.settings-row, .settings-row-head {
     display: grid;
     grid-auto-columns: 5em auto;
+    padding: 0px;
+    vertical-align: middle;
 }
 
 .settings-row-head {
     text-align: left;
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    backdrop-filter: brightness(2);
+    border: #FFFFFF22 outset 1px;
+    border-radius: 6px;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.settings-row {
+    border-bottom: #1f6bc7FF outset 1px;
+}
+
+.settings-column-label,
+.settings-column-head,
+.settings-column-text {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .settings-column-label {
+    grid-row: 1;
     grid-column: 1;
     text-align: right;
+    border-right: #1f6bc7FF outset 1px;
+    padding-right: 0.5em;
+}
+
+.settings-column-head {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    text-align: left;
+    padding-left: 0.5em;
 }
 
 .settings-column-text {
+    grid-row: 1;
     grid-column: 2;
     text-align: left;
     padding-left: 1em;
 }
 
 /* #endregion */
-
+    
 /* #region transversals styles */
 
 .dragging {
