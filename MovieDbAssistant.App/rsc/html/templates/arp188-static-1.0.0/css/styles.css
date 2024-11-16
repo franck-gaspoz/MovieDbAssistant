@@ -359,6 +359,7 @@ body.movie-page-detail .rating-container {
     scrollbar-width: inherit;
     font-family: comicn;
     font-size: 1.2em;
+    width: 100%;
 }
 
 .play-icon,
@@ -639,6 +640,15 @@ table.g-movie-detail-grid2-row-1 {
     grid-column: 1;
     max-height: 100%;
     overflow-y: auto;
+}
+
+/* #endregion */
+
+/* #region tranforms styles */
+
+.trsf-comment,.trsr-comment-secondary {
+    font-style: italic;
+    font-weight: bold;
 }
 
 /* #endregion */

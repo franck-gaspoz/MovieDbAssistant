@@ -65,7 +65,8 @@
     "repoLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "helpLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
     "authorLink": "https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md",
-    "hSep": "<span class=\"hsep\"></span>"
+    "hSep": "<span class=\"hsep\"></span>",
+    "insertContentPattern": "<span class=\"{0}\">{1}</span>"
   },
 
   "transforms": [
@@ -84,6 +85,10 @@
     {
       "target": "ActorModel",
       "operation": "Transform_ActorSimple"
+    },
+    {
+      "target": "anecdotes",
+      "operation": "Transform_Anecdotes"
     }
   ],
 
