@@ -65,9 +65,10 @@
     <None Remove="culture-settings.EN-US.json" />
     <None Remove="culture-settings.json" />
     <None Remove="db\README.md" />
+    <None Remove="input\-Catalog Nov. 2024.txt" />
     <None Remove="input\-query-sample1.txt" />
     <None Remove="input\-query-sample2.txt" />
-    <None Remove="input\Catalog Nov. 2024.txt" />
+    <None Remove="input\Fast test.txt" />
     <None Remove="input\README.md" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
@@ -148,6 +149,12 @@
     <None Remove="rsc\html\assets\icons\spinner.gif" />
     <None Remove="rsc\html\assets\icons\upload.gif" />
     <None Remove="rsc\html\assets\README.md" />
+    <None Remove="rsc\html\assets\sources\filemoon.png" />
+    <None Remove="rsc\html\assets\sources\nas.png" />
+    <None Remove="rsc\html\assets\sources\ok.ru.png" />
+    <None Remove="rsc\html\assets\sources\ssd.png" />
+    <None Remove="rsc\html\assets\sources\usb.png" />
+    <None Remove="rsc\html\assets\sources\youtube.png" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\buttons-1.0.0.css" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.css" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.tpl.css" />
@@ -303,6 +310,9 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
+    <Content Include="input\Fast test.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="input\-query-sample1.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -312,7 +322,7 @@
     <Content Include="logs\log.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\Catalog Nov. 2024.txt">
+    <Content Include="input\-Catalog Nov. 2024.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -550,6 +560,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\filemoon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\nas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\ok.ru.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\ssd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\usb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\youtube.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\themes\blue-neon-1.0.0\css\buttons-1.0.0.css">
@@ -958,7 +986,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="rsc\html\assets\sources\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\icons\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\img\" />
     <Folder Include="rsc\html\assets\themes\blue-neon-1.0.0\js\" />
