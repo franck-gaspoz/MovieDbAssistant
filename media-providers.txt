@@ -5,6 +5,7 @@ youtu.be					;	https://youtu.be.com				;										;
 youtube						;	https://youtube.com					;										;
 ok.ru						;	https://ok.ru.com					;										;
 							;	https://filemoon.sx					;										;
+moviesfoundonline			;	https://moviesfoundonline.com/		;	https://youtube.com					; 
 lookmovie					;	https://lookmovie.onl/				;	https://specter.vidzstore.com/		; https://vidzstore.com/
 the flixer					;	https://theflixertv.to/				;										;
 kaido						;   https://kaido.to/					;										; anime
