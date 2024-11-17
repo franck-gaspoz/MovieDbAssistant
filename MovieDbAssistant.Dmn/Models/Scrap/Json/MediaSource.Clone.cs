@@ -10,5 +10,9 @@ public sealed partial class MediaSource
     /// </summary>
     /// <returns>A <see cref="MediaSource"/></returns>
     public MediaSource Clone()
-        => new(Path);
+        => new(Path)
+        {
+            MediaPhysicalTypeId = MediaPhysicalTypeId,
+            MediaProviderId = MediaProviderId
+        };
 }

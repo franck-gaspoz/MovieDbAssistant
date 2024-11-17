@@ -50,12 +50,16 @@ public static partial class MovieModelBuilderExtensions
             .App.MovieDbScraperToolVersion;
         model.MetaData.SpiderId = spiderId?.ToString();
 
+        model.Sources.Clear();
+
         var mediaSourcePlay = new MediaSource(query.Metadata?.Source);
         var mediaSourceDownload = new MediaSource(query.Metadata?.Download);
         if (mediaSourcePlay != null)
             model.Sources.Play.Add(mediaSourcePlay);
         if (mediaSourceDownload != null)
             model.Sources.Download.Add(mediaSourceDownload);
+
+        model.Sources.SetupMediaProviderId(settings);
 
         model.MetaData.Query = query;
         if (queryCacheFiles != null)
@@ -91,6 +95,7 @@ public static partial class MovieModelBuilderExtensions
                 settings,
                 spiderId,
                 queryCacheFiles);
+
         return models;
     }
 }

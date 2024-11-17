@@ -6,14 +6,14 @@
 public sealed class MediaProvidersSettings
 {
     /// <summary>
-    /// Gets or sets the urls.
+    /// urls.
     /// </summary>
     /// <value>A list of media provider settings.</value>
-    public required MediaProviderSettingsList Urls { get; set; } = new();
+    public required List<MediaProviderSettings> Urls { get; set; } = new();
 
     /// <summary>
     /// physicial media providers types
     /// </summary>
     /// <value>A list of media provider settings.</value>
-    public required MediaProviderSettingsList PhysycalTypes { get; set; } = new();
+    public required List<MediaProviderSettings> PhysycalTypes { get; set; } = new();
 }

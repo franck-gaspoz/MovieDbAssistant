@@ -41,9 +41,4 @@ public sealed class AppSettings
     /// urls
     /// </summary>
     public required UrlsSettings Urls { get; set; }
-
-    /// <summary>
-    /// media providers
-    /// </summary>
-    public required MediaProvidersSettings MediaProviders { get; set; }
 }

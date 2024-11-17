@@ -30,4 +30,14 @@ public sealed partial class MediaSources
     public MediaSource PreferredSourceDownload
         => Play.Count > 0
             ? Download[0] : _emptySource;
+
+    /// <summary>
+    /// clear the media sources
+    /// </summary>
+    public MediaSources Clear()
+    {
+        Download.Clear();
+        Play.Clear();
+        return this;
+    }
 }
