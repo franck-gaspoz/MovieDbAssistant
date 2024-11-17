@@ -155,6 +155,7 @@
     <None Remove="rsc\html\assets\sources\ssd.png" />
     <None Remove="rsc\html\assets\sources\unknown.png" />
     <None Remove="rsc\html\assets\sources\usb.png" />
+    <None Remove="rsc\html\assets\sources\youtu.be.png" />
     <None Remove="rsc\html\assets\sources\youtube.png" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\buttons-1.0.0.css" />
     <None Remove="rsc\html\assets\themes\blue-neon-1.0.0\css\ui-1.0.0.css" />
@@ -579,6 +580,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\sources\usb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\youtu.be.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\sources\youtube.png">
