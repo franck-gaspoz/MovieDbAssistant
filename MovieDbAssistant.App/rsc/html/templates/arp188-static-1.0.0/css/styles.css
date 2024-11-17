@@ -31,6 +31,16 @@ td {
 
 /* #endregion */
 
+/* #region media providers */
+
+.source-id-drive-local,
+.source-id-drive-lan,
+.source-id-drive-usb {
+    filter: invert(100%);
+}
+
+/* #endregion */
+
 /* #region pages containers */
 
 .movie-page-background-container,
@@ -47,8 +57,6 @@ td {
 /* #endregion */
 
 /* #region common */
-
-/* #endregion */
 
 .video-background {
     width: 100%;
@@ -446,6 +454,8 @@ body.movie-page-detail .sources-icons {
 body.movie-page-detail .sources {
     top: 2.8em;
 }
+
+/* #endregion */
 
 /* #region nav */
 
