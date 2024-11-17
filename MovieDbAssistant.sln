@@ -30,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{F03B6F94-AF1
 	ProjectSection(SolutionItems) = preProject
 		doc\credits.txt = doc\credits.txt
 		doc\manual.md = doc\manual.md
+		media-providers.txt = media-providers.txt
 		doc\notes.txt = doc\notes.txt
 		doc\templates.md = doc\templates.md
 	EndProjectSection
