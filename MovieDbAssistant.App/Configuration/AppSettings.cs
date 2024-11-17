@@ -1,4 +1,6 @@
-﻿namespace MovieDbAssistant.App.Configuration;
+﻿using MovieDbAssistant.Dmn.Configuration;
+
+namespace MovieDbAssistant.App.Configuration;
 
 /// <summary>
 /// The app settings.
@@ -26,7 +28,7 @@ public sealed class AppSettings
     public required ToolsSettings Tools { get; set; }
 
     /// <summary>
-    /// tools
+    /// anims
     /// </summary>
     public required AnimsSettings Anims { get; set; }
 
@@ -39,4 +41,9 @@ public sealed class AppSettings
     /// urls
     /// </summary>
     public required UrlsSettings Urls { get; set; }
+
+    /// <summary>
+    /// media providers
+    /// </summary>
+    public required MediaProvidersSettings MediaProviders { get; set; }
 }

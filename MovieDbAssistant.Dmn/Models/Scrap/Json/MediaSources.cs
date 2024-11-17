@@ -15,7 +15,7 @@ public sealed partial class MediaSources
     /// </summary>
     public List<MediaSource> Play { get; set; } = [];
 
-    static readonly MediaSource _emptySource = new(string.Empty);
+    static readonly MediaSource _emptySource = new();
 
     /// <summary>
     /// preferred movie source play (choice from Play)
@@ -29,5 +29,5 @@ public sealed partial class MediaSources
     /// </summary>
     public MediaSource PreferredSourceDownload
         => Play.Count > 0
-            ? Play[0] : _emptySource;
+            ? Download[0] : _emptySource;
 }

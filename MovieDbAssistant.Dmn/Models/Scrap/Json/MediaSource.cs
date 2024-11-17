@@ -8,12 +8,17 @@ public sealed partial class MediaSource
     /// <summary>
     /// source path
     /// </summary>
-    public string Path { get; set; }
+    public string? Path { get; set; }
 
     /// <summary>
     /// media provider identifier (from MediaProviders.Urls)
     /// </summary>
     public string? MediaProviderId { get; set; }
 
-    public MediaSource(string path) => Path = path;
+    /// <summary>
+    /// media physical type id (hdd,ssd,...) if any
+    /// </summary>
+    public string? MediaPhysicalTypeId { get; set; }
+
+    public MediaSource(string? path = null) => Path = path;
 }

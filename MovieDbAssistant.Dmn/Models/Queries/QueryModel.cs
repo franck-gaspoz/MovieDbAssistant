@@ -21,7 +21,7 @@ public sealed record class QueryModel
     public QueryMetadata? Metadata { get; set; }
 
     /// <summary>
-    /// quasi unique key
+    /// quasi/pseudo unique key
     /// </summary>
     public string HashKey =>
         _title.ToHexLettersAndDigitsString()
