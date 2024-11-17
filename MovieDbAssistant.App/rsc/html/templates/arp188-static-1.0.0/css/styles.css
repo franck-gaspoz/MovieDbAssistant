@@ -100,7 +100,7 @@ body.movie-page-detail div.sources.no-year.no-rating.no-ratingCount {
     top: 2.8em !important;
 }
 
-div.sources.no-summary {
+div.sources.no-summary.no-pic {
     top: 2.5em !important;
 }
 
@@ -425,6 +425,14 @@ body.movie-page-list .sources-icons {
     text-align: center;
     text-wrap: nowrap;
     overflow: visible;
+}
+
+body.movie-page-list .sources-icons:not(.no-pic) {
+    top: 9.5em !important;
+}
+
+body.movie-page-list .sources:not(.no-pic) {
+    top: 5.5em !important;
 }
 
 body.movie-page-detail .sources-icons {
