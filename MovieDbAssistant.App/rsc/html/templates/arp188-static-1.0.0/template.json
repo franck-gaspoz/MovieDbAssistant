@@ -45,7 +45,7 @@
       "layout": "List",
       "tpl": "page-list.tpl.html",
       "background": "cinema-wallpaper-17.jpg",
-      "title": "Cine Club",
+      "title": "My Movies",
       "filename": "index"
     },
     {
@@ -53,7 +53,7 @@
       "layout": "Detail",
       "tpl": "page-details.tpl.html",
       "backgroundIdle": "../img/movie-page-list-wallpapers/cinema-wallpaper-17.jpg",
-      "title": "Cine Club"
+      "title": "My Movies"
     }
   ],
 
