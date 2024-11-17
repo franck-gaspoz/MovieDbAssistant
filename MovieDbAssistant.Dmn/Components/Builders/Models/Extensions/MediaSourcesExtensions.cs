@@ -31,17 +31,24 @@ public static class MediaSourcesExtensions
         MediaSource mediaSource,
         MediaProvidersSettings providersSettings)
     {
-        Setup(mediaSource, providersSettings.Urls);
-        Setup(mediaSource, providersSettings.PhysycalTypes);
+        Setup(mediaSource, providersSettings.Urls, providersSettings);
+        //Setup(mediaSource, providersSettings.PhysicalTypes, providersSettings);
     }
 
-    static void Setup(MediaSource mediaSource,List<MediaProviderSettings> providers)
+    static void Setup(
+        MediaSource mediaSource,
+        List<MediaProviderSettings> providers,
+        MediaProvidersSettings mediaProvidersSettings)
     {
         if (mediaSource.Path == null) return;
         foreach (var provider in providers)
             foreach (var path in provider.Paths)
                 if (Match(mediaSource.Path, path))
+                {
                     mediaSource.MediaProviderId = provider.Id;
+                    return;
+                }
+        mediaSource.MediaProviderId = mediaProvidersSettings.FallBackProvider.Id;
     }
 
     static bool Match(string? text,string pattern)
