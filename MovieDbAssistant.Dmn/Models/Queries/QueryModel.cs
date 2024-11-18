@@ -54,7 +54,7 @@ public sealed record class QueryModel
             var matches = Regex.Matches(value, pattern);
             if (matches.Count != 0)
             {
-                _year = matches[0].Value;
+                _year = matches.Last().Value;
                 if (_title.EndsWith(Year!))
                     _title = _title[..^Year!.Length].Trim();
             }
