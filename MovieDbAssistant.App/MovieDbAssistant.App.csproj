@@ -159,6 +159,7 @@
     <None Remove="rsc\html\assets\sources\gptfims.png" />
     <None Remove="rsc\html\assets\sources\himovies.png" />
     <None Remove="rsc\html\assets\sources\kaido.png" />
+    <None Remove="rsc\html\assets\sources\moviesjoy.png" />
     <None Remove="rsc\html\assets\sources\nas.png" />
     <None Remove="rsc\html\assets\sources\ok.ru.png" />
     <None Remove="rsc\html\assets\sources\solarmovie.png" />
@@ -607,6 +608,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\sources\kaido.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="rsc\html\assets\sources\moviesjoy.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="rsc\html\assets\sources\ok.ru.png">
