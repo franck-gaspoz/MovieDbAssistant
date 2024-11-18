@@ -68,8 +68,8 @@
     <None Remove="input\-Catalog Nov. 2024.txt" />
     <None Remove="input\-query-sample1.txt" />
     <None Remove="input\-query-sample2.txt" />
-    <None Remove="input\Fast test.txt" />
     <None Remove="input\README.md" />
+    <None Remove="input\Sample Catalog.txt" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
@@ -329,7 +329,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\Fast test.txt">
+    <Content Include="input\Sample Catalog.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-query-sample1.txt">
