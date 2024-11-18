@@ -16,7 +16,7 @@ gptfims						;   https://gptfims.com					;										;
 Solar movie.sc				;   https://solarmovieru.com			;										;
 himovies					;   https://himovies.sx					;										;
 moviesjoy					;   https://moviesjoy.is				;										;
-azmovies					;   https://azmovies.ag					;	unimited files, doodstream, filemoon, super server, video src
+azmovies					;   https://azmovies.ag					;	unimited files, doodstream, filemoon, super server, video src ;
 ----------------------------;---------------------------------------;---------------------------------------;-------------------------------------
 
 indexs
