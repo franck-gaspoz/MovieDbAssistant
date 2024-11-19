@@ -15,6 +15,7 @@ uqload						;   https://uqload.net					;										;
 gptfims						;   https://gptfims.com					;										;
 Solar movie.sc				;   https://solarmovieru.com			;										;
 himovies					;   https://himovies.sx					;										;
+tokyvideo					;   https://www.tokyvideo.com			;										;
 moviesjoy					;   https://moviesjoy.is				;										;
 xumoplay					;   https://play.xumo.com/				;										; US only, ads. - big streams providers
 azmovies					;   https://azmovies.ag					;	unimited files, doodstream, filemoon, super server, video src ;
