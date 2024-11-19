@@ -344,4 +344,56 @@ class UI {
             this.#applyWindowStateCssClasses()
         }
     }
+
+    // ---------- electron app ------------
+    // class App ?
+
+    canSend() {
+        return app && app.send
+    }
+
+    /** 
+     * minimize main window
+     * @param {HTMLElement} e html element
+     */
+    minimize(e) {
+        if (this.canSend())
+            app.send(Command_Minize)
+    }
+
+    /**
+     * maximize main window
+     * @param {HTMLElement} e html element
+     */
+    maximize(e) {
+        if (this.canSend())
+            app.send(Command_Maximize)
+    }
+
+    /** 
+     * fullscreen main window
+     * @param {HTMLElement} e html element
+     */
+    fullscreen(e) {
+        if (this.canSend())
+            app.send(Command_FullScreen)
+    }
+
+    /** 
+     * restore main window
+     * @param {HTMLElement} e html element
+     */
+    restore(e) {
+        if (this.canSend())
+            app.send(Command_Restore)
+    }
+
+    /** 
+     * close main window
+     * @param {HTMLElement} e html element
+     */
+    close(e) {
+        if (this.canSend())
+            app.send(Command_Close)
+    }
 }
