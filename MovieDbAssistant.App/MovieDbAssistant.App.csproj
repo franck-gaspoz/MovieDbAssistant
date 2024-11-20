@@ -65,11 +65,11 @@
     <None Remove="culture-settings.EN-US.json" />
     <None Remove="culture-settings.json" />
     <None Remove="db\README.md" />
-    <None Remove="input\-Catalog Nov. 2024.txt" />
     <None Remove="input\-query-sample1.txt" />
     <None Remove="input\-query-sample2.txt" />
+    <None Remove="input\-Sample Catalog.txt" />
+    <None Remove="input\Catalog Nov. 2024.txt" />
     <None Remove="input\README.md" />
-    <None Remove="input\Sample Catalog.txt" />
     <None Remove="LICENSE" />
     <None Remove="logs\log.txt" />
     <None Remove="output\README.md" />
@@ -330,7 +330,7 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="input\Sample Catalog.txt">
+    <Content Include="input\-Sample Catalog.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="input\-query-sample1.txt">
@@ -342,7 +342,7 @@
     <Content Include="logs\log.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="input\-Catalog Nov. 2024.txt">
+    <Content Include="input\Catalog Nov. 2024.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
