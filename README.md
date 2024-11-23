@@ -81,11 +81,11 @@ User & Developer manual: [manual.md](doc/manual.md)
 
 ## Movie Db Software suite
 
-Make work together `Movie Db Viewer` , `Movie Db Assistant` , `Movie Db Spiders`
+Make working together `Movie Db Viewer` , `Movie Db Assistant` , `Movie Db Spiders`
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/software-suite-screenshot.png" 
-  width="50%" 
+  width="60%" 
   align="center" style="margin-left:auto;margin-right:auto" 
   alt="Inno Setup">
 </p>
