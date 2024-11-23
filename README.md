@@ -92,7 +92,9 @@ Make working together `Movie Db Viewer` , [`Movie Db Assistant`](https://github.
 
 ## Install
 
-👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 10 x64 >= 10.0.22621.0`
+👉 download last release: [1.0.0](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 7/8/10/11 x64`
+
+- previous: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe)
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/setup-iss.png" 
@@ -203,7 +205,20 @@ ___
 
 ## Releases History
 
-2024/04/11 - 1.0.0 - initial version
+2024/23/11 - 1.0.0
+
+- media providers sources + icons
+- presentation improvements
+- bug fixes
+- catalog test
+- documentation
+- media resources
+- refactoring
+- movie db software suite constituted
+
+![software-suite-screenshot](https://github.com/user-attachments/assets/a5272b89-ea85-4ffd-9539-f1533b8db03c)
+
+2024/04/11 - 1.0.0-beta - initial version
 
 functionalities:
 
@@ -214,6 +229,7 @@ functionalities:
     - direct scrap from a query given in last text clipboard entry
     - html catalog templates
     - html catalog resources : backgrounds, fonts, css, js template engine
+
 - Windows setup for System Tray GUI
     - Inno Setup
     - Windows™.msix/.appx
