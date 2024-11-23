@@ -166,3 +166,28 @@ add-appxpackage –register AppxManifest.xml
         observer.observe($movieList[0], config);
 
 <iframe width="560" height="315" src="//ok.ru/videoembed/4903639321296?nochat=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+----------------------------------------------------------------------
+
+les ripoux 1984
+https://ok.ru/video/7741833415312
+
+mission pays basque 2017
+https://ok.ru/video/6697667005072
+
+bienvenue chez les chtis
+https://ok.ru/video/5775038352016
+
+le diner de cons 1998
+https://ok.ru/video/5661680863888
+
+to check: multi sources with different props:
+
+champagne! 2022
+https://ok.ru/video/7689691531874   hd+
+https://ok.ru/video/7693137152610   hd
+
+jeannette The Childhood of Joan of Arc 2017
+https://ok.ru/video/7647741676130   long (+2h)
+https://ok.ru/video/7647716575842   normal
+

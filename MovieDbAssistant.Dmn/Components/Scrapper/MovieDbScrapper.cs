@@ -102,10 +102,10 @@ public sealed class MovieDbScrapper : IIdentifiable
                 {
                     spiderId.ToString(),
                     output,
-                    query.Title
+                    query.Title,                    
                 };
                 if (filters != null)
-                    args.Add(filters);
+                    args.Add("a=b&"+filters);       // TODO: remove the hack, fix the scrapper (remove filters= in from url)
 
                 _logger.LogInformation(this,
                     $"scrap: #{query.InstanceId()} spider={args[0]} title={args[2]} filters={(args.Count > 3 ? args[3] : "")} output={args[1]}");

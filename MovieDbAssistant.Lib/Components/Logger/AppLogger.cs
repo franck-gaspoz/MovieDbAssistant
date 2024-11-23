@@ -83,10 +83,10 @@ public class AppLogger : ILogger
             // debug ouput
             Debug.WriteLine(txt);
             // file output
-            //lock (_logLock)
-            //{
+            lock (_logLock)
+            {
                 using var sw = AppendLogFile(txt,GetLogFilePath());
-            //}
+            }
         }
 
         var msg = state?.ToString() ?? string.Empty;
@@ -160,9 +160,9 @@ public class AppLogger : ILogger
     /// <param name="logPath">The log file path.</param>
     public static void AppendLine(string newLine,string? logPath = null)
     {
-        //lock (_logLock)
-        //{
+        lock (_logLock)
+        {
             AppendLogFile(newLine, GetLogFilePath(logPath));
-        //}
+        }
     }
 }

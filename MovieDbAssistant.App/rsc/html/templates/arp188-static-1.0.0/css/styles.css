@@ -31,6 +31,16 @@ td {
 
 /* #endregion */
 
+/* #region media providers */
+
+.source-id-drive-local,
+.source-id-drive-lan,
+.source-id-drive-usb {
+    filter: invert(100%);
+}
+
+/* #endregion */
+
 /* #region pages containers */
 
 .movie-page-background-container,
@@ -47,8 +57,6 @@ td {
 /* #endregion */
 
 /* #region common */
-
-/* #endregion */
 
 .video-background {
     width: 100%;
@@ -86,6 +94,26 @@ td {
 
 .small-list-item {
     top: 3em !important;
+}
+
+div.sources-icons.small-list-item {
+    top: 6em !important;
+}
+
+body.movie-page-list div.sources.no-year.no-rating.no-ratingCount {
+    top: 1.5em !important;
+}
+
+body.movie-page-detail div.sources.no-year.no-rating.no-ratingCount {
+    top: 2.8em !important;
+}
+
+div.sources.no-summary.no-pic {
+    top: 2.5em !important;
+}
+
+div.sources-icons.no-year.no-rating.no-ratingCount {
+    top: 5.4em !important;
 }
 
 body.movie-page-list .movie-list {
@@ -368,6 +396,11 @@ body.movie-page-detail .rating-container {
     height: 48px;
 }
 
+.source-icon {
+    height: 36px;
+    opacity: 70%;
+}
+
 .vsep {
     height: 0.75em;
 }
@@ -394,9 +427,35 @@ body.movie-page-detail .rating-container {
     overflow: visible;
 }
 
+body.movie-page-list .sources-icons {
+    position: relative;
+    top: 9.5em;
+    text-align: center;
+    text-wrap: nowrap;
+    overflow: visible;
+}
+
+body.movie-page-list .sources-icons:not(.no-pic) {
+    top: 9.5em !important;
+}
+
+body.movie-page-list .sources:not(.no-pic) {
+    top: 5.5em !important;
+}
+
+body.movie-page-detail .sources-icons {
+    position: relative;
+    top: 6em;
+    text-align: center;
+    text-wrap: nowrap;
+    overflow: visible;
+}
+
 body.movie-page-detail .sources {
     top: 2.8em;
 }
+
+/* #endregion */
 
 /* #region nav */
 

@@ -11,6 +11,8 @@ using MovieDbAssistant.Lib.Components.Logger;
 using MovieDbAssistant.Lib.Components.Signal;
 using MovieDbAssistant.Lib.Components.Sys;
 
+#pragma warning disable IDE0130 // Le namespace ne correspond pas à la structure de dossiers
+
 namespace MovieDbAssistant;
 
 /// <summary>

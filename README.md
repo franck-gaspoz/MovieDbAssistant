@@ -79,6 +79,17 @@ User & Developer manual: [manual.md](doc/manual.md)
 </tr>
 </table>
 
+## Movie Db Software suite
+
+Make work together `Movie Db Viewer` , `Movie Db Assistant` , `Movie Db Spiders`
+
+<p align="center">
+<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/software-suite-screenshot.png" 
+  width="50%" 
+  align="center" style="margin-left:auto;margin-right:auto" 
+  alt="Inno Setup">
+</p>
+
 ## Install
 
 👉 download last release: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 10 x64 >= 10.0.22621.0`
