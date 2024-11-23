@@ -85,7 +85,7 @@ Make work together `Movie Db Viewer` , `Movie Db Assistant` , `Movie Db Spiders`
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/software-suite-screenshot.png" 
-  width="35%" 
+  width="50%" 
   align="center" style="margin-left:auto;margin-right:auto" 
   alt="Inno Setup">
 </p>
