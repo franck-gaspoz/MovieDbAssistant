@@ -79,17 +79,6 @@ User & Developer manual: [manual.md](doc/manual.md)
 </tr>
 </table>
 
-## Movie Db Software suite
-
-Make working together `Movie Db Viewer` , [`Movie Db Assistant`](https://github.com/franck-gaspoz/MovieDbAssistant/blob/main/README.md) , [`Movie Db Spiders`](https://github.com/franck-gaspoz/MovieDbSpiders/blob/main/README.md)
-
-<p align="center">
-<img src="https://raw.githubusercontent.com/franck-gaspoz/MovieDbAssistant/main/assets/software-suite-screenshot.png" 
-  width="70%" 
-  align="center" style="margin-left:auto;margin-right:auto" 
-  alt="Inno Setup">
-</p>
-
 ## Install
 
 👉 download last release: [1.0.0](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 7/8/10/11 x64`
@@ -215,8 +204,6 @@ ___
 - media resources
 - refactoring
 - movie db software suite constituted
-
-![software-suite-screenshot](https://github.com/user-attachments/assets/a5272b89-ea85-4ffd-9539-f1533b8db03c)
 
 2024/04/11 - 1.0.0-beta - initial version
 
