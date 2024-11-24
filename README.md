@@ -8,12 +8,10 @@
 ![html5](https://img.shields.io/static/v1?label=&message=HTML5&color=cdf998&style=plastic&logo=html5) ![css3](https://img.shields.io/static/v1?label=&message=CSS3&color=cdf998&style=plastic&logo=css3&logoColor=black)
 ![linux](https://img.shields.io/static/v1?label=&message=Linux&color=285fdd&style=plastic&logo=linux) ![windows](https://img.shields.io/static/v1?label=&message=Windows&color=285fdd&style=plastic&logo=windows&logoColor=77DDFF) ![osx](https://img.shields.io/static/v1?label=&message=OSX&color=285fdd&style=plastic&logo=apple&logoColor=AAFFAA)
 
-<p align="center">🚧 <i>under construction</i> 🚧 ⚡<i>beta release available!</i> ⚡</p>
-
 ___
 
 Generates **Movie catalogs documents** (HTML, stand alone ZIP,...) from a **list of movies titles** using **Web Crawlers** and a **templating system**.
-Can scrap data from [IMDb](http://www.imdb.com)
+👉 Can scrap data from [IMDb](http://www.imdb.com)
 
 ```mermaid
 ---
@@ -53,7 +51,7 @@ title: flow chart
     oc<-- files -->tple
 ```
 
-User & Developer manual: [manual.md](doc/manual.md)
+👉 User & Developer manual: [manual.md](doc/manual.md)
 
 <br>
 <table width="100%" border="0">
@@ -81,7 +79,7 @@ User & Developer manual: [manual.md](doc/manual.md)
 
 ## Install
 
-👉 download last release: [1.0.0](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 7/8/10/11 x64`
+👉 download last release: [1.0.0](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/v1.0.0/movie-db-assistant.setup.1.0.0.exe) *(Inno Setup)* for `Windows 7/8/10/11 x64`
 
 - previous: [1.0.0-beta](https://github.com/franck-gaspoz/MovieDbAssistant/releases/download/1.0.0-beta/movie-db-assistant.setup.1.0.0.exe)
 
